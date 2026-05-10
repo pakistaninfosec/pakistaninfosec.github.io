@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CVE Database — InfoSec Pakistan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#05080f;--bg2:#0b1120;--bg3:#111827;
+    --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+    --text:#e8eaf0;--muted:#6b7280;
+    --accent:#3b82f6;--accent2:#1d4ed8;
+    --red:#ef4444;--orange:#f97316;--green:#22c55e;--yellow:#eab308;--cyan:#06b6d4;
+    --font-mono:'JetBrains Mono',monospace;--font-display:'Syne',sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-mono);font-size:13px;line-height:1.6;min-height:100vh;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(59,130,246,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+
+  nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px;background:rgba(5,8,15,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+  .nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:15px;color:var(--text);text-decoration:none;}
+  .nav-brand .shield{width:28px;height:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;}
+  .nav-links{display:flex;gap:4px;}
+  .nav-links a{color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:6px;font-size:12px;transition:all 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--text);background:var(--bg3);}
+
+  main{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:40px 32px;}
+
+  h1{font-family:var(--font-display);font-size:28px;font-weight:800;letter-spacing:-0.03em;margin-bottom:6px;}
+  h1 span{color:var(--accent);}
+  .subtitle{color:var(--muted);font-size:12px;margin-bottom:28px;}
+
+  /* Filters bar */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;align-items:center;}
+  .search-input{background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:9px 14px;border-radius:8px;font-family:var(--font-mono);font-size:12px;outline:none;width:320px;transition:border-color 0.2s;}
+  .search-input:focus{border-color:var(--accent);}
+  .search-input::placeholder{color:var(--muted);}
+  select{background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-family:var(--font-mono);font-size:12px;outline:none;cursor:pointer;}
+  select:focus{border-color:var(--accent);}
+  .result-count{margin-left:auto;font-size:12px;color:var(--muted);}
+
+  /* Table */
+  .table-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  table{width:100%;border-collapse:collapse;}
+  thead th{padding:12px 16px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);border-bottom:1px solid var(--border);background:var(--bg3);cursor:pointer;user-select:none;}
+  thead th:hover{color:var(--text);}
+  thead th.sorted{color:var(--accent);}
+  tbody tr{border-bottom:1px solid var(--border);transition:background 0.15s;cursor:pointer;}
+  tbody tr:last-child{border-bottom:none;}
+  tbody tr:hover{background:rgba(255,255,255,0.02);}
+  td{padding:11px 16px;font-size:12px;vertical-align:middle;}
+  .td-cve{font-weight:600;color:var(--cyan);white-space:nowrap;}
+  .td-desc{color:var(--muted);max-width:380px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .td-source{white-space:nowrap;color:var(--muted);}
+  .td-date{white-space:nowrap;color:var(--muted);}
+  .pk-flag{margin-left:4px;}
+
+  .severity-badge{font-size:9px;font-weight:700;letter-spacing:0.06em;padding:3px 7px;border-radius:4px;white-space:nowrap;}
+  .sev-critical{background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.3);}
+  .sev-high{background:rgba(249,115,22,0.15);color:var(--orange);border:1px solid rgba(249,115,22,0.3);}
+  .sev-medium{background:rgba(234,179,8,0.15);color:var(--yellow);border:1px solid rgba(234,179,8,0.3);}
+  .sev-low{background:rgba(34,197,94,0.15);color:var(--green);border:1px solid rgba(34,197,94,0.3);}
+
+  /* Pagination */
+  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;padding:20px;}
+  .page-btn{background:var(--bg2);border:1px solid var(--border);color:var(--muted);padding:6px 12px;border-radius:6px;font-family:var(--font-mono);font-size:12px;cursor:pointer;transition:all 0.2s;}
+  .page-btn:hover,.page-btn.active{color:var(--text);border-color:var(--accent);background:rgba(59,130,246,0.08);}
+  .page-btn:disabled{opacity:0.3;cursor:not-allowed;}
+
+  .loading{display:flex;align-items:center;justify-content:center;padding:60px;color:var(--muted);gap:10px;}
+  .spinner{width:16px;height:16px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* Modal */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center;}
+  .modal-overlay.open{display:flex;}
+  .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:28px;max-width:560px;width:90%;}
+  .modal-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+  .modal-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;}
+  .modal-cve{font-size:11px;color:var(--cyan);}
+  .modal-title{font-family:var(--font-display);font-size:16px;font-weight:700;margin:6px 0 12px;line-height:1.4;}
+  .modal-desc{font-size:12px;color:var(--muted);line-height:1.7;}
+  .modal-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;}
+  .modal-tag{font-size:11px;background:var(--bg3);border:1px solid var(--border);padding:4px 10px;border-radius:6px;color:var(--muted);}
+  .modal-tag span{color:var(--text);}
+
+  footer{position:relative;z-index:1;text-align:center;padding:32px;border-top:1px solid var(--border);color:var(--muted);font-size:11px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <div class="shield">🛡</div>
+    InfoSec Pakistan
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Dashboard</a>
+    <a href="reports.html">Daily Reports</a>
+    <a href="database.html" class="active">CVE Database</a>
+  </div>
+</nav>
+
+<main>
+  <h1>CVE <span>Database</span></h1>
+  <p class="subtitle">Full searchable archive of all tracked vulnerabilities · Updated daily at 09:00 PKT</p>
+
+  <div class="filters">
+    <input class="search-input" id="search" type="text" placeholder="Search CVE ID, description, source...">
+    <select id="sev-filter" onchange="applyFilters()">
+      <option value="">All Severities</option>
+      <option value="CRITICAL">Critical</option>
+      <option value="HIGH">High</option>
+      <option value="MEDIUM">Medium</option>
+      <option value="LOW">Low</option>
+    </select>
+    <select id="src-filter" onchange="applyFilters()">
+      <option value="">All Sources</option>
+      <option value="CISA KEV">CISA KEV</option>
+      <option value="ZDI">ZDI</option>
+      <option value="Exploit-DB">Exploit-DB</option>
+      <option value="Pakistan CERT">Pakistan CERT</option>
+      <option value="NVD">NVD</option>
+    </select>
+    <select id="pk-filter" onchange="applyFilters()">
+      <option value="">All Regions</option>
+      <option value="pk">🇵🇰 Pakistan Only</option>
+    </select>
+    <span class="result-count" id="result-count">Loading...</span>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th onclick="sortBy('id')">CVE ID ↕</th>
+          <th onclick="sortBy('severity')">Severity ↕</th>
+          <th>Description</th>
+          <th onclick="sortBy('source')">Source ↕</th>
+          <th onclick="sortBy('date')">Date ↕</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <tr><td colspan="5"><div class="loading"><div class="spinner"></div> Loading...</div></td></tr>
+      </tbody>
+    </table>
+    <div class="pagination" id="pagination"></div>
+  </div>
+</main>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-cve" id="modal-cve"></div>
+      <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-title" id="modal-title"></div>
+    <div class="modal-desc" id="modal-desc"></div>
+    <div class="modal-meta" id="modal-meta"></div>
+  </div>
+</div>
+
+<footer>InfoSec Pakistan · CVE Database · Updated daily at 09:00 PKT</footer>
+
+<script>
+const PAGE_SIZE = 25;
+let allThreats = [], filtered = [], currentPage = 1, sortCol = 'date', sortDir = -1;
+
+const DEMO = [
+  {id:"CVE-2026-1234",desc:"Remote code execution in Apache HTTP Server via malformed request headers",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["RCE","Apache"]},
+  {id:"CVE-2026-1198",desc:"Authentication bypass in Fortinet FortiOS SSL-VPN",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["Auth Bypass","VPN"]},
+  {id:"CVE-2026-0891",desc:"Directory traversal in Cisco IOS XE Web UI",severity:"HIGH",source:"ZDI",date:"2026-05-10",pakistan:false,tags:["Directory Traversal"]},
+  {id:"CVE-2026-0754",desc:"Privilege escalation in Microsoft Windows Kernel",severity:"HIGH",source:"ZDI",date:"2026-05-09",pakistan:false,tags:["Privilege Escalation"]},
+  {id:"CVE-2026-0612",desc:"SQL injection in popular CMS plugin",severity:"HIGH",source:"Exploit-DB",date:"2026-05-09",pakistan:false,tags:["SQLi"]},
+  {id:"CVE-2026-0589",desc:"Buffer overflow in OpenSSL TLS handshake",severity:"MEDIUM",source:"NVD",date:"2026-05-09",pakistan:false,tags:["Buffer Overflow"]},
+  {id:"CVE-2026-0421",desc:"Cross-site scripting in widely-used email client",severity:"MEDIUM",source:"Exploit-DB",date:"2026-05-08",pakistan:false,tags:["XSS"]},
+  {id:"PKC-2026-041",desc:"Critical vulnerability in Pakistan government portal authentication system",severity:"CRITICAL",source:"Pakistan CERT",date:"2026-05-10",pakistan:true,tags:["Gov","Auth"]},
+  {id:"PKC-2026-039",desc:"Active exploitation of banking sector web application in Pakistan",severity:"HIGH",source:"Pakistan CERT",date:"2026-05-09",pakistan:true,tags:["Banking"]},
+];
+
+async function loadData() {
+  try {
+    const res = await fetch('data/threats.json?t=' + Date.now());
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    allThreats = data.threats || [];
+  } catch {
+    allThreats = DEMO;
+  }
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const sev = document.getElementById('sev-filter').value;
+  const src = document.getElementById('src-filter').value;
+  const pk = document.getElementById('pk-filter').value;
+  filtered = allThreats.filter(t => {
+    if (sev && t.severity !== sev) return false;
+    if (src && t.source !== src) return false;
+    if (pk === 'pk' && !t.pakistan) return false;
+    if (q && !t.id.toLowerCase().includes(q) && !t.desc.toLowerCase().includes(q) && !(t.source||'').toLowerCase().includes(q)) return false;
+    return true;
+  });
+  filtered.sort((a,b) => {
+    const av = a[sortCol]||'', bv = b[sortCol]||'';
+    return av < bv ? sortDir : av > bv ? -sortDir : 0;
+  });
+  currentPage = 1;
+  document.getElementById('result-count').textContent = filtered.length + ' results';
+  renderTable();
+}
+
+function sortBy(col) {
+  if (sortCol === col) sortDir *= -1;
+  else { sortCol = col; sortDir = -1; }
+  applyFilters();
+}
+
+function renderTable() {
+  const start = (currentPage-1)*PAGE_SIZE;
+  const page = filtered.slice(start, start+PAGE_SIZE);
+  document.getElementById('table-body').innerHTML = page.length ? page.map(t => `
+    <tr onclick="openModal(${JSON.stringify(t).replace(/"/g,'&quot;')})">
+      <td class="td-cve">${t.id}${t.pakistan ? ' <span class="pk-flag">🇵🇰</span>' : ''}</td>
+      <td><span class="severity-badge sev-${t.severity.toLowerCase()}">${t.severity}</span></td>
+      <td class="td-desc">${t.desc}</td>
+      <td class="td-source">${t.source}</td>
+      <td class="td-date">${t.date}</td>
+    </tr>
+  `).join('') : '<tr><td colspan="5" style="text-align:center;padding:40px;color:var(--muted)">No results found</td></tr>';
+  renderPagination();
+}
+
+function renderPagination() {
+  const pages = Math.ceil(filtered.length / PAGE_SIZE);
+  if (pages <= 1) { document.getElementById('pagination').innerHTML = ''; return; }
+  let html = `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>← Prev</button>`;
+  for (let i=1;i<=pages;i++) {
+    if (i===1||i===pages||Math.abs(i-currentPage)<=1)
+      html += `<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i}</button>`;
+    else if (Math.abs(i-currentPage)===2)
+      html += `<span style="color:var(--muted)">…</span>`;
+  }
+  html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===pages?'disabled':''}>Next →</button>`;
+  document.getElementById('pagination').innerHTML = html;
+}
+
+function goPage(p) {
+  currentPage = p;
+  renderTable();
+  window.scrollTo(0,0);
+}
+
+function openModal(t) {
+  if (typeof t === 'string') t = JSON.parse(t);
+  document.getElementById('modal-cve').textContent = t.id;
+  document.getElementById('modal-title').textContent = t.desc;
+  document.getElementById('modal-desc').textContent = t.desc;
+  document.getElementById('modal-meta').innerHTML = `
+    <div class="modal-tag">Severity: <span>${t.severity}</span></div>
+    <div class="modal-tag">Source: <span>${t.source}</span></div>
+    <div class="modal-tag">Date: <span>${t.date}</span></div>
+    ${t.pakistan ? '<div class="modal-tag">🇵🇰 <span>Pakistan Alert</span></div>' : ''}
+    ${(t.tags||[]).map(tag=>`<div class="modal-tag">${tag}</div>`).join('')}
+  `;
+  document.getElementById('modal').classList.add('open');
+}
+function closeModal(e){if(e.target===document.getElementById('modal'))document.getElementById('modal').classList.remove('open');}
+
+document.getElementById('search').addEventListener('input', applyFilters);
+loadData();
+</script>
+</body>
+</html>

@@ -27,20 +27,12 @@ HEADERS = {
 }
 
 
-# ── Direct Pakistan scraping (guaranteed fallback) ────────────────────────────
-
 def _scrape_pakistan_direct():
-    """Scrape PKCERT + NCCS directly inside the bridge. Always returns >= 2 records."""
     results = []
 
     # ── PKCERT ──
-    pkcert_urls = [
-        "https://pkcert.gov.pk/advisories.asp",
-        "https://pkcert.gov.pk/advisories",
-        "https://pkcert.gov.pk/",
-    ]
     found = []
-    for url in pkcert_urls:
+    for url in ["https://pkcert.gov.pk/advisories.asp", "https://pkcert.gov.pk/advisories", "https://pkcert.gov.pk/"]:
         try:
             res = requests.get(url, headers=HEADERS, timeout=15)
             if res.status_code != 200:
@@ -85,8 +77,7 @@ def _scrape_pakistan_direct():
             "references": link, "published_date": date.today().isoformat(),
             "last_modified": date.today().isoformat(),
             "url": link or "https://pkcert.gov.pk/advisories.asp",
-            "vendor": "Pakistan CERT", "price": "",
-            "tags": "pakistan,cert,advisory,government",
+            "vendor": "Pakistan CERT", "price": "", "tags": "pakistan,cert,advisory,government",
         })
 
     if not results:
@@ -107,7 +98,7 @@ def _scrape_pakistan_direct():
 
     # ── NCCS ──
     nccs_found = []
-    for url in ["https://nccs.pk/NTL/Home.html","https://nccs.pk/NCCSBlog/TWICS.html","https://nccs.pk/"]:
+    for url in ["https://nccs.pk/NTL/Home.html", "https://nccs.pk/NCCSBlog/TWICS.html", "https://nccs.pk/"]:
         try:
             res = requests.get(url, headers=HEADERS, timeout=15)
             if res.status_code == 200:
@@ -160,8 +151,6 @@ def _scrape_pakistan_direct():
     return results
 
 
-# ── Pipeline helpers ──────────────────────────────────────────────────────────
-
 def find_latest_json():
     patterns = [
         "scraper/output/infosec_products_*.json",
@@ -172,16 +161,14 @@ def find_latest_json():
     for p in patterns:
         files.extend(glob.glob(p))
     if not files:
-        print("❌ No scraper output files found!")
         return None
     latest = max(files, key=os.path.getmtime)
-    print(f"[✓] Found: {latest}")
+    print(f"[✓] Found scraper output: {latest}")
     return latest
 
 
 def is_pakistan(r):
     return r.get("source", "") in PAKISTAN_SOURCES
-
 
 def is_zeroday(r):
     src  = r.get("source", "")
@@ -194,7 +181,6 @@ def is_zeroday(r):
         "zero day" in tags
     )
 
-
 def map_severity(r):
     sev   = str(r.get("severity", "")).upper()
     score = float(r.get("cvss_score", 0) or 0)
@@ -202,7 +188,6 @@ def map_severity(r):
     if sev == "HIGH"     or score >= 7.0: return "HIGH"
     if sev == "MEDIUM"   or score >= 4.0: return "MEDIUM"
     return "LOW"
-
 
 def clean_date(val):
     if not val: return date.today().isoformat()
@@ -220,15 +205,10 @@ def generate_ai_summary(threats):
         return None
     try:
         from groq import Groq
-        client  = Groq(api_key=GROQ_API_KEY)
+        client   = Groq(api_key=GROQ_API_KEY)
         critical = [t for t in threats if t["severity"] == "CRITICAL"][:5]
         zd       = [t for t in threats if t["zeroday"]][:5]
         pk       = [t for t in threats if t["pakistan"]][:3]
-
-        critical_txt = "\n".join([f"- {t['id']}: {t['desc'][:120]}" for t in critical]) or "None"
-        zd_txt       = "\n".join([f"- {t['id']}: {t['desc'][:100]}" for t in zd])       or "None"
-        pk_txt       = "\n".join([f"- {t['id']}: {t['desc'][:100]}" for t in pk])       or "None"
-
         prompt = f"""You are a senior cybersecurity analyst for Pakistan. Write a 3-sentence executive summary for today's threat intelligence digest.
 
 Stats:
@@ -237,17 +217,11 @@ Stats:
 - Zero-Day exploits: {len([t for t in threats if t['zeroday']])}
 - Pakistan CERT/NCCS alerts: {len(pk)}
 
-Top Critical CVEs:
-{critical_txt}
+Top Critical: {"; ".join([t['id'] for t in critical]) or "None"}
+Zero-Days: {"; ".join([t['id'] for t in zd]) or "None"}
+Pakistan: {"; ".join([t['id'] for t in pk]) or "None"}
 
-Zero-Day Exploits:
-{zd_txt}
-
-Pakistan Alerts:
-{pk_txt}
-
-Write concise professional summary. Plain text only, no bullets."""
-
+Plain text only, no bullets."""
         response = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[{"role": "user", "content": prompt}],
@@ -286,10 +260,8 @@ def convert_records(raw_records):
 
 
 def build_threats_json(raw_data):
-    # Merge scraper records + directly scraped Pakistan records
     all_raw = list(raw_data.get("records", []))
-    pakistan_raw = _scrape_pakistan_direct()
-    all_raw.extend(pakistan_raw)
+    all_raw.extend(_scrape_pakistan_direct())       # always add Pakistan directly
 
     threats = convert_records(all_raw)
 
@@ -314,8 +286,7 @@ def build_threats_json(raw_data):
         ai = (f"Today's digest contains {new_cnt} vulnerabilities across "
               f"{len(sources)} sources. {zeroday} zero-day exploits detected, "
               f"{exploited} actively exploited from CISA KEV, and "
-              f"{pakistan} Pakistan CERT/NCCS advisories. "
-              f"Priority patching recommended for all CRITICAL entries.")
+              f"{pakistan} Pakistan CERT/NCCS advisories.")
 
     return {
         "generated": datetime.now(timezone.utc).isoformat(),
@@ -366,29 +337,21 @@ def push_to_github(filename, content_dict):
     if not GITHUB_TOKEN:
         print(f"[!] No GITHUB_TOKEN — skipping {filename}")
         return False
-
     url     = f"https://api.github.com/repos/{GITHUB_REPO}/contents/data/{filename}"
-    headers = {
-        "Authorization": f"token {GITHUB_TOKEN}",
-        "Accept": "application/vnd.github.v3+json",
-    }
-
+    headers = {"Authorization": f"token {GITHUB_TOKEN}", "Accept": "application/vnd.github.v3+json"}
     res = requests.get(url, headers=headers)
     sha = res.json().get("sha", "") if res.status_code == 200 else ""
-
     content = base64.b64encode(
         json.dumps(content_dict, indent=2, ensure_ascii=False).encode()
     ).decode()
-
     payload = {"message": f"threat data: {date.today()}", "content": content}
     if sha:
         payload["sha"] = sha
-
     res = requests.put(url, headers=headers, json=payload)
     if res.status_code in [200, 201]:
         print(f"[✓] {filename} pushed!")
         return True
-    print(f"❌ Failed {filename}: {res.status_code}")
+    print(f"❌ Failed {filename}: {res.status_code} — {res.text[:200]}")
     return False
 
 
@@ -396,13 +359,15 @@ def main():
     print("\n🚀 InfoSec Pakistan — Bridge to GitHub")
     print("=" * 45)
 
+    # Load scraper output if available — NOT required, Pakistan runs regardless
     f = find_latest_json()
     if not f:
-        return
-
-    with open(f, encoding="utf-8") as fh:
-        raw = json.load(fh)
-    print(f"[✓] Loaded {raw.get('total_records', 0)} records")
+        print("[!] No scraper output found — running Pakistan direct scrape only")
+        raw = {"records": [], "total_records": 0}
+    else:
+        with open(f, encoding="utf-8") as fh:
+            raw = json.load(fh)
+        print(f"[✓] Loaded {raw.get('total_records', 0)} records")
 
     td = build_threats_json(raw)
     rd = build_reports_json(td)

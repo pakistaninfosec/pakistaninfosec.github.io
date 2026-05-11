@@ -5,102 +5,158 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Daily Reports — InfoSec Pakistan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#05080f;--bg2:#0b1120;--bg3:#111827;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);--text:#e8eaf0;--muted:#6b7280;--accent:#3b82f6;--accent2:#1d4ed8;--red:#ef4444;--orange:#f97316;--green:#22c55e;--yellow:#eab308;--cyan:#06b6d4;--font-mono:'JetBrains Mono',monospace;--font-display:'Syne',sans-serif;}
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  body{background:var(--bg);color:var(--text);font-family:var(--font-mono);font-size:13px;line-height:1.6;min-height:100vh;}
-  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(59,130,246,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+:root {
+  --bg:#05070d;--bg2:#090d16;--bg3:#0e1420;--bg4:#141b28;--bg5:#1a2235;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);--border3:rgba(255,255,255,0.16);
+  --text:#ffffff;--text2:#94a3b8;--text3:#64748b;
+  --blue:#2563eb;--blue2:#3b82f6;--blue3:#60a5fa;--blue4:#93c5fd;
+  --red:#ef4444;--red2:#f87171;--orange:#f97316;--green:#22c55e;--yellow:#eab308;--cyan:#06b6d4;
+  --body:'Inter',sans-serif;--display:'Space Grotesk',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:14px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(37,99,235,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.025) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0;}
 
-  nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px;background:rgba(5,8,15,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
-  .nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:15px;color:var(--text);text-decoration:none;}
-  .nav-brand .shield{width:28px;height:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;}
-  .nav-links{display:flex;gap:4px;}
-  .nav-links a{color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:6px;font-size:12px;transition:all 0.2s;}
-  .nav-links a:hover,.nav-links a.active{color:var(--text);background:var(--bg3);}
+/* NAV — identical to index.html */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(5,7,13,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.brand-icon{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 24px rgba(37,99,235,0.4);}
+.brand-name{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-0.01em;color:#fff;}
+.brand-name span{color:var(--blue3);}
+.nav-links{display:flex;gap:2px;}
+.nav-links a{color:var(--text3);text-decoration:none;padding:8px 18px;font-size:13.5px;font-weight:500;border-radius:8px;transition:all 0.2s;}
+.nav-links a:hover{color:#fff;background:var(--bg3);}
+.nav-links a.active{color:#fff;background:var(--bg3);}
+.live-badge{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--green);background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);padding:7px 16px;border-radius:6px;}
+.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
-  main{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:40px 32px;}
-  h1{font-family:var(--font-display);font-size:28px;font-weight:800;letter-spacing:-0.03em;margin-bottom:6px;}
-  h1 span{color:var(--accent);}
-  .subtitle{color:var(--muted);font-size:12px;margin-bottom:32px;}
+/* PAGE HEADER */
+.page-header{position:relative;z-index:1;padding:48px 48px 36px;border-bottom:1px solid var(--border);background:linear-gradient(135deg,rgba(37,99,235,0.04) 0%,transparent 60%);}
+.page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.25);color:var(--blue3);font-size:11.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:16px;}
+.page-badge::before{content:'●';font-size:7px;animation:blink 2s infinite;}
+.page-title{font-family:var(--display);font-size:clamp(28px,3vw,40px);font-weight:700;line-height:1.15;letter-spacing:-0.03em;color:#fff;margin-bottom:10px;}
+.page-title span{color:var(--blue3);}
+.page-sub{font-size:14px;color:var(--text2);font-weight:400;}
 
-  /* Report cards */
-  .reports-list{display:flex;flex-direction:column;gap:16px;}
-  .report-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.2s;cursor:pointer;}
-  .report-card:hover{border-color:var(--border2);}
-  .report-card.expanded .report-body{display:block;}
-  .report-header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;}
-  .report-date-badge{display:flex;align-items:center;gap:14px;}
-  .date-block{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px 14px;text-align:center;}
-  .date-block .day{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--accent);line-height:1;}
-  .date-block .mon{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
-  .report-meta h3{font-family:var(--font-display);font-size:15px;font-weight:700;}
-  .report-meta p{font-size:11px;color:var(--muted);margin-top:3px;}
-  .report-chips{display:flex;gap:8px;align-items:center;}
-  .chip{font-size:10px;padding:3px 8px;border-radius:4px;font-weight:600;letter-spacing:0.04em;}
-  .chip-red{background:rgba(239,68,68,0.12);color:var(--red);border:1px solid rgba(239,68,68,0.25);}
-  .chip-orange{background:rgba(249,115,22,0.12);color:var(--orange);border:1px solid rgba(249,115,22,0.25);}
-  .chip-green{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.25);}
-  .chevron{color:var(--muted);font-size:16px;transition:transform 0.2s;}
-  .report-card.expanded .chevron{transform:rotate(180deg);}
+/* MAIN */
+.main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:40px 48px;}
 
-  .report-body{display:none;padding:0 24px 24px;}
-  .report-divider{height:1px;background:var(--border);margin-bottom:20px;}
+/* Report list */
+.reports-list{display:flex;flex-direction:column;gap:16px;}
 
-  /* Mini email view */
-  .email-preview{background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
-  .email-header{background:linear-gradient(135deg,#0f172a,#1e293b);padding:20px 24px;border-bottom:1px solid var(--border);}
-  .email-header h2{font-family:var(--font-display);font-size:18px;font-weight:800;color:#fff;}
-  .email-header p{font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;}
-  .email-stats{display:flex;gap:12px;margin-top:12px;}
-  .email-stat{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:8px 14px;text-align:center;}
-  .email-stat .n{font-family:var(--font-display);font-size:20px;font-weight:800;}
-  .email-stat.r .n{color:var(--red);}
-  .email-stat.o .n{color:var(--orange);}
-  .email-stat.g .n{color:var(--green);}
-  .email-stat .l{font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;}
-  .section-header{padding:10px 24px;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-bottom:1px solid var(--border);}
-  .section-header.red{background:rgba(239,68,68,0.08);color:var(--red);}
-  .section-header.orange{background:rgba(249,115,22,0.08);color:var(--orange);}
-  .section-header.green{background:rgba(34,197,94,0.08);color:var(--green);}
-  .threat-item{padding:12px 24px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;}
-  .threat-item:last-child{border-bottom:none;}
-  .threat-item .tid{font-size:11px;color:var(--cyan);font-weight:600;white-space:nowrap;min-width:120px;}
-  .threat-item .tdesc{font-size:11px;color:var(--muted);}
-  .ai-block{padding:16px 24px;background:rgba(59,130,246,0.04);border-top:1px solid rgba(59,130,246,0.1);}
-  .ai-block .ai-label{font-size:10px;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;}
-  .ai-block p{font-size:12px;color:var(--muted);line-height:1.7;}
+/* Report card */
+.report-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
+.report-card:hover{border-color:var(--border2);}
+.report-card.expanded .report-body{display:block;}
 
-  .loading{display:flex;align-items:center;justify-content:center;padding:60px;color:var(--muted);gap:10px;}
-  .spinner{width:16px;height:16px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;}
-  @keyframes spin{to{transform:rotate(360deg);}}
+.report-header{display:flex;align-items:center;justify-content:space-between;padding:20px 26px;cursor:pointer;transition:background 0.15s;}
+.report-header:hover{background:var(--bg3);}
 
-  footer{position:relative;z-index:1;text-align:center;padding:32px;border-top:1px solid var(--border);color:var(--muted);font-size:11px;margin-top:40px;}
+.report-left{display:flex;align-items:center;gap:18px;}
+.date-block{background:var(--bg4);border:1px solid var(--border2);border-radius:10px;padding:10px 16px;text-align:center;flex-shrink:0;}
+.date-block .day{font-family:var(--display);font-size:24px;font-weight:700;color:var(--blue3);line-height:1;letter-spacing:-0.02em;}
+.date-block .mon{font-size:10.5px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px;font-weight:500;}
+.report-meta{}
+.report-meta h3{font-family:var(--display);font-size:15.5px;font-weight:600;color:#fff;letter-spacing:-0.01em;margin-bottom:4px;}
+.report-meta p{font-size:12.5px;color:var(--text2);}
+
+.report-right{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.report-chips{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.chip{font-size:11px;padding:4px 10px;border-radius:5px;font-weight:600;letter-spacing:0.03em;font-family:var(--body);}
+.chip-red{background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.2);}
+.chip-orange{background:rgba(249,115,22,0.1);color:var(--orange);border:1px solid rgba(249,115,22,0.2);}
+.chip-green{background:rgba(34,197,94,0.1);color:var(--green);border:1px solid rgba(34,197,94,0.2);}
+.chevron{color:var(--text3);font-size:14px;transition:transform 0.25s;line-height:1;}
+.report-card.expanded .chevron{transform:rotate(180deg);}
+
+/* Report body */
+.report-body{display:none;border-top:1px solid var(--border);}
+
+/* Digest panel */
+.digest{background:var(--bg);border-radius:0;}
+.digest-head{padding:22px 26px 18px;background:linear-gradient(135deg,rgba(15,23,42,0.8),rgba(30,41,59,0.8));border-bottom:1px solid var(--border);}
+.digest-head h2{font-family:var(--display);font-size:17px;font-weight:700;color:#fff;margin-bottom:4px;display:flex;align-items:center;gap:10px;}
+.digest-head p{font-size:12px;color:var(--text3);}
+.digest-stats{display:flex;gap:10px;margin-top:14px;}
+.dstat{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:10px 16px;text-align:center;}
+.dstat .n{font-family:var(--display);font-size:22px;font-weight:700;line-height:1;letter-spacing:-0.02em;}
+.dstat.r .n{color:var(--red);}
+.dstat.o .n{color:var(--orange);}
+.dstat.g .n{color:var(--green);}
+.dstat.b .n{color:var(--blue3);}
+.dstat .l{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;font-weight:500;}
+
+.section-header{padding:10px 26px;font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-bottom:1px solid var(--border);font-family:var(--body);}
+.section-header.red{background:rgba(239,68,68,0.06);color:var(--red);}
+.section-header.orange{background:rgba(249,115,22,0.06);color:var(--orange);}
+.section-header.green{background:rgba(34,197,94,0.06);color:var(--green);}
+
+.threat-item{padding:13px 26px;border-bottom:1px solid var(--border);display:flex;gap:14px;align-items:flex-start;transition:background 0.15s;}
+.threat-item:hover{background:var(--bg3);}
+.threat-item:last-child{border-bottom:none;}
+.threat-item .tid{font-size:12px;color:var(--cyan);font-weight:600;white-space:nowrap;min-width:130px;font-family:'Courier New',monospace;}
+.threat-item .tdesc{font-size:13px;color:var(--text2);line-height:1.5;}
+
+.ai-block{padding:18px 26px;background:rgba(37,99,235,0.04);border-top:1px solid rgba(37,99,235,0.1);}
+.ai-label{font-size:11px;color:var(--blue3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;font-weight:600;display:flex;align-items:center;gap:7px;}
+.ai-label::before{content:'◆';font-size:10px;}
+.ai-block p{font-size:13.5px;color:var(--text2);line-height:1.75;}
+
+/* Loading */
+.loading{display:flex;align-items:center;justify-content:center;padding:60px;color:var(--text3);gap:10px;font-size:13px;}
+.spinner{width:18px;height:18px;border:2px solid var(--bg5);border-top-color:var(--blue2);border-radius:50%;animation:spin 0.8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Footer */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;margin-top:20px;}
+.footer-brand{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text2);}
+.footer-brand span{color:var(--blue3);}
+.footer-txt{font-size:12px;color:var(--text3);}
+.footer-link{color:var(--blue3);text-decoration:none;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.page-header{animation:fadeUp 0.5s ease both;}
+.reports-list{animation:fadeUp 0.5s 0.1s ease both;}
 </style>
 </head>
 <body>
 
+<!-- NAV — identical to index.html -->
 <nav>
-  <a class="nav-brand" href="index.html">
-    <div class="shield">🛡</div>
-    InfoSec Pakistan
+  <a class="brand" href="index.html">
+    <div class="brand-icon">🛡</div>
+    <div class="brand-name">INFOSEC <span>PAKISTAN</span></div>
   </a>
   <div class="nav-links">
     <a href="index.html">Dashboard</a>
     <a href="reports.html" class="active">Daily Reports</a>
     <a href="database.html">CVE Database</a>
   </div>
+  <div class="live-badge"><div class="live-dot"></div>LIVE</div>
 </nav>
 
-<main>
-  <h1>Daily <span>Reports</span></h1>
-  <p class="subtitle">Archive of all daily threat intelligence digests · Click any report to expand</p>
-  <div class="reports-list" id="reports-list">
-    <div class="loading"><div class="spinner"></div> Loading reports...</div>
-  </div>
-</main>
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-badge">Threat Intelligence Archive</div>
+  <div class="page-title">Daily <span>Reports</span></div>
+  <div class="page-sub">Archive of all daily threat intelligence digests · Click any report to expand</div>
+</div>
 
-<footer>InfoSec Pakistan · Daily Threat Intelligence · Updated daily at 09:00 PKT</footer>
+<!-- MAIN -->
+<div class="main">
+  <div class="reports-list" id="reports-list">
+    <div class="loading"><div class="spinner"></div>Loading reports...</div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>
+  <div class="footer-txt">Automated threat intelligence · Updated daily 09:00 PKT · <a class="footer-link" href="https://pakistaninfosec.github.io">pakistaninfosec.github.io</a></div>
+</footer>
 
 <script>
 const DEMO_REPORTS = [
@@ -144,7 +200,7 @@ const DEMO_REPORTS = [
       {label:"Zero Day Exploits",color:"red",items:[
         {id:"CVE-2026-0421",desc:"XSS in widely-used email client web interface"},
         {id:"CVE-2026-0589",desc:"Buffer overflow in OpenSSL TLS handshake"},
-      ]},
+      ]}
     ]
   }
 ];
@@ -177,17 +233,17 @@ function renderReports(reports) {
     return `
     <div class="report-card ${idx===0?'expanded':''}" id="card-${idx}">
       <div class="report-header" onclick="toggleCard(${idx})">
-        <div class="report-date-badge">
+        <div class="report-left">
           <div class="date-block">
             <div class="day">${d.day}</div>
             <div class="mon">${d.mon}</div>
           </div>
           <div class="report-meta">
             <h3>${d.full}</h3>
-            <p>Daily Security Digest · ${r.stats.new} new threats · ${r.stats.total} monitored</p>
+            <p>Daily Security Digest &nbsp;·&nbsp; ${r.stats.new} new threats &nbsp;·&nbsp; ${r.stats.total} monitored</p>
           </div>
         </div>
-        <div style="display:flex;align-items:center;gap:12px">
+        <div class="report-right">
           <div class="report-chips">
             <span class="chip chip-red">🔴 ${r.stats.zeroday} Zero Day</span>
             <span class="chip chip-orange">🟠 ${r.stats.exploited} Exploited</span>
@@ -197,15 +253,15 @@ function renderReports(reports) {
         </div>
       </div>
       <div class="report-body">
-        <div class="report-divider"></div>
-        <div class="email-preview">
-          <div class="email-header">
+        <div class="digest">
+          <div class="digest-head">
             <h2>🛡 InfoSec Pakistan — Daily Security Digest</h2>
-            <p>${d.full} · Threat Intelligence Report</p>
-            <div class="email-stats">
-              <div class="email-stat r"><div class="n">+${r.stats.new}</div><div class="l">New</div></div>
-              <div class="email-stat o"><div class="n">${r.stats.exploited}</div><div class="l">Exploited</div></div>
-              <div class="email-stat g"><div class="n">${r.stats.pakistan}</div><div class="l">PK Alerts</div></div>
+            <p>${d.full} · Automated Threat Intelligence Report</p>
+            <div class="digest-stats">
+              <div class="dstat r"><div class="n">+${r.stats.new}</div><div class="l">New</div></div>
+              <div class="dstat o"><div class="n">${r.stats.zeroday}</div><div class="l">Zero Day</div></div>
+              <div class="dstat b"><div class="n">${r.stats.exploited}</div><div class="l">Exploited</div></div>
+              <div class="dstat g"><div class="n">${r.stats.pakistan}</div><div class="l">PK Alerts</div></div>
             </div>
           </div>
           ${r.sections.map(s => `
@@ -218,18 +274,17 @@ function renderReports(reports) {
             `).join('')}
           `).join('')}
           <div class="ai-block">
-            <div class="ai-label">◆ AI Analysis · Powered by Groq</div>
+            <div class="ai-label">AI Analysis · Powered by Groq</div>
             <p>${r.summary}</p>
           </div>
         </div>
       </div>
-    </div>
-  `}).join('');
+    </div>`;
+  }).join('');
 }
 
 function toggleCard(idx) {
-  const card = document.getElementById('card-' + idx);
-  card.classList.toggle('expanded');
+  document.getElementById('card-' + idx).classList.toggle('expanded');
 }
 
 loadReports();

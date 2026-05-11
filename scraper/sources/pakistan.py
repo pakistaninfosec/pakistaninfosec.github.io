@@ -118,7 +118,7 @@ def scrape_pkcert(max_results=20):
     except Exception as e:
         print(f"[!] PKCERT scrape failed: {e}")
 
-    # Fallback — fires whether site errored OR returned no parseable data
+    # Fallback — fires when site errored OR returned no parseable data
     if not results:
         results.append({
             "source":            "Pakistan CERT",
@@ -163,7 +163,7 @@ def scrape_nccs(max_results=10):
                             title = title_el.get_text(strip=True)
                             link = title_el.get("href", "") if title_el.name == "a" else ""
                             if title and len(title) > 15 and "nccs" not in title.lower():
-                                advisories.append({"title": title, "link": link, "source_url": url})
+                                advisories.append({"title": title, "link": link})
                     if advisories:
                         break
             except Exception:
@@ -226,7 +226,7 @@ def scrape_nccs(max_results=10):
 
 
 def scrape(max_results=30):
-    """Scrape all Pakistan sources"""
+    """Scrape all Pakistan sources — called by scraper/main.py"""
     print("\n[Pakistan Sources] Scraping PKCERT + NCCS...")
     results = []
     results.extend(scrape_pkcert(max_results=20))

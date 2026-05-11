@@ -1,40 +1,37 @@
 """
 bridge_to_github.py
 ====================
-Reads InfoSec Scraper output and converts it
-to the website format for pakistaninfosec.github.io
+Reads InfoSec Scraper output and pushes to pakistaninfosec.github.io
 
+Place this file in the ROOT of your GitHub repo.
 Reads from: scraper/output/infosec_products_*.json
 Writes to:  data/threats.json + data/reports.json
-
-Environment variables:
-  GROQ_API_KEY  - for AI summary generation
 """
 
-import os
-import json
-import glob
-import base64
-import requests
-from datetime import datetime, date
+import os, json, glob, base64, requests
+from datetime import datetime, date, timezone
 from collections import Counter
 
 GITHUB_REPO  = os.environ.get("GITHUB_REPO", "pakistaninfosec/pakistaninfosec.github.io")
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
+# ── Exact source names from your scraper ──────────
+ZERODAY_SOURCES = {
+    "CISA KEV", "Google Project Zero", "Vulners",
+    "ZDI", "Zero Day Initiative", "Exploit-DB",
+    "Packet Storm", "Exploit Database"
+}
+EXPLOITED_SOURCES = {"CISA KEV"}
+
 PAKISTAN_KW = [
     "pakistan", "gov.pk", "pta.gov", "nadra", "hec.gov",
     "fbr.gov", "nccs", "pknic", "ptcl", "jazz", "telenor.pk",
     "ufone", "zong", "islamabad", "karachi", "lahore", "peshawar",
-    "pakistan cert", "pk-cert"
+    "pakistan cert", "pk-cert", "pakistan cert"
 ]
 
-ZERODAY_SOURCES  = {"CISA KEV", "Google Project Zero", "ZDI", "Zero Day Initiative", "Exploit-DB", "Packet Storm", "Vulners"}
-EXPLOITED_SOURCES = {"CISA KEV"}
-
-
-# ── Find latest scraper output ─────────────────
+# ── Find latest scraper output ────────────────────
 def find_latest_json():
     patterns = [
         "scraper/output/infosec_products_*.json",
@@ -51,268 +48,238 @@ def find_latest_json():
     print(f"[✓] Found: {latest}")
     return latest
 
-
-# ── Helpers ────────────────────────────────────
+# ── Helpers ───────────────────────────────────────
 def is_pakistan(r):
-    text = " ".join([
-        str(r.get("title", "")),
-        str(r.get("description", "")),
-        str(r.get("affected_products", "")),
-        str(r.get("tags", "")),
-        str(r.get("url", "")),
-        str(r.get("source", "")),
-    ]).lower()
+    text = " ".join([str(r.get(k,"")) for k in
+        ["title","description","affected_products","tags","url","source"]]).lower()
     return any(kw in text for kw in PAKISTAN_KW)
 
-
 def map_severity(r):
-    sev = str(r.get("severity", "")).upper()
+    sev   = str(r.get("severity","")).upper()
     score = float(r.get("cvss_score", 0) or 0)
     if sev == "CRITICAL" or score >= 9.0: return "CRITICAL"
     if sev == "HIGH"     or score >= 7.0: return "HIGH"
     if sev == "MEDIUM"   or score >= 4.0: return "MEDIUM"
     return "LOW"
 
-
 def clean_date(val):
-    if not val:
-        return date.today().isoformat()
+    if not val: return date.today().isoformat()
     s = str(val).strip()
-    for fmt in ["%Y-%m-%d", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%dT%H:%M:%SZ"]:
-        try:
-            return datetime.strptime(s[:len(fmt)], fmt).strftime("%Y-%m-%d")
-        except:
-            pass
+    for fmt in ["%Y-%m-%d","%Y-%m-%dT%H:%M:%S","%Y-%m-%dT%H:%M:%SZ"]:
+        try: return datetime.strptime(s[:len(fmt)], fmt).strftime("%Y-%m-%d")
+        except: pass
     return s[:10] if len(s) >= 10 else date.today().isoformat()
 
+def is_zeroday(r):
+    """A threat is zero-day if from a known exploit source OR tagged as zero-day"""
+    src  = r.get("source","")
+    tags = str(r.get("tags","")).lower()
+    cat  = str(r.get("category","")).lower()
+    return (
+        src in ZERODAY_SOURCES or
+        "zero-day" in tags or "zeroday" in tags or
+        "exploit" in tags or "exploit" in cat or
+        "zero day" in tags
+    )
 
-# ── Generate AI summary using Groq ─────────────
+# ── AI Summary ────────────────────────────────────
 def generate_ai_summary(threats):
     if not GROQ_API_KEY:
         return None
     try:
         from groq import Groq
         client = Groq(api_key=GROQ_API_KEY)
-        critical = [t for t in threats if t["severity"] == "CRITICAL"][:5]
-        pk_alerts = [t for t in threats if t["pakistan"]][:3]
+        critical = [t for t in threats if t["severity"]=="CRITICAL"][:5]
+        zd       = [t for t in threats if t["zeroday"]][:5]
+        pk       = [t for t in threats if t["pakistan"]][:3]
 
-        critical_text = "\n".join([f"- {t['id']}: {t['desc'][:100]}" for t in critical])
-        pk_text = "\n".join([f"- {t['id']}: {t['desc'][:100]}" for t in pk_alerts])
+        critical_txt = "\n".join([f"- {t['id']}: {t['desc'][:120]}" for t in critical]) or "None"
+        zd_txt       = "\n".join([f"- {t['id']}: {t['desc'][:100]}" for t in zd]) or "None"
 
-        prompt = f"""You are a senior cybersecurity analyst. Write a 3-sentence executive summary for today's threat intelligence digest.
+        prompt = f"""You are a senior cybersecurity analyst for Pakistan. Write a 3-sentence executive summary for today's threat intelligence digest.
 
-Today's stats:
-- Total vulnerabilities: {len(threats)}
+Stats:
+- Total: {len(threats)} vulnerabilities
 - Critical: {len([t for t in threats if t['severity']=='CRITICAL'])}
-- High: {len([t for t in threats if t['severity']=='HIGH'])}
-- Pakistan alerts: {len(pk_alerts)}
+- Zero-Day: {len([t for t in threats if t['zeroday']])}
+- Pakistan alerts: {len(pk)}
 
-Critical vulnerabilities:
-{critical_text or 'None'}
+Top Critical CVEs:
+{critical_txt}
 
-Pakistan-specific alerts:
-{pk_text or 'None'}
+Zero-Day Exploits:
+{zd_txt}
 
-Write a concise professional summary. Plain text only, no bullet points."""
+Write concise, professional summary. Plain text only."""
 
         response = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=200,
-            temperature=0.3,
+            messages=[{"role":"user","content":prompt}],
+            max_tokens=200, temperature=0.3,
         )
-        summary = response.choices[0].message.content.strip()
-        print(f"[✓] AI summary generated ({len(summary)} chars)")
-        return summary
+        return response.choices[0].message.content.strip()
     except Exception as e:
-        print(f"[!] Groq summary failed: {e}")
+        print(f"[!] Groq failed: {e}")
         return None
 
-
-# ── Convert records ────────────────────────────
+# ── Convert records ───────────────────────────────
 def convert_records(raw_records):
     threats = []
     for r in raw_records:
-        tags_raw = r.get("tags", "")
-        if isinstance(tags_raw, list):
-            tags = tags_raw
-        else:
-            tags = [t.strip() for t in str(tags_raw).split(",") if t.strip()]
-
-        cat = r.get("category", "")
+        tags_raw = r.get("tags","")
+        tags = tags_raw if isinstance(tags_raw, list) else \
+               [t.strip() for t in str(tags_raw).split(",") if t.strip()]
+        cat = r.get("category","")
         if cat and cat not in tags:
             tags.append(cat)
 
-        desc = str(r.get("description", "") or r.get("title", "") or "")[:300]
+        desc = str(r.get("description","") or r.get("title","") or "")[:300]
 
         threats.append({
-            "id":       r.get("id") or r.get("title", "UNKNOWN"),
+            "id":       r.get("id") or r.get("title","UNKNOWN"),
             "desc":     desc,
             "severity": map_severity(r),
-            "source":   r.get("source", "Unknown"),
+            "source":   r.get("source","Unknown"),
             "date":     clean_date(r.get("published_date") or r.get("last_modified")),
             "pakistan": is_pakistan(r),
+            "zeroday":  is_zeroday(r),
             "tags":     tags[:5],
-            "url":      r.get("url", ""),
-            "cvss":     str(r.get("cvss_score", "")),
-            "cwe":      str(r.get("cwe", "")),
+            "url":      r.get("url",""),
+            "cvss":     str(r.get("cvss_score","")),
+            "cwe":      str(r.get("cwe","")),
         })
     return threats
 
-
-# ── Build threats.json ─────────────────────────
+# ── Build threats.json ────────────────────────────
 def build_threats_json(raw_data):
-    records = raw_data.get("records", [])
-    threats = convert_records(records)
+    threats = convert_records(raw_data.get("records",[]))
 
     src_counter = Counter(t["source"] for t in threats)
-    sources = [{"name": k, "count": v} for k, v in sorted(src_counter.items(), key=lambda x: -x[1])]
+    sources = [{"name":k,"count":v}
+               for k,v in sorted(src_counter.items(), key=lambda x:-x[1])]
 
-    zeroday  = sum(1 for t in threats if t["source"] in ZERODAY_SOURCES)
+    zeroday  = sum(1 for t in threats if t["zeroday"])
     exploited= sum(1 for t in threats if t["source"] in EXPLOITED_SOURCES)
     pakistan = sum(1 for t in threats if t["pakistan"])
-    new_count= len(threats)
+    new_cnt  = len(threats)
 
-    # Load previous total for running count
     prev_total = 0
     try:
         with open("data/threats.json") as f:
-            prev = json.load(f)
-            prev_total = prev.get("stats", {}).get("total", 0)
-    except:
-        pass
+            prev_total = json.load(f).get("stats",{}).get("total",0)
+    except: pass
 
-    # Generate AI summary
-    ai_summary = generate_ai_summary(threats)
-    if not ai_summary:
-        ai_summary = (
-            f"Today's digest contains {new_count} vulnerabilities across "
-            f"{len(sources)} sources. {zeroday} zero-day exploits detected, "
-            f"{exploited} actively exploited from CISA KEV, and "
-            f"{pakistan} Pakistan-specific advisories. "
-            f"Priority patching recommended for all CRITICAL entries."
-        )
+    ai = generate_ai_summary(threats)
+    if not ai:
+        ai = (f"Today's digest contains {new_cnt} vulnerabilities across "
+              f"{len(sources)} sources. {zeroday} zero-day exploits detected, "
+              f"{exploited} actively exploited from CISA KEV, and "
+              f"{pakistan} Pakistan-specific advisories. "
+              f"Priority patching recommended for all CRITICAL entries.")
 
     return {
-        "generated": datetime.now(datetime.timezone.utc).isoformat() if hasattr(datetime, 'timezone') else datetime.utcnow().isoformat() + "Z",
-        "summary":   ai_summary,
+        "generated": datetime.now(timezone.utc).isoformat(),
+        "summary":   ai,
         "stats": {
-            "new":       new_count,
-            "changed":   0,
-            "removed":   0,
-            "total":     prev_total + new_count,
-            "zeroday":   zeroday,
-            "exploited": exploited,
-            "pakistan":  pakistan,
+            "new":      new_cnt,
+            "changed":  0,
+            "removed":  0,
+            "total":    prev_total + new_cnt,
+            "zeroday":  zeroday,
+            "exploited":exploited,
+            "pakistan": pakistan,
         },
         "sources": sources,
         "threats": threats,
     }
 
-
-# ── Build reports.json ─────────────────────────
-def build_reports_json(threats_data):
+# ── Build reports.json ────────────────────────────
+def build_reports_json(td):
     today   = date.today().isoformat()
-    threats = threats_data["threats"]
-    stats   = threats_data["stats"]
+    threats = td["threats"]
+    stats   = td["stats"]
 
-    zi = [{"id": t["id"], "desc": t["desc"]} for t in threats if t["source"] in ZERODAY_SOURCES][:10]
-    ei = [{"id": t["id"], "desc": t["desc"]} for t in threats if t["source"] in EXPLOITED_SOURCES][:10]
-    pi = [{"id": t["id"], "desc": t["desc"]} for t in threats if t["pakistan"]][:10]
+    zi = [{"id":t["id"],"desc":t["desc"]} for t in threats if t["zeroday"]][:10]
+    ei = [{"id":t["id"],"desc":t["desc"]} for t in threats if t["source"] in EXPLOITED_SOURCES][:10]
+    pi = [{"id":t["id"],"desc":t["desc"]} for t in threats if t["pakistan"]][:10]
 
     sections = []
-    if zi: sections.append({"label": "Zero Day Exploits",  "color": "red",    "items": zi})
-    if ei: sections.append({"label": "Actively Exploited", "color": "orange", "items": ei})
-    if pi: sections.append({"label": "Pakistan Alerts",    "color": "green",  "items": pi})
+    if zi: sections.append({"label":"Zero Day Exploits",  "color":"red",    "items":zi})
+    if ei: sections.append({"label":"Actively Exploited", "color":"orange", "items":ei})
+    if pi: sections.append({"label":"Pakistan Alerts",    "color":"green",  "items":pi})
 
-    new_report = {
-        "date":     today,
-        "stats":    stats,
-        "summary":  threats_data["summary"],
-        "sections": sections,
-    }
+    new_report = {"date":today,"stats":stats,"summary":td["summary"],"sections":sections}
 
     try:
         with open("data/reports.json") as f:
-            reports_data = json.load(f)
-    except:
-        reports_data = {"reports": []}
+            rd = json.load(f)
+    except: rd = {"reports":[]}
 
-    reports_data["reports"] = [r for r in reports_data["reports"] if r.get("date") != today]
-    reports_data["reports"].insert(0, new_report)
-    reports_data["reports"] = reports_data["reports"][:90]
-    return reports_data
+    rd["reports"] = [r for r in rd["reports"] if r.get("date") != today]
+    rd["reports"].insert(0, new_report)
+    rd["reports"] = rd["reports"][:90]
+    return rd
 
-
-# ── Push to GitHub ─────────────────────────────
+# ── Push to GitHub ────────────────────────────────
 def push_to_github(filename, content_dict):
     if not GITHUB_TOKEN:
-        print(f"[!] No GITHUB_TOKEN — skipping push for {filename}")
+        print(f"[!] No GITHUB_TOKEN — skipping {filename}")
         return False
 
-    path    = f"data/{filename}"
-    url     = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{path}"
-    headers = {
-        "Authorization": f"token {GITHUB_TOKEN}",
-        "Accept": "application/vnd.github.v3+json"
-    }
+    url     = f"https://api.github.com/repos/{GITHUB_REPO}/contents/data/{filename}"
+    headers = {"Authorization":f"token {GITHUB_TOKEN}",
+               "Accept":"application/vnd.github.v3+json"}
 
     res = requests.get(url, headers=headers)
-    sha = res.json().get("sha", "") if res.status_code == 200 else ""
+    sha = res.json().get("sha","") if res.status_code == 200 else ""
 
     content = base64.b64encode(
-        json.dumps(content_dict, indent=2, ensure_ascii=False).encode("utf-8")
-    ).decode("utf-8")
+        json.dumps(content_dict, indent=2, ensure_ascii=False).encode()
+    ).decode()
 
-    payload = {"message": f"threat data: {date.today().isoformat()}", "content": content}
-    if sha:
-        payload["sha"] = sha
+    payload = {"message":f"threat data: {date.today()}", "content":content}
+    if sha: payload["sha"] = sha
 
     res = requests.put(url, headers=headers, json=payload)
-    if res.status_code in [200, 201]:
-        print(f"[✓] {filename} pushed to GitHub!")
+    if res.status_code in [200,201]:
+        print(f"[✓] {filename} pushed!")
         return True
-    else:
-        print(f"❌ Failed {filename}: {res.status_code}")
-        return False
+    print(f"❌ Failed {filename}: {res.status_code}")
+    return False
 
-
-# ── MAIN ───────────────────────────────────────
+# ── MAIN ──────────────────────────────────────────
 def main():
     print("\n🚀 InfoSec Pakistan — Bridge to GitHub")
     print("=" * 45)
 
-    json_file = find_latest_json()
-    if not json_file:
-        print("No scraper output found. Run scraper first.")
-        return
+    f = find_latest_json()
+    if not f: return
 
-    with open(json_file, encoding="utf-8") as f:
-        raw_data = json.load(f)
-    print(f"[✓] Loaded {raw_data.get('total_records', 0)} records")
+    with open(f, encoding="utf-8") as fh:
+        raw = json.load(fh)
+    print(f"[✓] Loaded {raw.get('total_records',0)} records")
 
-    threats_data = build_threats_json(raw_data)
-    reports_data = build_reports_json(threats_data)
+    td = build_threats_json(raw)
+    rd = build_reports_json(td)
 
-    print(f"[✓] Threats: {len(threats_data['threats'])}")
-    print(f"[✓] Zero Day: {threats_data['stats']['zeroday']}")
-    print(f"[✓] Exploited: {threats_data['stats']['exploited']}")
-    print(f"[✓] Pakistan: {threats_data['stats']['pakistan']}")
+    print(f"[✓] Threats:  {len(td['threats'])}")
+    print(f"[✓] Zero-Day: {td['stats']['zeroday']}")
+    print(f"[✓] Exploited:{td['stats']['exploited']}")
+    print(f"[✓] Pakistan: {td['stats']['pakistan']}")
 
     os.makedirs("data", exist_ok=True)
-    with open("data/threats.json", "w", encoding="utf-8") as f:
-        json.dump(threats_data, f, indent=2, ensure_ascii=False)
-    with open("data/reports.json", "w", encoding="utf-8") as f:
-        json.dump(reports_data, f, indent=2, ensure_ascii=False)
+    with open("data/threats.json","w",encoding="utf-8") as fh:
+        json.dump(td, fh, indent=2, ensure_ascii=False)
+    with open("data/reports.json","w",encoding="utf-8") as fh:
+        json.dump(rd, fh, indent=2, ensure_ascii=False)
     print("[✓] Saved to data/")
 
     if GITHUB_TOKEN:
         print("\n📤 Pushing to GitHub...")
-        push_to_github("threats.json", threats_data)
-        push_to_github("reports.json", reports_data)
+        push_to_github("threats.json", td)
+        push_to_github("reports.json", rd)
 
     print("\n✅ Done! https://pakistaninfosec.github.io")
-
 
 if __name__ == "__main__":
     main()

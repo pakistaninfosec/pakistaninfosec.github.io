@@ -4,7 +4,7 @@ on:
   schedule:
     # 04:00 UTC = 09:00 PKT every day
     - cron: '0 4 * * *'
-  workflow_dispatch:  # Manual trigger from Actions tab
+  workflow_dispatch:
 
 jobs:
   scrape-and-deploy:
@@ -25,16 +25,42 @@ jobs:
         run: |
           pip install requests beautifulsoup4 groq feedparser lxml
 
-      - name: Run scraper
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      - name: Scrape Pakistan CERT + NCCS
         run: |
-          python -m scraper.main --sources nvd zeroday threat_intel --nvd-days 7 --nvd-max 200
+          python3 -c "
+import json, os, glob
+from scraper.sources.pakistan import scrape as scrape_pakistan
+
+# Load existing records
+files = glob.glob('scraper/output/infosec_products_*.json')
+if files:
+    latest = max(files, key=os.path.getmtime)
+    with open(latest) as f:
+        data = json.load(f)
+else:
+    data = {'records': [], 'total_records': 0}
+
+# Add Pakistan records
+pk_records = scrape_pakistan()
+data['records'].extend(pk_records)
+data['total_records'] = len(data['records'])
+
+# Save back
+os.makedirs('scraper/output', exist_ok=True)
+from datetime import datetime
+ts = datetime.now().strftime('%Y%m%d_%H%M%S')
+outfile = f'scraper/output/infosec_products_{ts}.json'
+with open(outfile, 'w') as f:
+    json.dump(data, f, indent=2)
+print(f'Saved {len(data[\"records\"])} records to {outfile}')
+"
         continue-on-error: true
 
       - name: Convert and push to website
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ github.repository }}
         run: |
           python bridge_to_github.py
 

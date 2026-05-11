@@ -60,7 +60,6 @@ def _scrape_pakistan_direct():
                 break
         except Exception as e:
             print(f"[!] PKCERT {url}: {e}")
-            continue
 
     for adv in found[:20]:
         title = adv["title"]
@@ -94,7 +93,7 @@ def _scrape_pakistan_direct():
             "vendor": "Pakistan CERT", "price": "", "tags": "pakistan,cert,advisory",
         })
 
-    print(f"[✓] PKCERT direct: {len(results)} records")
+    print(f"[✓] PKCERT: {len(results)} records")
 
     # ── NCCS ──
     nccs_found = []
@@ -147,7 +146,7 @@ def _scrape_pakistan_direct():
             "vendor": "NCCS Pakistan", "price": "", "tags": "pakistan,nccs,weekly,threat-intelligence",
         })
 
-    print(f"[✓] Pakistan direct total: {len(results)} records")
+    print(f"[✓] Pakistan total: {len(results)} records")
     return results
 
 
@@ -261,7 +260,7 @@ def convert_records(raw_records):
 
 def build_threats_json(raw_data):
     all_raw = list(raw_data.get("records", []))
-    all_raw.extend(_scrape_pakistan_direct())       # always add Pakistan directly
+    all_raw.extend(_scrape_pakistan_direct())
 
     threats = convert_records(all_raw)
 
@@ -359,10 +358,9 @@ def main():
     print("\n🚀 InfoSec Pakistan — Bridge to GitHub")
     print("=" * 45)
 
-    # Load scraper output if available — NOT required, Pakistan runs regardless
     f = find_latest_json()
     if not f:
-        print("[!] No scraper output found — running Pakistan direct scrape only")
+        print("[!] No scraper output — running Pakistan direct scrape only")
         raw = {"records": [], "total_records": 0}
     else:
         with open(f, encoding="utf-8") as fh:
@@ -377,17 +375,12 @@ def main():
     print(f"[✓] Exploited:{td['stats']['exploited']}")
     print(f"[✓] Pakistan: {td['stats']['pakistan']} (PKCERT + NCCS)")
 
-    os.makedirs("data", exist_ok=True)
-    with open("data/threats.json", "w", encoding="utf-8") as fh:
-        json.dump(td, fh, indent=2, ensure_ascii=False)
-    with open("data/reports.json", "w", encoding="utf-8") as fh:
-        json.dump(rd, fh, indent=2, ensure_ascii=False)
-    print("[✓] Saved to data/")
-
     if GITHUB_TOKEN:
         print("\n📤 Pushing to GitHub...")
         push_to_github("threats.json", td)
         push_to_github("reports.json", rd)
+    else:
+        print("[!] No GITHUB_TOKEN — data not pushed")
 
     print("\n✅ Done! https://pakistaninfosec.github.io")
 

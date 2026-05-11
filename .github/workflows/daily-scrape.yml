@@ -9,24 +9,32 @@ on:
 jobs:
   scrape-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Install dependencies
         run: |
-          pip install requests beautifulsoup4 groq feedparser
+          pip install requests beautifulsoup4 groq feedparser lxml
 
-      - name: Run bridge script
+      - name: Run scraper
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPO: ${{ github.repository }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          python -m scraper.main --sources nvd zeroday threat_intel --nvd-days 7 --nvd-max 200
+        continue-on-error: true
+
+      - name: Convert and push to website
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
           python bridge_to_github.py
 
@@ -34,6 +42,6 @@ jobs:
         run: |
           git config user.name "InfoSec Bot"
           git config user.email "bot@pakistaninfosec.github.io"
-          git add data/
+          git add data/threats.json data/reports.json
           git diff --staged --quiet || git commit -m "threat data: $(date -u +%Y-%m-%d)"
           git push

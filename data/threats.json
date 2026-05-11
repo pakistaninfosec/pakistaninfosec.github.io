@@ -1,19 +1,19 @@
 {
-  "generated": "2026-05-11T06:57:36.746713Z",
-  "summary": "Today's digest contains 322 vulnerabilities across 9 sources including NVD/NIST, CISA KEV, Google Project Zero, Palo Alto Networks and more. 60 zero-day exploits detected, 50 actively exploited from CISA KEV, and 0 Pakistan-specific advisories. Priority patching recommended for all CRITICAL and HIGH severity entries.",
+  "generated": "2026-05-11T08:18:38.044550Z",
+  "summary": "Today's threat intelligence digest reports a total of 293 vulnerabilities, with 9 critical and 146 high-severity issues identified. The critical vulnerabilities include security flaws in various networking devices and software, such as Totolink routers and Apache Iceberg, which could be exploited by attackers to gain unauthorized access or control. Notably, there are no Pakistan-specific alerts reported today, indicating a lower risk of regionally targeted threats, but organizations should still prioritize patching and mitigation efforts to address the identified vulnerabilities.",
   "stats": {
-    "new": 322,
+    "new": 293,
     "changed": 0,
     "removed": 0,
-    "total": 322,
-    "zeroday": 60,
+    "total": 615,
+    "zeroday": 78,
     "exploited": 50,
     "pakistan": 0
   },
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 198
+      "count": 195
     },
     {
       "name": "CISA KEV",
@@ -21,15 +21,7 @@
     },
     {
       "name": "Vulners",
-      "count": 15
-    },
-    {
-      "name": "Palo Alto Networks",
-      "count": 14
-    },
-    {
-      "name": "Krebs on Security",
-      "count": 10
+      "count": 18
     },
     {
       "name": "Kaspersky Securelist",
@@ -42,91 +34,12 @@
     {
       "name": "Google Project Zero",
       "count": 10
-    },
-    {
-      "name": "CrowdStrike",
-      "count": 5
     }
   ],
   "threats": [
     {
-      "id": "CVE-2026-7729",
-      "desc": "A security flaw has been discovered in pixelsock directus-mcp 1.0.0. This issue affects the function validateUrl of the file index.ts of the component MCP Interface. Performing a manipulation of the argument fileUrl results in server-side request for",
-      "severity": "MEDIUM",
-      "source": "NVD/NIST",
-      "date": "2026-05-04",
-      "pakistan": false,
-      "tags": [
-        "vulnerability",
-        "CVE",
-        "CVE/Vulnerability"
-      ],
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7729",
-      "cvss": "6.3"
-    },
-    {
-      "id": "CVE-2026-7731",
-      "desc": "A security vulnerability has been detected in code-projects BloodBank Managing System 1.0. The affected element is an unknown function of the file get_state.php. The manipulation of the argument G_STATE_ID leads to sql injection. Remote exploitation ",
-      "severity": "MEDIUM",
-      "source": "NVD/NIST",
-      "date": "2026-05-04",
-      "pakistan": false,
-      "tags": [
-        "vulnerability",
-        "CVE",
-        "CVE/Vulnerability"
-      ],
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7731",
-      "cvss": "6.3"
-    },
-    {
-      "id": "CVE-2026-43862",
-      "desc": "In mutt before 2.3.2, the imap_auth_gss security level is mishandled.",
-      "severity": "LOW",
-      "source": "NVD/NIST",
-      "date": "2026-05-04",
-      "pakistan": false,
-      "tags": [
-        "vulnerability",
-        "CVE",
-        "CVE/Vulnerability"
-      ],
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43862",
-      "cvss": "3.7"
-    },
-    {
-      "id": "CVE-2026-7738",
-      "desc": "A security flaw has been discovered in puchunjie doc-tools-mcp 1.0.18. This affects the function create_document/open_document of the file src/mcp-server.ts of the component MCP Interface. The manipulation of the argument filePath results in path tra",
-      "severity": "MEDIUM",
-      "source": "NVD/NIST",
-      "date": "2026-05-04",
-      "pakistan": false,
-      "tags": [
-        "vulnerability",
-        "CVE",
-        "CVE/Vulnerability"
-      ],
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7738",
-      "cvss": "6.3"
-    },
-    {
-      "id": "CVE-2026-7740",
-      "desc": "A security vulnerability has been detected in justdan96 tsMuxer up to 2.7.0. This issue affects the function VvcVpsUnit::setFPS of the file tsMuxer/vvc.cpp. Such manipulation of the argument track_id leads to denial of service. An attack has to be ap",
-      "severity": "LOW",
-      "source": "NVD/NIST",
-      "date": "2026-05-04",
-      "pakistan": false,
-      "tags": [
-        "vulnerability",
-        "CVE",
-        "CVE/Vulnerability"
-      ],
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7740",
-      "cvss": "3.3"
-    },
-    {
       "id": "CVE-2026-7747",
-      "desc": "A security flaw has been discovered in Totolink N300RH 3.2.4-B20220812. Affected by this vulnerability is the function loginauth of the file /cgi-bin/cstecgi.cgi of the component Parameter Handler. Performing a manipulation of the argument Password r",
+      "desc": "A security flaw has been discovered in Totolink N300RH 3.2.4-B20220812. Affected by this vulnerability is the function loginauth of the file /cgi-bin/cstecgi.cgi of the component Parameter Handler. Performing a manipulation of the argument Password results in buffer overflow. The attack can be initi",
       "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-05-04",
@@ -137,11 +50,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7747",
-      "cvss": "9.8"
+      "cvss": "9.8",
+      "cwe": "CWE-119 | CWE-120"
     },
     {
       "id": "CVE-2026-7749",
-      "desc": "A security vulnerability has been detected in Totolink N300RH 3.2.4-B20220812. This affects the function setWanConfig of the file /cgi-bin/cstecgi.cgi of the component POST Request Handler. The manipulation of the argument priDns leads to buffer over",
+      "desc": "A security vulnerability has been detected in Totolink N300RH 3.2.4-B20220812. This affects the function setWanConfig of the file /cgi-bin/cstecgi.cgi of the component POST Request Handler. The manipulation of the argument priDns leads to buffer overflow. The attack may be initiated remotely. The ex",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-04",
@@ -152,11 +66,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7749",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-119 | CWE-120"
     },
     {
       "id": "CVE-2026-42812",
-      "desc": "In Apache Iceberg, the table's metadata files are control files: they tell readers\nwhich data files belong to the table and which table version to read.\n\n\n\n`write.metadata.path` is an optional table property that tells Polaris\nwhere to\nwrite those me",
+      "desc": "In Apache Iceberg, the table's metadata files are control files: they tell readers\nwhich data files belong to the table and which table version to read.\n\n\n\n`write.metadata.path` is an optional table property that tells Polaris\nwhere to\nwrite those metadata files. \nFor a table already registered in a",
       "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-05-04",
@@ -167,11 +82,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42812",
-      "cvss": "9.9"
+      "cvss": "9.9",
+      "cwe": "CWE-20 | CWE-284 | CWE-732 | CWE-863"
     },
     {
       "id": "CVE-2026-7779",
-      "desc": "A security flaw has been discovered in Open5GS up to 2.7.7. Affected is the function udm_nudr_dr_handle_subscription_authentication of the file /src/udm/nudr-handler.c of the component authentication-subscription Endpoint. Performing a manipulation r",
+      "desc": "A security flaw has been discovered in Open5GS up to 2.7.7. Affected is the function udm_nudr_dr_handle_subscription_authentication of the file /src/udm/nudr-handler.c of the component authentication-subscription Endpoint. Performing a manipulation results in denial of service. Remote exploitation o",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-04",
@@ -182,11 +98,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7779",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-404"
     },
     {
       "id": "CVE-2026-7781",
-      "desc": "A security vulnerability has been detected in Open5GS up to 2.7.7. Affected by this issue is the function udm_nudm_uecm_handle_amf_registration_update of the file /src/udm/nudm-handler.c of the component amf-3gpp-access Endpoint. The manipulation lea",
+      "desc": "A security vulnerability has been detected in Open5GS up to 2.7.7. Affected by this issue is the function udm_nudm_uecm_handle_amf_registration_update of the file /src/udm/nudm-handler.c of the component amf-3gpp-access Endpoint. The manipulation leads to denial of service. The attack is possible to",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-04",
@@ -197,11 +114,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7781",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-404"
     },
     {
       "id": "CVE-2026-7785",
-      "desc": "A security flaw has been discovered in A-G-U-P-T-A wireshark-mcp edaf604416fbc94a201b4043092d4a1b09a12275/400c3da70074f22f3cce7ccb65304cafc7089c89. This affects the function quick_capture of the file pyshark_mcp.py. The manipulation results in os com",
+      "desc": "A security flaw has been discovered in A-G-U-P-T-A wireshark-mcp edaf604416fbc94a201b4043092d4a1b09a12275/400c3da70074f22f3cce7ccb65304cafc7089c89. This affects the function quick_capture of the file pyshark_mcp.py. The manipulation results in os command injection. The attack may be launched remotel",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-05",
@@ -212,11 +130,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7785",
-      "cvss": "7.3"
+      "cvss": "7.3",
+      "cwe": "CWE-77 | CWE-78"
     },
     {
       "id": "CVE-2026-7788",
-      "desc": "A security flaw has been discovered in Axle-Bucamp MCP-Docusaurus up to 404bc028e15ec304c9a045528560f4b5f27a17e0. The affected element is the function update_document/continue_document/delete_document/get_content of the file app/routes/document.py. P",
+      "desc": "A security flaw has been discovered in Axle-Bucamp MCP-Docusaurus up to 404bc028e15ec304c9a045528560f4b5f27a17e0. The affected element is the function update_document/continue_document/delete_document/get_content of the file app/routes/document.py. Performing a manipulation of the argument DOCS_DIR/",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-05",
@@ -227,11 +146,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7788",
-      "cvss": "7.3"
+      "cvss": "7.3",
+      "cwe": "CWE-22"
     },
     {
       "id": "CVE-2026-7823",
-      "desc": "A security flaw has been discovered in Totolink A8000RU 7.1cu.643_b20200521. Affected is the function setAppFilterCfg of the file /cgi-bin/cstecgi.cgi. The manipulation of the argument enable results in os command injection. The attack may be launche",
+      "desc": "A security flaw has been discovered in Totolink A8000RU 7.1cu.643_b20200521. Affected is the function setAppFilterCfg of the file /cgi-bin/cstecgi.cgi. The manipulation of the argument enable results in os command injection. The attack may be launched remotely. The exploit has been released to the p",
       "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-05-05",
@@ -242,11 +162,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7823",
-      "cvss": "9.8"
+      "cvss": "9.8",
+      "cwe": "CWE-77 | CWE-78"
     },
     {
       "id": "CVE-2026-42435",
-      "desc": "OpenClaw versions from 2026.2.22 before 2026.4.12 contain an insufficient shell-wrapper detection vulnerability allowing attackers to inject environment variable assignments at the argv level. Attackers can bypass exec preflight handling to manipulat",
+      "desc": "OpenClaw versions from 2026.2.22 before 2026.4.12 contain an insufficient shell-wrapper detection vulnerability allowing attackers to inject environment variable assignments at the argv level. Attackers can bypass exec preflight handling to manipulate high-risk shell variables like SHELLOPTS and PS4",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-05",
@@ -257,11 +178,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42435",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-184"
     },
     {
       "id": "CVE-2026-7832",
-      "desc": "A security flaw has been discovered in IObit Advanced SystemCare 19. This affects an unknown part of the file ASC.exe of the component Service. The manipulation results in symlink following. Attacking locally is a requirement. This attack is characte",
+      "desc": "A security flaw has been discovered in IObit Advanced SystemCare 19. This affects an unknown part of the file ASC.exe of the component Service. The manipulation results in symlink following. Attacking locally is a requirement. This attack is characterized by high complexity. It is indicated that the",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-05",
@@ -272,11 +194,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7832",
-      "cvss": "7.0"
+      "cvss": "7.0",
+      "cwe": "CWE-59 | CWE-61"
     },
     {
       "id": "CVE-2026-7834",
-      "desc": "A security vulnerability has been detected in EFM ipTIME NAS1dual 1.5.24. This issue affects the function get_csrf_whites of the file /cgi/advanced/misc_main.cgi. Such manipulation leads to stack-based buffer overflow. The attack can be launched remo",
+      "desc": "A security vulnerability has been detected in EFM ipTIME NAS1dual 1.5.24. This issue affects the function get_csrf_whites of the file /cgi/advanced/misc_main.cgi. Such manipulation leads to stack-based buffer overflow. The attack can be launched remotely. The exploit has been disclosed publicly and ",
       "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-05-05",
@@ -287,11 +210,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7834",
-      "cvss": "9.8"
+      "cvss": "9.8",
+      "cwe": "CWE-119 | CWE-121"
     },
     {
       "id": "CVE-2026-7854",
-      "desc": "A security vulnerability has been detected in D-Link DI-8100 16.07.26A1. Affected by this vulnerability is the function url_rule_asp of the file /url_rule.asp of the component POST Parameter Handler. Such manipulation leads to buffer overflow. It is ",
+      "desc": "A security vulnerability has been detected in D-Link DI-8100 16.07.26A1. Affected by this vulnerability is the function url_rule_asp of the file /url_rule.asp of the component POST Parameter Handler. Such manipulation leads to buffer overflow. It is possible to launch the attack remotely. The exploi",
       "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-05-05",
@@ -302,7 +226,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7854",
-      "cvss": "9.8"
+      "cvss": "9.8",
+      "cwe": "CWE-119 | CWE-120"
     },
     {
       "id": "CVE-2024-52911",
@@ -317,11 +242,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-52911",
-      "cvss": "7.5"
+      "cvss": "7.5",
+      "cwe": "CWE-284"
     },
     {
       "id": "CVE-2026-32603",
-      "desc": "Sandboxie is an open source sandbox-based isolation software for Windows. In versions 1.17.2 and earlier, a local denial of service vulnerability exists in the Sandboxie kernel driver. An unprivileged process running inside a Standard Sandbox can sen",
+      "desc": "Sandboxie is an open source sandbox-based isolation software for Windows. In versions 1.17.2 and earlier, a local denial of service vulnerability exists in the Sandboxie kernel driver. An unprivileged process running inside a Standard Sandbox can send a malformed IOCTL to the \\Device\\SandboxieDriver",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-05",
@@ -332,11 +258,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-32603",
-      "cvss": "6.5"
+      "cvss": "6.5",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-34459",
-      "desc": "Sandboxie-Plus is an open source sandbox-based isolation software for Windows. In versions 1.17.2 and earlier, the SbieSvc proxy service's GetRawInputDeviceInfoSlave handler contains two vulnerabilities that can be chained for sandbox escape. First, ",
+      "desc": "Sandboxie-Plus is an open source sandbox-based isolation software for Windows. In versions 1.17.2 and earlier, the SbieSvc proxy service's GetRawInputDeviceInfoSlave handler contains two vulnerabilities that can be chained for sandbox escape. First, when a sandboxed process sends an IPC request with",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-05",
@@ -347,11 +274,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34459",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-121"
     },
     {
       "id": "CVE-2026-40280",
-      "desc": "Gotenberg is an API-based document conversion tool. In versions 8.30.1 and earlier, the default private-IP deny-lists for the --webhook-deny-list and --api-download-from-deny-list flags use a case-sensitive regular expression (^https?://) to match UR",
+      "desc": "Gotenberg is an API-based document conversion tool. In versions 8.30.1 and earlier, the default private-IP deny-lists for the --webhook-deny-list and --api-download-from-deny-list flags use a case-sensitive regular expression (^https?://) to match URL schemes. Because Go's net/url.Parse() normalizes",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-05",
@@ -362,11 +290,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40280",
-      "cvss": "7.5"
+      "cvss": "7.5",
+      "cwe": "CWE-918"
     },
     {
       "id": "CVE-2026-39852",
-      "desc": "Quarkus is a Java framework for building cloud-native applications. In versions prior to 3.20.6.1, 3.27.3.1, 3.33.1.1, 3.35.1.1, 3.34.7, and 3.35.2, a path normalization inconsistency between the security layer and the routing layer allows unauthenti",
+      "desc": "Quarkus is a Java framework for building cloud-native applications. In versions prior to 3.20.6.1, 3.27.3.1, 3.33.1.1, 3.35.1.1, 3.34.7, and 3.35.2, a path normalization inconsistency between the security layer and the routing layer allows unauthenticated or lower-privileged users to bypass HTTP pat",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-05",
@@ -377,11 +306,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-39852",
-      "cvss": "8.2"
+      "cvss": "8.2",
+      "cwe": "CWE-863"
     },
     {
       "id": "CVE-2025-31970",
-      "desc": "HCL DFXAnalytics is affected by an Insecure Security Header configuration vulnerability where the Content-Security-Policy does not define strict directives for object-src and base-uri, which could allow an attacker to exploit injection vectors such a",
+      "desc": "HCL DFXAnalytics is affected by an Insecure Security Header configuration vulnerability where the Content-Security-Policy does not define strict directives for object-src and base-uri, which could allow an attacker to exploit injection vectors such as Cross-Site Scripting (XSS)",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -392,11 +322,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-31970",
-      "cvss": "5.3"
+      "cvss": "5.3",
+      "cwe": "CWE-358 | CWE-79"
     },
     {
       "id": "CVE-2025-59851",
-      "desc": "HCL DFXAnalytics is affected by a Using Components with Known Vulnerabilities flaw where the application utilizes unpatched libraries or sub-components, which could allow an attacker to identify and exploit publicly known security vulnerabilities to ",
+      "desc": "HCL DFXAnalytics is affected by a Using Components with Known Vulnerabilities flaw where the application utilizes unpatched libraries or sub-components, which could allow an attacker to identify and exploit publicly known security vulnerabilities to gain unauthorized access or compromise the applica",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -407,11 +338,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-59851",
-      "cvss": "3.7"
+      "cvss": "3.7",
+      "cwe": "NVD-CWE-noinfo"
     },
     {
       "id": "CVE-2025-59854",
-      "desc": "HCL DFXAnalytics is affected by an Insecure Security Header Configuration vulnerability where the application utilizes the outdated X-XSS-Protection header, which could allow an attacker to exploit browser-specific rendering flaws or bypass security ",
+      "desc": "HCL DFXAnalytics is affected by an Insecure Security Header Configuration vulnerability where the application utilizes the outdated X-XSS-Protection header, which could allow an attacker to exploit browser-specific rendering flaws or bypass security controls that should instead be managed by a robus",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -422,11 +354,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-59854",
-      "cvss": "3.1"
+      "cvss": "3.1",
+      "cwe": "CWE-80 | CWE-79"
     },
     {
       "id": "CVE-2025-62345",
-      "desc": "HCL BigFix RunBookAI is affected by a Continued availability of Less-Secure \u201cInput Text\u201d Vulnerability . A component contains a security weakness in its input handling implementation, increasing the risk of misconfiguration and operational errors.",
+      "desc": "HCL BigFix RunBookAI is affected by a Continued availability of Less-Secure “Input Text” Vulnerability . A component contains a security weakness in its input handling implementation, increasing the risk of misconfiguration and operational errors.",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -437,11 +370,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-62345",
-      "cvss": "2.7"
+      "cvss": "2.7",
+      "cwe": "CWE-522"
     },
     {
       "id": "CVE-2026-5081",
-      "desc": "Apache::Session::Generate::ModUniqueId versions from 1.54 through 1.94 for Perl session ids are insecure.\n\nApache::Session::Generate::ModUniqueId (added in version 1.54) uses the value of the UNIQUE_ID environment variable for the session id. The UNI",
+      "desc": "Apache::Session::Generate::ModUniqueId versions from 1.54 through 1.94 for Perl session ids are insecure.\n\nApache::Session::Generate::ModUniqueId (added in version 1.54) uses the value of the UNIQUE_ID environment variable for the session id. The UNIQUE_ID variable is set by the Apache mod_unique_id",
       "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -452,11 +386,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5081",
-      "cvss": "9.1"
+      "cvss": "9.1",
+      "cwe": "CWE-340"
     },
     {
       "id": "CVE-2026-8026",
-      "desc": "A security flaw has been discovered in FlowiseAI Flowise up to 3.0.12. Affected is the function Login of the file packages/server/src/enterprise/services/account.service.ts of the component API Response Handler. The manipulation results in informatio",
+      "desc": "A security flaw has been discovered in FlowiseAI Flowise up to 3.0.12. Affected is the function Login of the file packages/server/src/enterprise/services/account.service.ts of the component API Response Handler. The manipulation results in information disclosure. The attack can be launched remotely.",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -467,11 +402,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8026",
-      "cvss": "3.7"
+      "cvss": "3.7",
+      "cwe": "CWE-200 | CWE-284 | CWE-312"
     },
     {
       "id": "CVE-2025-31983",
-      "desc": "HCL BigFix Service Management (SM) is affected by a security misconfiguration vulnerability due to CSP header.  This could allow attackers to inject malicious scripts increasing the risk of cross-site scripting (XSS) and potential exposure of sensiti",
+      "desc": "HCL BigFix Service Management (SM) is affected by a security misconfiguration vulnerability due to CSP header.  This could allow attackers to inject malicious scripts increasing the risk of cross-site scripting (XSS) and potential exposure of sensitive information.",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -482,11 +418,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-31983",
-      "cvss": "3.7"
+      "cvss": "3.7",
+      "cwe": "CWE-358"
     },
     {
       "id": "CVE-2025-31984",
-      "desc": "HCL BigFix Service Management (SM) is affected by a security misconfiguration due to a missing or insecure \u201cX-Content-Type-Options\u201d header.  This could allow browsers to perform MIME-type sniffing, potentially causing malicious content to be interpre",
+      "desc": "HCL BigFix Service Management (SM) is affected by a security misconfiguration due to a missing or insecure “X-Content-Type-Options” header.  This could allow browsers to perform MIME-type sniffing, potentially causing malicious content to be interpreted and executed incorrectly.",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -497,11 +434,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-31984",
-      "cvss": "3.7"
+      "cvss": "3.7",
+      "cwe": "CWE-200"
     },
     {
       "id": "CVE-2025-52613",
-      "desc": "HCL BigFix Service Management (SM) is affected by use of a vulnerable WSGI Server was identified. Deploying an outdated or insecure WSGI server may expose the application to known security weaknesses, potentially increasing the risk of exploitation a",
+      "desc": "HCL BigFix Service Management (SM) is affected by use of a vulnerable WSGI Server was identified. Deploying an outdated or insecure WSGI server may expose the application to known security weaknesses, potentially increasing the risk of exploitation and unauthorized access.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -512,7 +450,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-52613",
-      "cvss": "4.6"
+      "cvss": "4.6",
+      "cwe": "CWE-200"
     },
     {
       "id": "CVE-2026-7896",
@@ -527,7 +466,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7896",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-472"
     },
     {
       "id": "CVE-2026-7897",
@@ -542,7 +482,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7897",
-      "cvss": "7.5"
+      "cvss": "7.5",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7898",
@@ -557,7 +498,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7898",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7899",
@@ -572,7 +514,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7899",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-125 | CWE-787"
     },
     {
       "id": "CVE-2026-7900",
@@ -587,7 +530,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7900",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-122"
     },
     {
       "id": "CVE-2026-7901",
@@ -602,7 +546,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7901",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7902",
@@ -617,7 +562,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7902",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-787 | CWE-125"
     },
     {
       "id": "CVE-2026-7903",
@@ -632,7 +578,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7903",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-472"
     },
     {
       "id": "CVE-2026-7904",
@@ -647,11 +594,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7904",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-125"
     },
     {
       "id": "CVE-2026-7905",
-      "desc": "Insufficient validation of untrusted input in Media in Google Chrome on Android prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium secur",
+      "desc": "Insufficient validation of untrusted input in Media in Google Chrome on Android prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -662,7 +610,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7905",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7906",
@@ -677,7 +626,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7906",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7907",
@@ -692,7 +642,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7907",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7908",
@@ -707,7 +658,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7908",
-      "cvss": "9.6"
+      "cvss": "9.6",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7909",
@@ -722,7 +674,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7909",
-      "cvss": "3.1"
+      "cvss": "3.1",
+      "cwe": "CWE-693"
     },
     {
       "id": "CVE-2026-7910",
@@ -737,7 +690,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7910",
-      "cvss": "9.6"
+      "cvss": "9.6",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7911",
@@ -752,7 +706,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7911",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7912",
@@ -767,7 +722,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7912",
-      "cvss": "4.2"
+      "cvss": "4.2",
+      "cwe": "CWE-472"
     },
     {
       "id": "CVE-2026-7913",
@@ -782,7 +738,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7913",
-      "cvss": "7.8"
+      "cvss": "7.8",
+      "cwe": "CWE-693"
     },
     {
       "id": "CVE-2026-7914",
@@ -797,7 +754,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7914",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-843"
     },
     {
       "id": "CVE-2026-7915",
@@ -812,11 +770,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7915",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "NVD-CWE-noinfo | CWE-20"
     },
     {
       "id": "CVE-2026-7916",
-      "desc": "Insufficient data validation in InterestGroups in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Hi",
+      "desc": "Insufficient data validation in InterestGroups in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -827,7 +786,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7916",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "NVD-CWE-noinfo | CWE-20"
     },
     {
       "id": "CVE-2026-7917",
@@ -842,7 +802,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7917",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7918",
@@ -857,7 +818,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7918",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7919",
@@ -872,7 +834,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7919",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7920",
@@ -887,7 +850,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7920",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7921",
@@ -902,7 +866,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7921",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7922",
@@ -917,7 +882,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7922",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7923",
@@ -932,7 +898,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7923",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-787"
     },
     {
       "id": "CVE-2026-7924",
@@ -947,7 +914,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7924",
-      "cvss": "6.5"
+      "cvss": "6.5",
+      "cwe": "CWE-457"
     },
     {
       "id": "CVE-2026-7925",
@@ -962,7 +930,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7925",
-      "cvss": "7.8"
+      "cvss": "7.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7926",
@@ -977,7 +946,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7926",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7927",
@@ -992,7 +962,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7927",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-843"
     },
     {
       "id": "CVE-2026-7928",
@@ -1007,7 +978,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7928",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7929",
@@ -1022,7 +994,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7929",
-      "cvss": "7.5"
+      "cvss": "7.5",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7930",
@@ -1037,7 +1010,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7930",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7931",
@@ -1052,7 +1026,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7931",
-      "cvss": "5.4"
+      "cvss": "5.4",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7932",
@@ -1067,7 +1042,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7932",
-      "cvss": "4.4"
+      "cvss": "4.4",
+      "cwe": "NVD-CWE-noinfo | CWE-693"
     },
     {
       "id": "CVE-2026-7933",
@@ -1082,11 +1058,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7933",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-125"
     },
     {
       "id": "CVE-2026-7934",
-      "desc": "Insufficient validation of untrusted input in Popup Blocker in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to bypass navigation restrictions via a crafted HTML page. (Chromium security sever",
+      "desc": "Insufficient validation of untrusted input in Popup Blocker in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to bypass navigation restrictions via a crafted HTML page. (Chromium security severity: Medium)",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -1097,7 +1074,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7934",
-      "cvss": "4.2"
+      "cvss": "4.2",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7935",
@@ -1112,7 +1090,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7935",
-      "cvss": "5.4"
+      "cvss": "5.4",
+      "cwe": "CWE-451"
     },
     {
       "id": "CVE-2026-7936",
@@ -1127,11 +1106,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7936",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-125"
     },
     {
       "id": "CVE-2026-7937",
-      "desc": "Insufficient policy enforcement in DevTools in Google Chrome prior to 148.0.7778.96 allowed an attacker who convinced a user to install a malicious extension to bypass navigation restrictions via a crafted Chrome Extension. (Chromium security severit",
+      "desc": "Insufficient policy enforcement in DevTools in Google Chrome prior to 148.0.7778.96 allowed an attacker who convinced a user to install a malicious extension to bypass navigation restrictions via a crafted Chrome Extension. (Chromium security severity: Medium)",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -1142,7 +1122,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7937",
-      "cvss": "3.1"
+      "cvss": "3.1",
+      "cwe": "CWE-693"
     },
     {
       "id": "CVE-2026-7938",
@@ -1157,7 +1138,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7938",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7939",
@@ -1172,7 +1154,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7939",
-      "cvss": "5.4"
+      "cvss": "5.4",
+      "cwe": "CWE-79"
     },
     {
       "id": "CVE-2026-7940",
@@ -1187,7 +1170,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7940",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7941",
@@ -1202,7 +1186,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7941",
-      "cvss": "4.4"
+      "cvss": "4.4",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7942",
@@ -1217,11 +1202,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7942",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-472"
     },
     {
       "id": "CVE-2026-7943",
-      "desc": "Insufficient validation of untrusted input in ANGLE in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to perform arbitrary read/write via a crafted HTML page. (Chromium security severity: Mediu",
+      "desc": "Insufficient validation of untrusted input in ANGLE in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to perform arbitrary read/write via a crafted HTML page. (Chromium security severity: Medium)",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -1232,11 +1218,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7943",
-      "cvss": "4.2"
+      "cvss": "4.2",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7944",
-      "desc": "Insufficient validation of untrusted input in Persistent Cache in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: M",
+      "desc": "Insufficient validation of untrusted input in Persistent Cache in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: Medium)",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -1247,7 +1234,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7944",
-      "cvss": "3.1"
+      "cvss": "3.1",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7945",
@@ -1262,11 +1250,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7945",
-      "cvss": "3.1"
+      "cvss": "3.1",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7946",
-      "desc": "Insufficient policy enforcement in WebUI in Google Chrome on Linux, Mac, Windows, ChromeOS prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security ",
+      "desc": "Insufficient policy enforcement in WebUI in Google Chrome on Linux, Mac, Windows, ChromeOS prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: Medium)",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -1277,7 +1266,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7946",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "NVD-CWE-noinfo | CWE-693"
     },
     {
       "id": "CVE-2026-7947",
@@ -1292,7 +1282,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7947",
-      "cvss": "4.2"
+      "cvss": "4.2",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7948",
@@ -1307,7 +1298,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7948",
-      "cvss": "7.5"
+      "cvss": "7.5",
+      "cwe": "CWE-362"
     },
     {
       "id": "CVE-2026-7949",
@@ -1322,7 +1314,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7949",
-      "cvss": "3.1"
+      "cvss": "3.1",
+      "cwe": "CWE-125"
     },
     {
       "id": "CVE-2026-7950",
@@ -1337,7 +1330,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7950",
-      "cvss": "5.4"
+      "cvss": "5.4",
+      "cwe": "CWE-125 | CWE-787"
     },
     {
       "id": "CVE-2026-7951",
@@ -1352,11 +1346,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7951",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-787"
     },
     {
       "id": "CVE-2026-7952",
-      "desc": "Insufficient policy enforcement in Extensions in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to bypass discretionary access control via a crafted HTML page. (Chromium security severity: Medi",
+      "desc": "Insufficient policy enforcement in Extensions in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to bypass discretionary access control via a crafted HTML page. (Chromium security severity: Medium)",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -1367,7 +1362,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7952",
-      "cvss": "4.2"
+      "cvss": "4.2",
+      "cwe": "CWE-693"
     },
     {
       "id": "CVE-2026-7953",
@@ -1382,7 +1378,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7953",
-      "cvss": "6.1"
+      "cvss": "6.1",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7954",
@@ -1397,11 +1394,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7954",
-      "cvss": "3.1"
+      "cvss": "3.1",
+      "cwe": "CWE-362"
     },
     {
       "id": "CVE-2026-7955",
-      "desc": "Uninitialized Use in GPU in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to obtain potentially sensitive information from process memory via a crafted HTML page. (Chromium security severity: ",
+      "desc": "Uninitialized Use in GPU in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to obtain potentially sensitive information from process memory via a crafted HTML page. (Chromium security severity: Medium)",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -1412,7 +1410,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7955",
-      "cvss": "5.3"
+      "cvss": "5.3",
+      "cwe": "CWE-457"
     },
     {
       "id": "CVE-2026-7956",
@@ -1427,11 +1426,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7956",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7957",
-      "desc": "Out of bounds write in Media in Google Chrome on Mac, iOS prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to execute arbitrary code inside a sandbox via a crafted HTML page. (Chromium security severity: Mediu",
+      "desc": "Out of bounds write in Media in Google Chrome on Mac, iOS prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to execute arbitrary code inside a sandbox via a crafted HTML page. (Chromium security severity: Medium)",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -1442,11 +1442,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7957",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-787"
     },
     {
       "id": "CVE-2026-7958",
-      "desc": "Inappropriate implementation in ServiceWorker in Google Chrome prior to 148.0.7778.96 allowed an attacker who convinced a user to install a malicious extension to inject arbitrary scripts or HTML (UXSS) via a crafted Chrome Extension. (Chromium secur",
+      "desc": "Inappropriate implementation in ServiceWorker in Google Chrome prior to 148.0.7778.96 allowed an attacker who convinced a user to install a malicious extension to inject arbitrary scripts or HTML (UXSS) via a crafted Chrome Extension. (Chromium security severity: Medium)",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -1457,7 +1458,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7958",
-      "cvss": "5.4"
+      "cvss": "5.4",
+      "cwe": "CWE-79"
     },
     {
       "id": "CVE-2026-7959",
@@ -1472,7 +1474,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7959",
-      "cvss": "3.1"
+      "cvss": "3.1",
+      "cwe": "NVD-CWE-noinfo | CWE-284 | CWE-693"
     },
     {
       "id": "CVE-2026-7960",
@@ -1487,7 +1490,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7960",
-      "cvss": "5.3"
+      "cvss": "5.3",
+      "cwe": "CWE-362"
     },
     {
       "id": "CVE-2026-7961",
@@ -1502,7 +1506,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7961",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7962",
@@ -1517,11 +1522,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7962",
-      "cvss": "5.4"
+      "cvss": "5.4",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7963",
-      "desc": "Inappropriate implementation in ServiceWorker in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Med",
+      "desc": "Inappropriate implementation in ServiceWorker in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Medium)",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -1532,11 +1538,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7963",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-693"
     },
     {
       "id": "CVE-2026-7964",
-      "desc": "Insufficient validation of untrusted input in FileSystem in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to perform arbitrary read/write via a crafted HTML page. (Chromium security severity: ",
+      "desc": "Insufficient validation of untrusted input in FileSystem in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to perform arbitrary read/write via a crafted HTML page. (Chromium security severity: Medium)",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -1547,7 +1554,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7964",
-      "cvss": "4.2"
+      "cvss": "4.2",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7965",
@@ -1562,11 +1570,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7965",
-      "cvss": "3.1"
+      "cvss": "3.1",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7966",
-      "desc": "Insufficient validation of untrusted input in SiteIsolation in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: Medi",
+      "desc": "Insufficient validation of untrusted input in SiteIsolation in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: Medium)",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -1577,11 +1586,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7966",
-      "cvss": "3.1"
+      "cvss": "3.1",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7967",
-      "desc": "Insufficient validation of untrusted input in Navigation in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security se",
+      "desc": "Insufficient validation of untrusted input in Navigation in Google Chrome prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Medium)",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -1592,7 +1602,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7967",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7968",
@@ -1607,7 +1618,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7968",
-      "cvss": "3.1"
+      "cvss": "3.1",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7969",
@@ -1622,7 +1634,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7969",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-472"
     },
     {
       "id": "CVE-2026-7970",
@@ -1637,7 +1650,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7970",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7971",
@@ -1652,7 +1666,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7971",
-      "cvss": "6.3"
+      "cvss": "6.3",
+      "cwe": "CWE-269"
     },
     {
       "id": "CVE-2026-7972",
@@ -1667,7 +1682,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7972",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-457"
     },
     {
       "id": "CVE-2026-7973",
@@ -1682,7 +1698,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7973",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-472"
     },
     {
       "id": "CVE-2026-7974",
@@ -1697,7 +1714,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7974",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7975",
@@ -1712,7 +1730,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7975",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7976",
@@ -1727,7 +1746,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7976",
-      "cvss": "7.5"
+      "cvss": "7.5",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7977",
@@ -1742,7 +1762,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7977",
-      "cvss": "6.3"
+      "cvss": "6.3",
+      "cwe": "CWE-269"
     },
     {
       "id": "CVE-2026-7978",
@@ -1757,7 +1778,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7978",
-      "cvss": "8.1"
+      "cvss": "8.1",
+      "cwe": "CWE-693"
     },
     {
       "id": "CVE-2026-7979",
@@ -1772,7 +1794,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7979",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "NVD-CWE-noinfo"
     },
     {
       "id": "CVE-2026-7980",
@@ -1787,7 +1810,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7980",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7981",
@@ -1802,7 +1826,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7981",
-      "cvss": "8.1"
+      "cvss": "8.1",
+      "cwe": "CWE-125"
     },
     {
       "id": "CVE-2026-7982",
@@ -1817,7 +1842,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7982",
-      "cvss": "6.5"
+      "cvss": "6.5",
+      "cwe": "CWE-457"
     },
     {
       "id": "CVE-2026-7983",
@@ -1832,7 +1858,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7983",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-125"
     },
     {
       "id": "CVE-2026-7984",
@@ -1847,7 +1874,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7984",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7985",
@@ -1862,7 +1890,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7985",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7986",
@@ -1877,7 +1906,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7986",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-346"
     },
     {
       "id": "CVE-2026-7987",
@@ -1892,7 +1922,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7987",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7988",
@@ -1907,7 +1938,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7988",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-843"
     },
     {
       "id": "CVE-2026-7989",
@@ -1922,7 +1954,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7989",
-      "cvss": "4.2"
+      "cvss": "4.2",
+      "cwe": "CWE-20 | CWE-20"
     },
     {
       "id": "CVE-2026-7990",
@@ -1937,7 +1970,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7990",
-      "cvss": "7.8"
+      "cvss": "7.8",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7991",
@@ -1952,11 +1986,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7991",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-7992",
-      "desc": "Insufficient validation of untrusted input in UI in Google Chrome on Linux, ChromeOS prior to 148.0.7778.96 allowed a remote attacker who convinced a user to engage in specific UI gestures to execute arbitrary code via a crafted HTML page. (Chromium ",
+      "desc": "Insufficient validation of untrusted input in UI in Google Chrome on Linux, ChromeOS prior to 148.0.7778.96 allowed a remote attacker who convinced a user to engage in specific UI gestures to execute arbitrary code via a crafted HTML page. (Chromium security severity: Medium)",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -1967,11 +2002,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7992",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7993",
-      "desc": "Insufficient validation of untrusted input in Payments in Google Chrome on Android prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to spoof the contents of the Omnibox (URL bar) via a crafted HTML page. (Chro",
+      "desc": "Insufficient validation of untrusted input in Payments in Google Chrome on Android prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to spoof the contents of the Omnibox (URL bar) via a crafted HTML page. (Chromium security severity: Medium)",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -1982,7 +2018,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7993",
-      "cvss": "4.2"
+      "cvss": "4.2",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7994",
@@ -1997,7 +2034,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7994",
-      "cvss": "7.8"
+      "cvss": "7.8",
+      "cwe": "CWE-269"
     },
     {
       "id": "CVE-2026-7995",
@@ -2012,7 +2050,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7995",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-125"
     },
     {
       "id": "CVE-2026-7996",
@@ -2027,7 +2066,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7996",
-      "cvss": "4.2"
+      "cvss": "4.2",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7997",
@@ -2042,7 +2082,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7997",
-      "cvss": "7.8"
+      "cvss": "7.8",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-7998",
@@ -2057,7 +2098,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7998",
-      "cvss": "5.4"
+      "cvss": "5.4",
+      "cwe": "CWE-20 | NVD-CWE-noinfo"
     },
     {
       "id": "CVE-2026-7999",
@@ -2072,7 +2114,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7999",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-200"
     },
     {
       "id": "CVE-2026-8000",
@@ -2087,11 +2130,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8000",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-20 | NVD-CWE-noinfo"
     },
     {
       "id": "CVE-2026-8001",
-      "desc": "Use After Free in Printing in Google Chrome on Linux, Mac, ChromeOS prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity",
+      "desc": "Use After Free in Printing in Google Chrome on Linux, Mac, ChromeOS prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Low)",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -2102,7 +2146,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8001",
-      "cvss": "8.3"
+      "cvss": "8.3",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-8002",
@@ -2117,7 +2162,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8002",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-8003",
@@ -2132,7 +2178,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8003",
-      "cvss": "5.4"
+      "cvss": "5.4",
+      "cwe": "CWE-20 | NVD-CWE-noinfo"
     },
     {
       "id": "CVE-2026-8004",
@@ -2147,7 +2194,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8004",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-693"
     },
     {
       "id": "CVE-2026-8005",
@@ -2162,7 +2210,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8005",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-20 | NVD-CWE-noinfo"
     },
     {
       "id": "CVE-2026-8006",
@@ -2177,7 +2226,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8006",
-      "cvss": "5.4"
+      "cvss": "5.4",
+      "cwe": "CWE-451"
     },
     {
       "id": "CVE-2026-8007",
@@ -2192,7 +2242,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8007",
-      "cvss": "7.5"
+      "cvss": "7.5",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-8008",
@@ -2207,7 +2258,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8008",
-      "cvss": "5.4"
+      "cvss": "5.4",
+      "cwe": "CWE-451"
     },
     {
       "id": "CVE-2026-8009",
@@ -2222,7 +2274,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8009",
-      "cvss": "5.0"
+      "cvss": "5.0",
+      "cwe": "CWE-693"
     },
     {
       "id": "CVE-2026-8010",
@@ -2237,7 +2290,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8010",
-      "cvss": "6.3"
+      "cvss": "6.3",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-8011",
@@ -2252,7 +2306,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8011",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-693"
     },
     {
       "id": "CVE-2026-8012",
@@ -2267,7 +2322,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8012",
-      "cvss": "5.4"
+      "cvss": "5.4",
+      "cwe": "CWE-79"
     },
     {
       "id": "CVE-2026-8013",
@@ -2282,7 +2338,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8013",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-20"
     },
     {
       "id": "CVE-2026-8014",
@@ -2297,7 +2354,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8014",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-693"
     },
     {
       "id": "CVE-2026-8015",
@@ -2312,7 +2370,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8015",
-      "cvss": "5.4"
+      "cvss": "5.4",
+      "cwe": "CWE-451"
     },
     {
       "id": "CVE-2026-8016",
@@ -2327,7 +2386,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8016",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-416"
     },
     {
       "id": "CVE-2026-8017",
@@ -2342,7 +2402,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8017",
-      "cvss": "3.1"
+      "cvss": "3.1",
+      "cwe": "CWE-1300"
     },
     {
       "id": "CVE-2026-8018",
@@ -2357,7 +2418,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8018",
-      "cvss": "8.1"
+      "cvss": "8.1",
+      "cwe": "NVD-CWE-noinfo | CWE-693"
     },
     {
       "id": "CVE-2026-8019",
@@ -2372,11 +2434,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8019",
-      "cvss": "5.4"
+      "cvss": "5.4",
+      "cwe": "CWE-451"
     },
     {
       "id": "CVE-2026-8020",
-      "desc": "Uninitialized Use in GPU in Google Chrome on Android prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to obtain potentially sensitive information from process memory via a crafted HTML page. (Chromium security",
+      "desc": "Uninitialized Use in GPU in Google Chrome on Android prior to 148.0.7778.96 allowed a remote attacker who had compromised the renderer process to obtain potentially sensitive information from process memory via a crafted HTML page. (Chromium security severity: Low)",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -2387,7 +2450,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8020",
-      "cvss": "5.3"
+      "cvss": "5.3",
+      "cwe": "CWE-457"
     },
     {
       "id": "CVE-2026-8021",
@@ -2402,7 +2466,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8021",
-      "cvss": "4.2"
+      "cvss": "4.2",
+      "cwe": "CWE-94"
     },
     {
       "id": "CVE-2026-8022",
@@ -2417,11 +2482,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8022",
-      "cvss": "3.1"
+      "cvss": "3.1",
+      "cwe": "CWE-352 | CWE-1021"
     },
     {
       "id": "CVE-2026-43580",
-      "desc": "OpenClaw before 2026.4.10 contains an incomplete navigation guard vulnerability that allows attackers to trigger navigation without complete SSRF policy enforcement. Browser press/type style interactions, including pressKey and type submit flows, can",
+      "desc": "OpenClaw before 2026.4.10 contains an incomplete navigation guard vulnerability that allows attackers to trigger navigation without complete SSRF policy enforcement. Browser press/type style interactions, including pressKey and type submit flows, can bypass post-action security checks to execute una",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-06",
@@ -2432,11 +2498,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43580",
-      "cvss": "7.7"
+      "cvss": "7.7",
+      "cwe": "CWE-862"
     },
     {
       "id": "CVE-2025-66105",
-      "desc": "Missing Authorization vulnerability in Magepeople inc. Bus Ticket Booking with Seat Reservation allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects Bus Ticket Booking with Seat Reservation: from n/a before 5.6",
+      "desc": "Missing Authorization vulnerability in Magepeople inc. Bus Ticket Booking with Seat Reservation allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects Bus Ticket Booking with Seat Reservation: from n/a before 5.6.8.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-07",
@@ -2447,7 +2514,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66105",
-      "cvss": "5.3"
+      "cvss": "5.3",
+      "cwe": "CWE-862"
     },
     {
       "id": "CVE-2026-25436",
@@ -2462,7 +2530,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25436",
-      "cvss": "5.3"
+      "cvss": "5.3",
+      "cwe": "CWE-862"
     },
     {
       "id": "CVE-2026-27329",
@@ -2477,7 +2546,8 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27329",
-      "cvss": "5.3"
+      "cvss": "5.3",
+      "cwe": "CWE-639"
     },
     {
       "id": "CVE-2026-27416",
@@ -2492,11 +2562,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27416",
-      "cvss": "5.3"
+      "cvss": "5.3",
+      "cwe": "CWE-862"
     },
     {
       "id": "CVE-2026-41903",
-      "desc": "FreeScout is a free help desk and shared inbox built with PHP's Laravel framework. Prior to version 1.8.217, a user holding the PERM_EDIT_USERS permission (intended for general user-profile editing) can read and modify the notification subscriptions ",
+      "desc": "FreeScout is a free help desk and shared inbox built with PHP's Laravel framework. Prior to version 1.8.217, a user holding the PERM_EDIT_USERS permission (intended for general user-profile editing) can read and modify the notification subscriptions of any other user, including admins, by sending a ",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-07",
@@ -2507,11 +2578,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41903",
-      "cvss": "5.4"
+      "cvss": "5.4",
+      "cwe": "CWE-863"
     },
     {
       "id": "CVE-2026-42501",
-      "desc": "A malicious module proxy can exploit a flaw in the go command's validation of module checksums to bypass checksum database validation. This vulnerability affects any user using an untrusted module proxy (GOMODPROXY) or checksum database (GOSUMDB). A ",
+      "desc": "A malicious module proxy can exploit a flaw in the go command's validation of module checksums to bypass checksum database validation. This vulnerability affects any user using an untrusted module proxy (GOMODPROXY) or checksum database (GOSUMDB). A malicious module proxy can serve altered versions ",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-07",
@@ -2522,11 +2594,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42501",
-      "cvss": "7.5"
+      "cvss": "7.5",
+      "cwe": "CWE-347"
     },
     {
       "id": "CVE-2026-8087",
-      "desc": "A security flaw has been discovered in OSGeo gdal up to 3.13.0dev-4. Impacted is the function GDnentries of the file frmts/hdf4/hdf-eos/GDapi.c. Performing a manipulation of the argument DataFieldName results in heap-based buffer overflow. The attack",
+      "desc": "A security flaw has been discovered in OSGeo gdal up to 3.13.0dev-4. Impacted is the function GDnentries of the file frmts/hdf4/hdf-eos/GDapi.c. Performing a manipulation of the argument DataFieldName results in heap-based buffer overflow. The attack must be initiated from a local position. The expl",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-07",
@@ -2537,11 +2610,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8087",
-      "cvss": "5.3"
+      "cvss": "5.3",
+      "cwe": "CWE-119 | CWE-122"
     },
     {
       "id": "CVE-2026-8097",
-      "desc": "A security flaw has been discovered in CodeAstro Online Classroom 1.0. This vulnerability affects unknown code of the file /askquery.php. The manipulation of the argument squeryx results in sql injection. The attack may be performed from remote. The ",
+      "desc": "A security flaw has been discovered in CodeAstro Online Classroom 1.0. This vulnerability affects unknown code of the file /askquery.php. The manipulation of the argument squeryx results in sql injection. The attack may be performed from remote. The exploit has been released to the public and may be",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-07",
@@ -2552,11 +2626,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8097",
-      "cvss": "6.3"
+      "cvss": "6.3",
+      "cwe": "CWE-74 | CWE-89"
     },
     {
       "id": "CVE-2026-8098",
-      "desc": "A security vulnerability has been detected in code-projects Feedback System 1.0. Impacted is an unknown function of the file /admin/checklogin.php. Such manipulation of the argument email leads to sql injection. It is possible to launch the attack re",
+      "desc": "A security vulnerability has been detected in code-projects Feedback System 1.0. Impacted is an unknown function of the file /admin/checklogin.php. Such manipulation of the argument email leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed publicly an",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-07",
@@ -2567,11 +2642,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8098",
-      "cvss": "7.3"
+      "cvss": "7.3",
+      "cwe": "CWE-74 | CWE-89"
     },
     {
       "id": "CVE-2026-8115",
-      "desc": "A security flaw has been discovered in gyoridavid short-video-maker up to 1.3.4. This affects an unknown part of the file src/server/routers/rest.ts of the component REST API. The manipulation of the argument req.params.tmpFile results in path traver",
+      "desc": "A security flaw has been discovered in gyoridavid short-video-maker up to 1.3.4. This affects an unknown part of the file src/server/routers/rest.ts of the component REST API. The manipulation of the argument req.params.tmpFile results in path traversal. The attack can be launched remotely. The expl",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-07",
@@ -2582,11 +2658,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8115",
-      "cvss": "5.3"
+      "cvss": "5.3",
+      "cwe": "CWE-22"
     },
     {
       "id": "CVE-2026-8117",
-      "desc": "A security vulnerability has been detected in SourceCodester Pizzafy Ecommerce System 1.0. This issue affects some unknown processing of the file /admin/index.php. Such manipulation of the argument page leads to cross site scripting. The attack may b",
+      "desc": "A security vulnerability has been detected in SourceCodester Pizzafy Ecommerce System 1.0. This issue affects some unknown processing of the file /admin/index.php. Such manipulation of the argument page leads to cross site scripting. The attack may be launched remotely. The exploit has been disclose",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-08",
@@ -2597,11 +2674,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8117",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-79 | CWE-94"
     },
     {
       "id": "CVE-2026-8124",
-      "desc": "A security vulnerability has been detected in GPAC up to 26.02.0. This affects the function sidx_box_read of the file src/isomedia/box_code_base.c. The manipulation leads to allocation of resources. The attack must be carried out locally. The exploit",
+      "desc": "A security vulnerability has been detected in GPAC up to 26.02.0. This affects the function sidx_box_read of the file src/isomedia/box_code_base.c. The manipulation leads to allocation of resources. The attack must be carried out locally. The exploit has been disclosed publicly and may be used. The ",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-08",
@@ -2612,11 +2690,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8124",
-      "cvss": "3.3"
+      "cvss": "3.3",
+      "cwe": "CWE-400 | CWE-770"
     },
     {
       "id": "CVE-2026-3508",
-      "desc": "An Out-of-bounds Read vulnerability in the IOCTL handler in ASUS System Control Interface allows a local user to cause system crash (BSOD) via a read size that exceeds the buffer size.Refer to the '\nSecurity Update for MyASUS\u00a0' section on the ASUS Se",
+      "desc": "An Out-of-bounds Read vulnerability in the IOCTL handler in ASUS System Control Interface allows a local user to cause system crash (BSOD) via a read size that exceeds the buffer size.Refer to the '\nSecurity Update for MyASUS ' section on the ASUS Security Advisory for more information.",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-08",
@@ -2627,11 +2706,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3508",
-      "cvss": ""
+      "cvss": "",
+      "cwe": "CWE-125"
     },
     {
       "id": "CVE-2026-6737",
-      "desc": "An Exposed IOCTL with Insufficient Access Control vulnerability in AsusPTPFilter allows a local user to bypass driver security mechanisms and obtain restricted touchpad information or render the touchpad unusable\u00a0via crafted IOCTL requests.Refer to t",
+      "desc": "An Exposed IOCTL with Insufficient Access Control vulnerability in AsusPTPFilter allows a local user to bypass driver security mechanisms and obtain restricted touchpad information or render the touchpad unusable via crafted IOCTL requests.Refer to the '\nSecurity Update for ASUS Precision Touchpad '",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-08",
@@ -2642,11 +2722,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6737",
-      "cvss": ""
+      "cvss": "",
+      "cwe": "CWE-782"
     },
     {
       "id": "CVE-2026-8131",
-      "desc": "A security flaw has been discovered in SourceCodester SUP Online Shopping 1.0. This impacts an unknown function of the file /admin/replymsg.php. The manipulation of the argument msgid results in sql injection. It is possible to launch the attack remo",
+      "desc": "A security flaw has been discovered in SourceCodester SUP Online Shopping 1.0. This impacts an unknown function of the file /admin/replymsg.php. The manipulation of the argument msgid results in sql injection. It is possible to launch the attack remotely. The exploit has been released to the public ",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-08",
@@ -2657,11 +2738,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8131",
-      "cvss": "7.3"
+      "cvss": "7.3",
+      "cwe": "CWE-74 | CWE-89"
     },
     {
       "id": "CVE-2026-8133",
-      "desc": "A security vulnerability has been detected in zyx0814 FilePress up to 2.2.0. Affected by this vulnerability is an unknown functionality of the file dzz/shares/admin.php of the component Shares Filelist API. Such manipulation of the argument order lea",
+      "desc": "A security vulnerability has been detected in zyx0814 FilePress up to 2.2.0. Affected by this vulnerability is an unknown functionality of the file dzz/shares/admin.php of the component Shares Filelist API. Such manipulation of the argument order leads to sql injection. The attack can be launched re",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-08",
@@ -2672,11 +2754,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8133",
-      "cvss": "7.3"
+      "cvss": "7.3",
+      "cwe": "CWE-74 | CWE-89"
     },
     {
       "id": "CVE-2026-8076",
-      "desc": "Weak credentials in the CashDro 3 web administration panel, version 24.01.00.26, where the platform allows the use of numeric PINs for user authentication. The system supports the use of PIN-based credentials, maintaining compatibility with POS softw",
+      "desc": "Weak credentials in the CashDro 3 web administration panel, version 24.01.00.26, where the platform allows the use of numeric PINs for user authentication. The system supports the use of PIN-based credentials, maintaining compatibility with POS software integrations deployed since 2012. This could a",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-08",
@@ -2687,11 +2770,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8076",
-      "cvss": ""
+      "cvss": "",
+      "cwe": "CWE-1391"
     },
     {
       "id": "CVE-2026-8077",
-      "desc": "Lack of proper authorization implementation in the CashDro 3 web administration panel, version 24.01.00.26. The backend lacks authorization controls, leaving security entirely to the frontend. By modifying the binary string in the \u2018Permissions\u2019 field",
+      "desc": "Lack of proper authorization implementation in the CashDro 3 web administration panel, version 24.01.00.26. The backend lacks authorization controls, leaving security entirely to the frontend. By modifying the binary string in the ‘Permissions’ field of the JSON response, an attacker could escalate ",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-08",
@@ -2702,12 +2786,13 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8077",
-      "cvss": ""
+      "cvss": "",
+      "cwe": "CWE-862"
     },
     {
       "id": "CVE-2026-43334",
-      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: SMP: force responder MITM requirements before building the pairing response\n\nsmp_cmd_pairing_req() currently builds the pairing response from the\ninitiator auth_req befor",
-      "severity": "LOW",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: SMP: force responder MITM requirements before building the pairing response\n\nsmp_cmd_pairing_req() currently builds the pairing response from the\ninitiator auth_req before enforcing the local BT_SECURITY_HIGH\nrequirement",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-08",
       "pakistan": false,
@@ -2717,11 +2802,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43334",
-      "cvss": ""
+      "cvss": "8.8",
+      "cwe": ""
     },
     {
       "id": "CVE-2026-44334",
-      "desc": "PraisonAI is a multi-agent teams system. From version 4.5.139 to before version 4.6.32, CVE-2026-40287's fix gated tools.py auto-import behind PRAISONAI_ALLOW_LOCAL_TOOLS=true in two files (tool_resolver.py, api/call.py). A third import sink in prais",
+      "desc": "PraisonAI is a multi-agent teams system. From version 4.5.139 to before version 4.6.32, CVE-2026-40287's fix gated tools.py auto-import behind PRAISONAI_ALLOW_LOCAL_TOOLS=true in two files (tool_resolver.py, api/call.py). A third import sink in praisonai/templates/tool_override.py was missed and rem",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-08",
@@ -2732,11 +2818,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44334",
-      "cvss": "8.4"
+      "cvss": "8.4",
+      "cwe": "CWE-94"
     },
     {
       "id": "CVE-2026-41308",
-      "desc": "Password Pusher is an open source application to communicate sensitive information over the web. Prior to versions 1.69.3 and 2.4.2, a security issue in OSS PasswordPusher allowed unauthenticated creation of file-type pushes through a generic JSON AP",
+      "desc": "Password Pusher is an open source application to communicate sensitive information over the web. Prior to versions 1.69.3 and 2.4.2, a security issue in OSS PasswordPusher allowed unauthenticated creation of file-type pushes through a generic JSON API create path under certain configurations. This c",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-08",
@@ -2747,11 +2834,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41308",
-      "cvss": "6.5"
+      "cvss": "6.5",
+      "cwe": "CWE-288"
     },
     {
       "id": "CVE-2026-41520",
-      "desc": "Cilium is a networking, observability, and security solution with an eBPF-based dataplane. Prior to versions 1.17.15, 1.18.9, and 1.19.3, the output of cilium-bugtool can contain sensitive data when the tool is run against Cilium deployments with Wir",
+      "desc": "Cilium is a networking, observability, and security solution with an eBPF-based dataplane. Prior to versions 1.17.15, 1.18.9, and 1.19.3, the output of cilium-bugtool can contain sensitive data when the tool is run against Cilium deployments with WireGuard encryption enabled. This issue has been pat",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-08",
@@ -2762,11 +2850,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41520",
-      "cvss": "7.9"
+      "cvss": "7.9",
+      "cwe": "CWE-200 | CWE-312"
     },
     {
       "id": "CVE-2026-42296",
-      "desc": "Argo Workflows is an open source container-native workflow engine for orchestrating parallel jobs on Kubernetes. Prior to versions 3.7.14 and 4.0.5, a user with create Workflow permission can bypass templateReferencing: Strict to get host network acc",
+      "desc": "Argo Workflows is an open source container-native workflow engine for orchestrating parallel jobs on Kubernetes. Prior to versions 3.7.14 and 4.0.5, a user with create Workflow permission can bypass templateReferencing: Strict to get host network access, switch service accounts, override pod securit",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-09",
@@ -2777,11 +2866,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42296",
-      "cvss": "8.1"
+      "cvss": "8.1",
+      "cwe": "CWE-863"
     },
     {
       "id": "CVE-2026-42461",
-      "desc": "Arcane is an interface for managing Docker containers, images, networks, and volumes. Prior to version 1.18.0, four GET endpoints under /api/templates* in Arcane's Huma backend are registered without any Security requirement, allowing any unauthentic",
+      "desc": "Arcane is an interface for managing Docker containers, images, networks, and volumes. Prior to version 1.18.0, four GET endpoints under /api/templates* in Arcane's Huma backend are registered without any Security requirement, allowing any unauthenticated network client to list and read the full Comp",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-09",
@@ -2792,11 +2882,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42461",
-      "cvss": ""
+      "cvss": "",
+      "cwe": "CWE-862"
     },
     {
       "id": "CVE-2025-15633",
-      "desc": "An improper authorization vulnerability in HCL BigFix WebUI allows an authenticated user without Master Operator\u00a0privileges to access internal data (site names, versions, and configuration variables) and bypass privilege requirements via unprotected ",
+      "desc": "An improper authorization vulnerability in HCL BigFix WebUI allows an authenticated user without Master Operator privileges to access internal data (site names, versions, and configuration variables) and bypass privilege requirements via unprotected endpoints lacking adequate security headers.",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-09",
@@ -2807,11 +2898,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-15633",
-      "cvss": ""
+      "cvss": "",
+      "cwe": "CWE-863"
     },
     {
       "id": "CVE-2026-8185",
-      "desc": "A security vulnerability has been detected in UGREEN CM933 1.1.59.4319. The impacted element is an unknown function of the component Administrative Interface. Such manipulation leads to missing authentication. The attack requires being on the local n",
+      "desc": "A security vulnerability has been detected in UGREEN CM933 1.1.59.4319. The impacted element is an unknown function of the component Administrative Interface. Such manipulation leads to missing authentication. The attack requires being on the local network. You should upgrade the affected component.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-09",
@@ -2822,11 +2914,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8185",
-      "cvss": "6.3"
+      "cvss": "6.3",
+      "cwe": "CWE-287 | CWE-306"
     },
     {
       "id": "CVE-2026-8192",
-      "desc": "A security flaw has been discovered in Wavlink NU516U1 M16U1_V240425. This vulnerability affects the function wzdap of the file /cgi-bin/adm.cgi. Performing a manipulation of the argument EncrypType/wl_Pass is directly passed by the attacker/so we ca",
+      "desc": "A security flaw has been discovered in Wavlink NU516U1 M16U1_V240425. This vulnerability affects the function wzdap of the file /cgi-bin/adm.cgi. Performing a manipulation of the argument EncrypType/wl_Pass is directly passed by the attacker/so we can control the EncrypType/wl_Pass results in os com",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-09",
@@ -2837,11 +2930,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8192",
-      "cvss": "6.3"
+      "cvss": "6.3",
+      "cwe": "CWE-77 | CWE-78"
     },
     {
       "id": "CVE-2026-42333",
-      "desc": "Quarkus OpenAPI Generator is Quarkus' extensions for generation of Rest Clients and server stubs generation. Prior to versions 2.11.1-lts, 2.16.0-lts, and 2.17.0, the generated authentication filter matches OpenAPI path templates too broadly when dec",
+      "desc": "Quarkus OpenAPI Generator is Quarkus' extensions for generation of Rest Clients and server stubs generation. Prior to versions 2.11.1-lts, 2.16.0-lts, and 2.17.0, the generated authentication filter matches OpenAPI path templates too broadly when deciding whether to attach credentials. A security sc",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-09",
@@ -2852,11 +2946,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42333",
-      "cvss": ""
+      "cvss": "",
+      "cwe": "CWE-200"
     },
     {
       "id": "CVE-2026-8194",
-      "desc": "A security vulnerability has been detected in osTicket up to 1.18.3. Impacted is an unknown function of the file include/class.dispatcher.php of the component Dispatcher. The manipulation of the argument _method leads to cross-site request forgery. R",
+      "desc": "A security vulnerability has been detected in osTicket up to 1.18.3. Impacted is an unknown function of the file include/class.dispatcher.php of the component Dispatcher. The manipulation of the argument _method leads to cross-site request forgery. Remote exploitation of the attack is possible. The ",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-09",
@@ -2867,11 +2962,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8194",
-      "cvss": "4.3"
+      "cvss": "4.3",
+      "cwe": "CWE-352 | CWE-862"
     },
     {
       "id": "CVE-2026-8210",
-      "desc": "A security vulnerability has been detected in aandrew-me tgpt up to 2.11.1 on Linux/macOS. Affected by this vulnerability is the function helper.Update of the file helper.go of the component Update Handler. The manipulation leads to command injection",
+      "desc": "A security vulnerability has been detected in aandrew-me tgpt up to 2.11.1 on Linux/macOS. Affected by this vulnerability is the function helper.Update of the file helper.go of the component Update Handler. The manipulation leads to command injection. Local access is required to approach this attack",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-09",
@@ -2882,11 +2978,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8210",
-      "cvss": "5.3"
+      "cvss": "5.3",
+      "cwe": "CWE-74 | CWE-77"
     },
     {
       "id": "CVE-2026-8217",
-      "desc": "A security flaw has been discovered in Industrial Application Software IAS Canias ERP 8.03. Impacted is the function Runtime.getRuntime.exec of the component RMI Interface. Performing a manipulation of the argument troiaCode results in os command inj",
+      "desc": "A security flaw has been discovered in Industrial Application Software IAS Canias ERP 8.03. Impacted is the function Runtime.getRuntime.exec of the component RMI Interface. Performing a manipulation of the argument troiaCode results in os command injection. The attack may be initiated remotely. The ",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-10",
@@ -2897,11 +2994,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8217",
-      "cvss": "6.3"
+      "cvss": "6.3",
+      "cwe": "CWE-77 | CWE-78"
     },
     {
       "id": "CVE-2026-8219",
-      "desc": "A security vulnerability has been detected in Devs Palace ERP Online up to 4.0.0. The impacted element is an unknown function of the file /inventory/supplier-save. The manipulation leads to cross site scripting. Remote exploitation of the attack is p",
+      "desc": "A security vulnerability has been detected in Devs Palace ERP Online up to 4.0.0. The impacted element is an unknown function of the file /inventory/supplier-save. The manipulation leads to cross site scripting. Remote exploitation of the attack is possible. The exploit has been disclosed publicly a",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-10",
@@ -2912,11 +3010,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8219",
-      "cvss": "2.4"
+      "cvss": "2.4",
+      "cwe": "CWE-79 | CWE-94"
     },
     {
       "id": "CVE-2026-8226",
-      "desc": "A security flaw has been discovered in Open5GS up to 2.7.7. This vulnerability affects the function ogs_pcc_rule_install_flow_from_media in the library /lib/proto/types.c. The manipulation results in denial of service. The attack can be launched remo",
+      "desc": "A security flaw has been discovered in Open5GS up to 2.7.7. This vulnerability affects the function ogs_pcc_rule_install_flow_from_media in the library /lib/proto/types.c. The manipulation results in denial of service. The attack can be launched remotely. The exploit has been released to the public ",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-10",
@@ -2927,11 +3026,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8226",
-      "cvss": "5.3"
+      "cvss": "5.3",
+      "cwe": "CWE-404"
     },
     {
       "id": "CVE-2026-8228",
-      "desc": "A security vulnerability has been detected in Wavlink NU516U1 240425. Impacted is the function advance of the file /cgi-bin/wireless.cgi. Such manipulation of the argument wlan_conf/Channel/skiplist/ieee_80211h leads to os command injection. The atta",
+      "desc": "A security vulnerability has been detected in Wavlink NU516U1 240425. Impacted is the function advance of the file /cgi-bin/wireless.cgi. Such manipulation of the argument wlan_conf/Channel/skiplist/ieee_80211h leads to os command injection. The attack may be launched remotely. The exploit has been ",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-10",
@@ -2942,11 +3042,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8228",
-      "cvss": "6.3"
+      "cvss": "6.3",
+      "cwe": "CWE-77 | CWE-78"
     },
     {
       "id": "CVE-2026-8234",
-      "desc": "A security vulnerability has been detected in EFM ipTIME A8004T 14.18.2. This vulnerability affects the function formWifiBasicSet of the file /goform/WifiBasicSet. The manipulation of the argument security_5g leads to stack-based buffer overflow. The",
+      "desc": "A security vulnerability has been detected in EFM ipTIME A8004T 14.18.2. This vulnerability affects the function formWifiBasicSet of the file /goform/WifiBasicSet. The manipulation of the argument security_5g leads to stack-based buffer overflow. The attack may be initiated remotely. The exploit has",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-05-10",
@@ -2957,11 +3058,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8234",
-      "cvss": "8.8"
+      "cvss": "8.8",
+      "cwe": "CWE-119 | CWE-121"
     },
     {
       "id": "CVE-2026-8254",
-      "desc": "A security flaw has been discovered in Devs Palace ERP Online up to 4.0.0. Affected by this issue is some unknown functionality of the file /inventory/sales_save. The manipulation results in cross site scripting. It is possible to launch the attack r",
+      "desc": "A security flaw has been discovered in Devs Palace ERP Online up to 4.0.0. Affected by this issue is some unknown functionality of the file /inventory/sales_save. The manipulation results in cross site scripting. It is possible to launch the attack remotely. The exploit has been released to the publ",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-11",
@@ -2972,11 +3074,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8254",
-      "cvss": "2.4"
+      "cvss": "2.4",
+      "cwe": "CWE-79 | CWE-94"
     },
     {
       "id": "CVE-2026-8256",
-      "desc": "A security vulnerability has been detected in Devs Palace ERP Online up to 4.0.0. This vulnerability affects unknown code of the file /accounts/mr-save. Such manipulation leads to cross site scripting. The attack can be launched remotely. The exploit",
+      "desc": "A security vulnerability has been detected in Devs Palace ERP Online up to 4.0.0. This vulnerability affects unknown code of the file /accounts/mr-save. Such manipulation leads to cross site scripting. The attack can be launched remotely. The exploit has been disclosed publicly and may be used. The ",
       "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-05-11",
@@ -2987,11 +3090,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8256",
-      "cvss": "2.4"
+      "cvss": "2.4",
+      "cwe": "CWE-79 | CWE-94"
     },
     {
       "id": "CVE-2026-8263",
-      "desc": "A security flaw has been discovered in Tenda AC6 15.03.06.49_multi_TDE01. Affected is the function fromSetWirelessRepeat of the file /goform/WifiExtraSet of the component httpd. Performing a manipulation of the argument mac/ssid results in os command",
+      "desc": "A security flaw has been discovered in Tenda AC6 15.03.06.49_multi_TDE01. Affected is the function fromSetWirelessRepeat of the file /goform/WifiExtraSet of the component httpd. Performing a manipulation of the argument mac/ssid results in os command injection. It is possible to initiate the attack ",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-11",
@@ -3002,11 +3106,12 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8263",
-      "cvss": "4.7"
+      "cvss": "4.7",
+      "cwe": "CWE-77 | CWE-78"
     },
     {
       "id": "CVE-2026-8265",
-      "desc": "A security vulnerability has been detected in Tenda AC6 15.03.06.23. Affected by this issue is the function get_log_file of the file /goform/getLogFile of the component httpd. The manipulation of the argument wans.flag leads to os command injection. ",
+      "desc": "A security vulnerability has been detected in Tenda AC6 15.03.06.23. Affected by this issue is the function get_log_file of the file /goform/getLogFile of the component httpd. The manipulation of the argument wans.flag leads to os command injection. The attack can be initiated remotely. The exploit ",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-05-11",
@@ -3017,461 +3122,40 @@
         "CVE/Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8265",
-      "cvss": "4.7"
+      "cvss": "4.7",
+      "cwe": "CWE-77 | CWE-78"
     },
     {
-      "id": "https://krebsonsecurity.com/2026/05/canvas-breach-disrupts-schools-colleges-nationwide/",
-      "desc": "An ongoing data extortion attack targeting the widely-used education technology platformCanvasdisrupted classes and coursework at school districts and universities across the United States today, after a cybercrime group defaced the service\u2019s login p",
-      "severity": "LOW",
-      "source": "Krebs on Security",
+      "id": "CVE-2026-8272",
+      "desc": "A security flaw has been discovered in D-Link DNS-320 2.06B01. This affects the function delete/rename/copy/move/chmod/chown of the file /cgi-bin/webfile_mgr.cgi. The manipulation results in os command injection. The attack may be performed from remote. The exploit has been released to the public an",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
       "date": "2026-05-11",
       "pakistan": false,
       "tags": [
-        "news",
-        "security",
-        "Security News"
+        "vulnerability",
+        "CVE",
+        "CVE/Vulnerability"
       ],
-      "url": "https://krebsonsecurity.com/2026/05/canvas-breach-disrupts-schools-colleges-nationwide/",
-      "cvss": ""
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8272",
+      "cvss": "4.7",
+      "cwe": "CWE-77 | CWE-78"
     },
     {
-      "id": "https://krebsonsecurity.com/2026/04/anti-ddos-firm-heaped-attacks-on-brazilian-isps/",
-      "desc": "A Brazilian tech firm that specializes in protecting networks from distributed denial-of-service (DDoS) attacks has been enabling a botnet responsible for an extended campaign of massive DDoS attacks against other network operators in Brazil, KrebsOn",
-      "severity": "LOW",
-      "source": "Krebs on Security",
+      "id": "CVE-2026-8274",
+      "desc": "A security vulnerability has been detected in npitre cramfs-tools up to 2.1. Affected is the function do_directory of the file cramfsck.c of the component Directory Handler. Such manipulation leads to path traversal. The attack can only be performed from a local environment. The exploit has been dis",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
       "date": "2026-05-11",
       "pakistan": false,
       "tags": [
-        "news",
-        "security",
-        "Security News"
+        "vulnerability",
+        "CVE",
+        "CVE/Vulnerability"
       ],
-      "url": "https://krebsonsecurity.com/2026/04/anti-ddos-firm-heaped-attacks-on-brazilian-isps/",
-      "cvss": ""
-    },
-    {
-      "id": "https://krebsonsecurity.com/2026/04/scattered-spider-member-tylerb-pleads-guilty/",
-      "desc": "A 24-year-old British national and senior member of the cybercrime group \u201cScattered Spider\u201d has pleaded guilty to wire fraud conspiracy and aggravated identity theft.Tyler Robert Buchananadmitted his role in a series of text-message phishing attacks ",
-      "severity": "LOW",
-      "source": "Krebs on Security",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "news",
-        "security",
-        "Security News"
-      ],
-      "url": "https://krebsonsecurity.com/2026/04/scattered-spider-member-tylerb-pleads-guilty/",
-      "cvss": ""
-    },
-    {
-      "id": "https://krebsonsecurity.com/2026/04/patch-tuesday-april-2026-edition/",
-      "desc": "Microsofttoday pushed software updates to fix a staggering 167 security vulnerabilities in itsWindowsoperating systems and related software, including aSharePoint Serverzero-day and a publicly disclosed weakness inWindows Defenderdubbed \u201cBlueHammer.\u201d",
-      "severity": "LOW",
-      "source": "Krebs on Security",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "news",
-        "security",
-        "Security News"
-      ],
-      "url": "https://krebsonsecurity.com/2026/04/patch-tuesday-april-2026-edition/",
-      "cvss": ""
-    },
-    {
-      "id": "https://krebsonsecurity.com/2026/04/russia-hacked-routers-to-steal-microsoft-office-tokens/",
-      "desc": "Hackers linked to Russia\u2019s military intelligence units are using known flaws in older Internet routers to mass harvest authentication tokens fromMicrosoft Officeusers, security experts warned today. The spying campaign allowed state-backed Russian ha",
-      "severity": "LOW",
-      "source": "Krebs on Security",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "news",
-        "security",
-        "Security News"
-      ],
-      "url": "https://krebsonsecurity.com/2026/04/russia-hacked-routers-to-steal-microsoft-office-tokens/",
-      "cvss": ""
-    },
-    {
-      "id": "https://krebsonsecurity.com/2026/04/germany-doxes-unkn-head-of-ru-ransomware-gangs-revil-gandcrab/",
-      "desc": "An elusive hacker who went by the handle \u201cUNKN\u201d and ran the early Russian ransomware groupsGandCrabandREvilnow has a name and a face. Authorities in Germany say 31-year-old RussianDaniil Maksimovich Shchukinheaded both cybercrime gangs and helped car",
-      "severity": "LOW",
-      "source": "Krebs on Security",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "news",
-        "security",
-        "Security News"
-      ],
-      "url": "https://krebsonsecurity.com/2026/04/germany-doxes-unkn-head-of-ru-ransomware-gangs-revil-gandcrab/",
-      "cvss": ""
-    },
-    {
-      "id": "https://krebsonsecurity.com/2026/03/canisterworm-springs-wiper-attack-targeting-iran/",
-      "desc": "A financially motivated data theft and extortion group is attempting to inject itself into the Iran war, unleashing a worm that spreads through poorly secured cloud services and wipes data on infected systems that use Iran\u2019s time zone or have Farsi s",
-      "severity": "LOW",
-      "source": "Krebs on Security",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "news",
-        "security",
-        "Security News"
-      ],
-      "url": "https://krebsonsecurity.com/2026/03/canisterworm-springs-wiper-attack-targeting-iran/",
-      "cvss": ""
-    },
-    {
-      "id": "https://krebsonsecurity.com/2026/03/feds-disrupt-iot-botnets-behind-huge-ddos-attacks/",
-      "desc": "The U.S. Justice Department joined authorities in Canada and Germany in dismantling the online infrastructure behind four highly disruptive botnets that compromised more than three million Internet of Things (IoT) devices, such as routers and web cam",
-      "severity": "LOW",
-      "source": "Krebs on Security",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "news",
-        "security",
-        "Security News"
-      ],
-      "url": "https://krebsonsecurity.com/2026/03/feds-disrupt-iot-botnets-behind-huge-ddos-attacks/",
-      "cvss": ""
-    },
-    {
-      "id": "https://krebsonsecurity.com/2026/03/iran-backed-hackers-claim-wiper-attack-on-medtech-firm-stryker/",
-      "desc": "A hacktivist group with links to Iran\u2019s intelligence agencies is claiming responsibility for a data-wiping attack againstStryker, a global medical technology company based in Michigan. News reports out of Ireland, Stryker\u2019s largest hub outside of the",
-      "severity": "LOW",
-      "source": "Krebs on Security",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "news",
-        "security",
-        "Security News"
-      ],
-      "url": "https://krebsonsecurity.com/2026/03/iran-backed-hackers-claim-wiper-attack-on-medtech-firm-stryker/",
-      "cvss": ""
-    },
-    {
-      "id": "https://krebsonsecurity.com/2026/03/microsoft-patch-tuesday-march-2026-edition/",
-      "desc": "Microsoft Corp.today pushed security updates to fix at least 77 vulnerabilities in itsWindowsoperating systems and other software. There are no pressing \u201czero-day\u201d flaws this month (compared to February\u2019s five zero-day treat), but as usual some patch",
-      "severity": "LOW",
-      "source": "Krebs on Security",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "news",
-        "security",
-        "Security News"
-      ],
-      "url": "https://krebsonsecurity.com/2026/03/microsoft-patch-tuesday-march-2026-edition/",
-      "cvss": ""
-    },
-    {
-      "id": "https://start.paloaltonetworks.com/strata-platform-contact-us.html",
-      "desc": "Get support and find answers via phone or email. You can also chat with our sales team.",
-      "severity": "LOW",
-      "source": "Palo Alto Networks",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "palo-alto",
-        "network-security"
-      ],
-      "url": "https://start.paloaltonetworks.com/strata-platform-contact-us.html",
-      "cvss": ""
-    },
-    {
-      "id": "https://www.paloaltonetworks.com/engage/pan-os-orion/",
-      "desc": "PAN-OS 12.1 ORION",
-      "severity": "LOW",
-      "source": "Palo Alto Networks",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "palo-alto",
-        "network-security"
-      ],
-      "url": "https://www.paloaltonetworks.com/engage/pan-os-orion/",
-      "cvss": ""
-    },
-    {
-      "id": "https://start.paloaltonetworks.com/contact-unit42.html",
-      "desc": "Unit 42\u00ae Incident Response explains the breach, works with you to contain and remedy it, and gets you back to business.",
-      "severity": "LOW",
-      "source": "Palo Alto Networks",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "palo-alto",
-        "network-security"
-      ],
-      "url": "https://start.paloaltonetworks.com/contact-unit42.html",
-      "cvss": ""
-    },
-    {
-      "id": "https://www.paloaltonetworks.com/about-us/executive-briefing-program",
-      "desc": "Get a customized plan to see how our platforms, threat intelligence and expert services help you secure the way forward.",
-      "severity": "LOW",
-      "source": "Palo Alto Networks",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "palo-alto",
-        "network-security"
-      ],
-      "url": "https://www.paloaltonetworks.com/about-us/executive-briefing-program",
-      "cvss": ""
-    },
-    {
-      "id": "https://www.paloaltonetworks.com/demos",
-      "desc": "Visit the demo center to see solution experts walk you through our comprehensive cybersecurity portfolio in action.",
-      "severity": "LOW",
-      "source": "Palo Alto Networks",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "palo-alto",
-        "network-security"
-      ],
-      "url": "https://www.paloaltonetworks.com/demos",
-      "cvss": ""
-    },
-    {
-      "id": "https://events.paloaltonetworks.com/",
-      "desc": "Browse all scheduled global events by cybersecurity technology interest, industry, region, use case and more.",
-      "severity": "LOW",
-      "source": "Palo Alto Networks",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "palo-alto",
-        "network-security"
-      ],
-      "url": "https://events.paloaltonetworks.com/",
-      "cvss": ""
-    },
-    {
-      "id": "https://www.paloaltonetworks.com/get-started",
-      "desc": "Meet the trusted, proven and awarded products that make a positive difference in your security and business outcomes.",
-      "severity": "LOW",
-      "source": "Palo Alto Networks",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "palo-alto",
-        "network-security"
-      ],
-      "url": "https://www.paloaltonetworks.com/get-started",
-      "cvss": ""
-    },
-    {
-      "id": "https://www.paloaltonetworks.com/partners/nextwave-partner-portal",
-      "desc": "Don\u2019t try to tackle security challenges alone. Tap into the world\u2019s most interoperable cloud and AI security platform.",
-      "severity": "LOW",
-      "source": "Palo Alto Networks",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "palo-alto",
-        "network-security"
-      ],
-      "url": "https://www.paloaltonetworks.com/partners/nextwave-partner-portal",
-      "cvss": ""
-    },
-    {
-      "id": "https://paloaltonetworks.my.site.com/NextWavePartnerProgram/s/partnerregistration?type=becomepartner",
-      "desc": "Be part of a global community of world-class innovators committed to making security breaches a thing of the past.",
-      "severity": "LOW",
-      "source": "Palo Alto Networks",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "palo-alto",
-        "network-security"
-      ],
-      "url": "https://paloaltonetworks.my.site.com/NextWavePartnerProgram/s/partnerregistration?type=becomepartner",
-      "cvss": ""
-    },
-    {
-      "id": "https://www.paloaltonetworks.com/partners/managed-security-services-provider-program",
-      "desc": "Provide managed security services that reduce cost, increase average revenue per customer and maximize market reach.",
-      "severity": "LOW",
-      "source": "Palo Alto Networks",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "palo-alto",
-        "network-security"
-      ],
-      "url": "https://www.paloaltonetworks.com/partners/managed-security-services-provider-program",
-      "cvss": ""
-    },
-    {
-      "id": "https://support.paloaltonetworks.com/SupportAccount/MyAccount",
-      "desc": "Security, performance and ease of use: Three qualities our customers like most about our cybersecurity products.",
-      "severity": "LOW",
-      "source": "Palo Alto Networks",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "palo-alto",
-        "network-security"
-      ],
-      "url": "https://support.paloaltonetworks.com/SupportAccount/MyAccount",
-      "cvss": ""
-    },
-    {
-      "id": "https://www.paloaltonetworks.com/services/education",
-      "desc": "Expand your wisdom and skills with world-class training, certification and accreditation, including digital learning.",
-      "severity": "LOW",
-      "source": "Palo Alto Networks",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "palo-alto",
-        "network-security"
-      ],
-      "url": "https://www.paloaltonetworks.com/services/education",
-      "cvss": ""
-    },
-    {
-      "id": "https://www.paloaltonetworks.com/services/customer-success",
-      "desc": "Guidance, oversight and 24/7 support from cybersecurity experts to help expedite your setup and initial configuration.",
-      "severity": "LOW",
-      "source": "Palo Alto Networks",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "palo-alto",
-        "network-security"
-      ],
-      "url": "https://www.paloaltonetworks.com/services/customer-success",
-      "cvss": ""
-    },
-    {
-      "id": "https://register.paloaltonetworks.com/igniteontour",
-      "desc": "Meet decision makers, experts and practitioners for a day of hands-on learning, strategy building and networking.",
-      "severity": "LOW",
-      "source": "Palo Alto Networks",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "palo-alto",
-        "cloud-security"
-      ],
-      "url": "https://register.paloaltonetworks.com/igniteontour",
-      "cvss": ""
-    },
-    {
-      "id": "https://www.crowdstrike.com/en-us/platform/next-gen-identity-security/",
-      "desc": "FalconComplete Next-Gen MDR",
-      "severity": "LOW",
-      "source": "CrowdStrike",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "crowdstrike",
-        "endpoint-security"
-      ],
-      "url": "https://www.crowdstrike.com/en-us/platform/next-gen-identity-security/",
-      "cvss": ""
-    },
-    {
-      "id": "https://www.crowdstrike.com",
-      "desc": "FalconGo",
-      "severity": "LOW",
-      "source": "CrowdStrike",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "crowdstrike",
-        "endpoint-security"
-      ],
-      "url": "https://www.crowdstrike.com",
-      "cvss": ""
-    },
-    {
-      "id": "https://www.crowdstrike.com",
-      "desc": "FalconPro",
-      "severity": "LOW",
-      "source": "CrowdStrike",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "crowdstrike",
-        "endpoint-security"
-      ],
-      "url": "https://www.crowdstrike.com",
-      "cvss": ""
-    },
-    {
-      "id": "https://www.crowdstrike.com",
-      "desc": "FalconEnterprise",
-      "severity": "LOW",
-      "source": "CrowdStrike",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "crowdstrike",
-        "endpoint-security"
-      ],
-      "url": "https://www.crowdstrike.com",
-      "cvss": ""
-    },
-    {
-      "id": "https://www.crowdstrike.com",
-      "desc": "FalconComplete",
-      "severity": "LOW",
-      "source": "CrowdStrike",
-      "date": "2026-05-11",
-      "pakistan": false,
-      "tags": [
-        "product",
-        "vendor",
-        "crowdstrike",
-        "endpoint-security"
-      ],
-      "url": "https://www.crowdstrike.com",
-      "cvss": ""
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8274",
+      "cvss": "5.3",
+      "cwe": "CWE-22"
     },
     {
       "id": "https://securelist.com/cve-2025-68670/119742/",
@@ -3487,7 +3171,8 @@
         "Threat Intelligence"
       ],
       "url": "https://securelist.com/cve-2025-68670/119742/",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://securelist.com/vulnerabilities-and-exploits-in-q1-2026/119733/",
@@ -3503,7 +3188,8 @@
         "Threat Intelligence"
       ],
       "url": "https://securelist.com/vulnerabilities-and-exploits-in-q1-2026/119733/",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://securelist.com/oceanlotus-suspected-pypi-zichatbot-campaign/119603/",
@@ -3519,7 +3205,8 @@
         "Threat Intelligence"
       ],
       "url": "https://securelist.com/oceanlotus-suspected-pypi-zichatbot-campaign/119603/",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://securelist.com/suspicious-websites-undefined-trust-level/119675/",
@@ -3535,7 +3222,8 @@
         "Threat Intelligence"
       ],
       "url": "https://securelist.com/suspicious-websites-undefined-trust-level/119675/",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://securelist.com/amazon-ses-phishing-and-bec-attacks/119623/",
@@ -3551,7 +3239,8 @@
         "Threat Intelligence"
       ],
       "url": "https://securelist.com/amazon-ses-phishing-and-bec-attacks/119623/",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://securelist.com/silver-fox-tax-notification-campaign/119575/",
@@ -3567,7 +3256,8 @@
         "Threat Intelligence"
       ],
       "url": "https://securelist.com/silver-fox-tax-notification-campaign/119575/",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://securelist.com/phantomrpc-rpc-vulnerability/119428/",
@@ -3583,7 +3273,8 @@
         "Threat Intelligence"
       ],
       "url": "https://securelist.com/phantomrpc-rpc-vulnerability/119428/",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://securelist.com/fakewallet-cryptostealer-ios-app-store/119474/",
@@ -3599,7 +3290,8 @@
         "Threat Intelligence"
       ],
       "url": "https://securelist.com/fakewallet-cryptostealer-ios-app-store/119474/",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://securelist.com/industrial-threat-report-q4-2025/119392/",
@@ -3615,7 +3307,8 @@
         "Threat Intelligence"
       ],
       "url": "https://securelist.com/industrial-threat-report-q4-2025/119392/",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://securelist.com/janelarat-financial-threat-in-latin-america/119332/",
@@ -3631,7 +3324,8 @@
         "Threat Intelligence"
       ],
       "url": "https://securelist.com/janelarat-financial-threat-in-latin-america/119332/",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://isc.sans.edu/diary/rss/32972",
@@ -3644,10 +3338,12 @@
         "threat-intelligence",
         "sans",
         "isc",
-        "stormcast"
+        "stormcast",
+        "Threat Intelligence"
       ],
       "url": "https://isc.sans.edu/diary/rss/32972",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://isc.sans.edu/diary/rss/32970",
@@ -3660,14 +3356,16 @@
         "threat-intelligence",
         "sans",
         "isc",
-        "stormcast"
+        "stormcast",
+        "Threat Intelligence"
       ],
       "url": "https://isc.sans.edu/diary/rss/32970",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://isc.sans.edu/diary/rss/32968",
-      "desc": "Less than two weeks after the public disclosure of the Copy Fail vulnerability (CVE-2026-31431), another local privilege escalation (LPE) vulnerability in the Linux kernel has been revealed. Referred to as \"Dirty Frag,\" this vulnerability was discove",
+      "desc": "Less than two weeks after the public disclosure of the Copy Fail vulnerability (CVE-2026-31431), another local privilege escalation (LPE) vulnerability in the Linux kernel has been revealed. Referred to as \"Dirty Frag,\" this vulnerability was discovered and reported by Hyunwoo Kim (@v4bel) [1]. In t",
       "severity": "LOW",
       "source": "SANS ISC",
       "date": "Fri, 08 Ma",
@@ -3676,10 +3374,12 @@
         "threat-intelligence",
         "sans",
         "isc",
-        "stormcast"
+        "stormcast",
+        "Threat Intelligence"
       ],
       "url": "https://isc.sans.edu/diary/rss/32968",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://isc.sans.edu/diary/rss/32966",
@@ -3692,10 +3392,12 @@
         "threat-intelligence",
         "sans",
         "isc",
-        "stormcast"
+        "stormcast",
+        "Threat Intelligence"
       ],
       "url": "https://isc.sans.edu/diary/rss/32966",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://isc.sans.edu/diary/rss/32964",
@@ -3708,10 +3410,12 @@
         "threat-intelligence",
         "sans",
         "isc",
-        "stormcast"
+        "stormcast",
+        "Threat Intelligence"
       ],
       "url": "https://isc.sans.edu/diary/rss/32964",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://isc.sans.edu/diary/rss/32962",
@@ -3724,10 +3428,12 @@
         "threat-intelligence",
         "sans",
         "isc",
-        "stormcast"
+        "stormcast",
+        "Threat Intelligence"
       ],
       "url": "https://isc.sans.edu/diary/rss/32962",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://isc.sans.edu/diary/rss/32960",
@@ -3740,10 +3446,12 @@
         "threat-intelligence",
         "sans",
         "isc",
-        "stormcast"
+        "stormcast",
+        "Threat Intelligence"
       ],
       "url": "https://isc.sans.edu/diary/rss/32960",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://isc.sans.edu/diary/rss/32954",
@@ -3756,14 +3464,16 @@
         "threat-intelligence",
         "sans",
         "isc",
-        "stormcast"
+        "stormcast",
+        "Threat Intelligence"
       ],
       "url": "https://isc.sans.edu/diary/rss/32954",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://isc.sans.edu/diary/rss/32956",
-      "desc": "I just got an email from SSL.com last night, they are rotating &#;x26;#;xc2;&#;x26;#;xa0;out their root certificate today (May 5,2026). &#;x26;#;xc2;&#;x26;#;xa0;This is normal, business as usual stuff for a CA, but certificates get used for all kind",
+      "desc": "I just got an email from SSL.com last night, they are rotating &#;x26;#;xc2;&#;x26;#;xa0;out their root certificate today (May 5,2026). &#;x26;#;xc2;&#;x26;#;xa0;This is normal, business as usual stuff for a CA, but certificates get used for all kinds of things, and sometimes they aren&&",
       "severity": "LOW",
       "source": "SANS ISC",
       "date": "Tue, 05 Ma",
@@ -3772,10 +3482,12 @@
         "threat-intelligence",
         "sans",
         "isc",
-        "stormcast"
+        "stormcast",
+        "Threat Intelligence"
       ],
       "url": "https://isc.sans.edu/diary/rss/32956",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://isc.sans.edu/diary/rss/32952",
@@ -3788,14 +3500,16 @@
         "threat-intelligence",
         "sans",
         "isc",
-        "stormcast"
+        "stormcast",
+        "Threat Intelligence"
       ],
       "url": "https://isc.sans.edu/diary/rss/32952",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-6207",
-      "desc": "SAP Solution Manager User Experience Monitoring contains a missing authentication for critical function vulnerability which results in complete compromise of all SMDAgents connected to the Solution Manager. Required action: Apply updates per vendor i",
+      "desc": "SAP Solution Manager User Experience Monitoring contains a missing authentication for critical function vulnerability which results in complete compromise of all SMDAgents connected to the Solution Manager. Required action: Apply updates per vendor instructions.",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -3804,14 +3518,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-6207",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2016-3976",
-      "desc": "SAP NetWeaver Application Server Java Platforms contains a directory traversal vulnerability via a ..\\ (dot dot backslash) in the fileName parameter to CrashFileDownloadServlet. This allows remote attackers to read files. Required action: Apply updat",
+      "desc": "SAP NetWeaver Application Server Java Platforms contains a directory traversal vulnerability via a ..\\ (dot dot backslash) in the fileName parameter to CrashFileDownloadServlet. This allows remote attackers to read files. Required action: Apply updates per vendor instructions.",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -3820,14 +3536,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-3976",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2019-16256",
-      "desc": "SIMalliance Toolbox Browser contains an command injection vulnerability that could allow remote attackers to retrieve location and IMEI information or execute a range of other attacks by modifying the attack message. Required action: Apply updates pe",
+      "desc": "SIMalliance Toolbox Browser contains an command injection vulnerability that could allow remote attackers to retrieve location and IMEI information or execute a range of other attacks by modifying the attack message. Required action: Apply updates per vendor instructions.",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -3836,10 +3554,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-16256",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-10148",
@@ -3852,10 +3572,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-10148",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2021-35211",
@@ -3868,10 +3590,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-35211",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2016-3643",
@@ -3884,10 +3608,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-3643",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-10199",
@@ -3900,14 +3626,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-10199",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2021-20021",
-      "desc": "SonicWall Email Security contains an improper privilege management vulnerability that allows an attacker to create an administrative account by sending a crafted HTTP request to the remote host. This vulnerability has known usage in a SonicWall Email",
+      "desc": "SonicWall Email Security contains an improper privilege management vulnerability that allows an attacker to create an administrative account by sending a crafted HTTP request to the remote host. This vulnerability has known usage in a SonicWall Email Security exploit chain along with CVE-2021-20022 ",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -3916,10 +3644,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-20021",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2019-7481",
@@ -3932,14 +3662,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-7481",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2021-20022",
-      "desc": "SonicWall Email Security contains an unrestricted upload of file with dangerous type vulnerability that allows a post-authenticated attacker to upload a file to the remote host. This vulnerability has known usage in a SonicWall Email Security exploit",
+      "desc": "SonicWall Email Security contains an unrestricted upload of file with dangerous type vulnerability that allows a post-authenticated attacker to upload a file to the remote host. This vulnerability has known usage in a SonicWall Email Security exploit chain along with CVE-2021-20021 and CVE-2021-2002",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -3948,14 +3680,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-20022",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2021-20023",
-      "desc": "SonicWall Email Security contains a path traversal vulnerability that allows a post-authenticated attacker to read files on the remote host. This vulnerability has known usage in a SonicWall Email Security exploit chain along with CVE-2021-20021 and ",
+      "desc": "SonicWall Email Security contains a path traversal vulnerability that allows a post-authenticated attacker to read files on the remote host. This vulnerability has known usage in a SonicWall Email Security exploit chain along with CVE-2021-20021 and CVE-2021-20022 to achieve privilege escalation. Re",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -3964,10 +3698,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-20023",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2021-20016",
@@ -3980,14 +3716,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-20016",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-12271",
-      "desc": "Sophos Firewall operating system (SFOS) firmware contains a SQL injection vulnerability when configured with either the administration (HTTPS) service or the User Portal is exposed on the WAN zone. Successful exploitation may cause remote code execut",
+      "desc": "Sophos Firewall operating system (SFOS) firmware contains a SQL injection vulnerability when configured with either the administration (HTTPS) service or the User Portal is exposed on the WAN zone. Successful exploitation may cause remote code execution to exfiltrate usernames and hashed passwords f",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -3996,10 +3734,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-12271",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-10181",
@@ -4012,14 +3752,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-10181",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2017-6327",
-      "desc": "Symantec Messaging Gateway contains an unspecified vulnerability which can allow for remote code execution. With the ability to perform remote code execution, an attacker may also desire to perform privilege escalating actions. Required action: Apply",
+      "desc": "Symantec Messaging Gateway contains an unspecified vulnerability which can allow for remote code execution. With the ability to perform remote code execution, an attacker may also desire to perform privilege escalating actions. Required action: Apply updates per vendor instructions.",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4028,14 +3770,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-6327",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2019-18988",
-      "desc": "TeamViewer Desktop allows for bypass of remote-login access control because the same AES key is used for different customers' installations. If an attacker were to know this key, they could decrypt protected information stored in registry or configur",
+      "desc": "TeamViewer Desktop allows for bypass of remote-login access control because the same AES key is used for different customers' installations. If an attacker were to know this key, they could decrypt protected information stored in registry or configuration files or decryption of the Unattended Access",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4044,14 +3788,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-18988",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2017-9248",
-      "desc": "Progress Telerik UI for ASP.NET AJAX and Sitefinity have a cryptographic weakness in Telerik.Web.UI.dll that can be exploited to disclose encryption keys (Telerik.Web.UI.DialogParametersEncryptionKey and/or the MachineKey), perform cross-site-scripti",
+      "desc": "Progress Telerik UI for ASP.NET AJAX and Sitefinity have a cryptographic weakness in Telerik.Web.UI.dll that can be exploited to disclose encryption keys (Telerik.Web.UI.DialogParametersEncryptionKey and/or the MachineKey), perform cross-site-scripting (XSS) attacks, compromise the ASP.NET ViewState",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4060,10 +3806,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-9248",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2021-31755",
@@ -4076,10 +3824,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-31755",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-10987",
@@ -4092,14 +3842,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-10987",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2018-14558",
-      "desc": "Tenda AC7, AC9, and AC10 devices contain a command injection vulnerability due to  the \"formsetUsbUnload\" function executes a dosystemCmd function with untrusted input. Successful exploitation allows an attacker to execute OS commands via a crafted g",
+      "desc": "Tenda AC7, AC9, and AC10 devices contain a command injection vulnerability due to  the \"formsetUsbUnload\" function executes a dosystemCmd function with untrusted input. Successful exploitation allows an attacker to execute OS commands via a crafted goform/setUsbUnload request. Required action: Apply",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4108,10 +3860,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-14558",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2018-20062",
@@ -4124,14 +3878,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2018-20062",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2019-9082",
-      "desc": "ThinkPHP contains an unspecified vulnerability that allows for remote code execution via public//?s=index/\\think\\app/invokefunction&function=call_user_func_array&vars[0]=system&vars[1][]= followed by the command. Required action: Apply updates per ve",
+      "desc": "ThinkPHP contains an unspecified vulnerability that allows for remote code execution via public//?s=index/\\think\\app/invokefunction&function=call_user_func_array&vars[0]=system&vars[1][]= followed by the command. Required action: Apply updates per vendor instructions.",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4140,10 +3896,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-9082",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2019-18187",
@@ -4156,10 +3914,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-18187",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-8467",
@@ -4172,14 +3932,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-8467",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-8468",
-      "desc": "Trend Micro Apex One, OfficeScan, and Worry-Free Business Security agents contain a content validation escape vulnerability that could allow an attacker to manipulate certain agent client components. Required action: Apply updates per vendor instruct",
+      "desc": "Trend Micro Apex One, OfficeScan, and Worry-Free Business Security agents contain a content validation escape vulnerability that could allow an attacker to manipulate certain agent client components. Required action: Apply updates per vendor instructions.",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4188,14 +3950,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-8468",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-24557",
-      "desc": "Trend Micro Apex One, OfficeScan, and Worry-Free Business Security on Microsoft Windows contain an improper access control vulnerability that may allow an attacker to manipulate a particular product folder to disable the security temporarily, abuse a",
+      "desc": "Trend Micro Apex One, OfficeScan, and Worry-Free Business Security on Microsoft Windows contain an improper access control vulnerability that may allow an attacker to manipulate a particular product folder to disable the security temporarily, abuse a specific Windows function, and attain privilege e",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4204,10 +3968,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-24557",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-8599",
@@ -4220,10 +3986,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-8599",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2021-36742",
@@ -4236,10 +4004,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-36742",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2021-36741",
@@ -4252,10 +4022,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-36741",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2019-20085",
@@ -4268,10 +4040,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-20085",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-5849",
@@ -4284,14 +4058,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-5849",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-5847",
-      "desc": "Unraid contains a vulnerability due to the insecure use of the extract PHP function that can be abused to execute remote code as root. This CVE is chainable with CVE-2020-5849 for initial access. Required action: Apply updates per vendor instructions",
+      "desc": "Unraid contains a vulnerability due to the insecure use of the extract PHP function that can be abused to execute remote code as root. This CVE is chainable with CVE-2020-5849 for initial access. Required action: Apply updates per vendor instructions.",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4300,10 +4076,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-5847",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2019-16759",
@@ -4316,14 +4094,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-16759",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-17496",
-      "desc": "The PHP module within vBulletin contains an unspecified vulnerability that allows for remote code execution via crafted subWidgets data in an ajax/render/widget_tabbedcontainer_tab_panel request. This CVE ID resolves an incomplete patch for CVE-2019-",
+      "desc": "The PHP module within vBulletin contains an unspecified vulnerability that allows for remote code execution via crafted subWidgets data in an ajax/render/widget_tabbedcontainer_tab_panel request. This CVE ID resolves an incomplete patch for CVE-2019-16759. Required action: Apply updates per vendor i",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4332,14 +4112,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-17496",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2019-5544",
-      "desc": "VMware ESXi and Horizon Desktop as a Service (DaaS) OpenSLP contains a heap-based buffer overflow vulnerability that allows an attacker with network access to port 427 to overwrite the heap of the OpenSLP service to perform remote code execution. Req",
+      "desc": "VMware ESXi and Horizon Desktop as a Service (DaaS) OpenSLP contains a heap-based buffer overflow vulnerability that allows an attacker with network access to port 427 to overwrite the heap of the OpenSLP service to perform remote code execution. Required action: Apply updates per vendor instruction",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4348,10 +4130,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-5544",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-3992",
@@ -4364,14 +4148,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-3992",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-3950",
-      "desc": "VMware Fusion, Remote Console (VMRC) for Mac, and Horizon Client for Mac contain a privilege escalation vulnerability due to improper use of setuid binaries that allows attackers to escalate privileges to root. Required action: Apply updates per vend",
+      "desc": "VMware Fusion, Remote Console (VMRC) for Mac, and Horizon Client for Mac contain a privilege escalation vulnerability due to improper use of setuid binaries that allows attackers to escalate privileges to root. Required action: Apply updates per vendor instructions.",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4380,10 +4166,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-3950",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2021-22005",
@@ -4396,14 +4184,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-22005",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-3952",
-      "desc": "VMware vCenter Server contains an information disclosure vulnerability in the VMware Directory Service (vmdir) when the Platform Services Controller (PSC) does not correctly implement access controls. Successful exploitation allows an attacker with n",
+      "desc": "VMware vCenter Server contains an information disclosure vulnerability in the VMware Directory Service (vmdir) when the Platform Services Controller (PSC) does not correctly implement access controls. Successful exploitation allows an attacker with network access to port 389 to extract sensitive inf",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4412,14 +4202,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-3952",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2021-21972",
-      "desc": "VMware vCenter Server vSphere Client contains a remote code execution vulnerability in a vCenter Server plugin which allows an attacker with network access to port 443 to execute commands with unrestricted privileges on the underlying operating syste",
+      "desc": "VMware vCenter Server vSphere Client contains a remote code execution vulnerability in a vCenter Server plugin which allows an attacker with network access to port 443 to execute commands with unrestricted privileges on the underlying operating system. Required action: Apply updates per vendor instr",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4428,14 +4220,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-21972",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2021-21985",
-      "desc": "VMware vSphere Client contains an improper input validation vulnerability in the Virtual SAN Health Check plug-in, which is enabled by default in vCenter Server, which allows for remote code execution. Required action: Apply updates per vendor instru",
+      "desc": "VMware vSphere Client contains an improper input validation vulnerability in the Virtual SAN Health Check plug-in, which is enabled by default in vCenter Server, which allows for remote code execution. Required action: Apply updates per vendor instructions.",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4444,14 +4238,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-21985",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-4006",
-      "desc": "VMware Workspace One Access, Access Connector, Identity Manager, and Identity Manager Connector contain a command injection vulnerability. An attacker with network access to the administrative configurator on port 8443 and a valid password for the co",
+      "desc": "VMware Workspace One Access, Access Connector, Identity Manager, and Identity Manager Connector contain a command injection vulnerability. An attacker with network access to the administrative configurator on port 8443 and a valid password for the configurator administrator account can execute comma",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4460,10 +4256,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-4006",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-25213",
@@ -4476,14 +4274,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-25213",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-11738",
-      "desc": "WordPress Snap Creek Duplicator plugin contains a file download vulnerability when an administrator creates a new copy of their site that allows an attacker to download the generated files from their Wordpress dashboard. This vulnerability affects Du",
+      "desc": "WordPress Snap Creek Duplicator plugin contains a file download vulnerability when an administrator creates a new copy of their site that allows an attacker to download the generated files from their Wordpress dashboard. This vulnerability affects Duplicator and Dulplicator Pro. Required action: App",
       "severity": "HIGH",
       "source": "CISA KEV",
       "date": "2021-11-03",
@@ -4492,10 +4292,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-11738",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2019-9978",
@@ -4508,10 +4310,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-9978",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2021-27561",
@@ -4524,10 +4328,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-27561",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2021-40539",
@@ -4540,10 +4346,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-40539",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-10189",
@@ -4556,10 +4364,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-10189",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2019-8394",
@@ -4572,10 +4382,12 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-8394",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "CVE-2020-29583",
@@ -4588,14 +4400,16 @@
         "zero-day",
         "actively-exploited",
         "cisa",
-        "kev"
+        "kev",
+        "Zero Day"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2020-29583",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://projectzero.google/2026/03/mutational-grammar-fuzzing.html",
-      "desc": "Mutational grammar fuzzing is a fuzzing technique in which the fuzzer uses a predefined grammar that describes the structure of the samples. When a sample gets mutated, the mutations happen in such a way that any resulting samples still adhere to the",
+      "desc": "Mutational grammar fuzzing is a fuzzing technique in which the fuzzer uses a predefined grammar that describes the structure of the samples. When a sample gets mutated, the mutations happen in such a way that any resulting samples still adhere to the grammar rules, thus the structure of the samples ",
       "severity": "LOW",
       "source": "Google Project Zero",
       "date": "2026-03-05",
@@ -4604,14 +4418,16 @@
         "zero-day",
         "project-zero",
         "google",
-        "research"
+        "research",
+        "Zero Day"
       ],
       "url": "https://projectzero.google/2026/03/mutational-grammar-fuzzing.html",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://projectzero.google/2026/02/gphfh-deep-dive.html",
-      "desc": "In my previous blog post I mentioned the GetProcessHandleFromHwnd API. This was an API I didn\u00e2\u0080\u0099t know existed until I found a publicly disclosed UAC bypass using the Quick Assist UI Access application. This API looked interesting so I thought I shou",
+      "desc": "In my previous blog post I mentioned the GetProcessHandleFromHwnd API. This was an API I didnât know existed until I found a publicly disclosed UAC bypass using the Quick Assist UI Access application. This API looked interesting so I thought I should take a closer look.",
       "severity": "LOW",
       "source": "Google Project Zero",
       "date": "2026-02-26",
@@ -4620,14 +4436,16 @@
         "zero-day",
         "project-zero",
         "google",
-        "research"
+        "research",
+        "Zero Day"
       ],
       "url": "https://projectzero.google/2026/02/gphfh-deep-dive.html",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://projectzero.google/2026/02/windows-administrator-protection.html",
-      "desc": "In my last blog post I introduced the new Windows feature, Administrator Protection and how it aimed to create a secure boundary for UAC where one didn\u00e2\u0080\u0099t exist. I described one of the ways I was able to bypass the feature before it was released. In",
+      "desc": "In my last blog post I introduced the new Windows feature, Administrator Protection and how it aimed to create a secure boundary for UAC where one didnât exist. I described one of the ways I was able to bypass the feature before it was released. In total I found 9 bypasses during my research that ",
       "severity": "LOW",
       "source": "Google Project Zero",
       "date": "2026-02-12",
@@ -4636,10 +4454,12 @@
         "zero-day",
         "project-zero",
         "google",
-        "research"
+        "research",
+        "Zero Day"
       ],
       "url": "https://projectzero.google/2026/02/windows-administrator-protection.html",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://projectzero.google/2026/01/sound-barrier-2.html",
@@ -4652,14 +4472,16 @@
         "zero-day",
         "project-zero",
         "google",
-        "research"
+        "research",
+        "Zero Day"
       ],
       "url": "https://projectzero.google/2026/01/sound-barrier-2.html",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://projectzero.google/2026/26/windows-administrator-protection.html",
-      "desc": "A headline feature introduced in the latest release of Windows 11, 25H2 is Administrator Protection. The goal of this feature is to replace User Account Control (UAC) with a more robust and importantly, securable system to allow a local user to acces",
+      "desc": "A headline feature introduced in the latest release of Windows 11, 25H2 is Administrator Protection. The goal of this feature is to replace User Account Control (UAC) with a more robust and importantly, securable system to allow a local user to access administrator privileges only when necessary.\nTh",
       "severity": "LOW",
       "source": "Google Project Zero",
       "date": "2026-01-26",
@@ -4668,14 +4490,16 @@
         "zero-day",
         "project-zero",
         "google",
-        "research"
+        "research",
+        "Zero Day"
       ],
       "url": "https://projectzero.google/2026/26/windows-administrator-protection.html",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://projectzero.google/2026/01/pixel-0-click-part-3.html",
-      "desc": "While our previous two blog posts provided technical recommendations for increasing the effort required by attackers to develop 0-click exploit chains, our experience finding, reporting and exploiting these vulnerabilities highlighted some broader is",
+      "desc": "While our previous two blog posts provided technical recommendations for increasing the effort required by attackers to develop 0-click exploit chains, our experience finding, reporting and exploiting these vulnerabilities highlighted some broader issues in the Android ecosystem. This post describes",
       "severity": "LOW",
       "source": "Google Project Zero",
       "date": "2026-01-14",
@@ -4684,14 +4508,16 @@
         "zero-day",
         "project-zero",
         "google",
-        "research"
+        "research",
+        "Zero Day"
       ],
       "url": "https://projectzero.google/2026/01/pixel-0-click-part-3.html",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://projectzero.google/2026/01/pixel-0-click-part-2.html",
-      "desc": "With the advent of a potential Dolby Unified Decoder RCE exploit, it seemed prudent to see what kind of Linux kernel drivers might be accessible from the resulting userland context, the mediacodec context. As per the AOSP documentation, the mediacode",
+      "desc": "With the advent of a potential Dolby Unified Decoder RCE exploit, it seemed prudent to see what kind of Linux kernel drivers might be accessible from the resulting userland context, the mediacodec context. As per the AOSP documentation, the mediacodec SELinux context",
       "severity": "LOW",
       "source": "Google Project Zero",
       "date": "2026-01-14",
@@ -4700,14 +4526,16 @@
         "zero-day",
         "project-zero",
         "google",
-        "research"
+        "research",
+        "Zero Day"
       ],
       "url": "https://projectzero.google/2026/01/pixel-0-click-part-2.html",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://projectzero.google/2026/01/pixel-0-click-part-1.html",
-      "desc": "Over the past few years, several AI-powered features have been added to mobile phones that allow users to better search and understand their messages. One effect of this change is increased 0-click attack surface, as efficient analysis often requires",
+      "desc": "Over the past few years, several AI-powered features have been added to mobile phones that allow users to better search and understand their messages. One effect of this change is increased 0-click attack surface, as efficient analysis often requires message media to be decoded before the message is",
       "severity": "LOW",
       "source": "Google Project Zero",
       "date": "2026-01-14",
@@ -4716,14 +4544,16 @@
         "zero-day",
         "project-zero",
         "google",
-        "research"
+        "research",
+        "Zero Day"
       ],
       "url": "https://projectzero.google/2026/01/pixel-0-click-part-1.html",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://projectzero.google/2025/12/welcome.html",
-      "desc": "While on Project Zero, we aim for our research to be leading-edge, our blog design was \u00e2\u0080\u00a6 not so much. We welcome readers to our shiny new blog!\nFor the occasion, we asked members of Project Zero to dust off old blog posts that never quite saw the l",
+      "desc": "While on Project Zero, we aim for our research to be leading-edge, our blog design was â¦ not so much. We welcome readers to our shiny new blog!\nFor the occasion, we asked members of Project Zero to dust off old blog posts that never quite saw the light of day. And while we wish we could say the te",
       "severity": "LOW",
       "source": "Google Project Zero",
       "date": "2025-12-16",
@@ -4732,14 +4562,16 @@
         "zero-day",
         "project-zero",
         "google",
-        "research"
+        "research",
+        "Zero Day"
       ],
       "url": "https://projectzero.google/2025/12/welcome.html",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://projectzero.google/2025/12/thinking-outside-the-box.html",
-      "desc": "Preface\nHello from the future!\nThis is a blogpost I originally drafted in early 2017. I wrote what I intended to be the first half of this post (about escaping from the VM to the VirtualBox host userspace process with CVE-2017-3558), but I never got ",
+      "desc": "Preface\nHello from the future!\nThis is a blogpost I originally drafted in early 2017. I wrote what I intended to be the first half of this post (about escaping from the VM to the VirtualBox host userspace process with CVE-2017-3558), but I never got around to writing the second half (going from the ",
       "severity": "LOW",
       "source": "Google Project Zero",
       "date": "2025-12-16",
@@ -4748,14 +4580,16 @@
         "zero-day",
         "project-zero",
         "google",
-        "research"
+        "research",
+        "Zero Day"
       ],
       "url": "https://projectzero.google/2025/12/thinking-outside-the-box.html",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://vulners.com/packetstormnews/PACKETSTORMNEWS:213585?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "desc": "GNUnet is a peer-to-peer framework with focus on providing security. All peer-to-peer messages in the network are confidential and authenticated. The framework provides a transport abstraction layer and can currently encapsulate the network traffic i",
+      "desc": "GNUnet is a peer-to-peer framework with focus on providing security. All peer-to-peer messages in the network are confidential and authenticated. The framework provides a transport abstraction layer and can currently encapsulate the network traffic in UDP IPv4 and IPv6, TCP IPv4 and IPv6, HTTP, or S",
       "severity": "HIGH",
       "source": "Vulners",
       "date": "Tue, 29 De",
@@ -4767,7 +4601,8 @@
         "Zero Day"
       ],
       "url": "https://vulners.com/packetstormnews/PACKETSTORMNEWS:213585?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
       "id": "https://vulners.com/packetstormnews/PACKETSTORMNEWS:217785?utm_source=rss&utm_medium=rss&utm_campaign=rss",
@@ -4783,11 +4618,12 @@
         "Zero Day"
       ],
       "url": "https://vulners.com/packetstormnews/PACKETSTORMNEWS:217785?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "cvss": ""
+      "cvss": "",
+      "cwe": ""
     },
     {
-      "id": "https://vulners.com/cvelist/CVELIST:CVE-2026-8274?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "desc": "A security vulnerability has been detected in npitre cramfs-tools up to 2.1. Affected is the function dodirectory of the file cramfsck.c of the component Directory Handler. Such manipulation leads to path traversal. The attack can only be performed f",
+      "id": "https://vulners.com/circl/CIRCL:CVE-2026-41530?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "desc": "creationtimestamp| type| source ---|---|--- 2026-05-11 07:34:08+00:00| seen| https://bsky.app/profile/eulanov.m.eula.dev.ap.brid.gy/post/3mlkqw7oxmmw2...",
       "severity": "HIGH",
       "source": "Vulners",
       "date": "Mon, 11 Ma",
@@ -4798,13 +4634,201 @@
         "vulnerability-db",
         "Zero Day"
       ],
-      "url": "https://vulners.com/cvelist/CVELIST:CVE-2026-8274?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "cvss": ""
+      "url": "https://vulners.com/circl/CIRCL:CVE-2026-41530?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
     },
     {
-      "id": "https://vulners.com/githubexploit/36896ACB-4AFE-52FF-9EA6-76FB4E5E59E9?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "id": "https://vulners.com/githubexploit/E802680A-5034-5B55-AF57-FDCB66E4CAB6?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "desc": "BIRT File Upload RCE â C2 over HTTPS This repository provides a proof-of-concept exploit for Remote Code Execution RCE in Eclipse BIRT via malicious .rptdesign upload. The payload establishes a polling C2 channel using curl over HTTPS, bypassing egress filters. Files - server.py â C2 server atta",
+      "severity": "HIGH",
+      "source": "Vulners",
+      "date": "Mon, 11 Ma",
+      "pakistan": false,
+      "tags": [
+        "zero-day",
+        "vulners",
+        "vulnerability-db",
+        "Zero Day"
+      ],
+      "url": "https://vulners.com/githubexploit/E802680A-5034-5B55-AF57-FDCB66E4CAB6?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
+    },
+    {
+      "id": "https://vulners.com/circl/CIRCL:CVE-2026-8270?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "desc": "creationtimestamp| type| source ---|---|--- 2026-05-11 07:26:14+00:00| seen| https://bsky.app/profile/cve.skyfleet.blue/post/3mlkqopo57u2i...",
+      "severity": "HIGH",
+      "source": "Vulners",
+      "date": "Mon, 11 Ma",
+      "pakistan": false,
+      "tags": [
+        "zero-day",
+        "vulners",
+        "vulnerability-db",
+        "Zero Day"
+      ],
+      "url": "https://vulners.com/circl/CIRCL:CVE-2026-8270?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
+    },
+    {
+      "id": "https://vulners.com/circl/CIRCL:CVE-2026-8269?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "desc": "creationtimestamp| type| source ---|---|--- 2026-05-11 07:21:14+00:00| seen| https://bsky.app/profile/cve.skyfleet.blue/post/3mlkqfraxn62p...",
+      "severity": "HIGH",
+      "source": "Vulners",
+      "date": "Mon, 11 Ma",
+      "pakistan": false,
+      "tags": [
+        "zero-day",
+        "vulners",
+        "vulnerability-db",
+        "Zero Day"
+      ],
+      "url": "https://vulners.com/circl/CIRCL:CVE-2026-8269?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
+    },
+    {
+      "id": "https://vulners.com/circl/CIRCL:CVE-2026-8275?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "desc": "creationtimestamp| type| source ---|---|--- 2026-05-11 07:16:14+00:00| seen| https://bsky.app/profile/cve.skyfleet.blue/post/3mlkq4stzu62p...",
+      "severity": "HIGH",
+      "source": "Vulners",
+      "date": "Mon, 11 Ma",
+      "pakistan": false,
+      "tags": [
+        "zero-day",
+        "vulners",
+        "vulnerability-db",
+        "Zero Day"
+      ],
+      "url": "https://vulners.com/circl/CIRCL:CVE-2026-8275?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
+    },
+    {
+      "id": "https://vulners.com/redhat/RHSA-2026:15941?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "desc": "An update for skopeo is now available for Red Hat Enterprise Linux 9.0 Update Services for SAP Solutions. Red Hat Product Security has rated this update as having a security impact of Moderate. A Common Vulnerability Scoring System CVSS base score, which gives a detailed severity rating, is availabl",
+      "severity": "HIGH",
+      "source": "Vulners",
+      "date": "Mon, 11 Ma",
+      "pakistan": false,
+      "tags": [
+        "zero-day",
+        "vulners",
+        "vulnerability-db",
+        "Zero Day"
+      ],
+      "url": "https://vulners.com/redhat/RHSA-2026:15941?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
+    },
+    {
+      "id": "https://vulners.com/redhat/RHSA-2026:15941-CVE-2025-65637?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "desc": "A denial-of-service vulnerability in github.com/sirupsen/logrus occurs when Entry.Writer processes a single-line payload larger than 64KB with no newline characters. Due to a limitation in Goâs internal bufio.Scanner, the read operation fails with a âtoken too longâ error, causing the underlyi",
+      "severity": "HIGH",
+      "source": "Vulners",
+      "date": "Mon, 11 Ma",
+      "pakistan": false,
+      "tags": [
+        "zero-day",
+        "vulners",
+        "vulnerability-db",
+        "Zero Day"
+      ],
+      "url": "https://vulners.com/redhat/RHSA-2026:15941-CVE-2025-65637?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
+    },
+    {
+      "id": "https://vulners.com/circl/CIRCL:CVE-2026-8272?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "desc": "creationtimestamp| type| source ---|---|--- 2026-05-11 07:11:13+00:00| seen| https://bsky.app/profile/cve.skyfleet.blue/post/3mlkptugi622e...",
+      "severity": "HIGH",
+      "source": "Vulners",
+      "date": "Mon, 11 Ma",
+      "pakistan": false,
+      "tags": [
+        "zero-day",
+        "vulners",
+        "vulnerability-db",
+        "Zero Day"
+      ],
+      "url": "https://vulners.com/circl/CIRCL:CVE-2026-8272?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
+    },
+    {
+      "id": "https://vulners.com/redhat/RHSA-2026:15940?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "desc": "An update for oci-seccomp-bpf-hook is now available for Red Hat Enterprise Linux 9.0 Update Services for SAP Solutions. Red Hat Product Security has rated this update as having a security impact of Moderate. A Common Vulnerability Scoring System CVSS base score, which gives a detailed severity ratin",
+      "severity": "HIGH",
+      "source": "Vulners",
+      "date": "Mon, 11 Ma",
+      "pakistan": false,
+      "tags": [
+        "zero-day",
+        "vulners",
+        "vulnerability-db",
+        "Zero Day"
+      ],
+      "url": "https://vulners.com/redhat/RHSA-2026:15940?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
+    },
+    {
+      "id": "https://vulners.com/circl/CIRCL:CVE-2026-8271?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "desc": "creationtimestamp| type| source ---|---|--- 2026-05-11 07:06:13+00:00| seen| https://bsky.app/profile/cve.skyfleet.blue/post/3mlkpkvy65i2c...",
+      "severity": "HIGH",
+      "source": "Vulners",
+      "date": "Mon, 11 Ma",
+      "pakistan": false,
+      "tags": [
+        "zero-day",
+        "vulners",
+        "vulnerability-db",
+        "Zero Day"
+      ],
+      "url": "https://vulners.com/circl/CIRCL:CVE-2026-8271?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
+    },
+    {
+      "id": "https://vulners.com/thn/THN:F83F1293DB9579306740711FD122DF31?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "desc": "A malicious Hugging Face repository managed to take a spot in the platform's trending list by impersonating OpenAI's Privacy Filter open-weight model to deliver a Rust-based information stealer to Windows users. The project, named Open-OSS/privacy-filter, masqueraded as its legitimate counterpart, r",
+      "severity": "HIGH",
+      "source": "Vulners",
+      "date": "Mon, 11 Ma",
+      "pakistan": false,
+      "tags": [
+        "zero-day",
+        "vulners",
+        "vulnerability-db",
+        "Zero Day"
+      ],
+      "url": "https://vulners.com/thn/THN:F83F1293DB9579306740711FD122DF31?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
+    },
+    {
+      "id": "https://vulners.com/malwarebytes/MALWAREBYTES:42B26F60FCF89DFC46805F5BC524CA8F?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "desc": "Last week on Malwarebytes Labs: Microsoft says Edgeâs plaintext password behavior is \"by design\" ShinyHunters escalates Canvas attacks with school login defacements Massive AI investment scam network spans 15,500 domains If a fake moustache can fool age checks, is the Online Safety Act working? Go",
+      "severity": "HIGH",
+      "source": "Vulners",
+      "date": "Mon, 11 Ma",
+      "pakistan": false,
+      "tags": [
+        "zero-day",
+        "vulners",
+        "vulnerability-db",
+        "Zero Day"
+      ],
+      "url": "https://vulners.com/malwarebytes/MALWAREBYTES:42B26F60FCF89DFC46805F5BC524CA8F?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
+    },
+    {
+      "id": "https://vulners.com/githubexploit/8DAFA6AF-F8F9-5C31-A4F0-5B2C3B4D5B08?utm_source=rss&utm_medium=rss&utm_campaign=rss",
       "desc": "No description provided...",
-      "severity": "HIGH",
+      "severity": "CRITICAL",
       "source": "Vulners",
       "date": "Mon, 11 Ma",
       "pakistan": false,
@@ -4814,12 +4838,13 @@
         "vulnerability-db",
         "Zero Day"
       ],
-      "url": "https://vulners.com/githubexploit/36896ACB-4AFE-52FF-9EA6-76FB4E5E59E9?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "cvss": ""
+      "url": "https://vulners.com/githubexploit/8DAFA6AF-F8F9-5C31-A4F0-5B2C3B4D5B08?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
     },
     {
-      "id": "https://vulners.com/cve/CVE-2026-8273?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "desc": "A weakness has been identified in D-Link DNS-320 2.06B01. This impacts the function cgisethost/cgisetntp/cgifancontrol/cgimergeuser of the file /cgi-bin/systemmgr.cgi. This manipulation causes os command injection. It is possible to initiate the atta",
+      "id": "https://vulners.com/circl/CIRCL:CVE-2026-8273?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "desc": "creationtimestamp| type| source ---|---|--- 2026-05-11 06:56:55+00:00| seen| https://bsky.app/profile/cve.skyfleet.blue/post/3mlkp2buqap2e...",
       "severity": "HIGH",
       "source": "Vulners",
       "date": "Mon, 11 Ma",
@@ -4830,12 +4855,13 @@
         "vulnerability-db",
         "Zero Day"
       ],
-      "url": "https://vulners.com/cve/CVE-2026-8273?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "cvss": ""
+      "url": "https://vulners.com/circl/CIRCL:CVE-2026-8273?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
     },
     {
-      "id": "https://vulners.com/githubexploit/381D5D17-B033-5BF1-9D4B-86CB6311DBB7?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "desc": "waf-poc \u00e2\u0080\u0094 Choreo CP WAF Bake-Off OpenResty Three-way WAF evaluation for the post-migration Choreo control plane on OpenResty. See Plan.md for full context, tasks.md for the breakdown, summary-comparison.md for the engine comparison memo, and CLAUDE",
+      "id": "https://vulners.com/circl/CIRCL:CVE-2026-8265?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "desc": "creationtimestamp| type| source ---|---|--- 2026-05-11 06:53:10+00:00| seen| https://bsky.app/profile/cve.skyfleet.blue/post/3mlkotkxbam2v...",
       "severity": "HIGH",
       "source": "Vulners",
       "date": "Mon, 11 Ma",
@@ -4846,12 +4872,13 @@
         "vulnerability-db",
         "Zero Day"
       ],
-      "url": "https://vulners.com/githubexploit/381D5D17-B033-5BF1-9D4B-86CB6311DBB7?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "cvss": ""
+      "url": "https://vulners.com/circl/CIRCL:CVE-2026-8265?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
     },
     {
-      "id": "https://vulners.com/githubexploit/9F54131A-00B4-5351-A521-172F0A85FD53?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "desc": "\u00e2\u009a\u00a1 Strix-Advanced AI-Powered Security Testing Platform An enhanced fork of Strix with advanced capabilities inspired by: - Shannon \u00e2\u0080\u0094 White-box analysis & static-dynamic correlation - Hermes Agent \u00e2\u0080\u0094 Self-improving learning loop & memory - Everyth",
+      "id": "https://vulners.com/circl/CIRCL:CVE-2026-8267?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "desc": "creationtimestamp| type| source ---|---|--- 2026-05-11 06:49:49+00:00| seen| https://bsky.app/profile/cve.skyfleet.blue/post/3mlkonlw23u2e...",
       "severity": "HIGH",
       "source": "Vulners",
       "date": "Mon, 11 Ma",
@@ -4862,136 +4889,9 @@
         "vulnerability-db",
         "Zero Day"
       ],
-      "url": "https://vulners.com/githubexploit/9F54131A-00B4-5351-A521-172F0A85FD53?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "cvss": ""
-    },
-    {
-      "id": "https://vulners.com/nvd/NVD:CVE-2026-8268?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "desc": "A vulnerability has been found in Open5GS up to 2.7.7. This issue affects the function OpenAPIlistcreate of the component SMF. Such manipulation leads to denial of service. The attack may be launched remotely. The exploit has been disclosed to the pu",
-      "severity": "HIGH",
-      "source": "Vulners",
-      "date": "Mon, 11 Ma",
-      "pakistan": false,
-      "tags": [
-        "zero-day",
-        "vulners",
-        "vulnerability-db",
-        "Zero Day"
-      ],
-      "url": "https://vulners.com/nvd/NVD:CVE-2026-8268?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "cvss": ""
-    },
-    {
-      "id": "https://vulners.com/nvd/NVD:CVE-2026-8266?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "desc": "A vulnerability was detected in Open5GS up to 2.7.7. This affects the function gsmbuildpdusessionestablishmentaccept of the file /src/smf/gsm-build.c of the component SMF. The manipulation results in denial of service. The attack can be launched remo",
-      "severity": "HIGH",
-      "source": "Vulners",
-      "date": "Mon, 11 Ma",
-      "pakistan": false,
-      "tags": [
-        "zero-day",
-        "vulners",
-        "vulnerability-db",
-        "Zero Day"
-      ],
-      "url": "https://vulners.com/nvd/NVD:CVE-2026-8266?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "cvss": ""
-    },
-    {
-      "id": "https://vulners.com/nvd/NVD:CVE-2026-8267?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "desc": "A flaw has been found in Open5GS up to 2.7.7. This vulnerability affects the function smfnsmfhandlecreateddatainvsmf of the component SMF. This manipulation causes denial of service. The attack may be initiated remotely. The exploit has been publishe",
-      "severity": "HIGH",
-      "source": "Vulners",
-      "date": "Mon, 11 Ma",
-      "pakistan": false,
-      "tags": [
-        "zero-day",
-        "vulners",
-        "vulnerability-db",
-        "Zero Day"
-      ],
-      "url": "https://vulners.com/nvd/NVD:CVE-2026-8267?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "cvss": ""
-    },
-    {
-      "id": "https://vulners.com/nvd/NVD:CVE-2026-8265?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "desc": "A security vulnerability has been detected in Tenda AC6 15.03.06.23. Affected by this issue is the function getlogfile of the file /goform/getLogFile of the component httpd. The manipulation of the argument wans.flag leads to os command injection. Th",
-      "severity": "HIGH",
-      "source": "Vulners",
-      "date": "Mon, 11 Ma",
-      "pakistan": false,
-      "tags": [
-        "zero-day",
-        "vulners",
-        "vulnerability-db",
-        "Zero Day"
-      ],
-      "url": "https://vulners.com/nvd/NVD:CVE-2026-8265?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "cvss": ""
-    },
-    {
-      "id": "https://vulners.com/nvd/NVD:CVE-2026-8264?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "desc": "A weakness has been identified in Tenda AC6 15.03.06.23. Affected by this vulnerability is the function formWifiApScan of the file /goform/WifiApScan of the component httpd. Executing a manipulation of the argument wl2g.public.country/wl5g.public.cou",
-      "severity": "HIGH",
-      "source": "Vulners",
-      "date": "Mon, 11 Ma",
-      "pakistan": false,
-      "tags": [
-        "zero-day",
-        "vulners",
-        "vulnerability-db",
-        "Zero Day"
-      ],
-      "url": "https://vulners.com/nvd/NVD:CVE-2026-8264?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "cvss": ""
-    },
-    {
-      "id": "https://vulners.com/cve/CVE-2026-8272?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "desc": "A security flaw has been discovered in D-Link DNS-320 2.06B01. This affects the function delete/rename/copy/move/chmod/chown of the file /cgi-bin/webfilemgr.cgi. The manipulation results in os command injection. The attack may be performed from remot",
-      "severity": "HIGH",
-      "source": "Vulners",
-      "date": "Mon, 11 Ma",
-      "pakistan": false,
-      "tags": [
-        "zero-day",
-        "vulners",
-        "vulnerability-db",
-        "Zero Day"
-      ],
-      "url": "https://vulners.com/cve/CVE-2026-8272?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "cvss": ""
-    },
-    {
-      "id": "https://vulners.com/redhat/RHSA-2026:15924?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "desc": "An update for LibRaw is now available for Red Hat Enterprise Linux 8.8 Update Services for SAP Solutions and Red Hat Enterprise Linux 8.8 Telecommunications Update Service. Red Hat Product Security has rated this update as having a security impact of",
-      "severity": "HIGH",
-      "source": "Vulners",
-      "date": "Mon, 11 Ma",
-      "pakistan": false,
-      "tags": [
-        "zero-day",
-        "vulners",
-        "vulnerability-db",
-        "Zero Day"
-      ],
-      "url": "https://vulners.com/redhat/RHSA-2026:15924?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "cvss": ""
-    },
-    {
-      "id": "https://vulners.com/redhat/RHSA-2026:15924-CVE-2026-24660?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "desc": "A flaw was found in LibRaw. A remote attacker could exploit a heap-based buffer overflow vulnerability in the x3floadhuffman functionality by providing a specially crafted malicious file. This can lead to memory corruption, potentially allowing the a",
-      "severity": "HIGH",
-      "source": "Vulners",
-      "date": "Mon, 11 Ma",
-      "pakistan": false,
-      "tags": [
-        "zero-day",
-        "vulners",
-        "vulnerability-db",
-        "Zero Day"
-      ],
-      "url": "https://vulners.com/redhat/RHSA-2026:15924-CVE-2026-24660?utm_source=rss&utm_medium=rss&utm_campaign=rss",
-      "cvss": ""
+      "url": "https://vulners.com/circl/CIRCL:CVE-2026-8267?utm_source=rss&utm_medium=rss&utm_campaign=rss",
+      "cvss": "",
+      "cwe": ""
     }
   ]
 }

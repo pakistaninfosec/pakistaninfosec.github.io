@@ -31,7 +31,6 @@ Output files (scraper/output/ by default):
 import argparse
 import logging
 import os
-import sys
 import time
 from typing import List
 
@@ -88,10 +87,10 @@ def run_scrape(
     if "news" in sources:
         log.info("═══ Security News ═══")
         scrapers = [
-            ("Krebs on Security",  scrape_krebs),
-            ("Dark Reading",       scrape_dark_reading),
-            ("SecurityWeek",       scrape_security_week),
-            ("The Hacker News",    scrape_hacker_news_sec),
+            ("Krebs on Security", scrape_krebs),
+            ("Dark Reading",      scrape_dark_reading),
+            ("SecurityWeek",      scrape_security_week),
+            ("The Hacker News",   scrape_hacker_news_sec),
         ]
         for name, fn in scrapers:
             before = len(records)
@@ -132,11 +131,11 @@ def run_scrape(
     if "threat_intel" in sources:
         log.info("═══ Threat Intelligence ═══")
         ti_scrapers = [
-            ("Unit42",              scrape_unit42),
-            ("CrowdStrike Blog",    scrape_crowdstrike_blog),
-            ("Kaspersky Securelist",scrape_kaspersky),
-            ("SANS ISC",            scrape_sans_isc),
-            ("Recorded Future",     scrape_recorded_future),
+            ("Unit42",               scrape_unit42),
+            ("CrowdStrike Blog",     scrape_crowdstrike_blog),
+            ("Kaspersky Securelist", scrape_kaspersky),
+            ("SANS ISC",             scrape_sans_isc),
+            ("Recorded Future",      scrape_recorded_future),
         ]
         for name, fn in ti_scrapers:
             before = len(records)
@@ -144,7 +143,6 @@ def run_scrape(
                 records.append(rec)
             log.info("%s: %d new records", name, len(records) - before)
 
-        # Pakistan sources — PKCERT + NCCS (always returns fallback data if sites unreachable)
         log.info("Pakistan CERT + NCCS…")
         before = len(records)
         for rec in scrape_pakistan_all():
@@ -154,12 +152,12 @@ def run_scrape(
     if "zeroday" in sources:
         log.info("═══ Zero Day Sources ═══")
         zd_scrapers = [
-            ("CISA KEV",           scrape_cisa_kev),
-            ("Zero Day Initiative", scrape_zdi),
-            ("Exploit-DB",          scrape_exploit_db),
-            ("Google Project Zero", scrape_project_zero),
-            ("Packet Storm",        scrape_packet_storm),
-            ("Vulners",             scrape_vulners),
+            ("CISA KEV",            scrape_cisa_kev),
+            ("Zero Day Initiative",  scrape_zdi),
+            ("Exploit-DB",           scrape_exploit_db),
+            ("Google Project Zero",  scrape_project_zero),
+            ("Packet Storm",         scrape_packet_storm),
+            ("Vulners",              scrape_vulners),
         ]
         for name, fn in zd_scrapers:
             before = len(records)
@@ -201,35 +199,11 @@ def main() -> None:
         default=os.path.join(os.path.dirname(__file__), "output"),
         help="Directory to write output files (default: scraper/output/)",
     )
-    parser.add_argument(
-        "--nvd-days",
-        type=int,
-        default=30,
-        help="How many days back to pull NVD CVEs (default: 30)",
-    )
-    parser.add_argument(
-        "--nvd-max",
-        type=int,
-        default=200,
-        help="Maximum CVEs to fetch from NVD (default: 200)",
-    )
-    parser.add_argument(
-        "--nvd-keyword",
-        default="security",
-        help="Keyword filter for NVD search (default: security)",
-    )
-    parser.add_argument(
-        "--g2-pages",
-        type=int,
-        default=3,
-        help="Pages to scrape per G2 category (default: 3)",
-    )
-    parser.add_argument(
-        "--capterra-pages",
-        type=int,
-        default=3,
-        help="Pages to scrape per Capterra category (default: 3)",
-    )
+    parser.add_argument("--nvd-days",  type=int, default=30,       help="Days back for NVD CVEs (default: 30)")
+    parser.add_argument("--nvd-max",   type=int, default=200,      help="Max CVEs from NVD (default: 200)")
+    parser.add_argument("--nvd-keyword",         default="security",help="NVD keyword filter (default: security)")
+    parser.add_argument("--g2-pages",  type=int, default=3,        help="G2 pages per category (default: 3)")
+    parser.add_argument("--capterra-pages", type=int, default=3,   help="Capterra pages per category (default: 3)")
     parser.add_argument(
         "--log-level",
         default="INFO",

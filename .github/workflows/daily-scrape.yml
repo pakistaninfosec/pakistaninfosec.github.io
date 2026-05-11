@@ -2,9 +2,9 @@ name: Daily Threat Intelligence Scrape
 
 on:
   schedule:
-    # Runs at 04:00 UTC = 09:00 PKT every day
+    # 04:00 UTC = 09:00 PKT every day
     - cron: '0 4 * * *'
-  workflow_dispatch:   # allows manual trigger from GitHub Actions tab
+  workflow_dispatch:  # Manual trigger from Actions tab
 
 jobs:
   scrape-and-deploy:
@@ -21,20 +21,19 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests beautifulsoup4 groq
+          pip install requests beautifulsoup4 groq feedparser
 
-      - name: Run scraper + export to web
+      - name: Run bridge script
         env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          # Add other secrets here e.g. SHODAN_API_KEY: ${{ secrets.SHODAN_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ github.repository }}
         run: |
-          python your_scraper.py        # your existing scraper
-          python export_to_web.py       # generates data/threats.json + data/reports.json
+          python bridge_to_github.py
 
-      - name: Commit and push data
+      - name: Commit data files
         run: |
-          git config user.name  "InfoSec Bot"
+          git config user.name "InfoSec Bot"
           git config user.email "bot@pakistaninfosec.github.io"
           git add data/
-          git diff --staged --quiet || git commit -m "chore: threat data $(date -u +%Y-%m-%d)"
+          git diff --staged --quiet || git commit -m "threat data: $(date -u +%Y-%m-%d)"
           git push

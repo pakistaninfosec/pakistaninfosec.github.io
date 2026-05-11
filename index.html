@@ -34,6 +34,107 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
+/* ── THREAT TICKER ─────────────────────────────────────────── */
+.ticker-wrap{
+  position:relative;
+  z-index:99;
+  width:100%;
+  background:rgba(9,13,22,0.98);
+  border-bottom:1px solid rgba(239,68,68,0.2);
+  display:flex;
+  align-items:stretch;
+  height:36px;
+  overflow:hidden;
+}
+.ticker-label{
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:0 18px;
+  background:var(--red);
+  font-size:10.5px;
+  font-weight:800;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:#fff;
+  white-space:nowrap;
+  z-index:2;
+}
+.ticker-label-dot{
+  width:6px;height:6px;background:#fff;border-radius:50%;
+  animation:blink 1s infinite;
+}
+.ticker-fade-left{
+  position:absolute;
+  left:108px;
+  top:0;bottom:0;
+  width:40px;
+  background:linear-gradient(90deg,rgba(9,13,22,0.95),transparent);
+  z-index:1;
+  pointer-events:none;
+}
+.ticker-fade-right{
+  position:absolute;
+  right:0;top:0;bottom:0;
+  width:60px;
+  background:linear-gradient(270deg,rgba(9,13,22,0.95),transparent);
+  z-index:1;
+  pointer-events:none;
+}
+.ticker-track{
+  flex:1;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  position:relative;
+}
+.ticker-inner{
+  display:flex;
+  align-items:center;
+  gap:0;
+  white-space:nowrap;
+  will-change:transform;
+  animation:tickerScroll 60s linear infinite;
+}
+.ticker-inner:hover{ animation-play-state:paused; }
+@keyframes tickerScroll{
+  0%  { transform:translateX(0); }
+  100%{ transform:translateX(-50%); }
+}
+.ticker-item{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:0 28px 0 0;
+  font-size:12px;
+  color:var(--text2);
+  cursor:pointer;
+  transition:color 0.2s;
+}
+.ticker-item:hover{ color:#fff; }
+.ticker-sep{
+  display:inline-block;
+  width:4px;height:4px;
+  background:var(--border2);
+  border-radius:50%;
+  margin:0 10px 0 0;
+  flex-shrink:0;
+  vertical-align:middle;
+}
+.ti-sev{
+  font-size:9.5px;font-weight:700;letter-spacing:0.06em;
+  padding:2px 6px;border-radius:3px;flex-shrink:0;text-transform:uppercase;
+}
+.ti-sev.CRITICAL{background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.25);}
+.ti-sev.HIGH{background:rgba(249,115,22,0.15);color:var(--orange);border:1px solid rgba(249,115,22,0.25);}
+.ti-sev.MEDIUM{background:rgba(234,179,8,0.15);color:var(--yellow);border:1px solid rgba(234,179,8,0.25);}
+.ti-sev.LOW{background:rgba(34,197,94,0.15);color:var(--green);border:1px solid rgba(34,197,94,0.25);}
+.ti-id{font-family:'Courier New',monospace;font-size:11.5px;font-weight:600;color:var(--blue3);}
+.ti-desc{color:var(--text2);max-width:340px;overflow:hidden;text-overflow:ellipsis;}
+.ti-pk{font-size:12px;}
+/* ── END TICKER ─────────────────────────────────────────────── */
+
 /* HERO — split layout like CTM360 */
 .hero{position:relative;z-index:1;display:grid;grid-template-columns:1fr 520px;min-height:440px;border-bottom:1px solid var(--border);overflow:hidden;}
 
@@ -207,6 +308,22 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   <div class="live-badge"><div class="live-dot"></div>LIVE</div>
 </nav>
 
+<!-- ── THREAT TICKER ───────────────────────────────────────── -->
+<div class="ticker-wrap">
+  <div class="ticker-label">
+    <div class="ticker-label-dot"></div>
+    THREAT INTEL
+  </div>
+  <div class="ticker-fade-left"></div>
+  <div class="ticker-track">
+    <div class="ticker-inner" id="ticker-inner">
+      <!-- populated by JS -->
+    </div>
+  </div>
+  <div class="ticker-fade-right"></div>
+</div>
+<!-- ── END TICKER ──────────────────────────────────────────── -->
+
 <!-- HERO WITH RADAR -->
 <div class="hero">
   <div class="hero-left">
@@ -233,7 +350,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   <div class="hero-right">
     <div class="radar-wrap">
       <canvas id="radar" width="400" height="400"></canvas>
-      <!-- Floating threat pills -->
       <div class="threat-pill pill-1"><span class="tp-icon">⚠️</span>Phishing Detected</div>
       <div class="threat-pill pill-2"><span class="tp-icon">✅</span>New Asset Found</div>
       <div class="threat-pill pill-3"><span class="tp-icon">🔴</span>Breach Alert</div>
@@ -350,7 +466,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   }
   function draw(){
     ctx.clearRect(0,0,400,400);
-    // Concentric rings
     for(let i=1;i<=4;i++){
       const r = maxR*i/4;
       ctx.beginPath();
@@ -359,7 +474,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
       ctx.lineWidth = i===4?1:0.5;
       ctx.stroke();
     }
-    // Cross lines
     ctx.strokeStyle = 'rgba(37,99,235,0.08)';
     ctx.lineWidth = 0.5;
     [0,Math.PI/4,Math.PI/2,Math.PI*3/4].forEach(a=>{
@@ -368,15 +482,12 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
       ctx.lineTo(cx+Math.cos(a+Math.PI)*maxR, cy+Math.sin(a+Math.PI)*maxR);
       ctx.stroke();
     });
-    // Dot matrix background
     dots.forEach(d=>{
       ctx.beginPath();
       ctx.arc(d.x,d.y,d.size,0,Math.PI*2);
       ctx.fillStyle=`rgba(148,163,184,${d.alpha})`;
       ctx.fill();
     });
-    // Sweep gradient
-    const sweep = ctx.createConicalGradient ? null : null;
     const sweepAngle = 1.2;
     for(let i=0;i<60;i++){
       const a = angle - (i/60)*sweepAngle;
@@ -388,19 +499,16 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
       ctx.fillStyle=`rgba(37,99,235,${alpha})`;
       ctx.fill();
     }
-    // Sweep line
     ctx.beginPath();
     ctx.moveTo(cx,cy);
     ctx.lineTo(cx+Math.cos(angle)*maxR, cy+Math.sin(angle)*maxR);
     ctx.strokeStyle='rgba(96,165,250,0.7)';
     ctx.lineWidth=1.5;
     ctx.stroke();
-    // Center dot
     ctx.beginPath();
     ctx.arc(cx,cy,4,0,Math.PI*2);
     ctx.fillStyle='rgba(96,165,250,0.9)';
     ctx.fill();
-    // Blips
     blips.forEach((b,i)=>{
       b.life -= 0.018;
       if(b.life<=0){blips.splice(i,1);return;}
@@ -420,6 +528,41 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   }
   draw();
 })();
+
+/* ══════════════════════════════
+   TICKER
+══════════════════════════════ */
+function buildTicker(threats) {
+  // Pick top 30: prioritise CRITICAL + pakistan, then HIGH, then rest
+  const sorted = [...threats].sort((a,b)=>{
+    const w = {CRITICAL:4,HIGH:3,MEDIUM:2,LOW:1};
+    const ap = (a.pakistan?1:0)*2 + (w[a.severity]||0);
+    const bp = (b.pakistan?1:0)*2 + (w[b.severity]||0);
+    return bp - ap;
+  }).slice(0, 30);
+
+  const makeItem = t => {
+    const sev  = (t.severity||'MEDIUM').toUpperCase();
+    const flag = t.pakistan ? '<span class="ti-pk">🇵🇰</span>' : '';
+    const desc = (t.desc||t.id||'').slice(0,80) + ((t.desc||'').length>80?'…':'');
+    return `<span class="ticker-item" onclick="openModal(${JSON.stringify(t).replace(/"/g,'&quot;')})">
+      <span class="ti-sev ${sev}">${sev}</span>
+      <span class="ti-id">${t.id}</span>
+      ${flag}
+      <span class="ti-desc">${desc}</span>
+    </span><span class="ticker-sep"></span>`;
+  };
+
+  const html = sorted.map(makeItem).join('');
+  // Duplicate for seamless infinite loop
+  document.getElementById('ticker-inner').innerHTML = html + html;
+
+  // Adjust animation speed based on content width
+  const inner = document.getElementById('ticker-inner');
+  const totalW = inner.scrollWidth / 2;
+  const speed = Math.max(40, totalW / 12); // px/s → seconds
+  inner.style.animationDuration = speed + 's';
+}
 
 /* ══════════════════════════════
    DATA
@@ -465,6 +608,7 @@ function renderAll(d){
   renderSources(d.sources||[]);
   renderPK(allThreats.filter(t=>t.pakistan));
   renderThreats();
+  buildTicker(allThreats);
 }
 function renderSources(sources){
   const max=Math.max(...sources.map(s=>s.count),1);

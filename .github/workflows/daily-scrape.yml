@@ -31,12 +31,3 @@ jobs:
           GITHUB_REPO: "${{ github.repository }}"
         run: |
           python bridge_to_github.py
-
-      - name: Commit data files
-        run: |
-          git config user.name "InfoSec Bot"
-          git config user.email "bot@pakistaninfosec.github.io"
-          git pull --rebase origin main
-          git add data/threats.json data/reports.json
-          git diff --staged --quiet || git commit -m "threat data: $(date -u +%Y-%m-%d)"
-          git push

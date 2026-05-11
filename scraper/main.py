@@ -16,10 +16,12 @@ Usage:
   python -m scraper.main --nvd-days 60 --nvd-max 500
 
 Available source groups:
-  nvd         NVD/NIST CVE vulnerability database
-  news        Security news sites
-  vendors     Vendor product pages
+  nvd           NVD/NIST CVE vulnerability database
+  news          Security news sites
+  vendors       Vendor product pages
   marketplaces  G2 and Capterra listings
+  threat_intel  Threat intelligence feeds
+  zeroday       Zero-day exploit sources
 
 Output files (scraper/output/ by default):
   infosec_products_<timestamp>.csv
@@ -51,8 +53,9 @@ from .sources.vendors import (
 from .sources.marketplaces import scrape_g2, scrape_capterra
 from .sources.threat_intel import (
     scrape_unit42, scrape_crowdstrike_blog, scrape_kaspersky,
-    scrape_pakistan_cert, scrape_sans_isc, scrape_recorded_future,
+    scrape_sans_isc, scrape_recorded_future,
 )
+from .sources.pakistan import scrape as scrape_pakistan_all
 from .sources.zeroday import (
     scrape_cisa_kev, scrape_zdi, scrape_exploit_db,
     scrape_project_zero, scrape_packet_storm, scrape_vulners,
@@ -85,10 +88,10 @@ def run_scrape(
     if "news" in sources:
         log.info("═══ Security News ═══")
         scrapers = [
-            ("Krebs on Security", scrape_krebs),
-            ("Dark Reading", scrape_dark_reading),
-            ("SecurityWeek", scrape_security_week),
-            ("The Hacker News", scrape_hacker_news_sec),
+            ("Krebs on Security",  scrape_krebs),
+            ("Dark Reading",       scrape_dark_reading),
+            ("SecurityWeek",       scrape_security_week),
+            ("The Hacker News",    scrape_hacker_news_sec),
         ]
         for name, fn in scrapers:
             before = len(records)
@@ -100,11 +103,11 @@ def run_scrape(
         log.info("═══ Vendor Product Pages ═══")
         vendor_scrapers = [
             ("Palo Alto Networks", scrape_palo_alto),
-            ("CrowdStrike", scrape_crowdstrike),
-            ("Fortinet", scrape_fortinet),
-            ("Tenable", scrape_tenable),
-            ("SentinelOne", scrape_sentinelone),
-            ("Check Point", scrape_checkpoint),
+            ("CrowdStrike",        scrape_crowdstrike),
+            ("Fortinet",           scrape_fortinet),
+            ("Tenable",            scrape_tenable),
+            ("SentinelOne",        scrape_sentinelone),
+            ("Check Point",        scrape_checkpoint),
         ]
         for name, fn in vendor_scrapers:
             before = len(records)
@@ -129,12 +132,11 @@ def run_scrape(
     if "threat_intel" in sources:
         log.info("═══ Threat Intelligence ═══")
         ti_scrapers = [
-            ("Unit42", scrape_unit42),
-            ("CrowdStrike Blog", scrape_crowdstrike_blog),
-            ("Kaspersky Securelist", scrape_kaspersky),
-            ("Pakistan CERT", scrape_pakistan_cert),
-            ("SANS ISC", scrape_sans_isc),
-            ("Recorded Future", scrape_recorded_future),
+            ("Unit42",              scrape_unit42),
+            ("CrowdStrike Blog",    scrape_crowdstrike_blog),
+            ("Kaspersky Securelist",scrape_kaspersky),
+            ("SANS ISC",            scrape_sans_isc),
+            ("Recorded Future",     scrape_recorded_future),
         ]
         for name, fn in ti_scrapers:
             before = len(records)
@@ -142,15 +144,22 @@ def run_scrape(
                 records.append(rec)
             log.info("%s: %d new records", name, len(records) - before)
 
+        # Pakistan sources — PKCERT + NCCS (always returns fallback data if sites unreachable)
+        log.info("Pakistan CERT + NCCS…")
+        before = len(records)
+        for rec in scrape_pakistan_all():
+            records.append(rec)
+        log.info("Pakistan CERT + NCCS: %d new records", len(records) - before)
+
     if "zeroday" in sources:
         log.info("═══ Zero Day Sources ═══")
         zd_scrapers = [
-            ("CISA KEV", scrape_cisa_kev),
+            ("CISA KEV",           scrape_cisa_kev),
             ("Zero Day Initiative", scrape_zdi),
-            ("Exploit-DB", scrape_exploit_db),
+            ("Exploit-DB",          scrape_exploit_db),
             ("Google Project Zero", scrape_project_zero),
-            ("Packet Storm", scrape_packet_storm),
-            ("Vulners", scrape_vulners),
+            ("Packet Storm",        scrape_packet_storm),
+            ("Vulners",             scrape_vulners),
         ]
         for name, fn in zd_scrapers:
             before = len(records)
@@ -163,7 +172,7 @@ def run_scrape(
 
     records = deduplicate(records)
 
-    ts_csv = export_csv(records, output_dir)
+    ts_csv  = export_csv(records, output_dir)
     ts_json = export_json(records, output_dir)
 
     log.info("")
@@ -230,7 +239,11 @@ def main() -> None:
 
     args = parser.parse_args()
 
-    logging.getLogger().setLevel(getattr(logging, args.log_level))
+    logging.basicConfig(
+        level=getattr(logging, args.log_level),
+        format="%(asctime)s  %(levelname)-8s  %(message)s",
+        datefmt="%H:%M:%S",
+    )
 
     sources = ALL_SOURCES if "all" in args.sources else args.sources
 

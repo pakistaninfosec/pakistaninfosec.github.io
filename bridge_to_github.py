@@ -1,24 +1,24 @@
 """
 bridge_to_github.py
 ====================
-Reads InfoSec Scraper output and pushes to pakistaninfosec.github.io
-Pakistan alerts ONLY from: Pakistan CERT + NCCS Pakistan
+Pushes threat intelligence to pakistaninfosec.github.io
+Sources: Pakistan CERT, NCCS Pakistan, CISA KEV, NVD (recent CVEs)
 """
 
 import os, json, glob, base64, hashlib, requests
-from datetime import datetime, date, timezone
+from datetime import datetime, date, timezone, timedelta
 from collections import Counter
 from bs4 import BeautifulSoup
 
-GITHUB_REPO  = os.environ.get("GITHUB_REPO", "pakistaninfosec/pakistaninfosec.github.io")
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+GITHUB_REPO   = os.environ.get("GITHUB_REPO", "pakistaninfosec/pakistaninfosec.github.io")
+GITHUB_TOKEN  = os.environ.get("GITHUB_TOKEN", "")
+GROQ_API_KEY  = os.environ.get("GROQ_API_KEY", "")
 
 PAKISTAN_SOURCES  = {"Pakistan CERT", "NCCS Pakistan"}
 ZERODAY_SOURCES   = {
     "CISA KEV", "Google Project Zero", "Vulners",
     "ZDI", "Zero Day Initiative", "Exploit-DB",
-    "Packet Storm", "Exploit Database"
+    "Packet Storm", "Exploit Database", "NVD Zero-Day"
 }
 EXPLOITED_SOURCES = {"CISA KEV"}
 
@@ -27,10 +27,12 @@ HEADERS = {
 }
 
 
+# ── Pakistan CERT + NCCS ──────────────────────────────────────────────────────
+
 def _scrape_pakistan_direct():
     results = []
 
-    # ── PKCERT ──
+    # PKCERT
     found = []
     for url in ["https://pkcert.gov.pk/advisories.asp", "https://pkcert.gov.pk/advisories", "https://pkcert.gov.pk/"]:
         try:
@@ -41,7 +43,7 @@ def _scrape_pakistan_direct():
             for row in soup.find_all("tr"):
                 cols = row.find_all("td")
                 if len(cols) >= 2:
-                    el = cols[0].find("a") or cols[0]
+                    el    = cols[0].find("a") or cols[0]
                     title = el.get_text(strip=True)
                     link  = el.get("href", "") if el.name == "a" else ""
                     if title and len(title) > 10:
@@ -95,7 +97,7 @@ def _scrape_pakistan_direct():
 
     print(f"[✓] PKCERT: {len(results)} records")
 
-    # ── NCCS ──
+    # NCCS
     nccs_found = []
     for url in ["https://nccs.pk/NTL/Home.html", "https://nccs.pk/NCCSBlog/TWICS.html", "https://nccs.pk/"]:
         try:
@@ -149,6 +151,146 @@ def _scrape_pakistan_direct():
     print(f"[✓] Pakistan total: {len(results)} records")
     return results
 
+
+# ── CISA KEV — Actively Exploited ────────────────────────────────────────────
+
+def _scrape_cisa_kev_direct(max_results=100):
+    results = []
+    try:
+        res = requests.get(
+            "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+            headers=HEADERS, timeout=20
+        )
+        res.raise_for_status()
+        vulns = res.json().get("vulnerabilities", [])
+        vulns.sort(key=lambda x: x.get("dateAdded", ""), reverse=True)
+
+        for v in vulns[:max_results]:
+            cve_id  = v.get("cveID", "")
+            name    = v.get("vulnerabilityName", "")
+            desc    = v.get("shortDescription", "")
+            product = v.get("product", "")
+            vendor  = v.get("vendorProject", "")
+            added   = v.get("dateAdded", date.today().isoformat())
+            results.append({
+                "source":            "CISA KEV",
+                "category":          "Actively Exploited",
+                "id":                cve_id or ("KEV-" + hashlib.md5(name.encode()).hexdigest()[:8].upper()),
+                "title":             f"{cve_id}: {name}" if cve_id else name,
+                "description":       desc or f"Actively exploited vulnerability in {vendor} {product}.",
+                "severity":          "CRITICAL",
+                "cvss_score":        9.0,
+                "cwe":               "",
+                "affected_products": f"{vendor} {product}".strip(),
+                "references":        f"https://nvd.nist.gov/vuln/detail/{cve_id}" if cve_id else "",
+                "published_date":    added,
+                "last_modified":     added,
+                "url":               f"https://nvd.nist.gov/vuln/detail/{cve_id}" if cve_id else "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+                "vendor":            vendor,
+                "price":             "",
+                "tags":              "cisa,kev,actively-exploited,zero-day",
+            })
+        print(f"[✓] CISA KEV: {len(results)} records")
+    except Exception as e:
+        print(f"[!] CISA KEV failed: {e}")
+    return results
+
+
+# ── NVD — Recent CVEs (Zero-Day candidates) ───────────────────────────────────
+
+def _scrape_nvd_recent(days_back=7, max_results=200):
+    results = []
+    try:
+        end   = datetime.utcnow()
+        start = end - timedelta(days=days_back)
+        params = {
+            "pubStartDate": start.strftime("%Y-%m-%dT00:00:00.000"),
+            "pubEndDate":   end.strftime("%Y-%m-%dT23:59:59.999"),
+            "resultsPerPage": min(max_results, 2000),
+            "startIndex": 0,
+        }
+        res = requests.get("https://services.nvd.nist.gov/rest/json/cves/2.0",
+                           params=params, headers=HEADERS, timeout=30)
+        res.raise_for_status()
+        items = res.json().get("vulnerabilities", [])
+
+        for item in items:
+            cve  = item.get("cve", {})
+            cid  = cve.get("id", "")
+            desc_list = cve.get("descriptions", [])
+            desc = next((d["value"] for d in desc_list if d["lang"] == "en"), "")
+            metrics   = cve.get("metrics", {})
+            score     = 0.0
+            severity  = "MEDIUM"
+            for key in ["cvssMetricV31","cvssMetricV30","cvssMetricV2"]:
+                if key in metrics and metrics[key]:
+                    m        = metrics[key][0].get("cvssData", {})
+                    score    = float(m.get("baseScore", 0))
+                    severity = m.get("baseSeverity", "MEDIUM").upper()
+                    break
+            pub_date = cve.get("published", date.today().isoformat())[:10]
+            results.append({
+                "source":            "NVD/NIST",
+                "category":          "CVE Vulnerability",
+                "id":                cid,
+                "title":             f"{cid}: {desc[:100]}",
+                "description":       desc[:300],
+                "severity":          severity,
+                "cvss_score":        score,
+                "cwe":               "",
+                "affected_products": "",
+                "references":        f"https://nvd.nist.gov/vuln/detail/{cid}",
+                "published_date":    pub_date,
+                "last_modified":     pub_date,
+                "url":               f"https://nvd.nist.gov/vuln/detail/{cid}",
+                "vendor":            "NVD/NIST",
+                "price":             "",
+                "tags":              "nvd,cve,vulnerability",
+            })
+        print(f"[✓] NVD recent: {len(results)} records")
+    except Exception as e:
+        print(f"[!] NVD failed: {e}")
+    return results
+
+
+# ── Exploit-DB RSS — Zero Days ────────────────────────────────────────────────
+
+def _scrape_exploitdb(max_results=50):
+    results = []
+    try:
+        import feedparser
+        feed = feedparser.parse("https://www.exploit-db.com/rss.xml")
+        for entry in feed.entries[:max_results]:
+            title = entry.get("title","")
+            link  = entry.get("link","")
+            desc  = entry.get("summary","")[:300]
+            pub   = entry.get("published","")[:10] if entry.get("published") else date.today().isoformat()
+            uid   = "EDB-" + hashlib.md5(title.encode()).hexdigest()[:8].upper()
+            results.append({
+                "source":            "Exploit-DB",
+                "category":          "Zero Day Exploit",
+                "id":                uid,
+                "title":             title,
+                "description":       desc or f"Exploit-DB entry: {title}",
+                "severity":          "HIGH",
+                "cvss_score":        8.0,
+                "cwe":               "",
+                "affected_products": "",
+                "references":        link,
+                "published_date":    pub,
+                "last_modified":     pub,
+                "url":               link,
+                "vendor":            "Exploit-DB",
+                "price":             "",
+                "tags":              "exploit,zero-day,exploit-db",
+            })
+        print(f"[✓] Exploit-DB: {len(results)} records")
+    except Exception as e:
+        print(f"[!] Exploit-DB failed: {e}")
+    return results
+
+
+# ── Helpers ───────────────────────────────────────────────────────────────────
 
 def find_latest_json():
     patterns = [
@@ -260,7 +402,12 @@ def convert_records(raw_records):
 
 def build_threats_json(raw_data):
     all_raw = list(raw_data.get("records", []))
+
+    # Always fetch these directly — no scraper pipeline dependency
     all_raw.extend(_scrape_pakistan_direct())
+    all_raw.extend(_scrape_cisa_kev_direct(max_results=100))
+    all_raw.extend(_scrape_nvd_recent(days_back=7, max_results=200))
+    all_raw.extend(_scrape_exploitdb(max_results=50))
 
     threats = convert_records(all_raw)
 
@@ -360,7 +507,7 @@ def main():
 
     f = find_latest_json()
     if not f:
-        print("[!] No scraper output — running Pakistan direct scrape only")
+        print("[!] No scraper output — running direct sources only")
         raw = {"records": [], "total_records": 0}
     else:
         with open(f, encoding="utf-8") as fh:

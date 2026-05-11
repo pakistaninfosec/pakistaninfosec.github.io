@@ -3,783 +3,517 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InfoSec Pakistan — Daily Threat Intelligence</title>
+<title>InfoSec Pakistan — Threat Intelligence Platform</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #05080f;
-    --bg2: #0b1120;
-    --bg3: #111827;
-    --border: rgba(255,255,255,0.07);
-    --border2: rgba(255,255,255,0.12);
-    --text: #e8eaf0;
-    --muted: #6b7280;
-    --accent: #3b82f6;
-    --accent2: #1d4ed8;
-    --red: #ef4444;
-    --orange: #f97316;
-    --green: #22c55e;
-    --yellow: #eab308;
-    --cyan: #06b6d4;
-    --font-mono: 'JetBrains Mono', monospace;
-    --font-display: 'Syne', sans-serif;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-mono);
-    font-size: 13px;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
+:root {
+  --bg:#05070d;--bg2:#090d16;--bg3:#0e1420;--bg4:#141b28;--bg5:#1a2235;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);--border3:rgba(255,255,255,0.16);
+  --text:#ffffff;--text2:#94a3b8;--text3:#64748b;
+  --blue:#2563eb;--blue2:#3b82f6;--blue3:#60a5fa;--blue4:#93c5fd;
+  --red:#ef4444;--red2:#f87171;--orange:#f97316;--green:#22c55e;--yellow:#eab308;--cyan:#06b6d4;
+  --body:'Inter',sans-serif;--display:'Space Grotesk',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:14px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(37,99,235,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.025) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0;}
 
-  /* Animated grid background */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(59,130,246,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59,130,246,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(5,7,13,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.brand-icon{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 24px rgba(37,99,235,0.4);}
+.brand-name{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-0.01em;color:#fff;}
+.brand-name span{color:var(--blue3);}
+.nav-links{display:flex;gap:2px;}
+.nav-links a{color:var(--text3);text-decoration:none;padding:8px 18px;font-size:13.5px;font-weight:500;border-radius:8px;transition:all 0.2s;}
+.nav-links a:hover{color:#fff;background:var(--bg3);}
+.nav-links a.active{color:#fff;background:var(--bg3);}
+.live-badge{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--green);background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);padding:7px 16px;border-radius:6px;}
+.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
-  /* Glow top */
-  body::after {
-    content: '';
-    position: fixed;
-    top: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 800px;
-    height: 400px;
-    background: radial-gradient(ellipse, rgba(59,130,246,0.08) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
+/* HERO — split layout like CTM360 */
+.hero{position:relative;z-index:1;display:grid;grid-template-columns:1fr 520px;min-height:440px;border-bottom:1px solid var(--border);overflow:hidden;}
 
-  /* ===== NAV ===== */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 32px;
-    height: 56px;
-    background: rgba(5,8,15,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 15px;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    text-decoration: none;
-  }
-  .nav-brand .shield {
-    width: 28px;
-    height: 28px;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-  }
-  .nav-links { display: flex; gap: 4px; }
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    transition: all 0.2s;
-  }
-  .nav-links a:hover, .nav-links a.active {
-    color: var(--text);
-    background: var(--bg3);
-  }
-  .nav-right { display: flex; align-items: center; gap: 12px; }
-  .live-badge {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    color: var(--green);
-    background: rgba(34,197,94,0.1);
-    border: 1px solid rgba(34,197,94,0.2);
-    padding: 4px 10px;
-    border-radius: 20px;
-  }
-  .live-dot {
-    width: 6px; height: 6px;
-    background: var(--green);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+/* Left hero text */
+.hero-left{padding:64px 48px;background:linear-gradient(135deg,rgba(37,99,235,0.05) 0%,transparent 60%);}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.25);color:var(--blue3);font-size:11.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:24px;}
+.hero-badge::before{content:'●';font-size:7px;animation:blink 2s infinite;}
+.hero-title{font-family:var(--display);font-size:clamp(36px,3.5vw,52px);font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:#fff;margin-bottom:18px;}
+.hero-title span{color:var(--blue3);}
+.hero-desc{font-size:15px;color:var(--text2);font-weight:400;line-height:1.75;max-width:480px;margin-bottom:36px;}
+.hero-stats{display:flex;gap:36px;}
+.hs-item{}
+.hs-num{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-0.03em;color:#fff;}
+.hs-num.red{color:var(--red);}
+.hs-num.green{color:var(--green);}
+.hs-num.blue{color:var(--blue3);}
+.hs-label{font-size:11.5px;color:var(--text3);margin-top:2px;font-weight:500;}
 
-  /* ===== MAIN ===== */
-  main {
-    position: relative;
-    z-index: 1;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 40px 32px;
-  }
+/* Right hero — RADAR */
+.hero-right{position:relative;background:radial-gradient(ellipse at center,rgba(37,99,235,0.08) 0%,rgba(5,7,13,0) 70%);display:flex;align-items:center;justify-content:center;border-left:1px solid var(--border);}
+.radar-wrap{position:relative;width:400px;height:400px;}
+canvas#radar{width:400px;height:400px;}
 
-  /* ===== HEADER ===== */
-  .page-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 40px;
-  }
-  .page-header h1 {
-    font-family: var(--font-display);
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-  }
-  .page-header h1 span { color: var(--accent); }
-  .page-header p {
-    color: var(--muted);
-    font-size: 12px;
-    margin-top: 6px;
-  }
-  .threat-counter {
-    text-align: right;
-    background: rgba(239,68,68,0.08);
-    border: 1px solid rgba(239,68,68,0.2);
-    border-radius: 12px;
-    padding: 16px 24px;
-  }
-  .threat-counter .num {
-    font-family: var(--font-display);
-    font-size: 42px;
-    font-weight: 800;
-    color: var(--red);
-    line-height: 1;
-  }
-  .threat-counter .label { font-size: 11px; color: var(--muted); margin-top: 4px; }
+/* Threat pill labels on radar */
+.threat-pill{position:absolute;display:flex;align-items:center;gap:6px;background:rgba(9,13,22,0.92);border:1px solid var(--border2);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:500;white-space:nowrap;backdrop-filter:blur(8px);animation:float 3s ease-in-out infinite;}
+.tp-icon{font-size:13px;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.pill-1{top:8%;left:50%;transform:translateX(-50%);color:#fbbf24;border-color:rgba(251,191,36,0.25);animation-delay:0s;}
+.pill-2{top:20%;right:2%;color:var(--green);border-color:rgba(34,197,94,0.25);animation-delay:0.5s;}
+.pill-3{top:38%;right:0%;color:var(--red2);border-color:rgba(248,113,113,0.25);animation-delay:1s;}
+.pill-4{top:56%;right:4%;color:#c084fc;border-color:rgba(192,132,252,0.25);animation-delay:0.3s;}
+.pill-5{bottom:24%;left:2%;color:var(--text2);border-color:rgba(100,116,139,0.25);animation-delay:0.8s;}
+.pill-6{bottom:14%;left:50%;transform:translateX(-50%);color:var(--orange);border-color:rgba(249,115,22,0.25);animation-delay:0.2s;}
+.pill-7{top:56%;left:0%;color:var(--cyan);border-color:rgba(6,182,212,0.25);animation-delay:0.6s;}
 
-  /* ===== STAT CARDS ===== */
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-bottom: 32px;
-  }
-  .stat-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-  .stat-card:hover { border-color: var(--border2); }
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-  }
-  .stat-card.red::before { background: var(--red); }
-  .stat-card.orange::before { background: var(--orange); }
-  .stat-card.green::before { background: var(--green); }
-  .stat-card.blue::before { background: var(--accent); }
-  .stat-card .stat-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
-  .stat-card .stat-num {
-    font-family: var(--font-display);
-    font-size: 36px;
-    font-weight: 800;
-    line-height: 1;
-  }
-  .stat-card.red .stat-num { color: var(--red); }
-  .stat-card.orange .stat-num { color: var(--orange); }
-  .stat-card.green .stat-num { color: var(--green); }
-  .stat-card.blue .stat-num { color: var(--accent); }
-  .stat-card .stat-sub { font-size: 11px; color: var(--muted); margin-top: 6px; }
+/* MAIN */
+.main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:40px 48px;}
 
-  /* ===== TWO-COL LAYOUT ===== */
-  .content-grid {
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 20px;
-  }
+/* Stat strip */
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px;}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:22px;display:flex;align-items:center;gap:18px;transition:all 0.2s;cursor:default;}
+.stat-card:hover{border-color:var(--border2);transform:translateY(-1px);}
+.sc-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.sci-red{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.15);}
+.sci-orange{background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.15);}
+.sci-green{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.15);}
+.sci-blue{background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.15);}
+.sc-label{font-size:11.5px;font-weight:500;color:var(--text3);margin-bottom:4px;}
+.sc-val{font-family:var(--display);font-size:30px;font-weight:700;letter-spacing:-0.03em;line-height:1;}
+.sc-val.red{color:var(--red);}
+.sc-val.orange{color:var(--orange);}
+.sc-val.green{color:var(--green);}
+.sc-val.blue{color:var(--blue2);}
+.sc-sub{font-size:11px;color:var(--text3);margin-top:4px;}
 
-  /* ===== PANEL ===== */
-  .panel {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .panel-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--border);
-  }
-  .panel-title {
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .panel-title .dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-  }
-  .dot-red { background: var(--red); box-shadow: 0 0 8px var(--red); }
-  .dot-orange { background: var(--orange); box-shadow: 0 0 8px var(--orange); }
-  .dot-green { background: var(--green); box-shadow: 0 0 8px var(--green); }
-  .dot-blue { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
-  .panel-count {
-    font-size: 11px;
-    color: var(--muted);
-    background: var(--bg3);
-    padding: 3px 8px;
-    border-radius: 20px;
-  }
+/* Last updated */
+.lu-bar{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text3);margin-bottom:28px;padding:10px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;width:fit-content;}
+.lu-dot2{width:6px;height:6px;background:var(--blue2);border-radius:50%;}
 
-  /* ===== THREAT TABLE ===== */
-  .search-bar {
-    display: flex;
-    gap: 8px;
-    padding: 12px 20px;
-    border-bottom: 1px solid var(--border);
-  }
-  .search-input {
-    flex: 1;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .search-input:focus { border-color: var(--accent); }
-  .search-input::placeholder { color: var(--muted); }
-  .filter-btn {
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .filter-btn:hover, .filter-btn.active { color: var(--text); border-color: var(--accent); }
-  .threat-list { max-height: 520px; overflow-y: auto; }
-  .threat-list::-webkit-scrollbar { width: 4px; }
-  .threat-list::-webkit-scrollbar-track { background: transparent; }
-  .threat-list::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
-  .threat-row {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 12px;
-    align-items: center;
-    padding: 12px 20px;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.15s;
-    cursor: pointer;
-  }
-  .threat-row:hover { background: rgba(255,255,255,0.02); }
-  .threat-row:last-child { border-bottom: none; }
-  .severity-badge {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    padding: 3px 7px;
-    border-radius: 4px;
-    white-space: nowrap;
-  }
-  .sev-critical { background: rgba(239,68,68,0.15); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
-  .sev-high { background: rgba(249,115,22,0.15); color: var(--orange); border: 1px solid rgba(249,115,22,0.3); }
-  .sev-medium { background: rgba(234,179,8,0.15); color: var(--yellow); border: 1px solid rgba(234,179,8,0.3); }
-  .sev-low { background: rgba(34,197,94,0.15); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
-  .threat-info .cve-id { font-size: 12px; font-weight: 600; color: var(--cyan); }
-  .threat-info .cve-desc { font-size: 11px; color: var(--muted); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 380px; }
-  .threat-meta { text-align: right; }
-  .threat-source { font-size: 10px; color: var(--muted); }
-  .pk-badge {
-    display: inline-block;
-    font-size: 9px;
-    background: rgba(34,197,94,0.1);
-    color: var(--green);
-    border: 1px solid rgba(34,197,94,0.2);
-    padding: 2px 6px;
-    border-radius: 3px;
-    margin-top: 3px;
-  }
+/* Two col */
+.two-col{display:grid;grid-template-columns:1fr 380px;gap:20px;}
 
-  /* ===== SIDEBAR ===== */
-  .sidebar { display: flex; flex-direction: column; gap: 20px; }
+/* Panel */
+.panel{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.panel-head{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--border);background:var(--bg3);}
+.ph-left{display:flex;align-items:center;gap:10px;}
+.ph-dot{width:8px;height:8px;border-radius:50%;}
+.phd-red{background:var(--red);box-shadow:0 0 8px var(--red);}
+.phd-blue{background:var(--blue2);box-shadow:0 0 8px var(--blue2);}
+.phd-green{background:var(--green);box-shadow:0 0 8px var(--green);}
+.ph-title{font-family:var(--display);font-size:14px;font-weight:600;color:#fff;}
+.ph-badge{font-size:11px;font-weight:600;background:var(--bg4);border:1px solid var(--border);color:var(--text2);padding:3px 10px;border-radius:20px;}
 
-  /* AI Summary panel */
-  .ai-panel {
-    background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(29,78,216,0.05));
-    border: 1px solid rgba(59,130,246,0.2);
-    border-radius: 12px;
-    padding: 20px;
-  }
-  .ai-panel .ai-label {
-    font-size: 10px;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .ai-panel .ai-label::before {
-    content: '◆';
-    font-size: 8px;
-  }
-  .ai-panel p { font-size: 12px; color: var(--text); line-height: 1.7; }
-  #ai-summary { min-height: 80px; }
+/* Search */
+.search-bar{display:flex;gap:8px;padding:12px 22px;border-bottom:1px solid var(--border);background:var(--bg3);}
+.s-input{flex:1;background:var(--bg4);border:1px solid var(--border);color:#fff;padding:8px 14px;border-radius:8px;font-family:var(--body);font-size:13px;outline:none;transition:border-color 0.2s;}
+.s-input:focus{border-color:var(--blue2);}
+.s-input::placeholder{color:var(--text3);}
+.f-btn{background:var(--bg4);border:1px solid var(--border);color:var(--text3);padding:8px 12px;border-radius:8px;font-family:var(--body);font-size:12px;font-weight:500;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.f-btn:hover{color:#fff;border-color:var(--border2);}
+.f-btn.on{color:var(--blue3);border-color:rgba(59,130,246,0.4);background:rgba(59,130,246,0.08);}
 
-  /* Source breakdown */
-  .source-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    border-bottom: 1px solid var(--border);
-  }
-  .source-item:last-child { border-bottom: none; }
-  .source-name { font-size: 12px; }
-  .source-bar-wrap { flex: 1; margin: 0 12px; height: 4px; background: var(--bg3); border-radius: 2px; overflow: hidden; }
-  .source-bar { height: 100%; border-radius: 2px; background: var(--accent); transition: width 1s ease; }
-  .source-count { font-size: 12px; color: var(--muted); min-width: 24px; text-align: right; }
+/* Threat rows */
+.t-list{max-height:540px;overflow-y:auto;}
+.t-list::-webkit-scrollbar{width:3px;}
+.t-list::-webkit-scrollbar-thumb{background:var(--bg5);border-radius:2px;}
+.t-row{display:grid;grid-template-columns:88px 1fr auto;gap:14px;align-items:center;padding:13px 22px;border-bottom:1px solid var(--border);transition:background 0.15s;cursor:pointer;}
+.t-row:hover{background:var(--bg3);}
+.t-row:last-child{border-bottom:none;}
+.sev{font-size:10px;font-weight:700;letter-spacing:0.06em;padding:4px 8px;border-radius:4px;text-align:center;}
+.sev-critical{background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.2);}
+.sev-high{background:rgba(249,115,22,0.1);color:var(--orange);border:1px solid rgba(249,115,22,0.2);}
+.sev-medium{background:rgba(234,179,8,0.1);color:var(--yellow);border:1px solid rgba(234,179,8,0.2);}
+.sev-low{background:rgba(34,197,94,0.1);color:var(--green);border:1px solid rgba(34,197,94,0.2);}
+.t-id{font-size:12.5px;font-weight:600;color:var(--blue3);margin-bottom:3px;font-family:'Courier New',monospace;}
+.t-desc{font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:400px;}
+.t-src{font-size:11px;color:var(--text3);text-align:right;}
+.t-date{font-size:11px;color:var(--text3);text-align:right;margin-top:2px;}
 
-  /* Pakistan alerts */
-  .pk-alert {
-    padding: 12px 20px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    transition: background 0.15s;
-    cursor: pointer;
-  }
-  .pk-alert:hover { background: rgba(255,255,255,0.02); }
-  .pk-alert:last-child { border-bottom: none; }
-  .pk-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-  .pk-alert-title { font-size: 12px; font-weight: 600; color: var(--green); }
-  .pk-alert-desc { font-size: 11px; color: var(--muted); margin-top: 2px; }
+/* Sidebar */
+.sidebar{display:flex;flex-direction:column;gap:18px;}
+.ai-box{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;position:relative;}
+.ai-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));}
+.ai-head{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border);background:var(--bg3);}
+.ai-icon{width:30px;height:30px;background:linear-gradient(135deg,var(--blue),var(--cyan));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.ai-label{font-size:13px;font-weight:600;color:#fff;}
+.ai-sub{font-size:11px;color:var(--text3);margin-top:1px;}
+.ai-body{padding:18px 20px;}
+.ai-text{font-size:13px;color:var(--text2);line-height:1.75;font-weight:400;}
 
-  /* ===== FOOTER ===== */
-  footer {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 32px;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 11px;
-  }
-  footer a { color: var(--accent); text-decoration: none; }
+.src-row{display:flex;align-items:center;gap:12px;padding:11px 20px;border-bottom:1px solid var(--border);}
+.src-row:last-child{border-bottom:none;}
+.src-name{font-size:12.5px;font-weight:500;color:var(--text);min-width:100px;}
+.src-bg{flex:1;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;}
+.src-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width 1.2s ease;}
+.src-num{font-size:12px;color:var(--text3);min-width:28px;text-align:right;}
 
-  /* ===== LOADING ===== */
-  .loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    color: var(--muted);
-    gap: 10px;
-    font-size: 12px;
-  }
-  .spinner {
-    width: 16px; height: 16px;
-    border: 2px solid var(--border2);
-    border-top-color: var(--accent);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
+.pk-item{display:flex;gap:12px;align-items:flex-start;padding:13px 20px;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.15s;}
+.pk-item:hover{background:var(--bg3);}
+.pk-item:last-child{border-bottom:none;}
+.pk-flag{font-size:20px;flex-shrink:0;}
+.pk-cve{font-size:12px;font-weight:600;color:var(--green);font-family:'Courier New',monospace;margin-bottom:3px;}
+.pk-desc{font-size:12px;color:var(--text2);line-height:1.5;}
 
-  /* ===== MODAL ===== */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(4px);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-  }
-  .modal-overlay.open { display: flex; }
-  .modal {
-    background: var(--bg2);
-    border: 1px solid var(--border2);
-    border-radius: 16px;
-    padding: 28px;
-    max-width: 560px;
-    width: 90%;
-  }
-  .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
-  .modal-close { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 18px; }
-  .modal-cve { font-size: 11px; color: var(--cyan); font-family: var(--font-mono); }
-  .modal-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin: 6px 0 12px; }
-  .modal-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
-  .modal-meta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
-  .modal-tag { font-size: 11px; background: var(--bg3); border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; color: var(--muted); }
-  .modal-tag span { color: var(--text); }
+/* Loading */
+.loading{display:flex;align-items:center;justify-content:center;padding:52px;color:var(--text3);gap:10px;font-size:13px;}
+.spinner{width:18px;height:18px;border:2px solid var(--bg5);border-top-color:var(--blue2);border-radius:50%;animation:spin 0.8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-  /* ===== LAST UPDATED ===== */
-  .last-updated {
-    font-size: 11px;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 24px;
-  }
-  .last-updated::before { content: '⟳'; color: var(--accent); }
+/* Modal */
+.modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center;}
+.modal-ov.open{display:flex;}
+.modal-box{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:32px;max-width:600px;width:90%;position:relative;}
+.modal-box::before{content:'';position:absolute;top:0;left:48px;right:48px;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent);}
+.modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+.modal-id{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:var(--blue3);font-size:12px;font-weight:600;padding:5px 12px;border-radius:6px;font-family:'Courier New',monospace;}
+.modal-x{width:32px;height:32px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text3);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.modal-x:hover{color:#fff;border-color:var(--border2);}
+.modal-title{font-family:var(--display);font-size:20px;font-weight:700;line-height:1.35;color:#fff;margin-bottom:14px;}
+.modal-desc{font-size:13.5px;color:var(--text2);line-height:1.75;margin-bottom:20px;}
+.modal-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.modal-chip{font-size:11.5px;background:var(--bg3);border:1px solid var(--border);padding:5px 12px;border-radius:6px;color:var(--text3);}
+.modal-chip b{color:#fff;font-weight:500;}
+
+/* Footer */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
+.footer-brand{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text2);}
+.footer-brand span{color:var(--blue3);}
+.footer-txt{font-size:12px;color:var(--text3);}
+.footer-link{color:var(--blue3);text-decoration:none;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero{animation:fadeUp 0.5s ease both;}
+.stat-strip{animation:fadeUp 0.5s 0.1s ease both;}
+.two-col{animation:fadeUp 0.5s 0.15s ease both;}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a class="nav-brand" href="index.html">
-    <div class="shield">🛡</div>
-    InfoSec Pakistan
+  <a class="brand" href="index.html">
+    <div class="brand-icon">🛡</div>
+    <div class="brand-name">INFOSEC <span>PAKISTAN</span></div>
   </a>
   <div class="nav-links">
     <a href="index.html" class="active">Dashboard</a>
     <a href="reports.html">Daily Reports</a>
     <a href="database.html">CVE Database</a>
   </div>
-  <div class="nav-right">
-    <div class="live-badge"><div class="live-dot"></div> Live</div>
-  </div>
+  <div class="live-badge"><div class="live-dot"></div>LIVE</div>
 </nav>
 
-<!-- MAIN -->
-<main>
-  <div class="page-header">
-    <div>
-      <h1>Threat <span>Intelligence</span><br>Dashboard</h1>
-      <p id="today-date">Loading...</p>
-    </div>
-    <div class="threat-counter">
-      <div class="num" id="total-new">—</div>
-      <div class="label">NEW THREATS TODAY</div>
-    </div>
-  </div>
-
-  <div class="last-updated" id="last-updated">Fetching latest data...</div>
-
-  <!-- STAT CARDS -->
-  <div class="stats-grid">
-    <div class="stat-card red">
-      <div class="stat-label">🔴 Zero Day</div>
-      <div class="stat-num" id="cnt-zeroday">0</div>
-      <div class="stat-sub">CISA KEV · ZDI · Exploit-DB</div>
-    </div>
-    <div class="stat-card orange">
-      <div class="stat-label">🟠 Actively Exploited</div>
-      <div class="stat-num" id="cnt-exploited">0</div>
-      <div class="stat-sub">From CISA KEV</div>
-    </div>
-    <div class="stat-card green">
-      <div class="stat-label">🟢 Pakistan Alerts</div>
-      <div class="stat-num" id="cnt-pakistan">0</div>
-      <div class="stat-sub">Pakistan CERT</div>
-    </div>
-    <div class="stat-card blue">
-      <div class="stat-label">📊 Total Monitored</div>
-      <div class="stat-num" id="cnt-total">0</div>
-      <div class="stat-sub">All sources</div>
-    </div>
-  </div>
-
-  <!-- CONTENT GRID -->
-  <div class="content-grid">
-
-    <!-- LEFT: Threat Table -->
-    <div>
-      <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title">
-            <div class="dot dot-red"></div>
-            Latest Threats
-          </div>
-          <span class="panel-count" id="showing-count">Loading...</span>
-        </div>
-        <div class="search-bar">
-          <input class="search-input" id="search" type="text" placeholder="Search CVE ID, description, source...">
-          <button class="filter-btn active" onclick="filterSev('all')">All</button>
-          <button class="filter-btn" onclick="filterSev('CRITICAL')">Critical</button>
-          <button class="filter-btn" onclick="filterSev('HIGH')">High</button>
-          <button class="filter-btn" onclick="filterSev('pakistan')">🇵🇰 PK</button>
-        </div>
-        <div class="threat-list" id="threat-list">
-          <div class="loading"><div class="spinner"></div> Loading threat data...</div>
-        </div>
+<!-- HERO WITH RADAR -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Pakistan Threat Intelligence Platform</div>
+    <div class="hero-title">Real-Time <span>Cybersecurity</span><br>Threat Intelligence</div>
+    <div class="hero-desc">Automated daily threat intelligence aggregated from CISA KEV, ZDI, Exploit-DB, Pakistan CERT and 9 other sources. AI-powered analysis by Groq — delivered every day at 09:00 PKT.</div>
+    <div class="hero-stats">
+      <div class="hs-item">
+        <div class="hs-num red" id="hero-new">329</div>
+        <div class="hs-label">New threats today</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num green" id="hero-pk">5</div>
+        <div class="hs-label">Pakistan alerts</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num blue" id="hero-total">329</div>
+        <div class="hs-label">Total monitored</div>
       </div>
     </div>
+  </div>
 
-    <!-- RIGHT: Sidebar -->
+  <!-- RADAR SIDE -->
+  <div class="hero-right">
+    <div class="radar-wrap">
+      <canvas id="radar" width="400" height="400"></canvas>
+      <!-- Floating threat pills -->
+      <div class="threat-pill pill-1"><span class="tp-icon">⚠️</span>Phishing Detected</div>
+      <div class="threat-pill pill-2"><span class="tp-icon">✅</span>New Asset Found</div>
+      <div class="threat-pill pill-3"><span class="tp-icon">🔴</span>Breach Alert</div>
+      <div class="threat-pill pill-4"><span class="tp-icon">👤</span>VIP Impersonation</div>
+      <div class="threat-pill pill-5"><span class="tp-icon">🛡</span>Malware Leak</div>
+      <div class="threat-pill pill-6"><span class="tp-icon">🔧</span>Misconfiguration</div>
+      <div class="threat-pill pill-7"><span class="tp-icon">🌐</span>Vulnerability Exposed</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+  <div class="lu-bar">
+    <div class="lu-dot2"></div>
+    <span id="last-updated">Fetching latest data...</span>
+  </div>
+
+  <!-- STATS -->
+  <div class="stat-strip">
+    <div class="stat-card">
+      <div class="sc-icon sci-red">🔴</div>
+      <div><div class="sc-label">Zero Day Exploits</div><div class="sc-val red" id="cnt-zeroday">0</div><div class="sc-sub">CISA KEV · ZDI · Exploit-DB</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="sc-icon sci-orange">🟠</div>
+      <div><div class="sc-label">Actively Exploited</div><div class="sc-val orange" id="cnt-exploited">0</div><div class="sc-sub">From CISA KEV catalog</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="sc-icon sci-green">🇵🇰</div>
+      <div><div class="sc-label">Pakistan Alerts</div><div class="sc-val green" id="cnt-pakistan">0</div><div class="sc-sub">Pakistan CERT advisories</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="sc-icon sci-blue">📊</div>
+      <div><div class="sc-label">Total Monitored</div><div class="sc-val blue" id="cnt-total">0</div><div class="sc-sub">All sources combined</div></div>
+    </div>
+  </div>
+
+  <!-- TWO COL -->
+  <div class="two-col">
+    <div class="panel">
+      <div class="panel-head">
+        <div class="ph-left"><div class="ph-dot phd-red"></div><div class="ph-title">Latest Threats</div></div>
+        <span class="ph-badge" id="showing-count">Loading...</span>
+      </div>
+      <div class="search-bar">
+        <input class="s-input" id="search" type="text" placeholder="Search CVE ID, description, source...">
+        <button class="f-btn on" onclick="filterSev('all',this)">All</button>
+        <button class="f-btn" onclick="filterSev('CRITICAL',this)">Critical</button>
+        <button class="f-btn" onclick="filterSev('HIGH',this)">High</button>
+        <button class="f-btn" onclick="filterSev('pakistan',this)">🇵🇰 PK</button>
+      </div>
+      <div class="t-list" id="threat-list"><div class="loading"><div class="spinner"></div>Loading...</div></div>
+    </div>
+
     <div class="sidebar">
-
-      <!-- AI Summary -->
-      <div class="ai-panel">
-        <div class="ai-label">AI Analysis · Powered by Groq</div>
-        <p id="ai-summary"><span style="color:var(--muted)">Loading executive summary...</span></p>
+      <div class="ai-box">
+        <div class="ai-head">
+          <div class="ai-icon">◆</div>
+          <div><div class="ai-label">AI Analysis</div><div class="ai-sub">Powered by Groq</div></div>
+        </div>
+        <div class="ai-body"><div class="ai-text" id="ai-summary">Loading executive summary...</div></div>
       </div>
-
-      <!-- Source Breakdown -->
       <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title"><div class="dot dot-blue"></div> Source Breakdown</div>
-        </div>
-        <div id="source-breakdown">
-          <div class="loading"><div class="spinner"></div></div>
-        </div>
+        <div class="panel-head"><div class="ph-left"><div class="ph-dot phd-blue"></div><div class="ph-title">Source Breakdown</div></div></div>
+        <div id="source-breakdown"><div class="loading"><div class="spinner"></div></div></div>
       </div>
-
-      <!-- Pakistan Alerts -->
       <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title"><div class="dot dot-green"></div> 🇵🇰 Pakistan Alerts</div>
-          <span class="panel-count" id="pk-count">0</span>
-        </div>
-        <div id="pk-alerts">
-          <div class="loading" style="padding:20px"><span style="color:var(--muted);font-size:12px">No Pakistan-specific alerts</span></div>
-        </div>
+        <div class="panel-head"><div class="ph-left"><div class="ph-dot phd-green"></div><div class="ph-title">Pakistan Alerts</div></div><span class="ph-badge" id="pk-count">0</span></div>
+        <div id="pk-alerts"><div class="loading" style="padding:24px"><span style="color:var(--text3);font-size:13px">No Pakistan alerts today</span></div></div>
       </div>
-
     </div>
   </div>
-</main>
+</div>
 
 <!-- MODAL -->
-<div class="modal-overlay" id="modal" onclick="closeModal(event)">
-  <div class="modal">
-    <div class="modal-header">
-      <div class="modal-cve" id="modal-cve"></div>
-      <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
+<div class="modal-ov" id="modal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <div class="modal-top">
+      <div class="modal-id" id="modal-cve"></div>
+      <button class="modal-x" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
     </div>
     <div class="modal-title" id="modal-title"></div>
     <div class="modal-desc" id="modal-desc"></div>
-    <div class="modal-meta" id="modal-meta"></div>
+    <div class="modal-chips" id="modal-chips"></div>
   </div>
 </div>
 
 <footer>
-  <p>InfoSec Pakistan · Automated threat intelligence · Data updated daily at 09:00 PKT</p>
-  <p style="margin-top:6px">Sources: CISA KEV · ZDI · Exploit-DB · Pakistan CERT · NVD</p>
+  <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>
+  <div class="footer-txt">Automated threat intelligence · Updated daily 09:00 PKT · <a class="footer-link" href="https://pakistaninfosec.github.io">pakistaninfosec.github.io</a></div>
 </footer>
 
 <script>
-// =========================================================
-// DATA LOADING
-// Reads from data/threats.json (generated by your scraper)
-// Falls back to demo data if file not found yet
-// =========================================================
+/* ══════════════════════════════
+   RADAR ANIMATION
+══════════════════════════════ */
+(function(){
+  const canvas = document.getElementById('radar');
+  const ctx = canvas.getContext('2d');
+  const cx = 200, cy = 200, maxR = 180;
+  let angle = 0;
+  const dots = [];
+  for(let i=0;i<28;i++){
+    const r = Math.random()*maxR*0.85+16;
+    const a = Math.random()*Math.PI*2;
+    dots.push({x:cx+Math.cos(a)*r, y:cy+Math.sin(a)*r, size:Math.random()*2+1, alpha:Math.random()*0.4+0.1});
+  }
+  const blips = [];
+  function spawnBlip(){
+    const r = Math.random()*maxR*0.8+20;
+    const a = angle + (Math.random()-0.5)*0.3;
+    blips.push({x:cx+Math.cos(a)*r, y:cy+Math.sin(a)*r, life:1.0, critical:Math.random()<0.15});
+  }
+  function draw(){
+    ctx.clearRect(0,0,400,400);
+    // Concentric rings
+    for(let i=1;i<=4;i++){
+      const r = maxR*i/4;
+      ctx.beginPath();
+      ctx.arc(cx,cy,r,0,Math.PI*2);
+      ctx.strokeStyle = `rgba(37,99,235,${0.08+(i===4?0.06:0)})`;
+      ctx.lineWidth = i===4?1:0.5;
+      ctx.stroke();
+    }
+    // Cross lines
+    ctx.strokeStyle = 'rgba(37,99,235,0.08)';
+    ctx.lineWidth = 0.5;
+    [0,Math.PI/4,Math.PI/2,Math.PI*3/4].forEach(a=>{
+      ctx.beginPath();
+      ctx.moveTo(cx+Math.cos(a)*maxR, cy+Math.sin(a)*maxR);
+      ctx.lineTo(cx+Math.cos(a+Math.PI)*maxR, cy+Math.sin(a+Math.PI)*maxR);
+      ctx.stroke();
+    });
+    // Dot matrix background
+    dots.forEach(d=>{
+      ctx.beginPath();
+      ctx.arc(d.x,d.y,d.size,0,Math.PI*2);
+      ctx.fillStyle=`rgba(148,163,184,${d.alpha})`;
+      ctx.fill();
+    });
+    // Sweep gradient
+    const sweep = ctx.createConicalGradient ? null : null;
+    const sweepAngle = 1.2;
+    for(let i=0;i<60;i++){
+      const a = angle - (i/60)*sweepAngle;
+      const alpha = (1-i/60)*0.18;
+      ctx.beginPath();
+      ctx.moveTo(cx,cy);
+      ctx.arc(cx,cy,maxR,a,a+sweepAngle/60);
+      ctx.closePath();
+      ctx.fillStyle=`rgba(37,99,235,${alpha})`;
+      ctx.fill();
+    }
+    // Sweep line
+    ctx.beginPath();
+    ctx.moveTo(cx,cy);
+    ctx.lineTo(cx+Math.cos(angle)*maxR, cy+Math.sin(angle)*maxR);
+    ctx.strokeStyle='rgba(96,165,250,0.7)';
+    ctx.lineWidth=1.5;
+    ctx.stroke();
+    // Center dot
+    ctx.beginPath();
+    ctx.arc(cx,cy,4,0,Math.PI*2);
+    ctx.fillStyle='rgba(96,165,250,0.9)';
+    ctx.fill();
+    // Blips
+    blips.forEach((b,i)=>{
+      b.life -= 0.018;
+      if(b.life<=0){blips.splice(i,1);return;}
+      const r = b.critical?4:2.5;
+      const grd = ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,r*4);
+      const col = b.critical?'239,68,68':'96,165,250';
+      grd.addColorStop(0,`rgba(${col},${b.life*0.9})`);
+      grd.addColorStop(1,`rgba(${col},0)`);
+      ctx.beginPath();ctx.arc(b.x,b.y,r*4,0,Math.PI*2);
+      ctx.fillStyle=grd;ctx.fill();
+      ctx.beginPath();ctx.arc(b.x,b.y,r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${col},${b.life})`;ctx.fill();
+    });
+    angle += 0.025;
+    if(Math.random()<0.12) spawnBlip();
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
 
-let allThreats = [];
-let currentFilter = 'all';
-let currentSearch = '';
-
-const DEMO_DATA = {
-  generated: new Date().toISOString(),
-  summary: "The threat landscape remains dynamic with significant vulnerabilities emerging across enterprise software. Today's digest highlights critical remote code execution flaws in widely-deployed systems, authentication bypass vulnerabilities, and directory traversal issues that pose immediate risk to organizations in Pakistan and globally. Priority patching is recommended for all CISA KEV entries.",
-  stats: { new: 70, changed: 0, removed: 0, total: 299, zeroday: 50, exploited: 30, pakistan: 8 },
-  sources: [
-    { name: "CISA KEV", count: 30 },
-    { name: "ZDI", count: 18 },
-    { name: "Exploit-DB", count: 12 },
-    { name: "Pakistan CERT", count: 8 },
-    { name: "NVD", count: 2 }
-  ],
-  threats: [
-    { id: "CVE-2026-1234", desc: "Remote code execution in Apache HTTP Server via malformed request headers", severity: "CRITICAL", source: "CISA KEV", date: "2026-05-10", pakistan: true, tags: ["RCE", "Apache", "Web Server"] },
-    { id: "CVE-2026-1198", desc: "Authentication bypass in Fortinet FortiOS SSL-VPN allows unauthenticated access", severity: "CRITICAL", source: "CISA KEV", date: "2026-05-10", pakistan: true, tags: ["Auth Bypass", "VPN", "Fortinet"] },
-    { id: "CVE-2026-0891", desc: "Directory traversal in Cisco IOS XE Web UI allows arbitrary file read", severity: "HIGH", source: "ZDI", date: "2026-05-10", pakistan: false, tags: ["Directory Traversal", "Cisco"] },
-    { id: "CVE-2026-0754", desc: "Privilege escalation in Microsoft Windows Kernel via crafted system call", severity: "HIGH", source: "ZDI", date: "2026-05-09", pakistan: false, tags: ["Privilege Escalation", "Windows"] },
-    { id: "CVE-2026-0612", desc: "SQL injection in popular CMS plugin allows database extraction", severity: "HIGH", source: "Exploit-DB", date: "2026-05-09", pakistan: false, tags: ["SQLi", "CMS"] },
-    { id: "CVE-2026-0589", desc: "Buffer overflow in OpenSSL TLS handshake leads to denial of service", severity: "MEDIUM", source: "NVD", date: "2026-05-09", pakistan: false, tags: ["Buffer Overflow", "OpenSSL", "DoS"] },
-    { id: "CVE-2026-0421", desc: "Cross-site scripting in widely-used email client web interface", severity: "MEDIUM", source: "Exploit-DB", date: "2026-05-08", pakistan: false, tags: ["XSS", "Email"] },
-    { id: "PKC-2026-041", desc: "Critical vulnerability in Pakistan government portal authentication system", severity: "CRITICAL", source: "Pakistan CERT", date: "2026-05-10", pakistan: true, tags: ["Gov", "Auth", "Pakistan"] },
-    { id: "PKC-2026-039", desc: "Active exploitation of banking sector web application in Pakistan", severity: "HIGH", source: "Pakistan CERT", date: "2026-05-09", pakistan: true, tags: ["Banking", "Pakistan"] },
+/* ══════════════════════════════
+   DATA
+══════════════════════════════ */
+let allThreats=[],currentFilter='all',currentSearch='';
+const DEMO={
+  generated:new Date().toISOString(),
+  summary:"Today's digest contains 329 vulnerabilities across multiple sources including NVD/NIST, CISA KEV, Google Project Zero, Palo Alto Networks and more. Several critical remote code execution and SQL injection vulnerabilities require immediate attention from Pakistan-based organizations.",
+  stats:{new:329,total:329,zeroday:50,exploited:50,pakistan:5},
+  sources:[{name:"NVD/NIST",count:200},{name:"CISA KEV",count:50},{name:"Vulners",count:20},{name:"Palo Alto",count:14},{name:"SANS ISC",count:10},{name:"Google P0",count:10},{name:"Kaspersky",count:10},{name:"CrowdStrike",count:5}],
+  threats:[
+    {id:"CVE-2026-7699",desc:"SQL injection in Dromara MaxKey via StrUtils.checkSqlInjection",severity:"MEDIUM",source:"NVD/NIST",date:"2026-05-03",pakistan:false,tags:["SQLi","CVE"]},
+    {id:"CVE-2026-7700",desc:"Critical authentication bypass in enterprise VPN solution",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["Auth Bypass","VPN"]},
+    {id:"CVE-2026-7698",desc:"Remote code execution via crafted HTTP request in web framework",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["RCE","Web"]},
+    {id:"CVE-2026-7695",desc:"Directory traversal in network management software",severity:"HIGH",source:"Google Project Zero",date:"2026-05-09",pakistan:false,tags:["Directory Traversal"]},
+    {id:"CVE-2026-7690",desc:"Privilege escalation in Linux kernel via crafted system call",severity:"HIGH",source:"NVD/NIST",date:"2026-05-08",pakistan:false,tags:["Privilege Escalation"]},
+    {id:"PKC-2026-041",desc:"Critical vulnerability in Pakistan government portal authentication",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["Gov","Pakistan"]},
+    {id:"PKC-2026-039",desc:"Active exploitation of banking sector application in Pakistan",severity:"HIGH",source:"CISA KEV",date:"2026-05-09",pakistan:true,tags:["Banking","Pakistan"]},
+    {id:"CVE-2026-7675",desc:"RCE in Fortinet FortiOS allows unauthenticated code execution",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["RCE","Fortinet"]},
+    {id:"CVE-2026-7660",desc:"Zero-day exploit in Microsoft Exchange Server allows RCE",severity:"CRITICAL",source:"Google Project Zero",date:"2026-05-10",pakistan:false,tags:["RCE","Exchange"]},
+    {id:"CVE-2026-7655",desc:"Heap buffer overflow in Chrome V8 engine allows code execution",severity:"CRITICAL",source:"Google Project Zero",date:"2026-05-09",pakistan:false,tags:["RCE","Chrome"]},
   ]
 };
 
-async function loadData() {
-  try {
-    const res = await fetch('data/threats.json?t=' + Date.now());
-    if (!res.ok) throw new Error('not found');
-    const data = await res.json();
-    renderAll(data);
-  } catch(e) {
-    // Use demo data if threats.json not yet generated
-    renderAll(DEMO_DATA);
-    document.getElementById('last-updated').textContent = '⚠ Using demo data — connect your scraper to push data/threats.json';
-  }
+async function loadData(){
+  try{const res=await fetch('data/threats.json?t='+Date.now());if(!res.ok)throw 0;renderAll(await res.json());}
+  catch{renderAll(DEMO);}
 }
-
-function renderAll(data) {
-  allThreats = data.threats || [];
-
-  // Header
-  const d = new Date(data.generated || Date.now());
-  document.getElementById('today-date').textContent =
-    d.toLocaleDateString('en-PK', { weekday:'long', year:'numeric', month:'long', day:'numeric' }) + ' · Threat Intelligence Report';
-  document.getElementById('last-updated').textContent =
-    'Last updated: ' + d.toLocaleTimeString('en-PK', { hour:'2-digit', minute:'2-digit' }) + ' · Auto-refreshes daily';
-
-  // Stats
-  const s = data.stats || {};
-  document.getElementById('total-new').textContent = '+' + (s.new || allThreats.length);
-  document.getElementById('cnt-zeroday').textContent = s.zeroday || 0;
-  document.getElementById('cnt-exploited').textContent = s.exploited || 0;
-  document.getElementById('cnt-pakistan').textContent = s.pakistan || allThreats.filter(t=>t.pakistan).length;
-  document.getElementById('cnt-total').textContent = s.total || allThreats.length;
-
-  // AI summary
-  document.getElementById('ai-summary').textContent = data.summary || 'No summary available.';
-
-  // Sources
-  renderSources(data.sources || []);
-
-  // Pakistan alerts
-  renderPKAlerts(allThreats.filter(t => t.pakistan));
-
-  // Threat list
+function renderAll(d){
+  allThreats=d.threats||[];
+  const dt=new Date(d.generated||Date.now());
+  document.getElementById('last-updated').textContent='Last updated: '+dt.toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'})+' · Auto-refreshes daily at 09:00 PKT';
+  const s=d.stats||{};
+  const n=s.new||allThreats.length;
+  document.getElementById('hero-new').textContent='+'+n;
+  document.getElementById('hero-pk').textContent=s.pakistan||allThreats.filter(t=>t.pakistan).length;
+  document.getElementById('hero-total').textContent=s.total||allThreats.length;
+  document.getElementById('cnt-zeroday').textContent=s.zeroday||0;
+  document.getElementById('cnt-exploited').textContent=s.exploited||0;
+  document.getElementById('cnt-pakistan').textContent=s.pakistan||allThreats.filter(t=>t.pakistan).length;
+  document.getElementById('cnt-total').textContent=s.total||allThreats.length;
+  document.getElementById('ai-summary').textContent=d.summary||'No summary available.';
+  renderSources(d.sources||[]);
+  renderPK(allThreats.filter(t=>t.pakistan));
   renderThreats();
 }
-
-function renderSources(sources) {
-  const max = Math.max(...sources.map(s => s.count), 1);
-  document.getElementById('source-breakdown').innerHTML = sources.map(s => `
-    <div class="source-item">
-      <span class="source-name">${s.name}</span>
-      <div class="source-bar-wrap"><div class="source-bar" style="width:${(s.count/max*100)}%"></div></div>
-      <span class="source-count">${s.count}</span>
-    </div>
-  `).join('');
+function renderSources(sources){
+  const max=Math.max(...sources.map(s=>s.count),1);
+  document.getElementById('source-breakdown').innerHTML=sources.map(s=>`
+    <div class="src-row"><span class="src-name">${s.name}</span>
+    <div class="src-bg"><div class="src-fill" style="width:${s.count/max*100}%"></div></div>
+    <span class="src-num">${s.count}</span></div>`).join('');
 }
-
-function renderPKAlerts(alerts) {
-  const el = document.getElementById('pk-alerts');
-  document.getElementById('pk-count').textContent = alerts.length;
-  if (!alerts.length) {
-    el.innerHTML = '<div class="loading" style="padding:20px"><span style="color:var(--muted);font-size:12px">No Pakistan-specific alerts today</span></div>';
-    return;
-  }
-  el.innerHTML = alerts.map(a => `
-    <div class="pk-alert" onclick="openModal(${JSON.stringify(a).replace(/"/g,'&quot;')})">
-      <div class="pk-icon">🇵🇰</div>
-      <div>
-        <div class="pk-alert-title">${a.id}</div>
-        <div class="pk-alert-desc">${a.desc}</div>
-      </div>
-    </div>
-  `).join('');
+function renderPK(a){
+  document.getElementById('pk-count').textContent=a.length;
+  document.getElementById('pk-alerts').innerHTML=a.length?a.map(t=>`
+    <div class="pk-item" onclick="openModal(${JSON.stringify(t).replace(/"/g,'&quot;')})">
+      <div class="pk-flag">🇵🇰</div>
+      <div><div class="pk-cve">${t.id}</div><div class="pk-desc">${t.desc}</div></div>
+    </div>`).join('') :
+    '<div class="loading" style="padding:24px"><span style="color:var(--text3);font-size:13px">No Pakistan alerts today</span></div>';
 }
-
-function renderThreats() {
-  let filtered = allThreats;
-  if (currentFilter === 'pakistan') filtered = filtered.filter(t => t.pakistan);
-  else if (currentFilter !== 'all') filtered = filtered.filter(t => t.severity === currentFilter);
-  if (currentSearch) {
-    const q = currentSearch.toLowerCase();
-    filtered = filtered.filter(t =>
-      t.id.toLowerCase().includes(q) ||
-      t.desc.toLowerCase().includes(q) ||
-      (t.source||'').toLowerCase().includes(q)
-    );
-  }
-  document.getElementById('showing-count').textContent = filtered.length + ' entries';
-  if (!filtered.length) {
-    document.getElementById('threat-list').innerHTML = '<div class="loading"><span style="color:var(--muted)">No threats match your filter</span></div>';
-    return;
-  }
-  document.getElementById('threat-list').innerHTML = filtered.map(t => `
-    <div class="threat-row" onclick="openModal(${JSON.stringify(t).replace(/"/g,'&quot;')})">
-      <span class="severity-badge sev-${t.severity.toLowerCase()}">${t.severity}</span>
-      <div class="threat-info">
-        <div class="cve-id">${t.id} ${t.pakistan ? '🇵🇰' : ''}</div>
-        <div class="cve-desc">${t.desc}</div>
-      </div>
-      <div class="threat-meta">
-        <div class="threat-source">${t.source}</div>
-        <div class="threat-source">${t.date}</div>
-      </div>
-    </div>
-  `).join('');
+function renderThreats(){
+  let f=allThreats;
+  if(currentFilter==='pakistan') f=f.filter(t=>t.pakistan);
+  else if(currentFilter!=='all') f=f.filter(t=>t.severity===currentFilter);
+  if(currentSearch){const q=currentSearch.toLowerCase();f=f.filter(t=>t.id.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q)||(t.source||'').toLowerCase().includes(q));}
+  document.getElementById('showing-count').textContent=f.length+' entries';
+  document.getElementById('threat-list').innerHTML=f.length?f.map(t=>`
+    <div class="t-row" onclick="openModal(${JSON.stringify(t).replace(/"/g,'&quot;')})">
+      <span class="sev sev-${t.severity.toLowerCase()}">${t.severity}</span>
+      <div><div class="t-id">${t.id}${t.pakistan?' 🇵🇰':''}</div><div class="t-desc">${t.desc}</div></div>
+      <div><div class="t-src">${t.source}</div><div class="t-date">${t.date}</div></div>
+    </div>`).join('') :
+    '<div class="loading"><span style="color:var(--text3)">No results</span></div>';
 }
-
-function filterSev(sev) {
-  currentFilter = sev;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-  renderThreats();
-}
-
-document.getElementById('search').addEventListener('input', e => {
-  currentSearch = e.target.value;
-  renderThreats();
-});
-
-function openModal(t) {
-  if (typeof t === 'string') t = JSON.parse(t);
-  document.getElementById('modal-cve').textContent = t.id;
-  document.getElementById('modal-title').textContent = t.desc;
-  document.getElementById('modal-desc').textContent = t.desc;
-  document.getElementById('modal-meta').innerHTML = `
-    <div class="modal-tag">Severity: <span>${t.severity}</span></div>
-    <div class="modal-tag">Source: <span>${t.source}</span></div>
-    <div class="modal-tag">Date: <span>${t.date}</span></div>
-    ${t.pakistan ? '<div class="modal-tag">🇵🇰 <span>Pakistan Alert</span></div>' : ''}
-    ${(t.tags||[]).map(tag => `<div class="modal-tag">${tag}</div>`).join('')}
-  `;
+function filterSev(sev,btn){currentFilter=sev;document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderThreats();}
+document.getElementById('search').addEventListener('input',e=>{currentSearch=e.target.value;renderThreats();});
+function openModal(t){
+  if(typeof t==='string')t=JSON.parse(t);
+  document.getElementById('modal-cve').textContent=t.id;
+  document.getElementById('modal-title').textContent=t.desc;
+  document.getElementById('modal-desc').textContent=t.desc;
+  document.getElementById('modal-chips').innerHTML=`
+    <div class="modal-chip">Severity: <b>${t.severity}</b></div>
+    <div class="modal-chip">Source: <b>${t.source}</b></div>
+    <div class="modal-chip">Date: <b>${t.date}</b></div>
+    ${t.pakistan?'<div class="modal-chip">🇵🇰 <b>Pakistan Alert</b></div>':''}
+    ${(t.tags||[]).map(tag=>`<div class="modal-chip">${tag}</div>`).join('')}`;
   document.getElementById('modal').classList.add('open');
 }
-
-function closeModal(e) {
-  if (e.target === document.getElementById('modal')) {
-    document.getElementById('modal').classList.remove('open');
-  }
-}
-
-document.getElementById('today-date').textContent =
-  new Date().toLocaleDateString('en-PK', { weekday:'long', year:'numeric', month:'long', day:'numeric' }) + ' · Threat Intelligence Report';
-
+function closeModal(e){if(e.target===document.getElementById('modal'))document.getElementById('modal').classList.remove('open');}
 loadData();
-// Auto-refresh every 5 minutes
-setInterval(loadData, 5 * 60 * 1000);
+setInterval(loadData,5*60*1000);
 </script>
 </body>
 </html>

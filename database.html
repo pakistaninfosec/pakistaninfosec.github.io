@@ -5,118 +5,152 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CVE Database — InfoSec Pakistan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg:#05080f;--bg2:#0b1120;--bg3:#111827;
-    --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
-    --text:#e8eaf0;--muted:#6b7280;
-    --accent:#3b82f6;--accent2:#1d4ed8;
-    --red:#ef4444;--orange:#f97316;--green:#22c55e;--yellow:#eab308;--cyan:#06b6d4;
-    --font-mono:'JetBrains Mono',monospace;--font-display:'Syne',sans-serif;
-  }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  body{background:var(--bg);color:var(--text);font-family:var(--font-mono);font-size:13px;line-height:1.6;min-height:100vh;}
-  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(59,130,246,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+:root {
+  --bg:#05070d;--bg2:#090d16;--bg3:#0e1420;--bg4:#141b28;--bg5:#1a2235;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);--border3:rgba(255,255,255,0.16);
+  --text:#ffffff;--text2:#94a3b8;--text3:#64748b;
+  --blue:#2563eb;--blue2:#3b82f6;--blue3:#60a5fa;--blue4:#93c5fd;
+  --red:#ef4444;--red2:#f87171;--orange:#f97316;--green:#22c55e;--yellow:#eab308;--cyan:#06b6d4;
+  --body:'Inter',sans-serif;--display:'Space Grotesk',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:14px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(37,99,235,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.025) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0;}
 
-  nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px;background:rgba(5,8,15,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
-  .nav-brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:15px;color:var(--text);text-decoration:none;}
-  .nav-brand .shield{width:28px;height:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px;}
-  .nav-links{display:flex;gap:4px;}
-  .nav-links a{color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:6px;font-size:12px;transition:all 0.2s;}
-  .nav-links a:hover,.nav-links a.active{color:var(--text);background:var(--bg3);}
+/* NAV — identical to index.html */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(5,7,13,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.brand-icon{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 24px rgba(37,99,235,0.4);}
+.brand-name{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-0.01em;color:#fff;}
+.brand-name span{color:var(--blue3);}
+.nav-links{display:flex;gap:2px;}
+.nav-links a{color:var(--text3);text-decoration:none;padding:8px 18px;font-size:13.5px;font-weight:500;border-radius:8px;transition:all 0.2s;}
+.nav-links a:hover{color:#fff;background:var(--bg3);}
+.nav-links a.active{color:#fff;background:var(--bg3);}
+.live-badge{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--green);background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);padding:7px 16px;border-radius:6px;}
+.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
-  main{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:40px 32px;}
+/* PAGE HEADER */
+.page-header{position:relative;z-index:1;padding:48px 48px 36px;border-bottom:1px solid var(--border);background:linear-gradient(135deg,rgba(37,99,235,0.04) 0%,transparent 60%);}
+.page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.25);color:var(--blue3);font-size:11.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:16px;}
+.page-badge::before{content:'●';font-size:7px;animation:blink 2s infinite;}
+.page-title{font-family:var(--display);font-size:clamp(28px,3vw,40px);font-weight:700;line-height:1.15;letter-spacing:-0.03em;color:#fff;margin-bottom:10px;}
+.page-title span{color:var(--blue3);}
+.page-sub{font-size:14px;color:var(--text2);}
 
-  h1{font-family:var(--font-display);font-size:28px;font-weight:800;letter-spacing:-0.03em;margin-bottom:6px;}
-  h1 span{color:var(--accent);}
-  .subtitle{color:var(--muted);font-size:12px;margin-bottom:28px;}
+/* MAIN */
+.main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:36px 48px;}
 
-  /* Filters bar */
-  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;align-items:center;}
-  .search-input{background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:9px 14px;border-radius:8px;font-family:var(--font-mono);font-size:12px;outline:none;width:320px;transition:border-color 0.2s;}
-  .search-input:focus{border-color:var(--accent);}
-  .search-input::placeholder{color:var(--muted);}
-  select{background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-family:var(--font-mono);font-size:12px;outline:none;cursor:pointer;}
-  select:focus{border-color:var(--accent);}
-  .result-count{margin-left:auto;font-size:12px;color:var(--muted);}
+/* Filters bar */
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:20px;}
+.search-input{background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:9px 14px;border-radius:8px;font-family:var(--body);font-size:13px;outline:none;width:320px;transition:border-color 0.2s;}
+.search-input:focus{border-color:var(--blue2);}
+.search-input::placeholder{color:var(--text3);}
+.f-select{background:var(--bg2);border:1px solid var(--border);color:var(--text2);padding:9px 12px;border-radius:8px;font-family:var(--body);font-size:13px;outline:none;cursor:pointer;transition:border-color 0.2s;}
+.f-select:focus{border-color:var(--blue2);}
+.result-count{margin-left:auto;font-size:12.5px;color:var(--text3);font-weight:500;}
 
-  /* Table */
-  .table-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
-  table{width:100%;border-collapse:collapse;}
-  thead th{padding:12px 16px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);border-bottom:1px solid var(--border);background:var(--bg3);cursor:pointer;user-select:none;}
-  thead th:hover{color:var(--text);}
-  thead th.sorted{color:var(--accent);}
-  tbody tr{border-bottom:1px solid var(--border);transition:background 0.15s;cursor:pointer;}
-  tbody tr:last-child{border-bottom:none;}
-  tbody tr:hover{background:rgba(255,255,255,0.02);}
-  td{padding:11px 16px;font-size:12px;vertical-align:middle;}
-  .td-cve{font-weight:600;color:var(--cyan);white-space:nowrap;}
-  .td-desc{color:var(--muted);max-width:380px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-  .td-source{white-space:nowrap;color:var(--muted);}
-  .td-date{white-space:nowrap;color:var(--muted);}
-  .pk-flag{margin-left:4px;}
+/* Table panel */
+.table-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+table{width:100%;border-collapse:collapse;}
+thead th{padding:13px 18px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--text3);border-bottom:1px solid var(--border);background:var(--bg3);cursor:pointer;user-select:none;font-family:var(--body);font-weight:600;transition:color 0.15s;}
+thead th:hover{color:var(--text2);}
+thead th.sorted{color:var(--blue3);}
+tbody tr{border-bottom:1px solid var(--border);transition:background 0.15s;cursor:pointer;}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:var(--bg3);}
+td{padding:12px 18px;font-size:13px;vertical-align:middle;font-family:var(--body);}
+.td-cve{font-weight:600;color:var(--blue3);white-space:nowrap;font-family:'Courier New',monospace;font-size:12.5px;}
+.td-desc{color:var(--text2);max-width:400px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.td-source{white-space:nowrap;color:var(--text3);font-size:12.5px;}
+.td-date{white-space:nowrap;color:var(--text3);font-size:12.5px;}
+.pk-flag{margin-left:5px;}
 
-  .severity-badge{font-size:9px;font-weight:700;letter-spacing:0.06em;padding:3px 7px;border-radius:4px;white-space:nowrap;}
-  .sev-critical{background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.3);}
-  .sev-high{background:rgba(249,115,22,0.15);color:var(--orange);border:1px solid rgba(249,115,22,0.3);}
-  .sev-medium{background:rgba(234,179,8,0.15);color:var(--yellow);border:1px solid rgba(234,179,8,0.3);}
-  .sev-low{background:rgba(34,197,94,0.15);color:var(--green);border:1px solid rgba(34,197,94,0.3);}
+.sev-badge{font-size:10px;font-weight:700;letter-spacing:0.06em;padding:3px 8px;border-radius:4px;white-space:nowrap;font-family:var(--body);}
+.sev-critical{background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.2);}
+.sev-high{background:rgba(249,115,22,0.1);color:var(--orange);border:1px solid rgba(249,115,22,0.2);}
+.sev-medium{background:rgba(234,179,8,0.1);color:var(--yellow);border:1px solid rgba(234,179,8,0.2);}
+.sev-low{background:rgba(34,197,94,0.1);color:var(--green);border:1px solid rgba(34,197,94,0.2);}
 
-  /* Pagination */
-  .pagination{display:flex;align-items:center;justify-content:center;gap:8px;padding:20px;}
-  .page-btn{background:var(--bg2);border:1px solid var(--border);color:var(--muted);padding:6px 12px;border-radius:6px;font-family:var(--font-mono);font-size:12px;cursor:pointer;transition:all 0.2s;}
-  .page-btn:hover,.page-btn.active{color:var(--text);border-color:var(--accent);background:rgba(59,130,246,0.08);}
-  .page-btn:disabled{opacity:0.3;cursor:not-allowed;}
+/* Pagination */
+.pagination{display:flex;align-items:center;justify-content:center;gap:6px;padding:18px;}
+.page-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text3);padding:6px 13px;border-radius:7px;font-family:var(--body);font-size:12.5px;font-weight:500;cursor:pointer;transition:all 0.2s;}
+.page-btn:hover{color:#fff;border-color:var(--border2);}
+.page-btn.active{color:var(--blue3);border-color:rgba(59,130,246,0.4);background:rgba(59,130,246,0.08);}
+.page-btn:disabled{opacity:0.3;cursor:not-allowed;}
 
-  .loading{display:flex;align-items:center;justify-content:center;padding:60px;color:var(--muted);gap:10px;}
-  .spinner{width:16px;height:16px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;}
-  @keyframes spin{to{transform:rotate(360deg);}}
+/* Loading */
+.loading{display:flex;align-items:center;justify-content:center;padding:60px;color:var(--text3);gap:10px;font-size:13px;}
+.spinner{width:18px;height:18px;border:2px solid var(--bg5);border-top-color:var(--blue2);border-radius:50%;animation:spin 0.8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-  /* Modal */
-  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center;}
-  .modal-overlay.open{display:flex;}
-  .modal{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:28px;max-width:560px;width:90%;}
-  .modal-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
-  .modal-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;}
-  .modal-cve{font-size:11px;color:var(--cyan);}
-  .modal-title{font-family:var(--font-display);font-size:16px;font-weight:700;margin:6px 0 12px;line-height:1.4;}
-  .modal-desc{font-size:12px;color:var(--muted);line-height:1.7;}
-  .modal-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;}
-  .modal-tag{font-size:11px;background:var(--bg3);border:1px solid var(--border);padding:4px 10px;border-radius:6px;color:var(--muted);}
-  .modal-tag span{color:var(--text);}
+/* Modal */
+.modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center;}
+.modal-ov.open{display:flex;}
+.modal-box{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:32px;max-width:580px;width:90%;position:relative;}
+.modal-box::before{content:'';position:absolute;top:0;left:48px;right:48px;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent);}
+.modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.modal-id{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:var(--blue3);font-size:12px;font-weight:600;padding:5px 12px;border-radius:6px;font-family:'Courier New',monospace;}
+.modal-x{width:32px;height:32px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text3);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.modal-x:hover{color:#fff;border-color:var(--border2);}
+.modal-title{font-family:var(--display);font-size:18px;font-weight:700;line-height:1.4;color:#fff;margin-bottom:12px;}
+.modal-desc{font-size:13.5px;color:var(--text2);line-height:1.75;margin-bottom:20px;}
+.modal-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.modal-chip{font-size:11.5px;background:var(--bg3);border:1px solid var(--border);padding:5px 12px;border-radius:6px;color:var(--text3);}
+.modal-chip b{color:#fff;font-weight:500;}
 
-  footer{position:relative;z-index:1;text-align:center;padding:32px;border-top:1px solid var(--border);color:var(--muted);font-size:11px;}
+/* Footer */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;margin-top:8px;}
+.footer-brand{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text2);}
+.footer-brand span{color:var(--blue3);}
+.footer-txt{font-size:12px;color:var(--text3);}
+.footer-link{color:var(--blue3);text-decoration:none;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.page-header{animation:fadeUp 0.5s ease both;}
+.filters{animation:fadeUp 0.5s 0.05s ease both;}
+.table-wrap{animation:fadeUp 0.5s 0.1s ease both;}
 </style>
 </head>
 <body>
 
+<!-- NAV — identical to index.html -->
 <nav>
-  <a class="nav-brand" href="index.html">
-    <div class="shield">🛡</div>
-    InfoSec Pakistan
+  <a class="brand" href="index.html">
+    <div class="brand-icon">🛡</div>
+    <div class="brand-name">INFOSEC <span>PAKISTAN</span></div>
   </a>
   <div class="nav-links">
     <a href="index.html">Dashboard</a>
     <a href="reports.html">Daily Reports</a>
     <a href="database.html" class="active">CVE Database</a>
   </div>
+  <div class="live-badge"><div class="live-dot"></div>LIVE</div>
 </nav>
 
-<main>
-  <h1>CVE <span>Database</span></h1>
-  <p class="subtitle">Full searchable archive of all tracked vulnerabilities · Updated daily at 09:00 PKT</p>
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-badge">Vulnerability Archive</div>
+  <div class="page-title">CVE <span>Database</span></div>
+  <div class="page-sub">Full searchable archive of all tracked vulnerabilities · Updated daily at 09:00 PKT</div>
+</div>
 
+<!-- MAIN -->
+<div class="main">
   <div class="filters">
     <input class="search-input" id="search" type="text" placeholder="Search CVE ID, description, source...">
-    <select id="sev-filter" onchange="applyFilters()">
+    <select class="f-select" id="sev-filter" onchange="applyFilters()">
       <option value="">All Severities</option>
       <option value="CRITICAL">Critical</option>
       <option value="HIGH">High</option>
       <option value="MEDIUM">Medium</option>
       <option value="LOW">Low</option>
     </select>
-    <select id="src-filter" onchange="applyFilters()">
+    <select class="f-select" id="src-filter" onchange="applyFilters()">
       <option value="">All Sources</option>
       <option value="CISA KEV">CISA KEV</option>
       <option value="ZDI">ZDI</option>
@@ -124,7 +158,7 @@
       <option value="Pakistan CERT">Pakistan CERT</option>
       <option value="NVD">NVD</option>
     </select>
-    <select id="pk-filter" onchange="applyFilters()">
+    <select class="f-select" id="pk-filter" onchange="applyFilters()">
       <option value="">All Regions</option>
       <option value="pk">🇵🇰 Pakistan Only</option>
     </select>
@@ -143,27 +177,30 @@
         </tr>
       </thead>
       <tbody id="table-body">
-        <tr><td colspan="5"><div class="loading"><div class="spinner"></div> Loading...</div></td></tr>
+        <tr><td colspan="5"><div class="loading"><div class="spinner"></div>Loading...</div></td></tr>
       </tbody>
     </table>
     <div class="pagination" id="pagination"></div>
   </div>
-</main>
+</div>
 
-<!-- Modal -->
-<div class="modal-overlay" id="modal" onclick="closeModal(event)">
-  <div class="modal">
-    <div class="modal-header">
-      <div class="modal-cve" id="modal-cve"></div>
-      <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
+<!-- MODAL -->
+<div class="modal-ov" id="modal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <div class="modal-top">
+      <div class="modal-id" id="modal-id"></div>
+      <button class="modal-x" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
     </div>
     <div class="modal-title" id="modal-title"></div>
     <div class="modal-desc" id="modal-desc"></div>
-    <div class="modal-meta" id="modal-meta"></div>
+    <div class="modal-chips" id="modal-chips"></div>
   </div>
 </div>
 
-<footer>InfoSec Pakistan · CVE Database · Updated daily at 09:00 PKT</footer>
+<footer>
+  <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>
+  <div class="footer-txt">Automated threat intelligence · Updated daily 09:00 PKT · <a class="footer-link" href="https://pakistaninfosec.github.io">pakistaninfosec.github.io</a></div>
+</footer>
 
 <script>
 const PAGE_SIZE = 25;
@@ -194,10 +231,10 @@ async function loadData() {
 }
 
 function applyFilters() {
-  const q = document.getElementById('search').value.toLowerCase();
+  const q   = document.getElementById('search').value.toLowerCase();
   const sev = document.getElementById('sev-filter').value;
   const src = document.getElementById('src-filter').value;
-  const pk = document.getElementById('pk-filter').value;
+  const pk  = document.getElementById('pk-filter').value;
   filtered = allThreats.filter(t => {
     if (sev && t.severity !== sev) return false;
     if (src && t.source !== src) return false;
@@ -205,33 +242,35 @@ function applyFilters() {
     if (q && !t.id.toLowerCase().includes(q) && !t.desc.toLowerCase().includes(q) && !(t.source||'').toLowerCase().includes(q)) return false;
     return true;
   });
-  filtered.sort((a,b) => {
+  filtered.sort((a, b) => {
     const av = a[sortCol]||'', bv = b[sortCol]||'';
     return av < bv ? sortDir : av > bv ? -sortDir : 0;
   });
   currentPage = 1;
-  document.getElementById('result-count').textContent = filtered.length + ' results';
+  document.getElementById('result-count').textContent = filtered.length.toLocaleString() + ' results';
   renderTable();
 }
 
 function sortBy(col) {
   if (sortCol === col) sortDir *= -1;
   else { sortCol = col; sortDir = -1; }
+  document.querySelectorAll('thead th').forEach(th => th.classList.remove('sorted'));
+  event.target.classList.add('sorted');
   applyFilters();
 }
 
 function renderTable() {
-  const start = (currentPage-1)*PAGE_SIZE;
-  const page = filtered.slice(start, start+PAGE_SIZE);
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const page  = filtered.slice(start, start + PAGE_SIZE);
   document.getElementById('table-body').innerHTML = page.length ? page.map(t => `
     <tr onclick="openModal(${JSON.stringify(t).replace(/"/g,'&quot;')})">
       <td class="td-cve">${t.id}${t.pakistan ? ' <span class="pk-flag">🇵🇰</span>' : ''}</td>
-      <td><span class="severity-badge sev-${t.severity.toLowerCase()}">${t.severity}</span></td>
+      <td><span class="sev-badge sev-${t.severity.toLowerCase()}">${t.severity}</span></td>
       <td class="td-desc">${t.desc}</td>
       <td class="td-source">${t.source}</td>
       <td class="td-date">${t.date}</td>
     </tr>
-  `).join('') : '<tr><td colspan="5" style="text-align:center;padding:40px;color:var(--muted)">No results found</td></tr>';
+  `).join('') : `<tr><td colspan="5" style="text-align:center;padding:48px;color:var(--text3);font-size:13px">No results found</td></tr>`;
   renderPagination();
 }
 
@@ -239,11 +278,11 @@ function renderPagination() {
   const pages = Math.ceil(filtered.length / PAGE_SIZE);
   if (pages <= 1) { document.getElementById('pagination').innerHTML = ''; return; }
   let html = `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>← Prev</button>`;
-  for (let i=1;i<=pages;i++) {
-    if (i===1||i===pages||Math.abs(i-currentPage)<=1)
+  for (let i = 1; i <= pages; i++) {
+    if (i === 1 || i === pages || Math.abs(i - currentPage) <= 1)
       html += `<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i}</button>`;
-    else if (Math.abs(i-currentPage)===2)
-      html += `<span style="color:var(--muted)">…</span>`;
+    else if (Math.abs(i - currentPage) === 2)
+      html += `<span style="color:var(--text3);padding:0 4px">…</span>`;
   }
   html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===pages?'disabled':''}>Next →</button>`;
   document.getElementById('pagination').innerHTML = html;
@@ -252,24 +291,24 @@ function renderPagination() {
 function goPage(p) {
   currentPage = p;
   renderTable();
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
 }
 
 function openModal(t) {
   if (typeof t === 'string') t = JSON.parse(t);
-  document.getElementById('modal-cve').textContent = t.id;
+  document.getElementById('modal-id').textContent = t.id;
   document.getElementById('modal-title').textContent = t.desc;
   document.getElementById('modal-desc').textContent = t.desc;
-  document.getElementById('modal-meta').innerHTML = `
-    <div class="modal-tag">Severity: <span>${t.severity}</span></div>
-    <div class="modal-tag">Source: <span>${t.source}</span></div>
-    <div class="modal-tag">Date: <span>${t.date}</span></div>
-    ${t.pakistan ? '<div class="modal-tag">🇵🇰 <span>Pakistan Alert</span></div>' : ''}
-    ${(t.tags||[]).map(tag=>`<div class="modal-tag">${tag}</div>`).join('')}
+  document.getElementById('modal-chips').innerHTML = `
+    <div class="modal-chip">Severity: <b>${t.severity}</b></div>
+    <div class="modal-chip">Source: <b>${t.source}</b></div>
+    <div class="modal-chip">Date: <b>${t.date}</b></div>
+    ${t.pakistan ? '<div class="modal-chip">🇵🇰 <b>Pakistan Alert</b></div>' : ''}
+    ${(t.tags||[]).map(tag => `<div class="modal-chip">${tag}</div>`).join('')}
   `;
   document.getElementById('modal').classList.add('open');
 }
-function closeModal(e){if(e.target===document.getElementById('modal'))document.getElementById('modal').classList.remove('open');}
+function closeModal(e) { if (e.target === document.getElementById('modal')) document.getElementById('modal').classList.remove('open'); }
 
 document.getElementById('search').addEventListener('input', applyFilters);
 loadData();

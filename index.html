@@ -252,12 +252,6 @@ canvas#radar{width:400px;height:400px;}
 .src-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width 1.2s ease;}
 .src-num{font-size:12px;color:var(--text3);min-width:28px;text-align:right;}
 
-.pk-item{display:flex;gap:12px;align-items:flex-start;padding:13px 20px;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.15s;}
-.pk-item:hover{background:var(--bg3);}
-.pk-item:last-child{border-bottom:none;}
-.pk-flag{font-size:20px;flex-shrink:0;}
-.pk-cve{font-size:12px;font-weight:600;color:var(--green);font-family:'Courier New',monospace;margin-bottom:3px;}
-.pk-desc{font-size:12px;color:var(--text2);line-height:1.5;}
 
 /* Loading */
 .loading{display:flex;align-items:center;justify-content:center;padding:52px;color:var(--text3);gap:10px;font-size:13px;}
@@ -414,10 +408,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
       <div class="panel">
         <div class="panel-head"><div class="ph-left"><div class="ph-dot phd-blue"></div><div class="ph-title">Source Breakdown</div></div></div>
         <div id="source-breakdown"><div class="loading"><div class="spinner"></div></div></div>
-      </div>
-      <div class="panel">
-        <div class="panel-head"><div class="ph-left"><div class="ph-dot phd-green"></div><div class="ph-title">Pakistan Alerts</div></div><span class="ph-badge" id="pk-count">0</span></div>
-        <div id="pk-alerts"><div class="loading" style="padding:24px"><span style="color:var(--text3);font-size:13px">No Pakistan alerts today</span></div></div>
       </div>
     </div>
   </div>
@@ -604,7 +594,6 @@ function renderAll(d){
   document.getElementById('cnt-total').textContent=s.total||allThreats.length;
   document.getElementById('ai-summary').textContent=d.summary||'No summary available.';
   renderSources(d.sources||[]);
-  renderPK(allThreats.filter(t=>t.pakistan));
   renderThreats();
   buildTicker(allThreats);
 }
@@ -615,15 +604,7 @@ function renderSources(sources){
     <div class="src-bg"><div class="src-fill" style="width:${s.count/max*100}%"></div></div>
     <span class="src-num">${s.count}</span></div>`).join('');
 }
-function renderPK(a){
-  document.getElementById('pk-count').textContent=a.length;
-  document.getElementById('pk-alerts').innerHTML=a.length?a.map(t=>`
-    <div class="pk-item" onclick="openModal(${JSON.stringify(t).replace(/"/g,'&quot;')})">
-      <div class="pk-flag">🇵🇰</div>
-      <div><div class="pk-cve">${t.id}</div><div class="pk-desc">${t.desc}</div></div>
-    </div>`).join('') :
-    '<div class="loading" style="padding:24px"><span style="color:var(--text3);font-size:13px">No Pakistan alerts today</span></div>';
-}
+
 function renderThreats(){
   let f=allThreats;
   if(currentFilter==='pakistan') f=f.filter(t=>t.pakistan);

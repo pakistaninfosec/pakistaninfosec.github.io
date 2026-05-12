@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — InfoSec Pakistan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05070d;--bg2:#090d16;--bg3:#0e1420;--bg4:#141b28;--bg5:#1a2235;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);--border3:rgba(255,255,255,0.16);
+  --text:#ffffff;--text2:#94a3b8;--text3:#64748b;
+  --blue:#2563eb;--blue2:#3b82f6;--blue3:#60a5fa;
+  --red:#ef4444;--orange:#f97316;--green:#22c55e;--yellow:#eab308;--cyan:#06b6d4;
+  --body:'Inter',sans-serif;--display:'Space Grotesk',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:14px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(37,99,235,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.025) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(37,99,235,0.07) 0%,transparent 65%);pointer-events:none;z-index:0;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(5,7,13,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.brand-icon{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 24px rgba(37,99,235,0.4);}
+.brand-name{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-0.01em;color:#fff;}
+.brand-name span{color:var(--blue3);}
+.nav-links{display:flex;gap:2px;}
+.nav-links a{color:var(--text3);text-decoration:none;padding:8px 18px;font-size:13.5px;font-weight:500;border-radius:8px;transition:all 0.2s;}
+.nav-links a:hover{color:#fff;background:var(--bg3);}
+.nav-links a.active{color:#fff;background:var(--bg3);}
+.live-badge{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--green);background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);padding:7px 16px;border-radius:6px;}
+.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* MAIN */
+main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:60px 48px;}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:72px;padding-bottom:72px;border-bottom:1px solid var(--border);}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.25);color:var(--blue3);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:20px;}
+.hero-title{font-family:var(--display);font-size:clamp(36px,4vw,52px);font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:#fff;margin-bottom:18px;}
+.hero-title span{color:var(--blue3);}
+.hero-desc{font-size:15px;color:var(--text2);line-height:1.8;margin-bottom:28px;}
+.mission-box{background:var(--bg2);border:1px solid rgba(37,99,235,0.2);border-radius:14px;padding:28px;position:relative;overflow:hidden;}
+.mission-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));}
+.mb-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue3);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.mb-label::before{content:'◆';font-size:8px;}
+.mb-text{font-size:14px;color:var(--text2);line-height:1.8;}
+.hero-right{display:flex;flex-direction:column;gap:16px;}
+.stat-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.st-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:22px;text-align:center;transition:all 0.2s;}
+.st-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.st-num{font-family:var(--display);font-size:36px;font-weight:700;line-height:1;}
+.stn-blue{color:var(--blue3);}
+.stn-green{color:var(--green);}
+.stn-red{color:var(--red);}
+.st-label{font-size:11.5px;color:var(--text3);margin-top:6px;font-weight:500;}
+.update-info{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 22px;display:flex;align-items:center;gap:14px;}
+.ui-icon{width:36px;height:36px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.ui-title{font-size:13px;font-weight:600;color:#fff;}
+.ui-desc{font-size:12px;color:var(--text3);margin-top:2px;}
+
+/* SECTION TITLE */
+.section-title{font-family:var(--display);font-size:26px;font-weight:700;color:#fff;margin-bottom:24px;display:flex;align-items:center;gap:14px;}
+.section-title::before{content:'';width:4px;height:26px;background:var(--blue2);border-radius:2px;box-shadow:0 0 10px var(--blue2);}
+section{margin-bottom:72px;}
+
+/* FEATURES GRID */
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.feature-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:28px;transition:all 0.2s;position:relative;overflow:hidden;}
+.feature-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.feature-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;}
+.fc-blue::before{background:linear-gradient(90deg,transparent,var(--blue),transparent);}
+.fc-green::before{background:linear-gradient(90deg,transparent,var(--green),transparent);}
+.fc-red::before{background:linear-gradient(90deg,transparent,var(--red),transparent);}
+.fc-orange::before{background:linear-gradient(90deg,transparent,var(--orange),transparent);}
+.fc-cyan::before{background:linear-gradient(90deg,transparent,var(--cyan),transparent);}
+.fc-purple::before{background:linear-gradient(90deg,transparent,#a855f7,transparent);}
+.fc-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px;}
+.fci-blue{background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.15);}
+.fci-green{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.15);}
+.fci-red{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.15);}
+.fci-orange{background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.15);}
+.fci-cyan{background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.15);}
+.fci-purple{background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.15);}
+.fc-title{font-family:var(--display);font-size:17px;font-weight:600;color:#fff;margin-bottom:10px;}
+.fc-desc{font-size:13px;color:var(--text2);line-height:1.75;}
+
+/* SOURCES */
+.sources-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.source-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:14px;transition:all 0.2s;}
+.source-card:hover{border-color:var(--border2);}
+.src-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.sd-red{background:var(--red);box-shadow:0 0 8px var(--red);}
+.sd-blue{background:var(--blue2);box-shadow:0 0 8px var(--blue2);}
+.sd-green{background:var(--green);box-shadow:0 0 8px var(--green);}
+.sd-orange{background:var(--orange);box-shadow:0 0 8px var(--orange);}
+.sd-cyan{background:var(--cyan);box-shadow:0 0 8px var(--cyan);}
+.sd-purple{background:#a855f7;box-shadow:0 0 8px #a855f7;}
+.src-name{font-size:13px;font-weight:600;color:#fff;}
+.src-type{font-size:11px;color:var(--text3);margin-top:2px;}
+
+/* TECH STACK */
+.tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.tech-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;transition:all 0.2s;}
+.tech-card:hover{border-color:var(--border2);}
+.tc-icon{font-size:28px;margin-bottom:10px;}
+.tc-name{font-size:13px;font-weight:600;color:#fff;}
+.tc-role{font-size:11px;color:var(--text3);margin-top:4px;}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0;}
+.tl-item{display:grid;grid-template-columns:120px 1fr;gap:24px;position:relative;padding-bottom:32px;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-item::before{content:'';position:absolute;left:110px;top:8px;bottom:0;width:1px;background:var(--border);z-index:0;}
+.tl-item:last-child::before{display:none;}
+.tl-date{font-family:var(--display);font-size:13px;font-weight:600;color:var(--blue3);text-align:right;padding-top:2px;}
+.tl-dot{position:absolute;left:104px;top:6px;width:13px;height:13px;background:var(--blue2);border-radius:50%;border:2px solid var(--bg);box-shadow:0 0 8px var(--blue2);z-index:1;}
+.tl-content{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 20px;}
+.tl-title{font-size:13.5px;font-weight:600;color:#fff;margin-bottom:4px;}
+.tl-desc{font-size:12px;color:var(--text2);line-height:1.6;}
+
+/* CONTACT */
+.contact-box{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:52px;text-align:center;position:relative;overflow:hidden;}
+.contact-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--blue),var(--cyan),transparent);}
+.contact-box::after{content:'';position:absolute;bottom:-100px;left:50%;transform:translateX(-50%);width:400px;height:200px;background:radial-gradient(ellipse,rgba(37,99,235,0.08),transparent 70%);pointer-events:none;}
+.cb-title{font-family:var(--display);font-size:32px;font-weight:700;color:#fff;margin-bottom:12px;}
+.cb-desc{font-size:15px;color:var(--text2);margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.75;}
+.cb-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+.cb-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:8px;font-size:13.5px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.cbb-primary{background:var(--blue);color:#fff;}
+.cbb-primary:hover{background:var(--blue2);transform:translateY(-1px);}
+.cbb-secondary{background:var(--bg3);color:var(--text2);border:1px solid var(--border2);}
+.cbb-secondary:hover{color:#fff;border-color:var(--border3);}
+
+/* FOOTER */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
+.footer-brand{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text2);}
+.footer-brand span{color:var(--blue3);}
+.footer-txt{font-size:12px;color:var(--text3);}
+.footer-link{color:var(--blue3);text-decoration:none;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero{animation:fadeUp 0.5s ease both;}
+.features-grid{animation:fadeUp 0.5s 0.1s ease both;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">
+    <div class="brand-icon">🛡</div>
+    <div class="brand-name">INFOSEC <span>PAKISTAN</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Dashboard</a>
+    <a href="reports.html">Daily Reports</a>
+    <a href="database.html">CVE Database</a>
+    <a href="about.html" class="active">About</a>
+  </div>
+  <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="hero-badge">About InfoSec Pakistan</div>
+      <div class="hero-title">Pakistan's First<br><span>Automated Threat</span><br>Intelligence Platform</div>
+      <div class="hero-desc">InfoSec Pakistan is a free, automated cybersecurity threat intelligence platform built specifically for Pakistani organizations, security professionals, and government agencies. We aggregate, analyze, and deliver daily threat digests so Pakistan stays ahead of cyber threats.</div>
+      <div class="mission-box">
+        <div class="mb-label">Our Mission</div>
+        <div class="mb-text">To democratize cybersecurity intelligence in Pakistan by providing free, automated, AI-powered threat intelligence that helps organizations protect their digital assets and respond to emerging threats before they cause damage.</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-trio">
+        <div class="st-card">
+          <div class="st-num stn-blue">13+</div>
+          <div class="st-label">Threat Sources</div>
+        </div>
+        <div class="st-card">
+          <div class="st-num stn-green">Daily</div>
+          <div class="st-label">Auto-Updated</div>
+        </div>
+        <div class="st-card">
+          <div class="st-num stn-red">Free</div>
+          <div class="st-label">Always Free</div>
+        </div>
+      </div>
+      <div class="update-info">
+        <div class="ui-icon">⏰</div>
+        <div>
+          <div class="ui-title">Daily at 09:00 PKT</div>
+          <div class="ui-desc">Automated scraping, AI analysis and website update runs every morning</div>
+        </div>
+      </div>
+      <div class="update-info">
+        <div class="ui-icon">🤖</div>
+        <div>
+          <div class="ui-title">AI-Powered Analysis</div>
+          <div class="ui-desc">Executive summaries generated by Groq LLaMA — instant threat context</div>
+        </div>
+      </div>
+      <div class="update-info">
+        <div class="ui-icon">🇵🇰</div>
+        <div>
+          <div class="ui-title">Pakistan CERT Integration</div>
+          <div class="ui-desc">Direct feed from PKCERT and NCCS Pakistan for local advisories</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section>
+    <div class="section-title">What We Offer</div>
+    <div class="features-grid">
+      <div class="feature-card fc-blue">
+        <div class="fc-icon fci-blue">📡</div>
+        <div class="fc-title">Real-Time Threat Feed</div>
+        <div class="fc-desc">Aggregates vulnerabilities from 13+ global and Pakistan-specific sources daily. Every CVE, advisory, and exploit is tracked automatically.</div>
+      </div>
+      <div class="feature-card fc-green">
+        <div class="fc-icon fci-green">🇵🇰</div>
+        <div class="fc-title">Pakistan-Specific Alerts</div>
+        <div class="fc-desc">Dedicated Pakistan CERT and NCCS advisories section. Threats targeting Pakistani government, banking, and telecom sectors are highlighted.</div>
+      </div>
+      <div class="feature-card fc-red">
+        <div class="fc-icon fci-red">🔴</div>
+        <div class="fc-title">Zero-Day Tracking</div>
+        <div class="fc-desc">Instantly tracks zero-day exploits from CISA KEV, Google Project Zero, and Exploit-DB. Critical vulnerabilities are flagged for immediate attention.</div>
+      </div>
+      <div class="feature-card fc-orange">
+        <div class="fc-icon fci-orange">🤖</div>
+        <div class="fc-title">Groq AI Analysis</div>
+        <div class="fc-desc">Every daily digest includes an AI-generated executive summary powered by Groq's LLaMA model — translating technical CVEs into actionable intelligence.</div>
+      </div>
+      <div class="feature-card fc-cyan">
+        <div class="fc-icon fci-cyan">📧</div>
+        <div class="fc-title">Email Digest</div>
+        <div class="fc-desc">Beautiful HTML email digest delivered daily at 09:00 PKT with color-coded severity badges, grouped threat sections, and AI analysis.</div>
+      </div>
+      <div class="feature-card fc-purple">
+        <div class="fc-icon fci-purple">🌐</div>
+        <div class="fc-title">Live Dashboard</div>
+        <div class="fc-desc">Interactive web dashboard with animated radar visualization, real-time threat ticker, CVE database, searchable threat list and daily report archive.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <section>
+    <div class="section-title">Data Sources</div>
+    <div class="sources-grid">
+      <div class="source-card">
+        <div class="src-dot sd-red"></div>
+        <div><div class="src-name">CISA KEV</div><div class="src-type">Known Exploited Vulnerabilities</div></div>
+      </div>
+      <div class="source-card">
+        <div class="src-dot sd-blue"></div>
+        <div><div class="src-name">NVD / NIST</div><div class="src-type">National Vulnerability Database</div></div>
+      </div>
+      <div class="source-card">
+        <div class="src-dot sd-green"></div>
+        <div><div class="src-name">Pakistan CERT</div><div class="src-type">pkcert.gov.pk Advisories</div></div>
+      </div>
+      <div class="source-card">
+        <div class="src-dot sd-green"></div>
+        <div><div class="src-name">NCCS Pakistan</div><div class="src-type">nccs.pk Threat Intelligence</div></div>
+      </div>
+      <div class="source-card">
+        <div class="src-dot sd-orange"></div>
+        <div><div class="src-name">Google Project Zero</div><div class="src-type">Zero-Day Research</div></div>
+      </div>
+      <div class="source-card">
+        <div class="src-dot sd-red"></div>
+        <div><div class="src-name">Exploit-DB</div><div class="src-type">Public Exploit Archive</div></div>
+      </div>
+      <div class="source-card">
+        <div class="src-dot sd-cyan"></div>
+        <div><div class="src-name">Palo Alto Networks</div><div class="src-type">Unit 42 Threat Research</div></div>
+      </div>
+      <div class="source-card">
+        <div class="src-dot sd-blue"></div>
+        <div><div class="src-name">Kaspersky</div><div class="src-type">Securelist Threat Intel</div></div>
+      </div>
+      <div class="source-card">
+        <div class="src-dot sd-orange"></div>
+        <div><div class="src-name">Krebs on Security</div><div class="src-type">Investigative Security News</div></div>
+      </div>
+      <div class="source-card">
+        <div class="src-dot sd-purple"></div>
+        <div><div class="src-name">SANS ISC</div><div class="src-type">Internet Storm Center</div></div>
+      </div>
+      <div class="source-card">
+        <div class="src-dot sd-blue"></div>
+        <div><div class="src-name">CrowdStrike</div><div class="src-type">Adversary Intelligence</div></div>
+      </div>
+      <div class="source-card">
+        <div class="src-dot sd-cyan"></div>
+        <div><div class="src-name">Vulners</div><div class="src-type">Vulnerability Database</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section>
+    <div class="section-title">Technology Stack</div>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tc-icon">🐍</div>
+        <div class="tc-name">Python</div>
+        <div class="tc-role">Scraping Engine</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-icon">⚡</div>
+        <div class="tc-name">Groq LLaMA</div>
+        <div class="tc-role">AI Analysis</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-icon">🔄</div>
+        <div class="tc-name">GitHub Actions</div>
+        <div class="tc-role">Daily Automation</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-icon">🌐</div>
+        <div class="tc-name">GitHub Pages</div>
+        <div class="tc-role">Free Hosting</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-icon">📧</div>
+        <div class="tc-name">SMTP / Gmail</div>
+        <div class="tc-role">Email Delivery</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-icon">🎨</div>
+        <div class="tc-name">HTML / CSS / JS</div>
+        <div class="tc-role">Frontend Dashboard</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-icon">📊</div>
+        <div class="tc-name">Canvas API</div>
+        <div class="tc-role">Radar Animation</div>
+      </div>
+      <div class="tech-card">
+        <div class="tc-icon">📦</div>
+        <div class="tc-name">JSON / REST</div>
+        <div class="tc-role">Data Pipeline</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section>
+    <div class="section-title">Our Journey</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Jan 2026</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-title">🚀 Project Started</div>
+          <div class="tl-desc">InfoSec Pakistan scraper built on Replit with initial sources — NVD, CISA KEV and basic threat aggregation.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Feb 2026</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-title">🤖 Groq AI Integration</div>
+          <div class="tl-desc">Added Groq-powered LLaMA AI analysis for automatic executive summary generation in daily email digests.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Mar 2026</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-title">📧 Email Digest Launch</div>
+          <div class="tl-desc">Launched daily HTML email digest with color-coded severity badges — Zero Day (red), Actively Exploited (orange), Pakistan Alert (green).</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">May 2026</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-title">🌐 Website Launch</div>
+          <div class="tl-desc">Launched pakistaninfosec.github.io — a live dashboard with CTM360-inspired design, animated radar, threat ticker and Pakistan CERT integration. Fully automated via GitHub Actions.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">Coming Soon</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-title">🔐 Subscriber Portal + Shodan Integration</div>
+          <div class="tl-desc">Subscriber-only access portal and Shodan Pakistan scanning for exposed government and critical infrastructure systems (country:PK port:22,443,3389).</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section>
+    <div class="contact-box">
+      <div class="cb-title">Get In Touch</div>
+      <div class="cb-desc">InfoSec Pakistan is built for the Pakistani cybersecurity community. Whether you're a security professional, organization, or researcher — we'd love to hear from you.</div>
+      <div class="cb-links">
+        <a class="cb-btn cbb-primary" href="mailto:imtiazhusain15@gmail.com">
+          📧 Contact Us
+        </a>
+        <a class="cb-btn cbb-secondary" href="https://pakistaninfosec.github.io" target="_blank">
+          🌐 Visit Dashboard
+        </a>
+        <a class="cb-btn cbb-secondary" href="https://pkcert.gov.pk" target="_blank">
+          🛡 Pakistan CERT
+        </a>
+        <a class="cb-btn cbb-secondary" href="https://nccs.pk" target="_blank">
+          🔒 NCCS Pakistan
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>
+  <div class="footer-txt">
+    Free · Automated · Open Intelligence ·
+    <a class="footer-link" href="https://pakistaninfosec.github.io">pakistaninfosec.github.io</a>
+  </div>
+</footer>
+
+</body>
+</html>

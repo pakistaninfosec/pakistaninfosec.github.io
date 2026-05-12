@@ -132,7 +132,9 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .ti-sev.LOW{background:rgba(34,197,94,0.15);color:var(--green);border:1px solid rgba(34,197,94,0.25);}
 .ti-id{font-family:'Courier New',monospace;font-size:11.5px;font-weight:600;color:var(--blue3);}
 .ti-desc{color:var(--text2);max-width:340px;overflow:hidden;text-overflow:ellipsis;}
-.ti-pk{font-size:12px;}
+.ti-pk{font-size:10px;font-weight:700;letter-spacing:0.06em;padding:2px 6px;border-radius:3px;background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.3);}
+.pk-tag{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:0.06em;padding:1px 6px;border-radius:3px;background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.3);margin-left:6px;vertical-align:middle;font-family:var(--body);}
+.t-row.pk-row{border-left:2px solid rgba(34,197,94,0.4);}
 /* ── END TICKER ─────────────────────────────────────────────── */
 
 /* HERO — split layout like CTM360 */
@@ -371,10 +373,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
       <div><div class="sc-label">Actively Exploited</div><div class="sc-val orange" id="cnt-exploited">0</div><div class="sc-sub">From CISA KEV catalog</div></div>
     </div>
     <div class="stat-card">
-      <div class="sc-icon sci-green">🇵🇰</div>
-      <div><div class="sc-label">Pakistan Alerts</div><div class="sc-val green" id="cnt-pakistan">0</div><div class="sc-sub">Pakistan CERT advisories</div></div>
-    </div>
-    <div class="stat-card">
       <div class="sc-icon sci-blue">📊</div>
       <div><div class="sc-label">Total Monitored</div><div class="sc-val blue" id="cnt-total">0</div><div class="sc-sub">All sources combined</div></div>
     </div>
@@ -531,7 +529,7 @@ function buildTicker(threats) {
 
   const makeItem = t => {
     const sev  = (t.severity||'MEDIUM').toUpperCase();
-    const flag = t.pakistan ? '<span class="ti-pk">🇵🇰</span>' : '';
+    const flag = t.pakistan ? '<span class="ti-pk">PK</span>' : '';
     const desc = (t.desc||t.id||'').slice(0,80) + ((t.desc||'').length>80?'…':'');
     return `<span class="ticker-item" onclick="openModal(${JSON.stringify(t).replace(/"/g,'&quot;')})">
       <span class="ti-sev ${sev}">${sev}</span>
@@ -590,7 +588,6 @@ function renderAll(d){
   document.getElementById('hero-total').textContent=s.total||allThreats.length;
   document.getElementById('cnt-zeroday').textContent=s.zeroday||0;
   document.getElementById('cnt-exploited').textContent=s.exploited||0;
-  document.getElementById('cnt-pakistan').textContent=s.pakistan||allThreats.filter(t=>t.pakistan).length;
   document.getElementById('cnt-total').textContent=s.total||allThreats.length;
   document.getElementById('ai-summary').textContent=d.summary||'No summary available.';
   renderSources(d.sources||[]);
@@ -614,7 +611,7 @@ function renderThreats(){
   document.getElementById('threat-list').innerHTML=f.length?f.map(t=>`
     <div class="t-row" onclick="openModal(${JSON.stringify(t).replace(/"/g,'&quot;')})">
       <span class="sev sev-${t.severity.toLowerCase()}">${t.severity}</span>
-      <div><div class="t-id">${t.id}${t.pakistan?' 🇵🇰':''}</div><div class="t-desc">${t.desc}</div></div>
+      <div><div class="t-id">${t.id}${t.pakistan?'<span class="pk-tag">PK</span>':''}</div><div class="t-desc">${t.desc}</div></div>
       <div><div class="t-src">${t.source}</div><div class="t-date">${t.date}</div></div>
     </div>`).join('') :
     '<div class="loading"><span style="color:var(--text3)">No results</span></div>';
@@ -630,7 +627,7 @@ function openModal(t){
     <div class="modal-chip">Severity: <b>${t.severity}</b></div>
     <div class="modal-chip">Source: <b>${t.source}</b></div>
     <div class="modal-chip">Date: <b>${t.date}</b></div>
-    ${t.pakistan?'<div class="modal-chip">🇵🇰 <b>Pakistan Alert</b></div>':''}
+    ${t.pakistan?'<div class="modal-chip" style="color:var(--green);border-color:rgba(34,197,94,0.3);background:rgba(34,197,94,0.08)">🇵🇰 <b>Pakistan Alert</b></div>':''}
     ${(t.tags||[]).map(tag=>`<div class="modal-chip">${tag}</div>`).join('')}`;
   document.getElementById('modal').classList.add('open');
 }

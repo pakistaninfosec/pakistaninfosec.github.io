@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Reports — InfoSec Pakistan</title>
+<title>InfoSec Pakistan — Threat Intelligence Platform</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -20,7 +20,7 @@ html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:14px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(37,99,235,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.025) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0;}
 
-/* NAV — identical to index.html */
+/* NAV */
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(5,7,13,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
 .brand-icon{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 24px rgba(37,99,235,0.4);}
@@ -34,122 +34,391 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
-/* PAGE HEADER */
-.page-header{position:relative;z-index:1;padding:48px 48px 36px;border-bottom:1px solid var(--border);background:linear-gradient(135deg,rgba(37,99,235,0.04) 0%,transparent 60%);}
-.page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.25);color:var(--blue3);font-size:11.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:16px;}
-.page-badge::before{content:'●';font-size:7px;animation:blink 2s infinite;}
-.page-title{font-family:var(--display);font-size:clamp(28px,3vw,40px);font-weight:700;line-height:1.15;letter-spacing:-0.03em;color:#fff;margin-bottom:10px;}
-.page-title span{color:var(--blue3);}
-.page-sub{font-size:14px;color:var(--text2);font-weight:400;}
+/* ── THREAT TICKER ─────────────────────────────────────────── */
+.ticker-wrap{
+  position:relative;
+  z-index:99;
+  width:100%;
+  background:rgba(9,13,22,0.98);
+  border-bottom:1px solid rgba(239,68,68,0.2);
+  display:flex;
+  align-items:stretch;
+  height:36px;
+  overflow:hidden;
+}
+.ticker-label{
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:0 18px;
+  background:var(--red);
+  font-size:10.5px;
+  font-weight:800;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:#fff;
+  white-space:nowrap;
+  z-index:2;
+}
+.ticker-label-dot{
+  width:6px;height:6px;background:#fff;border-radius:50%;
+  animation:blink 1s infinite;
+}
+.ticker-fade-left{
+  position:absolute;
+  left:108px;
+  top:0;bottom:0;
+  width:40px;
+  background:linear-gradient(90deg,rgba(9,13,22,0.95),transparent);
+  z-index:1;
+  pointer-events:none;
+}
+.ticker-fade-right{
+  position:absolute;
+  right:0;top:0;bottom:0;
+  width:60px;
+  background:linear-gradient(270deg,rgba(9,13,22,0.95),transparent);
+  z-index:1;
+  pointer-events:none;
+}
+.ticker-track{
+  flex:1;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  position:relative;
+}
+.ticker-inner{
+  display:flex;
+  align-items:center;
+  gap:0;
+  white-space:nowrap;
+  will-change:transform;
+  animation:tickerScroll 60s linear infinite;
+}
+.ticker-inner:hover{ animation-play-state:paused; }
+@keyframes tickerScroll{
+  0%  { transform:translateX(0); }
+  100%{ transform:translateX(-50%); }
+}
+.ticker-item{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:0 28px 0 0;
+  font-size:12px;
+  color:var(--text2);
+  cursor:pointer;
+  transition:color 0.2s;
+}
+.ticker-item:hover{ color:#fff; }
+.ticker-sep{
+  display:inline-block;
+  width:4px;height:4px;
+  background:var(--border2);
+  border-radius:50%;
+  margin:0 10px 0 0;
+  flex-shrink:0;
+  vertical-align:middle;
+}
+.ti-sev{
+  font-size:9.5px;font-weight:700;letter-spacing:0.06em;
+  padding:2px 6px;border-radius:3px;flex-shrink:0;text-transform:uppercase;
+}
+.ti-sev.CRITICAL{background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.25);}
+.ti-sev.HIGH{background:rgba(249,115,22,0.15);color:var(--orange);border:1px solid rgba(249,115,22,0.25);}
+.ti-sev.MEDIUM{background:rgba(234,179,8,0.15);color:var(--yellow);border:1px solid rgba(234,179,8,0.25);}
+.ti-sev.LOW{background:rgba(34,197,94,0.15);color:var(--green);border:1px solid rgba(34,197,94,0.25);}
+.ti-id{font-family:'Courier New',monospace;font-size:11.5px;font-weight:600;color:var(--blue3);}
+.ti-desc{color:var(--text2);max-width:340px;overflow:hidden;text-overflow:ellipsis;}
+.ti-pk{font-size:12px;}
+/* ── END TICKER ─────────────────────────────────────────────── */
+
+/* HERO — split layout like CTM360 */
+.hero{position:relative;z-index:1;display:grid;grid-template-columns:1fr 520px;min-height:440px;border-bottom:1px solid var(--border);overflow:hidden;}
+
+/* Left hero text */
+.hero-left{padding:64px 48px;background:linear-gradient(135deg,rgba(37,99,235,0.05) 0%,transparent 60%);}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.25);color:var(--blue3);font-size:11.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:24px;}
+.hero-badge::before{content:'●';font-size:7px;animation:blink 2s infinite;}
+.hero-title{font-family:var(--display);font-size:clamp(36px,3.5vw,52px);font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:#fff;margin-bottom:18px;}
+.hero-title span{color:var(--blue3);}
+.hero-desc{font-size:15px;color:var(--text2);font-weight:400;line-height:1.75;max-width:480px;margin-bottom:36px;}
+.hero-stats{display:flex;gap:36px;}
+.hs-item{}
+.hs-num{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-0.03em;color:#fff;}
+.hs-num.red{color:var(--red);}
+.hs-num.green{color:var(--green);}
+.hs-num.blue{color:var(--blue3);}
+.hs-label{font-size:11.5px;color:var(--text3);margin-top:2px;font-weight:500;}
+
+/* Right hero — RADAR */
+.hero-right{position:relative;background:radial-gradient(ellipse at center,rgba(37,99,235,0.08) 0%,rgba(5,7,13,0) 70%);display:flex;align-items:center;justify-content:center;border-left:1px solid var(--border);}
+.radar-wrap{position:relative;width:400px;height:400px;}
+canvas#radar{width:400px;height:400px;}
+
+/* Threat pill labels on radar */
+.threat-pill{position:absolute;display:flex;align-items:center;gap:6px;background:rgba(9,13,22,0.92);border:1px solid var(--border2);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:500;white-space:nowrap;backdrop-filter:blur(8px);animation:float 3s ease-in-out infinite;}
+.tp-icon{font-size:13px;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.pill-1{top:8%;left:50%;transform:translateX(-50%);color:#fbbf24;border-color:rgba(251,191,36,0.25);animation-delay:0s;}
+.pill-2{top:20%;right:2%;color:var(--green);border-color:rgba(34,197,94,0.25);animation-delay:0.5s;}
+.pill-3{top:38%;right:0%;color:var(--red2);border-color:rgba(248,113,113,0.25);animation-delay:1s;}
+.pill-4{top:56%;right:4%;color:#c084fc;border-color:rgba(192,132,252,0.25);animation-delay:0.3s;}
+.pill-5{bottom:24%;left:2%;color:var(--text2);border-color:rgba(100,116,139,0.25);animation-delay:0.8s;}
+.pill-6{bottom:14%;left:50%;transform:translateX(-50%);color:var(--orange);border-color:rgba(249,115,22,0.25);animation-delay:0.2s;}
+.pill-7{top:56%;left:0%;color:var(--cyan);border-color:rgba(6,182,212,0.25);animation-delay:0.6s;}
 
 /* MAIN */
-.main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:40px 48px;}
+.main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:40px 48px;}
 
-/* Report list */
-.reports-list{display:flex;flex-direction:column;gap:16px;}
+/* Stat strip */
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px;}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:22px;display:flex;align-items:center;gap:18px;transition:all 0.2s;cursor:default;}
+.stat-card:hover{border-color:var(--border2);transform:translateY(-1px);}
+.sc-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.sci-red{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.15);}
+.sci-orange{background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.15);}
+.sci-green{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.15);}
+.sci-blue{background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.15);}
+.sc-label{font-size:11.5px;font-weight:500;color:var(--text3);margin-bottom:4px;}
+.sc-val{font-family:var(--display);font-size:30px;font-weight:700;letter-spacing:-0.03em;line-height:1;}
+.sc-val.red{color:var(--red);}
+.sc-val.orange{color:var(--orange);}
+.sc-val.green{color:var(--green);}
+.sc-val.blue{color:var(--blue2);}
+.sc-sub{font-size:11px;color:var(--text3);margin-top:4px;}
 
-/* Report card */
-.report-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color 0.2s;}
-.report-card:hover{border-color:var(--border2);}
-.report-card.expanded .report-body{display:block;}
+/* Last updated */
+.lu-bar{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text3);margin-bottom:28px;padding:10px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;width:fit-content;}
+.lu-dot2{width:6px;height:6px;background:var(--blue2);border-radius:50%;}
 
-.report-header{display:flex;align-items:center;justify-content:space-between;padding:20px 26px;cursor:pointer;transition:background 0.15s;}
-.report-header:hover{background:var(--bg3);}
+/* Two col */
+.two-col{display:grid;grid-template-columns:1fr 380px;gap:20px;}
 
-.report-left{display:flex;align-items:center;gap:18px;}
-.date-block{background:var(--bg4);border:1px solid var(--border2);border-radius:10px;padding:10px 16px;text-align:center;flex-shrink:0;}
-.date-block .day{font-family:var(--display);font-size:24px;font-weight:700;color:var(--blue3);line-height:1;letter-spacing:-0.02em;}
-.date-block .mon{font-size:10.5px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px;font-weight:500;}
-.report-meta{}
-.report-meta h3{font-family:var(--display);font-size:15.5px;font-weight:600;color:#fff;letter-spacing:-0.01em;margin-bottom:4px;}
-.report-meta p{font-size:12.5px;color:var(--text2);}
+/* Panel */
+.panel{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.panel-head{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--border);background:var(--bg3);}
+.ph-left{display:flex;align-items:center;gap:10px;}
+.ph-dot{width:8px;height:8px;border-radius:50%;}
+.phd-red{background:var(--red);box-shadow:0 0 8px var(--red);}
+.phd-blue{background:var(--blue2);box-shadow:0 0 8px var(--blue2);}
+.phd-green{background:var(--green);box-shadow:0 0 8px var(--green);}
+.ph-title{font-family:var(--display);font-size:14px;font-weight:600;color:#fff;}
+.ph-badge{font-size:11px;font-weight:600;background:var(--bg4);border:1px solid var(--border);color:var(--text2);padding:3px 10px;border-radius:20px;}
 
-.report-right{display:flex;align-items:center;gap:14px;flex-shrink:0;}
-.report-chips{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
-.chip{font-size:11px;padding:4px 10px;border-radius:5px;font-weight:600;letter-spacing:0.03em;font-family:var(--body);}
-.chip-red{background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.2);}
-.chip-orange{background:rgba(249,115,22,0.1);color:var(--orange);border:1px solid rgba(249,115,22,0.2);}
-.chip-green{background:rgba(34,197,94,0.1);color:var(--green);border:1px solid rgba(34,197,94,0.2);}
-.chevron{color:var(--text3);font-size:14px;transition:transform 0.25s;line-height:1;}
-.report-card.expanded .chevron{transform:rotate(180deg);}
+/* Search */
+.search-bar{display:flex;gap:8px;padding:12px 22px;border-bottom:1px solid var(--border);background:var(--bg3);}
+.s-input{flex:1;background:var(--bg4);border:1px solid var(--border);color:#fff;padding:8px 14px;border-radius:8px;font-family:var(--body);font-size:13px;outline:none;transition:border-color 0.2s;}
+.s-input:focus{border-color:var(--blue2);}
+.s-input::placeholder{color:var(--text3);}
+.f-btn{background:var(--bg4);border:1px solid var(--border);color:var(--text3);padding:8px 12px;border-radius:8px;font-family:var(--body);font-size:12px;font-weight:500;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.f-btn:hover{color:#fff;border-color:var(--border2);}
+.f-btn.on{color:var(--blue3);border-color:rgba(59,130,246,0.4);background:rgba(59,130,246,0.08);}
 
-/* Report body */
-.report-body{display:none;border-top:1px solid var(--border);}
+/* Threat rows */
+.t-list{max-height:540px;overflow-y:auto;}
+.t-list::-webkit-scrollbar{width:3px;}
+.t-list::-webkit-scrollbar-thumb{background:var(--bg5);border-radius:2px;}
+.t-row{display:grid;grid-template-columns:88px 1fr auto;gap:14px;align-items:center;padding:13px 22px;border-bottom:1px solid var(--border);transition:background 0.15s;cursor:pointer;}
+.t-row:hover{background:var(--bg3);}
+.t-row:last-child{border-bottom:none;}
+.sev{font-size:10px;font-weight:700;letter-spacing:0.06em;padding:4px 8px;border-radius:4px;text-align:center;}
+.sev-critical{background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.2);}
+.sev-high{background:rgba(249,115,22,0.1);color:var(--orange);border:1px solid rgba(249,115,22,0.2);}
+.sev-medium{background:rgba(234,179,8,0.1);color:var(--yellow);border:1px solid rgba(234,179,8,0.2);}
+.sev-low{background:rgba(34,197,94,0.1);color:var(--green);border:1px solid rgba(34,197,94,0.2);}
+.t-id{font-size:12.5px;font-weight:600;color:var(--blue3);margin-bottom:3px;font-family:'Courier New',monospace;}
+.t-desc{font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:400px;}
+.t-src{font-size:11px;color:var(--text3);text-align:right;}
+.t-date{font-size:11px;color:var(--text3);text-align:right;margin-top:2px;}
 
-/* Digest panel */
-.digest{background:var(--bg);border-radius:0;}
-.digest-head{padding:22px 26px 18px;background:linear-gradient(135deg,rgba(15,23,42,0.8),rgba(30,41,59,0.8));border-bottom:1px solid var(--border);}
-.digest-head h2{font-family:var(--display);font-size:17px;font-weight:700;color:#fff;margin-bottom:4px;display:flex;align-items:center;gap:10px;}
-.digest-head p{font-size:12px;color:var(--text3);}
-.digest-stats{display:flex;gap:10px;margin-top:14px;}
-.dstat{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;padding:10px 16px;text-align:center;}
-.dstat .n{font-family:var(--display);font-size:22px;font-weight:700;line-height:1;letter-spacing:-0.02em;}
-.dstat.r .n{color:var(--red);}
-.dstat.o .n{color:var(--orange);}
-.dstat.g .n{color:var(--green);}
-.dstat.b .n{color:var(--blue3);}
-.dstat .l{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;margin-top:3px;font-weight:500;}
+/* Sidebar */
+.sidebar{display:flex;flex-direction:column;gap:18px;}
+.ai-box{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;position:relative;}
+.ai-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));}
+.ai-head{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border);background:var(--bg3);}
+.ai-icon{width:30px;height:30px;background:linear-gradient(135deg,var(--blue),var(--cyan));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;}
+.ai-label{font-size:13px;font-weight:600;color:#fff;}
+.ai-sub{font-size:11px;color:var(--text3);margin-top:1px;}
+.ai-body{padding:18px 20px;}
+.ai-text{font-size:13px;color:var(--text2);line-height:1.75;font-weight:400;}
 
-.section-header{padding:10px 26px;font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-bottom:1px solid var(--border);font-family:var(--body);}
-.section-header.red{background:rgba(239,68,68,0.06);color:var(--red);}
-.section-header.orange{background:rgba(249,115,22,0.06);color:var(--orange);}
-.section-header.green{background:rgba(34,197,94,0.06);color:var(--green);}
+.src-row{display:flex;align-items:center;gap:12px;padding:11px 20px;border-bottom:1px solid var(--border);}
+.src-row:last-child{border-bottom:none;}
+.src-name{font-size:12.5px;font-weight:500;color:var(--text);min-width:100px;}
+.src-bg{flex:1;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;}
+.src-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width 1.2s ease;}
+.src-num{font-size:12px;color:var(--text3);min-width:28px;text-align:right;}
 
-.threat-item{padding:13px 26px;border-bottom:1px solid var(--border);display:flex;gap:14px;align-items:flex-start;transition:background 0.15s;}
-.threat-item:hover{background:var(--bg3);}
-.threat-item:last-child{border-bottom:none;}
-.threat-item .tid{font-size:12px;color:var(--cyan);font-weight:600;white-space:nowrap;min-width:130px;font-family:'Courier New',monospace;}
-.threat-item .tdesc{font-size:13px;color:var(--text2);line-height:1.5;}
-
-.ai-block{padding:18px 26px;background:rgba(37,99,235,0.04);border-top:1px solid rgba(37,99,235,0.1);}
-.ai-label{font-size:11px;color:var(--blue3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;font-weight:600;display:flex;align-items:center;gap:7px;}
-.ai-label::before{content:'◆';font-size:10px;}
-.ai-block p{font-size:13.5px;color:var(--text2);line-height:1.75;}
 
 /* Loading */
-.loading{display:flex;align-items:center;justify-content:center;padding:60px;color:var(--text3);gap:10px;font-size:13px;}
+.loading{display:flex;align-items:center;justify-content:center;padding:52px;color:var(--text3);gap:10px;font-size:13px;}
 .spinner{width:18px;height:18px;border:2px solid var(--bg5);border-top-color:var(--blue2);border-radius:50%;animation:spin 0.8s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* Modal */
+.modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center;}
+.modal-ov.open{display:flex;}
+.modal-box{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:32px;max-width:600px;width:90%;position:relative;}
+.modal-box::before{content:'';position:absolute;top:0;left:48px;right:48px;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent);}
+.modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+.modal-id{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:var(--blue3);font-size:12px;font-weight:600;padding:5px 12px;border-radius:6px;font-family:'Courier New',monospace;}
+.modal-x{width:32px;height:32px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text3);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.modal-x:hover{color:#fff;border-color:var(--border2);}
+.modal-title{font-family:var(--display);font-size:20px;font-weight:700;line-height:1.35;color:#fff;margin-bottom:14px;}
+.modal-desc{font-size:13.5px;color:var(--text2);line-height:1.75;margin-bottom:20px;}
+.modal-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.modal-chip{font-size:11.5px;background:var(--bg3);border:1px solid var(--border);padding:5px 12px;border-radius:6px;color:var(--text3);}
+.modal-chip b{color:#fff;font-weight:500;}
+
 /* Footer */
-footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;margin-top:20px;}
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
 .footer-brand{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text2);}
 .footer-brand span{color:var(--blue3);}
 .footer-txt{font-size:12px;color:var(--text3);}
 .footer-link{color:var(--blue3);text-decoration:none;}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.page-header{animation:fadeUp 0.5s ease both;}
-.reports-list{animation:fadeUp 0.5s 0.1s ease both;}
+.hero{animation:fadeUp 0.5s ease both;}
+.stat-strip{animation:fadeUp 0.5s 0.1s ease both;}
+.two-col{animation:fadeUp 0.5s 0.15s ease both;}
 </style>
 </head>
 <body>
 
-<!-- NAV — identical to index.html -->
+<!-- NAV -->
 <nav>
   <a class="brand" href="index.html">
     <div class="brand-icon">🛡</div>
     <div class="brand-name">INFOSEC <span>PAKISTAN</span></div>
   </a>
   <div class="nav-links">
-    <a href="index.html">Dashboard</a>
-    <a href="reports.html" class="active">Daily Reports</a>
+    <a href="index.html" class="active">Dashboard</a>
+    <a href="reports.html">Daily Reports</a>
     <a href="database.html">CVE Database</a>
   </div>
   <div class="live-badge"><div class="live-dot"></div>LIVE</div>
 </nav>
 
-<!-- PAGE HEADER -->
-<div class="page-header">
-  <div class="page-badge">Threat Intelligence Archive</div>
-  <div class="page-title">Daily <span>Reports</span></div>
-  <div class="page-sub">Archive of all daily threat intelligence digests · Click any report to expand</div>
+<!-- ── THREAT TICKER ───────────────────────────────────────── -->
+<div class="ticker-wrap">
+  <div class="ticker-label">
+    <div class="ticker-label-dot"></div>
+    THREAT INTEL
+  </div>
+  <div class="ticker-fade-left"></div>
+  <div class="ticker-track">
+    <div class="ticker-inner" id="ticker-inner"><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-21333</span><span class="ti-desc">Windows Hyper-V NT Kernel integration VSP Elevation of Privilege</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-29824</span><span class="ti-desc">Windows CLFS Driver Use-After-Free allows SYSTEM privilege escalation</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-24054</span><span class="ti-desc">NTLM Hash Disclosure Spoofing via crafted .library-ms file</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-30065</span><span class="ti-desc">Apache Parquet Java RCE — remote code execution in schema parsing</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-1974</span><span class="ti-desc">Ingress NGINX Controller unauthenticated remote code execution</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-22457</span><span class="ti-desc">Ivanti Connect Secure stack buffer overflow — active exploitation confirmed</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-24200</span><span class="ti-desc">Apple iOS USB Restricted Mode bypass — exploited in the wild</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-0282</span><span class="ti-desc">Ivanti Connect Secure unauthenticated remote code execution zero-day</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-21418</span><span class="ti-desc">Windows AFD.sys privilege escalation — actively exploited</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-3248</span><span class="ti-desc">Langflow AI unauthenticated remote code execution via /api/v1/validate/code</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-27363</span><span class="ti-desc">FreeType out-of-bounds write — exploited by threat actors</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-21333</span><span class="ti-desc">Windows Hyper-V NT Kernel integration VSP Elevation of Privilege</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-29824</span><span class="ti-desc">Windows CLFS Driver Use-After-Free allows SYSTEM privilege escalation</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-24054</span><span class="ti-desc">NTLM Hash Disclosure Spoofing via crafted .library-ms file</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-30065</span><span class="ti-desc">Apache Parquet Java RCE — remote code execution in schema parsing</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-1974</span><span class="ti-desc">Ingress NGINX Controller unauthenticated remote code execution</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-22457</span><span class="ti-desc">Ivanti Connect Secure stack buffer overflow — active exploitation confirmed</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-24200</span><span class="ti-desc">Apple iOS USB Restricted Mode bypass — exploited in the wild</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-0282</span><span class="ti-desc">Ivanti Connect Secure unauthenticated remote code execution zero-day</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-21418</span><span class="ti-desc">Windows AFD.sys privilege escalation — actively exploited</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-3248</span><span class="ti-desc">Langflow AI unauthenticated remote code execution via /api/v1/validate/code</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-27363</span><span class="ti-desc">FreeType out-of-bounds write — exploited by threat actors</span></span><span class="ticker-sep"></span></div>
+  </div>
+  <div class="ticker-fade-right"></div>
+</div>
+<!-- ── END TICKER ──────────────────────────────────────────── -->
+
+<!-- HERO WITH RADAR -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Pakistan Threat Intelligence Platform</div>
+    <div class="hero-title">Real-Time <span>Cybersecurity</span><br>Threat Intelligence</div>
+    <div class="hero-desc">Automated daily threat intelligence aggregated from CISA KEV, ZDI, Exploit-DB, Pakistan CERT and 9 other sources. AI-powered analysis by Groq — delivered every day at 09:00 PKT.</div>
+    <div class="hero-stats">
+      <div class="hs-item">
+        <div class="hs-num red" id="hero-new">329</div>
+        <div class="hs-label">New threats today</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num green" id="hero-pk">5</div>
+        <div class="hs-label">Pakistan alerts</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num blue" id="hero-total">329</div>
+        <div class="hs-label">Total monitored</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RADAR SIDE -->
+  <div class="hero-right">
+    <div class="radar-wrap">
+      <canvas id="radar" width="400" height="400"></canvas>
+      <div class="threat-pill pill-1"><span class="tp-icon">⚠️</span>Phishing Detected</div>
+      <div class="threat-pill pill-2"><span class="tp-icon">✅</span>New Asset Found</div>
+      <div class="threat-pill pill-3"><span class="tp-icon">🔴</span>Breach Alert</div>
+      <div class="threat-pill pill-4"><span class="tp-icon">👤</span>VIP Impersonation</div>
+      <div class="threat-pill pill-5"><span class="tp-icon">🛡</span>Malware Leak</div>
+      <div class="threat-pill pill-6"><span class="tp-icon">🔧</span>Misconfiguration</div>
+      <div class="threat-pill pill-7"><span class="tp-icon">🌐</span>Vulnerability Exposed</div>
+    </div>
+  </div>
 </div>
 
-<!-- MAIN -->
+<!-- MAIN CONTENT -->
 <div class="main">
-  <div class="reports-list" id="reports-list">
-    <div class="loading"><div class="spinner"></div>Loading reports...</div>
+  <div class="lu-bar">
+    <div class="lu-dot2"></div>
+    <span id="last-updated">Fetching latest data...</span>
+  </div>
+
+  <!-- STATS -->
+  <div class="stat-strip">
+    <div class="stat-card">
+      <div class="sc-icon sci-red">🔴</div>
+      <div><div class="sc-label">Zero Day Exploits</div><div class="sc-val red" id="cnt-zeroday">0</div><div class="sc-sub">CISA KEV · ZDI · Exploit-DB</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="sc-icon sci-orange">🟠</div>
+      <div><div class="sc-label">Actively Exploited</div><div class="sc-val orange" id="cnt-exploited">0</div><div class="sc-sub">From CISA KEV catalog</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="sc-icon sci-blue">📊</div>
+      <div><div class="sc-label">Total Monitored</div><div class="sc-val blue" id="cnt-total">0</div><div class="sc-sub">All sources combined</div></div>
+    </div>
+  </div>
+
+  <!-- TWO COL -->
+  <div class="two-col">
+    <div class="panel">
+      <div class="panel-head">
+        <div class="ph-left"><div class="ph-dot phd-red"></div><div class="ph-title">Latest Threats</div></div>
+        <span class="ph-badge" id="showing-count">Loading...</span>
+      </div>
+      <div class="search-bar">
+        <input class="s-input" id="search" type="text" placeholder="Search CVE ID, description, source...">
+        <button class="f-btn on" onclick="filterSev('all',this)">All</button>
+        <button class="f-btn" onclick="filterSev('CRITICAL',this)">Critical</button>
+        <button class="f-btn" onclick="filterSev('HIGH',this)">High</button>
+        <button class="f-btn" onclick="filterSev('pakistan',this)">🇵🇰 PK</button>
+      </div>
+      <div class="t-list" id="threat-list"><div class="loading"><div class="spinner"></div>Loading...</div></div>
+    </div>
+
+    <div class="sidebar">
+      <div class="ai-box">
+        <div class="ai-head">
+          <div class="ai-icon">◆</div>
+          <div><div class="ai-label">AI Analysis</div><div class="ai-sub">Powered by Groq</div></div>
+        </div>
+        <div class="ai-body"><div class="ai-text" id="ai-summary">Loading executive summary...</div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><div class="ph-left"><div class="ph-dot phd-blue"></div><div class="ph-title">Source Breakdown</div></div></div>
+        <div id="source-breakdown"><div class="loading"><div class="spinner"></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-ov" id="modal" onclick="closeModal(event)">
+  <div class="modal-box">
+    <div class="modal-top">
+      <div class="modal-id" id="modal-cve"></div>
+      <button class="modal-x" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-title" id="modal-title"></div>
+    <div class="modal-desc" id="modal-desc"></div>
+    <div class="modal-chips" id="modal-chips"></div>
   </div>
 </div>
 
@@ -159,135 +428,210 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 </footer>
 
 <script>
-const DEMO_REPORTS = [
-  {
-    date:"2026-05-10",
-    stats:{new:70,zeroday:50,exploited:30,pakistan:8,total:299},
-    summary:"The threat landscape remains dynamic with significant vulnerabilities emerging across enterprise software. Today's digest highlights critical RCE flaws, authentication bypass vulnerabilities, and directory traversal issues posing immediate risk to organizations in Pakistan.",
-    sections:[
-      {label:"Zero Day Exploits",color:"red",items:[
-        {id:"CVE-2026-1234",desc:"RCE in Apache HTTP Server via malformed headers"},
-        {id:"CVE-2026-1198",desc:"Auth bypass in Fortinet FortiOS SSL-VPN"},
-      ]},
-      {label:"Actively Exploited",color:"orange",items:[
-        {id:"CVE-2026-0891",desc:"Directory traversal in Cisco IOS XE Web UI"},
-        {id:"CVE-2026-0754",desc:"Privilege escalation in Windows Kernel"},
-      ]},
-      {label:"Pakistan Alerts",color:"green",items:[
-        {id:"PKC-2026-041",desc:"Critical flaw in government portal authentication"},
-        {id:"PKC-2026-039",desc:"Active exploitation of banking sector web app"},
-      ]}
-    ]
-  },
-  {
-    date:"2026-05-09",
-    stats:{new:45,zeroday:28,exploited:18,pakistan:5,total:229},
-    summary:"Moderate threat day with notable vulnerabilities in database management systems and network devices. Several Pakistan-specific advisories issued by Pakistan CERT regarding telecom sector.",
-    sections:[
-      {label:"Zero Day Exploits",color:"red",items:[
-        {id:"CVE-2026-0612",desc:"SQL injection in popular CMS plugin allows database extraction"},
-      ]},
-      {label:"Pakistan Alerts",color:"green",items:[
-        {id:"PKC-2026-035",desc:"Telecom sector advisory: SS7 protocol exploitation detected"},
-      ]}
-    ]
-  },
-  {
-    date:"2026-05-08",
-    stats:{new:38,zeroday:20,exploited:12,pakistan:3,total:184},
-    summary:"Lower-volume day with focus on web application vulnerabilities. XSS and CSRF flaws dominate today's entries. CISA updated its KEV catalog with 12 new entries.",
-    sections:[
-      {label:"Zero Day Exploits",color:"red",items:[
-        {id:"CVE-2026-0421",desc:"XSS in widely-used email client web interface"},
-        {id:"CVE-2026-0589",desc:"Buffer overflow in OpenSSL TLS handshake"},
-      ]}
-    ]
+/* ══════════════════════════════
+   RADAR ANIMATION
+══════════════════════════════ */
+(function(){
+  const canvas = document.getElementById('radar');
+  const ctx = canvas.getContext('2d');
+  const cx = 200, cy = 200, maxR = 180;
+  let angle = 0;
+  const dots = [];
+  for(let i=0;i<28;i++){
+    const r = Math.random()*maxR*0.85+16;
+    const a = Math.random()*Math.PI*2;
+    dots.push({x:cx+Math.cos(a)*r, y:cy+Math.sin(a)*r, size:Math.random()*2+1, alpha:Math.random()*0.4+0.1});
   }
-];
+  const blips = [];
+  function spawnBlip(){
+    const r = Math.random()*maxR*0.8+20;
+    const a = angle + (Math.random()-0.5)*0.3;
+    blips.push({x:cx+Math.cos(a)*r, y:cy+Math.sin(a)*r, life:1.0, critical:Math.random()<0.15});
+  }
+  function draw(){
+    ctx.clearRect(0,0,400,400);
+    for(let i=1;i<=4;i++){
+      const r = maxR*i/4;
+      ctx.beginPath();
+      ctx.arc(cx,cy,r,0,Math.PI*2);
+      ctx.strokeStyle = `rgba(37,99,235,${0.08+(i===4?0.06:0)})`;
+      ctx.lineWidth = i===4?1:0.5;
+      ctx.stroke();
+    }
+    ctx.strokeStyle = 'rgba(37,99,235,0.08)';
+    ctx.lineWidth = 0.5;
+    [0,Math.PI/4,Math.PI/2,Math.PI*3/4].forEach(a=>{
+      ctx.beginPath();
+      ctx.moveTo(cx+Math.cos(a)*maxR, cy+Math.sin(a)*maxR);
+      ctx.lineTo(cx+Math.cos(a+Math.PI)*maxR, cy+Math.sin(a+Math.PI)*maxR);
+      ctx.stroke();
+    });
+    dots.forEach(d=>{
+      ctx.beginPath();
+      ctx.arc(d.x,d.y,d.size,0,Math.PI*2);
+      ctx.fillStyle=`rgba(148,163,184,${d.alpha})`;
+      ctx.fill();
+    });
+    const sweepAngle = 1.2;
+    for(let i=0;i<60;i++){
+      const a = angle - (i/60)*sweepAngle;
+      const alpha = (1-i/60)*0.18;
+      ctx.beginPath();
+      ctx.moveTo(cx,cy);
+      ctx.arc(cx,cy,maxR,a,a+sweepAngle/60);
+      ctx.closePath();
+      ctx.fillStyle=`rgba(37,99,235,${alpha})`;
+      ctx.fill();
+    }
+    ctx.beginPath();
+    ctx.moveTo(cx,cy);
+    ctx.lineTo(cx+Math.cos(angle)*maxR, cy+Math.sin(angle)*maxR);
+    ctx.strokeStyle='rgba(96,165,250,0.7)';
+    ctx.lineWidth=1.5;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(cx,cy,4,0,Math.PI*2);
+    ctx.fillStyle='rgba(96,165,250,0.9)';
+    ctx.fill();
+    blips.forEach((b,i)=>{
+      b.life -= 0.018;
+      if(b.life<=0){blips.splice(i,1);return;}
+      const r = b.critical?4:2.5;
+      const grd = ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,r*4);
+      const col = b.critical?'239,68,68':'96,165,250';
+      grd.addColorStop(0,`rgba(${col},${b.life*0.9})`);
+      grd.addColorStop(1,`rgba(${col},0)`);
+      ctx.beginPath();ctx.arc(b.x,b.y,r*4,0,Math.PI*2);
+      ctx.fillStyle=grd;ctx.fill();
+      ctx.beginPath();ctx.arc(b.x,b.y,r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${col},${b.life})`;ctx.fill();
+    });
+    angle += 0.025;
+    if(Math.random()<0.12) spawnBlip();
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
 
-function formatDate(d) {
-  const dt = new Date(d);
-  return {
-    day: dt.getDate(),
-    mon: dt.toLocaleString('en',{month:'short'}),
-    full: dt.toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'})
+/* ══════════════════════════════
+   TICKER
+══════════════════════════════ */
+function buildTicker(threats) {
+  // Pick top 30: prioritise CRITICAL + pakistan, then HIGH, then rest
+  const sorted = [...threats].sort((a,b)=>{
+    const w = {CRITICAL:4,HIGH:3,MEDIUM:2,LOW:1};
+    const ap = (a.pakistan?1:0)*2 + (w[a.severity]||0);
+    const bp = (b.pakistan?1:0)*2 + (w[b.severity]||0);
+    return bp - ap;
+  }).slice(0, 30);
+
+  const makeItem = t => {
+    const sev  = (t.severity||'MEDIUM').toUpperCase();
+    const flag = t.pakistan ? '<span class="ti-pk">🇵🇰</span>' : '';
+    const desc = (t.desc||t.id||'').slice(0,80) + ((t.desc||'').length>80?'…':'');
+    return `<span class="ticker-item" onclick="openModal(${JSON.stringify(t).replace(/"/g,'&quot;')})">
+      <span class="ti-sev ${sev}">${sev}</span>
+      <span class="ti-id">${t.id}</span>
+      ${flag}
+      <span class="ti-desc">${desc}</span>
+    </span><span class="ticker-sep"></span>`;
   };
+
+  const html = sorted.map(makeItem).join('');
+  // Duplicate for seamless infinite loop
+  document.getElementById('ticker-inner').innerHTML = html + html;
+
+  // Adjust animation speed based on content width
+  const inner = document.getElementById('ticker-inner');
+  const totalW = inner.scrollWidth / 2;
+  const speed = Math.max(40, totalW / 12); // px/s → seconds
+  inner.style.animationDuration = speed + 's';
 }
 
-async function loadReports() {
-  let reports;
-  try {
-    const res = await fetch('data/reports.json?t=' + Date.now());
-    if (!res.ok) throw new Error();
-    const data = await res.json();
-    reports = data.reports || DEMO_REPORTS;
-  } catch {
-    reports = DEMO_REPORTS;
-  }
-  renderReports(reports);
+/* ══════════════════════════════
+   DATA
+══════════════════════════════ */
+let allThreats=[],currentFilter='all',currentSearch='';
+const DEMO={
+  generated:new Date().toISOString(),
+  summary:"Today's digest contains 329 vulnerabilities across multiple sources including NVD/NIST, CISA KEV, Google Project Zero, Palo Alto Networks and more. Several critical remote code execution and SQL injection vulnerabilities require immediate attention from Pakistan-based organizations.",
+  stats:{new:329,total:329,zeroday:50,exploited:50,pakistan:5},
+  sources:[{name:"NVD/NIST",count:200},{name:"CISA KEV",count:50},{name:"Vulners",count:20},{name:"Palo Alto",count:14},{name:"SANS ISC",count:10},{name:"Google P0",count:10},{name:"Kaspersky",count:10},{name:"CrowdStrike",count:5}],
+  threats:[
+    {id:"CVE-2026-7699",desc:"SQL injection in Dromara MaxKey via StrUtils.checkSqlInjection",severity:"MEDIUM",source:"NVD/NIST",date:"2026-05-03",pakistan:false,tags:["SQLi","CVE"]},
+    {id:"CVE-2026-7700",desc:"Critical authentication bypass in enterprise VPN solution",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["Auth Bypass","VPN"]},
+    {id:"CVE-2026-7698",desc:"Remote code execution via crafted HTTP request in web framework",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["RCE","Web"]},
+    {id:"CVE-2026-7695",desc:"Directory traversal in network management software",severity:"HIGH",source:"Google Project Zero",date:"2026-05-09",pakistan:false,tags:["Directory Traversal"]},
+    {id:"CVE-2026-7690",desc:"Privilege escalation in Linux kernel via crafted system call",severity:"HIGH",source:"NVD/NIST",date:"2026-05-08",pakistan:false,tags:["Privilege Escalation"]},
+    {id:"PKC-2026-041",desc:"Critical vulnerability in Pakistan government portal authentication",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["Gov","Pakistan"]},
+    {id:"PKC-2026-039",desc:"Active exploitation of banking sector application in Pakistan",severity:"HIGH",source:"CISA KEV",date:"2026-05-09",pakistan:true,tags:["Banking","Pakistan"]},
+    {id:"CVE-2026-7675",desc:"RCE in Fortinet FortiOS allows unauthenticated code execution",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["RCE","Fortinet"]},
+    {id:"CVE-2026-7660",desc:"Zero-day exploit in Microsoft Exchange Server allows RCE",severity:"CRITICAL",source:"Google Project Zero",date:"2026-05-10",pakistan:false,tags:["RCE","Exchange"]},
+    {id:"CVE-2026-7655",desc:"Heap buffer overflow in Chrome V8 engine allows code execution",severity:"CRITICAL",source:"Google Project Zero",date:"2026-05-09",pakistan:false,tags:["RCE","Chrome"]},
+  ]
+};
+
+async function loadData(){
+  try{const res=await fetch('data/threats.json?t='+Date.now());if(!res.ok)throw 0;renderAll(await res.json());}
+  catch{renderAll(DEMO);}
+}
+function renderAll(d){
+  allThreats=d.threats||[];
+  const dt=new Date(d.generated||Date.now());
+  document.getElementById('last-updated').textContent='Last updated: '+dt.toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'})+' · Auto-refreshes daily at 09:00 PKT';
+  const s=d.stats||{};
+  const n=s.new||allThreats.length;
+  document.getElementById('hero-new').textContent='+'+n;
+  document.getElementById('hero-pk').textContent=s.pakistan||allThreats.filter(t=>t.pakistan).length;
+  document.getElementById('hero-total').textContent=s.total||allThreats.length;
+  document.getElementById('cnt-zeroday').textContent=s.zeroday||0;
+  document.getElementById('cnt-exploited').textContent=s.exploited||0;
+  document.getElementById('cnt-total').textContent=s.total||allThreats.length;
+  document.getElementById('ai-summary').textContent=d.summary||'No summary available.';
+  renderSources(d.sources||[]);
+  renderThreats();
+  buildTicker(allThreats);
+}
+function renderSources(sources){
+  const max=Math.max(...sources.map(s=>s.count),1);
+  document.getElementById('source-breakdown').innerHTML=sources.map(s=>`
+    <div class="src-row"><span class="src-name">${s.name}</span>
+    <div class="src-bg"><div class="src-fill" style="width:${s.count/max*100}%"></div></div>
+    <span class="src-num">${s.count}</span></div>`).join('');
 }
 
-function renderReports(reports) {
-  document.getElementById('reports-list').innerHTML = reports.map((r, idx) => {
-    const d = formatDate(r.date);
-    return `
-    <div class="report-card ${idx===0?'expanded':''}" id="card-${idx}">
-      <div class="report-header" onclick="toggleCard(${idx})">
-        <div class="report-left">
-          <div class="date-block">
-            <div class="day">${d.day}</div>
-            <div class="mon">${d.mon}</div>
-          </div>
-          <div class="report-meta">
-            <h3>${d.full}</h3>
-            <p>Daily Security Digest &nbsp;·&nbsp; ${r.stats.new} new threats &nbsp;·&nbsp; ${r.stats.total} monitored</p>
-          </div>
-        </div>
-        <div class="report-right">
-          <div class="report-chips">
-            <span class="chip chip-red">🔴 ${r.stats.zeroday} Zero Day</span>
-            <span class="chip chip-orange">🟠 ${r.stats.exploited} Exploited</span>
-            <span class="chip chip-green">🇵🇰 ${r.stats.pakistan} PK Alerts</span>
-          </div>
-          <span class="chevron">▼</span>
-        </div>
-      </div>
-      <div class="report-body">
-        <div class="digest">
-          <div class="digest-head">
-            <h2>🛡 InfoSec Pakistan — Daily Security Digest</h2>
-            <p>${d.full} · Automated Threat Intelligence Report</p>
-            <div class="digest-stats">
-              <div class="dstat r"><div class="n">+${r.stats.new}</div><div class="l">New</div></div>
-              <div class="dstat o"><div class="n">${r.stats.zeroday}</div><div class="l">Zero Day</div></div>
-              <div class="dstat b"><div class="n">${r.stats.exploited}</div><div class="l">Exploited</div></div>
-              <div class="dstat g"><div class="n">${r.stats.pakistan}</div><div class="l">PK Alerts</div></div>
-            </div>
-          </div>
-          ${r.sections.map(s => `
-            <div class="section-header ${s.color}">${s.color==='red'?'🔴':s.color==='orange'?'🟠':'🟢'} ${s.label}</div>
-            ${s.items.map(i => `
-              <div class="threat-item">
-                <span class="tid">${i.id}</span>
-                <span class="tdesc">${i.desc}</span>
-              </div>
-            `).join('')}
-          `).join('')}
-          <div class="ai-block">
-            <div class="ai-label">AI Analysis · Powered by Groq</div>
-            <p>${r.summary}</p>
-          </div>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
+function renderThreats(){
+  let f=allThreats;
+  if(currentFilter==='pakistan') f=f.filter(t=>t.pakistan);
+  else if(currentFilter!=='all') f=f.filter(t=>t.severity===currentFilter);
+  if(currentSearch){const q=currentSearch.toLowerCase();f=f.filter(t=>t.id.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q)||(t.source||'').toLowerCase().includes(q));}
+  document.getElementById('showing-count').textContent=f.length+' entries';
+  document.getElementById('threat-list').innerHTML=f.length?f.map(t=>`
+    <div class="t-row" onclick="openModal(${JSON.stringify(t).replace(/"/g,'&quot;')})">
+      <span class="sev sev-${t.severity.toLowerCase()}">${t.severity}</span>
+      <div><div class="t-id">${t.id}${t.pakistan?' 🇵🇰':''}</div><div class="t-desc">${t.desc}</div></div>
+      <div><div class="t-src">${t.source}</div><div class="t-date">${t.date}</div></div>
+    </div>`).join('') :
+    '<div class="loading"><span style="color:var(--text3)">No results</span></div>';
 }
-
-function toggleCard(idx) {
-  document.getElementById('card-' + idx).classList.toggle('expanded');
+function filterSev(sev,btn){currentFilter=sev;document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderThreats();}
+document.getElementById('search').addEventListener('input',e=>{currentSearch=e.target.value;renderThreats();});
+function openModal(t){
+  if(typeof t==='string')t=JSON.parse(t);
+  document.getElementById('modal-cve').textContent=t.id;
+  document.getElementById('modal-title').textContent=t.desc;
+  document.getElementById('modal-desc').textContent=t.desc;
+  document.getElementById('modal-chips').innerHTML=`
+    <div class="modal-chip">Severity: <b>${t.severity}</b></div>
+    <div class="modal-chip">Source: <b>${t.source}</b></div>
+    <div class="modal-chip">Date: <b>${t.date}</b></div>
+    ${t.pakistan?'<div class="modal-chip">🇵🇰 <b>Pakistan Alert</b></div>':''}
+    ${(t.tags||[]).map(tag=>`<div class="modal-chip">${tag}</div>`).join('')}`;
+  document.getElementById('modal').classList.add('open');
 }
-
-loadReports();
+function closeModal(e){if(e.target===document.getElementById('modal'))document.getElementById('modal').classList.remove('open');}
+loadData();
+setInterval(loadData,5*60*1000);
 </script>
 </body>
 </html>

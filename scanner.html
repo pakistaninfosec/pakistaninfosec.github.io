@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Threat Scanner — InfoSec Pakistan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1391334995238896" crossorigin="anonymous"></script>
+<style>
+:root{
+  --bg:#05070d;--bg2:#090d16;--bg3:#0e1420;--bg4:#141b28;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);--border3:rgba(255,255,255,0.16);
+  --text:#ffffff;--text2:#94a3b8;--text3:#64748b;
+  --blue:#2563eb;--blue2:#3b82f6;--blue3:#60a5fa;--cyan:#06b6d4;
+  --red:#ef4444;--red2:#f87171;--orange:#f97316;--green:#22c55e;--yellow:#eab308;
+  --body:'Inter',sans-serif;--display:'Space Grotesk',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:14px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(37,99,235,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.025) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(37,99,235,0.07) 0%,transparent 65%);pointer-events:none;z-index:0;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(5,7,13,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.brand-icon{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 24px rgba(37,99,235,0.4);}
+.brand-name{font-family:var(--display);font-weight:700;font-size:16px;color:#fff;}
+.brand-name span{color:var(--blue3);}
+.nav-links{display:flex;gap:2px;}
+.nav-links a{color:var(--text3);text-decoration:none;padding:8px 18px;font-size:13.5px;font-weight:500;border-radius:8px;transition:all 0.2s;}
+.nav-links a:hover{color:#fff;background:var(--bg3);}
+.nav-links a.active{color:#fff;background:var(--bg3);}
+.live-badge{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--green);background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);padding:7px 16px;border-radius:6px;}
+.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* MAIN */
+main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:52px 48px;}
+
+/* PAGE HEADER */
+.page-header{text-align:center;margin-bottom:48px;}
+.page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);color:var(--red2);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:20px;}
+.page-title{font-family:var(--display);font-size:clamp(32px,5vw,52px);font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:#fff;margin-bottom:14px;}
+.page-title span{color:var(--blue3);}
+.page-desc{font-size:15px;color:var(--text2);max-width:560px;margin:0 auto;line-height:1.75;}
+
+/* API KEY NOTICE */
+.api-notice{background:rgba(234,179,8,0.06);border:1px solid rgba(234,179,8,0.2);border-radius:10px;padding:14px 20px;margin-bottom:28px;display:flex;align-items:flex-start;gap:12px;font-size:13px;color:var(--text2);}
+.an-icon{font-size:18px;flex-shrink:0;}
+.an-link{color:var(--blue3);text-decoration:none;}
+.an-link:hover{text-decoration:underline;}
+
+/* API KEY INPUT */
+.api-setup{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:28px;display:flex;align-items:center;gap:14px;}
+.as-label{font-size:12px;font-weight:600;color:var(--text3);letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap;}
+.as-input{flex:1;background:var(--bg3);border:1px solid var(--border);color:#fff;padding:9px 14px;border-radius:8px;font-family:var(--body);font-size:13px;outline:none;transition:border-color 0.2s;}
+.as-input:focus{border-color:var(--blue2);}
+.as-input::placeholder{color:var(--text3);}
+.as-btn{background:var(--blue);color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all 0.2s;}
+.as-btn:hover{background:var(--blue2);}
+.as-status{font-size:12px;white-space:nowrap;}
+.as-status.ok{color:var(--green);}
+.as-status.err{color:var(--red);}
+
+/* SCANNER TABS */
+.scanner-tabs{display:flex;gap:0;background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px;}
+.tab-btn{flex:1;padding:14px;font-size:13.5px;font-weight:600;border:none;background:none;color:var(--text3);cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;border-bottom:2px solid transparent;}
+.tab-btn:hover{color:#fff;background:var(--bg3);}
+.tab-btn.active{color:#fff;background:var(--bg3);border-bottom-color:var(--blue2);}
+
+/* SCANNER PANELS */
+.scanner-panel{display:none;}
+.scanner-panel.active{display:block;}
+
+/* SCAN BOX */
+.scan-box{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px;}
+.sb-header{padding:18px 24px;border-bottom:1px solid var(--border);background:var(--bg3);display:flex;align-items:center;gap:10px;}
+.sb-icon{font-size:18px;}
+.sb-title{font-family:var(--display);font-size:15px;font-weight:600;color:#fff;}
+.sb-body{padding:24px;}
+
+/* URL SCANNER */
+.url-input-wrap{display:flex;gap:10px;margin-bottom:16px;}
+.url-input{flex:1;background:var(--bg3);border:1px solid var(--border);color:#fff;padding:12px 16px;border-radius:8px;font-family:var(--body);font-size:14px;outline:none;transition:border-color 0.2s;}
+.url-input:focus{border-color:var(--blue2);}
+.url-input::placeholder{color:var(--text3);}
+.scan-btn{background:var(--blue);color:#fff;border:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:8px;white-space:nowrap;}
+.scan-btn:hover{background:var(--blue2);transform:translateY(-1px);}
+.scan-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+
+/* FILE DROP ZONE */
+.drop-zone{border:2px dashed var(--border2);border-radius:10px;padding:48px;text-align:center;cursor:pointer;transition:all 0.2s;position:relative;}
+.drop-zone:hover,.drop-zone.drag-over{border-color:var(--blue2);background:rgba(37,99,235,0.04);}
+.dz-icon{font-size:42px;margin-bottom:14px;}
+.dz-title{font-size:15px;font-weight:600;color:#fff;margin-bottom:6px;}
+.dz-desc{font-size:13px;color:var(--text3);}
+.dz-limit{font-size:11px;color:var(--text3);margin-top:10px;background:var(--bg3);border:1px solid var(--border);padding:4px 12px;border-radius:20px;display:inline-block;}
+.dz-input{position:absolute;inset:0;opacity:0;cursor:pointer;}
+
+/* HASH LOOKUP */
+.hash-input{width:100%;background:var(--bg3);border:1px solid var(--border);color:#fff;padding:12px 16px;border-radius:8px;font-family:'Courier New',monospace;font-size:13px;outline:none;transition:border-color 0.2s;margin-bottom:14px;}
+.hash-input:focus{border-color:var(--blue2);}
+.hash-input::placeholder{color:var(--text3);}
+.hash-examples{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.hash-ex{font-size:11px;background:var(--bg3);border:1px solid var(--border);color:var(--text3);padding:4px 10px;border-radius:4px;cursor:pointer;transition:all 0.2s;font-family:'Courier New',monospace;}
+.hash-ex:hover{color:var(--blue3);border-color:rgba(96,165,250,0.3);}
+
+/* LOADING */
+.scan-loading{display:none;align-items:center;justify-content:center;gap:14px;padding:40px;color:var(--text2);font-size:14px;}
+.scan-loading.show{display:flex;}
+.spinner{width:22px;height:22px;border:2px solid var(--border2);border-top-color:var(--blue2);border-radius:50%;animation:spin 0.8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* RESULTS */
+.results-panel{display:none;background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px;}
+.results-panel.show{display:block;}
+
+/* Verdict header */
+.verdict-header{padding:24px;display:flex;align-items:center;gap:20px;}
+.verdict-icon{width:64px;height:64px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0;}
+.vi-clean{background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.25);}
+.vi-malicious{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);}
+.vi-suspicious{background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.25);}
+.vi-unknown{background:rgba(100,116,139,0.12);border:1px solid rgba(100,116,139,0.25);}
+.verdict-info{}
+.verdict-label{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;}
+.vl-clean{color:var(--green);}
+.vl-malicious{color:var(--red);}
+.vl-suspicious{color:var(--orange);}
+.vl-unknown{color:var(--text3);}
+.verdict-name{font-family:var(--display);font-size:20px;font-weight:700;color:#fff;margin-bottom:4px;word-break:break-all;}
+.verdict-meta{font-size:12px;color:var(--text3);}
+
+/* Detection meter */
+.detection-meter{padding:0 24px 20px;}
+.dm-label{font-size:12px;color:var(--text3);margin-bottom:8px;display:flex;justify-content:space-between;}
+.dm-bar-bg{height:8px;background:var(--bg3);border-radius:4px;overflow:hidden;}
+.dm-bar{height:100%;border-radius:4px;transition:width 1s ease;}
+.dm-clean{background:var(--green);}
+.dm-low{background:var(--yellow);}
+.dm-high{background:var(--red);}
+
+/* Stats row */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border);}
+.stat-cell{background:var(--bg2);padding:16px;text-align:center;}
+.stat-cell-num{font-family:var(--display);font-size:24px;font-weight:700;line-height:1;}
+.scn-red{color:var(--red);}
+.scn-green{color:var(--green);}
+.scn-yellow{color:var(--yellow);}
+.scn-gray{color:var(--text3);}
+.stat-cell-label{font-size:11px;color:var(--text3);margin-top:4px;}
+
+/* Details section */
+.details-section{border-top:1px solid var(--border);padding:20px 24px;}
+.ds-title{font-size:12px;font-weight:600;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;}
+.detail-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.detail-row:last-child{border-bottom:none;}
+.dr-key{color:var(--text3);}
+.dr-val{color:#fff;font-family:'Courier New',monospace;font-size:12px;text-align:right;max-width:60%;word-break:break-all;}
+
+/* AV Results table */
+.av-table{width:100%;border-collapse:collapse;font-size:12.5px;}
+.av-table th{text-align:left;padding:10px 12px;background:var(--bg3);color:var(--text3);font-weight:600;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border);}
+.av-table td{padding:10px 12px;border-bottom:1px solid var(--border);}
+.av-table tr:last-child td{border-bottom:none;}
+.av-table tr:hover td{background:rgba(255,255,255,0.02);}
+.av-engine{font-weight:600;color:#fff;}
+.av-detect{display:inline-flex;align-items:center;gap:6px;font-size:11px;padding:3px 8px;border-radius:4px;}
+.av-malicious{background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.2);}
+.av-clean{background:rgba(34,197,94,0.08);color:var(--green);border:1px solid rgba(34,197,94,0.15);}
+.av-undetected{color:var(--text3);}
+.av-name{color:var(--orange);font-family:'Courier New',monospace;}
+
+/* VT link */
+.vt-link{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.2);color:var(--blue3);font-size:12.5px;font-weight:600;padding:10px 18px;border-radius:8px;text-decoration:none;transition:all 0.2s;margin:16px 24px;}
+.vt-link:hover{background:rgba(37,99,235,0.2);}
+
+/* ERROR */
+.error-box{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);border-radius:10px;padding:16px 20px;display:none;align-items:center;gap:12px;font-size:13px;color:var(--red2);margin-bottom:16px;}
+.error-box.show{display:flex;}
+
+/* INFO CARDS */
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
+.info-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px;text-align:center;}
+.ic-icon{font-size:28px;margin-bottom:10px;}
+.ic-title{font-size:13px;font-weight:600;color:#fff;margin-bottom:6px;}
+.ic-desc{font-size:12px;color:var(--text3);line-height:1.6;}
+
+/* FOOTER */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;margin-top:40px;}
+.footer-brand{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text2);}
+.footer-brand span{color:var(--blue3);}
+.footer-txt{font-size:12px;color:var(--text3);}
+.footer-link{color:var(--blue3);text-decoration:none;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.page-header{animation:fadeUp 0.5s ease both;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">
+    <div class="brand-icon">🛡</div>
+    <div class="brand-name">INFOSEC <span>PAKISTAN</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Dashboard</a>
+    <a href="reports.html">Daily Reports</a>
+    <a href="database.html">CVE Database</a>
+    <a href="scanner.html" class="active">Threat Scanner</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+</nav>
+
+<main>
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <div class="page-badge">🔬 Powered by VirusTotal</div>
+    <div class="page-title">Threat <span>Scanner</span></div>
+    <div class="page-desc">Scan URLs, files, and hashes against 70+ antivirus engines using the VirusTotal API. Free for Pakistani security professionals.</div>
+  </div>
+
+  <!-- API KEY SETUP -->
+  <div class="api-notice">
+    <div class="an-icon">ℹ️</div>
+    <div>
+      <strong style="color:#fff">Free VirusTotal API key required.</strong> Get yours free at
+      <a class="an-link" href="https://www.virustotal.com/gui/join-us" target="_blank">virustotal.com/gui/join-us</a>
+      — takes 2 minutes. Free tier: 4 lookups/minute, 500/day.
+    </div>
+  </div>
+
+  <div class="api-setup">
+    <span class="as-label">VT API Key</span>
+    <input class="as-input" id="api-key" type="password" placeholder="Enter your VirusTotal API key...">
+    <button class="as-btn" onclick="saveApiKey()">Save Key</button>
+    <span class="as-status" id="key-status"></span>
+  </div>
+
+  <!-- TABS -->
+  <div class="scanner-tabs">
+    <button class="tab-btn active" onclick="switchTab('url')">🌐 Scan URL</button>
+    <button class="tab-btn" onclick="switchTab('file')">📁 Scan File</button>
+    <button class="tab-btn" onclick="switchTab('hash')">🔑 Hash Lookup</button>
+    <button class="tab-btn" onclick="switchTab('ip')">📡 IP / Domain</button>
+  </div>
+
+  <!-- ERROR BOX -->
+  <div class="error-box" id="error-box">
+    <span>⚠️</span><span id="error-msg"></span>
+  </div>
+
+  <!-- URL PANEL -->
+  <div class="scanner-panel active" id="panel-url">
+    <div class="scan-box">
+      <div class="sb-header"><div class="sb-icon">🌐</div><div class="sb-title">URL Scanner</div></div>
+      <div class="sb-body">
+        <div class="url-input-wrap">
+          <input class="url-input" id="url-input" type="url" placeholder="https://example.com or any suspicious URL...">
+          <button class="scan-btn" id="url-btn" onclick="scanURL()">🔍 Scan URL</button>
+        </div>
+        <div style="font-size:12px;color:var(--text3)">Scans the URL against 90+ security vendors and URL scanners</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILE PANEL -->
+  <div class="scanner-panel" id="panel-file">
+    <div class="scan-box">
+      <div class="sb-header"><div class="sb-icon">📁</div><div class="sb-title">File Scanner</div></div>
+      <div class="sb-body">
+        <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+          <input type="file" id="file-input" class="dz-input" onchange="handleFileSelect(this)">
+          <div class="dz-icon">📂</div>
+          <div class="dz-title">Drop file here or click to browse</div>
+          <div class="dz-desc">Supports executables, documents, archives, scripts and more</div>
+          <div class="dz-limit">⚠️ Max file size: 32MB (Free API limit)</div>
+        </div>
+        <div id="file-info" style="display:none;margin-top:14px;padding:12px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;font-size:13px;display:flex;align-items:center;justify-content:space-between;">
+          <span id="file-name" style="color:#fff;font-weight:600;"></span>
+          <button class="scan-btn" id="file-btn" onclick="scanFile()" style="padding:8px 20px;font-size:13px;">🔍 Scan File</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HASH PANEL -->
+  <div class="scanner-panel" id="panel-hash">
+    <div class="scan-box">
+      <div class="sb-header"><div class="sb-icon">🔑</div><div class="sb-title">Hash Lookup</div></div>
+      <div class="sb-body">
+        <input class="hash-input" id="hash-input" type="text" placeholder="Enter MD5, SHA-1 or SHA-256 hash...">
+        <div class="hash-examples">
+          <span style="font-size:11px;color:var(--text3);margin-right:4px;">Examples:</span>
+          <span class="hash-ex" onclick="useHash('44d88612fea8a8f36de82e1278abb02f')">MD5 (EICAR)</span>
+          <span class="hash-ex" onclick="useHash('3395856ce81f2b7382dee72602f798b642f14d4')">SHA-1</span>
+          <span class="hash-ex" onclick="useHash('275a021bbfb6489e54d471899f7db9d1663fc695ef2fc57c2dff9a07f4f8bf9e')">SHA-256</span>
+        </div>
+        <button class="scan-btn" id="hash-btn" onclick="scanHash()">🔍 Lookup Hash</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- IP PANEL -->
+  <div class="scanner-panel" id="panel-ip">
+    <div class="scan-box">
+      <div class="sb-header"><div class="sb-icon">📡</div><div class="sb-title">IP Address / Domain Scanner</div></div>
+      <div class="sb-body">
+        <div class="url-input-wrap">
+          <input class="url-input" id="ip-input" placeholder="Enter IP address (e.g. 8.8.8.8) or domain (e.g. example.com)">
+          <button class="scan-btn" id="ip-btn" onclick="scanIP()">🔍 Scan</button>
+        </div>
+        <div style="font-size:12px;color:var(--text3)">Check reputation, historical detections and WHOIS information</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div class="scan-loading" id="scan-loading">
+    <div class="spinner"></div>
+    <span id="loading-text">Scanning against 70+ security engines...</span>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results-panel" id="results-panel">
+
+    <div class="verdict-header" id="verdict-header"></div>
+    <div class="detection-meter" id="detection-meter"></div>
+    <div class="stats-row" id="stats-row"></div>
+
+    <div class="details-section" id="details-section"></div>
+
+    <div id="av-section" style="padding:0 24px 20px;">
+      <div class="ds-title" style="margin-bottom:14px;">Antivirus Engine Results</div>
+      <div style="overflow-x:auto;">
+        <table class="av-table" id="av-table"></table>
+      </div>
+    </div>
+
+    <a class="vt-link" id="vt-full-link" href="#" target="_blank">
+      🔗 View Full Report on VirusTotal
+    </a>
+
+  </div>
+
+  <!-- INFO CARDS -->
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="ic-icon">🛡</div>
+      <div class="ic-title">70+ AV Engines</div>
+      <div class="ic-desc">Every scan checks against over 70 leading antivirus and security vendors simultaneously</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">⚡</div>
+      <div class="ic-title">Instant Results</div>
+      <div class="ic-desc">Known threats return results in seconds. New files are queued for full analysis</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-icon">🔒</div>
+      <div class="ic-title">Your Key, Your Data</div>
+      <div class="ic-desc">Your VirusTotal API key is stored only in your browser — never sent to our servers</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>
+  <div class="footer-txt">
+    Powered by VirusTotal API ·
+    <a class="footer-link" href="privacy.html">Privacy Policy</a> ·
+    <a class="footer-link" href="https://pakistaninfosec.github.io">pakistaninfosec.github.io</a>
+  </div>
+</footer>
+
+<script>
+const VT_API = 'https://www.virustotal.com/api/v3';
+let apiKey = localStorage.getItem('vt_api_key') || '';
+let selectedFile = null;
+
+// Load saved key
+if (apiKey) {
+  document.getElementById('api-key').value = apiKey;
+  document.getElementById('key-status').textContent = '✓ Key loaded';
+  document.getElementById('key-status').className = 'as-status ok';
+}
+
+function saveApiKey() {
+  const key = document.getElementById('api-key').value.trim();
+  if (!key) { showError('Please enter your VirusTotal API key'); return; }
+  apiKey = key;
+  localStorage.setItem('vt_api_key', key);
+  document.getElementById('key-status').textContent = '✓ Key saved!';
+  document.getElementById('key-status').className = 'as-status ok';
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.scanner-panel').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('panel-' + tab).classList.add('active');
+  hideResults();
+}
+
+function showError(msg) {
+  document.getElementById('error-msg').textContent = msg;
+  document.getElementById('error-box').classList.add('show');
+}
+function hideError() { document.getElementById('error-box').classList.remove('show'); }
+function showLoading(msg) {
+  document.getElementById('loading-text').textContent = msg || 'Scanning against 70+ security engines...';
+  document.getElementById('scan-loading').classList.add('show');
+  hideResults();
+}
+function hideLoading() { document.getElementById('scan-loading').classList.remove('show'); }
+function hideResults() { document.getElementById('results-panel').classList.remove('show'); }
+
+function checkKey() {
+  if (!apiKey) {
+    showError('Please enter your VirusTotal API key first!');
+    document.getElementById('api-key').focus();
+    return false;
+  }
+  return true;
+}
+
+// ── URL SCAN ──────────────────────────────────
+async function scanURL() {
+  if (!checkKey()) return;
+  const url = document.getElementById('url-input').value.trim();
+  if (!url) { showError('Please enter a URL to scan'); return; }
+  hideError();
+  showLoading('Submitting URL to VirusTotal...');
+  document.getElementById('url-btn').disabled = true;
+
+  try {
+    // Submit URL
+    const form = new FormData();
+    form.append('url', url);
+    const submitRes = await fetch(`${VT_API}/urls`, {
+      method: 'POST',
+      headers: { 'x-apikey': apiKey },
+      body: form
+    });
+    const submitData = await submitRes.json();
+
+    if (submitData.error) { throw new Error(submitData.error.message); }
+
+    const analysisId = submitData.data.id;
+    document.getElementById('loading-text').textContent = 'Waiting for analysis results...';
+
+    // Poll for results
+    await pollAnalysis(analysisId, url, 'url');
+
+  } catch(e) {
+    hideLoading();
+    showError(e.message || 'Scan failed. Check your API key and try again.');
+  }
+  document.getElementById('url-btn').disabled = false;
+}
+
+// ── FILE SCAN ─────────────────────────────────
+function handleFileSelect(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 32 * 1024 * 1024) {
+    showError('File too large. Maximum size is 32MB for free API.');
+    return;
+  }
+  selectedFile = file;
+  document.getElementById('file-name').textContent = `📄 ${file.name} (${(file.size/1024).toFixed(1)} KB)`;
+  document.getElementById('file-info').style.display = 'flex';
+}
+
+async function scanFile() {
+  if (!checkKey()) return;
+  if (!selectedFile) { showError('Please select a file first'); return; }
+  hideError();
+  showLoading('Uploading file to VirusTotal...');
+  document.getElementById('file-btn').disabled = true;
+
+  try {
+    const form = new FormData();
+    form.append('file', selectedFile);
+    const res = await fetch(`${VT_API}/files`, {
+      method: 'POST',
+      headers: { 'x-apikey': apiKey },
+      body: form
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message);
+
+    const analysisId = data.data.id;
+    document.getElementById('loading-text').textContent = 'Analyzing file...';
+    await pollAnalysis(analysisId, selectedFile.name, 'file');
+
+  } catch(e) {
+    hideLoading();
+    showError(e.message || 'File scan failed.');
+  }
+  document.getElementById('file-btn').disabled = false;
+}
+
+// ── HASH LOOKUP ───────────────────────────────
+async function scanHash() {
+  if (!checkKey()) return;
+  const hash = document.getElementById('hash-input').value.trim();
+  if (!hash) { showError('Please enter a hash'); return; }
+  hideError();
+  showLoading('Looking up hash...');
+  document.getElementById('hash-btn').disabled = true;
+
+  try {
+    const res = await fetch(`${VT_API}/files/${hash}`, {
+      headers: { 'x-apikey': apiKey }
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message);
+    renderResults(data.data, hash, 'hash');
+  } catch(e) {
+    hideLoading();
+    showError(e.message === 'NotFoundError' ? 'Hash not found in VirusTotal database' : (e.message || 'Lookup failed.'));
+  }
+  document.getElementById('hash-btn').disabled = false;
+}
+
+// ── IP / DOMAIN SCAN ──────────────────────────
+async function scanIP() {
+  if (!checkKey()) return;
+  const target = document.getElementById('ip-input').value.trim();
+  if (!target) { showError('Please enter an IP or domain'); return; }
+  hideError();
+  showLoading('Checking reputation...');
+  document.getElementById('ip-btn').disabled = true;
+
+  try {
+    // Determine if IP or domain
+    const isIP = /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(target);
+    const endpoint = isIP ? `${VT_API}/ip_addresses/${target}` : `${VT_API}/domains/${target}`;
+    const res = await fetch(endpoint, { headers: { 'x-apikey': apiKey } });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message);
+    renderResults(data.data, target, isIP ? 'ip' : 'domain');
+  } catch(e) {
+    hideLoading();
+    showError(e.message || 'Lookup failed.');
+  }
+  document.getElementById('ip-btn').disabled = false;
+}
+
+// ── POLL ANALYSIS ─────────────────────────────
+async function pollAnalysis(analysisId, name, type) {
+  const maxPolls = 10;
+  for (let i = 0; i < maxPolls; i++) {
+    await new Promise(r => setTimeout(r, 3000));
+    try {
+      const res = await fetch(`${VT_API}/analyses/${analysisId}`, {
+        headers: { 'x-apikey': apiKey }
+      });
+      const data = await res.json();
+      const status = data.data?.attributes?.status;
+      if (status === 'completed') {
+        // Get the actual object report
+        const meta = data.meta;
+        const objId = meta?.url_info?.id || meta?.file_info?.sha256 || analysisId;
+        renderResultsFromAnalysis(data.data, name, type, objId);
+        return;
+      }
+      document.getElementById('loading-text').textContent = `Analysis in progress... (${i+1}/${maxPolls})`;
+    } catch(e) { break; }
+  }
+  hideLoading();
+  showError('Analysis taking too long. Try checking results on VirusTotal directly.');
+}
+
+// ── RENDER RESULTS ────────────────────────────
+function renderResultsFromAnalysis(data, name, type, objId) {
+  const attrs = data.attributes || {};
+  const stats = attrs.stats || {};
+  const results = attrs.results || {};
+
+  const malicious = stats.malicious || 0;
+  const suspicious = stats.suspicious || 0;
+  const undetected = stats.undetected || 0;
+  const harmless = stats.harmless || 0;
+  const total = malicious + suspicious + undetected + harmless;
+
+  renderVerdictUI(name, type, malicious, suspicious, undetected, harmless, total, results, {}, objId);
+}
+
+function renderResults(data, name, type) {
+  const attrs = data.attributes || {};
+  const stats = attrs.last_analysis_stats || {};
+  const results = attrs.last_analysis_results || {};
+
+  const malicious = stats.malicious || 0;
+  const suspicious = stats.suspicious || 0;
+  const undetected = stats.undetected || 0;
+  const harmless = stats.harmless || 0;
+  const total = malicious + suspicious + undetected + harmless;
+
+  renderVerdictUI(name, type, malicious, suspicious, undetected, harmless, total, results, attrs, data.id);
+}
+
+function renderVerdictUI(name, type, malicious, suspicious, undetected, harmless, total, results, attrs, objId) {
+  hideLoading();
+
+  // Verdict
+  let verdictClass, verdictLabel, verdictEmoji;
+  if (malicious > 5) { verdictClass='malicious'; verdictLabel='MALICIOUS'; verdictEmoji='🚨'; }
+  else if (malicious > 0 || suspicious > 2) { verdictClass='suspicious'; verdictLabel='SUSPICIOUS'; verdictEmoji='⚠️'; }
+  else if (total > 0) { verdictClass='clean'; verdictLabel='CLEAN'; verdictEmoji='✅'; }
+  else { verdictClass='unknown'; verdictLabel='UNKNOWN'; verdictEmoji='❓'; }
+
+  document.getElementById('verdict-header').innerHTML = `
+    <div class="verdict-icon vi-${verdictClass}">${verdictEmoji}</div>
+    <div class="verdict-info">
+      <div class="verdict-label vl-${verdictClass}">${verdictLabel}</div>
+      <div class="verdict-name">${name}</div>
+      <div class="verdict-meta">${malicious} of ${total} security vendors flagged this as malicious</div>
+    </div>
+  `;
+
+  // Detection meter
+  const pct = total > 0 ? (malicious/total*100).toFixed(1) : 0;
+  const barClass = malicious > 5 ? 'dm-high' : malicious > 0 ? 'dm-low' : 'dm-clean';
+  document.getElementById('detection-meter').innerHTML = `
+    <div class="dm-label">
+      <span>Detection Rate</span>
+      <span style="color:${malicious>0?'var(--red)':'var(--green)'}">${pct}% (${malicious}/${total})</span>
+    </div>
+    <div class="dm-bar-bg"><div class="dm-bar ${barClass}" style="width:${pct}%"></div></div>
+  `;
+
+  // Stats row
+  document.getElementById('stats-row').innerHTML = `
+    <div class="stat-cell"><div class="stat-cell-num scn-red">${malicious}</div><div class="stat-cell-label">Malicious</div></div>
+    <div class="stat-cell"><div class="stat-cell-num scn-yellow">${suspicious}</div><div class="stat-cell-label">Suspicious</div></div>
+    <div class="stat-cell"><div class="stat-cell-num scn-green">${harmless + undetected}</div><div class="stat-cell-label">Clean</div></div>
+    <div class="stat-cell"><div class="stat-cell-num scn-gray">${total}</div><div class="stat-cell-label">Total Engines</div></div>
+  `;
+
+  // Details
+  let detailsHTML = '<div class="ds-title">File / Resource Details</div>';
+  const details = [
+    ['Type', type.toUpperCase()],
+    ['Name', name],
+    ['MD5', attrs.md5 || '—'],
+    ['SHA-256', attrs.sha256 || (attrs.sha_256) || '—'],
+    ['File Size', attrs.size ? `${(attrs.size/1024).toFixed(1)} KB` : '—'],
+    ['File Type', attrs.type_description || attrs.magic || '—'],
+    ['First Seen', attrs.first_submission_date ? new Date(attrs.first_submission_date*1000).toLocaleDateString() : '—'],
+    ['Last Analysis', attrs.last_analysis_date ? new Date(attrs.last_analysis_date*1000).toLocaleDateString() : new Date().toLocaleDateString()],
+    ['Country', attrs.country || '—'],
+    ['ASN', attrs.asn || '—'],
+  ].filter(([,v]) => v && v !== '—');
+
+  detailsHTML += details.map(([k,v]) => `
+    <div class="detail-row"><span class="dr-key">${k}</span><span class="dr-val">${v}</span></div>
+  `).join('');
+  document.getElementById('details-section').innerHTML = detailsHTML;
+
+  // AV Results table
+  const engines = Object.entries(results);
+  if (engines.length > 0) {
+    // Sort: malicious first
+    engines.sort((a,b) => {
+      const aM = a[1].category === 'malicious' ? 0 : 1;
+      const bM = b[1].category === 'malicious' ? 0 : 1;
+      return aM - bM;
+    });
+
+    let tableHTML = `
+      <thead><tr>
+        <th>Engine</th>
+        <th>Result</th>
+        <th>Detection Name</th>
+        <th>Category</th>
+      </tr></thead><tbody>
+    `;
+    tableHTML += engines.slice(0, 50).map(([engine, result]) => {
+      const cat = result.category || 'undetected';
+      const isMal = cat === 'malicious';
+      const isSus = cat === 'suspicious';
+      const badgeClass = isMal ? 'av-malicious' : isSus ? 'av-malicious' : 'av-clean';
+      const badgeText = isMal ? '🚨 Malicious' : isSus ? '⚠️ Suspicious' : '✅ Clean';
+      const detectName = result.result || (isMal ? 'Unknown Threat' : '—');
+      return `<tr>
+        <td class="av-engine">${engine}</td>
+        <td><span class="av-detect ${badgeClass}">${badgeText}</span></td>
+        <td class="av-name">${isMal || isSus ? detectName : '<span style="color:var(--text3)">—</span>'}</td>
+        <td style="color:var(--text3);font-size:11px">${cat}</td>
+      </tr>`;
+    }).join('');
+    tableHTML += '</tbody>';
+    document.getElementById('av-table').innerHTML = tableHTML;
+  } else {
+    document.getElementById('av-section').style.display = 'none';
+  }
+
+  // VT link
+  const vtLinks = {
+    'url': `https://www.virustotal.com/gui/url/${objId}`,
+    'file': `https://www.virustotal.com/gui/file/${objId}`,
+    'hash': `https://www.virustotal.com/gui/file/${objId}`,
+    'ip':   `https://www.virustotal.com/gui/ip-address/${objId}`,
+    'domain': `https://www.virustotal.com/gui/domain/${objId}`,
+  };
+  document.getElementById('vt-full-link').href = vtLinks[type] || '#';
+
+  document.getElementById('results-panel').classList.add('show');
+  document.getElementById('results-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function useHash(hash) {
+  document.getElementById('hash-input').value = hash;
+}
+
+// Drag & drop
+const dz = document.getElementById('drop-zone');
+dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('drag-over'); });
+dz.addEventListener('dragleave', () => dz.classList.remove('drag-over'));
+dz.addEventListener('drop', e => {
+  e.preventDefault();
+  dz.classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file) {
+    document.getElementById('file-input').files = e.dataTransfer.files;
+    handleFileSelect(document.getElementById('file-input'));
+  }
+});
+
+// Enter key support
+document.getElementById('url-input').addEventListener('keydown', e => { if(e.key==='Enter') scanURL(); });
+document.getElementById('hash-input').addEventListener('keydown', e => { if(e.key==='Enter') scanHash(); });
+document.getElementById('ip-input').addEventListener('keydown', e => { if(e.key==='Enter') scanIP(); });
+</script>
+</body>
+</html>

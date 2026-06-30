@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -161,7 +162,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 canvas#radar{width:400px;height:400px;}
 
 /* Threat pill labels on radar */
-.threat-pill{position:absolute;display:flex;align-items:center;gap:6px;background:rgba(9,13,22,0.92);border:1px solid var(--border2);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:500;white-space:nowrap;backdrop-filter:blur(8px);animation:float 3s ease-in-out infinite;}
+.threat-pill{position:absolute;display:flex;align-items:center;gap:6px;background:rgba(9,13,22,0.92);border:1px solid var(--border2);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:500;white-space:nowrap;backdrop-filter:blur(8px);opacity:0;}
 .tp-icon{font-size:13px;}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .pill-1{top:8%;left:50%;transform:translateX(-50%);color:#fbbf24;border-color:rgba(251,191,36,0.25);animation-delay:0s;}
@@ -399,13 +400,13 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   <div class="hero-right">
     <div class="radar-wrap">
       <canvas id="radar" width="400" height="400"></canvas>
-      <div class="threat-pill pill-1"><span class="tp-icon">⚠️</span>Phishing Detected</div>
-      <div class="threat-pill pill-2"><span class="tp-icon">✅</span>New Asset Found</div>
-      <div class="threat-pill pill-3"><span class="tp-icon">🔴</span>Breach Alert</div>
-      <div class="threat-pill pill-4"><span class="tp-icon">👤</span>VIP Impersonation</div>
-      <div class="threat-pill pill-5"><span class="tp-icon">🛡</span>Malware Leak</div>
-      <div class="threat-pill pill-6"><span class="tp-icon">🔧</span>Misconfiguration</div>
-      <div class="threat-pill pill-7"><span class="tp-icon">🌐</span>Vulnerability Exposed</div>
+      <div class="threat-pill pill-1" data-angle="-90"><span class="tp-icon">⚠️</span>Phishing Detected</div>
+      <div class="threat-pill pill-2" data-angle="-35"><span class="tp-icon">✅</span>New Asset Found</div>
+      <div class="threat-pill pill-3" data-angle="5"><span class="tp-icon">🔴</span>Breach Alert</div>
+      <div class="threat-pill pill-4" data-angle="55"><span class="tp-icon">👤</span>VIP Impersonation</div>
+      <div class="threat-pill pill-5" data-angle="155"><span class="tp-icon">🛡</span>Malware Leak</div>
+      <div class="threat-pill pill-6" data-angle="90"><span class="tp-icon">🔧</span>Misconfiguration</div>
+      <div class="threat-pill pill-7" data-angle="145"><span class="tp-icon">🌐</span>Vulnerability Exposed</div>
     </div>
   </div>
 </div>
@@ -505,6 +506,33 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     dots.push({x:cx+Math.cos(a)*r, y:cy+Math.sin(a)*r, size:Math.random()*2+1, alpha:Math.random()*0.4+0.1});
   }
   const blips = [];
+  const pills = Array.from(document.querySelectorAll('.threat-pill')).map(el=>({
+    el,
+    angle: parseFloat(el.dataset.angle) * Math.PI/180
+  }));
+  function norm(a){
+    a = a % (Math.PI*2);
+    if(a < 0) a += Math.PI*2;
+    return a;
+  }
+  function angleDiff(a,b){
+    let d = Math.abs(norm(a)-norm(b));
+    if(d > Math.PI) d = Math.PI*2 - d;
+    return d;
+  }
+  function updatePills(){
+    const glowWidth = 0.65; // radians of falloff on each side of the sweep line
+    pills.forEach(p=>{
+      const d = angleDiff(p.angle, angle);
+      const t = Math.max(0, 1 - d/glowWidth); // 1 = right on the line, 0 = far away
+      const eased = t*t*(3-2*t); // smoothstep for a gentler ramp
+      const glow = eased*16;
+      p.el.style.opacity = eased.toFixed(3);
+      p.el.style.boxShadow = glow>0.5 ? `0 0 ${glow.toFixed(1)}px -2px currentColor` : '';
+      p.el.style.borderColor = eased>0.15 ? 'currentColor' : '';
+      p.el.style.transform = `translateY(${(1-eased)*-4}px)` + (p.el.classList.contains('pill-1')||p.el.classList.contains('pill-6') ? ' translateX(-50%)' : '');
+    });
+  }
   function spawnBlip(){
     const r = Math.random()*maxR*0.8+20;
     const a = angle + (Math.random()-0.5)*0.3;
@@ -568,7 +596,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
       ctx.beginPath();ctx.arc(b.x,b.y,r,0,Math.PI*2);
       ctx.fillStyle=`rgba(${col},${b.life})`;ctx.fill();
     });
-    angle += 0.025;
+    angle += 0.009;
+    updatePills();
     if(Math.random()<0.12) spawnBlip();
     requestAnimationFrame(draw);
   }

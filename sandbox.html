@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -343,7 +344,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
              spellcheck="false" onkeydown="if(event.key==='Enter')startScan()">
       <div class="url-demos">
         <span class="url-demo-label">Try:</span>
-        <button class="demo-btn" onclick="setUrl('http://malware.wicar.org/data/eicar.com')">🔴 malware test</button>
+        <button class="demo-btn" onclick="setUrl('https://malware.wicar.org/data/eicar.com')">🔴 malware test</button>
         <button class="demo-btn" onclick="setUrl('https://secure-login-paypal.tk/verify')">🟠 phishing test</button>
         <button class="demo-btn" onclick="setUrl('https://www.google.com')">🟢 clean URL</button>
         <button class="demo-btn" onclick="setUrl('8.8.8.8')">🔵 IP lookup</button>
@@ -754,14 +755,14 @@ async function checkIpApi(ip, domain){
   }
   if(!ip) return null;
   try{
-    // ip-api.com is HTTP only (HTTPS is paid), use allorigins proxy for HTTPS pages
+    // ip-api.com is HTTP only (HTTPS is paid) — always use allorigins HTTPS proxy to avoid mixed-content block
     const apiUrl=`http://ip-api.com/json/${ip}?fields=status,country,countryCode,regionName,city,isp,org,as,proxy,hosting,mobile,query`;
     let resp;
     try{
-      resp=await fetch(apiUrl);
-    }catch(corsErr){
-      // CORS fallback via allorigins
       resp=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(apiUrl));
+    }catch(corsErr){
+      // last resort: try direct (works on HTTP pages)
+      resp=await fetch(apiUrl);
     }
     const d=await resp.json();
     if(d.status!=='success') return {ip,isp:'',country:'',isProxy:false,isHosting:false};

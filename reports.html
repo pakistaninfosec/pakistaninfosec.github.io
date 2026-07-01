@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -161,7 +162,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 canvas#radar{width:400px;height:400px;}
 
 /* Threat pill labels on radar */
-.threat-pill{position:absolute;display:flex;align-items:center;gap:6px;background:rgba(9,13,22,0.92);border:1px solid var(--border2);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:500;white-space:nowrap;backdrop-filter:blur(8px);animation:float 3s ease-in-out infinite;}
+.threat-pill{position:absolute;display:flex;align-items:center;gap:6px;background:rgba(9,13,22,0.92);border:1px solid var(--border2);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:500;white-space:nowrap;backdrop-filter:blur(8px);opacity:0;}
 .tp-icon{font-size:13px;}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .pill-1{top:8%;left:50%;transform:translateX(-50%);color:#fbbf24;border-color:rgba(251,191,36,0.25);animation-delay:0s;}
@@ -328,15 +329,15 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     <div class="hero-desc">Automated daily threat intelligence aggregated from CISA KEV, ZDI, Exploit-DB, Pakistan CERT and 9 other sources. AI-powered analysis by Groq — delivered every day at 09:00 PKT.</div>
     <div class="hero-stats">
       <div class="hs-item">
-        <div class="hs-num red" id="hero-new">329</div>
+        <div class="hs-num red" id="hero-new">—</div>
         <div class="hs-label">New threats today</div>
       </div>
       <div class="hs-item">
-        <div class="hs-num green" id="hero-pk">5</div>
+        <div class="hs-num green" id="hero-pk">—</div>
         <div class="hs-label">Pakistan alerts</div>
       </div>
       <div class="hs-item">
-        <div class="hs-num blue" id="hero-total">329</div>
+        <div class="hs-num blue" id="hero-total">—</div>
         <div class="hs-label">Total monitored</div>
       </div>
     </div>
@@ -346,13 +347,13 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   <div class="hero-right">
     <div class="radar-wrap">
       <canvas id="radar" width="400" height="400"></canvas>
-      <div class="threat-pill pill-1"><span class="tp-icon">⚠️</span>Phishing Detected</div>
-      <div class="threat-pill pill-2"><span class="tp-icon">✅</span>New Asset Found</div>
-      <div class="threat-pill pill-3"><span class="tp-icon">🔴</span>Breach Alert</div>
-      <div class="threat-pill pill-4"><span class="tp-icon">👤</span>VIP Impersonation</div>
-      <div class="threat-pill pill-5"><span class="tp-icon">🛡</span>Malware Leak</div>
-      <div class="threat-pill pill-6"><span class="tp-icon">🔧</span>Misconfiguration</div>
-      <div class="threat-pill pill-7"><span class="tp-icon">🌐</span>Vulnerability Exposed</div>
+      <div class="threat-pill pill-1" data-angle="-90"><span class="tp-icon">⚠️</span>Phishing Detected</div>
+      <div class="threat-pill pill-2" data-angle="-35"><span class="tp-icon">✅</span>New Asset Found</div>
+      <div class="threat-pill pill-3" data-angle="5"><span class="tp-icon">🔴</span>Breach Alert</div>
+      <div class="threat-pill pill-4" data-angle="55"><span class="tp-icon">👤</span>VIP Impersonation</div>
+      <div class="threat-pill pill-5" data-angle="155"><span class="tp-icon">🛡</span>Malware Leak</div>
+      <div class="threat-pill pill-6" data-angle="90"><span class="tp-icon">🔧</span>Misconfiguration</div>
+      <div class="threat-pill pill-7" data-angle="145"><span class="tp-icon">🌐</span>Vulnerability Exposed</div>
     </div>
   </div>
 </div>
@@ -448,6 +449,33 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     dots.push({x:cx+Math.cos(a)*r, y:cy+Math.sin(a)*r, size:Math.random()*2+1, alpha:Math.random()*0.4+0.1});
   }
   const blips = [];
+  const pills = Array.from(document.querySelectorAll('.threat-pill')).map(el=>({
+    el,
+    angle: parseFloat(el.dataset.angle) * Math.PI/180
+  }));
+  function norm(a){
+    a = a % (Math.PI*2);
+    if(a < 0) a += Math.PI*2;
+    return a;
+  }
+  function angleDiff(a,b){
+    let d = Math.abs(norm(a)-norm(b));
+    if(d > Math.PI) d = Math.PI*2 - d;
+    return d;
+  }
+  function updatePills(){
+    const glowWidth = 0.65;
+    pills.forEach(p=>{
+      const d = angleDiff(p.angle, angle);
+      const t = Math.max(0, 1 - d/glowWidth);
+      const eased = t*t*(3-2*t);
+      const glow = eased*16;
+      p.el.style.opacity = eased.toFixed(3);
+      p.el.style.boxShadow = glow>0.5 ? `0 0 ${glow.toFixed(1)}px -2px currentColor` : '';
+      p.el.style.borderColor = eased>0.15 ? 'currentColor' : '';
+      p.el.style.transform = `translateY(${(1-eased)*-4}px)` + (p.el.classList.contains('pill-1')||p.el.classList.contains('pill-6') ? ' translateX(-50%)' : '');
+    });
+  }
   function spawnBlip(){
     const r = Math.random()*maxR*0.8+20;
     const a = angle + (Math.random()-0.5)*0.3;
@@ -511,7 +539,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
       ctx.beginPath();ctx.arc(b.x,b.y,r,0,Math.PI*2);
       ctx.fillStyle=`rgba(${col},${b.life})`;ctx.fill();
     });
-    angle += 0.025;
+    angle += 0.009;
+    updatePills();
     if(Math.random()<0.12) spawnBlip();
     requestAnimationFrame(draw);
   }
@@ -556,29 +585,18 @@ function buildTicker(threats) {
 /* ══════════════════════════════
    DATA
 ══════════════════════════════ */
-let allThreats=[],currentFilter='all',currentSearch='';
-const DEMO={
-  generated:new Date().toISOString(),
-  summary:"Today's digest contains 329 vulnerabilities across multiple sources including NVD/NIST, CISA KEV, Google Project Zero, Palo Alto Networks and more. Several critical remote code execution and SQL injection vulnerabilities require immediate attention from Pakistan-based organizations.",
-  stats:{new:329,total:329,zeroday:50,exploited:50,pakistan:5},
-  sources:[{name:"NVD/NIST",count:200},{name:"CISA KEV",count:50},{name:"Vulners",count:20},{name:"Palo Alto",count:14},{name:"SANS ISC",count:10},{name:"Google P0",count:10},{name:"Kaspersky",count:10},{name:"CrowdStrike",count:5}],
-  threats:[
-    {id:"CVE-2026-7699",desc:"SQL injection in Dromara MaxKey via StrUtils.checkSqlInjection",severity:"MEDIUM",source:"NVD/NIST",date:"2026-05-03",pakistan:false,tags:["SQLi","CVE"]},
-    {id:"CVE-2026-7700",desc:"Critical authentication bypass in enterprise VPN solution",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["Auth Bypass","VPN"]},
-    {id:"CVE-2026-7698",desc:"Remote code execution via crafted HTTP request in web framework",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["RCE","Web"]},
-    {id:"CVE-2026-7695",desc:"Directory traversal in network management software",severity:"HIGH",source:"Google Project Zero",date:"2026-05-09",pakistan:false,tags:["Directory Traversal"]},
-    {id:"CVE-2026-7690",desc:"Privilege escalation in Linux kernel via crafted system call",severity:"HIGH",source:"NVD/NIST",date:"2026-05-08",pakistan:false,tags:["Privilege Escalation"]},
-    {id:"PKC-2026-041",desc:"Critical vulnerability in Pakistan government portal authentication",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["Gov","Pakistan"]},
-    {id:"PKC-2026-039",desc:"Active exploitation of banking sector application in Pakistan",severity:"HIGH",source:"CISA KEV",date:"2026-05-09",pakistan:true,tags:["Banking","Pakistan"]},
-    {id:"CVE-2026-7675",desc:"RCE in Fortinet FortiOS allows unauthenticated code execution",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["RCE","Fortinet"]},
-    {id:"CVE-2026-7660",desc:"Zero-day exploit in Microsoft Exchange Server allows RCE",severity:"CRITICAL",source:"Google Project Zero",date:"2026-05-10",pakistan:false,tags:["RCE","Exchange"]},
-    {id:"CVE-2026-7655",desc:"Heap buffer overflow in Chrome V8 engine allows code execution",severity:"CRITICAL",source:"Google Project Zero",date:"2026-05-09",pakistan:false,tags:["RCE","Chrome"]},
-  ]
-};
-
+const DATA_URL='https://pakistaninfosec.github.io/data/threats.json';
 async function loadData(){
-  try{const res=await fetch('data/threats.json?t='+Date.now());if(!res.ok)throw 0;renderAll(await res.json());}
-  catch{renderAll(DEMO);}
+  try{
+    const res=await fetch(DATA_URL+'?t='+Date.now());
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    renderAll(await res.json());
+  }catch(e){
+    console.error('loadData failed:',e);
+    document.getElementById('last-updated').textContent='Unable to load live data — please refresh or try again shortly.';
+    document.getElementById('threat-list').innerHTML='<div class="loading"><span style="color:var(--text3)">Could not load threat data. Please try refreshing the page.</span></div>';
+    document.getElementById('ai-summary').textContent='Live data unavailable right now.';
+  }
 }
 function renderAll(d){
   allThreats=d.threats||[];

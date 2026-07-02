@@ -159,20 +159,20 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 /* Right hero — RADAR */
 .hero-right{position:relative;background:radial-gradient(ellipse at center,rgba(37,99,235,0.08) 0%,rgba(5,7,13,0) 70%);display:flex;align-items:center;justify-content:center;border-left:1px solid var(--border);}
-.radar-wrap{position:relative;width:400px;height:400px;}
-canvas#radar{width:400px;height:400px;}
+.radar-wrap{position:relative;width:560px;height:560px;}
+canvas#radar{width:560px;height:560px;}
 
 /* Threat pill labels on radar */
 .threat-pill{position:absolute;display:flex;align-items:center;gap:6px;background:rgba(9,13,22,0.92);border:1px solid var(--border2);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:500;white-space:nowrap;backdrop-filter:blur(8px);opacity:0;}
 .tp-icon{font-size:13px;}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-.pill-1{top:8%;left:50%;transform:translateX(-50%);color:#fbbf24;border-color:rgba(251,191,36,0.25);animation-delay:0s;}
-.pill-2{top:20%;right:2%;color:var(--green);border-color:rgba(34,197,94,0.25);animation-delay:0.5s;}
-.pill-3{top:38%;right:0%;color:var(--red2);border-color:rgba(248,113,113,0.25);animation-delay:1s;}
-.pill-4{top:56%;right:4%;color:#c084fc;border-color:rgba(192,132,252,0.25);animation-delay:0.3s;}
-.pill-5{bottom:24%;left:2%;color:var(--text2);border-color:rgba(100,116,139,0.25);animation-delay:0.8s;}
-.pill-6{bottom:14%;left:50%;transform:translateX(-50%);color:var(--orange);border-color:rgba(249,115,22,0.25);animation-delay:0.2s;}
-.pill-7{top:56%;left:0%;color:var(--cyan);border-color:rgba(6,182,212,0.25);animation-delay:0.6s;}
+.pill-1{top:4%;left:50%;transform:translateX(-50%);color:#fbbf24;border-color:rgba(251,191,36,0.25);animation-delay:0s;}
+.pill-2{top:16%;right:-2%;color:var(--green);border-color:rgba(34,197,94,0.25);animation-delay:0.5s;}
+.pill-3{top:36%;right:-4%;color:var(--red2);border-color:rgba(248,113,113,0.25);animation-delay:1s;}
+.pill-4{top:58%;right:-2%;color:#c084fc;border-color:rgba(192,132,252,0.25);animation-delay:0.3s;}
+.pill-5{bottom:18%;left:-2%;color:var(--text2);border-color:rgba(100,116,139,0.25);animation-delay:0.8s;}
+.pill-6{bottom:8%;left:50%;transform:translateX(-50%);color:var(--orange);border-color:rgba(249,115,22,0.25);animation-delay:0.2s;}
+.pill-7{top:58%;left:-4%;color:var(--cyan);border-color:rgba(6,182,212,0.25);animation-delay:0.6s;}
 
 /* MAIN */
 .main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:40px 48px;}
@@ -400,7 +400,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   <!-- RADAR SIDE -->
   <div class="hero-right">
     <div class="radar-wrap">
-      <canvas id="radar" width="400" height="400"></canvas>
+      <canvas id="radar" width="560" height="560"></canvas>
       <div class="threat-pill pill-1" data-angle="-90"><span class="tp-icon">⚠️</span>Phishing Detected</div>
       <div class="threat-pill pill-2" data-angle="-35"><span class="tp-icon">✅</span>New Asset Found</div>
       <div class="threat-pill pill-3" data-angle="5"><span class="tp-icon">🔴</span>Breach Alert</div>
@@ -498,7 +498,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 (function(){
   const canvas = document.getElementById('radar');
   const ctx = canvas.getContext('2d');
-  const cx = 200, cy = 200, maxR = 180;
+  const cx = 280, cy = 280, maxR = 252;
   let angle = 0;
   const dots = [];
   for(let i=0;i<28;i++){
@@ -540,7 +540,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     blips.push({x:cx+Math.cos(a)*r, y:cy+Math.sin(a)*r, life:1.0, critical:Math.random()<0.15});
   }
   function draw(){
-    ctx.clearRect(0,0,400,400);
+    ctx.clearRect(0,0,560,560);
     for(let i=1;i<=4;i++){
       const r = maxR*i/4;
       ctx.beginPath();

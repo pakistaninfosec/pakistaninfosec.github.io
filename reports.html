@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -629,25 +630,33 @@ function renderThreats(){
   else if(currentFilter!=='all') f=f.filter(t=>t.severity===currentFilter);
   if(currentSearch){const q=currentSearch.toLowerCase();f=f.filter(t=>t.id.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q)||(t.source||'').toLowerCase().includes(q));}
   document.getElementById('showing-count').textContent=f.length+' entries';
-  document.getElementById('threat-list').innerHTML=f.length?f.map(t=>`
-    <div class="t-row" onclick="openModal(${JSON.stringify(t).replace(/"/g,'&quot;')})">
-      <span class="sev sev-${t.severity.toLowerCase()}">${t.severity}</span>
-      <div><div class="t-id">${t.id}${t.pakistan?' 🇵🇰':''}</div><div class="t-desc">${t.desc}</div></div>
-      <div><div class="t-src">${t.source}</div><div class="t-date">${t.date}</div></div>
-    </div>`).join('') :
-    '<div class="loading"><span style="color:var(--text3)">No results</span></div>';
+  if(!f.length){
+    document.getElementById('threat-list').innerHTML='<div class="loading"><span style="color:var(--text3)">No results</span></div>';
+    return;
+  }
+  const list=document.getElementById('threat-list');
+  list.innerHTML='';
+  f.forEach((t,i)=>{
+    const div=document.createElement('div');
+    div.className='t-row';
+    div.innerHTML=`
+      <span class="sev sev-${(t.severity||'medium').toLowerCase()}">${t.severity||'MEDIUM'}</span>
+      <div><div class="t-id">${t.id||''}${t.pakistan?' 🇵🇰':''}</div><div class="t-desc">${t.desc||''}</div></div>
+      <div><div class="t-src">${t.source||''}</div><div class="t-date">${t.date||''}</div></div>`;
+    div.addEventListener('click',()=>openModal(t));
+    list.appendChild(div);
+  });
 }
 function filterSev(sev,btn){currentFilter=sev;document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderThreats();}
 document.getElementById('search').addEventListener('input',e=>{currentSearch=e.target.value;renderThreats();});
 function openModal(t){
-  if(typeof t==='string')t=JSON.parse(t);
-  document.getElementById('modal-cve').textContent=t.id;
-  document.getElementById('modal-title').textContent=t.desc;
-  document.getElementById('modal-desc').textContent=t.desc;
+  document.getElementById('modal-cve').textContent=t.id||'';
+  document.getElementById('modal-title').textContent=t.desc||'';
+  document.getElementById('modal-desc').textContent=t.desc||'';
   document.getElementById('modal-chips').innerHTML=`
-    <div class="modal-chip">Severity: <b>${t.severity}</b></div>
-    <div class="modal-chip">Source: <b>${t.source}</b></div>
-    <div class="modal-chip">Date: <b>${t.date}</b></div>
+    <div class="modal-chip">Severity: <b>${t.severity||'—'}</b></div>
+    <div class="modal-chip">Source: <b>${t.source||'—'}</b></div>
+    <div class="modal-chip">Date: <b>${t.date||'—'}</b></div>
     ${t.pakistan?'<div class="modal-chip">🇵🇰 <b>Pakistan Alert</b></div>':''}
     ${(t.tags||[]).map(tag=>`<div class="modal-chip">${tag}</div>`).join('')}`;
   document.getElementById('modal').classList.add('open');

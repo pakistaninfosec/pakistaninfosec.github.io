@@ -349,24 +349,36 @@ def generate_ai_summary(threats):
         client   = Groq(api_key=GROQ_API_KEY)
         critical = [t for t in threats if t["severity"] == "CRITICAL"][:5]
         zd       = [t for t in threats if t["zeroday"]][:5]
-        pk       = [t for t in threats if t["pakistan"]][:3]
-        prompt = f"""You are a senior cybersecurity analyst for Pakistan. Write a 3-sentence executive summary for today's threat intelligence digest.
+        pk       = [t for t in threats if t["pakistan"]][:5]
 
-Stats:
+        def fmt(lst):
+            return "\n".join([f"  - {t['id']} ({t['source']}): {t.get('description','')[:120]}" for t in lst]) or "  None"
+
+        prompt = f"""You are a senior cybersecurity analyst at Pakistan's national CERT. Write a concise 3-sentence executive summary for today's threat intelligence digest. Make it specific, actionable and mention the most critical threats by name.
+
+TODAY'S STATS:
 - Total vulnerabilities: {len(threats)}
-- Critical: {len([t for t in threats if t['severity']=='CRITICAL'])}
+- Critical severity: {len([t for t in threats if t['severity']=='CRITICAL'])}
+- High severity: {len([t for t in threats if t['severity']=='HIGH'])}
 - Zero-Day exploits: {len([t for t in threats if t['zeroday']])}
+- Actively exploited (CISA KEV): {len([t for t in threats if 'kev' in str(t.get('tags','')).lower()])}
 - Pakistan CERT/NCCS alerts: {len(pk)}
 
-Top Critical: {"; ".join([t['id'] for t in critical]) or "None"}
-Zero-Days: {"; ".join([t['id'] for t in zd]) or "None"}
-Pakistan: {"; ".join([t['id'] for t in pk]) or "None"}
+TOP CRITICAL VULNERABILITIES:
+{fmt(critical)}
 
-Plain text only, no bullets."""
+ZERO-DAY EXPLOITS:
+{fmt(zd)}
+
+PAKISTAN-SPECIFIC ALERTS:
+{fmt(pk)}
+
+Write 3 sentences. Mention specific CVE IDs and vendors. Focus on what Pakistani organizations should prioritize. Plain text only, no bullets, no markdown."""
+
         response = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=200, temperature=0.3,
+            max_tokens=250, temperature=0.5,
         )
         return response.choices[0].message.content.strip()
     except Exception as e:

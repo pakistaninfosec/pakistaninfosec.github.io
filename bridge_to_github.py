@@ -154,7 +154,7 @@ def _scrape_pakistan_direct():
 
 # ── CISA KEV — Actively Exploited ────────────────────────────────────────────
 
-def _scrape_cisa_kev_direct(max_results=100):
+def _scrape_cisa_kev_direct(max_results=500):
     results = []
     try:
         res = requests.get(
@@ -198,7 +198,7 @@ def _scrape_cisa_kev_direct(max_results=100):
 
 # ── NVD — Recent CVEs (Zero-Day candidates) ───────────────────────────────────
 
-def _scrape_nvd_recent(days_back=7, max_results=200):
+def _scrape_nvd_recent(days_back=1, max_results=500):
     results = []
     try:
         end   = datetime.utcnow()
@@ -255,7 +255,7 @@ def _scrape_nvd_recent(days_back=7, max_results=200):
 
 # ── Exploit-DB RSS — Zero Days ────────────────────────────────────────────────
 
-def _scrape_exploitdb(max_results=50):
+def _scrape_exploitdb(max_results=100):
     results = []
     try:
         import feedparser
@@ -417,9 +417,9 @@ def build_threats_json(raw_data):
 
     # Always fetch these directly — no scraper pipeline dependency
     all_raw.extend(_scrape_pakistan_direct())
-    all_raw.extend(_scrape_cisa_kev_direct(max_results=100))
-    all_raw.extend(_scrape_nvd_recent(days_back=7, max_results=200))
-    all_raw.extend(_scrape_exploitdb(max_results=50))
+    all_raw.extend(_scrape_cisa_kev_direct())
+    all_raw.extend(_scrape_nvd_recent(days_back=1))
+    all_raw.extend(_scrape_exploitdb())
 
     threats = convert_records(all_raw)
 

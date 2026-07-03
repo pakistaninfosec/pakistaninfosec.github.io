@@ -1,21 +1,19 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1391334995238896"
-     crossorigin="anonymous"></script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InfoSec Pakistan — Threat Intelligence Platform</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1391334995238896" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Reports — InfoSec Pakistan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
+:root{
   --bg:#05070d;--bg2:#090d16;--bg3:#0e1420;--bg4:#141b28;--bg5:#1a2235;
   --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);--border3:rgba(255,255,255,0.16);
   --text:#ffffff;--text2:#94a3b8;--text3:#64748b;
-  --blue:#2563eb;--blue2:#3b82f6;--blue3:#60a5fa;--blue4:#93c5fd;
+  --blue:#2563eb;--blue2:#3b82f6;--blue3:#60a5fa;
   --red:#ef4444;--red2:#f87171;--orange:#f97316;--green:#22c55e;--yellow:#eab308;--cyan:#06b6d4;
   --body:'Inter',sans-serif;--display:'Space Grotesk',sans-serif;
 }
@@ -23,6 +21,7 @@
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:14px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(37,99,235,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.025) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(37,99,235,0.06) 0%,transparent 65%);pointer-events:none;z-index:0;}
 
 /* NAV */
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(5,7,13,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
@@ -38,246 +37,102 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
-/* ── THREAT TICKER ─────────────────────────────────────────── */
-.ticker-wrap{
-  position:relative;
-  z-index:99;
-  width:100%;
-  background:rgba(9,13,22,0.98);
-  border-bottom:1px solid rgba(239,68,68,0.2);
-  display:flex;
-  align-items:stretch;
-  height:36px;
-  overflow:hidden;
-}
-.ticker-label{
-  flex-shrink:0;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:0 18px;
-  background:var(--red);
-  font-size:10.5px;
-  font-weight:800;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  color:#fff;
-  white-space:nowrap;
-  z-index:2;
-}
-.ticker-label-dot{
-  width:6px;height:6px;background:#fff;border-radius:50%;
-  animation:blink 1s infinite;
-}
-.ticker-fade-left{
-  position:absolute;
-  left:108px;
-  top:0;bottom:0;
-  width:40px;
-  background:linear-gradient(90deg,rgba(9,13,22,0.95),transparent);
-  z-index:1;
-  pointer-events:none;
-}
-.ticker-fade-right{
-  position:absolute;
-  right:0;top:0;bottom:0;
-  width:60px;
-  background:linear-gradient(270deg,rgba(9,13,22,0.95),transparent);
-  z-index:1;
-  pointer-events:none;
-}
-.ticker-track{
-  flex:1;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  position:relative;
-}
-.ticker-inner{
-  display:flex;
-  align-items:center;
-  gap:0;
-  white-space:nowrap;
-  will-change:transform;
-  animation:tickerScroll 60s linear infinite;
-}
-.ticker-inner:hover{ animation-play-state:paused; }
-@keyframes tickerScroll{
-  0%  { transform:translateX(0); }
-  100%{ transform:translateX(-50%); }
-}
-.ticker-item{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:0 28px 0 0;
-  font-size:12px;
-  color:var(--text2);
-  cursor:pointer;
-  transition:color 0.2s;
-}
-.ticker-item:hover{ color:#fff; }
-.ticker-sep{
-  display:inline-block;
-  width:4px;height:4px;
-  background:var(--border2);
-  border-radius:50%;
-  margin:0 10px 0 0;
-  flex-shrink:0;
-  vertical-align:middle;
-}
-.ti-sev{
-  font-size:9.5px;font-weight:700;letter-spacing:0.06em;
-  padding:2px 6px;border-radius:3px;flex-shrink:0;text-transform:uppercase;
-}
-.ti-sev.CRITICAL{background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.25);}
-.ti-sev.HIGH{background:rgba(249,115,22,0.15);color:var(--orange);border:1px solid rgba(249,115,22,0.25);}
-.ti-sev.MEDIUM{background:rgba(234,179,8,0.15);color:var(--yellow);border:1px solid rgba(234,179,8,0.25);}
-.ti-sev.LOW{background:rgba(34,197,94,0.15);color:var(--green);border:1px solid rgba(34,197,94,0.25);}
-.ti-id{font-family:'Courier New',monospace;font-size:11.5px;font-weight:600;color:var(--blue3);}
-.ti-desc{color:var(--text2);max-width:340px;overflow:hidden;text-overflow:ellipsis;}
-.ti-pk{font-size:12px;}
-/* ── END TICKER ─────────────────────────────────────────────── */
-
-/* HERO — split layout like CTM360 */
-.hero{position:relative;z-index:1;display:grid;grid-template-columns:1fr 520px;min-height:440px;border-bottom:1px solid var(--border);overflow:hidden;}
-
-/* Left hero text */
-.hero-left{padding:64px 48px;background:linear-gradient(135deg,rgba(37,99,235,0.05) 0%,transparent 60%);}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.25);color:var(--blue3);font-size:11.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:24px;}
-.hero-badge::before{content:'●';font-size:7px;animation:blink 2s infinite;}
-.hero-title{font-family:var(--display);font-size:clamp(36px,3.5vw,52px);font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:#fff;margin-bottom:18px;}
-.hero-title span{color:var(--blue3);}
-.hero-desc{font-size:15px;color:var(--text2);font-weight:400;line-height:1.75;max-width:480px;margin-bottom:36px;}
-.hero-stats{display:flex;gap:36px;}
-.hs-item{}
-.hs-num{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-0.03em;color:#fff;}
-.hs-num.red{color:var(--red);}
-.hs-num.green{color:var(--green);}
-.hs-num.blue{color:var(--blue3);}
-.hs-label{font-size:11.5px;color:var(--text3);margin-top:2px;font-weight:500;}
-
-/* Right hero — RADAR */
-.hero-right{position:relative;background:radial-gradient(ellipse at center,rgba(37,99,235,0.08) 0%,rgba(5,7,13,0) 70%);display:flex;align-items:center;justify-content:center;border-left:1px solid var(--border);}
-.radar-wrap{position:relative;width:400px;height:400px;}
-canvas#radar{width:400px;height:400px;}
-
-/* Threat pill labels on radar */
-.threat-pill{position:absolute;display:flex;align-items:center;gap:6px;background:rgba(9,13,22,0.92);border:1px solid var(--border2);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:500;white-space:nowrap;backdrop-filter:blur(8px);opacity:0;}
-.tp-icon{font-size:13px;}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-.pill-1{top:8%;left:50%;transform:translateX(-50%);color:#fbbf24;border-color:rgba(251,191,36,0.25);animation-delay:0s;}
-.pill-2{top:20%;right:2%;color:var(--green);border-color:rgba(34,197,94,0.25);animation-delay:0.5s;}
-.pill-3{top:38%;right:0%;color:var(--red2);border-color:rgba(248,113,113,0.25);animation-delay:1s;}
-.pill-4{top:56%;right:4%;color:#c084fc;border-color:rgba(192,132,252,0.25);animation-delay:0.3s;}
-.pill-5{bottom:24%;left:2%;color:var(--text2);border-color:rgba(100,116,139,0.25);animation-delay:0.8s;}
-.pill-6{bottom:14%;left:50%;transform:translateX(-50%);color:var(--orange);border-color:rgba(249,115,22,0.25);animation-delay:0.2s;}
-.pill-7{top:56%;left:0%;color:var(--cyan);border-color:rgba(6,182,212,0.25);animation-delay:0.6s;}
-
 /* MAIN */
-.main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:40px 48px;}
+main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:48px 48px 80px;}
 
-/* Stat strip */
-.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px;}
-.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:22px;display:flex;align-items:center;gap:18px;transition:all 0.2s;cursor:default;}
-.stat-card:hover{border-color:var(--border2);transform:translateY(-1px);}
-.sc-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
-.sci-red{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.15);}
-.sci-orange{background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.15);}
-.sci-green{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.15);}
-.sci-blue{background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.15);}
-.sc-label{font-size:11.5px;font-weight:500;color:var(--text3);margin-bottom:4px;}
-.sc-val{font-family:var(--display);font-size:30px;font-weight:700;letter-spacing:-0.03em;line-height:1;}
-.sc-val.red{color:var(--red);}
-.sc-val.orange{color:var(--orange);}
-.sc-val.green{color:var(--green);}
-.sc-val.blue{color:var(--blue2);}
-.sc-sub{font-size:11px;color:var(--text3);margin-top:4px;}
+/* PAGE HEADER */
+.page-header{margin-bottom:40px;}
+.page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.25);color:var(--blue3);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:16px;}
+.page-title{font-family:var(--display);font-size:clamp(28px,4vw,42px);font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:#fff;margin-bottom:10px;}
+.page-title span{color:var(--blue3);}
+.page-desc{font-size:14px;color:var(--text2);line-height:1.7;max-width:600px;}
 
-/* Last updated */
-.lu-bar{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text3);margin-bottom:28px;padding:10px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;width:fit-content;}
-.lu-dot2{width:6px;height:6px;background:var(--blue2);border-radius:50%;}
+/* TODAY BANNER */
+.today-banner{background:var(--bg2);border:1px solid rgba(37,99,235,0.2);border-radius:14px;overflow:hidden;margin-bottom:32px;position:relative;}
+.today-banner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));}
+.tb-head{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-bottom:1px solid var(--border);}
+.tb-label{display:flex;align-items:center;gap:10px;}
+.tb-dot{width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:blink 2s infinite;}
+.tb-title{font-family:var(--display);font-size:16px;font-weight:700;color:#fff;}
+.tb-date{font-size:12px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:4px 12px;border-radius:6px;}
+.tb-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);}
+.tb-stat{background:var(--bg2);padding:20px 24px;text-align:center;}
+.tb-num{font-family:var(--display);font-size:32px;font-weight:700;line-height:1;}
+.tbn-red{color:var(--red);}
+.tbn-orange{color:var(--orange);}
+.tbn-green{color:var(--green);}
+.tbn-blue{color:var(--blue3);}
+.tb-label2{font-size:11px;color:var(--text3);margin-top:5px;font-weight:500;}
+.tb-summary{padding:20px 28px;border-top:1px solid var(--border);}
+.tb-summary-label{font-size:11px;font-weight:600;color:var(--blue3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.tb-summary-label::before{content:'◆';font-size:8px;}
+.tb-summary-text{font-size:13.5px;color:var(--text2);line-height:1.75;}
+.tb-sources{display:flex;gap:8px;flex-wrap:wrap;padding:0 28px 20px;}
+.tb-src{display:inline-flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--text2);}
+.src-dot{width:6px;height:6px;border-radius:50%;}
 
-/* Two col */
-.two-col{display:grid;grid-template-columns:1fr 380px;gap:20px;}
+/* THREAT TABLE */
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.section-title{font-family:var(--display);font-size:18px;font-weight:700;color:#fff;display:flex;align-items:center;gap:12px;}
+.section-title::before{content:'';width:4px;height:20px;background:var(--blue2);border-radius:2px;box-shadow:0 0 8px var(--blue2);}
+.entry-count{font-size:12px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:4px 12px;border-radius:20px;}
 
-/* Panel */
-.panel{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
-.panel-head{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid var(--border);background:var(--bg3);}
-.ph-left{display:flex;align-items:center;gap:10px;}
-.ph-dot{width:8px;height:8px;border-radius:50%;}
-.phd-red{background:var(--red);box-shadow:0 0 8px var(--red);}
-.phd-blue{background:var(--blue2);box-shadow:0 0 8px var(--blue2);}
-.phd-green{background:var(--green);box-shadow:0 0 8px var(--green);}
-.ph-title{font-family:var(--display);font-size:14px;font-weight:600;color:#fff;}
-.ph-badge{font-size:11px;font-weight:600;background:var(--bg4);border:1px solid var(--border);color:var(--text2);padding:3px 10px;border-radius:20px;}
-
-/* Search */
-.search-bar{display:flex;gap:8px;padding:12px 22px;border-bottom:1px solid var(--border);background:var(--bg3);}
-.s-input{flex:1;background:var(--bg4);border:1px solid var(--border);color:#fff;padding:8px 14px;border-radius:8px;font-family:var(--body);font-size:13px;outline:none;transition:border-color 0.2s;}
-.s-input:focus{border-color:var(--blue2);}
-.s-input::placeholder{color:var(--text3);}
-.f-btn{background:var(--bg4);border:1px solid var(--border);color:var(--text3);padding:8px 12px;border-radius:8px;font-family:var(--body);font-size:12px;font-weight:500;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+/* FILTERS */
+.filters{display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+.search-box{flex:1;min-width:220px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:9px 14px;color:#fff;font-size:13px;font-family:var(--body);outline:none;transition:border-color 0.2s;}
+.search-box:focus{border-color:var(--blue2);}
+.search-box::placeholder{color:var(--text3);}
+.f-btn{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:8px 14px;font-size:12px;font-weight:600;color:var(--text3);cursor:pointer;transition:all 0.2s;}
 .f-btn:hover{color:#fff;border-color:var(--border2);}
-.f-btn.on{color:var(--blue3);border-color:rgba(59,130,246,0.4);background:rgba(59,130,246,0.08);}
+.f-btn.on{color:#fff;background:var(--bg3);border-color:var(--border2);}
+.f-btn.pk{display:flex;align-items:center;gap:5px;}
 
-/* Threat rows */
-.t-list{max-height:540px;overflow-y:auto;}
-.t-list::-webkit-scrollbar{width:3px;}
-.t-list::-webkit-scrollbar-thumb{background:var(--bg5);border-radius:2px;}
-.t-row{display:grid;grid-template-columns:88px 1fr auto;gap:14px;align-items:center;padding:13px 22px;border-bottom:1px solid var(--border);transition:background 0.15s;cursor:pointer;}
-.t-row:hover{background:var(--bg3);}
+/* THREAT LIST */
+.threat-table{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.t-row{display:grid;grid-template-columns:90px 1fr 140px;gap:16px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.15s;}
 .t-row:last-child{border-bottom:none;}
-.sev{font-size:10px;font-weight:700;letter-spacing:0.06em;padding:4px 8px;border-radius:4px;text-align:center;}
-.sev-critical{background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.2);}
-.sev-high{background:rgba(249,115,22,0.1);color:var(--orange);border:1px solid rgba(249,115,22,0.2);}
-.sev-medium{background:rgba(234,179,8,0.1);color:var(--yellow);border:1px solid rgba(234,179,8,0.2);}
+.t-row:hover{background:var(--bg3);}
+.sev{font-size:10px;font-weight:700;padding:4px 8px;border-radius:4px;text-align:center;letter-spacing:0.05em;}
+.sev-critical{background:rgba(239,68,68,0.15);color:var(--red2);border:1px solid rgba(239,68,68,0.25);}
+.sev-high{background:rgba(249,115,22,0.15);color:var(--orange);border:1px solid rgba(249,115,22,0.25);}
+.sev-medium{background:rgba(234,179,8,0.15);color:var(--yellow);border:1px solid rgba(234,179,8,0.25);}
 .sev-low{background:rgba(34,197,94,0.1);color:var(--green);border:1px solid rgba(34,197,94,0.2);}
-.t-id{font-size:12.5px;font-weight:600;color:var(--blue3);margin-bottom:3px;font-family:'Courier New',monospace;}
-.t-desc{font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:400px;}
-.t-src{font-size:11px;color:var(--text3);text-align:right;}
-.t-date{font-size:11px;color:var(--text3);text-align:right;margin-top:2px;}
-
-/* Sidebar */
-.sidebar{display:flex;flex-direction:column;gap:18px;}
-.ai-box{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;position:relative;}
-.ai-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));}
-.ai-head{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border);background:var(--bg3);}
-.ai-icon{width:30px;height:30px;background:linear-gradient(135deg,var(--blue),var(--cyan));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;}
-.ai-label{font-size:13px;font-weight:600;color:#fff;}
-.ai-sub{font-size:11px;color:var(--text3);margin-top:1px;}
-.ai-body{padding:18px 20px;}
-.ai-text{font-size:13px;color:var(--text2);line-height:1.75;font-weight:400;}
-
-.src-row{display:flex;align-items:center;gap:12px;padding:11px 20px;border-bottom:1px solid var(--border);}
-.src-row:last-child{border-bottom:none;}
-.src-name{font-size:12.5px;font-weight:500;color:var(--text);min-width:100px;}
-.src-bg{flex:1;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;}
-.src-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width 1.2s ease;}
-.src-num{font-size:12px;color:var(--text3);min-width:28px;text-align:right;}
-
-
-/* Loading */
-.loading{display:flex;align-items:center;justify-content:center;padding:52px;color:var(--text3);gap:10px;font-size:13px;}
-.spinner{width:18px;height:18px;border:2px solid var(--bg5);border-top-color:var(--blue2);border-radius:50%;animation:spin 0.8s linear infinite;}
+.t-id{font-size:12.5px;font-weight:600;color:var(--blue3);}
+.t-desc{font-size:12px;color:var(--text2);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:580px;}
+.t-src{font-size:11.5px;color:var(--text3);text-align:right;}
+.t-date{font-size:11px;color:var(--text3);margin-top:3px;text-align:right;}
+.loading{padding:48px;text-align:center;color:var(--text3);}
+.spinner{width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--blue2);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 12px;}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* Modal */
-.modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(8px);z-index:200;align-items:center;justify-content:center;}
-.modal-ov.open{display:flex;}
-.modal-box{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:32px;max-width:600px;width:90%;position:relative;}
-.modal-box::before{content:'';position:absolute;top:0;left:48px;right:48px;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent);}
-.modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
-.modal-id{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:var(--blue3);font-size:12px;font-weight:600;padding:5px 12px;border-radius:6px;font-family:'Courier New',monospace;}
-.modal-x{width:32px;height:32px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text3);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
-.modal-x:hover{color:#fff;border-color:var(--border2);}
-.modal-title{font-family:var(--display);font-size:20px;font-weight:700;line-height:1.35;color:#fff;margin-bottom:14px;}
-.modal-desc{font-size:13.5px;color:var(--text2);line-height:1.75;margin-bottom:20px;}
-.modal-chips{display:flex;flex-wrap:wrap;gap:8px;}
-.modal-chip{font-size:11.5px;background:var(--bg3);border:1px solid var(--border);padding:5px 12px;border-radius:6px;color:var(--text3);}
-.modal-chip b{color:#fff;font-weight:500;}
+/* SOURCE BREAKDOWN */
+.breakdown-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;margin-top:24px;}
+.breakdown-title{font-family:var(--display);font-size:14px;font-weight:600;color:#fff;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+.breakdown-title::before{content:'';width:3px;height:16px;background:var(--blue2);border-radius:2px;}
+.src-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.src-row:last-child{margin-bottom:0;}
+.src-name{font-size:12.5px;color:var(--text2);width:120px;flex-shrink:0;}
+.src-bar{flex:1;height:6px;background:var(--bg4);border-radius:3px;overflow:hidden;}
+.src-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:3px;transition:width 0.8s ease;}
+.src-num{font-size:12px;font-weight:600;color:var(--text);width:36px;text-align:right;flex-shrink:0;}
 
-/* Footer */
+/* MODAL */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
+.modal.open{display:flex;}
+.modal-box{background:var(--bg2);border:1px solid var(--border2);border-radius:14px;width:100%;max-width:600px;overflow:hidden;}
+.modal-head{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.modal-cve{font-family:'Courier New',monospace;font-size:13px;font-weight:700;color:var(--blue3);}
+.modal-x{background:none;border:none;color:var(--text3);cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;transition:color 0.2s;}
+.modal-x:hover{color:#fff;}
+.modal-body{padding:20px 24px;}
+.modal-desc{font-size:13.5px;color:var(--text2);line-height:1.75;margin-bottom:18px;}
+.modal-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.modal-chip{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:12px;color:var(--text2);}
+.modal-chip b{color:#fff;}
+.modal-url{display:block;margin-top:16px;font-size:12px;color:var(--blue3);text-decoration:none;word-break:break-all;}
+.modal-url:hover{text-decoration:underline;}
+
+/* FOOTER */
 footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
 .footer-brand{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text2);}
 .footer-brand span{color:var(--blue3);}
@@ -285,385 +140,258 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 .footer-link{color:var(--blue3);text-decoration:none;}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.hero{animation:fadeUp 0.5s ease both;}
-.stat-strip{animation:fadeUp 0.5s 0.1s ease both;}
-.two-col{animation:fadeUp 0.5s 0.15s ease both;}
+.page-header{animation:fadeUp 0.4s ease both;}
+.today-banner{animation:fadeUp 0.4s 0.05s ease both;}
+.threat-table{animation:fadeUp 0.4s 0.1s ease both;}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a class="brand" href="index.html">
     <div class="brand-icon">🛡</div>
     <div class="brand-name">INFOSEC <span>PAKISTAN</span></div>
   </a>
   <div class="nav-links">
-    <a href="index.html" class="active">Dashboard</a>
-    <a href="reports.html">Daily Reports</a>
+    <a href="index.html">Dashboard</a>
+    <a href="reports.html" class="active">Daily Reports</a>
     <a href="database.html">CVE Database</a>
     <a href="about.html">About</a>
-    <a href="Sandbox.html">Sandbox</a>
+    <a href="contact.html">Contact</a>
+    <a href="sandbox.html">Sandbox</a>
   </div>
   <div class="live-badge"><div class="live-dot"></div>LIVE</div>
 </nav>
 
-<!-- ── THREAT TICKER ───────────────────────────────────────── -->
-<div class="ticker-wrap">
-  <div class="ticker-label">
-    <div class="ticker-label-dot"></div>
-    THREAT INTEL
-  </div>
-  <div class="ticker-fade-left"></div>
-  <div class="ticker-track">
-    <div class="ticker-inner" id="ticker-inner"><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-21333</span><span class="ti-desc">Windows Hyper-V NT Kernel integration VSP Elevation of Privilege</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-29824</span><span class="ti-desc">Windows CLFS Driver Use-After-Free allows SYSTEM privilege escalation</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-24054</span><span class="ti-desc">NTLM Hash Disclosure Spoofing via crafted .library-ms file</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-30065</span><span class="ti-desc">Apache Parquet Java RCE — remote code execution in schema parsing</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-1974</span><span class="ti-desc">Ingress NGINX Controller unauthenticated remote code execution</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-22457</span><span class="ti-desc">Ivanti Connect Secure stack buffer overflow — active exploitation confirmed</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-24200</span><span class="ti-desc">Apple iOS USB Restricted Mode bypass — exploited in the wild</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-0282</span><span class="ti-desc">Ivanti Connect Secure unauthenticated remote code execution zero-day</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-21418</span><span class="ti-desc">Windows AFD.sys privilege escalation — actively exploited</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-3248</span><span class="ti-desc">Langflow AI unauthenticated remote code execution via /api/v1/validate/code</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-27363</span><span class="ti-desc">FreeType out-of-bounds write — exploited by threat actors</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-21333</span><span class="ti-desc">Windows Hyper-V NT Kernel integration VSP Elevation of Privilege</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-29824</span><span class="ti-desc">Windows CLFS Driver Use-After-Free allows SYSTEM privilege escalation</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-24054</span><span class="ti-desc">NTLM Hash Disclosure Spoofing via crafted .library-ms file</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-30065</span><span class="ti-desc">Apache Parquet Java RCE — remote code execution in schema parsing</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-1974</span><span class="ti-desc">Ingress NGINX Controller unauthenticated remote code execution</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-22457</span><span class="ti-desc">Ivanti Connect Secure stack buffer overflow — active exploitation confirmed</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-24200</span><span class="ti-desc">Apple iOS USB Restricted Mode bypass — exploited in the wild</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-0282</span><span class="ti-desc">Ivanti Connect Secure unauthenticated remote code execution zero-day</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-21418</span><span class="ti-desc">Windows AFD.sys privilege escalation — actively exploited</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev CRITICAL">CRITICAL</span><span class="ti-id">CVE-2025-3248</span><span class="ti-desc">Langflow AI unauthenticated remote code execution via /api/v1/validate/code</span></span><span class="ticker-sep"></span><span class="ticker-item"><span class="ti-sev HIGH">HIGH</span><span class="ti-id">CVE-2025-27363</span><span class="ti-desc">FreeType out-of-bounds write — exploited by threat actors</span></span><span class="ticker-sep"></span></div>
-  </div>
-  <div class="ticker-fade-right"></div>
-</div>
-<!-- ── END TICKER ──────────────────────────────────────────── -->
+<main>
 
-<!-- HERO WITH RADAR -->
-<div class="hero">
-  <div class="hero-left">
-    <div class="hero-badge">Pakistan Threat Intelligence Platform</div>
-    <div class="hero-title">Real-Time <span>Cybersecurity</span><br>Threat Intelligence</div>
-    <div class="hero-desc">Automated daily threat intelligence aggregated from CISA KEV, ZDI, Exploit-DB, Pakistan CERT and 9 other sources. AI-powered analysis by Groq — delivered every day at 09:00 PKT.</div>
-    <div class="hero-stats">
-      <div class="hs-item">
-        <div class="hs-num red" id="hero-new">—</div>
-        <div class="hs-label">New threats today</div>
-      </div>
-      <div class="hs-item">
-        <div class="hs-num green" id="hero-pk">—</div>
-        <div class="hs-label">Pakistan alerts</div>
-      </div>
-      <div class="hs-item">
-        <div class="hs-num blue" id="hero-total">—</div>
-        <div class="hs-label">Total monitored</div>
-      </div>
-    </div>
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-badge">📋 Threat Intelligence Digest</div>
+    <div class="page-title">Daily <span>Threat Reports</span></div>
+    <div class="page-desc">Today's full threat intelligence digest — aggregated from CISA KEV, NVD/NIST, Exploit-DB, Pakistan CERT and NCCS Pakistan. Updated every 30 minutes automatically.</div>
   </div>
 
-  <!-- RADAR SIDE -->
-  <div class="hero-right">
-    <div class="radar-wrap">
-      <canvas id="radar" width="400" height="400"></canvas>
-      <div class="threat-pill pill-1" data-angle="-90"><span class="tp-icon">⚠️</span>Phishing Detected</div>
-      <div class="threat-pill pill-2" data-angle="-35"><span class="tp-icon">✅</span>New Asset Found</div>
-      <div class="threat-pill pill-3" data-angle="5"><span class="tp-icon">🔴</span>Breach Alert</div>
-      <div class="threat-pill pill-4" data-angle="55"><span class="tp-icon">👤</span>VIP Impersonation</div>
-      <div class="threat-pill pill-5" data-angle="155"><span class="tp-icon">🛡</span>Malware Leak</div>
-      <div class="threat-pill pill-6" data-angle="90"><span class="tp-icon">🔧</span>Misconfiguration</div>
-      <div class="threat-pill pill-7" data-angle="145"><span class="tp-icon">🌐</span>Vulnerability Exposed</div>
-    </div>
-  </div>
-</div>
-
-<!-- MAIN CONTENT -->
-<div class="main">
-  <div class="lu-bar">
-    <div class="lu-dot2"></div>
-    <span id="last-updated">Fetching latest data...</span>
-  </div>
-
-  <!-- STATS -->
-  <div class="stat-strip">
-    <div class="stat-card">
-      <div class="sc-icon sci-red">🔴</div>
-      <div><div class="sc-label">Zero Day Exploits</div><div class="sc-val red" id="cnt-zeroday">0</div><div class="sc-sub">CISA KEV · ZDI · Exploit-DB</div></div>
-    </div>
-    <div class="stat-card">
-      <div class="sc-icon sci-orange">🟠</div>
-      <div><div class="sc-label">Actively Exploited</div><div class="sc-val orange" id="cnt-exploited">0</div><div class="sc-sub">From CISA KEV catalog</div></div>
-    </div>
-    <div class="stat-card">
-      <div class="sc-icon sci-blue">📊</div>
-      <div><div class="sc-label">Total Monitored</div><div class="sc-val blue" id="cnt-total">0</div><div class="sc-sub">All sources combined</div></div>
-    </div>
-  </div>
-
-  <!-- TWO COL -->
-  <div class="two-col">
-    <div class="panel">
-      <div class="panel-head">
-        <div class="ph-left"><div class="ph-dot phd-red"></div><div class="ph-title">Latest Threats</div></div>
-        <span class="ph-badge" id="showing-count">Loading...</span>
+  <!-- TODAY'S REPORT BANNER -->
+  <div class="today-banner">
+    <div class="tb-head">
+      <div class="tb-label">
+        <div class="tb-dot"></div>
+        <div class="tb-title">Today's Digest</div>
       </div>
-      <div class="search-bar">
-        <input class="s-input" id="search" type="text" placeholder="Search CVE ID, description, source...">
-        <button class="f-btn on" onclick="filterSev('all',this)">All</button>
-        <button class="f-btn" onclick="filterSev('CRITICAL',this)">Critical</button>
-        <button class="f-btn" onclick="filterSev('HIGH',this)">High</button>
-        <button class="f-btn" onclick="filterSev('pakistan',this)">🇵🇰 PK</button>
-      </div>
-      <div class="t-list" id="threat-list"><div class="loading"><div class="spinner"></div>Loading...</div></div>
+      <div class="tb-date" id="report-date">Loading...</div>
     </div>
-
-    <div class="sidebar">
-      <div class="ai-box">
-        <div class="ai-head">
-          <div class="ai-icon">◆</div>
-          <div><div class="ai-label">AI Analysis</div><div class="ai-sub">Powered by Groq</div></div>
-        </div>
-        <div class="ai-body"><div class="ai-text" id="ai-summary">Loading executive summary...</div></div>
+    <div class="tb-stats">
+      <div class="tb-stat">
+        <div class="tb-num tbn-red" id="stat-new">—</div>
+        <div class="tb-label2">New Threats</div>
       </div>
-      <div class="panel">
-        <div class="panel-head"><div class="ph-left"><div class="ph-dot phd-blue"></div><div class="ph-title">Source Breakdown</div></div></div>
-        <div id="source-breakdown"><div class="loading"><div class="spinner"></div></div></div>
+      <div class="tb-stat">
+        <div class="tb-num tbn-orange" id="stat-zeroday">—</div>
+        <div class="tb-label2">Zero-Day Exploits</div>
+      </div>
+      <div class="tb-stat">
+        <div class="tb-num tbn-green" id="stat-pakistan">—</div>
+        <div class="tb-label2">Pakistan Alerts</div>
+      </div>
+      <div class="tb-stat">
+        <div class="tb-num tbn-blue" id="stat-total">—</div>
+        <div class="tb-label2">Total Monitored</div>
       </div>
     </div>
+    <div class="tb-summary">
+      <div class="tb-summary-label">AI Analysis — Powered by Groq</div>
+      <div class="tb-summary-text" id="ai-summary">Loading executive summary...</div>
+    </div>
+    <div class="tb-sources" id="source-tags"></div>
   </div>
-</div>
+
+  <!-- THREAT LIST -->
+  <div class="section-header">
+    <div class="section-title">All Threats Today</div>
+    <div class="entry-count" id="showing-count">Loading...</div>
+  </div>
+
+  <div class="filters">
+    <input class="search-box" id="search" type="text" placeholder="Search CVE ID, description, source...">
+    <button class="f-btn on" onclick="filterSev('all',this)">All</button>
+    <button class="f-btn" onclick="filterSev('CRITICAL',this)">🔴 Critical</button>
+    <button class="f-btn" onclick="filterSev('HIGH',this)">🟠 High</button>
+    <button class="f-btn" onclick="filterSev('MEDIUM',this)">🟡 Medium</button>
+    <button class="f-btn pk" onclick="filterSev('pakistan',this)">🇵🇰 Pakistan</button>
+  </div>
+
+  <div class="threat-table" id="threat-list">
+    <div class="loading"><div class="spinner"></div>Loading threat data...</div>
+  </div>
+
+  <!-- SOURCE BREAKDOWN -->
+  <div class="breakdown-card">
+    <div class="breakdown-title">Source Breakdown</div>
+    <div id="source-breakdown"><div class="loading"><div class="spinner"></div></div></div>
+  </div>
+
+</main>
 
 <!-- MODAL -->
-<div class="modal-ov" id="modal" onclick="closeModal(event)">
+<div class="modal" id="modal" onclick="closeModal(event)">
   <div class="modal-box">
-    <div class="modal-top">
-      <div class="modal-id" id="modal-cve"></div>
+    <div class="modal-head">
+      <div>
+        <div class="modal-cve" id="modal-cve"></div>
+      </div>
       <button class="modal-x" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
     </div>
-    <div class="modal-title" id="modal-title"></div>
-    <div class="modal-desc" id="modal-desc"></div>
-    <div class="modal-chips" id="modal-chips"></div>
+    <div class="modal-body">
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-chips" id="modal-chips"></div>
+      <a class="modal-url" id="modal-url" href="#" target="_blank"></a>
+    </div>
   </div>
 </div>
 
 <footer>
   <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>
-   <a class="footer-link" href="privacy.html">Privacy Policy</a>
-  <div class="footer-txt">Automated threat intelligence · Updated daily 09:00 PKT · <a class="footer-link" href="https://pakistaninfosec.github.io">pakistaninfosec.github.io</a></div>
+  <a class="footer-link" href="privacy.html">Privacy Policy</a>
+  <div class="footer-txt">Automated threat intelligence · Updated every 30 min · <a class="footer-link" href="https://pakistaninfosec.github.io">pakistaninfosec.github.io</a></div>
 </footer>
 
 <script>
-/* ══════════════════════════════
-   RADAR ANIMATION
-══════════════════════════════ */
-(function(){
-  const canvas = document.getElementById('radar');
-  const ctx = canvas.getContext('2d');
-  const cx = 200, cy = 200, maxR = 180;
-  let angle = 0;
-  const dots = [];
-  for(let i=0;i<28;i++){
-    const r = Math.random()*maxR*0.85+16;
-    const a = Math.random()*Math.PI*2;
-    dots.push({x:cx+Math.cos(a)*r, y:cy+Math.sin(a)*r, size:Math.random()*2+1, alpha:Math.random()*0.4+0.1});
-  }
-  const blips = [];
-  const pills = Array.from(document.querySelectorAll('.threat-pill')).map(el=>({
-    el,
-    angle: parseFloat(el.dataset.angle) * Math.PI/180
-  }));
-  function norm(a){
-    a = a % (Math.PI*2);
-    if(a < 0) a += Math.PI*2;
-    return a;
-  }
-  function angleDiff(a,b){
-    let d = Math.abs(norm(a)-norm(b));
-    if(d > Math.PI) d = Math.PI*2 - d;
-    return d;
-  }
-  function updatePills(){
-    const glowWidth = 0.65;
-    pills.forEach(p=>{
-      const d = angleDiff(p.angle, angle);
-      const t = Math.max(0, 1 - d/glowWidth);
-      const eased = t*t*(3-2*t);
-      const glow = eased*16;
-      p.el.style.opacity = eased.toFixed(3);
-      p.el.style.boxShadow = glow>0.5 ? `0 0 ${glow.toFixed(1)}px -2px currentColor` : '';
-      p.el.style.borderColor = eased>0.15 ? 'currentColor' : '';
-      p.el.style.transform = `translateY(${(1-eased)*-4}px)` + (p.el.classList.contains('pill-1')||p.el.classList.contains('pill-6') ? ' translateX(-50%)' : '');
-    });
-  }
-  function spawnBlip(){
-    const r = Math.random()*maxR*0.8+20;
-    const a = angle + (Math.random()-0.5)*0.3;
-    blips.push({x:cx+Math.cos(a)*r, y:cy+Math.sin(a)*r, life:1.0, critical:Math.random()<0.15});
-  }
-  function draw(){
-    ctx.clearRect(0,0,400,400);
-    for(let i=1;i<=4;i++){
-      const r = maxR*i/4;
-      ctx.beginPath();
-      ctx.arc(cx,cy,r,0,Math.PI*2);
-      ctx.strokeStyle = `rgba(37,99,235,${0.08+(i===4?0.06:0)})`;
-      ctx.lineWidth = i===4?1:0.5;
-      ctx.stroke();
-    }
-    ctx.strokeStyle = 'rgba(37,99,235,0.08)';
-    ctx.lineWidth = 0.5;
-    [0,Math.PI/4,Math.PI/2,Math.PI*3/4].forEach(a=>{
-      ctx.beginPath();
-      ctx.moveTo(cx+Math.cos(a)*maxR, cy+Math.sin(a)*maxR);
-      ctx.lineTo(cx+Math.cos(a+Math.PI)*maxR, cy+Math.sin(a+Math.PI)*maxR);
-      ctx.stroke();
-    });
-    dots.forEach(d=>{
-      ctx.beginPath();
-      ctx.arc(d.x,d.y,d.size,0,Math.PI*2);
-      ctx.fillStyle=`rgba(148,163,184,${d.alpha})`;
-      ctx.fill();
-    });
-    const sweepAngle = 1.2;
-    for(let i=0;i<60;i++){
-      const a = angle - (i/60)*sweepAngle;
-      const alpha = (1-i/60)*0.18;
-      ctx.beginPath();
-      ctx.moveTo(cx,cy);
-      ctx.arc(cx,cy,maxR,a,a+sweepAngle/60);
-      ctx.closePath();
-      ctx.fillStyle=`rgba(37,99,235,${alpha})`;
-      ctx.fill();
-    }
-    ctx.beginPath();
-    ctx.moveTo(cx,cy);
-    ctx.lineTo(cx+Math.cos(angle)*maxR, cy+Math.sin(angle)*maxR);
-    ctx.strokeStyle='rgba(96,165,250,0.7)';
-    ctx.lineWidth=1.5;
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(cx,cy,4,0,Math.PI*2);
-    ctx.fillStyle='rgba(96,165,250,0.9)';
-    ctx.fill();
-    blips.forEach((b,i)=>{
-      b.life -= 0.018;
-      if(b.life<=0){blips.splice(i,1);return;}
-      const r = b.critical?4:2.5;
-      const grd = ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,r*4);
-      const col = b.critical?'239,68,68':'96,165,250';
-      grd.addColorStop(0,`rgba(${col},${b.life*0.9})`);
-      grd.addColorStop(1,`rgba(${col},0)`);
-      ctx.beginPath();ctx.arc(b.x,b.y,r*4,0,Math.PI*2);
-      ctx.fillStyle=grd;ctx.fill();
-      ctx.beginPath();ctx.arc(b.x,b.y,r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(${col},${b.life})`;ctx.fill();
-    });
-    angle += 0.009;
-    updatePills();
-    if(Math.random()<0.12) spawnBlip();
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-
-/* ══════════════════════════════
-   TICKER
-══════════════════════════════ */
-function buildTicker(threats) {
-  // Pick top 30: prioritise CRITICAL + pakistan, then HIGH, then rest
-  const sorted = [...threats].sort((a,b)=>{
-    const w = {CRITICAL:4,HIGH:3,MEDIUM:2,LOW:1};
-    const ap = (a.pakistan?1:0)*2 + (w[a.severity]||0);
-    const bp = (b.pakistan?1:0)*2 + (w[b.severity]||0);
-    return bp - ap;
-  }).slice(0, 30);
-
-  const makeItem = t => {
-    const sev  = (t.severity||'MEDIUM').toUpperCase();
-    const flag = t.pakistan ? '<span class="ti-pk">🇵🇰</span>' : '';
-    const desc = (t.desc||t.id||'').slice(0,80) + ((t.desc||'').length>80?'…':'');
-    return `<span class="ticker-item" onclick="openModal(${JSON.stringify(t).replace(/"/g,'&quot;')})">
-      <span class="ti-sev ${sev}">${sev}</span>
-      <span class="ti-id">${t.id}</span>
-      ${flag}
-      <span class="ti-desc">${desc}</span>
-    </span><span class="ticker-sep"></span>`;
-  };
-
-  const html = sorted.map(makeItem).join('');
-  // Duplicate for seamless infinite loop
-  document.getElementById('ticker-inner').innerHTML = html + html;
-
-  // Adjust animation speed based on content width
-  const inner = document.getElementById('ticker-inner');
-  const totalW = inner.scrollWidth / 2;
-  const speed = Math.max(40, totalW / 12); // px/s → seconds
-  inner.style.animationDuration = speed + 's';
-}
-
-/* ══════════════════════════════
-   DATA
-══════════════════════════════ */
+'use strict';
+let allThreats=[], currentFilter='all', currentSearch='';
 const DATA_URL='https://pakistaninfosec.github.io/data/threats.json';
+
 async function loadData(){
   try{
     const res=await fetch(DATA_URL+'?t='+Date.now());
-    if(!res.ok)throw new Error('HTTP '+res.status);
+    if(!res.ok) throw new Error('HTTP '+res.status);
     renderAll(await res.json());
   }catch(e){
     console.error('loadData failed:',e);
-    document.getElementById('last-updated').textContent='Unable to load live data — please refresh or try again shortly.';
-    document.getElementById('threat-list').innerHTML='<div class="loading"><span style="color:var(--text3)">Could not load threat data. Please try refreshing the page.</span></div>';
+    document.getElementById('threat-list').innerHTML='<div class="loading"><span style="color:var(--red2)">⚠ Could not load threat data — please refresh the page.</span></div>';
     document.getElementById('ai-summary').textContent='Live data unavailable right now.';
+    document.getElementById('report-date').textContent='Unavailable';
   }
 }
+
 function renderAll(d){
-  allThreats=d.threats||[];
-  const dt=new Date(d.generated||Date.now());
-  document.getElementById('last-updated').textContent='Last updated: '+dt.toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'})+' · Auto-refreshes daily at 09:00 PKT';
-  const s=d.stats||{};
-  const n=s.new||allThreats.length;
-  document.getElementById('hero-new').textContent='+'+n;
-  document.getElementById('hero-pk').textContent=s.pakistan||allThreats.filter(t=>t.pakistan).length;
-  document.getElementById('hero-total').textContent=s.total||allThreats.length;
-  document.getElementById('cnt-zeroday').textContent=s.zeroday||0;
-  document.getElementById('cnt-exploited').textContent=s.exploited||0;
-  document.getElementById('cnt-total').textContent=s.total||allThreats.length;
-  document.getElementById('ai-summary').textContent=d.summary||'No summary available.';
-  renderSources(d.sources||[]);
+  allThreats = d.threats||[];
+  const s = d.stats||{};
+  const dt = new Date(d.generated||Date.now());
+
+  // Date
+  document.getElementById('report-date').textContent = dt.toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+  // Stats
+  document.getElementById('stat-new').textContent     = s.new||allThreats.length;
+  document.getElementById('stat-zeroday').textContent  = s.zeroday||0;
+  document.getElementById('stat-pakistan').textContent = s.pakistan||allThreats.filter(t=>t.pakistan).length;
+  document.getElementById('stat-total').textContent    = (s.total||allThreats.length).toLocaleString();
+
+  // AI Summary
+  document.getElementById('ai-summary').textContent = d.summary||'No summary available.';
+
+  // Source tags
+  const sources = d.sources||[];
+  const colors = ['#ef4444','#3b82f6','#f97316','#22c55e','#06b6d4'];
+  document.getElementById('source-tags').innerHTML = sources.map((s,i)=>
+    `<span class="tb-src"><span class="src-dot" style="background:${colors[i]||'#64748b'}"></span>${s.name} <b style="color:#fff">${s.count}</b></span>`
+  ).join('');
+
+  // Source breakdown bars
+  renderSources(sources);
+
+  // Threats
   renderThreats();
-  buildTicker(allThreats);
 }
+
 function renderSources(sources){
-  const max=Math.max(...sources.map(s=>s.count),1);
-  document.getElementById('source-breakdown').innerHTML=sources.map(s=>`
-    <div class="src-row"><span class="src-name">${s.name}</span>
-    <div class="src-bg"><div class="src-fill" style="width:${s.count/max*100}%"></div></div>
-    <span class="src-num">${s.count}</span></div>`).join('');
+  const max = Math.max(...sources.map(s=>s.count), 1);
+  document.getElementById('source-breakdown').innerHTML = sources.map(s=>`
+    <div class="src-row">
+      <span class="src-name">${s.name}</span>
+      <div class="src-bar"><div class="src-fill" style="width:${(s.count/max*100).toFixed(1)}%"></div></div>
+      <span class="src-num">${s.count}</span>
+    </div>`).join('');
 }
 
 function renderThreats(){
-  let f=allThreats;
-  if(currentFilter==='pakistan') f=f.filter(t=>t.pakistan);
-  else if(currentFilter!=='all') f=f.filter(t=>t.severity===currentFilter);
-  if(currentSearch){const q=currentSearch.toLowerCase();f=f.filter(t=>t.id.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q)||(t.source||'').toLowerCase().includes(q));}
-  document.getElementById('showing-count').textContent=f.length+' entries';
+  let f = allThreats;
+  if(currentFilter==='pakistan') f = f.filter(t=>t.pakistan);
+  else if(currentFilter!=='all') f = f.filter(t=>t.severity===currentFilter);
+  if(currentSearch){
+    const q = currentSearch.toLowerCase();
+    f = f.filter(t=>
+      (t.id||'').toLowerCase().includes(q)||
+      (t.desc||'').toLowerCase().includes(q)||
+      (t.source||'').toLowerCase().includes(q)
+    );
+  }
+  document.getElementById('showing-count').textContent = f.length+' entries';
   if(!f.length){
-    document.getElementById('threat-list').innerHTML='<div class="loading"><span style="color:var(--text3)">No results</span></div>';
+    document.getElementById('threat-list').innerHTML='<div class="loading"><span style="color:var(--text3)">No results found</span></div>';
     return;
   }
-  const list=document.getElementById('threat-list');
+  const list = document.getElementById('threat-list');
   list.innerHTML='';
-  f.forEach((t,i)=>{
-    const div=document.createElement('div');
+  f.forEach(t=>{
+    const div = document.createElement('div');
     div.className='t-row';
     div.innerHTML=`
       <span class="sev sev-${(t.severity||'medium').toLowerCase()}">${t.severity||'MEDIUM'}</span>
-      <div><div class="t-id">${t.id||''}${t.pakistan?' 🇵🇰':''}</div><div class="t-desc">${t.desc||''}</div></div>
-      <div><div class="t-src">${t.source||''}</div><div class="t-date">${t.date||''}</div></div>`;
+      <div>
+        <div class="t-id">${t.id||''}${t.pakistan?' 🇵🇰':''}</div>
+        <div class="t-desc">${t.desc||''}</div>
+      </div>
+      <div>
+        <div class="t-src">${t.source||''}</div>
+        <div class="t-date">${t.date||''}</div>
+      </div>`;
     div.addEventListener('click',()=>openModal(t));
     list.appendChild(div);
   });
 }
-function filterSev(sev,btn){currentFilter=sev;document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderThreats();}
-document.getElementById('search').addEventListener('input',e=>{currentSearch=e.target.value;renderThreats();});
+
+function filterSev(sev,btn){
+  currentFilter=sev;
+  document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  renderThreats();
+}
+
+document.getElementById('search').addEventListener('input',e=>{
+  currentSearch=e.target.value;
+  renderThreats();
+});
+
 function openModal(t){
-  document.getElementById('modal-cve').textContent=t.id||'';
-  document.getElementById('modal-title').textContent=t.desc||'';
-  document.getElementById('modal-desc').textContent=t.desc||'';
+  document.getElementById('modal-cve').textContent = t.id||'';
+  document.getElementById('modal-desc').textContent = t.desc||'';
   document.getElementById('modal-chips').innerHTML=`
     <div class="modal-chip">Severity: <b>${t.severity||'—'}</b></div>
     <div class="modal-chip">Source: <b>${t.source||'—'}</b></div>
     <div class="modal-chip">Date: <b>${t.date||'—'}</b></div>
+    ${t.cvss?`<div class="modal-chip">CVSS: <b>${t.cvss}</b></div>`:''}
     ${t.pakistan?'<div class="modal-chip">🇵🇰 <b>Pakistan Alert</b></div>':''}
     ${(t.tags||[]).map(tag=>`<div class="modal-chip">${tag}</div>`).join('')}`;
+  const urlEl = document.getElementById('modal-url');
+  if(t.url && t.url.startsWith('http')){
+    urlEl.href=t.url;
+    urlEl.textContent='🔗 View on '+t.source;
+    urlEl.style.display='block';
+  } else {
+    urlEl.style.display='none';
+  }
   document.getElementById('modal').classList.add('open');
 }
-function closeModal(e){if(e.target===document.getElementById('modal'))document.getElementById('modal').classList.remove('open');}
+
+function closeModal(e){
+  if(e.target===document.getElementById('modal'))
+    document.getElementById('modal').classList.remove('open');
+}
+
 loadData();
-setInterval(loadData,5*60*1000);
+setInterval(loadData, 30*60*1000);
 </script>
 </body>
 </html>

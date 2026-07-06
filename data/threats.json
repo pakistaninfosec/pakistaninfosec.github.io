@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-06T22:14:53.439928+00:00",
-  "summary": "Today's digest contains 835 vulnerabilities across 5 sources. 550 zero-day exploits detected, 500 actively exploited from CISA KEV, and 29 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-06T23:38:23.302002+00:00",
+  "summary": "Today's digest contains 861 vulnerabilities across 5 sources. 550 zero-day exploits detected, 500 actively exploited from CISA KEV, and 29 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 835,
+    "new": 861,
     "changed": 0,
     "removed": 0,
-    "total": 66683,
+    "total": 67544,
     "zeroday": 550,
     "exploited": 500,
     "pakistan": 29
@@ -17,7 +17,7 @@
     },
     {
       "name": "NVD/NIST",
-      "count": 256
+      "count": 282
     },
     {
       "name": "Exploit-DB",
@@ -12805,7 +12805,7 @@
     {
       "id": "CVE-2026-55994",
       "desc": "Improper Input Validation, Exposure of Sensitive Information to an Unauthorized Actor, Server-Side Request Forgery (SSRF) vulnerability in Apache Camel in Iggy component.\n\nThe camel-iggy consumer mapped the user-headers of inbound Iggy messages into the Camel Exchange header map without applying any",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-06",
       "pakistan": false,
@@ -12817,7 +12817,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55994",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -14690,6 +14690,474 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59713",
       "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-32718",
+      "desc": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.466, mutating API validation endpoints are guarded by read ability, allowing read-scoped API tokens to perform state-changing operations such as validating cloud tokens and servers",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-32718",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-34049",
+      "desc": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. From 4.0.0-beta.451 through 4.0.0-beta.470, database backup handling for MongoDB collection names did not fully validate shell metacharacters, allowing a highly privileged attacker who can configure b",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34049",
+      "cvss": "3.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-34050",
+      "desc": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.471, the Settings/Updates Livewire component does not check isInstanceAdmin in its mount method, allowing non-admin users to access the Updates settings page and potentially modify",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34050",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-34153",
+      "desc": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.471, LocalFileVolume::saveStorageOnServer builds shell commands using unescaped fs_path and parent_dir values before validation, and submitFileStorage does not validate the user-co",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34153",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-34167",
+      "desc": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.471, the ActivityMonitor Livewire component exposes a public $activityId property without Livewire's #[Locked] attribute. It loads activities via Activity::find($this->activityId) ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34167",
+      "cvss": "5.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-34599",
+      "desc": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.471, there is an authenticated command injection vulnerability in the GetLogs Livewire component which allows users with team membership (lowest privilege member role) to execute a",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34599",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-38973",
+      "desc": "mrubyc through release3.4.1 was found to contain an out-of-bounds read in builtin missing-method lookup inside mrbc_find_method().",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-38973",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-38976",
+      "desc": "mrubyc through 3.4.1 was found to contain a NULL pointer dereference in src/vm.c in op_super() / OP_SUPER due to a missing runtime guard for top-level super.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-38976",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-38979",
+      "desc": "ajenti through v2.2.13 has a clickjacking weakness in the browser-facing login and administrative UI. In ajenti-core/aj/http.py, the core HTTP response path initializes an empty header list, forwards handler-added headers verbatim, and finalizes responses through WSGI start_response() without adding",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-38979",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-41899",
+      "desc": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.474, POST /api/feedback has no authentication, no rate limiting, and no input validation, allowing arbitrary content to be forwarded directly to a Discord webhook and enabling spam",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41899",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-42148",
+      "desc": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.474, the buildHelperImage method in app/Livewire/Settings/Index.php constructs a Docker build command using the dev_helper_version field without shell escaping, allowing an attacke",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42148",
+      "cvss": "3.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-42153",
+      "desc": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.474, PostgreSQL healthcheck command generation used attacker-controlled database settings (postgres_user and postgres_db) in shell-form commands, allowing an authenticated user to ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42153",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-42204",
+      "desc": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. From 4.0.0-beta.471 through 4.0.0-beta.473, a regression in SHELL_SAFE_COMMAND_PATTERN allowed ampersands in custom Docker Compose build, start, and pre/post-deployment command fields, allowing an aut",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42204",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-43918",
+      "desc": "FOSSBilling is a free, open-source billing and client management system. Prior to version 0.8.0, when a client or staff/admin account is suspended or marked inactive, existing authenticated sessions are not invalidated. The session identity loaders in src/di.php (loggedin_client and loggedin_admin) ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43918",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-43921",
+      "desc": "FOSSBilling is a free, open-source billing and client management system. Versions 0.6.10 through 0.7.2 have a PHP code injection vulnerability in FOSSBilling's `Config::prettyPrintArrayToPHP()` method. When configuration values are updated, string values are written into `config.php` without escapin",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43921",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-43925",
+      "desc": "FOSSBilling is a free, open-source billing and client management system. Prior to version 0.8.0, an unauthenticated mass assignment vulnerability in the client self-registration endpoint allows any visitor to assign themselves to an arbitrary client group during sign-up. Because client groups can ga",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43925",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-43927",
+      "desc": "FOSSBilling is a free, open-source billing and client management system. Prior to version 0.8.0, a race condition in the cart checkout flow allows an authenticated client to apply a promo code beyond its configured maximum uses. By sending concurrent checkout requests before any single request compl",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43927",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-43928",
+      "desc": "FOSSBilling is a free, open-source billing and client management system. Prior to version 0.8.0, the PayPalEmail payment adapter accepts PayPal IPN callbacks and credits the IPN-supplied amount (`mc_gross`) to the client's balance without validating it against the invoice total. Combined with a $0.0",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43928",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59710",
+      "desc": "showdown contains a stored cross-site scripting vulnerability in the parseHeaders function of src/subParsers/makehtml/tables.js that fails to properly escape table header ID attributes. Attackers can inject arbitrary HTML and script-executing SVG elements through double-quote characters in markdown ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59710",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53640",
+      "desc": "FOSSBilling is a free, open-source billing and client management system. Prior to version 0.8.0, low-privileged staff accounts may read sensitive data via admin API endpoints that lack permission checks. While sibling write endpoints correctly enforce fine-grained permissions, the corresponding read",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53640",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53641",
+      "desc": "FOSSBilling is a free, open-source billing and client management system. Versions 0.6.0 through 0.7.2 have a stored cross-site scripting (XSS) vulnerability in the client-facing email history views of FOSSBilling. Email HTML content (`content_html`) is rendered into a JavaScript template literal usi",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53641",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53642",
+      "desc": "FOSSBilling is a free, open-source billing and client management system. In versions 0.5.6 through 0.7.2, when the \"Require Email Confirmation\" setting is enabled, a logged-in client with an unverified email address (`email_approved = 0`) can access all client-area pages (e.g. `/client/balance`, `/c",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53642",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53643",
+      "desc": "FOSSBilling is a free, open-source billing and client management system. Versions prior to 0.8.0 allow low-privileged staff accounts to perform unauthorized actions via admin API endpoints. The root cause is a combination of the `can_always_access` module flag (which grants all staff access to certa",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53643",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53644",
+      "desc": "FOSSBilling is a free, open-source billing and client management system. Versions 0.5.3 through 0.7.2 allow authenticated clients to both read and reset API key service secrets for orders that are no longer in an `active` state (e.g., `suspended`, `canceled`). The root cause is missing order-state v",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53644",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53645",
+      "desc": "FOSSBilling is a free, open-source billing and client management system. Versions prior to 0.8.0 allow a low-privileged staff account to grant arbitrary module permissions to itself through the admin API, resulting in persistent privilege escalation. A staff user that only has `staff.create_and_edit",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53645",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53646",
+      "desc": "FOSSBilling is a free, open-source billing and client management system. In versions 0.5.6 through 0.7.2, when a `ClientPasswordReset` record already exists for a client (from a previous unexpired reset request), subsequent calls to the `reset_password` guest API endpoint reuse the existing token in",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53646",
+      "cvss": "0.0",
       "cwe": ""
     },
     {

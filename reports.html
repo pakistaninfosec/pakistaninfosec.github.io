@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,7 +117,13 @@ main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:48px 48p
 .src-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:3px;transition:width 0.8s ease;}
 .src-num{font-size:12px;font-weight:600;color:var(--text);width:36px;text-align:right;flex-shrink:0;}
 
-/* MODAL */
+/* PAGINATION */
+.pagination{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:20px;flex-wrap:wrap;}
+.pg-btn{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:7px 13px;font-size:12.5px;font-weight:500;color:var(--text3);cursor:pointer;transition:all 0.2s;min-width:36px;text-align:center;}
+.pg-btn:hover{color:#fff;border-color:var(--border2);}
+.pg-btn.active{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:700;}
+.pg-btn.disabled{opacity:0.35;cursor:not-allowed;}
+.pg-info{font-size:12px;color:var(--text3);padding:0 8px;}
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:200;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
 .modal.open{display:flex;}
 .modal-box{background:var(--bg2);border:1px solid var(--border2);border-radius:14px;width:100%;max-width:600px;overflow:hidden;}
@@ -224,6 +231,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   <div class="threat-table" id="threat-list">
     <div class="loading"><div class="spinner"></div>Loading threat data...</div>
   </div>
+  <div class="pagination" id="pagination"></div>
 
   <!-- SOURCE BREAKDOWN -->
   <div class="breakdown-card">
@@ -259,6 +267,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 <script>
 'use strict';
 let allThreats=[], currentFilter='all', currentSearch='';
+let currentPage=1, pageSize=25;
 const DATA_URL='https://pakistaninfosec.github.io/data/threats.json';
 
 async function loadData(){
@@ -315,7 +324,7 @@ function renderSources(sources){
     </div>`).join('');
 }
 
-function renderThreats(){
+function getFiltered(){
   let f = allThreats;
   if(currentFilter==='pakistan') f = f.filter(t=>t.pakistan);
   else if(currentFilter!=='all') f = f.filter(t=>t.severity===currentFilter);
@@ -327,14 +336,29 @@ function renderThreats(){
       (t.source||'').toLowerCase().includes(q)
     );
   }
+  return f;
+}
+
+function renderThreats(){
+  const f = getFiltered();
+  const totalPages = Math.ceil(f.length / pageSize);
+  if(currentPage > totalPages) currentPage = 1;
+
   document.getElementById('showing-count').textContent = f.length+' entries';
+
   if(!f.length){
     document.getElementById('threat-list').innerHTML='<div class="loading"><span style="color:var(--text3)">No results found</span></div>';
+    document.getElementById('pagination').innerHTML='';
     return;
   }
+
+  // Slice for current page
+  const start = (currentPage-1)*pageSize;
+  const page  = f.slice(start, start+pageSize);
+
   const list = document.getElementById('threat-list');
   list.innerHTML='';
-  f.forEach(t=>{
+  page.forEach(t=>{
     const div = document.createElement('div');
     div.className='t-row';
     div.innerHTML=`
@@ -350,10 +374,56 @@ function renderThreats(){
     div.addEventListener('click',()=>openModal(t));
     list.appendChild(div);
   });
+
+  // Render pagination
+  renderPagination(totalPages, f.length);
+}
+
+function renderPagination(totalPages, total){
+  const pg = document.getElementById('pagination');
+  if(totalPages<=1){ pg.innerHTML=''; return; }
+
+  const start = (currentPage-1)*pageSize+1;
+  const end   = Math.min(currentPage*pageSize, total);
+  let html = '';
+
+  // Prev button
+  html += `<button class="pg-btn${currentPage===1?' disabled':''}" onclick="goPage(${currentPage-1})">‹ Prev</button>`;
+
+  // Page info
+  html += `<span class="pg-info">Showing ${start}–${end} of ${total}</span>`;
+
+  // Page number buttons — show smart range
+  const range = [];
+  range.push(1);
+  for(let i=Math.max(2,currentPage-2); i<=Math.min(totalPages-1,currentPage+2); i++) range.push(i);
+  if(totalPages>1) range.push(totalPages);
+
+  let prev=0;
+  range.forEach(p=>{
+    if(p-prev>1) html += `<span class="pg-info">…</span>`;
+    html += `<button class="pg-btn${p===currentPage?' active':''}" onclick="goPage(${p})">${p}</button>`;
+    prev=p;
+  });
+
+  // Next button
+  html += `<button class="pg-btn${currentPage===totalPages?' disabled':''}" onclick="goPage(${currentPage+1})">Next ›</button>`;
+
+  pg.innerHTML = html;
+}
+
+function goPage(p){
+  const f = getFiltered();
+  const totalPages = Math.ceil(f.length/pageSize);
+  if(p<1||p>totalPages) return;
+  currentPage = p;
+  renderThreats();
+  document.getElementById('threat-list').scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 function filterSev(sev,btn){
   currentFilter=sev;
+  currentPage=1;
   document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   renderThreats();
@@ -361,6 +431,7 @@ function filterSev(sev,btn){
 
 document.getElementById('search').addEventListener('input',e=>{
   currentSearch=e.target.value;
+  currentPage=1;
   renderThreats();
 });
 

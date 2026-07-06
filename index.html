@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -380,7 +381,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   <div class="hero-left">
     <div class="hero-badge">Pakistan Threat Intelligence Platform</div>
     <div class="hero-title">Real-Time <span>Cybersecurity</span><br>Threat Intelligence</div>
-    <div class="hero-desc">Automated daily threat intelligence aggregated from CISA KEV, NVD/NIST, Exploit-DB, Pakistan CERT and NCCS Pakistan. AI-powered analysis by Groq — delivered every day at 09:00 PKT.</div>
+    <div class="hero-desc">Automated threat intelligence aggregated from CISA KEV, NVD/NIST, Exploit-DB, Pakistan CERT and NCCS Pakistan. AI-powered analysis by LLaMA — updated every 30 minutes.</div>
     <div class="hero-stats">
       <div class="hs-item">
         <div class="hs-num red" id="hero-new">—</div>
@@ -460,7 +461,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
       <div class="ai-box">
         <div class="ai-head">
           <div class="ai-icon">◆</div>
-          <div><div class="ai-label">AI Analysis</div><div class="ai-sub">Powered by Groq</div></div>
+          <div><div class="ai-label">AI Analysis</div><div class="ai-sub">Powered by LLaMA AI</div></div>
         </div>
         <div class="ai-body"><div class="ai-text" id="ai-summary">Loading executive summary...</div></div>
       </div>
@@ -488,7 +489,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 <footer>
   <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>
   <a class="footer-link" href="privacy.html">Privacy Policy</a>
-  <div class="footer-txt">Automated threat intelligence · Updated daily 09:00 PKT · <a class="footer-link" href="https://pakistaninfosec.github.io">pakistaninfosec.github.io</a></div>
+  <div class="footer-txt">Automated threat intelligence · Updated every 30 minutes · <a class="footer-link" href="https://pakistaninfosec.github.io">pakistaninfosec.github.io</a></div>
 </footer>
 
 <script>
@@ -662,7 +663,7 @@ async function loadData(){
 function renderAll(d){
   allThreats=d.threats||[];
   const dt=new Date(d.generated||Date.now());
-  document.getElementById('last-updated').textContent='Last updated: '+dt.toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'})+' · Auto-refreshes daily at 09:00 PKT';
+  document.getElementById('last-updated').textContent='Last updated: '+dt.toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'})+' · Auto-refreshes every 30 minutes';
   const s=d.stats||{};
   const n=s.new||allThreats.length;
   document.getElementById('hero-new').textContent='+'+n;

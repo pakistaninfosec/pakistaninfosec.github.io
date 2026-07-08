@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-08T09:09:51.020316+00:00",
-  "summary": "Today's digest contains 786 vulnerabilities across 5 sources. 550 zero-day exploits detected, 500 actively exploited from CISA KEV, and 29 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-08T11:23:17.731915+00:00",
+  "summary": "Today's digest contains 821 vulnerabilities across 5 sources. 550 zero-day exploits detected, 500 actively exploited from CISA KEV, and 29 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 786,
+    "new": 821,
     "changed": 0,
     "removed": 0,
-    "total": 77615,
+    "total": 78436,
     "zeroday": 550,
     "exploited": 500,
     "pakistan": 29
@@ -17,7 +17,7 @@
     },
     {
       "name": "NVD/NIST",
-      "count": 207
+      "count": 242
     },
     {
       "name": "Exploit-DB",
@@ -13777,7 +13777,7 @@
     {
       "id": "CVE-2026-12378",
       "desc": "The Appointment Booking Calendar Plugin and Scheduling Plugin  WordPress plugin through 1.1.28 does not validate data before passing it to a PHP deserialization function, allowing unauthenticated attackers to inject arbitrary PHP objects; where a suitable gadget chain is present on the site this can",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-08",
       "pakistan": false,
@@ -13789,7 +13789,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12378",
-      "cvss": "0.0",
+      "cvss": "8.1",
       "cwe": ""
     },
     {
@@ -13808,6 +13808,636 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9695",
       "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13126",
+      "desc": "The embedded JavaScript in the PDF deleted the pages, making the object invalid. The application attempted to perform a write operation on the invalid pop-up annotations, resulting in the program crashing.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13126",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13127",
+      "desc": "The application opens the PDF file. JavaScript then rewrites the document to modify the page structure, resulting in the invalidation of the page objects. However, the thumbnails still use the invalid page objects, ultimately causing the application to crash.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13127",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13128",
+      "desc": "Embedding JavaScript within a PDF file will cause the page to be deleted. Subsequent scripts will continue to access the relevant properties of the document view, eventually leading to the crash of the application.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13128",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13129",
+      "desc": "When the application opens a PDF file, JavaScript uses the damaged field tree to trigger field traversal, resulting in the program holding an invalid form object when accessing the field property path. Eventually, the application crashes due to reading an invalid pointer.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13129",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55999",
+      "desc": "Local attackers with a X connection able to provide PCX fonts to the X \nserver xorg-server before 21.2.24 and xwayland before 24.1.13 could \ncause a heap buffer overflow via SetFont due to missing glyph boundary checks.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55999",
+      "cvss": "8.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56000",
+      "desc": "Local attackers with a X connection able to provide GLX commit to the X server xorg-server before 21.2.24 and xwayland before 24.1.13 could cause a Heap Use After Free, due to CommonMakeCurrent() pointing into potentially reallocated memory.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56000",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56001",
+      "desc": "A heap buffer overflow in BitmapScaleBitmaps in libXfont2 before 2.0.8 due to an overflowing 32bit size could be used by attackers able to access the X Server to execute code within the X server cont",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56001",
+      "cvss": "8.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57237",
+      "desc": "When the application opens a PDF and JavaScript modifies the properties of form fields, it causes the state of the underlying objects referenced by the program to become invalid. Eventually, it reads an illegal memory address, which leads to the crash of the application.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57237",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57238",
+      "desc": "After the application opened the PDF, JavaScript deleted the form field object. Subsequently, it attempted to access the invalid object, which caused the application to crash.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57238",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57239",
+      "desc": "The user-controllable executable files will be directly executed by high-privilege processes, allowing low-privilege users to have the opportunity to elevate their privileges to NT AUTHORITY\\SYSTEM.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57239",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57240",
+      "desc": "When the application opens a PDF file and JavaScript deletes the PDF fields, the subsequent logic still uses the old field pointers, resulting in invalid pointer references and causing the application to crash.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57240",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57241",
+      "desc": "The application opens the PDF, and JavaScript performs operations on the page and the document, causing the page-related objects within the application to lose synchronization; however, the renderer still trusts the outdated page count, and eventually the application crashes due to out-of-bounds acc",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57241",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57242",
+      "desc": "The application opens the PDF, and JavaScript modifies the form. However, the related objects on the page lack complete lifecycle management and null value validation; when the page state changes, the application continuously dereferences invalid objects, eventually leading to a crash.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57242",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57243",
+      "desc": "During the process of page opening and form formatting, a JavaScript reentrancy results in an inconsistent document status. Subsequently, with outdated page information, the application attempts to access invalid addresses, causing the application to crash.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57243",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57244",
+      "desc": "After JavaScript resetting the form, the synchronization process lacks re-entry protection and object lifecycle verification, resulting in the failure of the control pointer during the traversal process. After the pointer fails, it still continues to dereference, causing the application to crash.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57244",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57245",
+      "desc": "When the application opens a PDF, traverses and builds the annotation elements related to hyperlinks, it fails to validate the abnormal annotation relationships and field combinations. This results in the internal objects entering an invalid state. Eventually, during the destruction phase, an invali",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57245",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57246",
+      "desc": "When dealing with abnormally constructed objects, there is a lack of argument validation; JavaScript triggers signature verification, but the signature plugin does not perform validation when copying the abnormal string, causing the application to crash.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57246",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57247",
+      "desc": "The application re-enters the document structure via field processing and deletes the current page, and then continues using the field objects obtained before deletion, triggering an illegal read and crashing.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57247",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57248",
+      "desc": "When the application opens a PDF file and JavaScript writes annotation attributes, there is a lack of sufficient object type and argument checks. As a result, due to the damage to the internal structure of the annotations, it causes the application to crash during subsequent release.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57248",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57249",
+      "desc": "After the application opened the PDF file, the script first reset the annotation status, then triggered the reset form event by additional action. During the re-entry process, the application access invalid objects and crashed.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57249",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57250",
+      "desc": "When the application opens a PDF and JavaScript resets the form fields, the script re-enters the interface. The underlying native object is damaged, but the application does not perform validation. The function call on the damaged object leads to the application crashing.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57250",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57251",
+      "desc": "The application opens a PDF, but the cloud-like appearance of the construction process lacks proper setting of an upper limit and consistency checks. Out-of-bounds access to the underlying array is exposed, ultimately leading to a crash of the application.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57251",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57252",
+      "desc": "When the application opens a PDF file, during the process of JavaScript deleting pages and removing attachment annotations, it will cause the attachment panel to continue accessing invalid pointers, eventually leading to the application crashing.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57252",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57253",
+      "desc": "An abnormal image object causes the renderer to enter the wrong processing branch. When converting the scan lines, an invalid image buffer pointer is used, resulting in the application crashing.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57253",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57254",
+      "desc": "There is an abnormal annotation within the PDF that is referenced by other objects. When the application parses the PDF, it fails to perform proper type checking, ultimately causing the application to crash.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57254",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57255",
+      "desc": "The application opens a PDF containing an abnormal color space whose attributes reference a valid but semantically malformed function. The function's output is not validated; when subsequently read, it produces an illegal pointer that accesses an out-of-bounds region, crashing the application.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57255",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57256",
+      "desc": "When the application opens a PDF and executes JavaScript, it performs abnormal operations on the list box field, and this operation is repeated after the form is reset. During this process, the application failed to adequately verify the validity of the form objects and their internal dictionary poi",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57256",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57257",
+      "desc": "During the PRC parsing stage, there is a lack of boundary verification for the PRC entity index, which leads to an out-of-bounds read of the entity array. As a result, the application crashes.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57257",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57258",
+      "desc": "The PRC file header parsing logic trusts the constructed file structure description information, assumes that the underlying array contains elements and reads them, leading to out-of-bounds reads and application crashes.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57258",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57259",
+      "desc": "The input file does not need to be strictly in a structurally valid PDF format. Instead, after reviewing the content, the original document disguised as a PDF will be sent to the parser. Malicious documents will construct malicious external entities that, through the protocol, point to local paths, ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57259",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57260",
+      "desc": "The application opened a PDF file containing an abnormal Unity 3D object. During parsing, the application incorrectly resolved a portion of the abnormal object as a pointer and used it as a valid address, ultimately causing the application to crash.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57260",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-6280",
+      "desc": "Exposure of sensitive information due to incompatible policies vulnerability in NOMYSOFT Informatics Education and Consulting Inc. Nomysem allows Accessing Functionality Not Properly Constrained by ACLs.\n\nThis issue affects Nomysem: through 08072026. NOTE: The vendor was contacted early about this d",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6280",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56002",
+      "desc": "A heap bufferflow in pcfReadFont() due to missing glyph bounds checking in libXfont2 before 2.0.8  allows attackers authenticated as X client to execute code within the X server.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56002",
+      "cvss": "8.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56003",
+      "desc": "A heap buffer overflow due to missing size checking in the property buffer when parsing PCF files in libXfont2 ComputeScaledProperties() before libXfont2 before 2.0.8 could be used by attackers using authenticated X clients to execute code within the X server.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56003",
+      "cvss": "8.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15041",
+      "desc": "A flaw was found in 389 Directory Server. The PBKDF2-SHA256 password verification function uses standard memcmp() for comparing password hashes instead of a constant-time comparison function. A remote attacker could potentially use timing measurements of LDAP bind attempts to infer partial hash info",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15041",
+      "cvss": "3.7",
       "cwe": ""
     },
     {

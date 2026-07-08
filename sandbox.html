@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -301,6 +302,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   <span class="source-badge"><span class="sdot sdot-blue"></span>URLScan.io</span>
   <span class="source-badge"><span class="sdot sdot-green"></span>Google Safe Browsing</span>
   <span class="source-badge"><span class="sdot sdot-orange"></span>ip-api.com</span>
+  <span class="source-badge"><span class="sdot sdot-blue"></span>VirusTotal — 70 Engines</span>
   <span class="source-badge"><span class="sdot sdot-red"></span>Deep Static Analysis</span>
 </div>
 
@@ -506,6 +508,45 @@ async function startScan(){
 }
 
 // ═══════════════════════════════════════════════════════════════
+//  VIRUSTOTAL
+// ═══════════════════════════════════════════════════════════════
+const VT_KEY='1898c866f7b5aace1a7cd270c9c71204bd582f67ad3b3521acf766ab243898ce';
+async function checkVirusTotal(sha256){
+  try{
+    const r=await fetch(`https://www.virustotal.com/api/v3/files/${sha256}`,{
+      headers:{'x-apikey':VT_KEY}
+    });
+    if(r.status===404) return {found:false};
+    if(!r.ok) return {found:false,error:'API error '+r.status};
+    const d=await r.json();
+    const stats=d.data?.attributes?.last_analysis_stats||{};
+    const results=d.data?.attributes?.last_analysis_results||{};
+    const total=Object.values(stats).reduce((a,b)=>a+b,0);
+    const malicious=(stats.malicious||0)+(stats.suspicious||0);
+    const names=Object.values(results)
+      .filter(v=>v.category==='malicious'&&v.result)
+      .map(v=>v.result)
+      .filter((v,i,a)=>a.indexOf(v)===i)
+      .slice(0,5);
+    return{
+      found:true,
+      malicious,
+      total,
+      ratio:`${malicious}/${total}`,
+      names,
+      firstSeen:d.data?.attributes?.first_submission_date
+        ? new Date(d.data.attributes.first_submission_date*1000).toLocaleDateString()
+        : '—',
+      lastSeen:d.data?.attributes?.last_analysis_date
+        ? new Date(d.data.attributes.last_analysis_date*1000).toLocaleDateString()
+        : '—',
+      link:`https://www.virustotal.com/gui/file/${sha256}`,
+      reputation:d.data?.attributes?.reputation||0,
+    };
+  }catch(e){return{found:false,error:e.message};}
+}
+
+// ═══════════════════════════════════════════════════════════════
 //  FILE ANALYSIS
 // ═══════════════════════════════════════════════════════════════
 async function analyzeFile(){
@@ -514,6 +555,7 @@ async function analyzeFile(){
   buildSteps([
     {id:'hash',     label:'Computing hashes'},
     {id:'strings',  label:'Extracting strings'},
+    {id:'vt',       label:'VirusTotal — 70 engines'},
     {id:'mb',       label:'MalwareBazaar lookup'},
     {id:'heuristic',label:'Heuristic analysis'},
     {id:'mitre',    label:'MITRE ATT&CK mapping'},
@@ -536,10 +578,22 @@ async function analyzeFile(){
   const strings=extractStrings(bytes);
   const iocs=extractIOCs(strings);
   await sleep(150);
-  setStep('strings','done'); setProg(38,'Strings extracted');
+  setStep('strings','done'); setProg(30,'Strings extracted');
 
-  // STEP 3: MalwareBazaar
-  setStep('mb','running'); setProg(48,'Querying MalwareBazaar (real threat database)…');
+  // STEP 3: VirusTotal
+  setStep('vt','running'); setProg(42,'Querying VirusTotal — 70 antivirus engines…');
+  const vtResult=await checkVirusTotal(sha256);
+  if(vtResult.found){
+    const pct=Math.round(vtResult.malicious/vtResult.total*100);
+    setStep('vt',vtResult.malicious>0?'done':'done');
+    setProg(55,vtResult.malicious>0?`⚠ ${vtResult.ratio} engines detected malware!`:`✓ Clean — 0/${vtResult.total} engines flagged`);
+  } else {
+    setStep('vt','warn');
+    setProg(55,'Not in VirusTotal — file not previously scanned');
+  }
+
+  // STEP 4: MalwareBazaar
+  setStep('mb','running'); setProg(62,'Querying MalwareBazaar (real threat database)…');
   let mbResult=null;
   try{
     const r=await fetch('https://mb-api.abuse.ch/api/v1/',{
@@ -549,34 +603,42 @@ async function analyzeFile(){
     });
     const d=await r.json();
     if(d.query_status==='hash_found') mbResult=d.data[0];
-  }catch(e){ /* network/CORS fallback — continue without */ }
+  }catch(e){}
   setStep('mb',mbResult?'done':'warn');
-  setProg(60,mbResult?'⚠ Found in MalwareBazaar threat database!':'Not in MalwareBazaar — no known malware match');
+  setProg(72,mbResult?'⚠ Found in MalwareBazaar threat database!':'Not in MalwareBazaar — no known malware match');
 
-  // STEP 4: Heuristics
-  setStep('heuristic','running'); setProg(70,'Running heuristic engine…');
+  // STEP 5: Heuristics
+  setStep('heuristic','running'); setProg(80,'Running heuristic engine…');
   const heuristics=fileHeuristics(bytes,ext,f.size,entropy,strings);
   await sleep(200);
-  setStep('heuristic','done'); setProg(80,'Heuristic analysis complete');
+  setStep('heuristic','done'); setProg(87,'Heuristic analysis complete');
 
-  // STEP 5: MITRE
-  setStep('mitre','running'); setProg(88,'Mapping MITRE ATT&CK techniques…');
+  // STEP 6: MITRE
+  setStep('mitre','running'); setProg(93,'Mapping MITRE ATT&CK techniques…');
   const mitre=mitreFile(ext,heuristics,mbResult);
   await sleep(150);
-  setStep('mitre','done'); setProg(94,'MITRE mapping done');
+  setStep('mitre','done'); setProg(96,'MITRE mapping done');
 
-  // STEP 6: Verdict
-  setStep('render','running'); setProg(97,'Building report…');
+  // STEP 7: Verdict
+  setStep('render','running'); setProg(98,'Building report…');
   const dangerN=heuristics.filter(h=>h.level==='danger').length;
   const warnN  =heuristics.filter(h=>h.level==='warn').length;
   let riskScore,verdict;
-  if(mbResult){ riskScore=95; verdict='malicious'; }
+  if(vtResult.found && vtResult.malicious>0){ riskScore=Math.min(100,50+vtResult.malicious*2); verdict='malicious'; }
+  else if(mbResult){ riskScore=95; verdict='malicious'; }
   else{
     riskScore=Math.min(100,dangerN*20+warnN*8);
     verdict=riskScore>=50?'malicious':riskScore>=20?'suspicious':'clean';
   }
 
   const sources=[
+    { icon:'🔍', name:'VirusTotal',
+      status: vtResult.found?(vtResult.malicious>0?'malicious':'clean'):'unknown',
+      detail: vtResult.found
+        ? vtResult.malicious>0
+          ? `${vtResult.ratio} antivirus engines detected malware · Families: ${vtResult.names.join(', ')||'—'} · First seen: ${vtResult.firstSeen} · Last scan: ${vtResult.lastSeen}`
+          : `0/${vtResult.total} antivirus engines flagged · Clean across all major AV vendors · Last scan: ${vtResult.lastSeen}`
+        : 'File hash not found in VirusTotal — not previously submitted for analysis' },
     { icon:'🦠', name:'MalwareBazaar',
       status: mbResult?'malicious':'clean',
       detail: mbResult
@@ -596,7 +658,7 @@ async function analyzeFile(){
       detail: mitre.length>0?`${mitre.length} techniques mapped: ${mitre.map(m=>m.id).join(', ')}`:'No ATT&CK techniques identified' },
   ];
 
-  reportData={type:'file',name:f.name,size:f.size,ext,sha256,md5,sha1,entropy:entropy.toFixed(2),mbResult,heuristics,iocs,strings,mitre,sources,verdict,riskScore,ts:new Date().toISOString()};
+  reportData={type:'file',name:f.name,size:f.size,ext,sha256,md5,sha1,entropy:entropy.toFixed(2),vtResult,mbResult,heuristics,iocs,strings,mitre,sources,verdict,riskScore,ts:new Date().toISOString()};
   renderFileReport(reportData);
   setStep('render','done'); setProg(100,'Analysis complete ✓');
   done();
@@ -1010,6 +1072,16 @@ function renderFileReport(d){
       ${hashRow('SHA-1',d.sha1)}
       ${hashRow('SHA-256',d.sha256)}
     </div>
+    ${d.vtResult?.found?`
+    <div class="info-card">
+      <h3>VirusTotal — ${d.vtResult.ratio} Engines</h3>
+      ${row('Detection',`<span style="color:${d.vtResult.malicious>0?'var(--red)':'var(--green)'};font-weight:700">${d.vtResult.ratio} antivirus engines</span>`)}
+      ${row('Status', d.vtResult.malicious>0?'<span style="color:var(--red)">⚠ MALICIOUS</span>':'<span style="color:var(--green)">✓ CLEAN</span>')}
+      ${d.vtResult.names?.length?row('Families', d.vtResult.names.map(n=>`<span class="tag red">${esc(n)}</span>`).join(' ')):''}
+      ${row('First Seen', d.vtResult.firstSeen)}
+      ${row('Last Scan',  d.vtResult.lastSeen)}
+      ${row('Full Report',`<a href="${d.vtResult.link}" target="_blank" style="color:var(--blue3);text-decoration:none">🔗 View on VirusTotal</a>`)}
+    </div>`:''}
     ${d.mbResult?`
     <div class="info-card">
       <h3>MalwareBazaar Intelligence</h3>

@@ -154,7 +154,7 @@ def _scrape_pakistan_direct():
 
 # ── CISA KEV — Actively Exploited ────────────────────────────────────────────
 
-def _scrape_cisa_kev_direct(max_results=500):
+def _scrape_cisa_kev_direct(days_back=30):
     results = []
     try:
         res = requests.get(
@@ -165,7 +165,15 @@ def _scrape_cisa_kev_direct(max_results=500):
         vulns = res.json().get("vulnerabilities", [])
         vulns.sort(key=lambda x: x.get("dateAdded", ""), reverse=True)
 
-        for v in vulns[:max_results]:
+        # Only include entries added in the last N days
+        cutoff = (date.today() - timedelta(days=days_back)).isoformat()
+        recent = [v for v in vulns if v.get("dateAdded","") >= cutoff]
+
+        # Always include at least 5 even if none are recent
+        if len(recent) < 5:
+            recent = vulns[:10]
+
+        for v in recent:
             cve_id  = v.get("cveID", "")
             name    = v.get("vulnerabilityName", "")
             desc    = v.get("shortDescription", "")
@@ -190,7 +198,7 @@ def _scrape_cisa_kev_direct(max_results=500):
                 "price":             "",
                 "tags":              "cisa,kev,actively-exploited,zero-day",
             })
-        print(f"[✓] CISA KEV: {len(results)} records")
+        print(f"[✓] CISA KEV: {len(results)} records (last {days_back} days)")
     except Exception as e:
         print(f"[!] CISA KEV failed: {e}")
     return results

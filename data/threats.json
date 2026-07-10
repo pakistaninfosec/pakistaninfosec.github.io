@@ -1,19 +1,19 @@
 {
-  "generated": "2026-07-10T15:14:10.621209+00:00",
-  "summary": "Today's digest contains 474 vulnerabilities across 5 sources. 68 zero-day exploits detected, 18 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-10T17:19:03.884954+00:00",
+  "summary": "Today's digest contains 560 vulnerabilities across 5 sources. 70 zero-day exploits detected, 20 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 474,
+    "new": 560,
     "changed": 0,
     "removed": 0,
-    "total": 90270,
-    "zeroday": 68,
-    "exploited": 18,
+    "total": 90830,
+    "zeroday": 70,
+    "exploited": 20,
     "pakistan": 15
   },
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 391
+      "count": 475
     },
     {
       "name": "Exploit-DB",
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 18
+      "count": 20
     },
     {
       "name": "Pakistan CERT",
@@ -316,6 +316,44 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56291",
+      "desc": "Balbooa Forms contains an unrestricted upload of file with dangerous type vulnerability that allows an unauthenticated arbitrary file upload which could allow uploading of executable files leading to full RCE.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56291",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-48939",
+      "desc": "iCagenda contains an unrestricted upload of file with dangerous type vulnerability that allows the upload of arbitrary files in the file attachment feature, ultimately resulting in PHP code upload and execution.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48939",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -1833,7 +1871,7 @@
     {
       "id": "CVE-2026-56291",
       "desc": "The Joomla extension Balbooa Forms is vulnerable to an unauthenticated arbitrary file upload that allows uploading executable files and leads to full RCE.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-09",
       "pakistan": false,
@@ -1845,7 +1883,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56291",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -4329,7 +4367,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-31267",
-      "cvss": "0.0",
+      "cvss": "5.7",
       "cwe": ""
     },
     {
@@ -4407,7 +4445,7 @@
     {
       "id": "CVE-2026-51923",
       "desc": "An Insecure Direct Object Reference (IDOR) vulnerability exists in docuForm GmbH Client v.11.11c allowing a remote attacker to execute arbitrary code via the user settings component, and modify or retrieve sensitive data associated with other users’ accounts.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-09",
       "pakistan": false,
@@ -4419,13 +4457,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51923",
-      "cvss": "0.0",
+      "cvss": "8.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-51924",
       "desc": "An issue in docuForm GmbH Client v.11.11c allows a remote attacker to execute arbitrary code via the file upload and report.php component",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-09",
       "pakistan": false,
@@ -4437,13 +4475,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51924",
-      "cvss": "0.0",
+      "cvss": "8.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-51925",
       "desc": "A Local File Inclusion (LFI) vulnerability exists in docuForm GmbH Client v.11.11c that allows a remote attacker to execute arbitrary code via the dfm-menu_report.php component. Attackers can exploit this flaw to read arbitrary files on the server, including sensitive configuration files, source cod",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-09",
       "pakistan": false,
@@ -4455,13 +4493,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51925",
-      "cvss": "0.0",
+      "cvss": "8.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-51926",
       "desc": "An issue in docuForm GmbH FSM Client v.11.11c allows a remote attacker to obtain sensitive information via the login.php component. A vulnerability was identified in the authentication mechanism that allows user enumeration through the login interface. An attacker can differentiate between valid and",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-09",
       "pakistan": false,
@@ -4473,7 +4511,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51926",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -4689,7 +4727,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-39243",
-      "cvss": "0.0",
+      "cvss": "5.5",
       "cwe": ""
     },
     {
@@ -4707,7 +4745,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-39245",
-      "cvss": "0.0",
+      "cvss": "6.2",
       "cwe": ""
     },
     {
@@ -6783,7 +6821,7 @@
     {
       "id": "CVE-2026-12685",
       "desc": "The EscortWP escortwp WordPress theme through 3.6.2 was distributed with a vendor-authored, obfuscated backdoor that lets an unauthenticated attacker who supplies a hard-coded, per-build key permanently delete all of the site's content, and that covertly transmits the site URL, administrator email a",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-10",
       "pakistan": false,
@@ -6795,7 +6833,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12685",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -6819,7 +6857,7 @@
     {
       "id": "CVE-2026-28564",
       "desc": "Insufficient Session Expiration, Authentication Bypass by Capture-replay vulnerability in Apache IoTDB.\nREST Basic Authentication Accepts Stale Cached Credentials\n\n\nThis issue affects Apache IoTDB: from 1.0.0 before 2.0.10.\n\nUsers are recommended to upgrade to version 2.0.10, which fixes the issue.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-10",
       "pakistan": false,
@@ -6831,13 +6869,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28564",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-40005",
       "desc": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in Apache IoTDB.\nAn attacker can write arbitrary files anywhere the IoTDB process has write permissions with unsafe API.\n\n\nThis issue affects Apache IoTDB: from 1.0.0 before 2.0.10.\n\nUsers are recommended to",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-10",
       "pakistan": false,
@@ -6849,13 +6887,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40005",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-40006",
       "desc": "Memory Allocation with Excessive Size Value, Allocation of Resources Without Limits or Throttling, Missing Authentication for Critical Function vulnerability in Apache IoTDB.\nWhen pipe_air_gap_receiver_enabled=true, the IoTDB AirGap pipe receiver\naccepts raw TCP connections on port 9780 with no auth",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-10",
       "pakistan": false,
@@ -6867,13 +6905,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40006",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-40007",
       "desc": "Uncontrolled Recursion, Uncontrolled Resource Consumption vulnerability in Apache IoTDB.\nWhen pipe_air_gap_receiver_enabled=true, the IoTDB AirGap receiver's\nreadLength method calls itself recursively each time it recognises the\nE-language prefix in socket data, with no depth limit. An unauthenticat",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-10",
       "pakistan": false,
@@ -6885,13 +6923,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40007",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-40008",
       "desc": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection') vulnerability in Apache IoTDB.\nThe pipe processor reads a fully\nqualified Java class name and\ninstantiates it using Class.forName().newInstance() without any\nvalidation or allowlisting.\n\n\nThis issue affects Apache IoT",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-10",
       "pakistan": false,
@@ -6903,7 +6941,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40008",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -6945,7 +6983,7 @@
     {
       "id": "CVE-2026-40454",
       "desc": "Out-of-bounds Read, Improper Input Validation vulnerability in Apache IoTDB C++ client.\nOut-of-bounds reads in IoTDB C++ client TsBlock deserializer crash client\nprocess on malformed server data.\n\n\nThis issue affects Apache IoTDB C++ client: from 1.3.5 before 1.3.8, from 2.0.5 before 2.0.10.\n\nUsers ",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-10",
       "pakistan": false,
@@ -6957,7 +6995,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40454",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -7696,6 +7734,1518 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22660",
       "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-29519",
+      "desc": "Lucee CFML Server versions across the 5.3.x, 6.1.x, 6.2.x, and 7.0.x release lines contain a reflected cross-site scripting vulnerability in URL path parsing that allows unauthenticated remote attackers to execute arbitrary JavaScript in a victim's browser by embedding HTML or JavaScript payloads wi",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-29519",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-38057",
+      "desc": "The iDirect iQ200 does not validate CSRF tokens on state-changing API endpoints after authentication. The /api/reboot endpoint accepts POST requests authenticated solely by a session cookie that lacks the SameSite attribute. A remote attacker can host a malicious web page that, when visited by an au",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-38057",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-38059",
+      "desc": "The iDirect iQ200 exposes the /api/identity and /api/ REST API endpoints without authentication. An unauthenticated attacker with network access can retrieve sensitive device information including the serial number, Device ID (DID), Terminal Private Key identifier (TPK), MAC address, and exact firmw",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-38059",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56254",
+      "desc": "In @capgo/capacitor-updater (Cap-go/capgo) before 12.128.2, the end-to-end encryption scheme distributes the private key to each device that downloads the app. Because the public key can be derived from the private key, an attacker performing a man-in-the-middle attack or compromising the Capgo serv",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56254",
+      "cvss": "7.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56261",
+      "desc": "Crawl4AI before 0.8.7 contains a server-side request forgery (SSRF) vulnerability in the Docker API server's /crawl/job and /llm/job endpoints, which accept webhook URLs without destination validation. An attacker can supply webhook URLs pointing to private or internal IP ranges, Docker networks, or",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56261",
+      "cvss": "8.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56279",
+      "desc": "Capgo before 12.128.2 contains an information disclosure vulnerability in the get_orgs_v7(userid) RPC function that remains publicly invokable despite intended private access controls. Unauthenticated attackers can supply arbitrary user UUIDs to retrieve foreign users' organization membership, roles",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56279",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56305",
+      "desc": "Capgo before 12.128.2 contains an authentication bypass vulnerability in the password change endpoint that allows attackers to change user passwords without requiring current password confirmation. Attackers with temporary session access can exploit this flaw to permanently lock out legitimate users",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56305",
+      "cvss": "8.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56309",
+      "desc": "Capgo before 12.128.2 fails to enforce plan/quota restrictions on the /files/upload/attachments endpoint, allowing plan-blocked apps to create publicly readable R2 objects. Attackers can upload arbitrary attachments using upload-scoped API keys that bypass plan checks, persist outside normal bundle ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56309",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56312",
+      "desc": "Capgo before 12.128.2 contains an improper validation vulnerability in the accept_invitation endpoint that creates user accounts before captcha validation is enforced. Attackers can bypass captcha protection by sending POST requests with invalid captcha tokens to create unwanted accounts and burn in",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56312",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56329",
+      "desc": "Capgo before 12.128.2 contains a cross-tenant preview namespace collision vulnerability caused by non-bijective decoding of double underscores to dots in preview hostname parsing. Attackers can register app IDs with underscores that collide with other tenants' dotted app IDs, causing preview misrout",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56329",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56335",
+      "desc": "Capgo before 12.128.2 contains an authorization bypass vulnerability where write-scoped API keys can directly mutate protected channel configuration fields through PostgREST by exploiting a null authentication check in the immutability trigger. Attackers with write API keys can modify sensitive chan",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56335",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56354",
+      "desc": "n8n before 1.123.24, 2.10.4, and 2.12.0 (across its 1.x and 2.x branches) contains cross-site scripting and open redirect vulnerabilities in the Form Node due to unsanitized HTML description fields and overly permissive iframe sandbox policies. Authenticated users with workflow creation permissions ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56354",
+      "cvss": "4.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56366",
+      "desc": "ImageMagick before 7.1.2-18 contains a memory leak vulnerability in the META reader when processing APP1JPEG input paths. Attackers can trigger this memory leak by providing specially crafted APP1JPEG image files, causing denial of service through resource exhaustion.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56366",
+      "cvss": "3.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56373",
+      "desc": "ImageMagick before 7.1.2-15 contains a use-after-free vulnerability in the PDB decoder that uses a stale pointer when memory allocation fails. Attackers can trigger this vulnerability by processing malicious PDB files to cause crashes or write a single zero byte to freed memory.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56373",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56765",
+      "desc": "Vikunja before 2.2.1 contains an authorization flaw where the LinkSharing.ReadAll endpoint exposes share hashes to users with read access, enabling permission escalation to admin-level shares. The GetTaskAttachment endpoint performs permission checks against user-supplied task IDs but fetches attach",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56765",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57961",
+      "desc": "phpMyFAQ before 4.1.5 contains a potential authenticated path traversal vulnerability in the concatenatePaths() function within src/phpMyFAQ/Export/Pdf/Wrapper.php. A user with FAQ editing privileges can store HTML containing crafted image paths that are processed during PDF generation. The path res",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57961",
+      "cvss": "2.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57994",
+      "desc": "phpMyFAQ before 4.1.5 applies inconsistent active=yes and publication-date filtering across its public FAQ API endpoints, allowing unauthenticated attackers to retrieve inactive (draft or review-only) FAQ content. Specifically, GET /api/v3.1/faq/{categoryId}/{faqId} returns the inactive FAQ title an",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57994",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-58661",
+      "desc": "n8n before 2.28.0 (and before 1.123.58 on the 1.x branch) contains a disk space exhaustion vulnerability in the data-table file upload endpoint. The per-request quota check does not account for files already written to the shared temporary directory, allowing an authenticated user to repeatedly uplo",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58661",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59791",
+      "desc": "In JetBrains YouTrack before 2026.2.17012 cSS injection via Mermaid diagram rendering was possible",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59791",
+      "cvss": "3.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59792",
+      "desc": "In JetBrains IntelliJ IDEA before 2026.1.4, \n2026.2 code execution via path traversal in project workspace ID handling was possible",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59792",
+      "cvss": "9.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59793",
+      "desc": "In JetBrains TeamCity before 2026.1.2 arbitrary file access was possible via the Perforce VCS integration",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59793",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59794",
+      "desc": "In JetBrains TeamCity before 2026.1.2 stored XSS on the cloud profile page was possible via agent-reported data",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59794",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59795",
+      "desc": "In JetBrains TeamCity before 2026.1.2 stored XSS via unauthenticated agent registration was possible",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59795",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59796",
+      "desc": "In JetBrains TeamCity before 2026.1.2 pipeline modification was possible due to improper permission checks",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59796",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-60086",
+      "desc": "PraisonAI before 4.6.78 contains a prompt injection defense bypass vulnerability where the injection defense only blocks threats classified as CRITICAL, requiring three or more detector families to match simultaneously. Attackers can craft single or double-vector prompt injections that are classifie",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60086",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-60089",
+      "desc": "PraisonAI (pip package praisonaiagents) before 1.6.78 automatically loads defaults from a project-local .praisonai/config.toml when constructing an Agent, and does not validate the defaults.output.output_file path. A repository-controlled config file can set output_file to an absolute or '..' traver",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60089",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-60091",
+      "desc": "PraisonAI before 4.6.78 contains an unauthenticated server-side request forgery vulnerability in the Jobs API /api/v1/runs endpoint. The webhook_url parameter is validated at request time but re-resolved at connection time, allowing attackers to use DNS rebinding to reach internal services with a bl",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60091",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-61431",
+      "desc": "PraisonAI before 4.6.78 contains a path traversal vulnerability in ContextGatherer that fails to validate include paths in .praisoncontext and .praisoninclude files. Attackers can supply absolute paths or parent directory traversal sequences to read arbitrary files outside the workspace and include ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61431",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-61432",
+      "desc": "PraisonAI (praisonaiagents) before 1.6.78 contains a path traversal vulnerability in the FastContext feature (praisonaiagents.context.fast). FastContextAgent.execute_tool() prepends the configured workspace_path only for relative paths and neither rejects absolute paths nor canonicalizes joined path",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61432",
+      "cvss": "5.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-61434",
+      "desc": "PraisonAI versions before 4.6.78 contain an allowlist bypass vulnerability in shell command execution that allows attackers to execute restricted commands via find's built-in -exec, -execdir, and -delete actions. Attackers can craft find commands with these built-in actions to read blocked files, de",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61434",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-61437",
+      "desc": "PraisonAI (pip package praisonaiagents) before 1.6.78 contains an unsafe dynamic module loading vulnerability in AgentFlow._resolve_pydantic_class (src/praisonai-agents/praisonaiagents/workflows/workflows.py). When a workflow step uses a string output_pydantic reference, the framework locates and im",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61437",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-61441",
+      "desc": "PraisonAI Platform (praisonai-platform) before 0.1.9 improperly authorizes deletion of issue dependencies. The DELETE dependency route accepts either endpoint of a dependency edge and checks delete permission only against the caller-selected URL issue. A workspace member who cannot delete a dependen",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61441",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-61444",
+      "desc": "PraisonAI versions before 4.6.78 contain a code injection vulnerability in deploy/api.py where the agents_file parameter is directly interpolated into an f-string without sanitization. Attackers can inject arbitrary Python code that executes when the generated server code runs via subprocess.Popen()",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61444",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-61450",
+      "desc": "Grav before 2.0.2 contains a Twig sandbox bypass that allows a page author (any admin.pages user, or anyone able to write to user/pages) to exfiltrate configuration secrets. Although the sandbox replaces the 'config' variable with a redacted facade and strips Config::get/toArray from the method allo",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61450",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-61455",
+      "desc": "Grav before 2.0.1 contains a decompression bomb vulnerability in ZipArchiver::extract() that lacks limits on uncompressed size, file count, and nesting depth. Attackers can supply a crafted ZIP archive that expands to fill available disk space, causing denial of service by exhausting storage resourc",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61455",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-61456",
+      "desc": "The Grav API plugin (getgrav/grav-plugin-api) before 1.0.3 fails to sanitize SVG files uploaded through the POST /api/v1/media endpoint. The HandlesMediaUploads::processUploadedFile() method validates only the file extension and never invokes Security::sanitizeSVG(), so an authenticated attacker wit",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61456",
+      "cvss": "4.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-61492",
+      "desc": "In JetBrains YouTrack before 2026.2.17394 stored XSS via article titles in digest emails was possible",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61492",
+      "cvss": "3.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15143",
+      "desc": "A flaw was found in the file_type content detector of guardrails-detectors. This vulnerability allows a remote attacker to supply an arbitrary XML Schema Definition (XSD) string, which is processed without proper restrictions. This can lead to server-side requests to arbitrary URLs or local file rea",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15143",
+      "cvss": "9.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15373",
+      "desc": "A vulnerability was detected in Eleveo Call Recording Software 9.7.0. The impacted element is an unknown function of the file /callrec/userAddAction.do. Performing a manipulation of the argument role results in improper authorization. It is possible to initiate the attack remotely. The exploit is no",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15373",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15374",
+      "desc": "A flaw has been found in Eleveo Call Recording Software 9.7.0. This affects an unknown function of the file /callrec/roleAddAction.do of the component Group Interface. Executing a manipulation can lead to improper authorization. It is possible to launch the attack remotely. The exploit has been publ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15374",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15375",
+      "desc": "A vulnerability has been found in Eleveo Call Recording Software 9.7.0. This impacts an unknown function of the file /callrec/users_ldap.jsp of the component LDAP User Interface. The manipulation leads to improper authorization. The attack can be initiated remotely. The exploit has been disclosed to",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15375",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-33382",
+      "desc": "Several Grafana API endpoints, some of them unauthenticated, do not limit the size of the request body before processing it. An attacker can send very large payloads that force excessive memory allocation, potentially exhausting memory and causing a denial of service.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-33382",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-46388",
+      "desc": "osquery is a SQL powered operating system instrumentation, monitoring, and analytics framework. Prior to 5.23.1, an unprivileged attacker can read the contents of an osquery file carve until the carve completes and the temporary files are deleted because in-progress carve directories are not created",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46388",
+      "cvss": "4.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-54000",
+      "desc": "osquery is a SQL powered operating system instrumentation, monitoring, and analytics framework. Prior to 5.23.1, on Windows, a local unprivileged attacker can cause a heap buffer out-of-bounds write if there is a query of the processes table targeting a maliciously crafted process, due to unchecked ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54000",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-54001",
+      "desc": "osquery is a SQL powered operating system instrumentation, monitoring, and analytics framework. Prior to 5.23.1, on Windows, a local unprivileged attacker can cause a heap buffer out-of-bounds write if there is a query of the authenticode table targeting a maliciously crafted binary, due to publishe",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54001",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-54149",
+      "desc": "MaxKB is an open-source AI assistant for enterprise. Prior to 2.10.0-lts, MaxKB tool import functionality in apps/tools/serializers/tool.py and MCP referencing mode in apps/application/chat_pipeline/step/chat_step/impl/base_chat_step.py do not consistently validate MCP transport type, allowing an au",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54149",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55500",
+      "desc": "9Router is an AI router & token saver. Prior to 0.4.80, the /api/settings/database endpoint allows full database export (containing all credentials, API keys, OAuth tokens, and settings) and full database import (complete overwrite) without any authentication requirement beyond the ALWAYS_PROTECTED ",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55500",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55501",
+      "desc": "9Router is an AI router & token saver. Prior to 0.4.80, the dashboard login rate limiter in src/lib/auth/loginLimiter.js derives the client identity from the attacker-controlled X-Forwarded-For HTTP header, and src/app/api/auth/login/route.js uses that spoofable value for checkLock and recordFail. A",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55501",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56676",
+      "desc": "9Router is an AI router & token saver. Prior to 0.5.2, 9router validates image URLs by resolving the host before fetching, but open-sse/translator/concerns/image.js performs the later server-side image fetch with a separate DNS resolution. An authenticated attacker with access to the LLM proxy can u",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56676",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-8595",
+      "desc": "A user with Editor permissions can craft a dashboard whose table (TableNG) panel contains a malicious field name that executes as a script in the browser of any user who views the dashboard (stored cross-site scripting).",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8595",
+      "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-8609",
+      "desc": "An unauthenticated attacker can repeatedly call Grafana's OAuth login route with unique values, causing unbounded memory growth that can eventually exhaust memory and crash the Grafana instance (denial of service).",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8609",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-70796",
+      "desc": "An unauthenticated path traversal vulnerability exists in the web management interface of WTI (Wireless Technology, Inc.) version 3.5.0.r 2024/05/24 00:00:00. An unauthenticated attacker can craft malicious HTTP requests containing traversal sequences to access files outside of the intended web root",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-70796",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15376",
+      "desc": "A vulnerability was found in Eleveo Call Recording Software 9.7.0. Affected is an unknown function of the file /callrec/statisticReportAction.do. The manipulation results in improper authorization. The attack can be launched remotely. The exploit has been made public and could be used. The vendor wa",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15376",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15377",
+      "desc": "A vulnerability was determined in Eleveo Call Recording Software 9.7.0. Affected by this vulnerability is an unknown functionality of the file /callrec/sendlogfile. This manipulation causes improper authorization. The attack may be initiated remotely. The exploit has been publicly disclosed and may ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15377",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-1667",
+      "desc": "The SEO Plugin by Squirrly SEO plugin for WordPress is vulnerable to Arbitrary Post Creation and Stored Cross-Site Scripting in all versions up to, and including, 14.0.0 due to a leak of an API token and insufficient input sanitization and output escaping. This makes it possible for unauthenticated ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1667",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-2398",
+      "desc": "Authorization bypass through User-Controlled key vulnerability in Adam Retail Automation Ltd. MobilMen 20T allows Privilege Escalation.\n\nThis issue affects MobilMen 20T: from v3 through 10072026. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-2398",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-39244",
+      "desc": "adm-zip before 0.5.18 is vulnerable to denial of service via a crafted ZIP file with a manipulated uncompressed size header field. In zipEntry.js line 103, Buffer.alloc(_centralHeader.size) allocates memory based on the declared uncompressed size from the ZIP central directory header without validat",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-39244",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-39903",
+      "desc": "Simple Machines Forum 2.1 prior to 2.1.8 and 3.0 prior to 3.0 Alpha 5 contains an authorization bypass vulnerability in Sources/Actions/AttachmentApprove.php where a single-character operator error causes the permission check to always pass regardless of user permissions. An authenticated low-privil",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-39903",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-3251",
+      "desc": "Improper neutralization of input during web page generation ('cross-site scripting') vulnerability in Webremium Istanbul Web Design Mezunum Satiyorum allows Stored XSS.\n\nThis issue affects Mezunum Satiyorum: from 1.2.504 through 10072026. NOTE: The vendor was contacted early about this disclosure bu",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3251",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-51119",
+      "desc": "An issue in Invixium IXM WEB v.2.3.85.25 allows an attacker to escalate privileges via the /SystemUsers/CreateAppUser components",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51119",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53653",
+      "desc": "Grav is a file-based Web platform. Prior to 1.7.53 and 2.0.0-rc.8, Grav allows an unauthenticated visitor to exhaust server memory and CPU by requesting image derivatives with oversized dimensions through URL query image actions such as forceResize in Grav::fallbackUrl, which passes request paramete",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53653",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53657",
+      "desc": "Lima launches Linux virtual machines, typically on macOS, for running containerd. Prior to 2.1.3, on an instance of Lima running with the qemu driver, an arbitrary user in the VM could access /run/lima-guestagent.sock when the guest agent is enabled, which could result in running arbitrary commands ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53657",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-54063",
+      "desc": "Excelize is a Go language library for reading and writing Microsoft Excel spreadsheets. Prior to 2.11.0, the checkSheet() function in github.com/xuri/excelize/v2 uses an attacker-controlled <row r=\"N\"> XML attribute value directly as the length argument to make([]xlsxRow, row) without validating it ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54063",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-54919",
+      "desc": "cpp-httplib is a C++11 single-file header-only cross platform HTTP/HTTPS library. In affected Mbed TLS backend versions from 0.31.0 through 0.46.1 and wolfSSL backend versions from 0.33.0 through 0.46.1, when cpp-httplib is built with CPPHTTPLIB_MBEDTLS_SUPPORT or CPPHTTPLIB_WOLFSSL_SUPPORT and a cl",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54919",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55638",
+      "desc": "9Router is an AI router & token saver. Prior to 0.5.2, 9router protects /v1, /v1beta, /api/v1, and /api/v1beta in src/dashboardGuard.js but omits /codex before next.config.mjs rewrites /codex/* to /api/v1/responses. A remote unauthenticated attacker can send requests to /codex/* to bypass the API-ke",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55638",
+      "cvss": "8.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55641",
+      "desc": "9Router is an AI router & token saver. Prior to 0.5.2, 9router determines whether a /v1 LLM proxy request is local by reading the client-controlled Host header, allowing a remote unauthenticated attacker to send Host: localhost and bypass API-key authentication. In the default configuration, this ex",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55641",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55669",
+      "desc": "ZITADEL is an open source identity management platform. Prior to 3.4.12 and 4.15.2, ZITADEL's external JWT Identity Provider validates a token's signature and issuer (iss) but not the audience (aud) claim, allowing a validly signed token from a trusted issuer for another relying party to be accepted",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55669",
+      "cvss": "4.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55687",
+      "desc": "ESF-IDF is the Espressif Internet of Things (IOT) Development Framework. Versions 6.0.1, 5.5.4, 5.4.4, 5.3.5, and possibly prior contain an out-of-bounds write in jpeg_parse_dqt_marker() in components/esp_driver_jpeg/jpeg_parse_marker.c because the attacker-controlled DQT marker Tq nibble is used as",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55687",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55780",
+      "desc": "NanaZip is the 7-Zip derivative intended for the modern Windows experience. Prior to 6.5.1749.0, NanaZip's .NET single-file bundle handler in NanaZip.Codecs.Archive.DotNetSingleFile.cpp sizes its extraction buffer from the bundle entry Size field, which is only checked for sign and is not validated ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55780",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55781",
+      "desc": "NanaZip is the 7-Zip derivative intended for the modern Windows experience. Prior to 6.5.1749.0, NanaZip's UFS and FFS image handler in NanaZip.Codecs.Archive.Ufs.cpp validates the superblock block size only against the MINBSIZE lower bound and does not validate the fs_fsize fragment size, allowing ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55781",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55782",
+      "desc": "NanaZip is the 7-Zip derivative intended for the modern Windows experience. Prior to 6.5.1749.0, NanaZip's WebAssembly archive handler in NanaZip.Codecs.Archive.WebAssembly.cpp allocates buffers from attacker-controlled 32-bit section and custom-name length fields without validating them against the",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55782",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55783",
+      "desc": "NanaZip is the 7-Zip derivative intended for the modern Windows experience. Prior to 6.5.1749.0, NanaZip's seven in-house IInArchive handlers in NanaZip.Codecs unconditionally dereference the caller-supplied Indices array inside Extract when the archive engine signals extract everything by passing I",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55783",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55885",
+      "desc": "Grav is a file-based Web platform. Prior to 1.7.53, an authenticated administrator with backup permissions can download a ZIP archive containing the full Grav installation root, including user/accounts/admin.yaml with the administrator password hash and user/config with site configuration, through t",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55885",
+      "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55890",
+      "desc": "Grav is a file-based Web platform. Prior to 2.0.0-rc.9, Grav's incomplete fix for stored XSS through the Markdown media attribute action (CVE-2026-42841) leaves the sibling MediaObjectTrait::style method reachable through the same Markdown excerpt-action pipeline, allowing an editor to save Markdown",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55890",
+      "cvss": "4.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56675",
+      "desc": "9Router is an AI router & token saver. Prior to 0.5.2, 9router treats loopback requests as trusted and allows /v1/* access without an API key, so a same-host reverse proxy that forwards public traffic to the backend through 127.0.0.1 causes src/dashboardGuard.js to misclassify external requests as l",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56675",
+      "cvss": "8.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57167",
+      "desc": "PeerTube is an ActivityPub-federated video streaming platform. Prior to 8.2.2, server-side-rendered video watch pages embed a schema.org JSON-LD block by JSON.stringify-ing video metadata without escaping less-than, greater-than, or slash characters, allowing a value containing the byte sequence tha",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57167",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-58492",
+      "desc": "grav-plugin-database is the database plugin for Grav CMS. Prior to 1.2.0, the PDO::tableExists method interpolates its table argument directly into a raw SQL query string without sanitization, escaping, quoting, or whitelisting, allowing attacker-controlled table names passed by consuming plugin or ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58492",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-58493",
+      "desc": "grav-plugin-database is the database plugin for Grav CMS. Prior to 1.2.0, Database::__call builds PDO DSN strings by directly concatenating user-configurable YAML values from fields such as host, dbname, charset, server, database, directory, and filename without sanitization or validation, allowing ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58493",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59154",
+      "desc": "Wekan is open source kanban built with Meteor. Prior to 9.64, Wekan has a cross-board authorization bypass in the direct Meteor collection allow rules for Checklists and ChecklistItems because updates are authorized only against the current source doc.cardId and do not inspect the destination cardId",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59154",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59161",
+      "desc": "Excelize is a Go language library for reading and writing Microsoft Excel spreadsheets. Prior to 2.11.0, the streaming worksheet reader used by Rows and GetRows does not enforce the TotalRows limit on the row r attribute, allowing a small XLSX file with a row number above 1048576 and no cell coordin",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59161",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59162",
+      "desc": "Excelize is a Go language library for reading and writing Microsoft Excel spreadsheets. Prior to 2.11.0, Excelize parses shared-string cell values with strconv.Atoi and checks only the upper bound before indexing the shared string slice, allowing an XLSX file containing a shared-string cell with -1 ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59162",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59180",
+      "desc": "Apprise is an open source library which allows you to send a notification to almost all of the most popular notification services available. Prior to 1.11.0, Apprise HTTP-based notification plugins and HTTP attachment and config loaders in apprise/attachment/http.py and apprise/config/http.py follow",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59180",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59190",
+      "desc": "grav-plugin-admin is an HTML user interface that provides a way to configure Grav and create and modify pages. In 1.10.52 and earlier, an authenticated attacker with admin.users permission can change the password of any user account, including the super administrator, by sending a direct POST reques",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59190",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59193",
+      "desc": "Grav is a file-based Web platform. Prior to 2.0.0, an authenticated admin.super user can crash Grav or fill the disk by uploading a specially crafted ZIP archive through the Direct Install tool because Installer::unZip calls ZipArchive::extractTo without limits on uncompressed size, entry count, or ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59193",
+      "cvss": "0.0",
       "cwe": ""
     },
     {

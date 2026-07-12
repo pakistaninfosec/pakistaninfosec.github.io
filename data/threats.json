@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-12T17:00:21.632957+00:00",
-  "summary": "Today's digest contains 210 vulnerabilities across 5 sources. 69 zero-day exploits detected, 19 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-12T18:05:13.153654+00:00",
+  "summary": "Today's digest contains 216 vulnerabilities across 5 sources. 69 zero-day exploits detected, 19 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 210,
+    "new": 216,
     "changed": 0,
     "removed": 0,
-    "total": 102754,
+    "total": 102970,
     "zeroday": 69,
     "exploited": 19,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 126
+      "count": 132
     },
     {
       "name": "Exploit-DB",
@@ -2945,6 +2945,114 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58596",
       "cvss": "8.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-10663",
+      "desc": "In Zephyr's experimental USB host stack (CONFIG_USB_HOST_STACK), usbh_device_disconnect() (subsys/usb/host/usbh_device.c) freed the root usb_device slab object without clearing the cached pointer ctx->root. The bus removal handler dev_removed_handler() (subsys/usb/host/usbh_core.c) decides what to t",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10663",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-10664",
+      "desc": "The nRF70 Wi-Fi driver's power-save event handler nrf_wifi_event_proc_get_power_save_info() in drivers/wifi/nrf_wifi/src/wifi_mgmt.c copied TWT (Target Wake Time) flow entries from an nrf_wifi_umac_event_power_save_info event into the fixed-size twt_flows[WIFI_MAX_TWT_FLOWS] (8-element) array of a c",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10664",
+      "cvss": "5.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-10665",
+      "desc": "In Zephyr's WireGuard subsystem (subsys/net/lib/wireguard), wg_process_data_message() in wg_crypto.c linearizes an inbound transport-data payload into a fixed pool buffer of CONFIG_WIREGUARD_BUF_LEN bytes before decryption. The call net_buf_linearize(buf->data, data_len, pkt->buffer, ..., data_len) ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10665",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-10666",
+      "desc": "parse_ipv4() in subsys/net/ip/utils.c (reached via net_ipaddr_parse() for strings of the form \"a.b.c.d:port\") copies the port substring into a fixed 17-byte stack buffer (char ipaddr[NET_IPV4_ADDR_LEN + 1]) using a length of str_len - end - 1, where str_len is the full, unbounded input length and en",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10666",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-10667",
+      "desc": "Zephyr's dynamic kernel-object tracking (kernel/userspace/userspace.c, formerly kernel/userspace.c) maintains a doubly-linked list (obj_list) of dynamically allocated kernel objects. Iteration over this list in k_object_wordlist_foreach() was performed under lists_lock using the SAFE iterator (which",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10667",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-10668",
+      "desc": "The Nuvoton NuMaker HSUSBD USB device-controller driver (drivers/usb/udc/udc_numaker.c) armed the control Data IN stage unconditionally (base->CEPTXCNT = len in numaker_hsusbd_ep_trigger). Because the HSUSBD hardware cannot disarm a control Data IN already armed for a previous transfer, a USB host t",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10668",
+      "cvss": "2.4",
       "cwe": ""
     },
     {

@@ -1,0 +1,545 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1391334995238896" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Security News — InfoSec Pakistan</title>
+  <meta name="description" content="Latest global cybersecurity news from Krebs on Security, The Hacker News, Bleeping Computer, SANS ISC and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05070d;--bg2:#090d16;--bg3:#0e1420;--bg4:#141b28;--bg5:#1a2235;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);--border3:rgba(255,255,255,0.16);
+  --text:#ffffff;--text2:#94a3b8;--text3:#64748b;
+  --blue:#2563eb;--blue2:#3b82f6;--blue3:#60a5fa;
+  --red:#ef4444;--red2:#f87171;--orange:#f97316;--green:#22c55e;--yellow:#eab308;--cyan:#06b6d4;
+  --body:'Inter',sans-serif;--display:'Space Grotesk',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:14px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(37,99,235,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.025) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(37,99,235,0.06) 0%,transparent 65%);pointer-events:none;z-index:0;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(5,7,13,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.brand-icon{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 24px rgba(37,99,235,0.4);}
+.brand-name{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-0.01em;color:#fff;}
+.brand-name span{color:var(--blue3);}
+.nav-links{display:flex;gap:2px;}
+.nav-links a{color:var(--text3);text-decoration:none;padding:8px 18px;font-size:13.5px;font-weight:500;border-radius:8px;transition:all 0.2s;}
+.nav-links a:hover{color:#fff;background:var(--bg3);}
+.nav-links a.active{color:#fff;background:var(--bg3);}
+.live-badge{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--green);background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);padding:7px 16px;border-radius:6px;}
+.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* MAIN */
+main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:48px 48px 80px;}
+
+/* PAGE HEADER */
+.page-header{margin-bottom:36px;}
+.page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.25);color:var(--blue3);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:16px;}
+.page-title{font-family:var(--display);font-size:clamp(28px,4vw,42px);font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:#fff;margin-bottom:10px;}
+.page-title span{color:var(--blue3);}
+.page-desc{font-size:14px;color:var(--text2);line-height:1.7;max-width:640px;}
+
+/* STATS BAR */
+.stats-bar{display:flex;align-items:center;gap:20px;margin-bottom:28px;padding:14px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;flex-wrap:wrap;}
+.stat-item{display:flex;align-items:center;gap:8px;font-size:13px;}
+.stat-num{font-family:var(--display);font-size:20px;font-weight:700;color:var(--blue3);}
+.stat-label{font-size:11px;color:var(--text3);}
+.stat-divider{width:1px;height:28px;background:var(--border2);}
+.last-refresh{margin-left:auto;font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px;}
+.refresh-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 2s infinite;}
+
+/* SOURCE FILTERS */
+.source-filters{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+.src-filter{display:inline-flex;align-items:center;gap:6px;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:500;color:var(--text3);cursor:pointer;transition:all 0.2s;}
+.src-filter:hover{color:#fff;border-color:var(--border2);}
+.src-filter.active{color:#fff;border-color:var(--blue2);background:rgba(37,99,235,0.1);}
+.src-dot{width:6px;height:6px;border-radius:50%;}
+
+/* SEARCH */
+.search-wrap{position:relative;margin-bottom:24px;}
+.search-input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:11px 14px 11px 40px;color:#fff;font-size:13.5px;font-family:var(--body);outline:none;transition:border-color 0.2s;}
+.search-input:focus{border-color:var(--blue2);}
+.search-input::placeholder{color:var(--text3);}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:14px;}
+
+/* NEWS GRID */
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;}
+
+/* NEWS CARD */
+.news-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.2s;cursor:pointer;text-decoration:none;display:flex;flex-direction:column;}
+.news-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.3);}
+.card-accent{height:3px;width:100%;}
+.card-body{padding:18px 20px;flex:1;display:flex;flex-direction:column;}
+.card-source{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.src-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:0.05em;text-transform:uppercase;}
+.card-date{font-size:11px;color:var(--text3);margin-left:auto;}
+.card-title{font-family:var(--display);font-size:14.5px;font-weight:600;color:#fff;line-height:1.45;margin-bottom:10px;flex:1;}
+.card-desc{font-size:12px;color:var(--text2);line-height:1.65;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.card-footer{padding:12px 20px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.card-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.tag{font-size:10px;padding:2px 8px;border-radius:10px;background:var(--bg3);color:var(--text3);border:1px solid var(--border);}
+.read-more{font-size:11px;color:var(--blue3);font-weight:600;}
+
+/* SOURCE COLORS */
+.krebs{background:rgba(239,68,68,0.12);color:var(--red2);border:1px solid rgba(239,68,68,0.2);}
+.accent-krebs{background:linear-gradient(90deg,var(--red),transparent);}
+.hackernews{background:rgba(249,115,22,0.12);color:var(--orange);border:1px solid rgba(249,115,22,0.2);}
+.accent-hackernews{background:linear-gradient(90deg,var(--orange),transparent);}
+.bleeping{background:rgba(37,99,235,0.12);color:var(--blue3);border:1px solid rgba(37,99,235,0.2);}
+.accent-bleeping{background:linear-gradient(90deg,var(--blue2),transparent);}
+.sans{background:rgba(6,182,212,0.12);color:var(--cyan);border:1px solid rgba(6,182,212,0.2);}
+.accent-sans{background:linear-gradient(90deg,var(--cyan),transparent);}
+.threatpost{background:rgba(168,85,247,0.12);color:#c084fc;border:1px solid rgba(168,85,247,0.2);}
+.accent-threatpost{background:linear-gradient(90deg,#a855f7,transparent);}
+.darkreading{background:rgba(234,179,8,0.12);color:var(--yellow);border:1px solid rgba(234,179,8,0.2);}
+.accent-darkreading{background:linear-gradient(90deg,var(--yellow),transparent);}
+.securityweek{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.2);}
+.accent-securityweek{background:linear-gradient(90deg,var(--green),transparent);}
+.cisa{background:rgba(239,68,68,0.12);color:var(--red2);border:1px solid rgba(239,68,68,0.2);}
+.accent-cisa{background:linear-gradient(90deg,var(--red),transparent);}
+
+/* LOADING */
+.loading{padding:60px;text-align:center;color:var(--text3);}
+.spinner{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--blue2);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 14px;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-msg{padding:40px;text-align:center;color:var(--red2);}
+
+/* LOAD MORE */
+.load-more-wrap{text-align:center;margin-top:28px;}
+.load-more-btn{background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:12px 32px;font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;transition:all 0.2s;}
+.load-more-btn:hover{color:#fff;border-color:var(--blue2);}
+
+/* FOOTER */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
+.footer-brand{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text2);}
+.footer-brand span{color:var(--blue3);}
+.footer-txt{font-size:12px;color:var(--text3);}
+.footer-link{color:var(--blue3);text-decoration:none;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.page-header{animation:fadeUp 0.4s ease both;}
+.news-grid{animation:fadeUp 0.4s 0.1s ease both;}
+
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+  main{padding:28px 20px 60px;}
+  footer{padding:20px;flex-direction:column;gap:10px;text-align:center;}
+  .news-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">
+    <div class="brand-icon">🛡</div>
+    <div class="brand-name">INFOSEC <span>PAKISTAN</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Dashboard</a>
+    <a href="reports.html">Daily Reports</a>
+    <a href="database.html">CVE Database</a>
+    <a href="news.html" class="active">News</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="sandbox.html">Sandbox</a>
+  </div>
+  <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+</nav>
+
+<main>
+  <div class="page-header">
+    <div class="page-badge">🌐 Global Cyber Intelligence</div>
+    <div class="page-title">Cybersecurity <span>News</span></div>
+    <div class="page-desc">Real-time cybersecurity news from the world's top threat intelligence sources — Krebs on Security, The Hacker News, Bleeping Computer, SANS ISC, Dark Reading and more.</div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div>
+        <div class="stat-num" id="total-count">—</div>
+        <div class="stat-label">Articles Loaded</div>
+      </div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div>
+        <div class="stat-num" id="source-count">—</div>
+        <div class="stat-label">News Sources</div>
+      </div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <div>
+        <div class="stat-num" style="color:var(--green)">LIVE</div>
+        <div class="stat-label">Real-Time Feed</div>
+      </div>
+    </div>
+    <div class="last-refresh">
+      <div class="refresh-dot"></div>
+      <span id="last-refresh">Fetching news...</span>
+    </div>
+  </div>
+
+  <!-- SOURCE FILTERS -->
+  <div class="source-filters" id="source-filters">
+    <div class="src-filter active" onclick="filterSource('all',this)">
+      <span class="src-dot" style="background:var(--blue2)"></span> All Sources
+    </div>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input class="search-input" id="search-input" type="text" placeholder="Search cybersecurity news...">
+  </div>
+
+  <!-- NEWS GRID -->
+  <div id="news-container">
+    <div class="loading"><div class="spinner"></div>Fetching latest cybersecurity news...</div>
+  </div>
+
+  <div class="load-more-wrap" id="load-more-wrap" style="display:none">
+    <button class="load-more-btn" onclick="loadMore()">Load More Articles</button>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>
+  <a class="footer-link" href="privacy.html">Privacy Policy</a>
+  <div class="footer-txt">News aggregated from public RSS feeds · <a class="footer-link" href="https://pakistaninfosec.github.io">pakistaninfosec.github.io</a></div>
+</footer>
+
+<script>
+'use strict';
+
+// ═══════════════════════════════════════════════════
+//  NEWS SOURCES — All free RSS feeds via allorigins
+// ═══════════════════════════════════════════════════
+const SOURCES = [
+  {
+    id: 'hackernews',
+    name: 'The Hacker News',
+    url: 'https://feeds.feedburner.com/TheHackersNews',
+    color: '#f97316',
+    cls: 'hackernews',
+    accent: 'accent-hackernews',
+    dot: '#f97316',
+  },
+  {
+    id: 'bleeping',
+    name: 'Bleeping Computer',
+    url: 'https://www.bleepingcomputer.com/feed/',
+    color: '#3b82f6',
+    cls: 'bleeping',
+    accent: 'accent-bleeping',
+    dot: '#3b82f6',
+  },
+  {
+    id: 'krebs',
+    name: 'Krebs on Security',
+    url: 'https://krebsonsecurity.com/feed/',
+    color: '#ef4444',
+    cls: 'krebs',
+    accent: 'accent-krebs',
+    dot: '#ef4444',
+  },
+  {
+    id: 'sans',
+    name: 'SANS ISC',
+    url: 'https://isc.sans.edu/rssfeed_full.xml',
+    color: '#06b6d4',
+    cls: 'sans',
+    accent: 'accent-sans',
+    dot: '#06b6d4',
+  },
+  {
+    id: 'darkreading',
+    name: 'Dark Reading',
+    url: 'https://www.darkreading.com/rss.xml',
+    color: '#eab308',
+    cls: 'darkreading',
+    accent: 'accent-darkreading',
+    dot: '#eab308',
+  },
+  {
+    id: 'securityweek',
+    name: 'SecurityWeek',
+    url: 'https://feeds.feedburner.com/securityweek',
+    color: '#22c55e',
+    cls: 'securityweek',
+    accent: 'accent-securityweek',
+    dot: '#22c55e',
+  },
+  {
+    id: 'cisa',
+    name: 'CISA Alerts',
+    url: 'https://www.cisa.gov/cybersecurity-advisories/all.xml',
+    color: '#f87171',
+    cls: 'cisa',
+    accent: 'accent-cisa',
+    dot: '#f87171',
+  },
+];
+
+// ═══════════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════════
+let allArticles = [];
+let filteredArticles = [];
+let currentSource = 'all';
+let currentSearch = '';
+let displayCount = 30;
+
+// ═══════════════════════════════════════════════════
+//  FETCH RSS VIA ALLORIGINS PROXY
+// ═══════════════════════════════════════════════════
+async function fetchRSS(source) {
+  const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(source.url);
+  try {
+    const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(12000) });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const text = await res.text();
+    return parseRSS(text, source);
+  } catch (e) {
+    console.warn(`[${source.name}] fetch failed:`, e.message);
+    return [];
+  }
+}
+
+function parseRSS(xml, source) {
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(xml, 'text/xml');
+    const items = doc.querySelectorAll('item, entry');
+    const articles = [];
+    items.forEach(item => {
+      const title   = item.querySelector('title')?.textContent?.trim() || '';
+      const link    = item.querySelector('link')?.textContent?.trim()
+                   || item.querySelector('link')?.getAttribute('href') || '';
+      const desc    = item.querySelector('description, summary, content')?.textContent?.trim() || '';
+      const pubDate = item.querySelector('pubDate, published, updated')?.textContent?.trim() || '';
+      if (!title || title.length < 10) return;
+      // Clean HTML from description
+      const cleanDesc = desc.replace(/<[^>]+>/g,'').replace(/&[a-z]+;/g,' ').trim().slice(0,280);
+      articles.push({
+        id: source.id + '_' + btoa(encodeURIComponent(title)).slice(0,12),
+        title,
+        link,
+        desc: cleanDesc,
+        date: pubDate ? new Date(pubDate) : new Date(),
+        source: source.name,
+        sourceId: source.id,
+        sourceCls: source.cls,
+        sourceAccent: source.accent,
+        sourceDot: source.dot,
+        tags: extractTags(title + ' ' + cleanDesc),
+      });
+    });
+    return articles;
+  } catch (e) {
+    return [];
+  }
+}
+
+function extractTags(text) {
+  const t = text.toLowerCase();
+  const tagMap = [
+    ['ransomware','🔴 Ransomware'],
+    ['zero-day','⚡ Zero-Day'],
+    ['zero day','⚡ Zero-Day'],
+    ['phishing','🎣 Phishing'],
+    ['malware','☠ Malware'],
+    ['vulnerability','🔓 Vulnerability'],
+    ['patch','🔧 Patch'],
+    ['data breach','💾 Data Breach'],
+    ['apt','🎯 APT'],
+    ['cve-','📋 CVE'],
+    ['microsoft','🪟 Microsoft'],
+    ['google','🔵 Google'],
+    ['apple','🍎 Apple'],
+    ['cisco','🔵 Cisco'],
+    ['critical','🚨 Critical'],
+    ['exploit','💀 Exploit'],
+    ['backdoor','🚪 Backdoor'],
+    ['botnet','🤖 Botnet'],
+    ['pakistan','🇵🇰 Pakistan'],
+    ['china','🇨🇳 China'],
+    ['russia','🇷🇺 Russia'],
+    ['iran','🇮🇷 Iran'],
+  ];
+  const found = [];
+  for (const [kw, label] of tagMap) {
+    if (t.includes(kw) && found.length < 3) found.push(label);
+  }
+  return found;
+}
+
+// ═══════════════════════════════════════════════════
+//  LOAD ALL SOURCES
+// ═══════════════════════════════════════════════════
+async function loadAllNews() {
+  document.getElementById('news-container').innerHTML =
+    '<div class="loading"><div class="spinner"></div>Fetching cybersecurity news from ' + SOURCES.length + ' sources...</div>';
+
+  const results = await Promise.allSettled(SOURCES.map(s => fetchRSS(s)));
+  allArticles = [];
+  results.forEach(r => {
+    if (r.status === 'fulfilled') allArticles.push(...r.value);
+  });
+
+  // Sort by date newest first
+  allArticles.sort((a,b) => b.date - a.date);
+
+  // Build source filter buttons
+  buildSourceFilters();
+
+  // Update stats
+  document.getElementById('total-count').textContent = allArticles.length;
+  document.getElementById('source-count').textContent = SOURCES.length;
+  document.getElementById('last-refresh').textContent =
+    'Updated ' + new Date().toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});
+
+  applyFilters();
+}
+
+// ═══════════════════════════════════════════════════
+//  FILTERS
+// ═══════════════════════════════════════════════════
+function buildSourceFilters() {
+  const container = document.getElementById('source-filters');
+  const allBtn = container.querySelector('.src-filter');
+  container.innerHTML = '';
+  container.appendChild(allBtn);
+  SOURCES.forEach(s => {
+    const count = allArticles.filter(a => a.sourceId === s.id).length;
+    if (!count) return;
+    const btn = document.createElement('div');
+    btn.className = 'src-filter';
+    btn.innerHTML = `<span class="src-dot" style="background:${s.dot}"></span>${s.name} <span style="color:var(--text3);font-size:10px">${count}</span>`;
+    btn.onclick = () => filterSource(s.id, btn);
+    container.appendChild(btn);
+  });
+}
+
+function filterSource(id, btn) {
+  currentSource = id;
+  displayCount = 30;
+  document.querySelectorAll('.src-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters() {
+  filteredArticles = allArticles.filter(a => {
+    const matchSource = currentSource === 'all' || a.sourceId === currentSource;
+    const q = currentSearch.toLowerCase();
+    const matchSearch = !q ||
+      a.title.toLowerCase().includes(q) ||
+      a.desc.toLowerCase().includes(q) ||
+      a.source.toLowerCase().includes(q);
+    return matchSource && matchSearch;
+  });
+  renderArticles();
+}
+
+document.getElementById('search-input').addEventListener('input', e => {
+  currentSearch = e.target.value;
+  displayCount = 30;
+  applyFilters();
+});
+
+// ═══════════════════════════════════════════════════
+//  RENDER
+// ═══════════════════════════════════════════════════
+function renderArticles() {
+  const container = document.getElementById('news-container');
+  const toShow = filteredArticles.slice(0, displayCount);
+
+  if (!toShow.length) {
+    container.innerHTML = '<div class="loading"><span style="color:var(--text3)">No articles found</span></div>';
+    document.getElementById('load-more-wrap').style.display = 'none';
+    return;
+  }
+
+  container.innerHTML = '';
+  const grid = document.createElement('div');
+  grid.className = 'news-grid';
+
+  toShow.forEach(a => {
+    const card = document.createElement('a');
+    card.className = 'news-card';
+    card.href = a.link || '#';
+    card.target = '_blank';
+    card.rel = 'noopener noreferrer';
+
+    const dateStr = isNaN(a.date)
+      ? '—'
+      : a.date.toLocaleDateString('en-PK',{month:'short',day:'numeric',year:'numeric'});
+
+    const timeStr = isNaN(a.date)
+      ? ''
+      : a.date.toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});
+
+    card.innerHTML = `
+      <div class="card-accent ${a.sourceAccent}"></div>
+      <div class="card-body">
+        <div class="card-source">
+          <span class="src-badge ${a.sourceCls}">${a.source}</span>
+          <span class="card-date">${dateStr} ${timeStr}</span>
+        </div>
+        <div class="card-title">${esc(a.title)}</div>
+        ${a.desc ? `<div class="card-desc">${esc(a.desc)}</div>` : ''}
+      </div>
+      ${a.tags.length ? `
+      <div class="card-footer">
+        <div class="card-tags">${a.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <span class="read-more">Read →</span>
+      </div>` : `<div class="card-footer"><span class="read-more">Read full article →</span></div>`}`;
+    grid.appendChild(card);
+  });
+
+  container.appendChild(grid);
+
+  // Load more button
+  const lmw = document.getElementById('load-more-wrap');
+  if (filteredArticles.length > displayCount) {
+    lmw.style.display = 'block';
+  } else {
+    lmw.style.display = 'none';
+  }
+}
+
+function loadMore() {
+  displayCount += 30;
+  renderArticles();
+}
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+// ═══════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════
+loadAllNews();
+// Auto-refresh every 15 minutes
+setInterval(loadAllNews, 15 * 60 * 1000);
+</script>
+</body>
+</html>

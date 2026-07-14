@@ -303,19 +303,67 @@ let currentSearch = '';
 let displayCount = 30;
 
 // ═══════════════════════════════════════════════════
-//  FETCH RSS VIA ALLORIGINS PROXY
+//  FETCH RSS — Multi-proxy fallback system
 // ═══════════════════════════════════════════════════
+const RSS2JSON   = 'https://api.rss2json.com/v1/api.json?rss_url=';
+const ALLORIGINS = 'https://api.allorigins.win/raw?url=';
+const CORSPROXY  = 'https://corsproxy.io/?';
+
 async function fetchRSS(source) {
-  const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(source.url);
+  // Method 1: rss2json (most reliable — returns clean JSON)
   try {
-    const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(12000) });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const text = await res.text();
-    return parseRSS(text, source);
-  } catch (e) {
-    console.warn(`[${source.name}] fetch failed:`, e.message);
-    return [];
-  }
+    const res = await fetch(RSS2JSON + encodeURIComponent(source.url) + '&count=30',
+      { signal: AbortSignal.timeout(10000) });
+    if (res.ok) {
+      const d = await res.json();
+      if (d.status === 'ok' && d.items?.length) {
+        console.log(`[${source.name}] rss2json: ${d.items.length} items`);
+        return parseJSON(d.items, source);
+      }
+    }
+  } catch(e){ console.warn(`[${source.name}] rss2json failed:`, e.message); }
+
+  // Method 2: allorigins proxy
+  try {
+    const res = await fetch(ALLORIGINS + encodeURIComponent(source.url),
+      { signal: AbortSignal.timeout(10000) });
+    if (res.ok) {
+      const parsed = parseRSS(await res.text(), source);
+      if (parsed.length) { console.log(`[${source.name}] allorigins: ${parsed.length} items`); return parsed; }
+    }
+  } catch(e){ console.warn(`[${source.name}] allorigins failed:`, e.message); }
+
+  // Method 3: corsproxy.io
+  try {
+    const res = await fetch(CORSPROXY + encodeURIComponent(source.url),
+      { signal: AbortSignal.timeout(10000) });
+    if (res.ok) {
+      const parsed = parseRSS(await res.text(), source);
+      if (parsed.length) { console.log(`[${source.name}] corsproxy: ${parsed.length} items`); return parsed; }
+    }
+  } catch(e){ console.warn(`[${source.name}] corsproxy failed:`, e.message); }
+
+  console.warn(`[${source.name}] all proxies failed`);
+  return [];
+}
+
+function parseJSON(items, source) {
+  return items.map(item => {
+    const title = item.title?.trim() || '';
+    const link  = item.link || item.url || '';
+    const desc  = (item.description || item.content || item.summary || '')
+                  .replace(/<[^>]+>/g,'').replace(/&[a-z#0-9]+;/g,' ').trim().slice(0,280);
+    const pub   = item.pubDate || item.published || '';
+    if (!title || title.length < 10) return null;
+    return {
+      id: source.id+'_'+btoa(encodeURIComponent(title.slice(0,30))).slice(0,12),
+      title, link, desc,
+      date: pub ? new Date(pub) : new Date(),
+      source: source.name, sourceId: source.id,
+      sourceCls: source.cls, sourceAccent: source.accent, sourceDot: source.dot,
+      tags: extractTags(title+' '+desc),
+    };
+  }).filter(Boolean);
 }
 
 function parseRSS(xml, source) {

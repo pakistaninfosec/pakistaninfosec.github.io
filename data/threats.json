@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-14T00:55:49.273329+00:00",
-  "summary": "Today's digest contains 426 vulnerabilities across 5 sources. 69 zero-day exploits detected, 19 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-14T04:05:31.909705+00:00",
+  "summary": "Today's digest contains 449 vulnerabilities across 5 sources. 69 zero-day exploits detected, 19 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 426,
+    "new": 449,
     "changed": 0,
     "removed": 0,
-    "total": 109818,
+    "total": 110267,
     "zeroday": 69,
     "exploited": 19,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 342
+      "count": 365
     },
     {
       "name": "Exploit-DB",
@@ -4984,7 +4984,7 @@
     {
       "id": "CVE-2026-40467",
       "desc": "Use After Free vulnerability has been found in \"io.c\" program file of gawk (do_getline_redir() routine). This issue may lead to a crash. It affects gawk in versions 5.4.0 and below.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-13",
       "pakistan": false,
@@ -4996,13 +4996,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40467",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-40468",
       "desc": "Integer overflow vulnerability has been found in \"builtin.c\" program file of gawk. This issue may lead to memory exhaustion on the hosting operating system and could be used to overwrite gawk heap metadata and objects with attacker-controlled bytes. It affects gawk in versions 5.4.0 and below.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-13",
       "pakistan": false,
@@ -5014,13 +5014,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40468",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-40469",
       "desc": "Integer overflow vulnerability has been found in \"builtin.c\" program file of gawk (do_sub() routine). This issue could be used to overwrite gawk heap metadata and objects causing the program to crash. It affects 32-bit builds of gawk in versions 5.4.0 and below.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-13",
       "pakistan": false,
@@ -5032,13 +5032,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40469",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-40553",
       "desc": "Buffer overflow vulnerability has been found in \"extension/readdir.c\" program file of gawk (ftype() routine). This issue could be used to crash the program and potentially to achieve code execution, although the latter has not been confirmed to be feasible. It affects gawk in versions 5.4.0 and belo",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-13",
       "pakistan": false,
@@ -5050,7 +5050,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40553",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -5110,7 +5110,7 @@
     {
       "id": "CVE-2026-58065",
       "desc": "The Apache Airflow Git provider runs its git-over-SSH operations with `StrictHostKeyChecking=no` by default, disabling SSH host-key verification. An attacker who can intercept the network path between an Airflow worker and the Git server can impersonate the server (man-in-the-middle), capturing the ",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-13",
       "pakistan": false,
@@ -5122,13 +5122,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58065",
-      "cvss": "0.0",
+      "cvss": "8.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-59245",
       "desc": "In the Apache Airflow FAB auth manager, a DAG whose `dag_id` is `DAGs` collided with the global all-DAGs permission resource name produced by `resource_name()`, so a user granted per-DAG `access_control` on that one DAG was silently granted the global all-DAGs permission (privilege escalation). The ",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-13",
       "pakistan": false,
@@ -5140,7 +5140,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59245",
-      "cvss": "0.0",
+      "cvss": "8.1",
       "cwe": ""
     },
     {
@@ -6833,6 +6833,420 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15619",
       "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-0487",
+      "desc": "SAProuter on Microsoft Windows allows an unauthenticated attacker to load library (DLL) files from an untrusted location, allowing them to execute malicious code on the system. This could enable the attacker to hijack the DLL loading process and achieve arbitrary code execution. This has high impact",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0487",
+      "cvss": "8.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15620",
+      "desc": "A security vulnerability has been detected in mosaxiv clawlet up to 0.2.10. This affects the function tools.webFetch of the file tools/tool_web_fetch.go. Such manipulation leads to server-side request forgery. The attack can be launched remotely. The exploit has been disclosed publicly and may be us",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15620",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15621",
+      "desc": "A vulnerability was detected in mosaxiv clawlet up to 0.2.10. This impacts the function read_file/write_file/edit_file of the file tools/fs_ops.go of the component File Tools. Performing a manipulation results in link following. The attack needs to be approached locally. The reported GitHub issue wa",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15621",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-27690",
+      "desc": "Due to an HTTP Request Smuggling vulnerability in SAP Approuter, an unauthenticated attacker could send a specially crafted HTTP request that leads to request-response desynchronization. This could result in the exposure of user responses and cause the system to become unavailable. This leads to a h",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27690",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44745",
+      "desc": "SAP Approuter does not properly validate incoming request headers during the OAuth2 login flow under certain configurations. This allows an unauthenticated remote attacker to craft a malicious link which, when clicked by a victim, could lead to unauthorized access. Successful exploitation results in",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44745",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44747",
+      "desc": "SAP NetWeaver Application Server ABAP allows an authenticated attacker to leverage logical errors in memory management to cause a memory corruption that could lead to unauthorized data access, modification, or system unavailability. This has high impact on confidentiality, integrity, and availabilit",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44747",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44752",
+      "desc": "SAP NetWeaver Application Server Java allows an unauthenticated attacker to inject malicious JavaScript through crafted URLs. When a victim accesses such a URL, the script executes in the user's browser, allowing the attacker to access sensitive session information and modify non-sensitive data disp",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44752",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44753",
+      "desc": "SAP HANA Database (user self service tools) allows an unauthenticated user to send specially crafted requests that produce distinguishable responses, enabling enumeration of valid user accounts and email addresses. Successful exploitation could allow the attacker to enumerate valid user accounts, re",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44753",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44759",
+      "desc": "SAP NetWeaver Enterprise Portal allows an unauthenticated attacker to inject malicious scripts into a URL parameter. The scripts are reflected in the server response and executed in a user's browser when the crafted URL is visited, leading to theft of session information, manipulation of portal cont",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44759",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44760",
+      "desc": "Due to a Cross-Site Scripting (XSS) vulnerability, applications based on Business Server Pages framework in SAP NetWeaver Application Server ABAP reflects unsanitized input into the HTTP response which allows an attacker to inject and execute arbitrary JavaScript code under certain conditions. Succe",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44760",
+      "cvss": "4.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44761",
+      "desc": "SAP Commerce Cloud could retain a sample OAuth2 client with publicly documented sample credentials originating from sample configuration provided in SAP Help Portal documentation. If left unchanged, an unauthenticated attacker could use these well-known credentials to obtain a valid access token and",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44761",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44767",
+      "desc": "setThemeRoot() failed to enforce the sap-allowed-theme-origins allowlist. An attacker-controlled absolute cross-origin URL could be stored and used directly to construct a <link rel=stylesheet> element, even when no <meta name=sap-allowed-theme-origins> tag was present in the document. The same bypa",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44767",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44768",
+      "desc": "SAP CRM WebClient UI allows an attacker to inject and execute malicious scripts in the context of the application due to the absence of a Content Security Policy (CSP) configuration for certain restrictive directives. This vulnerability has a low impact on the integrity of the application. Confident",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44768",
+      "cvss": "4.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44769",
+      "desc": "SAP S/4HANA application Project Management (PPM-PRO) allows an attacker with high privileges to execute crafted database queries, exposing the backend database. This results in low impact on confidentiality, with no impact on integrity and availability of the application.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44769",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44770",
+      "desc": "SAP Create Single Payment does not perform necessary authorization checks for an authenticated user, a restricted user could access specific entity set keys resulting in disclosure of information. This has low impact on confidentiality, with no impact on integrity and availability of the application",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44770",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44771",
+      "desc": "SAP S/4HANA Draft operation does not perform necessary authorization checks for an authenticated user, a restricted user could access information within the entity resulting in escalation of privileges. This results in low impact on confidentiality, with no impact on integrity and availability of th",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44771",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-58233",
+      "desc": "SAP Change and Transport System Attach Tool (ctsattach) allows an authenticated attacker to supply a specially crafted archive file which, when processed by the application�s library, can trigger insecure deserialization and lead to remote code execution (RCE) on the system. Successful exploitation ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58233",
+      "cvss": "7.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-11390",
+      "desc": "The News Kit Addons For Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Site Logo Title and Single Author Box Widgets in all versions up to, and including, 1.4.6 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attac",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11390",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-11802",
+      "desc": "The FoodBook Lite - Online Food Ordering System plugin for WordPress is vulnerable to Missing Authorization in all versions up to, and including, 1.5.6. The registration() function, accessible via the wp_ajax_nopriv_registration_action AJAX action, lacks any nonce verification or capability check, a",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11802",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15622",
+      "desc": "A flaw has been found in poco-ai poco-claw up to 0.5.4. Affected is the function get_workspace_file of the file executor_manager/app/api/v1/workspace.py of the component Workspace API. Executing a manipulation of the argument user_id can lead to authorization bypass. The attack may be launched remot",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15622",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15624",
+      "desc": "A vulnerability has been found in nextlevelbuilder GoClaw 3.13.3-beta.3. Affected by this vulnerability is the function bytePlusDownloadVideo of the file internal/tools/create_video_byteplus.go of the component invoke Endpoint. The manipulation of the argument output.video_url leads to server-side r",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15624",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15625",
+      "desc": "A vulnerability was found in nextlevelbuilder GoClaw 3.11.3. Affected by this issue is the function ExecApprovalManager.CheckCommand of the file internal/tools/exec_approval.go. The manipulation results in incomplete blacklist. The attack can be executed remotely. The exploit has been made public an",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15625",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-7640",
+      "desc": "The WP Customer Area plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'type' attribute of the `customer-area-protected-content` shortcode in all versions up to, and including, 8.3.5. This is due to insufficient input sanitization and output escaping on the shortcode attribut",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-14",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7640",
+      "cvss": "6.4",
       "cwe": ""
     },
     {

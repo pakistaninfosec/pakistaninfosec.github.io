@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-16T17:18:54.701010+00:00",
-  "summary": "Today's digest contains 523 vulnerabilities across 5 sources. 76 zero-day exploits detected, 26 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-16T18:41:15.713024+00:00",
+  "summary": "Today's digest contains 534 vulnerabilities across 5 sources. 76 zero-day exploits detected, 26 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 523,
+    "new": 534,
     "changed": 0,
     "removed": 0,
-    "total": 127298,
+    "total": 127832,
     "zeroday": 76,
     "exploited": 26,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 432
+      "count": 443
     },
     {
       "name": "Exploit-DB",
@@ -6485,7 +6485,7 @@
     {
       "id": "CVE-2026-12525",
       "desc": "The Redux Framework WordPress plugin before 4.5.13 does not restrict which user meta keys can be written when saving custom profile fields, allowing users with at least the Subscriber role to escalate their privileges to Administrator by submitting a crafted value while updating their own profile, o",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-16",
       "pakistan": false,
@@ -6497,13 +6497,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12525",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-12585",
       "desc": "The Abandoned Cart Lite for WooCommerce WordPress plugin before 6.8.2 does not protect the integrity of its cart-recovery tokens or bind them to the requesting account, allowing unauthenticated attackers to forge a recovery link that logs them in as another user when the automatic-login option is en",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-16",
       "pakistan": false,
@@ -6515,7 +6515,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12585",
-      "cvss": "0.0",
+      "cvss": "8.1",
       "cwe": ""
     },
     {
@@ -6557,7 +6557,7 @@
     {
       "id": "CVE-2026-12906",
       "desc": "The RTMKit WordPress plugin before 2.0.9 does not perform a capability check in one of its AJAX actions and resolves a request-supplied post identifier directly, allowing users with at least the Contributor role to read the titles of other users' private, draft, pending, scheduled and trashed posts.",
-      "severity": "MEDIUM",
+      "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-07-16",
       "pakistan": false,
@@ -6569,7 +6569,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12906",
-      "cvss": "0.0",
+      "cvss": "2.7",
       "cwe": ""
     },
     {
@@ -8586,6 +8586,204 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9046",
       "cvss": "7.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2021-27137",
+      "desc": "An issue was discovered in router/upnp/src/ssdp.c in DD-WRT before 45724. An unsafe strcpy in the UPnP handling functionality allows an unauthenticated remote attacker to send a request that would overflow an internal fixed buffer. Exploitation requires the DD-WRT user to enable UPnP (which is off b",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-27137",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15737",
+      "desc": "AWS Bedrock AgentCore Python SDK is an open-source Python library that provides client tools for building AI agents on the Amazon Bedrock AgentCore platform.\n\n\n\nUnintended logging of sensitive user content in the OpenTelemetry instrumentation in AWS Bedrock AgentCore Python SDK versions 1.4.8 and 1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15737",
+      "cvss": "5.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15945",
+      "desc": "A flaw was found in the group search functionality of the Keycloak server's administrative API. When Fine-Grained Admin Permissions (FGAP) v2 is enabled, a delegated administrator can bypass access restrictions to view parent groups they are not authorized to see. By searching for a child group they",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15945",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44968",
+      "desc": "dbt-mcp is a Model Context Protocol server for interacting with dbt. Prior to 1.17.1, _run_dbt_command() in src/dbt_mcp/dbt_cli/tools.py appended unsanitized node_selection and resource_type values to the dbt subprocess argument list, allowing an MCP client to inject dbt global flags such as --profi",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44968",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44969",
+      "desc": "dbt-mcp is a Model Context Protocol server for interacting with dbt. Prior to 1.17.1, DbtMCP.call_tool() in src/dbt_mcp/mcp/server.py logged the raw arguments dictionary at INFO level before each tool call and at ERROR level on exceptions, and configure_file_logging() wrote those records to dbt-mcp.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44969",
+      "cvss": "2.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44970",
+      "desc": "dbt-mcp is a Model Context Protocol server for interacting with dbt. Prior to 1.17.1, DefaultUsageTracker.emit_tool_called_event() in src/dbt_mcp/tracking/tracking.py serialized every MCP tool call's complete arguments dictionary and sent it through dbtlabs_vortex.producer.log_proto without redactio",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44970",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-45336",
+      "desc": "HireFlow is a web-based interview management system for managing candidates, scheduling interviews, and tracking hiring progress. In 1.2 and earlier, app.py assigns a hard-coded Flask secret_key used to sign session cookies, allowing unauthenticated attackers who know the public source value to forg",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45336",
+      "cvss": "10.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-46336",
+      "desc": "Manyfold is an open source, self-hosted web application for managing a collection of 3d models, particularly focused on 3d printing. From 0.96.0 until 0.140.0, authenticated users can rename uploaded files with path traversal sequences because app/models/model_file.rb uses the user-controlled filena",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46336",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-46341",
+      "desc": "The Apify MCP server enables AI agents to extract data from websites using ready-made scrapers, crawlers, and automation tools available on the Apify Store. Prior to 0.9.21, the fetch-apify-docs tool in src/tools/common/fetch_apify_docs.ts validates allowlisted documentation domains with String.star",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46341",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-46686",
+      "desc": "Emlog is an open source website building system. In 2.6.13 and earlier, the admin backend user search module's keyword parameter from admin/user.php is processed with addslashes but not HTML-escaped before being rendered into the value attribute in admin/views/user.php, allowing reflected cross-site",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46686",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-46687",
+      "desc": "Emlog is an open source website building system. In 2.6.13 and earlier, the article publishing interface stores a path-traversal template parameter from api_controller.php without validation, and log_controller.php later checks file_exists and calls include View::getView($template), allowing an auth",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46687",
+      "cvss": "0.0",
       "cwe": ""
     },
     {

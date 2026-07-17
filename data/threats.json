@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-17T14:13:01.636693+00:00",
-  "summary": "Today's digest contains 428 vulnerabilities across 5 sources. 75 zero-day exploits detected, 25 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-17T15:56:30.884690+00:00",
+  "summary": "Today's digest contains 458 vulnerabilities across 5 sources. 75 zero-day exploits detected, 25 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 428,
+    "new": 458,
     "changed": 0,
     "removed": 0,
-    "total": 133758,
+    "total": 134216,
     "zeroday": 75,
     "exploited": 25,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 338
+      "count": 368
     },
     {
       "name": "Exploit-DB",
@@ -2848,7 +2848,7 @@
     {
       "id": "CVE-2026-13397",
       "desc": "HTML::Bare versions through 0.04 for Perl will hang in an infinite loop when parsing malformed attributes.\n\nThe parserc_parse function never advances the attribute-parse state cursor on certain malformed attribute forms, looping forever.\n\nNameless attributes such as \"<a ='c'>\" or unbalanced quotes \"",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-16",
       "pakistan": false,
@@ -2860,7 +2860,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13397",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -4462,13 +4462,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-36425",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-38158",
       "desc": "A SQL injection vulnerability in the /ureport/datasource/previewData component of ureport v2.2.9 allows attackers to access sensitive database information via crafted SQL statements.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-16",
       "pakistan": false,
@@ -4480,7 +4480,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-38158",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -4642,7 +4642,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13713",
-      "cvss": "0.0",
+      "cvss": "6.2",
       "cwe": ""
     },
     {
@@ -4828,7 +4828,7 @@
     {
       "id": "CVE-2026-57075",
       "desc": "YAML::Syck versions before 1.47 for Perl allow an out-of-bounds read via a signed-char lookup-table index in syck_base64dec.\n\nThe base64 decoder in the bundled libsyck indexes the 256-entry static table b64_xtable with a signed char, so any !!binary byte >= 0x80 sign-extends to a negative index and ",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-16",
       "pakistan": false,
@@ -4840,13 +4840,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57075",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-57076",
       "desc": "YAML::Syck versions before 1.47 for Perl allow a heap use-after-free via an anchor name reused as an anchors-table key in syck_hdlr_add_anchor.\n\nIn the bundled libsyck an anchor name allocated by syck_strndup is stored both as node->anchor, freed when the node is freed, and as the key in the parser'",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-16",
       "pakistan": false,
@@ -4858,13 +4858,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57076",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-57077",
       "desc": "YAML::Syck versions before 1.47 for Perl allow an out-of-bounds read via an unbounded newline scan in newline_len.\n\nIn the bundled libsyck newline_len and is_newline dereference the scan pointer, and the following byte for a \"\\r\\n\" pair, with no NUL-terminator or bounds check. During block-scalar le",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-16",
       "pakistan": false,
@@ -4876,7 +4876,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57077",
-      "cvss": "0.0",
+      "cvss": "7.7",
       "cwe": ""
     },
     {
@@ -6430,7 +6430,7 @@
     {
       "id": "CVE-2026-11575",
       "desc": "The PhonePe Payment Solutions WordPress plugin before 3.1.0 does not properly verify the authenticity of incoming payment callbacks: the secret used to validate the callback signature is empty on sites configured through the current setup flow, so the expected signature reduces to an unkeyed hash of",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-17",
       "pakistan": false,
@@ -6442,13 +6442,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11575",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-11961",
       "desc": "The User Registration & Membership  WordPress plugin before 5.2.3 does not validate that the membership tier submitted during public registration is one of the tiers allowed by the registration form before assigning that tier's associated user role, allowing unauthenticated users to register into an",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-17",
       "pakistan": false,
@@ -6460,7 +6460,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11961",
-      "cvss": "0.0",
+      "cvss": "8.1",
       "cwe": ""
     },
     {
@@ -6478,7 +6478,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11966",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -6496,7 +6496,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12393",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -6514,7 +6514,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13402",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -6856,7 +6856,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7189",
-      "cvss": "8.2",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -6875,6 +6875,546 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8396",
       "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-23564",
+      "desc": "HCL Aftermarket EPC is affected by Business Logic Vulnerability using which a non valid user of the application can obtain passwords from the server and redirect them to their own email address by manipulating the server's response. The application includes checks in the initial requests to verify t",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-23564",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-23565",
+      "desc": "HCL Aftermarket EPC is vulnerable to email flooding as the application does not have a proper mail limitation mechanism at Forget Password functionality. The actor could b e a human or an automated process such as a virus or bot. This could be used to cause a denial of service, compromise program lo",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-23565",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-23566",
+      "desc": "HCL Aftermarket EPC is vulnerable to brute force attacks since application doesn’t have captcha implemented. It can lead to various security issues like brute force , automated attacks & account enumeration",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-23566",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-23567",
+      "desc": "HCL Aftermarket EPC is affected by Sensitive Information in GET method & in URL which allows application to pass sensitive data via URL parameters during normal usage. Data passed in this manner can be exposed because it may end up stored in unintended locations, including server logs, local browser",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-23567",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-23568",
+      "desc": "HCL Aftermarket EPC is vulnerable to attacks since the server software version used by the application is revealed by the web server. Displaying version information of software could allow an attacker to determine which vulnerabilities are present in the software, particularly if an outdated softwar",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-23568",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-23569",
+      "desc": "HCL Aftermarket EPC is vulnerable to attack since the server is not configured with “X-XSS-Protection\" header",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-23569",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-23570",
+      "desc": "HCL Aftermarket EPC is affected by clickjacking vulnerability Cross-Frame Scripting is an attack technique where an attacker loads a vulnerable application in an iFrame on his malicious site. The attacker can then launch a Clickjacking attack, which may lead to Phishing, Cross-Site Request Forgery, ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-23570",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-23571",
+      "desc": "HCL Aftermarket EPC is vulnerable to attack since the application does not have an appropriate caching policy specifying the extent to which the page and its form fields should be cached. If sensitive information in application responses is stored in the local cache, then this may be retrieved by ot",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-23571",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-23572",
+      "desc": "HCL Aftermarket EPC is vulnerable to attack as cookie appears to contain a session token, which may increase the risk associated with this issue. You should review the contents of the cookie to determine its function.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-23572",
+      "cvss": "4.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-23573",
+      "desc": "HCL Aftermarket EPC is vulnerable to attack since the Application is vulnerable to Lucky 13. that makes the SS LLUCKY13 possible affects the TLS1.1and 1.2 and DTLS1.0 or 1.2 implementations . It also affects previous versions such as SSL3.0 and TLS1.0. This can also be considered a type of man-in-th",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-23573",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-23574",
+      "desc": "HCL Aftermarket EPC is vulnerable to attack since It was found that a malicious actor can use brute-force techniques to either guess or confirm valid users in the system. Use renumeration is when a malicious actor can use brute-force techniques to either guess or confirm valid users in a system",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-23574",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-23575",
+      "desc": "HCL Aftermarket EPC is vulnerable to attack since the application returns detailed error messages that leak information about the processing on the server. An attacker may use the contents of error messages to help launch another ,more focused attack.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-23575",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-23577",
+      "desc": "HCL Aftermarket EPC is vulnerable since the application does not have a validation for HOST header and accepts arbitrary hosts when requested in http protocol. When an application doesn’t adequately validate or sanitize this header, it can lead to several security risks, including Host header poison",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-23577",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-23578",
+      "desc": "HCL Aftermarket EPC is vulnerable to attack as the application implements an HTML5 cross-origin resource sharing (CORS) policy for this request that allows access from any domain (*-Wildcard).",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-23578",
+      "cvss": "4.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-42214",
+      "desc": "HCL Aftermarket EPC is vulnerable to attack since HTTP OPTIONS method is enabled on this web server. The OPTIONS method provides a list of the methods that are supported by the Web server which allows an attacker to narrow and intensify their efforts.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-42214",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-60357",
+      "desc": "AhnLab EPP Management v1.0.14.32-6249 was discovered to contain a NoSQL injection vulnerability via the eventlog/agentEvent/list endpoint.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-60357",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16015",
+      "desc": "A vulnerability was determined in poco-ai poco-claw up to 0.5.4. This vulnerability affects the function create_task of the file executor_manager/app/api/v1/tasks.py of the component executor_manager API. Executing a manipulation can lead to missing authentication. The exploit has been publicly disc",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16015",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16016",
+      "desc": "A vulnerability was identified in poco-ai poco-claw up to 0.5.4. This issue affects the function run_task of the file executor/app/api/v1/task.py. The manipulation of the argument callback_url leads to server-side request forgery. The attack is possible to be carried out remotely. The exploit is pub",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16016",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16072",
+      "desc": "A flaw was found in the organization management component of Keycloak. A delegated administrator with permission to manage organizations can create an invitation for a non-existent email address and then retrieve the secret registration link directly through the application programming interface. By",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16072",
+      "cvss": "4.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-51080",
+      "desc": "libpvestorage-perl v9.1.1 and libpve-storage-perl v8.3.7 were discovered to contain an XML External Entity (XXE) vulnerability.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51080",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-7488",
+      "desc": "Insertion of sensitive information into sent data vulnerability in IKAS Technology Inc. E-Commerce allows Retrieve Embedded Sensitive Data.\n\nThis issue affects E-Commerce: through 03062026.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7488",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-9592",
+      "desc": "SEPPmail Secure Email Gateway & SEPPmail Cloud before version 15.0.4.2 allows an attacker to replay & hijack a user session in the GINA web portal, as the session token is disclosed inside the URL and a HTTP header.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9592",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-12705",
+      "desc": "Missing support for integrity check vulnerability in ABB KNX Update Tool (ABB), ABB KNX Update Tool (BJE).\n\nThis issue affects KNX Update Tool (ABB): through 2.0.175; KNX Update Tool (BJE): through 2.0.175.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12705",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16017",
+      "desc": "A security flaw has been discovered in mosaxiv clawlet up to 0.2.10. Impacted is the function list/remove of the file tools/tool_cron.go of the component cron Chat Tool. The manipulation results in missing authorization. The attack may be performed from remote. The exploit has been released to the p",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16017",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16089",
+      "desc": "A flaw was found in the keycloak-services component of Red Hat Build of Keycloak. The issue occurs because OAuth 2.0 authorization codes are not properly bound to the client that originally requested them. An attacker who can intercept an authorization code can modify it to be redeemed by their own ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16089",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-51081",
+      "desc": "A cross-site scripting (XSS) vulnerability in Proxmox Virtual Environment (PVE) 9.x 5.1.8 and Proxmox Virtual Environment (PVE) 8.x 4.3.16 allows attackers to execute arbitrary web scripts or HTML via injecting a crafted payload.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51081",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-51082",
+      "desc": "A race condition between the vncproxy and vncwebsocket API calls in Proxmox Virtual Environment (PVE) 9.x pve-manager 9.1.x before 9.1.9 and 8.4.x before 8.4.19; qemu-server 9.1.x before 9.1.7 and 8.4.x before 8.4.7; and pve-container 6.1.x before 6.1.3 and 5.3.x before 5.3.4 allows an attacker with",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51082",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-51083",
+      "desc": "Incorrect access control in Proxmox Virtual Environment (PVE) 9.x qemu-server before 9.1.8 and 8.x before 8.4.8 allows users within limited privileges to obtain hashed passwords via the cloudinit/dump API.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51083",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63093",
+      "desc": "Cursor for Windows version 3.2.16 contains a binary planting vulnerability that allows remote attackers to achieve arbitrary code execution by placing a malicious git.exe file in the repository root directory. When a developer clones and opens a crafted repository, Cursor automatically resolves and ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63093",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63094",
+      "desc": "SigNoz through 0.133.0 contains an open redirect vulnerability in the SSO authentication flow that allows unauthenticated attackers to steal session tokens from any user on instances configured with Google OAuth, SAML, or OIDC. Attackers can call the unauthenticated sessions context endpoint with a ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63094",
+      "cvss": "8.1",
       "cwe": ""
     },
     {

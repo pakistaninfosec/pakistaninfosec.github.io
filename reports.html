@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,10 +31,70 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .brand-icon{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 24px rgba(37,99,235,0.4);}
 .brand-name{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-0.01em;color:#fff;}
 .brand-name span{color:var(--blue3);}
-.nav-links{display:flex;gap:2px;}
-.nav-links a{color:var(--text3);text-decoration:none;padding:8px 18px;font-size:13.5px;font-weight:500;border-radius:8px;transition:all 0.2s;}
-.nav-links a:hover{color:#fff;background:var(--bg3);}
-.nav-links a.active{color:#fff;background:var(--bg3);}
+/* ═══════ HAMBURGER ═══════ */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:200;}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* ═══════ MOBILE ═══════ */
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .hamburger{display:flex;}
+  .nav-links{
+    display:none;flex-direction:column;position:fixed;top:64px;left:0;right:0;
+    background:rgba(5,7,13,0.98);backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);padding:16px;gap:4px;z-index:150;
+  }
+  .nav-links.open{display:flex;}
+  .nav-links a{padding:12px 16px;font-size:15px;border-radius:8px;border-bottom:1px solid var(--border);}
+  .nav-links a:last-child{border-bottom:none;}
+
+  /* Page header */
+  main{padding:28px 16px 60px;}
+  .page-header{margin-bottom:24px;}
+  .page-title{font-size:26px;}
+  .page-desc{font-size:13px;}
+
+  /* Today banner */
+  .today-banner{border-radius:10px;}
+  .tb-head{padding:14px 16px;}
+  .tb-stats{grid-template-columns:1fr 1fr;}
+  .tb-stat{padding:14px 12px;}
+  .tb-num{font-size:24px;}
+  .tb-summary{padding:14px 16px;}
+  .tb-sources{padding:0 16px 14px;gap:6px;}
+
+  /* Section header */
+  .section-header{flex-wrap:wrap;gap:8px;}
+  .section-title{font-size:16px;}
+
+  /* Filters */
+  .filters{gap:6px;}
+  .search-box{font-size:13px;min-width:100%;margin-bottom:4px;}
+  .f-btn{font-size:11px;padding:7px 10px;}
+
+  /* Threat table */
+  .t-row{grid-template-columns:72px 1fr;gap:8px;padding:10px 14px;}
+  .t-row>div:last-child{display:none;}
+  .t-id{font-size:11.5px;}
+  .t-desc{font-size:11px;}
+
+  /* Pagination */
+  .pagination{gap:4px;}
+  .pg-btn{padding:6px 10px;font-size:11px;min-width:30px;}
+  .pg-info{font-size:11px;padding:0 4px;}
+
+  /* Breakdown */
+  .breakdown-card{padding:16px;}
+  .src-name{width:90px;font-size:11.5px;}
+  .src-num{font-size:11px;}
+
+  /* Footer */
+  footer{padding:20px 16px;flex-direction:column;gap:10px;text-align:center;}
+  .footer-links{justify-content:center;gap:10px;}
+}
 .live-badge{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--green);background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);padding:7px 16px;border-radius:6px;}
 .live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
@@ -159,7 +220,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     <div class="brand-icon">🛡</div>
     <div class="brand-name">INFOSEC <span>PAKISTAN</span></div>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <a href="index.html">Dashboard</a>
     <a href="reports.html" class="active">Daily Reports</a>
     <a href="database.html">CVE Database</a>
@@ -168,7 +229,12 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     <a href="contact.html">Contact</a>
     <a href="sandbox.html">Sandbox</a>
   </div>
-  <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <main>
@@ -469,6 +535,19 @@ function closeModal(e){
 
 loadData();
 setInterval(loadData, 30*60*1000);
+
+function toggleNav(){
+  const nav=document.getElementById('nav-links');
+  const btn=document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    document.getElementById('nav-links').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
 </script>
 </body>
 </html>

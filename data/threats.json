@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-17T12:10:43.663109+00:00",
-  "summary": "Today's digest contains 420 vulnerabilities across 5 sources. 75 zero-day exploits detected, 25 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-17T14:13:01.636693+00:00",
+  "summary": "Today's digest contains 428 vulnerabilities across 5 sources. 75 zero-day exploits detected, 25 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 420,
+    "new": 428,
     "changed": 0,
     "removed": 0,
-    "total": 133330,
+    "total": 133758,
     "zeroday": 75,
     "exploited": 25,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 330
+      "count": 338
     },
     {
       "name": "Exploit-DB",
@@ -2866,7 +2866,7 @@
     {
       "id": "CVE-2026-13401",
       "desc": "XML::Bare versions through 0.53 for Perl will hang in an infinite loop when parsing malformed attributes.\n\nThe parserc_parse function never advances the attribute-parse state cursor on certain malformed attribute forms, looping forever.\n\nNameless attributes such as \"<a ='c'>\" or unbalanced quotes \"<",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-16",
       "pakistan": false,
@@ -2878,7 +2878,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13401",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -3226,7 +3226,7 @@
     {
       "id": "CVE-2026-57073",
       "desc": "HTML::Bare versions through 0.04 for Perl have an unbounded character lookahead.\n\nThe parserc_parse function attempts to check for multicharacter strings such as \"<![CDATA\" or element terminators such as \">\" without checking that the offsets are within the buffer.\n\nTruncated strings such as \"<a/\" ca",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-16",
       "pakistan": false,
@@ -3238,7 +3238,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57073",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
@@ -6520,7 +6520,7 @@
     {
       "id": "CVE-2026-9810",
       "desc": "The AI Copilot  WordPress plugin before 1.5.4 does not bind OAuth access tokens to a WordPress user, and accepts any valid token as an administrator session, allowing unauthenticated attackers who complete the public OAuth flow to execute privileged MCP tools as an administrator, including arbitrary",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-17",
       "pakistan": false,
@@ -6532,7 +6532,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9810",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -6731,6 +6731,150 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9602",
       "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15943",
+      "desc": "A flaw was found in the Keycloak keycloak-services component, which handles the management of identity providers. The issue occurs when a delegated administrator updates an OIDC identity provider using a masked client secret sentinel value. Due to improper validation, Keycloak reuses the existing re",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15943",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16009",
+      "desc": "A vulnerability was detected in itsourcecode Hospital Management System 1.0. Affected is an unknown function of the file /prescriptionorderdetail.php. The manipulation of the argument delid results in sql injection. The attack can be launched remotely. The exploit is now public and may be used.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16009",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16013",
+      "desc": "A vulnerability has been found in liftoff-sr CIPster up to 632336d414ef708a542377c1aa8d6fdb7c70a760. Affected by this issue is the function CipAppPath::deserialize_symbolic of the file source/src/cip/cipepath.cc. Such manipulation leads to out-of-bounds read. The attack may be launched remotely. The",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16013",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13082",
+      "desc": "GD::SecurityImage versions through 1.75 for Perl use rand to generate secrets.\n\nThe random method creates the challenge text used for the CAPTCHA by sampling characters from an array using Perl's built-in rand function, and generates a (by default) six-character string.\n\nThe built-in rand function i",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13082",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13410",
+      "desc": "Dancer::Plugin::Auth::Google versions through 0.07 for Perl have TLS verification disabled.\n\nThe default user agent is initialised with SSL_verify_mode explicitly disabled.\n\nAn attacker with network man-in-the-middle (MITM) capability between the Dancer application and googleapis.com can intercept t",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13410",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16014",
+      "desc": "A vulnerability was found in code-projects Hospital Bed Management System 1.0. This affects an unknown part of the component Login Form. Performing a manipulation of the argument Username results in sql injection. Remote exploitation of the attack is possible. The exploit has been made public and co",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16014",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-7189",
+      "desc": "Insertion of sensitive information into sent data vulnerability in Proliz Software Ltd. Co. Proliz's OBS allows Accessing Functionality Not Properly Constrained by ACLs.\n\nThis issue affects Proliz's OBS: before v3.6.0.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7189",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-8396",
+      "desc": "Improper restriction of XML external entity reference vulnerability in Netcad Software Inc. NetGIS allows Serialized Data External Linking.\n\nThis issue affects NetGIS: from 5.0.66 before 7.2.2.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8396",
+      "cvss": "7.5",
       "cwe": ""
     },
     {

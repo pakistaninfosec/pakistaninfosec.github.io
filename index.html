@@ -280,6 +280,59 @@ canvas#radar{width:560px;height:560px;}
 .modal-chip b{color:#fff;font-weight:500;}
 
 /* Footer */
+/* ═══════ ABOUT SECTION ═══════ */
+.about-section{position:relative;z-index:1;background:var(--bg2);border-top:1px solid var(--border);padding:80px 0;}
+.about-inner{max-width:1100px;margin:0 auto;padding:0 48px;}
+.about-header{text-align:center;margin-bottom:60px;}
+.about-badge{display:inline-flex;align-items:center;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.25);color:var(--blue3);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:16px;}
+.about-title{font-family:var(--display);font-size:clamp(24px,3vw,36px);font-weight:700;letter-spacing:-0.03em;color:#fff;margin-bottom:16px;line-height:1.2;}
+.about-title span{color:var(--blue3);}
+.about-lead{font-size:15px;color:var(--text2);line-height:1.8;max-width:680px;margin:0 auto;}
+.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:60px;}
+.content-block{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:32px;}
+.cb-icon{font-size:28px;margin-bottom:14px;}
+.content-block h3{font-family:var(--display);font-size:18px;font-weight:700;color:#fff;margin-bottom:14px;}
+.content-block p{font-size:13.5px;color:var(--text2);line-height:1.8;margin-bottom:12px;}
+.content-block p:last-child{margin-bottom:0;}
+.content-block strong{color:#fff;}
+.how-to-section{margin-bottom:60px;}
+.how-to-section h3{font-family:var(--display);font-size:24px;font-weight:700;color:#fff;margin-bottom:28px;text-align:center;}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.step-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:24px;position:relative;overflow:hidden;transition:border-color 0.2s;}
+.step-card:hover{border-color:var(--border2);}
+.step-num{font-family:var(--display);font-size:36px;font-weight:900;color:rgba(37,99,235,0.15);position:absolute;top:12px;right:16px;line-height:1;}
+.step-title{font-family:var(--display);font-size:14px;font-weight:700;color:#fff;margin-bottom:10px;}
+.step-desc{font-size:12.5px;color:var(--text2);line-height:1.75;}
+.methodology-section{margin-bottom:60px;}
+.methodology-section h3{font-family:var(--display);font-size:24px;font-weight:700;color:#fff;margin-bottom:14px;text-align:center;}
+.methodology-section>p{font-size:13.5px;color:var(--text2);text-align:center;margin-bottom:28px;}
+.method-steps{display:flex;flex-direction:column;gap:16px;}
+.method-step{display:grid;grid-template-columns:80px 200px 1fr;gap:20px;align-items:start;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:20px 24px;}
+.ms-label{font-size:10px;font-weight:700;color:var(--blue3);letter-spacing:0.1em;text-transform:uppercase;padding-top:2px;}
+.ms-title{font-family:var(--display);font-size:14px;font-weight:700;color:#fff;padding-top:1px;}
+.ms-desc{font-size:13px;color:var(--text2);line-height:1.75;}
+.cta-section{text-align:center;background:var(--bg3);border:1px solid rgba(37,99,235,0.2);border-radius:16px;padding:48px;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--cyan));}
+.cta-section h3{font-family:var(--display);font-size:24px;font-weight:700;color:#fff;margin-bottom:14px;}
+.cta-section p{font-size:13.5px;color:var(--text2);line-height:1.8;max-width:680px;margin:0 auto 12px;}
+.cta-buttons{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap;}
+.cta-btn{padding:12px 24px;border-radius:8px;font-size:13.5px;font-weight:600;text-decoration:none;transition:all 0.2s;}
+.cta-primary{background:var(--blue);color:#fff;box-shadow:0 0 20px rgba(37,99,235,0.3);}
+.cta-primary:hover{background:var(--blue2);transform:translateY(-1px);}
+.cta-secondary{background:var(--bg2);border:1px solid var(--border2);color:var(--text2);}
+.cta-secondary:hover{color:#fff;border-color:var(--blue2);}
+@media(max-width:900px){
+  .content-grid{grid-template-columns:1fr;}
+  .steps-grid{grid-template-columns:1fr 1fr;}
+  .method-step{grid-template-columns:60px 1fr;grid-template-rows:auto auto;}
+  .ms-desc{grid-column:1/-1;}
+  .about-inner{padding:0 24px;}
+}
+@media(max-width:600px){
+  .steps-grid{grid-template-columns:1fr;}
+  .method-step{grid-template-columns:1fr;}
+}
+
 footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
 .footer-brand{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text2);}
 .footer-brand span{color:var(--blue3);}
@@ -487,6 +540,123 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     <div class="modal-chips" id="modal-chips"></div>
   </div>
 </div>
+
+<!-- ═══════════════════════════════════════════════
+     ABOUT SECTION — SEO + Original Content
+═══════════════════════════════════════════════ -->
+<section class="about-section">
+  <div class="about-inner">
+
+    <!-- INTRO -->
+    <div class="about-header">
+      <div class="about-badge">About This Platform</div>
+      <h2 class="about-title">Pakistan's First Free <span>Cybersecurity Threat Intelligence</span> Platform</h2>
+      <p class="about-lead">InfoSec Pakistan was built with a single mission: to make enterprise-grade cybersecurity threat intelligence accessible to every Pakistani organization, CISO, security analyst, and IT professional — completely free, no login required.</p>
+    </div>
+
+    <!-- WHAT WE DO -->
+    <div class="content-grid">
+      <div class="content-block">
+        <div class="cb-icon">🛡</div>
+        <h3>What InfoSec Pakistan Does</h3>
+        <p>InfoSec Pakistan is a fully automated threat intelligence platform that aggregates, processes, and delivers cybersecurity data from the world's most trusted sources — every 30 minutes, around the clock. Our automated pipeline pulls vulnerability data from CISA's Known Exploited Vulnerabilities (KEV) catalog, the National Vulnerability Database (NVD/NIST), Exploit-DB, Pakistan CERT (pkcert.gov.pk), and NCCS Pakistan (nccs.pk).</p>
+        <p>Each run collects hundreds of threat entries, deduplicates them, scores them by severity, flags Pakistan-specific advisories, and generates an AI-powered executive summary using Meta's LLaMA model via Groq — delivering a concise, actionable digest that a CISO can read in under two minutes.</p>
+        <p>Unlike commercial threat intelligence platforms that charge thousands of dollars per year, InfoSec Pakistan provides this intelligence layer entirely free. Our goal is to raise the cybersecurity baseline across Pakistan's public sector, banking industry, telecom sector, and academic institutions.</p>
+      </div>
+
+      <div class="content-block">
+        <div class="cb-icon">🎯</div>
+        <h3>Why Threat Intelligence Matters for Pakistan</h3>
+        <p>Pakistan faces a rapidly escalating cyber threat landscape. Government portals, banking infrastructure, telecom networks, and critical systems are increasingly targeted by nation-state actors, ransomware groups, and opportunistic attackers. According to Pakistan CERT and NCCS advisories, Pakistani organizations regularly face active exploitation of vulnerabilities that have known patches available — meaning many breaches are preventable.</p>
+        <p>The problem is not a lack of threat data — it exists in abundance across dozens of global sources. The problem is <strong>access and translation</strong>. Most Pakistani security teams lack the budget for commercial threat feeds, and manually monitoring CISA, NVD, Exploit-DB, and Pakistan CERT simultaneously is not practical. InfoSec Pakistan solves this by aggregating everything into one dashboard, updated every 30 minutes, with Pakistan-specific alerts clearly flagged with a 🇵🇰 badge.</p>
+        <p>When a zero-day is discovered in Fortinet, Cisco, or Microsoft products — products widely deployed across Pakistan's enterprise and government infrastructure — you need to know within hours, not days. That is exactly what this platform delivers.</p>
+      </div>
+    </div>
+
+    <!-- HOW TO USE -->
+    <div class="how-to-section">
+      <h3>How to Use the InfoSec Pakistan Dashboard</h3>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-title">Check the Live Dashboard Daily</div>
+          <div class="step-desc">The Dashboard homepage shows today's threat count, zero-day exploits, actively exploited CVEs, and Pakistan-specific alerts at a glance. The "Last Updated" timestamp confirms data freshness. The AI Analysis panel gives you a plain-language executive summary you can share with non-technical leadership.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-title">Filter Pakistan-Specific Alerts</div>
+          <div class="step-desc">In the Daily Reports page, click the 🇵🇰 Pakistan filter to see only advisories from Pakistan CERT and NCCS Pakistan. These are the most immediately relevant threats to your organization. Advisories include direct PDF links to the official government source for full technical details.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-title">Search the CVE Database</div>
+          <div class="step-desc">Use the CVE Database page to search for specific vulnerabilities by CVE ID, vendor name, or technology. Filter by severity (Critical, High, Medium) to prioritize patching. Every entry links to the NVD for full technical details and patch guidance.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-title">Analyze Suspicious Files & URLs</div>
+          <div class="step-desc">The Sandbox tool lets you analyze any file or URL for free — no account needed. Upload a suspicious executable, document, or script and get SHA-256 hash lookup via VirusTotal (70 antivirus engines), MalwareBazaar cross-reference, entropy analysis, IOC extraction, and MITRE ATT&CK technique mapping.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">05</div>
+          <div class="step-title">Read Global Cyber News</div>
+          <div class="step-desc">The News page aggregates real-time cybersecurity news from Krebs on Security, The Hacker News, Bleeping Computer, SANS ISC, Dark Reading, SecurityWeek, and CISA Alerts — all in one place, auto-refreshed every 15 minutes. Filter by source or search for specific topics.</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">06</div>
+          <div class="step-title">Subscribe to the Daily Digest</div>
+          <div class="step-desc">Subscribe via the Contact page to receive the AI-generated threat intelligence digest directly in your inbox every morning. Perfect for CISOs and security managers who need a daily briefing without logging into another dashboard.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- METHODOLOGY -->
+    <div class="methodology-section">
+      <h3>Our Analysis Methodology</h3>
+      <p>InfoSec Pakistan follows a rigorous, transparent methodology to ensure data quality and relevance. Here is exactly how our pipeline works:</p>
+      <div class="method-steps">
+        <div class="method-step">
+          <div class="ms-label">Step 1</div>
+          <div class="ms-title">Data Collection</div>
+          <div class="ms-desc">Every 30 minutes, our GitHub Actions pipeline runs an automated Python scraper that queries five verified threat intelligence sources via their official APIs and RSS feeds: CISA KEV JSON feed, NVD REST API (last 24 hours), Exploit-DB RSS, Pakistan CERT advisory page, and NCCS Pakistan blog. Only entries published within the relevant time window are collected — ensuring the dashboard reflects current threats, not historical archives.</div>
+        </div>
+        <div class="method-step">
+          <div class="ms-label">Step 2</div>
+          <div class="ms-title">Normalization & Deduplication</div>
+          <div class="ms-desc">Raw data from different sources uses different schemas and identifiers. Our pipeline normalizes every entry into a consistent format — CVE ID, description, severity score, affected vendor/product, publication date, source, and Pakistan relevance flag. SHA-256 hashing ensures duplicate entries from multiple sources are merged rather than repeated.</div>
+        </div>
+        <div class="method-step">
+          <div class="ms-label">Step 3</div>
+          <div class="ms-title">Severity Scoring & Prioritization</div>
+          <div class="ms-desc">Every threat entry is scored using CVSS severity ratings (Critical, High, Medium, Low). Pakistan-specific advisories from PKCERT and NCCS are automatically flagged with the 🇵🇰 indicator and surfaced at the top of the threat list. Actively exploited vulnerabilities from CISA KEV are tagged separately as they represent the highest-priority patching targets.</div>
+        </div>
+        <div class="method-step">
+          <div class="ms-label">Step 4</div>
+          <div class="ms-title">AI-Powered Executive Summary</div>
+          <div class="ms-desc">After data collection and normalization, the top critical and Pakistan-specific threats are passed to Meta's LLaMA 3.3 70B model (via Groq API) with a carefully engineered prompt that instructs the model to write a concise, specific, actionable 3-sentence executive summary. The prompt includes actual CVE IDs, affected vendor names, and Pakistan alert counts — ensuring the summary is specific to today's threats, not generic boilerplate.</div>
+        </div>
+        <div class="method-step">
+          <div class="ms-label">Step 5</div>
+          <div class="ms-title">Publication & Delivery</div>
+          <div class="ms-desc">The processed threat data is saved as a structured JSON file (data/threats.json) and committed to our GitHub repository. GitHub Pages serves this file publicly, and the dashboard fetches it in real-time on every page load with cache-busting. The entire pipeline — from data collection to website update — completes in under 60 seconds.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h3>Built for Pakistan's Security Community</h3>
+      <p>InfoSec Pakistan is a community-driven initiative, not a commercial product. We believe every Pakistani CISO, security analyst, SOC team, university cybersecurity department, and government IT officer deserves access to the same quality of threat intelligence used by Fortune 500 companies. This platform will always be free.</p>
+      <p>If you find this platform valuable, share it with your team, mention it in your security briefings, and help us grow Pakistan's cybersecurity awareness. Together we can make Pakistani cyberspace more resilient.</p>
+      <div class="cta-buttons">
+        <a class="cta-btn cta-primary" href="reports.html">📋 View Daily Reports</a>
+        <a class="cta-btn cta-secondary" href="sandbox.html">🔬 Try the Sandbox</a>
+        <a class="cta-btn cta-secondary" href="contact.html">✉️ Subscribe to Digest</a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <footer>
   <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>

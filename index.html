@@ -333,6 +333,89 @@ canvas#radar{width:560px;height:560px;}
   .method-step{grid-template-columns:1fr;}
 }
 
+/* ═══════ HAMBURGER ═══════ */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:200;}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* ═══════ MOBILE ═══════ */
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .hamburger{display:flex;}
+  .nav-links{
+    display:none;flex-direction:column;position:fixed;top:64px;left:0;right:0;
+    background:rgba(5,7,13,0.98);backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);padding:16px;gap:4px;z-index:150;
+  }
+  .nav-links.open{display:flex;}
+  .nav-links a{padding:12px 16px;font-size:15px;border-radius:8px;border-bottom:1px solid var(--border);}
+  .nav-links a:last-child{border-bottom:none;}
+  .live-badge span:last-child{display:none;}
+
+  /* Hero */
+  .hero{padding:32px 16px 24px;flex-direction:column;}
+  .hero-left{max-width:100%;}
+  .hero-right{display:none;}
+  .hero-title{font-size:clamp(28px,8vw,44px);}
+  .hero-desc{font-size:13px;}
+  .hero-stats{gap:16px;}
+  .hs-num{font-size:28px;}
+
+  /* Ticker */
+  .ticker{font-size:11px;}
+
+  /* Stat cards */
+  .stats-row{grid-template-columns:1fr 1fr;gap:12px;padding:20px 16px;}
+  .stat-card{padding:16px;}
+  .sc-val{font-size:28px;}
+
+  /* Main content */
+  .main-content{padding:20px 16px;flex-direction:column;gap:20px;}
+  .threat-panel{min-width:unset;width:100%;}
+  .side-panel{width:100%;}
+
+  /* Threat list */
+  .t-row{grid-template-columns:70px 1fr;gap:8px;padding:12px;}
+  .t-col-right{display:none;}
+
+  /* Filters */
+  .filters{flex-wrap:wrap;gap:6px;}
+  .filter-btn{font-size:11px;padding:6px 10px;}
+  .search-input{font-size:13px;}
+
+  /* Last updated */
+  .last-updated-bar{margin:0 16px 16px;font-size:11px;}
+
+  /* About section */
+  .about-inner{padding:0 16px;}
+  .about-title{font-size:22px;}
+  .about-lead{font-size:13px;}
+  .content-grid{grid-template-columns:1fr;gap:16px;}
+  .steps-grid{grid-template-columns:1fr;gap:12px;}
+  .method-step{grid-template-columns:1fr;gap:6px;padding:16px;}
+  .ms-label{font-size:9px;}
+  .cta-section{padding:28px 16px;}
+  .cta-buttons{flex-direction:column;align-items:center;}
+  .cta-btn{width:100%;text-align:center;}
+
+  /* Modal */
+  .modal{padding:12px;}
+  .modal-box{max-height:90vh;overflow-y:auto;}
+
+  /* Footer */
+  footer{padding:20px 16px;flex-direction:column;gap:12px;text-align:center;}
+  .footer-links{justify-content:center;}
+}
+
+@media(max-width:480px){
+  .stats-row{grid-template-columns:1fr 1fr;}
+  .sc-val{font-size:24px;}
+  .hero-title{font-size:26px;}
+  .hs-num{font-size:24px;}
+}
+
 footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
 .footer-brand{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text2);}
 .footer-brand span{color:var(--blue3);}
@@ -405,7 +488,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     <div class="brand-icon">🛡</div>
     <div class="brand-name">INFOSEC <span>PAKISTAN</span></div>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <a href="index.html" class="active">Dashboard</a>
     <a href="reports.html">Daily Reports</a>
     <a href="database.html">CVE Database</a>
@@ -414,7 +497,12 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     <a href="contact.html">Contact</a>
     <a href="sandbox.html">Sandbox</a>
   </div>
-  <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- ── THREAT TICKER ───────────────────────────────────────── -->
@@ -895,6 +983,20 @@ function openModal(t){
 function closeModal(e){if(e.target===document.getElementById('modal'))document.getElementById('modal').classList.remove('open');}
 loadData();
 setInterval(loadData,5*60*1000);
+
+// Hamburger menu
+function toggleNav(){
+  const nav=document.getElementById('nav-links');
+  const btn=document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    document.getElementById('nav-links').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
 </script>
 </body>
 </html>

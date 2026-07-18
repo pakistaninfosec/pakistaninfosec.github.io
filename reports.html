@@ -432,11 +432,11 @@ function renderThreats(){
   list.innerHTML='';
   page.forEach(t=>{
     const div = document.createElement('div');
-    div.className='t-row';
+    div.className='t-row';div.style.cursor='pointer';
     div.innerHTML=`
       <span class="sev sev-${(t.severity||'medium').toLowerCase()}">${t.severity||'MEDIUM'}</span>
       <div>
-        <div class="t-id">${t.id||''}${t.pakistan?' 🇵🇰':''}</div>
+        <div class="t-id"><a href="cve.html?id=${encodeURIComponent(t.id||'')}" style="color:var(--blue3);text-decoration:none;" onclick="event.stopPropagation()">${t.id||''}${t.pakistan?' 🇵🇰':''}</a></div>
         <div class="t-desc">${t.desc||''}</div>
       </div>
       <div>

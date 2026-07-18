@@ -309,21 +309,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 </main>
 
 <!-- MODAL -->
-<div class="modal" id="modal" onclick="closeModal(event)">
-  <div class="modal-box">
-    <div class="modal-head">
-      <div>
-        <div class="modal-cve" id="modal-cve"></div>
-      </div>
-      <button class="modal-x" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="modal-desc" id="modal-desc"></div>
-      <div class="modal-chips" id="modal-chips"></div>
-      <a class="modal-url" id="modal-url" href="#" target="_blank"></a>
-    </div>
-  </div>
-</div>
+<!-- Modal removed — CVEs now open in cve.html -->
 
 <footer>
   <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>
@@ -443,7 +429,7 @@ function renderThreats(){
         <div class="t-src">${t.source||''}</div>
         <div class="t-date">${t.date||''}</div>
       </div>`;
-    div.addEventListener('click',()=>openModal(t));
+    div.addEventListener('click',()=>{ window.location.href='cve.html?id='+encodeURIComponent(t.id||''); });
     list.appendChild(div);
   });
 

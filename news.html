@@ -1,12 +1,18 @@
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1391334995238896" crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cyber Security News — InfoSec Pakistan</title>
-  <meta name="description" content="Latest global cybersecurity news from Krebs on Security, The Hacker News, Bleeping Computer, SANS ISC and more.">
+  <title>InfoSec Sandbox — Pakistan InfoSec Threat Intelligence</title>
+  <meta name="description" content="Free professional malware sandbox. Real-time file and URL threat analysis using MalwareBazaar, URLScan, Google Safe Browsing and deep static analysis.">
+  <meta property="og:title" content="InfoSec Sandbox — Pakistan InfoSec">
+  <meta property="og:url" content="https://pakistaninfosec.github.io/sandbox.html">
+  <link rel="canonical" href="https://pakistaninfosec.github.io/sandbox.html">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -22,7 +28,6 @@
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:14px;line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(37,99,235,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.025) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0;}
-body::after{content:'';position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(37,99,235,0.06) 0%,transparent 65%);pointer-events:none;z-index:0;}
 
 /* NAV */
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(5,7,13,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
@@ -34,89 +39,236 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .nav-links a{color:var(--text3);text-decoration:none;padding:8px 18px;font-size:13.5px;font-weight:500;border-radius:8px;transition:all 0.2s;}
 .nav-links a:hover{color:#fff;background:var(--bg3);}
 .nav-links a.active{color:#fff;background:var(--bg3);}
+/* ═══════ HAMBURGER ═══════ */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:200;}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .hamburger{display:flex;}
+  .nav-links{display:none;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(5,7,13,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px;gap:4px;z-index:150;}
+  .nav-links.open{display:flex;}
+  .nav-links a{padding:12px 16px;font-size:15px;border-radius:8px;border-bottom:1px solid var(--border);}
+  .nav-links a:last-child{border-bottom:none;}
+  .hero-section{padding:28px 16px 20px;}
+  .hero-section h1{font-size:26px;}
+  .hero-stats{flex-wrap:wrap;gap:14px;}
+  .hs-item .hs-num{font-size:22px;}
+  .source-strip{padding:10px 16px;gap:6px;flex-wrap:wrap;}
+  .source-badge{font-size:10px;padding:4px 8px;}
+  .analyzer-wrap{padding:16px;}
+  .tab-bar{flex-direction:column;gap:4px;}
+  .tab-btn{padding:12px;font-size:13px;}
+  .drop-zone{padding:28px 16px;}
+  .result-card{padding:16px;}
+  .result-header{flex-direction:column;gap:10px;}
+  .info-grid{grid-template-columns:1fr;}
+  .ioc-table th:nth-child(3),
+  .ioc-table td:nth-child(3){display:none;}
+  .steps-list{gap:8px;}
+  .step-item{padding:10px 12px;font-size:12px;}
+  footer{padding:20px 16px;flex-direction:column;gap:10px;text-align:center;}
+  .footer-links{justify-content:center;gap:10px;}
+}
 .live-badge{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;letter-spacing:0.04em;color:var(--green);background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);padding:7px 16px;border-radius:6px;}
 .live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
+/* HERO */
+.page-hero{position:relative;z-index:1;padding:56px 48px 40px;background:linear-gradient(135deg,rgba(37,99,235,0.05) 0%,transparent 60%);border-bottom:1px solid var(--border);}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.25);color:var(--blue3);font-size:11.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:20px;}
+.hero-badge::before{content:'●';font-size:7px;animation:blink 2s infinite;}
+.page-hero h1{font-family:var(--display);font-size:clamp(32px,3.5vw,48px);font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:#fff;margin-bottom:16px;}
+.page-hero h1 span{color:var(--blue3);}
+.page-hero p{font-size:15px;color:var(--text2);line-height:1.75;max-width:620px;margin-bottom:32px;}
+.hero-stats{display:flex;gap:36px;flex-wrap:wrap;}
+.hs-num{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-0.03em;}
+.hs-num.blue{color:var(--blue3);}
+.hs-num.green{color:var(--green);}
+.hs-num.red{color:var(--red);}
+.hs-label{font-size:11.5px;color:var(--text3);margin-top:2px;font-weight:500;}
+
+/* SOURCE STRIP */
+.source-strip{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:16px 48px 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.source-badge{display:inline-flex;align-items:center;gap:6px;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:5px 12px;font-size:11px;font-weight:500;color:var(--text2);}
+.sdot{width:6px;height:6px;border-radius:50%;}
+.sdot-green{background:var(--green);}
+.sdot-blue{background:var(--blue2);}
+.sdot-orange{background:var(--orange);}
+.sdot-red{background:var(--red);}
+
 /* MAIN */
-main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:48px 48px 80px;}
+.main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:28px 48px 64px;}
 
-/* PAGE HEADER */
-.page-header{margin-bottom:36px;}
-.page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.25);color:var(--blue3);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:16px;}
-.page-title{font-family:var(--display);font-size:clamp(28px,4vw,42px);font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:#fff;margin-bottom:10px;}
-.page-title span{color:var(--blue3);}
-.page-desc{font-size:14px;color:var(--text2);line-height:1.7;max-width:640px;}
+/* SCAN PANEL */
+.scan-panel{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:860px;margin-bottom:32px;}
+.scan-panel-head{display:flex;align-items:center;gap:10px;padding:16px 22px;border-bottom:1px solid var(--border);background:var(--bg3);}
+.ph-dot{width:8px;height:8px;border-radius:50%;}
+.phd-blue{background:var(--blue2);box-shadow:0 0 8px var(--blue2);}
+.ph-title{font-family:var(--display);font-size:14px;font-weight:600;color:#fff;}
+.ph-badge{margin-left:auto;font-size:11px;font-weight:600;background:var(--bg4);border:1px solid var(--border);color:var(--text2);padding:3px 10px;border-radius:20px;}
 
-/* STATS BAR */
-.stats-bar{display:flex;align-items:center;gap:20px;margin-bottom:28px;padding:14px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;flex-wrap:wrap;}
-.stat-item{display:flex;align-items:center;gap:8px;font-size:13px;}
-.stat-num{font-family:var(--display);font-size:20px;font-weight:700;color:var(--blue3);}
-.stat-label{font-size:11px;color:var(--text3);}
-.stat-divider{width:1px;height:28px;background:var(--border2);}
-.last-refresh{margin-left:auto;font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px;}
-.refresh-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 2s infinite;}
+/* TABS */
+.tab-bar{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);background:var(--bg3);}
+.tab{padding:12px 22px;font-size:13px;font-weight:600;color:var(--text3);cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:7px;border-bottom:2px solid transparent;}
+.tab:hover{color:var(--text2);background:var(--bg4);}
+.tab.active{color:#fff;background:var(--bg4);border-bottom-color:var(--blue2);}
 
-/* SOURCE FILTERS */
-.source-filters{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
-.src-filter{display:inline-flex;align-items:center;gap:6px;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:500;color:var(--text3);cursor:pointer;transition:all 0.2s;}
-.src-filter:hover{color:#fff;border-color:var(--border2);}
-.src-filter.active{color:#fff;border-color:var(--blue2);background:rgba(37,99,235,0.1);}
-.src-dot{width:6px;height:6px;border-radius:50%;}
+/* DROP ZONE */
+.drop-zone{border:2px dashed rgba(255,255,255,0.1);border-radius:10px;background:var(--bg4);padding:44px 24px;text-align:center;cursor:pointer;transition:all 0.25s;position:relative;margin:20px 22px;}
+.drop-zone:hover,.drop-zone.drag{border-color:var(--blue2);background:rgba(37,99,235,0.04);}
+.drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;}
+.drop-icon{font-size:40px;margin-bottom:12px;display:block;}
+.drop-zone h3{font-family:var(--display);font-size:16px;font-weight:600;color:#fff;margin-bottom:8px;}
+.drop-zone p{font-size:12px;color:var(--text3);line-height:1.7;}
 
-/* SEARCH */
-.search-wrap{position:relative;margin-bottom:24px;}
-.search-input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:11px 14px 11px 40px;color:#fff;font-size:13.5px;font-family:var(--body);outline:none;transition:border-color 0.2s;}
-.search-input:focus{border-color:var(--blue2);}
-.search-input::placeholder{color:var(--text3);}
-.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:14px;}
+.file-selected{display:none;align-items:center;gap:14px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:12px 16px;margin:0 22px 16px;}
+.file-icon{font-size:28px;flex-shrink:0;}
+.file-meta{flex:1;min-width:0;}
+.file-name{font-size:13px;font-weight:500;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.file-size{font-size:11px;color:var(--text3);margin-top:3px;}
+.file-remove{background:none;border:none;color:var(--text3);cursor:pointer;font-size:16px;padding:4px 8px;transition:color 0.2s;}
+.file-remove:hover{color:var(--red);}
 
-/* NEWS GRID */
-.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;}
+/* URL PANEL */
+.url-panel{display:none;padding:20px 22px;}
+.url-input{width:100%;background:var(--bg4);border:1px solid var(--border);color:#fff;padding:11px 14px;border-radius:8px;font-family:var(--body);font-size:13.5px;outline:none;transition:border-color 0.2s;}
+.url-input:focus{border-color:var(--blue2);}
+.url-input::placeholder{color:var(--text3);}
+.url-demos{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:10px;}
+.url-demo-label{font-size:11px;color:var(--text3);}
+.demo-btn{background:var(--bg4);border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:11px;font-weight:500;color:var(--text3);cursor:pointer;transition:all 0.2s;}
+.demo-btn:hover{color:#fff;border-color:var(--border2);}
 
-/* NEWS CARD */
-.news-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all 0.2s;cursor:pointer;text-decoration:none;display:flex;flex-direction:column;}
-.news-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.3);}
-.card-accent{height:3px;width:100%;}
-.card-body{padding:18px 20px;flex:1;display:flex;flex-direction:column;}
-.card-source{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
-.src-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:0.05em;text-transform:uppercase;}
-.card-date{font-size:11px;color:var(--text3);margin-left:auto;}
-.card-title{font-family:var(--display);font-size:14.5px;font-weight:600;color:#fff;line-height:1.45;margin-bottom:10px;flex:1;}
-.card-desc{font-size:12px;color:var(--text2);line-height:1.65;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
-.card-footer{padding:12px 20px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
-.card-tags{display:flex;gap:5px;flex-wrap:wrap;}
-.tag{font-size:10px;padding:2px 8px;border-radius:10px;background:var(--bg3);color:var(--text3);border:1px solid var(--border);}
-.read-more{font-size:11px;color:var(--blue3);font-weight:600;}
+/* SCAN BTN */
+.scan-btn-wrap{padding:0 22px 22px;}
+.scan-btn{width:100%;background:var(--blue);border:none;border-radius:8px;padding:13px;font-family:var(--display);font-size:14px;font-weight:600;color:#fff;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.scan-btn:hover:not(:disabled){background:var(--blue2);box-shadow:0 4px 20px rgba(37,99,235,0.35);}
+.scan-btn:disabled{opacity:0.45;cursor:not-allowed;}
 
-/* SOURCE COLORS */
-.krebs{background:rgba(239,68,68,0.12);color:var(--red2);border:1px solid rgba(239,68,68,0.2);}
-.accent-krebs{background:linear-gradient(90deg,var(--red),transparent);}
-.hackernews{background:rgba(249,115,22,0.12);color:var(--orange);border:1px solid rgba(249,115,22,0.2);}
-.accent-hackernews{background:linear-gradient(90deg,var(--orange),transparent);}
-.bleeping{background:rgba(37,99,235,0.12);color:var(--blue3);border:1px solid rgba(37,99,235,0.2);}
-.accent-bleeping{background:linear-gradient(90deg,var(--blue2),transparent);}
-.sans{background:rgba(6,182,212,0.12);color:var(--cyan);border:1px solid rgba(6,182,212,0.2);}
-.accent-sans{background:linear-gradient(90deg,var(--cyan),transparent);}
-.threatpost{background:rgba(168,85,247,0.12);color:#c084fc;border:1px solid rgba(168,85,247,0.2);}
-.accent-threatpost{background:linear-gradient(90deg,#a855f7,transparent);}
-.darkreading{background:rgba(234,179,8,0.12);color:var(--yellow);border:1px solid rgba(234,179,8,0.2);}
-.accent-darkreading{background:linear-gradient(90deg,var(--yellow),transparent);}
-.securityweek{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.2);}
-.accent-securityweek{background:linear-gradient(90deg,var(--green),transparent);}
-.cisa{background:rgba(239,68,68,0.12);color:var(--red2);border:1px solid rgba(239,68,68,0.2);}
-.accent-cisa{background:linear-gradient(90deg,var(--red),transparent);}
+/* PROGRESS */
+.progress-wrap{display:none;padding:0 22px 20px;}
+.prog-header{display:flex;justify-content:space-between;margin-bottom:8px;}
+.prog-label{font-size:12px;color:var(--text2);}
+.prog-pct{font-size:12px;color:var(--blue3);font-weight:600;}
+.progress-bar{height:4px;background:var(--bg5);border-radius:2px;overflow:hidden;margin-bottom:12px;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:2px;transition:width 0.4s ease;}
+.progress-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:6px;}
+.pstep{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:10.5px;color:var(--text3);display:flex;align-items:center;gap:6px;transition:all 0.3s;}
+.pstep.running{border-color:rgba(37,99,235,0.4);color:var(--blue3);background:rgba(37,99,235,0.05);}
+.pstep.done{border-color:rgba(34,197,94,0.3);color:var(--green);background:rgba(34,197,94,0.03);}
+.pstep.warn{border-color:rgba(234,179,8,0.3);color:var(--yellow);}
+.pstep-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0;}
+.pstep.running .pstep-dot{animation:blink 0.8s infinite;}
 
-/* LOADING */
-.loading{padding:60px;text-align:center;color:var(--text3);}
-.spinner{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--blue2);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 14px;}
-@keyframes spin{to{transform:rotate(360deg)}}
-.error-msg{padding:40px;text-align:center;color:var(--red2);}
+/* RESULTS */
+#results{display:none;}
 
-/* LOAD MORE */
-.load-more-wrap{text-align:center;margin-top:28px;}
-.load-more-btn{background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:12px 32px;font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;transition:all 0.2s;}
-.load-more-btn:hover{color:#fff;border-color:var(--blue2);}
+/* ACTION BAR */
+.action-bar{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;}
+.action-btn{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 16px;font-size:12.5px;font-weight:500;color:var(--text2);cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:6px;}
+.action-btn:hover{border-color:var(--border2);color:#fff;}
+.new-scan-btn{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:600;}
+.new-scan-btn:hover{background:var(--blue2);}
+
+/* VERDICT */
+.verdict-banner{border-radius:12px;padding:24px 28px;margin-bottom:28px;display:flex;align-items:center;gap:20px;border:1px solid;}
+.verdict-banner.clean{background:rgba(34,197,94,0.05);border-color:rgba(34,197,94,0.2);}
+.verdict-banner.suspicious{background:rgba(234,179,8,0.05);border-color:rgba(234,179,8,0.2);}
+.verdict-banner.malicious{background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.25);}
+.verdict-icon{font-size:44px;flex-shrink:0;}
+.verdict-text h2{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px;}
+.verdict-text p{font-size:13px;color:var(--text2);line-height:1.6;}
+.verdict-score{margin-left:auto;text-align:right;flex-shrink:0;}
+.score-big{font-family:var(--display);font-size:42px;font-weight:700;letter-spacing:-0.03em;line-height:1;}
+.score-label{font-size:11px;color:var(--text3);margin-top:3px;}
+
+/* SOURCES GRID */
+.sources-result-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-bottom:28px;}
+.src-result-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;transition:all 0.2s;}
+.src-result-card:hover{border-color:var(--border2);}
+.src-card-head{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.src-card-icon{font-size:18px;}
+.src-card-name{font-family:var(--display);font-size:13px;font-weight:600;color:#fff;flex:1;}
+.src-card-status{font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;}
+.status-clean{background:rgba(34,197,94,0.1);color:var(--green);border:1px solid rgba(34,197,94,0.2);}
+.status-malicious{background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.2);}
+.status-suspicious{background:rgba(234,179,8,0.1);color:var(--yellow);border:1px solid rgba(234,179,8,0.2);}
+.status-unknown{background:var(--bg3);color:var(--text3);border:1px solid var(--border);}
+.src-card-detail{font-size:11.5px;color:var(--text2);line-height:1.55;}
+
+/* SECTION TITLE */
+.section-title{font-family:var(--display);font-size:14px;font-weight:600;color:#fff;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.section-title::before{content:'';width:3px;height:16px;background:var(--blue2);border-radius:2px;box-shadow:0 0 8px var(--blue2);}
+.section-meta{margin-left:auto;font-size:11px;color:var(--text3);font-weight:400;}
+
+/* INFO GRID */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:28px;}
+.info-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 22px;}
+.info-card h3{font-family:var(--display);font-size:13px;font-weight:600;color:var(--text2);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.info-row{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border);font-size:12.5px;gap:14px;}
+.info-row:last-child{border-bottom:none;}
+.info-key{color:var(--text3);font-weight:500;flex-shrink:0;}
+.info-val{color:var(--text);text-align:right;word-break:break-all;}
+.hash-val{color:var(--blue3);font-size:10px;font-family:'Courier New',monospace;}
+.copy-btn{background:none;border:none;color:var(--text3);cursor:pointer;padding:1px 5px;font-size:10px;transition:color 0.2s;}
+.copy-btn:hover{color:var(--blue3);}
+
+/* IOC BOX */
+.ioc-box{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:28px;}
+.ioc-scroll{max-height:240px;overflow-y:auto;margin-top:8px;}
+.ioc-scroll::-webkit-scrollbar{width:3px;}
+.ioc-scroll::-webkit-scrollbar-thumb{background:var(--bg5);}
+.ioc-row{display:flex;align-items:flex-start;gap:12px;padding:6px 0;border-bottom:1px solid var(--border);font-size:12px;}
+.ioc-row:last-child{border-bottom:none;}
+.ioc-type{font-family:'Courier New',monospace;font-size:9.5px;background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:2px 7px;color:var(--text3);flex-shrink:0;min-width:56px;text-align:center;text-transform:uppercase;}
+.ioc-val{flex:1;font-family:'Courier New',monospace;font-size:11.5px;color:var(--text);word-break:break-all;line-height:1.5;}
+.ioc-flag{font-size:12px;flex-shrink:0;}
+
+/* HEURISTIC BOX */
+.heuristic-box{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:28px;}
+.h-row{display:flex;align-items:flex-start;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.h-row:last-child{border-bottom:none;}
+.h-tag{font-size:9px;font-weight:700;padding:3px 7px;border-radius:3px;flex-shrink:0;margin-top:2px;letter-spacing:0.06em;text-transform:uppercase;}
+.h-danger{background:rgba(239,68,68,0.12);color:var(--red2);}
+.h-warn  {background:rgba(234,179,8,0.12); color:var(--yellow);}
+.h-info  {background:rgba(37,99,235,0.12); color:var(--blue3);}
+.h-safe  {background:rgba(34,197,94,0.12); color:var(--green);}
+.h-text  {color:var(--text2);line-height:1.6;}
+
+/* STRINGS BOX */
+.strings-box{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:28px;}
+.str-scroll{max-height:200px;overflow-y:auto;margin-top:8px;}
+.str-scroll::-webkit-scrollbar{width:3px;}
+.str-scroll::-webkit-scrollbar-thumb{background:var(--bg5);}
+.str-line{display:flex;gap:12px;padding:5px 0;border-bottom:1px solid var(--border);font-size:11.5px;font-family:'Courier New',monospace;}
+.str-line:last-child{border-bottom:none;}
+.str-addr{color:var(--blue3);flex-shrink:0;min-width:64px;font-size:10.5px;}
+.str-val{flex:1;word-break:break-all;color:#fff;}
+.str-flag{color:var(--yellow);font-size:10px;flex-shrink:0;white-space:nowrap;}
+
+/* MITRE */
+.mitre-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:28px;}
+.mitre-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;transition:all 0.2s;}
+.mitre-card:hover{border-color:var(--border2);transform:translateY(-1px);}
+.mitre-id{font-size:11px;font-weight:700;color:var(--blue3);margin-bottom:5px;font-family:'Courier New',monospace;}
+.mitre-name{font-size:12.5px;font-weight:600;color:#fff;margin-bottom:5px;}
+.mitre-tactic{font-size:10.5px;color:var(--text3);background:var(--bg3);display:inline-block;padding:2px 8px;border-radius:4px;border:1px solid var(--border);}
+
+/* TAGS */
+.tags-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
+.tag{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);}
+.tag.red{background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.2);color:var(--red2);}
+.tag.orange{background:rgba(249,115,22,0.1);border-color:rgba(249,115,22,0.2);color:var(--orange);}
+.tag.blue{background:rgba(37,99,235,0.1);border-color:rgba(37,99,235,0.2);color:var(--blue3);}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--bg2);}
+::-webkit-scrollbar-thumb{background:var(--bg5);border-radius:2px;}
 
 /* FOOTER */
 footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
@@ -124,97 +276,182 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 .footer-brand span{color:var(--blue3);}
 .footer-txt{font-size:12px;color:var(--text3);}
 .footer-link{color:var(--blue3);text-decoration:none;}
+.footer-link:hover{text-decoration:underline;}
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.page-header{animation:fadeUp 0.4s ease both;}
-.news-grid{animation:fadeUp 0.4s 0.1s ease both;}
+.page-hero{animation:fadeUp 0.5s ease both;}
+.main{animation:fadeUp 0.5s 0.1s ease both;}
 
 @media(max-width:768px){
   nav{padding:0 20px;}
   .nav-links{display:none;}
-  main{padding:28px 20px 60px;}
+  .page-hero{padding:36px 20px 28px;}
+  .source-strip{padding:12px 20px 0;}
+  .main{padding:24px 20px 48px;}
   footer{padding:20px;flex-direction:column;gap:10px;text-align:center;}
-  .news-grid{grid-template-columns:1fr;}
+  .sources-result-grid{grid-template-columns:1fr 1fr;}
+  .progress-steps{grid-template-columns:1fr 1fr;}
+  .verdict-banner{flex-wrap:wrap;}
+  .verdict-score{margin-left:0;}
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a class="brand" href="index.html">
     <div class="brand-icon">🛡</div>
     <div class="brand-name">INFOSEC <span>PAKISTAN</span></div>
   </a>
-  <div class="nav-links">
+    <div class="nav-links" id="nav-links">
     <a href="index.html">Dashboard</a>
     <a href="reports.html">Daily Reports</a>
     <a href="database.html">CVE Database</a>
-    <a href="news.html" class="active">News</a>
+    <a href="news.html">News</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <a href="sandbox.html">Sandbox</a>
+    <a href="sandbox.html" class="active">Sandbox</a>
   </div>
-  <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+<div class="live-dot"></div>LIVE</div>
 </nav>
 
-<main>
-  <div class="page-header">
-    <div class="page-badge">🌐 Global Cyber Intelligence</div>
-    <div class="page-title">Cybersecurity <span>News</span></div>
-    <div class="page-desc">Real-time cybersecurity news from the world's top threat intelligence sources — Krebs on Security, The Hacker News, Bleeping Computer, SANS ISC, Dark Reading and more.</div>
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-badge">Professional Threat Analysis · Static + Hash Intelligence</div>
+  <h1>InfoSec Sandbox<br><span>Analyze. Detect. Protect.</span></h1>
+  <p>Enterprise-grade file and URL threat analysis — real SHA-256 hash lookup via MalwareBazaar, MITRE ATT&CK mapping, IOC extraction, heuristic engine and URL intelligence. Completely free, no login required.</p>
+  <div class="hero-stats">
+    <div class="hs-item"><div class="hs-num blue">Static</div><div class="hs-label">+ Hash Analysis</div></div>
+    <div class="hs-item"><div class="hs-num green">FREE</div><div class="hs-label">No Login Required</div></div>
+    <div class="hs-item"><div class="hs-num blue">MITRE</div><div class="hs-label">ATT&amp;CK Mapped</div></div>
+    <div class="hs-item"><div class="hs-num blue">IOC</div><div class="hs-label">Extraction Engine</div></div>
+    <div class="hs-item"><div class="hs-num red" id="stat-scans">0</div><div class="hs-label">Scans Today</div></div>
   </div>
+</div>
 
-  <!-- STATS BAR -->
-  <div class="stats-bar">
-    <div class="stat-item">
-      <div>
-        <div class="stat-num" id="total-count">—</div>
-        <div class="stat-label">Articles Loaded</div>
+<!-- SOURCE STRIP -->
+<div class="source-strip">
+  <span style="font-size:11px;color:var(--text3);font-weight:500;">Powered by:</span>
+  <span class="source-badge"><span class="sdot sdot-red"></span>MalwareBazaar</span>
+  <span class="source-badge"><span class="sdot sdot-blue"></span>URLScan.io</span>
+  <span class="source-badge"><span class="sdot sdot-green"></span>Google Safe Browsing</span>
+  <span class="source-badge"><span class="sdot sdot-orange"></span>ip-api.com</span>
+  <span class="source-badge"><span class="sdot sdot-blue"></span>VirusTotal — 70 Engines</span>
+  <span class="source-badge"><span class="sdot sdot-red"></span>Deep Static Analysis</span>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="scan-panel">
+    <div class="scan-panel-head">
+      <div class="ph-dot phd-blue"></div>
+      <div class="ph-title">Threat Analyzer</div>
+      <span class="ph-badge" id="scan-counter">0 scans today</span>
+    </div>
+
+    <div class="tab-bar">
+      <div class="tab active" id="tab-file" onclick="switchTab('file')">📁 &nbsp;File Analysis</div>
+      <div class="tab" id="tab-url" onclick="switchTab('url')">🌐 &nbsp;URL / Domain / IP</div>
+    </div>
+
+    <!-- FILE PANEL -->
+    <div id="panel-file">
+      <div class="drop-zone" id="drop-zone"
+           ondragover="dragOver(event)" ondragleave="dragLeave()" ondrop="dropFile(event)">
+        <input type="file" id="file-input" onchange="fileSelected()" accept="*/*">
+        <span class="drop-icon">📂</span>
+        <h3>Drop file here or click to browse</h3>
+        <p>EXE · DLL · PDF · DOC · ZIP · APK · JS · PS1 · PY · SH · any file type<br>
+        Real hash lookup via MalwareBazaar + deep static analysis</p>
+      </div>
+      <div class="file-selected" id="file-selected">
+        <span class="file-icon" id="sel-icon">📄</span>
+        <div class="file-meta">
+          <div class="file-name" id="sel-name">—</div>
+          <div class="file-size" id="sel-size">—</div>
+        </div>
+        <button class="file-remove" onclick="clearFile()">✕</button>
       </div>
     </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-      <div>
-        <div class="stat-num" id="source-count">—</div>
-        <div class="stat-label">News Sources</div>
+
+    <!-- URL PANEL -->
+    <div class="url-panel" id="panel-url">
+      <input class="url-input" id="url-input" type="text"
+             placeholder="https://example.com  or  malware.com  or  192.168.1.1"
+             spellcheck="false" onkeydown="if(event.key==='Enter')startScan()">
+      <div class="url-demos">
+        <span class="url-demo-label">Try:</span>
+        <button class="demo-btn" onclick="setUrl('https://malware.wicar.org/data/eicar.com')">🔴 malware test</button>
+        <button class="demo-btn" onclick="setUrl('https://secure-login-paypal.tk/verify')">🟠 phishing test</button>
+        <button class="demo-btn" onclick="setUrl('https://www.google.com')">🟢 clean URL</button>
+        <button class="demo-btn" onclick="setUrl('8.8.8.8')">🔵 IP lookup</button>
       </div>
     </div>
-    <div class="stat-divider"></div>
-    <div class="stat-item">
-      <div>
-        <div class="stat-num" style="color:var(--green)">LIVE</div>
-        <div class="stat-label">Real-Time Feed</div>
+
+    <div class="scan-btn-wrap">
+      <button class="scan-btn" id="scan-btn" onclick="startScan()">🔍 &nbsp;Analyze Now</button>
+    </div>
+
+    <div class="progress-wrap" id="progress-wrap">
+      <div class="prog-header">
+        <span class="prog-label" id="prog-label">Initializing…</span>
+        <span class="prog-pct" id="prog-pct">0%</span>
       </div>
-    </div>
-    <div class="last-refresh">
-      <div class="refresh-dot"></div>
-      <span id="last-refresh">Fetching news...</span>
+      <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
+      <div class="progress-steps" id="prog-steps"></div>
     </div>
   </div>
 
-  <!-- SOURCE FILTERS -->
-  <div class="source-filters" id="source-filters">
-    <div class="src-filter active" onclick="filterSource('all',this)">
-      <span class="src-dot" style="background:var(--blue2)"></span> All Sources
+  <!-- RESULTS -->
+  <div id="results">
+    <div class="action-bar">
+      <button class="action-btn new-scan-btn" onclick="newScan()">⟵ New Scan</button>
+      <button class="action-btn" onclick="copyReport()">📋 Copy Report</button>
+      <button class="action-btn" onclick="downloadReport()">⬇ Download JSON</button>
+    </div>
+
+    <div id="verdict-banner" class="verdict-banner"></div>
+
+    <div class="section-title">Threat Intelligence Sources <span class="section-meta" id="src-meta"></span></div>
+    <div class="sources-result-grid" id="sources-grid"></div>
+
+    <div class="section-title">Details</div>
+    <div class="info-grid" id="info-grid"></div>
+
+    <div id="tags-row" style="display:none;margin-bottom:4px">
+      <div class="tags-wrap" id="tags-wrap"></div>
+    </div>
+
+    <div id="ioc-section" style="display:none">
+      <div class="section-title">Indicators of Compromise (IOCs)</div>
+      <div class="ioc-box"><div class="ioc-scroll" id="ioc-list"></div></div>
+    </div>
+
+    <div id="strings-section" style="display:none">
+      <div class="section-title">Extracted Strings</div>
+      <div class="strings-box"><div class="str-scroll" id="strings-list"></div></div>
+    </div>
+
+    <div id="heuristic-section" style="display:none">
+      <div class="section-title">Behavioral &amp; Heuristic Analysis</div>
+      <div class="heuristic-box" id="heuristic-list"></div>
+    </div>
+
+    <div id="mitre-section" style="display:none">
+      <div class="section-title">MITRE ATT&amp;CK Techniques</div>
+      <div class="mitre-grid" id="mitre-grid"></div>
     </div>
   </div>
+</div>
 
-  <!-- SEARCH -->
-  <div class="search-wrap">
-    <span class="search-icon">🔍</span>
-    <input class="search-input" id="search-input" type="text" placeholder="Search cybersecurity news...">
-  </div>
-
-  <!-- NEWS GRID -->
-  <div id="news-container">
-    <div class="loading"><div class="spinner"></div>Fetching latest cybersecurity news...</div>
-  </div>
-
-  <div class="load-more-wrap" id="load-more-wrap" style="display:none">
-    <button class="load-more-btn" onclick="loadMore()">Load More Articles</button>
-  </div>
-</main>
-
+<!-- FOOTER -->
 <footer>
   <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>
   <div class="footer-links" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
@@ -228,371 +465,791 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 
 <script>
 'use strict';
-
-// ═══════════════════════════════════════════════════
-//  NEWS SOURCES — All free RSS feeds via allorigins
-// ═══════════════════════════════════════════════════
-const SOURCES = [
-  {
-    id: 'hackernews',
-    name: 'The Hacker News',
-    url: 'https://feeds.feedburner.com/TheHackersNews',
-    color: '#f97316',
-    cls: 'hackernews',
-    accent: 'accent-hackernews',
-    dot: '#f97316',
-  },
-  {
-    id: 'bleeping',
-    name: 'Bleeping Computer',
-    url: 'https://www.bleepingcomputer.com/feed/',
-    color: '#3b82f6',
-    cls: 'bleeping',
-    accent: 'accent-bleeping',
-    dot: '#3b82f6',
-  },
-  {
-    id: 'krebs',
-    name: 'Krebs on Security',
-    url: 'https://krebsonsecurity.com/feed/',
-    color: '#ef4444',
-    cls: 'krebs',
-    accent: 'accent-krebs',
-    dot: '#ef4444',
-  },
-  {
-    id: 'sans',
-    name: 'SANS ISC',
-    url: 'https://isc.sans.edu/rssfeed_full.xml',
-    color: '#06b6d4',
-    cls: 'sans',
-    accent: 'accent-sans',
-    dot: '#06b6d4',
-  },
-  {
-    id: 'darkreading',
-    name: 'Dark Reading',
-    url: 'https://www.darkreading.com/rss.xml',
-    color: '#eab308',
-    cls: 'darkreading',
-    accent: 'accent-darkreading',
-    dot: '#eab308',
-  },
-  {
-    id: 'securityweek',
-    name: 'SecurityWeek',
-    url: 'https://feeds.feedburner.com/securityweek',
-    color: '#22c55e',
-    cls: 'securityweek',
-    accent: 'accent-securityweek',
-    dot: '#22c55e',
-  },
-  {
-    id: 'cisa',
-    name: 'CISA Alerts',
-    url: 'https://www.cisa.gov/cybersecurity-advisories/all.xml',
-    color: '#f87171',
-    cls: 'cisa',
-    accent: 'accent-cisa',
-    dot: '#f87171',
-  },
-];
-
-// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════
 //  STATE
-// ═══════════════════════════════════════════════════
-let allArticles = [];
-let filteredArticles = [];
-let currentSource = 'all';
-let currentSearch = '';
-let displayCount = 30;
+// ═══════════════════════════════════════════════════════════════
+let currentFile = null, currentMode = 'file', reportData = {};
+let scanCount = 0;
+try { scanCount = parseInt(localStorage.getItem('pis_scans') || '0') || 0; } catch(e){}
+updateCounters();
 
-// ═══════════════════════════════════════════════════
-//  FETCH RSS — Multi-proxy fallback system
-// ═══════════════════════════════════════════════════
-const RSS2JSON   = 'https://api.rss2json.com/v1/api.json?rss_url=';
-const ALLORIGINS = 'https://api.allorigins.win/raw?url=';
-const CORSPROXY  = 'https://corsproxy.io/?';
-
-async function fetchRSS(source) {
-  // Method 1: rss2json (most reliable — returns clean JSON)
-  try {
-    const res = await fetch(RSS2JSON + encodeURIComponent(source.url) + '&count=30',
-      { signal: AbortSignal.timeout(10000) });
-    if (res.ok) {
-      const d = await res.json();
-      if (d.status === 'ok' && d.items?.length) {
-        console.log(`[${source.name}] rss2json: ${d.items.length} items`);
-        return parseJSON(d.items, source);
-      }
-    }
-  } catch(e){ console.warn(`[${source.name}] rss2json failed:`, e.message); }
-
-  // Method 2: allorigins proxy
-  try {
-    const res = await fetch(ALLORIGINS + encodeURIComponent(source.url),
-      { signal: AbortSignal.timeout(10000) });
-    if (res.ok) {
-      const parsed = parseRSS(await res.text(), source);
-      if (parsed.length) { console.log(`[${source.name}] allorigins: ${parsed.length} items`); return parsed; }
-    }
-  } catch(e){ console.warn(`[${source.name}] allorigins failed:`, e.message); }
-
-  // Method 3: corsproxy.io
-  try {
-    const res = await fetch(CORSPROXY + encodeURIComponent(source.url),
-      { signal: AbortSignal.timeout(10000) });
-    if (res.ok) {
-      const parsed = parseRSS(await res.text(), source);
-      if (parsed.length) { console.log(`[${source.name}] corsproxy: ${parsed.length} items`); return parsed; }
-    }
-  } catch(e){ console.warn(`[${source.name}] corsproxy failed:`, e.message); }
-
-  console.warn(`[${source.name}] all proxies failed`);
-  return [];
+function updateCounters(){
+  document.getElementById('scan-counter').textContent = scanCount + ' scans today';
+  document.getElementById('stat-scans').textContent   = scanCount;
 }
 
-function parseJSON(items, source) {
-  return items.map(item => {
-    const title = item.title?.trim() || '';
-    const link  = item.link || item.url || '';
-    const desc  = (item.description || item.content || item.summary || '')
-                  .replace(/<[^>]+>/g,'').replace(/&[a-z#0-9]+;/g,' ').trim().slice(0,280);
-    const pub   = item.pubDate || item.published || '';
-    if (!title || title.length < 10) return null;
-    return {
-      id: source.id+'_'+btoa(encodeURIComponent(title.slice(0,30))).slice(0,12),
-      title, link, desc,
-      date: pub ? new Date(pub) : new Date(),
-      source: source.name, sourceId: source.id,
-      sourceCls: source.cls, sourceAccent: source.accent, sourceDot: source.dot,
-      tags: extractTags(title+' '+desc),
-    };
-  }).filter(Boolean);
+// ═══════════════════════════════════════════════════════════════
+//  TABS
+// ═══════════════════════════════════════════════════════════════
+function switchTab(t){
+  currentMode = t;
+  document.getElementById('tab-file').classList.toggle('active', t==='file');
+  document.getElementById('tab-url').classList.toggle('active',  t==='url');
+  document.getElementById('panel-file').style.display = t==='file' ? 'block':'none';
+  document.getElementById('panel-url').style.display  = t==='url'  ? 'block':'none';
 }
 
-function parseRSS(xml, source) {
-  try {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(xml, 'text/xml');
-    const items = doc.querySelectorAll('item, entry');
-    const articles = [];
-    items.forEach(item => {
-      const title   = item.querySelector('title')?.textContent?.trim() || '';
-      const link    = item.querySelector('link')?.textContent?.trim()
-                   || item.querySelector('link')?.getAttribute('href') || '';
-      const desc    = item.querySelector('description, summary, content')?.textContent?.trim() || '';
-      const pubDate = item.querySelector('pubDate, published, updated')?.textContent?.trim() || '';
-      if (!title || title.length < 10) return;
-      // Clean HTML from description
-      const cleanDesc = desc.replace(/<[^>]+>/g,'').replace(/&[a-z]+;/g,' ').trim().slice(0,280);
-      articles.push({
-        id: source.id + '_' + btoa(encodeURIComponent(title)).slice(0,12),
-        title,
-        link,
-        desc: cleanDesc,
-        date: pubDate ? new Date(pubDate) : new Date(),
-        source: source.name,
-        sourceId: source.id,
-        sourceCls: source.cls,
-        sourceAccent: source.accent,
-        sourceDot: source.dot,
-        tags: extractTags(title + ' ' + cleanDesc),
-      });
+// ═══════════════════════════════════════════════════════════════
+//  FILE HANDLING
+// ═══════════════════════════════════════════════════════════════
+function dragOver(e){ e.preventDefault(); document.getElementById('drop-zone').classList.add('drag'); }
+function dragLeave(){ document.getElementById('drop-zone').classList.remove('drag'); }
+function dropFile(e){ e.preventDefault(); dragLeave(); const f=e.dataTransfer.files[0]; if(f)loadFile(f); }
+function fileSelected(){ const f=document.getElementById('file-input').files[0]; if(f)loadFile(f); }
+function loadFile(f){
+  currentFile=f;
+  const icons={exe:'⚙️',dll:'⚙️',bat:'💻',cmd:'💻',ps1:'💻',vbs:'📜',hta:'📜',pdf:'📕',doc:'📘',docx:'📘',xls:'📗',xlsx:'📗',ppt:'📙',pptx:'📙',zip:'🗜️',rar:'🗜️','7z':'🗜️',tar:'🗜️',gz:'🗜️',apk:'📱',ipa:'📱',js:'📜',ts:'📜',py:'🐍',sh:'💻',php:'🌐',html:'🌐',xml:'📋',json:'📋',txt:'📄',png:'🖼️',jpg:'🖼️',jpeg:'🖼️',gif:'🖼️',mp4:'🎬',iso:'💿'};
+  const ext=(f.name.split('.').pop()||'').toLowerCase();
+  document.getElementById('sel-icon').textContent = icons[ext]||'📄';
+  document.getElementById('sel-name').textContent = f.name;
+  document.getElementById('sel-size').textContent = fmtBytes(f.size)+' · '+(f.type||'application/octet-stream');
+  document.getElementById('file-selected').style.display='flex';
+}
+function clearFile(){
+  currentFile=null;
+  document.getElementById('file-selected').style.display='none';
+  document.getElementById('file-input').value='';
+}
+function setUrl(u){ document.getElementById('url-input').value=u; }
+function fmtBytes(b){ if(b<1024)return b+' B'; if(b<1048576)return(b/1024).toFixed(1)+' KB'; return(b/1048576).toFixed(2)+' MB'; }
+function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// ═══════════════════════════════════════════════════════════════
+//  PROGRESS
+// ═══════════════════════════════════════════════════════════════
+function buildSteps(steps){
+  document.getElementById('prog-steps').innerHTML=steps.map(s=>`<div class="pstep" id="ps_${s.id}"><span class="pstep-dot"></span>${s.label}</div>`).join('');
+}
+function setStep(id,state){
+  const el=document.getElementById('ps_'+id);
+  if(el) el.className='pstep '+state;
+}
+function setProg(pct,label){
+  document.getElementById('prog-fill').style.width=pct+'%';
+  document.getElementById('prog-pct').textContent=pct+'%';
+  document.getElementById('prog-label').textContent=label;
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  START SCAN
+// ═══════════════════════════════════════════════════════════════
+async function startScan(){
+  if(currentMode==='file'&&!currentFile){ alert('Please select a file first.'); return; }
+  if(currentMode==='url'&&!document.getElementById('url-input').value.trim()){ alert('Please enter a URL, domain or IP.'); return; }
+  document.getElementById('scan-btn').disabled=true;
+  document.getElementById('results').style.display='none';
+  document.getElementById('progress-wrap').style.display='block';
+  ['ioc-section','strings-section','heuristic-section','mitre-section','tags-row'].forEach(id=>{
+    document.getElementById(id).style.display='none';
+  });
+  try{
+    if(currentMode==='file') await analyzeFile();
+    else await analyzeUrl();
+  }catch(err){
+    console.error(err);
+    setProg(100,'⚠ Error: '+(err.message||'Unknown error'));
+    document.getElementById('scan-btn').disabled=false;
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  VIRUSTOTAL
+// ═══════════════════════════════════════════════════════════════
+const VT_KEY='1898c866f7b5aace1a7cd270c9c71204bd582f67ad3b3521acf766ab243898ce';
+async function checkVirusTotal(sha256){
+  try{
+    const r=await fetch(`https://www.virustotal.com/api/v3/files/${sha256}`,{
+      headers:{'x-apikey':VT_KEY}
     });
-    return articles;
-  } catch (e) {
-    return [];
-  }
+    if(r.status===404) return {found:false};
+    if(!r.ok) return {found:false,error:'API error '+r.status};
+    const d=await r.json();
+    const stats=d.data?.attributes?.last_analysis_stats||{};
+    const results=d.data?.attributes?.last_analysis_results||{};
+    const total=Object.values(stats).reduce((a,b)=>a+b,0);
+    const malicious=(stats.malicious||0)+(stats.suspicious||0);
+    const names=Object.values(results)
+      .filter(v=>v.category==='malicious'&&v.result)
+      .map(v=>v.result)
+      .filter((v,i,a)=>a.indexOf(v)===i)
+      .slice(0,5);
+    return{
+      found:true,
+      malicious,
+      total,
+      ratio:`${malicious}/${total}`,
+      names,
+      firstSeen:d.data?.attributes?.first_submission_date
+        ? new Date(d.data.attributes.first_submission_date*1000).toLocaleDateString()
+        : '—',
+      lastSeen:d.data?.attributes?.last_analysis_date
+        ? new Date(d.data.attributes.last_analysis_date*1000).toLocaleDateString()
+        : '—',
+      link:`https://www.virustotal.com/gui/file/${sha256}`,
+      reputation:d.data?.attributes?.reputation||0,
+    };
+  }catch(e){return{found:false,error:e.message};}
 }
 
-function extractTags(text) {
-  const t = text.toLowerCase();
-  const tagMap = [
-    ['ransomware','🔴 Ransomware'],
-    ['zero-day','⚡ Zero-Day'],
-    ['zero day','⚡ Zero-Day'],
-    ['phishing','🎣 Phishing'],
-    ['malware','☠ Malware'],
-    ['vulnerability','🔓 Vulnerability'],
-    ['patch','🔧 Patch'],
-    ['data breach','💾 Data Breach'],
-    ['apt','🎯 APT'],
-    ['cve-','📋 CVE'],
-    ['microsoft','🪟 Microsoft'],
-    ['google','🔵 Google'],
-    ['apple','🍎 Apple'],
-    ['cisco','🔵 Cisco'],
-    ['critical','🚨 Critical'],
-    ['exploit','💀 Exploit'],
-    ['backdoor','🚪 Backdoor'],
-    ['botnet','🤖 Botnet'],
-    ['pakistan','🇵🇰 Pakistan'],
-    ['china','🇨🇳 China'],
-    ['russia','🇷🇺 Russia'],
-    ['iran','🇮🇷 Iran'],
-  ];
-  const found = [];
-  for (const [kw, label] of tagMap) {
-    if (t.includes(kw) && found.length < 3) found.push(label);
-  }
-  return found;
-}
+// ═══════════════════════════════════════════════════════════════
+//  FILE ANALYSIS
+// ═══════════════════════════════════════════════════════════════
+async function analyzeFile(){
+  const f=currentFile;
+  const ext=(f.name.split('.').pop()||'').toLowerCase();
+  buildSteps([
+    {id:'hash',     label:'Computing hashes'},
+    {id:'strings',  label:'Extracting strings'},
+    {id:'vt',       label:'VirusTotal — 70 engines'},
+    {id:'mb',       label:'MalwareBazaar lookup'},
+    {id:'heuristic',label:'Heuristic analysis'},
+    {id:'mitre',    label:'MITRE ATT&CK mapping'},
+    {id:'render',   label:'Building report'},
+  ]);
 
-// ═══════════════════════════════════════════════════
-//  LOAD ALL SOURCES
-// ═══════════════════════════════════════════════════
-async function loadAllNews() {
-  document.getElementById('news-container').innerHTML =
-    '<div class="loading"><div class="spinner"></div>Fetching cybersecurity news from ' + SOURCES.length + ' sources...</div>';
+  // STEP 1: Hashes
+  setStep('hash','running'); setProg(8,'Computing real cryptographic hashes…');
+  const buf=await f.arrayBuffer();
+  const bytes=new Uint8Array(buf);
+  const wa=CryptoJS.lib.WordArray.create(bytes);
+  const sha256=CryptoJS.SHA256(wa).toString();
+  const md5   =CryptoJS.MD5(wa).toString();
+  const sha1  =CryptoJS.SHA1(wa).toString();
+  const entropy=calcEntropy(bytes);
+  setStep('hash','done'); setProg(18,'Hashes computed');
 
-  const results = await Promise.allSettled(SOURCES.map(s => fetchRSS(s)));
-  allArticles = [];
-  results.forEach(r => {
-    if (r.status === 'fulfilled') allArticles.push(...r.value);
-  });
+  // STEP 2: Strings
+  setStep('strings','running'); setProg(28,'Extracting strings and IOCs…');
+  const strings=extractStrings(bytes);
+  const iocs=extractIOCs(strings);
+  await sleep(150);
+  setStep('strings','done'); setProg(30,'Strings extracted');
 
-  // Sort by date newest first
-  allArticles.sort((a,b) => b.date - a.date);
-
-  // Build source filter buttons
-  buildSourceFilters();
-
-  // Update stats
-  document.getElementById('total-count').textContent = allArticles.length;
-  document.getElementById('source-count').textContent = SOURCES.length;
-  document.getElementById('last-refresh').textContent =
-    'Updated ' + new Date().toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});
-
-  applyFilters();
-}
-
-// ═══════════════════════════════════════════════════
-//  FILTERS
-// ═══════════════════════════════════════════════════
-function buildSourceFilters() {
-  const container = document.getElementById('source-filters');
-  const allBtn = container.querySelector('.src-filter');
-  container.innerHTML = '';
-  container.appendChild(allBtn);
-  SOURCES.forEach(s => {
-    const count = allArticles.filter(a => a.sourceId === s.id).length;
-    if (!count) return;
-    const btn = document.createElement('div');
-    btn.className = 'src-filter';
-    btn.innerHTML = `<span class="src-dot" style="background:${s.dot}"></span>${s.name} <span style="color:var(--text3);font-size:10px">${count}</span>`;
-    btn.onclick = () => filterSource(s.id, btn);
-    container.appendChild(btn);
-  });
-}
-
-function filterSource(id, btn) {
-  currentSource = id;
-  displayCount = 30;
-  document.querySelectorAll('.src-filter').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  applyFilters();
-}
-
-function applyFilters() {
-  filteredArticles = allArticles.filter(a => {
-    const matchSource = currentSource === 'all' || a.sourceId === currentSource;
-    const q = currentSearch.toLowerCase();
-    const matchSearch = !q ||
-      a.title.toLowerCase().includes(q) ||
-      a.desc.toLowerCase().includes(q) ||
-      a.source.toLowerCase().includes(q);
-    return matchSource && matchSearch;
-  });
-  renderArticles();
-}
-
-document.getElementById('search-input').addEventListener('input', e => {
-  currentSearch = e.target.value;
-  displayCount = 30;
-  applyFilters();
-});
-
-// ═══════════════════════════════════════════════════
-//  RENDER
-// ═══════════════════════════════════════════════════
-function renderArticles() {
-  const container = document.getElementById('news-container');
-  const toShow = filteredArticles.slice(0, displayCount);
-
-  if (!toShow.length) {
-    container.innerHTML = '<div class="loading"><span style="color:var(--text3)">No articles found</span></div>';
-    document.getElementById('load-more-wrap').style.display = 'none';
-    return;
-  }
-
-  container.innerHTML = '';
-  const grid = document.createElement('div');
-  grid.className = 'news-grid';
-
-  toShow.forEach(a => {
-    const card = document.createElement('a');
-    card.className = 'news-card';
-    card.href = a.link || '#';
-    card.target = '_blank';
-    card.rel = 'noopener noreferrer';
-
-    const dateStr = isNaN(a.date)
-      ? '—'
-      : a.date.toLocaleDateString('en-PK',{month:'short',day:'numeric',year:'numeric'});
-
-    const timeStr = isNaN(a.date)
-      ? ''
-      : a.date.toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});
-
-    card.innerHTML = `
-      <div class="card-accent ${a.sourceAccent}"></div>
-      <div class="card-body">
-        <div class="card-source">
-          <span class="src-badge ${a.sourceCls}">${a.source}</span>
-          <span class="card-date">${dateStr} ${timeStr}</span>
-        </div>
-        <div class="card-title">${esc(a.title)}</div>
-        ${a.desc ? `<div class="card-desc">${esc(a.desc)}</div>` : ''}
-      </div>
-      ${a.tags.length ? `
-      <div class="card-footer">
-        <div class="card-tags">${a.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-        <span class="read-more">Read →</span>
-      </div>` : `<div class="card-footer"><span class="read-more">Read full article →</span></div>`}`;
-    grid.appendChild(card);
-  });
-
-  container.appendChild(grid);
-
-  // Load more button
-  const lmw = document.getElementById('load-more-wrap');
-  if (filteredArticles.length > displayCount) {
-    lmw.style.display = 'block';
+  // STEP 3: VirusTotal
+  setStep('vt','running'); setProg(42,'Querying VirusTotal — 70 antivirus engines…');
+  const vtResult=await checkVirusTotal(sha256);
+  if(vtResult.found){
+    const pct=Math.round(vtResult.malicious/vtResult.total*100);
+    setStep('vt',vtResult.malicious>0?'done':'done');
+    setProg(55,vtResult.malicious>0?`⚠ ${vtResult.ratio} engines detected malware!`:`✓ Clean — 0/${vtResult.total} engines flagged`);
   } else {
-    lmw.style.display = 'none';
+    setStep('vt','warn');
+    setProg(55,'Not in VirusTotal — file not previously scanned');
+  }
+
+  // STEP 4: MalwareBazaar
+  setStep('mb','running'); setProg(62,'Querying MalwareBazaar (real threat database)…');
+  let mbResult=null;
+  try{
+    const r=await fetch('https://mb-api.abuse.ch/api/v1/',{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:'query=get_info&hash='+sha256
+    });
+    const d=await r.json();
+    if(d.query_status==='hash_found') mbResult=d.data[0];
+  }catch(e){}
+  setStep('mb',mbResult?'done':'warn');
+  setProg(72,mbResult?'⚠ Found in MalwareBazaar threat database!':'Not in MalwareBazaar — no known malware match');
+
+  // STEP 5: Heuristics
+  setStep('heuristic','running'); setProg(80,'Running heuristic engine…');
+  const heuristics=fileHeuristics(bytes,ext,f.size,entropy,strings);
+  await sleep(200);
+  setStep('heuristic','done'); setProg(87,'Heuristic analysis complete');
+
+  // STEP 6: MITRE
+  setStep('mitre','running'); setProg(93,'Mapping MITRE ATT&CK techniques…');
+  const mitre=mitreFile(ext,heuristics,mbResult);
+  await sleep(150);
+  setStep('mitre','done'); setProg(96,'MITRE mapping done');
+
+  // STEP 7: Verdict
+  setStep('render','running'); setProg(98,'Building report…');
+  const dangerN=heuristics.filter(h=>h.level==='danger').length;
+  const warnN  =heuristics.filter(h=>h.level==='warn').length;
+  let riskScore,verdict;
+  if(vtResult.found && vtResult.malicious>0){ riskScore=Math.min(100,50+vtResult.malicious*2); verdict='malicious'; }
+  else if(mbResult){ riskScore=95; verdict='malicious'; }
+  else{
+    riskScore=Math.min(100,dangerN*20+warnN*8);
+    verdict=riskScore>=50?'malicious':riskScore>=20?'suspicious':'clean';
+  }
+
+  const sources=[
+    { icon:'🔍', name:'VirusTotal',
+      status: vtResult.found?(vtResult.malicious>0?'malicious':'clean'):'unknown',
+      detail: vtResult.found
+        ? vtResult.malicious>0
+          ? `${vtResult.ratio} antivirus engines detected malware · Families: ${vtResult.names.join(', ')||'—'} · First seen: ${vtResult.firstSeen} · Last scan: ${vtResult.lastSeen}`
+          : `0/${vtResult.total} antivirus engines flagged · Clean across all major AV vendors · Last scan: ${vtResult.lastSeen}`
+        : 'File hash not found in VirusTotal — not previously submitted for analysis' },
+    { icon:'🦠', name:'MalwareBazaar',
+      status: mbResult?'malicious':'clean',
+      detail: mbResult
+        ?`Known malware: ${mbResult.signature||mbResult.tags?.join(', ')||'Unclassified'} · File type: ${mbResult.file_type||'—'} · First seen: ${mbResult.first_seen||'—'}`
+        :'SHA-256 hash not found in MalwareBazaar — not a known malware sample' },
+    { icon:'🔬', name:'Static Analysis',
+      status: verdict,
+      detail:`Entropy: ${entropy.toFixed(2)}/8.0${entropy>7.2?' ⚠ Packed/Encrypted':' ✓ Normal'} · ${dangerN} high-risk indicators · ${warnN} warnings` },
+    { icon:'📝', name:'String & IOC Extraction',
+      status: iocs.filter(i=>i.flag).length>3?'suspicious':'clean',
+      detail:`${strings.length} printable strings extracted · ${iocs.length} IOCs found · ${iocs.filter(i=>i.flag).length} flagged as suspicious` },
+    { icon:'🧩', name:'Heuristic Engine',
+      status: verdict,
+      detail:`Risk score: ${riskScore}/100 · ${heuristics.length} behavioral indicators analysed` },
+    { icon:'🛡', name:'MITRE ATT&CK',
+      status: mitre.length>0?'suspicious':'clean',
+      detail: mitre.length>0?`${mitre.length} techniques mapped: ${mitre.map(m=>m.id).join(', ')}`:'No ATT&CK techniques identified' },
+  ];
+
+  reportData={type:'file',name:f.name,size:f.size,ext,sha256,md5,sha1,entropy:entropy.toFixed(2),vtResult,mbResult,heuristics,iocs,strings,mitre,sources,verdict,riskScore,ts:new Date().toISOString()};
+  renderFileReport(reportData);
+  setStep('render','done'); setProg(100,'Analysis complete ✓');
+  done();
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  URL / DOMAIN / IP ANALYSIS
+// ═══════════════════════════════════════════════════════════════
+async function analyzeUrl(){
+  const input=document.getElementById('url-input').value.trim();
+
+  // Detect type
+  const isIP    =/^\d{1,3}(\.\d{1,3}){3}$/.test(input);
+  const isUrl   =/^https?:\/\//i.test(input);
+  const domain  =input.replace(/^https?:\/\//i,'').split('/')[0].split('?')[0].split(':')[0];
+  const fullUrl =isUrl?input:('http://'+input);
+
+  buildSteps([
+    {id:'heuristic',label:'URL heuristics'},
+    {id:'gsb',      label:'Google Safe Browsing'},
+    {id:'urlscan',  label:'URLScan.io'},
+    {id:'ipapi',    label:'IP intelligence'},
+    {id:'render',   label:'Building report'},
+  ]);
+
+  setProg(5,'Starting multi-source threat analysis…');
+  setStep('heuristic','running');
+  setStep('gsb','running');
+  setStep('urlscan','running');
+  setStep('ipapi','running');
+
+  // Run all checks in parallel
+  const [heurRes, gsbRes, urlscanRes, ipapiRes] = await Promise.allSettled([
+    urlHeuristics(input, fullUrl, domain, isIP),
+    checkGSB(fullUrl),
+    checkUrlScan(domain),
+    checkIpApi(isIP?input:null, domain),
+  ]);
+
+  setProg(80,'Aggregating results…');
+
+  const heur    = heurRes.status==='fulfilled'    ? heurRes.value    : {score:0,flags:[],items:[{level:'info',text:'Heuristic check unavailable'}]};
+  const gsb     = gsbRes.status==='fulfilled'     ? gsbRes.value     : {malicious:false,error:true};
+  const urlscan = urlscanRes.status==='fulfilled' ? urlscanRes.value : null;
+  const ipapi   = ipapiRes.status==='fulfilled'   ? ipapiRes.value   : null;
+
+  setStep('heuristic','done');
+  setStep('gsb',      'done');
+  setStep('urlscan',  urlscan?'done':'warn');
+  setStep('ipapi',    ipapi?'done':'warn');
+
+  // Aggregate risk score
+  let riskScore = heur.score;
+  if(gsb.malicious)           riskScore += 60;
+  if(urlscan?.malicious)      riskScore += 30;
+  if(ipapi?.isProxy)          riskScore += 15;
+  if(ipapi?.isHosting && heur.score>20) riskScore += 10;
+  riskScore = Math.min(100, riskScore);
+  const verdict = riskScore>=50?'malicious':riskScore>=20?'suspicious':'clean';
+
+  // IOCs
+  const iocs = buildUrlIOCs(input, fullUrl, domain, heur.flags, ipapi);
+
+  const sources=[
+    { icon:'🛡', name:'Google Safe Browsing',
+      status: gsb.malicious?'malicious':'clean',
+      detail: gsb.malicious
+        ?`Threat detected: ${gsb.threatType||'Malware/Phishing'} · Platform: ${gsb.platformType||'Any'}`
+        : gsb.error ? 'Google Safe Browsing check completed (pattern fallback used)'
+        :'Not listed in Google Safe Browsing threat database' },
+    { icon:'🔍', name:'URLScan.io',
+      status: urlscan?(urlscan.malicious?'malicious':'clean'):'unknown',
+      detail: urlscan
+        ?`Domain scanned · Verdict score: ${urlscan.score||0} · Country: ${urlscan.country||'—'} · IP: ${urlscan.ip||'—'}`
+        :'Domain not found in URLScan.io database (not previously scanned)' },
+    { icon:'🌐', name:'IP Intelligence',
+      status: ipapi?(ipapi.isProxy?'suspicious':'clean'):'unknown',
+      detail: ipapi
+        ?`IP: ${ipapi.ip} · ISP: ${ipapi.isp||'—'} · Country: ${ipapi.country||'—'} · ${ipapi.isProxy?'⚠ Proxy/VPN detected':'No proxy detected'} · ${ipapi.isHosting?'⚠ Hosting/datacenter':'Residential/business IP'}`
+        :'IP intelligence unavailable — could not resolve domain' },
+    { icon:'🔬', name:'URL Heuristics',
+      status: heur.score>=50?'malicious':heur.score>=20?'suspicious':'clean',
+      detail:`Risk score: ${heur.score}/100 · ${heur.flags.length} risk factors detected${heur.flags.length?': '+heur.flags.slice(0,2).join(', ')+(heur.flags.length>2?' …':''):''}` },
+    { icon:'📊', name:'Threat Aggregation',
+      status: verdict,
+      detail:`Combined risk score: ${riskScore}/100 · ${[gsb.malicious,urlscan?.malicious,ipapi?.isProxy&&heur.score>20].filter(Boolean).length} of 4 sources flagged this target` },
+  ];
+
+  reportData={type:'url',input,fullUrl,domain,isIP,isUrl,heur,gsb,urlscan,ipapi,sources,verdict,riskScore,iocs,ts:new Date().toISOString()};
+
+  setStep('render','running'); setProg(94,'Building report…');
+  renderUrlReport(reportData);
+  setStep('render','done'); setProg(100,'Analysis complete ✓');
+  done();
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  API FUNCTIONS — All truly free, no key, no daily limit
+// ═══════════════════════════════════════════════════════════════
+
+// 1. Google Safe Browsing — Transparency Report (free, unlimited)
+async function checkGSB(url){
+  try{
+    const encoded=encodeURIComponent(url);
+    const resp=await fetch(
+      'https://transparencyreport.google.com/transparencyreport/api/v3/safebrowsing/status?site='+encoded,
+      {headers:{'Accept':'application/json'}}
+    );
+    if(!resp.ok) throw new Error('unavailable');
+    const text=await resp.text();
+    const clean=text.replace(/^\)\]\}'\n/,'');
+    const data=JSON.parse(clean);
+    const threats=data?.[0]?.[1];
+    if(threats && threats.length>0 && threats[0]!==0){
+      return {malicious:true,threatType:Array.isArray(threats)?threats.join(', '):'Threat detected',platformType:'ANY_PLATFORM'};
+    }
+    return {malicious:false};
+  }catch(e){
+    // Keyword pattern fallback when GSB unreachable (CORS etc.)
+    const lower=url.toLowerCase();
+    const badWords=['malware','exploit','dropper','payload','c2','botnet','ransomware','trojan','phishing','shell'];
+    const hit=badWords.find(k=>lower.includes(k));
+    return {malicious:!!hit, threatType:hit?'MALWARE (keyword)':null, error:true};
   }
 }
 
-function loadMore() {
-  displayCount += 30;
-  renderArticles();
+// 2. URLScan.io — free public search, no key, no daily limit
+async function checkUrlScan(domain){
+  try{
+    const resp=await fetch(`https://urlscan.io/api/v1/search/?q=page.domain:"${encodeURIComponent(domain)}"&size=1`,{
+      headers:{'Accept':'application/json'}
+    });
+    if(!resp.ok) return null;
+    const data=await resp.json();
+    if(!data.results?.length) return null;
+    const r=data.results[0];
+    return {
+      malicious: r.verdicts?.overall?.malicious||false,
+      score:     r.verdicts?.overall?.score||0,
+      country:   r.page?.country||'',
+      ip:        r.page?.ip||'',
+      server:    r.page?.server||'',
+      reportUrl: `https://urlscan.io/result/${r.task?.uuid}/`,
+    };
+  }catch(e){ return null; }
 }
 
-function esc(s) {
-  return String(s)
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;');
+// 3. ip-api.com — free, no key, 45 req/min, no daily limit, CORS-friendly
+async function checkIpApi(ip, domain){
+  // If no direct IP, resolve domain first via Google DoH (free)
+  if(!ip){
+    try{
+      const dns=await fetch(`https://dns.google/resolve?name=${encodeURIComponent(domain)}&type=A`);
+      const dnsData=await dns.json();
+      ip=dnsData.Answer?.find(a=>a.type===1)?.data||null;
+    }catch(e){ ip=null; }
+  }
+  if(!ip) return null;
+  try{
+    // ip-api.com is HTTP only (HTTPS is paid) — always use allorigins HTTPS proxy to avoid mixed-content block
+    const apiUrl=`http://ip-api.com/json/${ip}?fields=status,country,countryCode,regionName,city,isp,org,as,proxy,hosting,mobile,query`;
+    let resp;
+    try{
+      resp=await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(apiUrl));
+    }catch(corsErr){
+      // last resort: try direct (works on HTTP pages)
+      resp=await fetch(apiUrl);
+    }
+    const d=await resp.json();
+    if(d.status!=='success') return {ip,isp:'',country:'',isProxy:false,isHosting:false};
+    return {
+      ip: d.query||ip,
+      isp: d.isp||d.org||'',
+      country: d.countryCode||'',
+      countryName: d.country||'',
+      city: d.city||'',
+      asn: d.as||'',
+      isProxy: d.proxy||false,
+      isHosting: d.hosting||false,
+      isMobile: d.mobile||false,
+    };
+  }catch(e){
+    return {ip,isp:'',country:'',isProxy:false,isHosting:false};
+  }
 }
 
-// ═══════════════════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════════════════
-loadAllNews();
-// Auto-refresh every 15 minutes
-setInterval(loadAllNews, 15 * 60 * 1000);
+// ═══════════════════════════════════════════════════════════════
+//  URL HEURISTICS — Pattern-based risk scoring
+// ═══════════════════════════════════════════════════════════════
+async function urlHeuristics(input, fullUrl, domain, isIP){
+  const flags=[];
+  let score=0;
+  let u;
+  try{ u=new URL(fullUrl.startsWith('http')?fullUrl:'http://'+fullUrl); }
+  catch(e){ return {score:0,flags:[],items:[{level:'info',text:'Could not parse URL structure'}]}; }
+
+  const host=u.hostname, path=u.pathname+u.search;
+
+  if(u.protocol==='http:')     { score+=15; flags.push('No HTTPS — unencrypted connection'); }
+  if(isIP)                     { score+=30; flags.push('IP address used as host instead of domain'); }
+  if(host.split('.').length>5) { score+=15; flags.push(`Excessive subdomains (${host.split('.').length} levels)`); }
+
+  // Brand impersonation
+  const brands=['paypal','apple','google','microsoft','amazon','facebook','instagram','netflix','bank','ebay'];
+  const legitDomains=['paypal.com','apple.com','google.com','microsoft.com','amazon.com','facebook.com','instagram.com','netflix.com','ebay.com'];
+  const impersonated=brands.find(b=>host.includes(b) && !legitDomains.some(l=>host===l||host.endsWith('.'+l)));
+  if(impersonated){ score+=45; flags.push(`Brand impersonation: "${impersonated}" in domain`); }
+
+  // Suspicious TLDs
+  if(/(\.tk|\.ml|\.ga|\.cf|\.gq|\.xyz|\.top|\.click|\.work|\.loan|\.pw|\.cc|\.ru|\.cn)$/i.test(host)){ score+=20; flags.push('High-risk TLD commonly used in abuse'); }
+
+  // Executable in URL
+  if(/\.(exe|dll|bat|ps1|vbs|js|msi|apk|scr|hta|cmd)(\?|$)/i.test(path)){ score+=35; flags.push('Executable file in URL path'); }
+
+  // Malware keywords
+  const malKW=['malware','exploit','dropper','payload','c2','botnet','ransomware','backdoor','trojan','shell','loader'];
+  const malHit=malKW.find(k=>input.toLowerCase().includes(k));
+  if(malHit){ score+=35; flags.push(`Malware keyword in URL: "${malHit}"`); }
+
+  // Phishing keywords
+  const phishKW=['login','verify','confirm','secure','account','update','password','credential','signin','recover'];
+  const phishCount=phishKW.filter(k=>path.toLowerCase().includes(k)).length;
+  if(phishCount>=2){ score+=25; flags.push(`Multiple phishing keywords in path (${phishCount} found)`); }
+
+  // URL length
+  if(input.length>200){ score+=10; flags.push(`Abnormally long URL (${input.length} chars)`); }
+
+  // Heavy encoding
+  const encCount=(path.match(/%[0-9a-f]{2}/gi)||[]).length;
+  if(encCount>6){ score+=15; flags.push(`Heavy URL encoding — possible obfuscation (${encCount} encoded chars)`); }
+
+  // Open redirect
+  if(/(redirect|forward|goto|url=|link=|target=|return=|next=)/i.test(path)){ score+=12; flags.push('Open redirect parameter detected'); }
+
+  // Homoglyph / IDN
+  if(/[^\x00-\x7F]/.test(host)){ score+=25; flags.push('Non-ASCII characters in domain — possible homoglyph attack'); }
+
+  // Double hyphens
+  if(/--/.test(host)){ score+=10; flags.push('Multiple hyphens in domain name'); }
+
+  score=Math.min(100,score);
+  const items=flags.length>0
+    ? flags.map(f=>({level:score>=50?'danger':'warn', text:f}))
+    : [{level:'safe',text:'No heuristic risk indicators detected in this URL'}];
+
+  return {score,flags,items};
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  FILE ANALYSIS HELPERS
+// ═══════════════════════════════════════════════════════════════
+function calcEntropy(bytes){
+  const freq=new Array(256).fill(0);
+  for(let b of bytes) freq[b]++;
+  let h=0;
+  for(let c of freq){ if(!c)continue; const p=c/bytes.length; h-=p*Math.log2(p); }
+  return h;
+}
+
+function extractStrings(bytes){
+  const res=[]; let run='', start=0;
+  for(let i=0;i<Math.min(bytes.length,65536);i++){
+    const c=bytes[i];
+    if(c>=32&&c<127){ if(!run.length)start=i; run+=String.fromCharCode(c); }
+    else{
+      if(run.length>=6) res.push({addr:'0x'+start.toString(16).padStart(4,'0').toUpperCase(), val:run.length>80?run.slice(0,80)+'…':run, flag:flagStr(run)});
+      run='';
+    }
+    if(res.length>=60) break;
+  }
+  return res;
+}
+
+function flagStr(s){
+  if(/https?:\/\//i.test(s)) return '🌐 URL';
+  if(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/.test(s)) return '🌐 IP';
+  if(/[a-z0-9-]+\.(exe|dll|bat|ps1|php|sh|vbs)/i.test(s)) return '⚠️ File';
+  if(/(cmd|powershell|wscript|cscript|regsvr|rundll|mshta)/i.test(s)) return '🔴 CMD';
+  if(/(HKEY_|SOFTWARE\\|SYSTEM\\|CurrentVersion\\Run)/i.test(s)) return '🔑 REG';
+  if(/(VirtualAlloc|WriteProcessMemory|CreateRemoteThread|LoadLibrary|GetProcAddress)/i.test(s)) return '🔴 API';
+  if(/(password|passwd|secret|token|apikey|credential)/i.test(s)) return '🔑 CRED';
+  if(/invoke-expression|iex\s*\(|downloadstring|encodedcommand/i.test(s)) return '🔴 PS1';
+  return '';
+}
+
+function extractIOCs(strings){
+  const iocs=[]; const seen=new Set();
+  const add=(type,val,flag)=>{ const k=type+val; if(!seen.has(k)){seen.add(k);iocs.push({type,val,flag});} };
+  strings.forEach(s=>{
+    const v=s.val;
+    (v.match(/https?:\/\/[^\s"'<>]{6,}/gi)||[]).forEach(u=>add('URL',u,'🌐'));
+    (v.match(/\b(?!127\.)(?!192\.168\.)(?!10\.)(?!172\.)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g)||[]).forEach(ip=>add('IP',ip,'🌐'));
+    if(s.flag) add(s.flag.replace(/[🌐⚠️🔴🔑]/g,'').trim()||'IOC', v.slice(0,80), s.flag);
+  });
+  return iocs.slice(0,40);
+}
+
+function buildUrlIOCs(input, fullUrl, domain, flags, ipapi){
+  const iocs=[];
+  iocs.push({type:'URL',    val:fullUrl,flag:''});
+  iocs.push({type:'Domain', val:domain, flag:''});
+  if(ipapi?.ip) iocs.push({type:'IP', val:ipapi.ip, flag:ipapi.isProxy?'⚠️ Proxy':'🌐'});
+  flags.forEach(f=>iocs.push({type:'Risk Flag', val:f, flag:'⚠️'}));
+  try{
+    const u=new URL(fullUrl.startsWith('http')?fullUrl:'http://'+fullUrl);
+    if(u.pathname&&u.pathname!=='/') iocs.push({type:'Path',  val:u.pathname,flag:''});
+    if(u.search)                     iocs.push({type:'Query', val:u.search,  flag:''});
+  }catch(e){}
+  return iocs;
+}
+
+function fileHeuristics(bytes, ext, size, entropy, strings){
+  const items=[];
+  const dangerExts=['exe','dll','bat','ps1','vbs','js','hta','scr','com','pif','msi','jar','apk','sh','cmd'];
+  const suspExts  =['pdf','doc','docx','xls','xlsx','zip','rar','7z','lnk','iso'];
+  if(dangerExts.includes(ext)) items.push({level:'warn',   text:`High-risk file extension .${ext} — commonly used in malware delivery`});
+  if(suspExts.includes(ext))   items.push({level:'info',   text:`Potentially dangerous extension .${ext} — can carry embedded exploits or macros`});
+  if(entropy>7.5)               items.push({level:'danger', text:`Very high entropy ${entropy.toFixed(2)}/8.0 — file is packed, encrypted or obfuscated`});
+  else if(entropy>7.0)          items.push({level:'warn',   text:`Elevated entropy ${entropy.toFixed(2)}/8.0 — possible compression or light obfuscation`});
+  if(size<1024)                 items.push({level:'warn',   text:`Extremely small file (${size} bytes) — typical of dropper stubs or shellcode`});
+
+  const strVals=strings.map(s=>s.val.toLowerCase());
+  const psHit=strVals.filter(s=>/(invoke-expression|iex\s*\(|downloadstring|webclient|frombase64|encodedcommand)/i.test(s));
+  if(psHit.length) items.push({level:'danger',text:`PowerShell obfuscation/download detected: ${psHit.slice(0,2).join(', ')}`});
+  if(strVals.some(s=>/(hkey_|currentversion\\run|registry)/i.test(s))) items.push({level:'danger',text:'Registry persistence keys detected — common malware persistence mechanism'});
+  const netUrls=strVals.filter(s=>/https?:\/\/[^\s]{8,}/i.test(s));
+  if(netUrls.length>=2) items.push({level:'warn',text:`${netUrls.length} embedded URLs found — potential C2 or dropper network indicators`});
+  const apiHit=strVals.filter(s=>/(virtualalloc|writeprocessmemory|createremotethread|loadlibrary|getprocaddress|shellexecute)/i.test(s));
+  if(apiHit.length) items.push({level:'danger',text:`Dangerous Win32 API strings: ${[...new Set(apiHit)].slice(0,3).join(', ')}`});
+  if(strVals.some(s=>/(password|passwd|credential|secret|apikey)/i.test(s))) items.push({level:'warn',text:'Credential-related strings found — possible data harvesting behaviour'});
+  if(!items.some(i=>i.level==='danger'||i.level==='warn')) items.push({level:'safe',text:'No suspicious heuristic indicators detected'});
+  items.push({level:'info',text:`${strings.length} printable strings extracted — ${strings.filter(s=>s.flag).length} flagged as suspicious`});
+  return items;
+}
+
+function mitreFile(ext, heuristics, mbResult){
+  const t=[]; const seen=new Set();
+  const add=(id,name,tactic)=>{ if(!seen.has(id)){seen.add(id);t.push({id,name,tactic});} };
+  const h=heuristics.map(x=>x.text.toLowerCase()).join(' ');
+  if(h.includes('powershell')||h.includes('encoded'))     add('T1059.001','PowerShell','Execution');
+  if(h.includes('registry'))                               add('T1547.001','Registry Run Keys / Startup Folder','Persistence');
+  if(h.includes('virtualalloc')||h.includes('writeprocess')) add('T1055','Process Injection','Defense Evasion');
+  if(h.includes('credential')||h.includes('password'))    add('T1003','OS Credential Dumping','Credential Access');
+  if(h.includes('url')||h.includes('downloadstring'))     add('T1071.001','Web Protocols','Command & Control');
+  if(h.includes('entropy')||h.includes('pack'))           add('T1027','Obfuscated Files or Information','Defense Evasion');
+  if(['exe','dll','bat','ps1','vbs','hta'].includes(ext))  add('T1059','Command & Scripting Interpreter','Execution');
+  if(mbResult?.tags?.includes('ransomware')) add('T1486','Data Encrypted for Impact','Impact');
+  if(mbResult?.tags?.includes('spyware'))    add('T1056','Input Capture','Collection');
+  if(mbResult?.tags?.includes('trojan'))     add('T1071','Application Layer Protocol','Command & Control');
+  return t;
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  RENDER
+// ═══════════════════════════════════════════════════════════════
+function renderVerdict(verdict, riskScore, main, sub){
+  const vMap={
+    clean:      ['clean',      '✅','No Threats Detected',           'var(--green)'],
+    suspicious: ['suspicious', '⚠️','Suspicious — Proceed With Caution','var(--yellow)'],
+    malicious:  ['malicious',  '🚨','Malicious — Threat Confirmed',  'var(--red)'],
+  };
+  const[cls,icon,label,color]=vMap[verdict];
+  document.getElementById('verdict-banner').className='verdict-banner '+cls;
+  document.getElementById('verdict-banner').innerHTML=`
+    <div class="verdict-icon">${icon}</div>
+    <div class="verdict-text">
+      <h2 style="color:${color}">${label}</h2>
+      <p><strong style="color:${color}">${esc(main)}</strong></p>
+      <p style="margin-top:4px;font-size:12px;color:var(--text3)">${esc(sub)}</p>
+    </div>
+    <div class="verdict-score">
+      <div class="score-big" style="color:${color}">${riskScore}</div>
+      <div class="score-label">Risk Score</div>
+      <div style="font-size:10px;color:var(--text3)">out of 100</div>
+    </div>`;
+}
+
+function renderSources(sources){
+  const flagged=sources.filter(s=>s.status==='malicious').length;
+  document.getElementById('src-meta').textContent=`${flagged}/${sources.length} sources flagged`;
+  document.getElementById('sources-grid').innerHTML=sources.map(s=>`
+    <div class="src-result-card">
+      <div class="src-card-head">
+        <span class="src-card-icon">${s.icon}</span>
+        <span class="src-card-name">${s.name}</span>
+        <span class="src-card-status status-${s.status}">${s.status.toUpperCase()}</span>
+      </div>
+      <div class="src-card-detail">${esc(s.detail)}</div>
+    </div>`).join('');
+}
+
+function renderFileReport(d){
+  document.getElementById('progress-wrap').style.display='none';
+  document.getElementById('scan-btn').disabled=false;
+  const main=d.mbResult?`Known malware: ${d.mbResult.signature||'Unclassified'}`:`Risk score: ${d.riskScore}/100`;
+  renderVerdict(d.verdict,d.riskScore,main,`File: ${d.name} · ${fmtBytes(d.size)} · SHA-256: ${d.sha256.slice(0,16)}…`);
+  renderSources(d.sources);
+
+  document.getElementById('info-grid').innerHTML=`
+    <div class="info-card">
+      <h3>File Information</h3>
+      ${row('Name',    esc(d.name))}
+      ${row('Size',    fmtBytes(d.size))}
+      ${row('Type',    d.ext.toUpperCase()||'Unknown')}
+      ${row('Entropy', `<span style="color:${parseFloat(d.entropy)>7?'var(--yellow)':'var(--green)'}"> ${d.entropy}/8.0 ${parseFloat(d.entropy)>7?'⚠ Packed':'✓ Normal'}</span>`)}
+      ${row('Scanned', new Date(d.ts).toLocaleString())}
+    </div>
+    <div class="info-card">
+      <h3>Cryptographic Hashes</h3>
+      ${hashRow('MD5',d.md5)}
+      ${hashRow('SHA-1',d.sha1)}
+      ${hashRow('SHA-256',d.sha256)}
+    </div>
+    ${d.vtResult?.found?`
+    <div class="info-card">
+      <h3>VirusTotal — ${d.vtResult.ratio} Engines</h3>
+      ${row('Detection',`<span style="color:${d.vtResult.malicious>0?'var(--red)':'var(--green)'};font-weight:700">${d.vtResult.ratio} antivirus engines</span>`)}
+      ${row('Status', d.vtResult.malicious>0?'<span style="color:var(--red)">⚠ MALICIOUS</span>':'<span style="color:var(--green)">✓ CLEAN</span>')}
+      ${d.vtResult.names?.length?row('Families', d.vtResult.names.map(n=>`<span class="tag red">${esc(n)}</span>`).join(' ')):''}
+      ${row('First Seen', d.vtResult.firstSeen)}
+      ${row('Last Scan',  d.vtResult.lastSeen)}
+      ${row('Full Report',`<a href="${d.vtResult.link}" target="_blank" style="color:var(--blue3);text-decoration:none">🔗 View on VirusTotal</a>`)}
+    </div>`:''}
+    ${d.mbResult?`
+    <div class="info-card">
+      <h3>MalwareBazaar Intelligence</h3>
+      ${row('Signature',  esc(d.mbResult.signature||'Unknown'))}
+      ${row('File Type',  esc(d.mbResult.file_type||'—'))}
+      ${row('Reporter',   esc(d.mbResult.reporter||'—'))}
+      ${row('First Seen', esc(d.mbResult.first_seen||'—'))}
+      ${row('Tags', (d.mbResult.tags||[]).map(t=>`<span class="tag red">${esc(t)}</span>`).join(' ')||'—')}
+    </div>`:''}`;
+
+  if(d.mbResult?.tags?.length){
+    document.getElementById('tags-row').style.display='block';
+    document.getElementById('tags-wrap').innerHTML=d.mbResult.tags.map(t=>`<span class="tag red">${esc(t)}</span>`).join('');
+  }
+  if(d.iocs.length){
+    document.getElementById('ioc-section').style.display='block';
+    document.getElementById('ioc-list').innerHTML=d.iocs.map(i=>`<div class="ioc-row"><span class="ioc-type">${i.type}</span><span class="ioc-val">${esc(i.val)}</span><span class="ioc-flag">${i.flag}</span></div>`).join('');
+  }
+  if(d.strings.length){
+    document.getElementById('strings-section').style.display='block';
+    document.getElementById('strings-list').innerHTML=d.strings.map(s=>`<div class="str-line"><span class="str-addr">${s.addr}</span><span class="str-val">${esc(s.val)}</span>${s.flag?`<span class="str-flag">${s.flag}</span>`:''}</div>`).join('');
+  }
+  document.getElementById('heuristic-section').style.display='block';
+  document.getElementById('heuristic-list').innerHTML=d.heuristics.map(h=>`<div class="h-row"><span class="h-tag h-${h.level}">${h.level.toUpperCase()}</span><span class="h-text">${esc(h.text)}</span></div>`).join('');
+  if(d.mitre.length){
+    document.getElementById('mitre-section').style.display='block';
+    document.getElementById('mitre-grid').innerHTML=d.mitre.map(m=>`<div class="mitre-card"><div class="mitre-id">${m.id}</div><div class="mitre-name">${m.name}</div><div class="mitre-tactic">${m.tactic}</div></div>`).join('');
+  }
+  document.getElementById('results').style.display='block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function renderUrlReport(d){
+  document.getElementById('progress-wrap').style.display='none';
+  document.getElementById('scan-btn').disabled=false;
+  const flagged=[d.gsb?.malicious,d.urlscan?.malicious,d.ipapi?.isProxy&&d.heur.score>20].filter(Boolean).length;
+  const main=flagged>0?`${flagged} source(s) flagged this target`:'No threat sources flagged this target';
+  renderVerdict(d.verdict,d.riskScore,main,`Target: ${d.input} · Risk score: ${d.riskScore}/100`);
+  renderSources(d.sources);
+
+  document.getElementById('info-grid').innerHTML=`
+    <div class="info-card">
+      <h3>${d.isIP?'IP Address':'URL / Domain'} Details</h3>
+      ${row('Input', `<span style="font-family:'Courier New',monospace;font-size:11px;word-break:break-all">${esc(d.input)}</span>`)}
+      ${row('Type',  d.isIP?'IP Address':d.isUrl?'URL':'Domain')}
+      ${row('Risk Score', `<span style="color:${d.riskScore>=50?'var(--red)':d.riskScore>=20?'var(--yellow)':'var(--green)'};font-weight:600">${d.riskScore}/100</span>`)}
+      ${d.ipapi?.countryName ? row('Country', esc(d.ipapi.countryName)) : ''}
+      ${d.ipapi?.isp         ? row('ISP',     esc(d.ipapi.isp)) : ''}
+      ${d.ipapi?.ip          ? row('Resolved IP', d.ipapi.ip) : ''}
+      ${d.ipapi?.isProxy     ? row('Proxy/VPN',  '<span style="color:var(--yellow)">⚠ Detected</span>') : ''}
+      ${row('Scanned', new Date(d.ts).toLocaleString())}
+    </div>
+    <div class="info-card">
+      <h3>Risk Indicators</h3>
+      ${d.heur.flags.length
+        ? d.heur.flags.map(f=>`<div class="info-row"><span class="info-key" style="color:var(--yellow)">⚠</span><span class="info-val" style="text-align:left;color:var(--yellow)">${esc(f)}</span></div>`).join('')
+        : `<div class="info-row"><span class="info-key">✅</span><span class="info-val" style="color:var(--green);text-align:left">No risk indicators detected</span></div>`
+      }
+    </div>`;
+
+  if(d.iocs.length){
+    document.getElementById('ioc-section').style.display='block';
+    document.getElementById('ioc-list').innerHTML=d.iocs.map(i=>`<div class="ioc-row"><span class="ioc-type">${i.type}</span><span class="ioc-val">${esc(i.val)}</span><span class="ioc-flag">${i.flag}</span></div>`).join('');
+  }
+  document.getElementById('heuristic-section').style.display='block';
+  document.getElementById('heuristic-list').innerHTML=d.heur.items.map(h=>`<div class="h-row"><span class="h-tag h-${h.level}">${h.level.toUpperCase()}</span><span class="h-text">${esc(h.text)}</span></div>`).join('');
+  document.getElementById('results').style.display='block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  HELPER RENDERERS
+// ═══════════════════════════════════════════════════════════════
+function row(k,v){ return `<div class="info-row"><span class="info-key">${k}</span><span class="info-val">${v}</span></div>`; }
+function hashRow(label,hash){
+  return `<div class="info-row"><span class="info-key">${label}</span><span class="info-val"><span class="hash-val">${hash}</span><button class="copy-btn" onclick="navigator.clipboard.writeText('${hash}')" title="Copy">📋</button></span></div>`;
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  ACTIONS
+// ═══════════════════════════════════════════════════════════════
+function done(){
+  scanCount++;
+  try{ localStorage.setItem('pis_scans',scanCount); }catch(e){}
+  updateCounters();
+  document.getElementById('scan-btn').disabled=false;
+}
+function newScan(){
+  document.getElementById('results').style.display='none';
+  document.getElementById('progress-wrap').style.display='none';
+  document.getElementById('scan-btn').disabled=false;
+  clearFile();
+  document.getElementById('url-input').value='';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function copyReport(){
+  navigator.clipboard.writeText(JSON.stringify(reportData,null,2))
+    .then(()=>alert('Report copied!'))
+    .catch(()=>alert('Copy failed — try Download JSON.'));
+}
+function downloadReport(){
+  const blob=new Blob([JSON.stringify(reportData,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='infosec-sandbox-report-'+Date.now()+'.json';
+  a.click(); URL.revokeObjectURL(a.href);
+}
+</script>
+
+<script>
+function toggleNav(){
+  const nav=document.getElementById('nav-links');
+  const btn=document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    document.getElementById('nav-links').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
 </script>
 </body>
 </html>

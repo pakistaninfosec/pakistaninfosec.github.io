@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1391334995238896" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CVE Detail — InfoSec Pakistan</title>
+  <meta name="description" content="Detailed CVE analysis with AI-powered risk assessment, affected products, and mitigation steps.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05070d;--bg2:#090d16;--bg3:#0e1420;--bg4:#141b28;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);
+  --text:#ffffff;--text2:#94a3b8;--text3:#64748b;
+  --blue:#2563eb;--blue2:#3b82f6;--blue3:#60a5fa;
+  --red:#ef4444;--red2:#f87171;--orange:#f97316;--green:#22c55e;--yellow:#eab308;--cyan:#06b6d4;
+  --body:'Inter',sans-serif;--display:'Space Grotesk',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:14px;line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(37,99,235,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.025) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(5,7,13,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.brand-icon{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.brand-name{font-family:var(--display);font-weight:700;font-size:16px;color:#fff;}
+.brand-name span{color:var(--blue3);}
+.nav-links{display:flex;gap:2px;}
+.nav-links a{color:var(--text3);text-decoration:none;padding:8px 18px;font-size:13.5px;font-weight:500;border-radius:8px;transition:all 0.2s;}
+.nav-links a:hover{color:#fff;background:var(--bg3);}
+.live-badge{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--green);background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);padding:7px 16px;border-radius:6px;}
+.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:200;}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* MAIN */
+main{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:40px 48px 80px;}
+
+/* BREADCRUMB */
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text3);margin-bottom:24px;}
+.breadcrumb a{color:var(--blue3);text-decoration:none;}
+.breadcrumb a:hover{text-decoration:underline;}
+.breadcrumb-sep{color:var(--text3);}
+
+/* CVE HEADER */
+.cve-header{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:28px 32px;margin-bottom:24px;position:relative;overflow:hidden;}
+.cve-header::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--cyan));}
+.cve-top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:16px;flex-wrap:wrap;}
+.cve-id{font-family:'Courier New',monospace;font-size:22px;font-weight:700;color:var(--blue3);}
+.cve-badges{display:flex;gap:8px;flex-wrap:wrap;}
+.badge{font-size:11px;font-weight:700;padding:5px 12px;border-radius:6px;letter-spacing:0.04em;}
+.badge-critical{background:rgba(239,68,68,0.15);color:var(--red2);border:1px solid rgba(239,68,68,0.3);}
+.badge-high{background:rgba(249,115,22,0.15);color:var(--orange);border:1px solid rgba(249,115,22,0.3);}
+.badge-medium{background:rgba(234,179,8,0.15);color:var(--yellow);border:1px solid rgba(234,179,8,0.3);}
+.badge-low{background:rgba(34,197,94,0.1);color:var(--green);border:1px solid rgba(34,197,94,0.25);}
+.badge-pk{background:rgba(34,197,94,0.1);color:var(--green);border:1px solid rgba(34,197,94,0.2);}
+.badge-source{background:var(--bg3);color:var(--text2);border:1px solid var(--border2);}
+.cve-title{font-family:var(--display);font-size:20px;font-weight:700;color:#fff;line-height:1.35;margin-bottom:12px;}
+.cve-meta{display:flex;gap:20px;flex-wrap:wrap;}
+.cve-meta-item{font-size:12px;color:var(--text3);display:flex;align-items:center;gap:5px;}
+.cve-meta-item strong{color:var(--text2);}
+
+/* RISK METER */
+.risk-meter{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:24px;display:flex;align-items:center;gap:24px;}
+.risk-score{text-align:center;min-width:80px;}
+.risk-num{font-family:var(--display);font-size:42px;font-weight:900;line-height:1;}
+.risk-label{font-size:11px;color:var(--text3);margin-top:4px;}
+.risk-bar-wrap{flex:1;}
+.risk-bar-label{display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-bottom:6px;}
+.risk-bar{height:10px;background:var(--bg4);border-radius:5px;overflow:hidden;}
+.risk-fill{height:100%;border-radius:5px;transition:width 1s ease;}
+.risk-desc{font-size:13px;color:var(--text2);max-width:260px;}
+
+/* AI SECTION */
+.ai-generating{display:flex;align-items:center;gap:12px;padding:20px;color:var(--text3);font-size:13px;}
+.ai-spinner{width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--blue2);border-radius:50%;animation:spin 0.8s linear infinite;flex-shrink:0;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* SECTIONS */
+.section{background:var(--bg2);border:1px solid var(--border);border-radius:12px;margin-bottom:20px;overflow:hidden;}
+.section-head{display:flex;align-items:center;gap:12px;padding:16px 24px;border-bottom:1px solid var(--border);background:var(--bg3);}
+.section-icon{font-size:18px;}
+.section-title{font-family:var(--display);font-size:15px;font-weight:700;color:#fff;}
+.section-body{padding:20px 24px;}
+.section-body p{font-size:13.5px;color:var(--text2);line-height:1.8;margin-bottom:12px;}
+.section-body p:last-child{margin-bottom:0;}
+.section-body ul{padding-left:20px;margin-bottom:12px;}
+.section-body ul li{font-size:13.5px;color:var(--text2);line-height:1.75;margin-bottom:6px;}
+.section-body ul li::marker{color:var(--blue3);}
+.section-body h4{font-family:var(--display);font-size:13px;font-weight:700;color:#fff;margin-bottom:8px;margin-top:16px;}
+.section-body h4:first-child{margin-top:0;}
+.section-body strong{color:#fff;}
+.section-body code{background:var(--bg4);border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-family:'Courier New',monospace;font-size:12px;color:var(--cyan);}
+
+/* REFERENCES */
+.ref-list{display:flex;flex-direction:column;gap:8px;padding:20px 24px;}
+.ref-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:all 0.2s;}
+.ref-item:hover{border-color:var(--blue2);transform:translateX(4px);}
+.ref-icon{font-size:16px;}
+.ref-text{font-size:13px;color:var(--blue3);}
+.ref-sub{font-size:11px;color:var(--text3);}
+
+/* SHARE */
+.share-bar{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;}
+.share-btn{display:flex;align-items:center;gap:6px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all 0.2s;text-decoration:none;}
+.share-btn:hover{color:#fff;border-color:var(--border2);}
+
+/* ERROR */
+.error-box{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);border-radius:12px;padding:24px;text-align:center;color:var(--red2);}
+
+/* FOOTER */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-brand{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text2);}
+.footer-brand span{color:var(--blue3);}
+.footer-links{display:flex;gap:16px;flex-wrap:wrap;}
+.footer-link{color:var(--blue3);text-decoration:none;font-size:12px;}
+.footer-txt{font-size:12px;color:var(--text3);}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .hamburger{display:flex;}
+  .nav-links{display:none;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(5,7,13,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px;gap:4px;z-index:150;}
+  .nav-links.open{display:flex;}
+  .nav-links a{padding:12px 16px;font-size:15px;border-radius:8px;border-bottom:1px solid var(--border);}
+  .nav-links a:last-child{border-bottom:none;}
+  main{padding:24px 16px 60px;}
+  .cve-header{padding:20px 16px;}
+  .cve-id{font-size:16px;}
+  .cve-title{font-size:16px;}
+  .risk-meter{flex-direction:column;align-items:flex-start;gap:14px;}
+  .risk-desc{max-width:100%;}
+  .section-head{padding:14px 16px;}
+  .section-body{padding:16px;}
+  footer{padding:20px 16px;flex-direction:column;text-align:center;}
+  .footer-links{justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="index.html">
+    <div class="brand-icon">🛡</div>
+    <div class="brand-name">INFOSEC <span>PAKISTAN</span></div>
+  </a>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Dashboard</a>
+    <a href="reports.html">Daily Reports</a>
+    <a href="database.html">CVE Database</a>
+    <a href="news.html">News</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="sandbox.html">Sandbox</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main id="main-content">
+  <div class="ai-generating" style="padding:60px;justify-content:center;">
+    <div class="ai-spinner"></div>
+    Loading threat intelligence...
+  </div>
+</main>
+
+<footer>
+  <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>
+  <div class="footer-links">
+    <a class="footer-link" href="privacy.html">Privacy Policy</a>
+    <a class="footer-link" href="disclaimer.html">Disclaimer</a>
+    <a class="footer-link" href="terms.html">Terms</a>
+    <a class="footer-link" href="contact.html">Contact</a>
+  </div>
+  <div class="footer-txt">AI-powered threat intelligence · <a class="footer-link" href="https://pakistaninfosec.github.io">pakistaninfosec.github.io</a></div>
+</footer>
+
+<script>
+'use strict';
+
+const GROQ_KEY  = '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';
+const DATA_URL  = 'https://pakistaninfosec.github.io/data/threats.json';
+const GROQ_URL  = 'https://api.groq.com/openai/v1/chat/completions';
+const MODEL     = 'llama-3.3-70b-versatile';
+
+// ── Helpers ────────────────────────────────────────
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function sev(s){
+  const m = {'CRITICAL':'badge-critical','HIGH':'badge-high','MEDIUM':'badge-medium','LOW':'badge-low'};
+  return m[(s||'').toUpperCase()] || 'badge-medium';
+}
+function riskColor(n){
+  if(n>=80) return 'var(--red)';
+  if(n>=60) return 'var(--orange)';
+  if(n>=40) return 'var(--yellow)';
+  return 'var(--green)';
+}
+function riskLabel(n){
+  if(n>=80) return 'CRITICAL RISK';
+  if(n>=60) return 'HIGH RISK';
+  if(n>=40) return 'MEDIUM RISK';
+  return 'LOW RISK';
+}
+function sevToScore(s){
+  return {'CRITICAL':92,'HIGH':72,'MEDIUM':45,'LOW':18}[(s||'').toUpperCase()] || 50;
+}
+
+// ── Get CVE ID from URL ────────────────────────────
+function getCveId(){
+  const p = new URLSearchParams(window.location.search);
+  return p.get('id') || p.get('cve') || '';
+}
+
+// ── Render error ───────────────────────────────────
+function renderError(msg){
+  document.getElementById('main-content').innerHTML = `
+    <div class="breadcrumb">
+      <a href="index.html">Dashboard</a><span class="breadcrumb-sep">›</span>
+      <a href="database.html">CVE Database</a><span class="breadcrumb-sep">›</span>
+      <span>Error</span>
+    </div>
+    <div class="error-box">
+      <div style="font-size:32px;margin-bottom:12px">⚠️</div>
+      <div style="font-size:16px;font-weight:700;margin-bottom:8px">CVE Not Found</div>
+      <div style="font-size:13px;color:var(--text2)">${esc(msg)}</div>
+      <div style="margin-top:20px">
+        <a href="database.html" style="color:var(--blue3);font-size:13px">← Back to CVE Database</a>
+      </div>
+    </div>`;
+}
+
+// ── Call Groq AI ───────────────────────────────────
+async function callGroq(prompt){
+  const r = await fetch(GROQ_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + GROQ_KEY
+    },
+    body: JSON.stringify({
+      model: MODEL,
+      max_tokens: 1800,
+      temperature: 0.4,
+      messages: [{ role: 'user', content: prompt }]
+    })
+  });
+  if(!r.ok) throw new Error('Groq API error: ' + r.status);
+  const d = await r.json();
+  return d.choices[0].message.content.trim();
+}
+
+// ── Parse AI response into sections ───────────────
+function parseAI(text){
+  const sections = {};
+  const keys = ['TECHNICAL_DETAILS','RISK_ASSESSMENT','AFFECTED_PRODUCTS','MITIGATION_STEPS','PAKISTAN_ANALYSIS','SUMMARY'];
+  let current = null;
+  for(const line of text.split('\n')){
+    const trimmed = line.trim();
+    let matched = false;
+    for(const k of keys){
+      if(trimmed.startsWith('##'+k) || trimmed.startsWith('## '+k) ||
+         trimmed.toUpperCase().includes(k.replace('_',' '))){
+        current = k;
+        sections[k] = '';
+        matched = true;
+        break;
+      }
+    }
+    if(!matched && current){
+      sections[current] = (sections[current]||'') + line + '\n';
+    }
+  }
+  // Fallback: if parsing failed, put everything in TECHNICAL_DETAILS
+  if(Object.keys(sections).length === 0){
+    sections['TECHNICAL_DETAILS'] = text;
+  }
+  return sections;
+}
+
+// ── Format AI text to HTML ─────────────────────────
+function fmtAI(text){
+  if(!text) return '<p style="color:var(--text3)">Not available</p>';
+  let html = text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/`(.+?)`/g, '<code>$1</code>')
+    .replace(/^#{1,4}\s+(.+)$/gm, '<h4>$1</h4>')
+    .replace(/^[\*\-]\s+(.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
+    .replace(/\n\n+/g, '</p><p>')
+    .replace(/^([^<\n].+)$/gm, (m) => m.startsWith('<') ? m : m);
+  // Wrap non-tag lines in <p>
+  const lines = html.split('\n').filter(l=>l.trim());
+  const wrapped = lines.map(l => {
+    if(l.startsWith('<h4>') || l.startsWith('<ul>') || l.startsWith('<li>') || l.startsWith('<p>')) return l;
+    return '<p>' + l + '</p>';
+  }).join('\n');
+  return wrapped || '<p>' + esc(text) + '</p>';
+}
+
+// ── Render full page ───────────────────────────────
+function renderPage(threat, ai){
+  const score = sevToScore(threat.severity);
+  const color = riskColor(score);
+  const cveUrl = threat.id.startsWith('CVE-')
+    ? `https://nvd.nist.gov/vuln/detail/${threat.id}`
+    : (threat.url || '#');
+
+  const sections = parseAI(ai);
+
+  document.title = `${threat.id} — InfoSec Pakistan`;
+
+  document.getElementById('main-content').innerHTML = `
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+      <a href="index.html">Dashboard</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="database.html">CVE Database</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>${esc(threat.id)}</span>
+    </div>
+
+    <!-- SHARE -->
+    <div class="share-bar">
+      <button class="share-btn" onclick="copyLink()">🔗 Copy Link</button>
+      <a class="share-btn" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(threat.id+' — '+threat.desc.slice(0,100)+'... via InfoSec Pakistan')}" target="_blank">𝕏 Share</a>
+      <a class="share-btn" href="${cveUrl}" target="_blank">📋 View on NVD</a>
+      <a class="share-btn" href="sandbox.html">🔬 Analyze in Sandbox</a>
+    </div>
+
+    <!-- CVE HEADER -->
+    <div class="cve-header">
+      <div class="cve-top">
+        <div class="cve-id">${esc(threat.id)}</div>
+        <div class="cve-badges">
+          <span class="badge ${sev(threat.severity)}">${esc(threat.severity)}</span>
+          ${threat.pakistan ? '<span class="badge badge-pk">🇵🇰 Pakistan Alert</span>' : ''}
+          <span class="badge badge-source">${esc(threat.source)}</span>
+        </div>
+      </div>
+      <div class="cve-title">${esc(threat.desc)}</div>
+      <div class="cve-meta">
+        <div class="cve-meta-item">📅 <strong>${esc(threat.date || '—')}</strong></div>
+        <div class="cve-meta-item">🏷 <strong>${esc(threat.source)}</strong></div>
+        ${(threat.tags||[]).length ? `<div class="cve-meta-item">🔖 ${threat.tags.map(t=>`<span style="color:var(--blue3)">${esc(t)}</span>`).join(', ')}</div>` : ''}
+      </div>
+    </div>
+
+    <!-- RISK METER -->
+    <div class="risk-meter">
+      <div class="risk-score">
+        <div class="risk-num" style="color:${color}">${score}</div>
+        <div class="risk-label">Risk Score</div>
+      </div>
+      <div class="risk-bar-wrap">
+        <div class="risk-bar-label"><span>${riskLabel(score)}</span><span>0 — 100</span></div>
+        <div class="risk-bar"><div class="risk-fill" id="risk-fill" style="width:0%;background:${color}"></div></div>
+      </div>
+      <div class="risk-desc" style="color:${color};font-weight:600;font-size:13px">${riskLabel(score)}<br><span style="color:var(--text2);font-weight:400">Based on CVSS severity rating</span></div>
+    </div>
+
+    <!-- AI SECTIONS -->
+    <div class="section">
+      <div class="section-head"><span class="section-icon">🔬</span><span class="section-title">Technical Details</span><span style="margin-left:auto;font-size:10px;color:var(--blue3);font-weight:600">AI GENERATED</span></div>
+      <div class="section-body">${fmtAI(sections['TECHNICAL_DETAILS'])}</div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><span class="section-icon">⚠️</span><span class="section-title">Risk Assessment</span><span style="margin-left:auto;font-size:10px;color:var(--blue3);font-weight:600">AI GENERATED</span></div>
+      <div class="section-body">${fmtAI(sections['RISK_ASSESSMENT'])}</div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><span class="section-icon">🖥</span><span class="section-title">Affected Products</span><span style="margin-left:auto;font-size:10px;color:var(--blue3);font-weight:600">AI GENERATED</span></div>
+      <div class="section-body">${fmtAI(sections['AFFECTED_PRODUCTS'])}</div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><span class="section-icon">🛡</span><span class="section-title">Mitigation Steps</span><span style="margin-left:auto;font-size:10px;color:var(--blue3);font-weight:600">AI GENERATED</span></div>
+      <div class="section-body">${fmtAI(sections['MITIGATION_STEPS'])}</div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><span class="section-icon">🇵🇰</span><span class="section-title">Pakistan-Specific Analysis</span><span style="margin-left:auto;font-size:10px;color:var(--blue3);font-weight:600">AI GENERATED</span></div>
+      <div class="section-body">${fmtAI(sections['PAKISTAN_ANALYSIS'])}</div>
+    </div>
+
+    <!-- REFERENCES -->
+    <div class="section">
+      <div class="section-head"><span class="section-icon">🔗</span><span class="section-title">References</span></div>
+      <div class="ref-list">
+        ${threat.id.startsWith('CVE-') ? `
+        <a class="ref-item" href="https://nvd.nist.gov/vuln/detail/${threat.id}" target="_blank">
+          <span class="ref-icon">📋</span>
+          <div><div class="ref-text">NVD — National Vulnerability Database</div><div class="ref-sub">nvd.nist.gov/vuln/detail/${threat.id}</div></div>
+        </a>
+        <a class="ref-item" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=${threat.id}" target="_blank">
+          <span class="ref-icon">🔴</span>
+          <div><div class="ref-text">MITRE CVE Entry</div><div class="ref-sub">cve.mitre.org</div></div>
+        </a>` : ''}
+        ${threat.url && threat.url.startsWith('http') ? `
+        <a class="ref-item" href="${esc(threat.url)}" target="_blank">
+          <span class="ref-icon">🌐</span>
+          <div><div class="ref-text">${esc(threat.source)} — Official Advisory</div><div class="ref-sub">${esc(threat.url.slice(0,60))}...</div></div>
+        </a>` : ''}
+        <a class="ref-item" href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank">
+          <span class="ref-icon">🏛</span>
+          <div><div class="ref-text">CISA Known Exploited Vulnerabilities Catalog</div><div class="ref-sub">cisa.gov</div></div>
+        </a>
+        <a class="ref-item" href="https://pkcert.gov.pk/" target="_blank">
+          <span class="ref-icon">🇵🇰</span>
+          <div><div class="ref-text">Pakistan CERT — Official Advisories</div><div class="ref-sub">pkcert.gov.pk</div></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- BACK -->
+    <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="database.html" style="color:var(--blue3);font-size:13px;text-decoration:none;">← Back to CVE Database</a>
+      <a href="reports.html" style="color:var(--text3);font-size:13px;text-decoration:none;">← Daily Reports</a>
+    </div>`;
+
+  // Animate risk bar
+  setTimeout(()=>{
+    const el = document.getElementById('risk-fill');
+    if(el) el.style.width = score + '%';
+  }, 200);
+}
+
+// ── Copy link ──────────────────────────────────────
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href).then(()=>{
+    alert('Link copied!');
+  });
+}
+
+// ── Main ───────────────────────────────────────────
+async function main(){
+  const cveId = getCveId();
+  if(!cveId){
+    renderError('No CVE ID specified. Use ?id=CVE-XXXX-XXXXX in the URL.');
+    return;
+  }
+
+  document.getElementById('main-content').innerHTML = `
+    <div class="ai-generating" style="padding:60px;justify-content:center;flex-direction:column;text-align:center;gap:16px;">
+      <div class="ai-spinner" style="width:28px;height:28px;margin:0 auto"></div>
+      <div>Loading threat data for <strong style="color:var(--blue3)">${esc(cveId)}</strong>...</div>
+    </div>`;
+
+  // Fetch threats.json
+  let threat = null;
+  try{
+    const res = await fetch(DATA_URL + '?t=' + Date.now());
+    if(!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    threat = (data.threats||[]).find(t =>
+      t.id === cveId ||
+      (t.id||'').toUpperCase() === cveId.toUpperCase()
+    );
+  } catch(e){
+    renderError('Failed to load threat database: ' + e.message);
+    return;
+  }
+
+  if(!threat){
+    renderError(`CVE "${cveId}" was not found in today's threat database. It may have been from a previous day or not yet indexed.`);
+    return;
+  }
+
+  // Show loading with CVE info
+  document.getElementById('main-content').innerHTML = `
+    <div class="ai-generating" style="padding:40px;justify-content:center;flex-direction:column;text-align:center;gap:16px;">
+      <div class="ai-spinner" style="width:28px;height:28px;margin:0 auto"></div>
+      <div>🤖 Generating AI analysis for <strong style="color:var(--blue3)">${esc(cveId)}</strong>...<br>
+      <span style="font-size:12px;color:var(--text3)">This takes 3-8 seconds</span></div>
+    </div>`;
+
+  // Build Groq prompt
+  const prompt = `You are a senior cybersecurity analyst at Pakistan's national CERT. Analyze the following vulnerability and provide a comprehensive threat advisory.
+
+CVE ID: ${threat.id}
+Description: ${threat.desc}
+Severity: ${threat.severity}
+Source: ${threat.source}
+Date: ${threat.date}
+Pakistan Alert: ${threat.pakistan ? 'YES — This affects Pakistani organizations' : 'No specific Pakistan alert'}
+Tags: ${(threat.tags||[]).join(', ')||'None'}
+
+Write a detailed threat advisory with exactly these sections (use ## prefix for each section name):
+
+##TECHNICAL_DETAILS
+Explain what this vulnerability is technically. Cover: vulnerability type (RCE, SQLi, XSS, etc), attack vector, attack complexity, authentication required, impact on confidentiality/integrity/availability. Use technical but clear language. 2-3 paragraphs.
+
+##RISK_ASSESSMENT
+Assess the risk for Pakistani organizations specifically. Cover: exploitability in the wild, business impact, data breach risk, operational disruption. Rate likelihood of exploitation. 1-2 paragraphs.
+
+##AFFECTED_PRODUCTS
+List all affected products, versions, and vendors. Include specific version numbers where known. Use bullet points.
+
+##MITIGATION_STEPS
+Provide concrete, actionable mitigation steps. Number them clearly. Include: immediate actions, patch information, workarounds if no patch available, detection methods. Be specific.
+
+##PAKISTAN_ANALYSIS
+Analyze specifically how this affects Pakistani organizations. Consider: which sectors are most at risk (banking, telecom, government, healthcare), what Pakistani organizations should do immediately, any relation to Pakistan CERT advisories. 1-2 paragraphs.
+
+Be specific, technical, and actionable. Write in clear English. No markdown fences.`;
+
+  // Call Groq
+  let aiText = '';
+  try{
+    aiText = await callGroq(prompt);
+  } catch(e){
+    aiText = `##TECHNICAL_DETAILS\nAI analysis temporarily unavailable. Please refer to the NVD entry for ${threat.id} for technical details.\n\n##RISK_ASSESSMENT\nBased on severity rating of ${threat.severity}, this vulnerability requires immediate attention.\n\n##AFFECTED_PRODUCTS\nSee official vendor advisory for affected product versions.\n\n##MITIGATION_STEPS\n1. Apply vendor patches immediately.\n2. Monitor systems for signs of exploitation.\n3. Review Pakistan CERT advisories at pkcert.gov.pk.\n\n##PAKISTAN_ANALYSIS\nPakistani organizations using affected products should apply patches immediately and contact Pakistan CERT for guidance.`;
+  }
+
+  renderPage(threat, aiText);
+}
+
+// Hamburger
+function toggleNav(){
+  const nav=document.getElementById('nav-links');
+  const btn=document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    document.getElementById('nav-links').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+
+main();
+</script>
+</body>
+</html>

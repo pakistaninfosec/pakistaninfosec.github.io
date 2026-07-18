@@ -263,28 +263,53 @@ async function callGroq(prompt){
 // ── Parse AI response into sections ───────────────
 function parseAI(text){
   const sections = {};
-  const keys = ['TECHNICAL_DETAILS','RISK_ASSESSMENT','AFFECTED_PRODUCTS','MITIGATION_STEPS','PAKISTAN_ANALYSIS','SUMMARY'];
+
+  // Map of keywords to section keys — catches any format Groq uses
+  const keyMap = [
+    { key:'TECHNICAL_DETAILS',  words:['technical','technical detail','vulnerability detail','overview'] },
+    { key:'RISK_ASSESSMENT',    words:['risk assessment','risk analysis','risk','threat level'] },
+    { key:'AFFECTED_PRODUCTS',  words:['affected product','affected system','impacted product','impact','affected version'] },
+    { key:'MITIGATION_STEPS',   words:['mitigation','remediation','fix','patch','recommendation','steps','action'] },
+    { key:'PAKISTAN_ANALYSIS',  words:['pakistan','pk','regional','local analysis'] },
+  ];
+
+  const lines = text.split('\n');
   let current = null;
-  for(const line of text.split('\n')){
+
+  for(const line of lines){
     const trimmed = line.trim();
-    let matched = false;
-    for(const k of keys){
-      if(trimmed.startsWith('##'+k) || trimmed.startsWith('## '+k) ||
-         trimmed.toUpperCase().includes(k.replace('_',' '))){
-        current = k;
-        sections[k] = '';
-        matched = true;
-        break;
+    const lower   = trimmed.toLowerCase().replace(/[#\*_]/g,'').trim();
+    let matched   = false;
+
+    // Check if this line is a section header
+    if(trimmed.startsWith('#') || trimmed.startsWith('**') || trimmed.endsWith('**') || trimmed.endsWith(':')){
+      for(const {key, words} of keyMap){
+        if(words.some(w => lower.includes(w))){
+          current = key;
+          if(!sections[key]) sections[key] = '';
+          matched = true;
+          break;
+        }
       }
     }
+
     if(!matched && current){
       sections[current] = (sections[current]||'') + line + '\n';
     }
   }
-  // Fallback: if parsing failed, put everything in TECHNICAL_DETAILS
+
+  // If parsing failed entirely, put everything in TECHNICAL_DETAILS
   if(Object.keys(sections).length === 0){
     sections['TECHNICAL_DETAILS'] = text;
   }
+
+  // If some sections are empty, fill with a note
+  for(const {key} of keyMap){
+    if(!sections[key] || sections[key].trim().length < 10){
+      sections[key] = sections['TECHNICAL_DETAILS'] || text;
+    }
+  }
+
   return sections;
 }
 
@@ -486,35 +511,35 @@ async function main(){
       <span style="font-size:12px;color:var(--text3)">This takes 3-8 seconds</span></div>
     </div>`;
 
-  // Build Groq prompt
-  const prompt = `You are a senior cybersecurity analyst at Pakistan's national CERT. Analyze the following vulnerability and provide a comprehensive threat advisory.
+const prompt = `You are a senior cybersecurity analyst at Pakistan's national CERT. Analyze this vulnerability and write a structured threat advisory.
 
 CVE ID: ${threat.id}
 Description: ${threat.desc}
 Severity: ${threat.severity}
 Source: ${threat.source}
 Date: ${threat.date}
-Pakistan Alert: ${threat.pakistan ? 'YES — This affects Pakistani organizations' : 'No specific Pakistan alert'}
+Pakistan Alert: ${threat.pakistan ? 'YES' : 'No'}
 Tags: ${(threat.tags||[]).join(', ')||'None'}
 
-Write a detailed threat advisory with exactly these sections (use ## prefix for each section name):
+CRITICAL INSTRUCTION: You MUST use EXACTLY these section headers, with ## prefix and UPPERCASE:
 
 ##TECHNICAL_DETAILS
-Explain what this vulnerability is technically. Cover: vulnerability type (RCE, SQLi, XSS, etc), attack vector, attack complexity, authentication required, impact on confidentiality/integrity/availability. Use technical but clear language. 2-3 paragraphs.
+Write 2-3 paragraphs explaining: what type of vulnerability this is (RCE, SQLi, XSS, buffer overflow, etc.), how it works technically, attack vector (network/local/physical), authentication needed, and impact on confidentiality, integrity, availability.
 
 ##RISK_ASSESSMENT
-Assess the risk for Pakistani organizations specifically. Cover: exploitability in the wild, business impact, data breach risk, operational disruption. Rate likelihood of exploitation. 1-2 paragraphs.
+Write 1-2 paragraphs covering: exploitability score, whether it is actively exploited in the wild, potential business impact, data breach risk, and operational disruption likelihood for Pakistani organizations.
 
 ##AFFECTED_PRODUCTS
-List all affected products, versions, and vendors. Include specific version numbers where known. Use bullet points.
+List ALL affected products and versions as bullet points using - prefix. Include vendor name, product name, and specific version ranges.
 
 ##MITIGATION_STEPS
-Provide concrete, actionable mitigation steps. Number them clearly. Include: immediate actions, patch information, workarounds if no patch available, detection methods. Be specific.
+List numbered steps (1. 2. 3.) for immediate mitigation. Include: apply patches, update versions, workarounds if no patch, detection methods, monitoring recommendations.
 
 ##PAKISTAN_ANALYSIS
-Analyze specifically how this affects Pakistani organizations. Consider: which sectors are most at risk (banking, telecom, government, healthcare), what Pakistani organizations should do immediately, any relation to Pakistan CERT advisories. 1-2 paragraphs.
+Write 1-2 paragraphs on: which Pakistani sectors are at risk (banking, telecom, government, healthcare, education), specific recommendations for Pakistani organizations, any relation to Pakistan CERT advisories.
 
-Be specific, technical, and actionable. Write in clear English. No markdown fences.`;
+Use these EXACT section headers. Do not rename them. Do not add other sections.`;
+
 
   // Call Groq
   let aiText = '';

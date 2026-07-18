@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-18T13:59:13.037036+00:00",
-  "summary": "Today's digest contains 411 vulnerabilities across 5 sources. 75 zero-day exploits detected, 25 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-18T15:05:08.901433+00:00",
+  "summary": "Today's digest contains 440 vulnerabilities across 5 sources. 75 zero-day exploits detected, 25 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 411,
+    "new": 440,
     "changed": 0,
     "removed": 0,
-    "total": 141562,
+    "total": 142002,
     "zeroday": 75,
     "exploited": 25,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 321
+      "count": 350
     },
     {
       "name": "Exploit-DB",
@@ -6569,6 +6569,528 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9147",
       "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2023-54366",
+      "desc": "SurrealDB before 1.0.1 sets default table permissions to FULL instead of NONE, allowing SELECT, CREATE, UPDATE, and DELETE operations on tables without explicit permissions. Attackers with database access or unauthenticated users on publicly exposed instances can perform unrestricted operations on u",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-54366",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-58356",
+      "desc": "SurrealDB before 2.1.4 silently fails to overwrite table definitions when the DEFINE TABLE ... OVERWRITE clause is used on tables defined with TYPE RELATION. Because table definitions include the PERMISSIONS clause, an attempt to tighten a table's permissions via OVERWRITE does not take effect, and ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58356",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-58357",
+      "desc": "SurrealDB versions before 2.1.0 contain an uncaught exception vulnerability in the rand::time() function that panics when unwrap is called on a None result from timestamp_opt. Authorized clients can repeatedly invoke rand::time() to reliably trigger server panics and cause denial of service.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58357",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-58358",
+      "desc": "SurrealDB versions before 2.1.0 contain a denial of service vulnerability in role conversion that allows privileged owner users to define users with nonexistent roles. Attackers can trigger an uncaught panic by signing in with a user assigned an invalid role, crashing the server.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58358",
+      "cvss": "4.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-58359",
+      "desc": "SurrealDB versions before 2.1.0 contain a denial of service vulnerability in the sorting mechanism when using ORDER BY rand() clause. Authorized clients can execute queries with ORDER BY rand() to trigger a panic in the sorting function, crashing the server.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58359",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-58361",
+      "desc": "SurrealDB versions before 2.0.4 contain an uncaught exception handling vulnerability in the parser error rendering code when processing empty strings. Authorized clients can execute malformed queries with empty string conversions to record, duration, or datetime types that cause a panic in error ren",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58361",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-58362",
+      "desc": "SurrealDB before 1.5.5 (and 2.0.0-beta before 2.0.0-beta.3) accepts an arbitrary object in the signin and signup operations of the RPC API without recursively validating it for non-computed values. When a record access method defines a SIGNIN or SIGNUP query and the RPC API is exposed to untrusted u",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58362",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-58363",
+      "desc": "SurrealDB before 1.5.4 fails to properly validate authentication when a scope user switches databases using the USE clause or use method. Attackers with an authenticated session can impersonate an unrelated user in a different database if a user record with an identical identifier exists, allowing u",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58363",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-58364",
+      "desc": "SurrealDB versions before 1.2.1 contain an uncaught exception handling vulnerability in span rendering when parsing queries with errors on line terminator characters. Authorized clients can submit malformed queries that trigger a panic in the span rendering code, crashing the server and causing deni",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58364",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-58365",
+      "desc": "SurrealDB versions before 1.2.0 contain an uncaught exception vulnerability in the query executor when processing calls to nonexistent built-in functions. Authorized clients can craft pre-parsed queries invoking nonexistent functions to trigger a panic that crashes the server.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58365",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-58366",
+      "desc": "SurrealDB before 1.1.1 contains a format string vulnerability in the rquickjs Exception::throw_type function when scripting is enabled. Attackers with scripting privileges can supply format string sequences in error inputs to read arbitrary memory or execute code with SurrealDB process privileges.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58366",
+      "cvss": "8.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-58367",
+      "desc": "SurrealDB versions before 2.0.4 fail to properly enforce field permissions during SELECT, UPDATE, and DELETE operations, allowing authorized users to access unauthorized field values through various query techniques. Attackers can exploit SELECT VALUE operations, field aliasing, function arguments, ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58367",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-58368",
+      "desc": "SurrealDB versions before 1.1.0 fail to properly parse the ID, DB, and NS headers in HTTP REST API requests containing special characters. Unauthenticated attackers can send crafted HTTP requests with malformed header values to trigger an uncaught exception that crashes the server.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58368",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-58369",
+      "desc": "SurrealDB versions before 1.1.1 fail to properly validate invocation of custom parameters and functions at root or namespace levels, causing server panic. Authorized clients can invoke these entities at unsupported levels to crash the SurrealDB server, resulting in denial of service.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58369",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-58370",
+      "desc": "SurrealDB versions before 1.1.0 fail to enforce recursion depth limits when parsing nested SurrealQL statements including IF, RELATE, and attribute access idioms. Authorized attackers can submit queries with excessive nesting depth to cause stack overflow and crash the server.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-58370",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-71390",
+      "desc": "SurrealDB before 2.2.6, 2.3.6, and 2.1.8 (and 3.0.0-alpha.7 and earlier) fails to validate DNS-resolved hostnames against --deny-net network access restrictions in its http::* functions. An authenticated user can invoke http::<fn>(<url>) with a hostname that resolves to a denied IP address, causing ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71390",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-71391",
+      "desc": "SurrealDB versions before 2.2.2 contain an uncaught exception vulnerability in the net module that allows authenticated users to crash the database. Attackers can send crafted HTTP queries containing null bytes to the /sql endpoint, causing an unhandled exception that crashes the SurrealDB instance ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71391",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-71392",
+      "desc": "SurrealDB before 2.0.5, 2.1.x before 2.1.5, and 2.2.x before 2.2.2 fails to properly escape table and field names in the command-line export command. An authenticated System User with OWNER or EDITOR roles can create tables or fields with malicious names containing SurrealQL. When a higher-privilege",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71392",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-71393",
+      "desc": "SurrealDB before 2.2.2 with scripting enabled fails to properly enforce recursion limits when native functions contain embedded JavaScript that issues new queries. Authenticated attackers can bypass the recursion limit by chaining native and JavaScript function calls to trigger infinite recursion an",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71393",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-71394",
+      "desc": "SurrealDB versions before 2.2.2 contain a local file read vulnerability in the DEFINE ANALYZER statement that allows authenticated users to read arbitrary files on the file system. Attackers with root, namespace, or database level privileges can point analyzers to arbitrary file paths and exfiltrate",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71394",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-71395",
+      "desc": "SurrealDB versions before 2.2.2 contain a memory exhaustion vulnerability in the string::replace function that fails to restrict resulting string length when using regex patterns. An authenticated attacker can craft a malicious query to exhaust server memory through unbounded string allocations, cau",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71395",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-71396",
+      "desc": "SurrealDB before 2.0.5, 2.1.x before 2.1.5, and 2.2.x before 2.2.2 does not enforce a default execution-time limit on embedded JavaScript scripting functions when the scripting capability is explicitly enabled (via --allow-scripting or --allow-all). An authenticated attacker can submit long-running ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71396",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-71397",
+      "desc": "SurrealDB before 2.0.5, 2.1.x before 2.1.5, and 2.2.x before 2.2.2 allows authenticated users with OWNER or EDITOR permissions (at the root, namespace, or database level) to define custom database functions via DEFINE FUNCTION using nested FOR loops. Although a single loop's iteration count is const",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71397",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-71398",
+      "desc": "SurrealDB before 2.2.2 fails to validate HTTP redirects in http functions, allowing authenticated users to bypass deny-net restrictions by redirecting to blocked IP addresses. Attackers can host a public server that redirects to denied network targets, enabling server-side request forgery to access ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-71398",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-11826",
+      "desc": "OpenPLC_v3 contains a heap-based buffer overflow in the getData() function in webserver/core/modbus_master.cpp. getData() reads characters between two delimiters into a caller-supplied buffer with no size parameter and no bounds check. In parseConfig() the function is invoked with the 100-byte heap-",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11826",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16117",
+      "desc": "Impact: @fastify/http-proxy versions up to and including 11.5.0 fail to rewrite the request prefix when the prefix segment is URL-encoded. Fastify's router URL-decodes paths for route matching, but request.url retains the original encoded form, and the prefix-rewrite step uses a literal string repla",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16117",
+      "cvss": "10.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16119",
+      "desc": "A vulnerability was found in nextlevelbuilder GoClaw up to 3.13.2. This affects the function RequestApproval of the file internal/tools/exec_approval.go of the component WebSocket Approval Endpoint. Performing a manipulation results in incorrect authorization. The attack is possible to be carried ou",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16119",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16120",
+      "desc": "A vulnerability was determined in nextlevelbuilder GoClaw up to 3.13.3-beta.3. This impacts the function matchesAllowlist/extractBin of the file internal/tools/exec_approval.go. Executing a manipulation can lead to incorrectly-resolved name. The attack may be performed from remote. The exploit has b",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16120",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-9323",
+      "desc": "The urwid web display backend (urwid/display/web.py) generates web session identifiers (urwid_id) in Screen.start() by concatenating two random.randrange(10**9) calls that use Python's Mersenne Twister PRNG, which is not cryptographically secure. Each call consumes approximately 30 bits of PRNG stat",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-18",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9323",
+      "cvss": "8.1",
       "cwe": ""
     },
     {

@@ -493,32 +493,6 @@ document.getElementById('search').addEventListener('input',e=>{
   renderThreats();
 });
 
-function openModal(t){
-  document.getElementById('modal-cve').textContent = t.id||'';
-  document.getElementById('modal-desc').textContent = t.desc||'';
-  document.getElementById('modal-chips').innerHTML=`
-    <div class="modal-chip">Severity: <b>${t.severity||'—'}</b></div>
-    <div class="modal-chip">Source: <b>${t.source||'—'}</b></div>
-    <div class="modal-chip">Date: <b>${t.date||'—'}</b></div>
-    ${t.cvss?`<div class="modal-chip">CVSS: <b>${t.cvss}</b></div>`:''}
-    ${t.pakistan?'<div class="modal-chip">🇵🇰 <b>Pakistan Alert</b></div>':''}
-    ${(t.tags||[]).map(tag=>`<div class="modal-chip">${tag}</div>`).join('')}`;
-  const urlEl = document.getElementById('modal-url');
-  if(t.url && t.url.startsWith('http')){
-    urlEl.href=t.url;
-    urlEl.textContent='🔗 View on '+t.source;
-    urlEl.style.display='block';
-  } else {
-    urlEl.style.display='none';
-  }
-  document.getElementById('modal').classList.add('open');
-}
-
-function closeModal(e){
-  if(e.target===document.getElementById('modal'))
-    document.getElementById('modal').classList.remove('open');
-}
-
 loadData();
 setInterval(loadData, 30*60*1000);
 

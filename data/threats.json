@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-19T14:01:33.301340+00:00",
-  "summary": "Today's digest contains 281 vulnerabilities across 5 sources. 74 zero-day exploits detected, 24 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-19T15:31:48.492032+00:00",
+  "summary": "Today's digest contains 320 vulnerabilities across 5 sources. 74 zero-day exploits detected, 24 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 281,
+    "new": 320,
     "changed": 0,
     "removed": 0,
-    "total": 149374,
+    "total": 149694,
     "zeroday": 74,
     "exploited": 24,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 192
+      "count": 231
     },
     {
       "name": "Exploit-DB",
@@ -4227,6 +4227,708 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63836",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16221",
+      "desc": "Impact: fast-uri versions from 2.3.1 through 4.1.0 (including the 3.x line up to 3.1.3 and the 2.x line up to 2.4.2) do not treat a literal backslash character (U+005C) as an authority delimiter. Node's native WHATWG URL parser, used by fetch, undici, and Node's http and https clients, normalizes th",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16221",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63837",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ena: PHC: Check return code before setting timestamp output\n\nena_phc_gettimex64() is setting the output parameter regardless\nof whether ena_com_phc_get_timestamp() succeeded or failed.\n\nWhen ena_com_phc_get_timestamp() returns",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63837",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63838",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nASoC: rsnd: Fix potential out-of-bounds access of component_dais[]\n\ncomponent_dais[RSND_MAX_COMPONENT] is initially zero-initialized\nand later populated in rsnd_dai_of_node(). However, the existing boundary check:\n  if (i >= RSND_M",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63838",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63839",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/x86: lenovo-wmi-helpers: Fix memory leak in lwmi_dev_evaluate_int()\n\nlwmi_dev_evaluate_int() leaks output.pointer when retval == NULL (found\nby sashiko.dev [1]).\n\nFix it by moving `ret_obj = output.pointer' outside of the ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63839",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63840",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/jpeg: set no_user_fence for JPEG v5.3.0 ring\n\nJPEG rings do not support 64-bit user fence writes, reject CS\nsubmissions with user fences.\n\n(cherry picked from commit 86ac011ae234c03fb872f4945913391ea1d8862e)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63840",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63841",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/jpeg: set no_user_fence for JPEG v5.0.1 ring\n\nJPEG rings do not support 64-bit user fence writes, reject CS\nsubmissions with user fences.\n\n(cherry picked from commit 742a98e2e81702df8fe1b1eccee5223220a03dc2)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63841",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63842",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/jpeg: set no_user_fence for JPEG v5.0.0 ring\n\nJPEG rings do not support 64-bit user fence writes, reject CS\nsubmissions with user fences.\n\n(cherry picked from commit 0f43893d3cd478fa57836697525b338817c9c23d)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63842",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63843",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/jpeg: set no_user_fence for JPEG v4.0.5 ring\n\nJPEG rings do not support 64-bit user fence writes, reject CS\nsubmissions with user fences.\n\n(cherry picked from commit f05d0a4f21fc720116d6e238f23308b199891058)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63843",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63844",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/jpeg: set no_user_fence for JPEG v4.0.3 ring\n\nJPEG rings do not support 64-bit user fence writes, reject CS\nsubmissions with user fences.\n\n(cherry picked from commit 2f6afc97d259d530f4f86c7743efbc573a8da927)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63844",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63845",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/jpeg: set no_user_fence for JPEG v4.0 ring\n\nJPEG rings do not support 64-bit user fence writes, reject CS\nsubmissions with user fences.\n\n(cherry picked from commit 8d0cac9478a3f046279c657d6a2545de49ae675a)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63845",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63846",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/jpeg: set no_user_fence for JPEG v3.0 ring\n\nJPEG rings do not support 64-bit user fence writes, reject CS\nsubmissions with user fences.\n\n(cherry picked from commit 4d7d774f100efb5089c86a1fb8c5bf47c63fc9ef)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63846",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63847",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/jpeg: set no_user_fence for JPEG v2.5 ring\n\nJPEG rings do not support 64-bit user fence writes, reject CS\nsubmissions with user fences.\n\n(cherry picked from commit 3216a7f4e2642bda5fd14f57586e835ae9202587)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63847",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63848",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/jpeg: set no_user_fence for JPEG v2.0 ring\n\nJPEG rings do not support 64-bit user fence writes, reject CS\nsubmissions with user fences.\n\n(cherry picked from commit 96179da0c6b059eb31706a0abe8dd6381c533143)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63848",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63849",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/vcn: set no_user_fence for VCN v5.0.1 enc ring\n\nVCN encoder and decoder rings do not support 64-bit user fence writes,\nreject CS submissions with user fences.\n\n(cherry picked from commit e16be95a2c3ee712b142cb27d2dca0b46",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63849",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63850",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/vcn: set no_user_fence for VCN v5.0.0 enc ring\n\nVCN encoder and decoder rings do not support 64-bit user fence writes,\nreject CS submissions with user fences.\n\n(cherry picked from commit 49b1fbbb5a071197ee71e2d70959b1cb2",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63850",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63851",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/vcn: set no_user_fence for VCN v4.0.5 enc ring\n\nVCN encoder and decoder rings do not support 64-bit user fence writes,\nreject CS submissions with user fences.\n\n(cherry picked from commit 084d94ac93707bdda07efb5cee786f632",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63851",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63852",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/vcn: set no_user_fence for VCN v4.0.3 enc ring\n\nVCN encoder and decoder rings do not support 64-bit user fence writes,\nreject CS submissions with user fences.\n\n(cherry picked from commit ff1a5a125c5a70c328806b9bc01d7d942",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63852",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63853",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/vcn: set no_user_fence for VCN v4.0 enc ring\n\nVCN encoder and decoder rings do not support 64-bit user fence writes,\nreject CS submissions with user fences.\n\n(cherry picked from commit fd852c048b46f9825e904a4f3f4538fe9d8",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63853",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63854",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/vcn: set no_user_fence for VCN v3.0 enc/dec rings\n\nVCN encoder and decoder rings do not support 64-bit user fence writes,\nreject CS submissions with user fences.\n\n(cherry picked from commit 663bed3c7b8b9a7624b0d95d300dda",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63854",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63855",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/vcn: set no_user_fence for VCN v2.5 enc/dec rings\n\nVCN encoder and decoder rings do not support 64-bit user fence writes,\nreject CS submissions with user fences.\n\n(cherry picked from commit efc9dd5590894109bce9a0bfe1fa55",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63855",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63856",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/vcn: set no_user_fence for VCN v2.0 enc/dec rings\n\nVCN encoder and decoder rings do not support 64-bit user fence writes,\nreject CS submissions with user fences.\n\n(cherry picked from commit e2b5499fca55f1a32960a311bbb62e",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63856",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63857",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: airoha: Do not read uninitialized fragment address in airoha_dev_xmit()\n\nThe transmit loop in airoha_dev_xmit() reads fragment address and length\nduring its final iteration, when the loop index equals\nskb_shinfo(skb)->nr_frags",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63857",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63858",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_tables: add hook transactions for device deletions\n\nRestore the flag that indicates that the hook is going away, ie.\nNFT_HOOK_REMOVE, but add a new transaction object to track deletion\nof hooks without altering the ba",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63858",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63859",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: airoha: Add missing bits in airoha_qdma_cleanup_tx_queue()\n\nSimilar to airoha_qdma_cleanup_rx_queue(), reset DMA TX descriptors in\nairoha_qdma_cleanup_tx_queue routine. Moreover, reset TX_DMA_IDX to\nTX_CPU_IDX to notify the NI",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63859",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63860",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/core: Prefer NLA_NUL_STRING\n\nThese attributes are evaluated as c-string (passed to strcmp), but\nNLA_STRING doesn't check for the presence of a \\0 terminator.\n\nEither this needs to switch to nla_strcmp() and needs to adjust pri",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63860",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63861",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: mtk-snfi: unregister ECC engine on probe failure and remove() callback\n\nmtk_snand_probe() registers the on-host NAND ECC engine, but teardown was\nmissing from both probe unwind and remove-time cleanup. Add a devm cleanup\nactio",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63861",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63862",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI: mediatek-gen3: Prevent leaking IRQ domains when IRQ not found\n\nIn mtk_pcie_setup_irq(), the IRQ domains are allocated before the\ncontroller's IRQ is fetched. If the latter fails, the function\ndirectly returns an error, without",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63862",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63863",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/gpusvm: Fix unbalanced unlock in drm_gpusvm_scan_mm()\n\nThere is a unbalanced lock/unlock to gpusvm notifier lock:\n[  931.045868] =====================================\n[  931.046509] WARNING: bad unlock balance detected!\n[  931.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63863",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63864",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Propagate error from visit_tailcall_insn\n\nCommit e40f5a6bf88a (\"bpf: correct stack liveness for tail calls\") added\nvisit_tailcall_insn() but did not check its return value.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63864",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63865",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Drop task_to_inode and inet_conn_established from lsm sleepable hooks\n\nbpf_lsm_task_to_inode() is called under rcu_read_lock() and\nbpf_lsm_inet_conn_established() is called from softirq context, so\nneither hook can be used by ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63865",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63866",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7996: Clear wcid pointer in mt7996_mac_sta_deinit_link()\n\nClear WCID pointer removing the sta link in mt7996_mac_sta_deinit_link\nroutine.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63866",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63867",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: close TOCTOU race while computing rcv_wnd\n\nThe MPTCP output path access locklessly the MPTCP-level ack_seq\nin multiple times, using possibly different values for the data_ack\nin the DSS option and to compute the announced rc",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63867",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63868",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: garp: fix unsigned integer underflow in garp_pdu_parse_attr\n\nThe receive-side GARP attribute parser computes dlen with reversed\noperands:\n\n        dlen = sizeof(*ga) - ga->len;\n\nga->len is the on-wire attribute length and incl",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63868",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63869",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mac80211: limit injected antenna index in ieee80211_parse_tx_radiotap\n\nWhen parsing the radiotap header of an injected frame,\nieee80211_parse_tx_radiotap() uses the IEEE80211_RADIOTAP_ANTENNA value\ndirectly as a shift count:\n",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63869",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63870",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nieee802154: 6lowpan: only accept IPv6 packets in lowpan_xmit()\n\nThe aoe driver (or similar) generates a non-IPv6 packet\n(e.g., ETH_P_AOE) and queues it for transmission via dev_queue_xmit()\non a 6LoWPAN interface (configured by the",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63870",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63871",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: ISO: Fix data-race on iso_pi fields in hci_get_route calls\n\niso_connect_bis(), iso_connect_cis(), iso_listen_bis(), and\niso_conn_big_sync() call hci_get_route() using iso_pi(sk)->dst,\niso_pi(sk)->src, and iso_pi(sk)->src",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63871",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63872",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nesp: fix page frag reference leak on skb_to_sgvec failure\n\nIn esp_output_tail(), when esp->inplace is false, the old skb page frags\nare replaced with a new page from the xfrm page_frag cache. The source\nscatterlist (sg) is built fr",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63872",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63873",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel/amdxdna: Fix mm_struct reference leak in aie2_populate_range()\n\naie2_populate_range() jumps back to the again label without calling\nmmput(mm), leaking a reference to the mm_struct.\n\nAdd the missing mmput() before jumping to a",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63873",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63874",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mctp: usb: fix race between urb completion and rx_retry cancellation\n\nIt's possible that sequencing between setting ->stopped and cancelling\nthe rx_retry work (in ndo_stop) could leave us with an urb queued:\n\n    T1: ndo_stop ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63874",
       "cvss": "0.0",
       "cwe": ""
     },

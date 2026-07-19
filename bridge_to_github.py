@@ -397,12 +397,33 @@ def map_severity(r):
 def clean_date(val):
     if not val: return date.today().isoformat()
     s = str(val).strip()
-    for fmt in ["%Y-%m-%d", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%dT%H:%M:%SZ"]:
+    # Try common formats
+    formats = [
+        "%Y-%m-%d",
+        "%Y-%m-%dT%H:%M:%S",
+        "%Y-%m-%dT%H:%M:%SZ",
+        "%Y-%m-%dT%H:%M:%S.%fZ",
+        "%a, %d %b %Y %H:%M:%S %Z",
+        "%a, %d %b %Y %H:%M:%S GMT",
+        "%a, %d %b %Y %H:%M:%S +0000",
+        "%d %b %Y %H:%M:%S %Z",
+        "%B %d, %Y",
+    ]
+    for fmt in formats:
         try:
-            return datetime.strptime(s[:len(fmt)], fmt).strftime("%Y-%m-%d")
+            return datetime.strptime(s[:len(fmt)+5].strip(), fmt).strftime("%Y-%m-%d")
         except Exception:
             pass
-    return s[:10] if len(s) >= 10 else date.today().isoformat()
+    # Last resort: try dateutil if available
+    try:
+        from dateutil import parser as dp
+        return dp.parse(s).strftime("%Y-%m-%d")
+    except Exception:
+        pass
+    # If it starts with YYYY-MM-DD just use that
+    if len(s) >= 10 and s[4] == '-' and s[7] == '-':
+        return s[:10]
+    return date.today().isoformat()
 
 
 def generate_ai_summary(threats):

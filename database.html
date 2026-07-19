@@ -192,7 +192,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 <div class="page-header">
   <div class="page-badge">Vulnerability Archive</div>
   <div class="page-title">CVE <span>Database</span></div>
-  <div class="page-sub">Full searchable archive of all tracked vulnerabilities · Updated daily at 09:00 PKT</div>
+  <div class="page-sub">Full searchable archive of all tracked vulnerabilities · Updated every 30 minutes</div>
 </div>
 
 <!-- MAIN -->
@@ -209,16 +209,10 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     <select class="f-select" id="src-filter" onchange="applyFilters()">
       <option value="">All Sources</option>
       <option value="CISA KEV">CISA KEV</option>
-      <option value="NVD/NIST">NVD/NIST</option>
+      <option value="ZDI">ZDI</option>
       <option value="Exploit-DB">Exploit-DB</option>
       <option value="Pakistan CERT">Pakistan CERT</option>
-      <option value="NCCS Pakistan">NCCS Pakistan</option>
-    </select>
-    <select class="f-select" id="date-filter" onchange="applyFilters()">
-      <option value="">All Dates</option>
-      <option value="today">Today</option>
-      <option value="week">Last 7 Days</option>
-      <option value="month">Last 30 Days</option>
+      <option value="NVD">NVD</option>
     </select>
     <select class="f-select" id="pk-filter" onchange="applyFilters()">
       <option value="">All Regions</option>
@@ -263,6 +257,12 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 const PAGE_SIZE = 25;
 let allThreats = [], filtered = [], currentPage = 1, sortCol = 'date', sortDir = -1;
 
+const SEV_ORDER = {CRITICAL:4, HIGH:3, MEDIUM:2, LOW:1};
+
+function sevSort(a, b){
+  return (SEV_ORDER[b.severity]||0) - (SEV_ORDER[a.severity]||0);
+}
+
 const DEMO = [
   {id:"CVE-2026-1234",desc:"Remote code execution in Apache HTTP Server via malformed request headers",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["RCE","Apache"]},
   {id:"CVE-2026-1198",desc:"Authentication bypass in Fortinet FortiOS SSL-VPN",severity:"CRITICAL",source:"CISA KEV",date:"2026-05-10",pakistan:true,tags:["Auth Bypass","VPN"]},
@@ -288,26 +288,27 @@ async function loadData() {
 }
 
 function applyFilters() {
-  const q    = document.getElementById('search').value.toLowerCase();
-  const sev  = document.getElementById('sev-filter').value;
-  const src  = document.getElementById('src-filter').value;
-  const pk   = document.getElementById('pk-filter').value;
-  const dateF= document.getElementById('date-filter').value;
-  const today = new Date().toISOString().slice(0,10);
-  const week  = new Date(Date.now()-7*86400000).toISOString().slice(0,10);
-  const month = new Date(Date.now()-30*86400000).toISOString().slice(0,10);
-
+  const q   = document.getElementById('search').value.toLowerCase();
+  const sev = document.getElementById('sev-filter').value;
+  const src = document.getElementById('src-filter').value;
+  const pk  = document.getElementById('pk-filter').value;
   filtered = allThreats.filter(t => {
     if (sev && t.severity !== sev) return false;
     if (src && t.source !== src) return false;
     if (pk === 'pk' && !t.pakistan) return false;
-    if (dateF === 'today'  && t.date < today) return false;
-    if (dateF === 'week'   && t.date < week)  return false;
-    if (dateF === 'month'  && t.date < month) return false;
     if (q && !t.id.toLowerCase().includes(q) && !t.desc.toLowerCase().includes(q) && !(t.source||'').toLowerCase().includes(q)) return false;
     return true;
   });
   filtered.sort((a, b) => {
+    if(sortCol === 'date'){
+      // Primary: date descending, Secondary: severity descending
+      const dateDiff = (b.date||'') < (a.date||'') ? -1 : (b.date||'') > (a.date||'') ? 1 : 0;
+      return dateDiff !== 0 ? dateDiff * sortDir : sevSort(a,b);
+    }
+    if(sortCol === 'severity'){
+      const sd = sevSort(a,b);
+      return sd !== 0 ? sd * sortDir : (b.date||'').localeCompare(a.date||'');
+    }
     const av = a[sortCol]||'', bv = b[sortCol]||'';
     return av < bv ? sortDir : av > bv ? -sortDir : 0;
   });

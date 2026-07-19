@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-19T10:56:16.748651+00:00",
-  "summary": "Today's digest contains 206 vulnerabilities across 5 sources. 74 zero-day exploits detected, 24 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-19T12:01:34.731677+00:00",
+  "summary": "Today's digest contains 214 vulnerabilities across 5 sources. 74 zero-day exploits detected, 24 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 206,
+    "new": 214,
     "changed": 0,
     "removed": 0,
-    "total": 148367,
+    "total": 148581,
     "zeroday": 74,
     "exploited": 24,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 117
+      "count": 125
     },
     {
       "name": "Exploit-DB",
@@ -2878,6 +2878,150 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16229",
       "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53373",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/vma: do not try to unmap a VMA if mmap_prepare() invoked from mmap()\n\nThe mmap_prepare hook functionality includes the ability to invoke\nmmap_prepare() from the mmap() hook of existing 'stacked' drivers, that is\nones which are c",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53373",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53374",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: zero-initialize GART table on allocation\n\nGART TLB is flushed after unmapping but not after mapping. Since\namdgpu_bo_create_kernel() does not zero-initialize the buffer, when a\nsingle PTE is written the TLB may speculat",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53374",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53375",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/vce: Prevent partial address patches\n\nIn the case that only one of lo/hi is valid, the patching could result\nin a bad address written to in FW.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53375",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53376",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Add upper bound check for num_of_nodes\n\ndrm/amdkfd: Add upper bound check for num_of_nodes\nin kfd_ioctl_get_process_apertures_new.\n\n(cherry picked from commit 98ff46a5ea090c14d2cdb4f5b993b05d74f3949f)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53376",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53377",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/msm: always recover the gpu\n\nPreviously, in case there was no more work to do, recover worker\nwouldn't trigger recovery and would instead rely on the gpu going to\nsleep and then resuming when more work is submitted.\n\nRecover_wo",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53377",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53378",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/colorop: Fix blob property reference tracking in state lifecycle\n\nThe colorop state blob property handling had memory leaks during state\nduplication, destruction, and reset operations. The implementation\nfailed to follow the es",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53378",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53379",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: i2c: ov8856: free control handler on error in ov8856_init_controls()\n\nThe control handler wasn't freed if adding controls failed, add an error\nexit label and convert the existing error return to use it.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53379",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53380",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: rzv2h-ivc: Fix concurrent buffer list access\n\nThe list of buffers (`rzv2h_ivc::buffers.queue`) is protected by a\nspinlock (`rzv2h_ivc::buffers.lock`). However, in\n`rzv2h_ivc_transfer_buffer()`, which runs in a separate workq",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-19",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53380",
+      "cvss": "0.0",
       "cwe": ""
     },
     {

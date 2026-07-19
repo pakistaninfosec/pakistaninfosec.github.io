@@ -209,10 +209,16 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     <select class="f-select" id="src-filter" onchange="applyFilters()">
       <option value="">All Sources</option>
       <option value="CISA KEV">CISA KEV</option>
-      <option value="ZDI">ZDI</option>
+      <option value="NVD/NIST">NVD/NIST</option>
       <option value="Exploit-DB">Exploit-DB</option>
       <option value="Pakistan CERT">Pakistan CERT</option>
-      <option value="NVD">NVD</option>
+      <option value="NCCS Pakistan">NCCS Pakistan</option>
+    </select>
+    <select class="f-select" id="date-filter" onchange="applyFilters()">
+      <option value="">All Dates</option>
+      <option value="today" selected>Today</option>
+      <option value="week">Last 7 Days</option>
+      <option value="month">Last 30 Days</option>
     </select>
     <select class="f-select" id="pk-filter" onchange="applyFilters()">
       <option value="">All Regions</option>
@@ -288,21 +294,28 @@ async function loadData() {
 }
 
 function applyFilters() {
-  const q   = document.getElementById('search').value.toLowerCase();
-  const sev = document.getElementById('sev-filter').value;
-  const src = document.getElementById('src-filter').value;
-  const pk  = document.getElementById('pk-filter').value;
+  const q     = document.getElementById('search').value.toLowerCase();
+  const sev   = document.getElementById('sev-filter').value;
+  const src   = document.getElementById('src-filter').value;
+  const pk    = document.getElementById('pk-filter').value;
+  const dateF = document.getElementById('date-filter') ? document.getElementById('date-filter').value : '';
+  const today = new Date().toISOString().slice(0,10);
+  const week  = new Date(Date.now()-7*86400000).toISOString().slice(0,10);
+  const month = new Date(Date.now()-30*86400000).toISOString().slice(0,10);
+
   filtered = allThreats.filter(t => {
     if (sev && t.severity !== sev) return false;
     if (src && t.source !== src) return false;
     if (pk === 'pk' && !t.pakistan) return false;
+    if (dateF === 'today' && (t.date||'') < today) return false;
+    if (dateF === 'week'  && (t.date||'') < week)  return false;
+    if (dateF === 'month' && (t.date||'') < month) return false;
     if (q && !t.id.toLowerCase().includes(q) && !t.desc.toLowerCase().includes(q) && !(t.source||'').toLowerCase().includes(q)) return false;
     return true;
   });
   filtered.sort((a, b) => {
     if(sortCol === 'date'){
-      // Primary: date descending, Secondary: severity descending
-      const dateDiff = (b.date||'') < (a.date||'') ? -1 : (b.date||'') > (a.date||'') ? 1 : 0;
+      const dateDiff = (b.date||'').localeCompare(a.date||'');
       return dateDiff !== 0 ? dateDiff * sortDir : sevSort(a,b);
     }
     if(sortCol === 'severity'){

@@ -241,17 +241,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 </div>
 
 <!-- MODAL -->
-<div class="modal-ov" id="modal" onclick="closeModal(event)">
-  <div class="modal-box">
-    <div class="modal-top">
-      <div class="modal-id" id="modal-id"></div>
-      <button class="modal-x" onclick="document.getElementById('modal').classList.remove('open')">✕</button>
-    </div>
-    <div class="modal-title" id="modal-title"></div>
-    <div class="modal-desc" id="modal-desc"></div>
-    <div class="modal-chips" id="modal-chips"></div>
-  </div>
-</div>
 
 <footer>
   <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>
@@ -325,8 +314,8 @@ function renderTable() {
   const start = (currentPage - 1) * PAGE_SIZE;
   const page  = filtered.slice(start, start + PAGE_SIZE);
   document.getElementById('table-body').innerHTML = page.length ? page.map(t => `
-    <tr onclick="openModal(${JSON.stringify(t).replace(/"/g,'&quot;')})">
-      <td class="td-cve">${t.id}${t.pakistan ? ' <span class="pk-flag">🇵🇰</span>' : ''}</td>
+    <tr onclick="window.location.href='cve.html?id='+encodeURIComponent('${t.id}')" style="cursor:pointer;">
+      <td class="td-cve"><span style="color:var(--blue3);font-weight:600;">${t.id}</span>${t.pakistan ? ' <span class="pk-flag">🇵🇰</span>' : ''}</td>
       <td><span class="sev-badge sev-${t.severity.toLowerCase()}">${t.severity}</span></td>
       <td class="td-desc">${t.desc}</td>
       <td class="td-source">${t.source}</td>
@@ -355,22 +344,6 @@ function goPage(p) {
   renderTable();
   window.scrollTo(0, 0);
 }
-
-function openModal(t) {
-  if (typeof t === 'string') t = JSON.parse(t);
-  document.getElementById('modal-id').textContent = t.id;
-  document.getElementById('modal-title').textContent = t.desc;
-  document.getElementById('modal-desc').textContent = t.desc;
-  document.getElementById('modal-chips').innerHTML = `
-    <div class="modal-chip">Severity: <b>${t.severity}</b></div>
-    <div class="modal-chip">Source: <b>${t.source}</b></div>
-    <div class="modal-chip">Date: <b>${t.date}</b></div>
-    ${t.pakistan ? '<div class="modal-chip">🇵🇰 <b>Pakistan Alert</b></div>' : ''}
-    ${(t.tags||[]).map(tag => `<div class="modal-chip">${tag}</div>`).join('')}
-  `;
-  document.getElementById('modal').classList.add('open');
-}
-function closeModal(e) { if (e.target === document.getElementById('modal')) document.getElementById('modal').classList.remove('open'); }
 
 document.getElementById('search').addEventListener('input', applyFilters);
 loadData();

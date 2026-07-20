@@ -634,6 +634,84 @@ document.querySelectorAll('.nav-links a').forEach(a=>{
 renderBlogs();
 loadAllPosts();
 setInterval(loadAllPosts, 15 * 60 * 1000);
+
+// ── Load AI Daily Digest Posts from blogs.json ──────────────
+async function loadAIDigestPosts(){
+  const container = document.getElementById('own-posts');
+  try{
+    const res = await fetch('https://pakistaninfosec.github.io/data/blogs.json?t='+Date.now());
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const data = await res.json();
+    const posts = (data.posts||[]).slice(0,10);
+    if(!posts.length){ return; }
+
+    // Remove placeholder OWASP card — keep only AI posts + OWASP
+    const existingCards = container.querySelectorAll('.ai-digest-card');
+    existingCards.forEach(c=>c.remove());
+
+    // Insert AI digest cards BEFORE the OWASP card
+    const owaspCard = container.querySelector('a[href="blog-owasp-top10.html"]');
+
+    posts.forEach(post=>{
+      const dt = new Date(post.date);
+      const niceDt = dt.toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+      const isToday = post.date === new Date().toISOString().slice(0,10);
+
+      const card = document.createElement('a');
+      card.href = post.slug;
+      card.className = 'ai-digest-card';
+      card.style.textDecoration = 'none';
+      card.innerHTML = `
+        <div class="blog-card" style="border-color:rgba(37,99,235,0.3);">
+          <div class="card-top" style="background:linear-gradient(90deg,var(--blue),var(--purple));"></div>
+          <div class="card-content">
+            <div class="card-rank" style="color:var(--blue3);">
+              ${isToday ? '🆕 TODAY\'S DIGEST' : '📅 DAILY DIGEST'} · ${post.date}
+            </div>
+            <div class="author-row">
+              <div class="author-avatar" style="background:rgba(37,99,235,0.15);border-color:rgba(37,99,235,0.3);">🤖</div>
+              <div>
+                <div class="author-name">InfoSec Pakistan</div>
+                <div class="author-title">AI-Generated Daily Analysis</div>
+                <div class="blog-name" style="color:var(--blue3);">📰 Cybersecurity Digest</div>
+              </div>
+            </div>
+            <div style="font-family:var(--display);font-size:16px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.35;">
+              ${post.title}
+            </div>
+            <div class="card-desc">${post.snippet||'Daily AI-powered cybersecurity digest covering the latest threats, news and Pakistan-specific security alerts.'}</div>
+            <div class="card-tags">
+              <span class="ctag">Daily Digest</span>
+              <span class="ctag">AI Analysis</span>
+              <span class="ctag">Pakistan Focus</span>
+              <span class="ctag" style="color:var(--blue3);">🤖 LLaMA 70B</span>
+            </div>
+            <div class="card-footer">
+              <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.3);border-radius:6px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--blue3);">
+                📖 Read Digest →
+              </div>
+              <div class="freq-badge">📅 ${niceDt}</div>
+            </div>
+          </div>
+        </div>`;
+
+      if(owaspCard){
+        container.insertBefore(card, owaspCard);
+      } else {
+        container.appendChild(card);
+      }
+    });
+
+    // Update post count
+    document.getElementById('post-count').textContent = posts.length + 1; // +1 for OWASP
+    console.log(`[✓] Loaded ${posts.length} AI digest posts`);
+  }catch(e){
+    console.warn('Failed to load blogs.json:', e.message);
+  }
+}
+
+loadAIDigestPosts();
+setInterval(loadAIDigestPosts, 30*60*1000);
 </script>
 </body>
 </html>

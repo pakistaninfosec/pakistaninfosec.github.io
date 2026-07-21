@@ -221,6 +221,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     <a href="database.html">CVE Database</a>
     <a href="news.html">News</a>
     <a href="about.html">About</a>
+    <a href="services.html">Services</a>
     <a href="contact.html" class="active">Contact</a>
     <a href="sandbox.html">Sandbox</a>
   </div>
@@ -239,7 +240,16 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   <div class="page-header">
     <div class="page-badge">Get In Touch</div>
     <div class="page-title">Contact <span>InfoSec Pakistan</span></div>
-    <div class="page-desc">Have a question, report a vulnerability, or want to collaborate? We'd love to hear from Pakistan's cybersecurity community.</div>
+    <div class="page-desc">Have a security question, need a service, or want to collaborate? We'd love to hear from you. Check our <a href="services.html" style="color:var(--blue3)">Services page</a> for professional cybersecurity services.</div>
+  </div>
+
+  <!-- SERVICES BANNER -->
+  <div style="background:linear-gradient(135deg,rgba(37,99,235,0.08),rgba(6,182,212,0.05));border:1px solid rgba(37,99,235,0.2);border-radius:12px;padding:20px 24px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <div>
+      <div style="font-family:var(--display);font-size:15px;font-weight:700;color:#fff;margin-bottom:4px;">🔐 Looking for Cybersecurity Services?</div>
+      <div style="font-size:13px;color:var(--text2);">VAPT, Risk Assessment, Managed SOC, vCISO, Incident Response and more — visit our Services page.</div>
+    </div>
+    <a href="services.html" style="display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;flex-shrink:0;">View All Services →</a>
   </div>
 
   <!-- CONTACT GRID -->
@@ -254,39 +264,56 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
       <div class="form-body">
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Full Name</label>
-            <input class="form-input" type="text" id="name" placeholder="Your name">
+            <label class="form-label">Full Name *</label>
+            <input class="form-input" type="text" id="name" placeholder="Your name" required>
           </div>
           <div class="form-group">
-            <label class="form-label">Email Address</label>
-            <input class="form-input" type="email" id="email" placeholder="your@email.com">
+            <label class="form-label">Email Address *</label>
+            <input class="form-input" type="email" id="email" placeholder="your@email.com" required>
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">Organization</label>
-          <input class="form-input" type="text" id="org" placeholder="Company / University / Government">
+          <input class="form-input" type="text" id="org" placeholder="Company / University / Government Agency">
         </div>
         <div class="form-group">
-          <label class="form-label">Subject</label>
-          <select class="form-select" id="subject">
-            <option value="">Select a topic...</option>
-            <option value="vulnerability">Report a Vulnerability</option>
-            <option value="subscribe">Subscribe to Daily Digest</option>
-            <option value="collaboration">Collaboration / Partnership</option>
-            <option value="feedback">Feedback / Suggestions</option>
-            <option value="media">Media / Press Inquiry</option>
-            <option value="other">Other</option>
+          <label class="form-label">Subject / Service *</label>
+          <select class="form-select" id="subject" required>
+            <option value="">— Select a topic or service —</option>
+            <optgroup label="🔐 Cybersecurity Services">
+              <option value="VAPT — Vulnerability Assessment & Penetration Testing">VAPT — Vulnerability Assessment & Penetration Testing</option>
+              <option value="Cybersecurity Risk Assessment">Cybersecurity Risk Assessment</option>
+              <option value="Managed SOC — Security Operations Center">Managed SOC — Security Operations Center</option>
+              <option value="Virtual CISO (vCISO) Services">Virtual CISO (vCISO) Services</option>
+              <option value="Incident Response & Digital Forensics">Incident Response & Digital Forensics</option>
+              <option value="Cloud Security Assessment & Hardening">Cloud Security Assessment & Hardening</option>
+              <option value="Security Awareness Training">Security Awareness Training</option>
+              <option value="Compliance & Regulatory Advisory">Compliance & Regulatory Advisory</option>
+              <option value="Threat Intelligence & Dark Web Monitoring">Threat Intelligence & Dark Web Monitoring</option>
+              <option value="Red Team Operations">Red Team Operations</option>
+            </optgroup>
+            <optgroup label="💬 General Inquiries">
+              <option value="Report a Vulnerability">Report a Vulnerability</option>
+              <option value="Subscribe to Daily Digest">Subscribe to Daily Digest</option>
+              <option value="Collaboration / Partnership">Collaboration / Partnership</option>
+              <option value="Feedback / Suggestions">Feedback / Suggestions</option>
+              <option value="Media / Press Inquiry">Media / Press Inquiry</option>
+              <option value="Other">Other</option>
+            </optgroup>
           </select>
         </div>
         <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-textarea" id="message" placeholder="Describe your inquiry in detail..."></textarea>
+          <label class="form-label">Message *</label>
+          <textarea class="form-textarea" id="message" placeholder="Describe your inquiry, security needs, or requirements in detail..." required></textarea>
         </div>
         <button class="submit-btn" onclick="submitForm()">
-          ✉ Send Message
+          ✉ Send Message to InfoSec Pakistan
         </button>
+        <div style="font-size:11px;color:var(--text3);text-align:center;margin-top:10px;">
+          Messages go directly to <strong style="color:var(--text2)">pakistaninfosec@gmail.com</strong>
+        </div>
         <div class="success-msg" id="success-msg">
-          ✅ Message sent! We'll reply to pakistaninfosec@gmail.com within 24 hours.
+          ✅ Message sent! We'll reply within 24 hours. For urgent security services visit our <a href="services.html" style="color:var(--blue3)">Services page</a>.
         </div>
       </div>
     </div>

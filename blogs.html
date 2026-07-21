@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cybersecurity Blogs — InfoSec Pakistan</title>
-  <meta name="description" content="Top 10 human-written cybersecurity blogs — expert analysis, research and insights from the world's leading security researchers.">
+  <meta name="description" content="Original cybersecurity analysis, daily AI-powered threat digests, and expert guides — written for Pakistani security professionals.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -63,10 +64,6 @@ main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:48px 48p
 .refresh-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 2s infinite;}
 
 /* FILTER BAR */
-.filter-bar{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap;}
-.tag-filter{display:inline-flex;align-items:center;gap:6px;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:7px 16px;font-size:12px;font-weight:500;color:var(--text3);cursor:pointer;transition:all 0.2s;}
-.tag-filter:hover{color:#fff;border-color:var(--border2);}
-.tag-filter.active{color:#fff;border-color:var(--purple);background:rgba(168,85,247,0.1);color:var(--purple);}
 .search-wrap{position:relative;margin-bottom:28px;}
 .search-input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:11px 14px 11px 40px;color:#fff;font-size:13.5px;font-family:var(--body);outline:none;transition:border-color 0.2s;}
 .search-input:focus{border-color:var(--purple);}
@@ -100,10 +97,6 @@ main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:48px 48p
 .follow-btn:hover{color:#fff;border-color:var(--purple);}
 .freq-badge{font-size:10px;color:var(--text3);display:flex;align-items:center;gap:4px;}
 
-/* LATEST POSTS SECTION */
-.latest-section{margin-top:48px;}
-.section-title{font-family:var(--display);font-size:20px;font-weight:700;color:#fff;margin-bottom:20px;display:flex;align-items:center;gap:12px;}
-.section-title::before{content:'';width:4px;height:22px;background:var(--purple);border-radius:2px;}
 .posts-loading{padding:32px;text-align:center;color:var(--text3);}
 .spinner{width:22px;height:22px;border:2px solid var(--border);border-top-color:var(--purple);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 12px;}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -170,10 +163,10 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 <main>
   <!-- PAGE HEADER -->
   <div class="page-header">
-    <div class="page-badge">✍️ Human-Written Research</div>
-    <div class="page-title">Cybersecurity <span>Blogs</span></div>
-    <div class="page-desc">Top 10 human-written cybersecurity blogs — expert analysis, original research and real-world insights from the world's most respected security researchers, practitioners and investigators. No AI fluff, just genuine expertise.</div>
-    <div class="human-badge">👤 Human Written · ✅ Expert Verified · 📚 Original Research</div>
+    <div class="page-badge">✍️ InfoSec Pakistan Blog</div>
+    <div class="page-title">InfoSec Pakistan <span>Blog</span></div>
+    <div class="page-desc">Top 10 human-written cybersecurity blogs — expert analysis, original research and real-world insights from the world's most respected security researchers, practitioners and investigators. </div>
+    <div class="human-badge">🇵🇰 Pakistan Focused · 🤖 AI Daily Digests · 📚 Original Research</div>
   </div>
 
   <!-- STATS BAR -->
@@ -203,18 +196,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     </div>
   </div>
 
-  <!-- FILTER -->
-  <div class="filter-bar" id="filter-bar">
-    <div class="tag-filter active" onclick="filterTag('all',this)">All</div>
-    <div class="tag-filter" onclick="filterTag('research',this)">🔬 Research</div>
-    <div class="tag-filter" onclick="filterTag('threat-intel',this)">🎯 Threat Intel</div>
-    <div class="tag-filter" onclick="filterTag('malware',this)">☠️ Malware</div>
-    <div class="tag-filter" onclick="filterTag('privacy',this)">🔒 Privacy</div>
-    <div class="tag-filter" onclick="filterTag('enterprise',this)">🏢 Enterprise</div>
-    <div class="tag-filter" onclick="filterTag('vulnerability',this)">🔓 Vulnerability</div>
-  </div>
 
-  <div class="search-wrap">
     <span class="search-icon">🔍</span>
     <input class="search-input" id="search-input" type="text" placeholder="Search blogs or authors...">
   </div>
@@ -223,7 +205,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   <!-- OWN BLOG POSTS SECTION -->
   <div class="featured-section" style="margin-bottom:48px;">
     <div class="featured-label" style="color:var(--green);border-left-color:var(--green)">
-      ✍️ Written by InfoSec Pakistan — Our Own Blog Posts
+      📝 All Blog Posts — Date Wise
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px;" id="own-posts">
       <a href="blog-owasp-top10.html" style="text-decoration:none;">
@@ -260,18 +242,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     </div>
   </div>
 
-  <!-- SEPARATOR -->
-  <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;">
-    <div style="flex:1;height:1px;background:var(--border);"></div>
-    <div style="font-size:11px;font-weight:700;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;">Top 10 Expert Blogs We Recommend</div>
-    <div style="flex:1;height:1px;background:var(--border);"></div>
-  </div>
-  <!-- BLOG CARDS -->
-  <div class="featured-section">
-    <div class="featured-label">Top 10 Cybersecurity Blogs — Curated for Security Professionals</div>
-    <div class="blogs-grid" id="blogs-grid"></div>
-  </div>
-
   <!-- LATEST POSTS -->
   <div class="latest-section">
     <div class="section-title">Latest Posts from All Blogs</div>
@@ -295,317 +265,6 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 <script>
 'use strict';
 
-// ═══════════════════════════════════════════════════
-//  TOP 10 BLOGS DATA
-// ═══════════════════════════════════════════════════
-const BLOGS = [
-  {
-    rank: 1,
-    author: 'Bruce Schneier',
-    avatar: '🔐',
-    title: 'Chief of Security Architecture, IBM',
-    blog: 'Schneier on Security',
-    url: 'https://www.schneier.com',
-    rss: 'https://www.schneier.com/feed/atom/',
-    desc: 'One of the most respected voices in cybersecurity. Bruce writes with rare clarity on security policy, cryptography, surveillance, and privacy. His essays are must-reads for any serious security professional — no hype, just deep thinking from 30+ years of experience.',
-    tags: ['privacy','research','threat-intel'],
-    color: '#3b82f6',
-    freq: 'Weekly',
-    specialty: 'Cryptography · Policy · Privacy',
-    accent: '#1d4ed8',
-  },
-  {
-    rank: 2,
-    author: 'Brian Krebs',
-    avatar: '🕵️',
-    title: 'Investigative Security Journalist',
-    blog: 'Krebs on Security',
-    url: 'https://krebsonsecurity.com',
-    rss: 'https://krebsonsecurity.com/feed/',
-    desc: 'Brian Krebs is the gold standard in cybercrime journalism. Former Washington Post reporter turned independent investigator, he breaks the biggest cybercrime stories — data breaches, ransomware gangs, dark web markets — weeks before mainstream media.',
-    tags: ['threat-intel','malware','research'],
-    color: '#ef4444',
-    freq: '2-3x/week',
-    specialty: 'Cybercrime · Data Breaches · Dark Web',
-    accent: '#b91c1c',
-  },
-  {
-    rank: 3,
-    author: 'Troy Hunt',
-    avatar: '💾',
-    title: 'Creator of Have I Been Pwned',
-    blog: 'Troy Hunt Blog',
-    url: 'https://www.troyhunt.com',
-    rss: 'https://feeds.feedburner.com/TroyHunt',
-    desc: 'Creator of Have I Been Pwned and Microsoft Regional Director. Troy writes practical, well-researched posts on data breaches, web security, and password management. His breach analysis posts are referenced by security teams worldwide.',
-    tags: ['research','vulnerability','privacy'],
-    color: '#f97316',
-    freq: 'Weekly',
-    specialty: 'Data Breaches · Web Security · Passwords',
-    accent: '#c2410c',
-  },
-  {
-    rank: 4,
-    author: 'Google Project Zero Team',
-    avatar: '🎯',
-    title: 'Google Elite Security Research Team',
-    blog: 'Project Zero Blog',
-    url: 'https://googleprojectzero.blogspot.com',
-    rss: 'https://feeds.feedburner.com/GoogleProjectZeroResearch',
-    desc: 'Google\'s elite bug hunters publish detailed technical write-ups on zero-day vulnerabilities they discover in major software. If you want to understand how serious vulnerabilities actually work — not just the headlines — this is your source.',
-    tags: ['vulnerability','research','malware'],
-    color: '#22c55e',
-    freq: 'Monthly',
-    specialty: 'Zero-Day Research · Exploit Analysis · Browser Security',
-    accent: '#15803d',
-  },
-  {
-    rank: 5,
-    author: 'SANS Internet Storm Center',
-    avatar: '🌩',
-    title: 'SANS Institute Security Analysts',
-    blog: 'SANS ISC Diary',
-    url: 'https://isc.sans.edu',
-    rss: 'https://isc.sans.edu/rssfeed_full.xml',
-    desc: 'Daily security diaries written by certified SANS handlers — practicing security professionals who analyze emerging threats in real-time. The ISC Diary is one of the most consistently reliable sources for day-to-day threat monitoring.',
-    tags: ['threat-intel','malware','research'],
-    color: '#06b6d4',
-    freq: 'Daily',
-    specialty: 'Threat Monitoring · Malware Analysis · Incident Response',
-    accent: '#0e7490',
-  },
-  {
-    rank: 6,
-    author: 'Sophos X-Ops Team',
-    avatar: '🛡',
-    title: 'Sophos Threat Research Division',
-    blog: 'Sophos News',
-    url: 'https://news.sophos.com',
-    rss: 'https://news.sophos.com/en-us/feed/',
-    desc: 'Sophos X-Ops publishes some of the most thorough ransomware and malware analysis available anywhere. Their deep-dive investigations into threat actor behavior, attack chains, and ransomware-as-a-service operations are exceptional quality.',
-    tags: ['malware','threat-intel','enterprise'],
-    color: '#a855f7',
-    freq: 'Weekly',
-    specialty: 'Ransomware · Malware · Threat Actor Profiles',
-    accent: '#7e22ce',
-  },
-  {
-    rank: 7,
-    author: 'Mandiant Intelligence',
-    avatar: '🔍',
-    title: 'Google Mandiant Threat Research',
-    blog: 'Mandiant Blog',
-    url: 'https://www.mandiant.com/resources/blog',
-    rss: 'https://www.mandiant.com/resources/blog/rss.xml',
-    desc: 'Mandiant (now part of Google) is the firm that exposed APT1 — China\'s cyber espionage unit — in a landmark 2013 report. They continue to publish definitive threat intelligence on nation-state actors, advanced persistent threats, and major incidents.',
-    tags: ['threat-intel','research','enterprise'],
-    color: '#eab308',
-    freq: 'Weekly',
-    specialty: 'APT Groups · Nation-State Threats · Incident Response',
-    accent: '#a16207',
-  },
-  {
-    rank: 8,
-    author: 'Malwarebytes Labs',
-    avatar: '☠️',
-    title: 'Malwarebytes Threat Intelligence Team',
-    blog: 'Malwarebytes Labs',
-    url: 'https://www.malwarebytes.com/blog',
-    rss: 'https://www.malwarebytes.com/blog/feed',
-    desc: 'Malwarebytes Labs delivers accessible yet technically solid malware analysis and threat intelligence. Their coverage of adware, ransomware, and consumer-facing threats is comprehensive, and their writing is clear enough for both technical and non-technical readers.',
-    tags: ['malware','threat-intel','privacy'],
-    color: '#f87171',
-    freq: 'Daily',
-    specialty: 'Malware Analysis · Consumer Threats · Privacy',
-    accent: '#b91c1c',
-  },
-  {
-    rank: 9,
-    author: 'Dark Reading Editorial Team',
-    avatar: '📰',
-    title: 'Dark Reading Security Journalists',
-    blog: 'Dark Reading',
-    url: 'https://www.darkreading.com',
-    rss: 'https://www.darkreading.com/rss.xml',
-    desc: 'Dark Reading is the industry\'s leading security news site — staffed by experienced journalists and practitioners who cover enterprise security, vulnerabilities, compliance, and the business of cybersecurity. Essential reading for CISOs and security managers.',
-    tags: ['enterprise','threat-intel','vulnerability'],
-    color: '#94a3b8',
-    freq: 'Daily',
-    specialty: 'Enterprise Security · CISO Insights · Industry News',
-    accent: '#475569',
-  },
-  {
-    rank: 10,
-    author: 'Graham Cluley',
-    avatar: '🎙',
-    title: 'Independent Security Analyst & Podcaster',
-    blog: 'Graham Cluley Security News',
-    url: 'https://grahamcluley.com',
-    rss: 'https://feeds.feedburner.com/GrahamCluleysBlog',
-    desc: 'Former Sophos and McAfee veteran with 30+ years in the industry. Graham combines wit with substance — his writing is engaging, opinionated, and always backed by solid research. He covers security news with a refreshingly human voice that\'s rare in this industry.',
-    tags: ['threat-intel','malware','privacy'],
-    color: '#34d399',
-    freq: 'Daily',
-    specialty: 'Security News · Social Engineering · Awareness',
-    accent: '#065f46',
-  },
-];
-
-// ═══════════════════════════════════════════════════
-//  STATE
-// ═══════════════════════════════════════════════════
-let currentTag = 'all';
-let currentSearch = '';
-let allPosts = [];
-
-// ═══════════════════════════════════════════════════
-//  RENDER BLOG CARDS
-// ═══════════════════════════════════════════════════
-function renderBlogs(){
-  const filtered = BLOGS.filter(b => {
-    const matchTag = currentTag === 'all' || b.tags.includes(currentTag);
-    const q = currentSearch.toLowerCase();
-    const matchSearch = !q ||
-      b.author.toLowerCase().includes(q) ||
-      b.blog.toLowerCase().includes(q) ||
-      b.desc.toLowerCase().includes(q) ||
-      b.specialty.toLowerCase().includes(q);
-    return matchTag && matchSearch;
-  });
-
-  const grid = document.getElementById('blogs-grid');
-  if(!filtered.length){
-    grid.innerHTML = '<div style="padding:48px;text-align:center;color:var(--text3)">No blogs match your filter</div>';
-    return;
-  }
-
-  grid.innerHTML = filtered.map(b => `
-    <div class="blog-card" data-tags="${b.tags.join(',')}">
-      <div class="card-top" style="background:linear-gradient(90deg,${b.color},${b.accent})"></div>
-      <div class="card-content">
-        <div class="card-rank"># ${b.rank} RANKED BLOG</div>
-        <div class="author-row">
-          <div class="author-avatar" style="background:${b.color}22;border-color:${b.color}44">${b.avatar}</div>
-          <div>
-            <div class="author-name">${b.author}</div>
-            <div class="author-title">${b.title}</div>
-            <div class="blog-name">📝 ${b.blog}</div>
-          </div>
-        </div>
-        <div class="card-desc">${b.desc}</div>
-        <div class="card-tags">
-          ${b.tags.map(t=>`<span class="ctag">${t}</span>`).join('')}
-          <span class="ctag" style="color:${b.color}">✍️ Human Written</span>
-        </div>
-        <div class="card-footer">
-          <a class="follow-btn" href="${b.url}" target="_blank" rel="noopener">
-            🌐 Visit Blog
-          </a>
-          <div class="freq-badge">📅 ${b.freq} · ${b.specialty.split(' · ')[0]}</div>
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
-// ═══════════════════════════════════════════════════
-//  FETCH LATEST POSTS
-// ═══════════════════════════════════════════════════
-const RSS2JSON = 'https://api.rss2json.com/v1/api.json?rss_url=';
-const ALLORIGINS = 'https://api.allorigins.win/raw?url=';
-
-async function fetchBlogPosts(blog){
-  try{
-    const res = await fetch(RSS2JSON + encodeURIComponent(blog.rss) + '&count=3', {signal: AbortSignal.timeout(10000)});
-    if(res.ok){
-      const d = await res.json();
-      if(d.status === 'ok' && d.items?.length){
-        return d.items.slice(0,3).map(item => ({
-          title: item.title?.trim() || '',
-          link:  item.link  || blog.url,
-          desc:  (item.description||item.content||'').replace(/<[^>]+>/g,'').trim().slice(0,180),
-          date:  item.pubDate ? new Date(item.pubDate).toLocaleDateString('en-PK',{month:'short',day:'numeric',year:'numeric'}) : '',
-          source: blog.blog,
-          author: blog.author,
-          color:  blog.color,
-        }));
-      }
-    }
-  }catch(e){}
-
-  // Fallback: allorigins
-  try{
-    const res = await fetch(ALLORIGINS + encodeURIComponent(blog.rss), {signal: AbortSignal.timeout(10000)});
-    if(res.ok){
-      const text = await res.text();
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(text,'text/xml');
-      const items = Array.from(doc.querySelectorAll('item,entry')).slice(0,3);
-      return items.map(item => ({
-        title:  item.querySelector('title')?.textContent?.trim() || '',
-        link:   item.querySelector('link')?.textContent?.trim() || blog.url,
-        desc:   (item.querySelector('description,summary,content')?.textContent||'').replace(/<[^>]+>/g,'').trim().slice(0,180),
-        date:   item.querySelector('pubDate,published')?.textContent?.trim() || '',
-        source: blog.blog,
-        author: blog.author,
-        color:  blog.color,
-      }));
-    }
-  }catch(e){}
-  return [];
-}
-
-async function loadAllPosts(){
-  document.getElementById('posts-container').innerHTML =
-    '<div class="posts-loading"><div class="spinner"></div>Fetching latest posts from all 10 blogs...</div>';
-
-  const results = await Promise.allSettled(BLOGS.map(b => fetchBlogPosts(b)));
-  allPosts = [];
-  results.forEach(r => { if(r.status==='fulfilled') allPosts.push(...r.value); });
-  allPosts = allPosts.filter(p => p.title.length > 5);
-  allPosts.sort((a,b) => new Date(b.date) - new Date(a.date));
-
-  document.getElementById('post-count').textContent = allPosts.length;
-  document.getElementById('refresh-time').textContent = 'Updated ' + new Date().toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});
-
-  renderPosts(allPosts);
-}
-
-function renderPosts(posts){
-  const container = document.getElementById('posts-container');
-  if(!posts.length){
-    container.innerHTML = '<div class="posts-loading"><span style="color:var(--text3)">Could not load posts. Visit blogs directly.</span></div>';
-    return;
-  }
-  const grid = document.createElement('div');
-  grid.className = 'posts-grid';
-  posts.forEach(p => {
-    const a = document.createElement('a');
-    a.className = 'post-card';
-    a.href = p.link;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    a.innerHTML = `
-      <div class="post-source" style="color:${p.color}">${p.source}</div>
-      <div class="post-title">${p.title}</div>
-      ${p.desc ? `<div class="post-desc">${p.desc}</div>` : ''}
-      <div class="post-meta">✍️ ${p.author} ${p.date ? '· '+p.date : ''}</div>
-      <div class="post-arrow">Read full post →</div>`;
-    grid.appendChild(a);
-  });
-  container.innerHTML = '';
-  container.appendChild(grid);
-}
-
-// ═══════════════════════════════════════════════════
-//  FILTERS
-// ═══════════════════════════════════════════════════
-function filterTag(tag, btn){
-  currentTag = tag;
-  document.querySelectorAll('.tag-filter').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderBlogs();
-}
 
 document.getElementById('search-input').addEventListener('input', e => {
   currentSearch = e.target.value;
@@ -631,9 +290,6 @@ document.querySelectorAll('.nav-links a').forEach(a=>{
 // ═══════════════════════════════════════════════════
 //  INIT
 // ═══════════════════════════════════════════════════
-renderBlogs();
-loadAllPosts();
-setInterval(loadAllPosts, 15 * 60 * 1000);
 
 // ── Load AI Daily Digest Posts from blogs.json ──────────────
 async function loadAIDigestPosts(){

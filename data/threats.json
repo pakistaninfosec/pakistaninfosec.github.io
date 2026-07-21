@@ -1,19 +1,19 @@
 {
-  "generated": "2026-07-21T14:35:30.660554+00:00",
-  "summary": "Pakistani organizations should immediately prioritize patching critical vulnerabilities, particularly CVE-2026-58644 and CVE-2026-25089, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple vendors including Microsoft and Google. The Pakistan CERT has also issued alerts for PKCERT-BA33D102 and PKCERT-6AEF826A, which target local businesses, and organizations should take immediate action to mitigate these threats. To minimize risk, Pakistani organizations should focus on remediating the top critical vulnerabilities, including CVE-2026-39808 and CVE-2023-4346, and apply the necessary patches and updates to prevent exploitation by threat actors.",
+  "generated": "2026-07-21T16:24:19.032081+00:00",
+  "summary": "Pakistani organizations should prioritize patching critical vulnerabilities such as CVE-2026-60137 and CVE-2026-63030, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple vendors including Microsoft and Adobe. The Pakistan CERT has also issued alerts for specific threats, including PKCERT-BA33D102, which targets local government institutions, and organizations should take immediate action to mitigate these threats. To minimize risk, Pakistani organizations should focus on remediating the top critical vulnerabilities, including CVE-2021-27137 and CVE-2026-58644, and ensure that all systems and software are up to date with the latest security patches, particularly for widely used products from vendors like Microsoft and Google.",
   "stats": {
-    "new": 487,
+    "new": 537,
     "changed": 0,
     "removed": 0,
-    "total": 166287,
-    "zeroday": 74,
-    "exploited": 24,
+    "total": 166824,
+    "zeroday": 78,
+    "exploited": 28,
     "pakistan": 15
   },
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 398
+      "count": 444
     },
     {
       "name": "Exploit-DB",
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 24
+      "count": 28
     },
     {
       "name": "Pakistan CERT",
@@ -316,6 +316,82 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-60137",
+      "desc": "WordPress Core contains a SQL injection vulnerability when a plugin or theme passes untrusted input to the parameter. This vulnerability can be chained with CVE-2026-63030 to allow an unauthenticated attacker to gain remote code execution on default WordPress installations.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60137",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63030",
+      "desc": "WordPress Core contains an interpretation conflict vulnerability that could allow an attacker to perform SQL Injection and achieve Remote Code Execution. This vulnerability can be chained with CVE-2026-60137.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63030",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-0770",
+      "desc": "Langflow contains an inclusion of functionality from untrusted control sphere vulnerability that allows remote attackers to execute arbitrary code on affected installations. ",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0770",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2021-27137",
+      "desc": "DD-WRT contains a stack-based buffer overflow vulnerability that could allow an unauthenticated attacker to overflow an internal buffer used by UPnP and trigger a code execution vulnerability.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2021-27137",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -2235,7 +2311,7 @@
     {
       "id": "CVE-2026-52349",
       "desc": "Directory Traversal vulnerability in Menyoo 2.0 Versions before commit 729aa48: fixed in commit 729aa48 allows a local attacker to execute arbitrary code via the Spooner file management, VehicleSpawner save/folder/rename functionality, WeaponOptions save/folder/rename functionality, PedComponentChan",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -2247,13 +2323,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-52349",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-53405",
       "desc": "Improper Isolation or Compartmentalization vulnerability in Apache Syncope.\n\nAn administrator with adequate entitlements can import arbitrary BPMN process definitions via the REST API and then start the process. When a BPMN process containing a Groovy scriptTask is imported and started, the Groovy s",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -2265,13 +2341,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53405",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-53421",
       "desc": "Improper Isolation or Compartmentalization vulnerability in Apache Syncope.\n\n\n\nAn administrator with adequate entitlements can achieve remote code execution through the connector subsystem by relying on scripted connectors' (REST and SQL) capability to run Groovy scripts.\n\nThis issue affects Apache ",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -2283,7 +2359,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53421",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -2325,7 +2401,7 @@
     {
       "id": "CVE-2026-57308",
       "desc": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Apache Syncope.\n\nAn administrator with adequate entitlements can achieve execution of arbitrary SQL via stacked queries, leveraging unsanitized sort parameters.\n\nThis issue affects Apache Syncope: f",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -2337,7 +2413,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57308",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -2361,7 +2437,7 @@
     {
       "id": "CVE-2026-62183",
       "desc": "Improper Privilege Management vulnerability in Apache Syncope.\n\nWhen:\n\n* the all-Java user workflow adapter is configured, or\n* the Flowable user workflow adapter is configured, bearing a BPMN definition not requiring admin approval for user self registration of self update requests\n\nthe following s",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -2373,13 +2449,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62183",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-62418",
       "desc": "Low-privileged authenticated Server-Side Request Forgery (SSRF) \nvulnerability in Apache Syncope via Connectors and Resources check.\n\n\n\nThis issue affects Apache Syncope: from 3.0.0-M0 through 3.0.16, from 4.0.0-M0 Through 4.0.6, from 4.1.0-M0 through 4.1.1.\n\n\n\nUsers are recommended to upgrade to ve",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -2391,13 +2467,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62418",
-      "cvss": "0.0",
+      "cvss": "8.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-63071",
       "desc": "Improper Isolation or Compartmentalization vulnerability in Apache Syncope.\n\nAn administrator with adequate entitlements for Implementations can create a malicious Groovy class containing untrusted code bypassing the Groovy security sandbox.\n\nThis issue affects Apache Syncope: from 3.0.0-M0 through ",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -2409,7 +2485,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63071",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -4683,7 +4759,7 @@
     {
       "id": "CVE-2024-51311",
       "desc": "The Tenda TX9 V22.03.02.05 firmware has a stack overflow vulnerability in the sub_4418CC function of the file /goform/SetNetControlList.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -4695,13 +4771,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-51311",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2024-51313",
       "desc": "The Tenda TX9 V22.03.02.20 firmware has a stack overflow vulnerability in the sub_42EA38 function of the file /goform/SetVirtualServerCfg.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -4713,7 +4789,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-51313",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -4754,7 +4830,7 @@
     },
     {
       "id": "CVE-2026-44507",
-      "desc": "Rsync is a file-copying tool that uses a delta-transfer algorithm to synchronize remote and local files.  In versions prior to 3.4.3, when using a daemon configured with a chroot, the reverse DNS lookup of the connecting client was performed after the chroot had been entered. If the chroot did not c",
+      "desc": "Rejected reason: ** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: CVE-2026-43617. Reason: This candidate is a duplicate of CVE-2026-43617. Notes: All CVE users should reference CVE-2026-43617 instead of this candidate.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-20",
@@ -4767,13 +4843,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44507",
-      "cvss": "4.8",
+      "cvss": "0.0",
       "cwe": ""
     },
     {
       "id": "CVE-2026-44508",
-      "desc": "Rsync is a file-copying tool that uses a delta-transfer algorithm to synchronize remote and local files.  In versions prior to 3.4.3, the receiver's compressed-token decoder accumulated a 32-bit signed counter without checking for overflow. A malicious sender can trigger an overflow that with carefu",
-      "severity": "HIGH",
+      "desc": "Rejected reason: ** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: CVE-2026-43618. Reason: This candidate is a duplicate of CVE-2026-43618. Notes: All CVE users should reference CVE-2026-43618 instead of this candidate.",
+      "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -4785,12 +4861,12 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44508",
-      "cvss": "8.1",
+      "cvss": "0.0",
       "cwe": ""
     },
     {
       "id": "CVE-2026-44509",
-      "desc": "Rsync is a file-copying tool that uses a delta-transfer algorithm to synchronize remote and local files. In versions prior to 3.4.3, previous bug fixes for symlink races in open() calls missed races in other path based system calls like chmod() and chown(). For rsync daemons with \"use chroot = no\" t",
+      "desc": "Rejected reason: ** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: CVE-2026-43619. Reason: This candidate is a duplicate of CVE-2026-43619. Notes: All CVE users should reference CVE-2026-43619 instead of this candidate.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-20",
@@ -4803,7 +4879,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44509",
-      "cvss": "6.3",
+      "cvss": "0.0",
       "cwe": ""
     },
     {
@@ -5097,7 +5173,7 @@
     {
       "id": "CVE-2024-51312",
       "desc": "The Tenda TX9 V22.03.02.20 firmware has a stack overflow vulnerability in the sub_42EEE0 function of the file /goform/SetStaticRouteCfg.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -5109,13 +5185,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-51312",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2024-51314",
       "desc": "The Tenda TX9 V22.03.02.20 firmware has a stack overflow vulnerability in the sub_424CE0 function of the file /goform/setMacFilterCfg.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -5127,13 +5203,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-51314",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2024-51315",
       "desc": "The Tenda TX9 V22.03.02.20 firmware has a stack overflow vulnerability in the sub_425964 function of the file /goform/SetOnlineDevName",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -5145,13 +5221,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-51315",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2024-51316",
       "desc": "The Tenda TX9 V22.03.02.20 firmware has a denial of service vulnerability in the update_dev_name function of the file /goform/SetOnlineDevName",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -5163,7 +5239,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-51316",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -5204,7 +5280,7 @@
     },
     {
       "id": "CVE-2026-44510",
-      "desc": "Rsync is a file-copying tool that uses a delta-transfer algorithm to synchronize remote and local files. In versions prior to 3.4.3, the receiver-side out-of-bounds array read in rsync's recv_files() lets a malicious rsync server (or any peer acting in the sender role) deterministically crash any rs",
+      "desc": "Rejected reason: ** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: CVE-2026-43620. Reason: This candidate is a duplicate of CVE-2026-43620. Notes: All CVE users should reference CVE-2026-43620 instead of this candidate.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-20",
@@ -5217,7 +5293,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44510",
-      "cvss": "6.5",
+      "cvss": "0.0",
       "cwe": ""
     },
     {
@@ -5325,13 +5401,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51025",
-      "cvss": "0.0",
+      "cvss": "6.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-51031",
       "desc": "FlareSolverr before version 3.4.7 contains a server-side request forgery (SSRF) vulnerability in the /v1 API endpoint. This allows a remote attacker to obtain sensitive information",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -5343,7 +5419,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51031",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -5367,7 +5443,7 @@
     {
       "id": "CVE-2026-52656",
       "desc": "An issue in SJCAM AllWinner Tech products SJ4000-Air V1.4C and before and Whitelabel based v.1.4C and before allows an attacker to execute arbitrary code via a crafted FEX file",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-20",
       "pakistan": false,
@@ -5379,7 +5455,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-52656",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -6069,7 +6145,7 @@
     {
       "id": "CVE-2026-11767",
       "desc": "The Free  Builder for Elementor  WordPress plugin before 1.6.7 does not sanitise submitted contact form field values before storing them and outputting them in the admin dashboard, allowing unauthenticated attackers to perform Stored Cross-Site Scripting attacks that execute when a logged-in adminis",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-21",
       "pakistan": false,
@@ -6081,7 +6157,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11767",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -6099,7 +6175,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13693",
-      "cvss": "0.0",
+      "cvss": "5.9",
       "cwe": ""
     },
     {
@@ -6117,7 +6193,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13694",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -6135,7 +6211,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14183",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -6153,7 +6229,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14184",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -7936,6 +8012,834 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9499",
       "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-5300",
+      "desc": "An access control bypass and information disclosure vulnerability exists in the base AppArmor security profile configuration of Canonical snapd. The abstraction rules located in /etc/apparmor.d/abstractions/nss-systemd (inherited via ) inadvertently permit strictly confined snap applications, which ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-5300",
+      "cvss": "5.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-11876",
+      "desc": "In zenml-io/zenml version 0.94.2, the `GET /api/v1/stack-deployment/stack` endpoint (`get_deployed_stack`) lacks proper RBAC authorization checks, allowing any authenticated user to enumerate all deployed stacks across all users and tenants. This includes stack component details, service connector i",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11876",
+      "cvss": "5.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15226",
+      "desc": "A sandbox confinement bypass vulnerability exists in Canonical snapd within its internal execution environment compiler (snap-confine). The default seccomp security templates generated by the engine to restrict system calls do not filter or reject process operations capable of creating or manipulati",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15226",
+      "cvss": "8.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16448",
+      "desc": "A vulnerability was found in D-Link DNS-120, DNR-202L, DNS-315L, DNS-320, DNS-320L, DNS-320LW, DNS-321, DNR-322L, DNS-323, DNS-325, DNS-326, DNS-327L, DNR-326, DNS-340L, DNS-343, DNS-345, DNS-726-4, DNS-1100-4, DNS-1200-05 and DNS-1550-04 up to 20260205. The affected element is the function cgi_chec",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16448",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-46681",
+      "desc": "@nevware21/ts-utils is a comprehensive TypeScript/JavaScript utility library. Prior to version 0.14.0, the _copyProps function in lib/src/object/copy.ts uses for...in to iterate over source object properties without an Object.hasOwnProperty check, and does not filter dangerous keys (__proto__, const",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46681",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-47122",
+      "desc": "Sparkle is a software update framework for macOS. In versions up to and including 2.9.1, `Autoupdate/AppInstaller.m`'s `shouldAcceptNewConnection:` only enforces `SUCodeSigningVerifier validateConnection:` before stage 1 completes. After `_performedStage1Installation = YES`, new connections to the r",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47122",
+      "cvss": "4.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56584",
+      "desc": "HCL IEM was affected with the Information disclosure nginx server. It may enable attackers to identify outdated software versions and target known vulnerabilities or publicly available exploits.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56584",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56587",
+      "desc": "HCL IEM was affected with Strict transport security not enforced. It may enable attackers to perform SSL stripping or man-in-the-middle attacks and compromise secure communications.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56587",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59849",
+      "desc": "A flaw was found in libssh. Logic errors in automatic certificate-based public key authentication can cause libssh clients to loop indefinitely when configured certificates are missing or repeatedly rejected by a server, leading to denial of service.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59849",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59850",
+      "desc": "A flaw was found in libssh. If data packets are processed after a channel is closed, channel data callbacks can be invoked after the associated data has already been freed, leading to crashes or possible use-after-free conditions.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59850",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59851",
+      "desc": "A flaw was found in libssh. On servers with GSSAPIKeyExchange enabled, the gssapi-keyex path does not verify whether the authenticated Kerberos principal is authorized for the requested local user, allowing authenticated clients to log in as arbitrary users.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59851",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65048",
+      "desc": "Ninja Forms plugin for WordPress versions 3.10.4 through 3.14.9 contains an unauthenticated stored cross-site scripting vulnerability in the Repeatable Fieldset feature where parseSubmissionIndex() accepts arbitrary strings as submission indexes without numeric validation, and admin_form_element() i",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65048",
+      "cvss": "9.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65049",
+      "desc": "Ninja Forms plugin version 3.14.8 and prior for WordPress Multisite contains an incorrect authorization vulnerability that allows a subsite Administrator to trigger network-wide deletion of all Ninja Forms data by exploiting a site-scoped capability check combined with unsafe multisite migration def",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65049",
+      "cvss": "9.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65050",
+      "desc": "Ninja Forms WordPress plugin version 3.14.8 and prior contains a missing authorization vulnerability in the render callback of the `ninja-forms/submissions-table` Gutenberg block that allows authenticated attackers with Author-level privileges to expose stored form submissions to unauthenticated vis",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65050",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65051",
+      "desc": "Ninja Forms WordPress plugin version 3.14.8 contains a client-side enforcement of server-side security vulnerability that allows unauthenticated attackers to bypass all form validation by merging attacker-controlled field metadata over server-loaded form definitions before validation runs. Attackers",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65051",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65052",
+      "desc": "Ninja Forms WordPress plugin version 3.14.8 and prior contains an improper input validation vulnerability that allows unauthenticated attackers to inject arbitrary numeric values into form calculations and payment totals by submitting values that do not match any configured option in ListSelect or L",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65052",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-8933",
+      "desc": "A local privilege escalation vulnerability exists in snap-confine, a set-capabilities core component used internally by Canonical snapd to construct the secure execution environment for snap applications. This vulnerability uniquely affects versions of snap-confine configured with set-capabilities (",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8933",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16449",
+      "desc": "A vulnerability was determined in zsadmin2025 ZS-Admin up to b52e14536d59fda11e56e2536a1c32e82a38cead. The impacted element is the function OrderItem.asc/OrderItem.desc of the file /api/system/sys/dept/page of the component com.zs.sys.dept.controller.SysDeptController. This manipulation of the argum",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16449",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16450",
+      "desc": "A vulnerability was identified in zsadmin2025 ZS-Admin up to b52e14536d59fda11e56e2536a1c32e82a38cead. This affects the function getTenantId of the file /api/system/sys/dept/page of the component MyBatis-Plus Tenant Plugin. Such manipulation of the argument X-Tenant-Id leads to authorization bypass.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16450",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-28302",
+      "desc": "SolarWinds Serv-U is affected by an insecure direct object reference (IDOR) vulnerability that can lead to privilege escalation and remote code execution as root. This issue requires group administrator access. The impact is lower in Windows deployments.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28302",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-28304",
+      "desc": "SolarWinds Serv-U is affected by a remote code execution vulnerability that, when exploited, can allow the arbitrary execution of code remotely as root. The impact is lower in Windows deployments.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28304",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-28305",
+      "desc": "SolarWinds Serv-U is affected by an insecure direct object reference (IDOR) vulnerability that can lead to remote code execution as root. A domain account with admin privileges and read and write access to the home directory is required. The impact is lower in Windows deployments.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28305",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-28306",
+      "desc": "SolarWinds Serv-U is affected by a privilege escalation vulnerability that allows a domain administrator to elevate their privileges to a system administrator. The impact is lower in Windows deployments.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28306",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-28307",
+      "desc": "SolarWinds Serv-U is affected by a privilege escalation vulnerability that allows a domain user group to be elevated into an administrator group. The impact is lower in Windows deployments.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28307",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-28308",
+      "desc": "SolarWinds Serv-U is affected by an insecure direct object reference (IDOR) vulnerability that can lead to remote code execution. Domain administrator access is required. The impact is lower in Windows deployments.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28308",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-28309",
+      "desc": "SolarWinds Serv-U is affected by a broken access control vulnerability that allows a domain administrator to create system administrator accounts. The impact is lower in Windows deployments.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28309",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-28310",
+      "desc": "SolarWinds Serv-U is affected by a privilege escalation vulnerability that allows a domain administrator to escalate their user type to that of a system administrator. The impact is lower in Windows deployments.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28310",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-28312",
+      "desc": "SolarWinds Serv-U is affected by a privilege escalation vulnerability. This would elevate a group’s access to system administrator and allow code execution as root. The impact is lower in Windows deployments.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28312",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-28313",
+      "desc": "SolarWinds Serv-U is affected by an insecure direct object reference (IDOR) vulnerability that can lead to SMTP hijacking leading to arbitrary account takeover. The impact is lower in Windows deployments.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28313",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-28314",
+      "desc": "SolarWinds Serv-U is affected by an insecure direct object reference vulnerability that leads to an account takeover. User authentication is required. The impact is lower in Windows deployments.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28314",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-28315",
+      "desc": "SolarWinds Serv-U was found to be affected by a stored cross-site scripting vulnerability that could lead to session hijacking or information disclosure from an administrator account.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28315",
+      "cvss": "6.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-28316",
+      "desc": "SolarWinds Serv-U is affected by an insecure direct object reference (IDOR) vulnerability that can lead to privilege escalation to a system administrator with the ability to execute commands as the root user. This issue requires a domain account with administrator access. The impact is lower in Wind",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28316",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-28317",
+      "desc": "SolarWinds Serv-U is affected by an insecure direct object reference (IDOR) vulnerability that can lead to privilege escalation. This issue requires domain administrator access. The impact is lower in Windows deployments.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28317",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-28321",
+      "desc": "SolarWinds Serv-U is affected by a broken access control vulnerability that could allow arbitrary file read and write, which can then be used to escalate privileges and execute code as root. A domain administrator access is required, and the impact is lower in Windows installations.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28321",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-47390",
+      "desc": "PraisonAI is a multi-agent teams system. Prior to version 4.6.40 of PraisonAI, corresponding to version 1.6.40 of praisonaiagents, `spider_tools` URL validation can be bypassed using alternate loopback host encodings. The tool contains a URL validation function intended to block local or unsafe targ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47390",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-47391",
+      "desc": "PraisonAI is a multi-agent teams system. Prior to version 4.6.40, PraisonAI's first-party A2A server example exposes an unauthenticated A2A JSON-RPC endpoint and registers a `calculate(expression)` tool implemented with Python `eval()`. The example also binds to `0.0.0.0`. A remote unauthenticated a",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47391",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-47392",
+      "desc": "PraisonAI is a multi-agent teams system. Prior to version 4.6.40 of PraisonAI, corresponding to version 1.6.40 of praisonaiagents, `execute_code()` in `praisonaiagents/tools/python_tools.py` (v1.6.37, subprocess sandbox mode) can be fully bypassed using `print.__self__` to retrieve the real Python `",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47392",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-47393",
+      "desc": "PraisonAI is a multi-agent teams system. CVE-2026-44338 (GHSA-6rmh-7xcm-cpxj) documents that PraisonAI ships a code-generator (`praisonai.deploy.api.generate_api_server_code`) that emits a Flask API server with authentication disabled by default. Users who follow the documented quickstart (`praisona",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47393",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-47394",
+      "desc": "PraisonAI is a multi-agent teams system. Prior to version 4.6.40, the fix for GHSA-9mqq-jqxf-grvw / CVE-2026-44336 is incomplete. The original advisory description named four vulnerable handlers in `mcp_server/adapters/cli_tools.py`. Commit `68cc9427` (\"fix(security): harden MCP rules path handling…",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47394",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-47395",
+      "desc": "PraisonAI is a multi-agent teams system. Prior to version 4.6.40 of PraisonAI, corresponding to version 1.6.40 of praisonaiagents, PraisonAI's direct-prompt CLI automatically expands `@url:` mentions in raw prompt text before agent execution begins. If a prompt contains `@url:<http-or-https-url>`, t",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47395",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-47396",
+      "desc": "PraisonAI is a multi-agent teams system. Prior to version 4.6.40, PraisonAI's call server exposes a network-facing agent control API without authentication when `CALL_SERVER_TOKEN` is not configured. The affected component is the `praisonai.api.agent_invoke` router as mounted by `praisonai.api.call`",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47396",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56585",
+      "desc": "HCL IEM was affected with the Anti Clickjacking XFrame Options Header Missing. It may allow attackers to embed the application in malicious pages and induce unauthorized user actions.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56585",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56586",
+      "desc": "HCL IEM was affected with X-Content-Type-Options Header Missing. It may enable attackers to perform SSL stripping or man-in-the-middle attacks and intercept sensitive data.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56586",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64823",
+      "desc": "Home Assistant Core before 2026.5.4 contains a cross-site scripting vulnerability in the Shelly integration's async_get_media_image() method that allows attackers controlling a Shelly device's thumb field to serve arbitrary HTML content by supplying a data URI with a text/html content type without v",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64823",
+      "cvss": "4.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64824",
+      "desc": "Home Assistant Core before 2026.6.0 contains a path traversal vulnerability in the backup-restore function that allows attackers to write files to arbitrary absolute filesystem paths by supplying a crafted tar archive with a SYMTYPE entry containing a benign member name paired with an absolute linkn",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64824",
+      "cvss": "8.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64825",
+      "desc": "Home Assistant Core before 2026.6.0 contains a path traversal vulnerability that allows unauthenticated attackers to write arbitrary files to any directory on the host filesystem by uploading a crafted backup archive during the initial onboarding window. Attackers can manipulate the 'name' field ins",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64825",
+      "cvss": "9.3",
       "cwe": ""
     },
     {

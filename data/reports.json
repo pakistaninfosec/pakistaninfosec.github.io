@@ -3,20 +3,36 @@
     {
       "date": "2026-07-21",
       "stats": {
-        "new": 487,
+        "new": 537,
         "changed": 0,
         "removed": 0,
-        "total": 166287,
-        "zeroday": 74,
-        "exploited": 24,
+        "total": 166824,
+        "zeroday": 78,
+        "exploited": 28,
         "pakistan": 15
       },
-      "summary": "Pakistani organizations should immediately prioritize patching critical vulnerabilities, particularly CVE-2026-58644 and CVE-2026-25089, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple vendors including Microsoft and Google. The Pakistan CERT has also issued alerts for PKCERT-BA33D102 and PKCERT-6AEF826A, which target local businesses, and organizations should take immediate action to mitigate these threats. To minimize risk, Pakistani organizations should focus on remediating the top critical vulnerabilities, including CVE-2026-39808 and CVE-2023-4346, and apply the necessary patches and updates to prevent exploitation by threat actors.",
+      "summary": "Pakistani organizations should prioritize patching critical vulnerabilities such as CVE-2026-60137 and CVE-2026-63030, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple vendors including Microsoft and Adobe. The Pakistan CERT has also issued alerts for specific threats, including PKCERT-BA33D102, which targets local government institutions, and organizations should take immediate action to mitigate these threats. To minimize risk, Pakistani organizations should focus on remediating the top critical vulnerabilities, including CVE-2021-27137 and CVE-2026-58644, and ensure that all systems and software are up to date with the latest security patches, particularly for widely used products from vendors like Microsoft and Google.",
       "sections": [
         {
           "label": "Zero Day Exploits",
           "color": "red",
           "items": [
+            {
+              "id": "CVE-2026-60137",
+              "desc": "WordPress Core contains a SQL injection vulnerability when a plugin or theme passes untrusted input to the parameter. This vulnerability can be chained with CVE-2026-63030 to allow an unauthenticated attacker to gain remote code execution on default WordPress installations."
+            },
+            {
+              "id": "CVE-2026-63030",
+              "desc": "WordPress Core contains an interpretation conflict vulnerability that could allow an attacker to perform SQL Injection and achieve Remote Code Execution. This vulnerability can be chained with CVE-2026-60137."
+            },
+            {
+              "id": "CVE-2026-0770",
+              "desc": "Langflow contains an inclusion of functionality from untrusted control sphere vulnerability that allows remote attackers to execute arbitrary code on affected installations. "
+            },
+            {
+              "id": "CVE-2021-27137",
+              "desc": "DD-WRT contains a stack-based buffer overflow vulnerability that could allow an unauthenticated attacker to overflow an internal buffer used by UPnP and trigger a code execution vulnerability."
+            },
             {
               "id": "CVE-2026-58644",
               "desc": "Microsoft SharePoint contains a deserialization of untrusted data vulnerability that allows an unauthorized attacker to execute code over a network."
@@ -40,22 +56,6 @@
             {
               "id": "CVE-2026-56155",
               "desc": "Microsoft Active Directory Federation Services contains an insufficient granularity of access control vulnerability that allows an authorized attacker to elevate privileges locally."
-            },
-            {
-              "id": "CVE-2026-56164",
-              "desc": "Microsoft SharePoint contains a missing authentication for critical function vulnerability that allows an unauthorized attacker to elevate privileges over a network."
-            },
-            {
-              "id": "CVE-2026-15409",
-              "desc": "SonicWall SMA1000 Appliances contain a server-side request forgery vulnerability that could allow a remote unauthenticated attacker to potentially cause the appliance to make requests to unintended location."
-            },
-            {
-              "id": "CVE-2026-15410",
-              "desc": "SonicWall SMA1000 Appliances contain a code injection vulnerability which in specific conditions could potentially enable a remote authenticated attacker as administrator to execute arbitrary OS commands."
-            },
-            {
-              "id": "CVE-2008-4128",
-              "desc": "Cisco IOS 12.4 contains multiple cross-site forgery vulnerabilities that allows remote attackers to execute arbitrary commands via (1) a certain \"show privilege\" command to the /level/15/exec/- URI, and (2) a certain \"alias exec\" command to the /level/15/exec/-/configure/http URI."
             }
           ]
         },
@@ -64,6 +64,22 @@
           "color": "orange",
           "items": [
             {
+              "id": "CVE-2026-60137",
+              "desc": "WordPress Core contains a SQL injection vulnerability when a plugin or theme passes untrusted input to the parameter. This vulnerability can be chained with CVE-2026-63030 to allow an unauthenticated attacker to gain remote code execution on default WordPress installations."
+            },
+            {
+              "id": "CVE-2026-63030",
+              "desc": "WordPress Core contains an interpretation conflict vulnerability that could allow an attacker to perform SQL Injection and achieve Remote Code Execution. This vulnerability can be chained with CVE-2026-60137."
+            },
+            {
+              "id": "CVE-2026-0770",
+              "desc": "Langflow contains an inclusion of functionality from untrusted control sphere vulnerability that allows remote attackers to execute arbitrary code on affected installations. "
+            },
+            {
+              "id": "CVE-2021-27137",
+              "desc": "DD-WRT contains a stack-based buffer overflow vulnerability that could allow an unauthenticated attacker to overflow an internal buffer used by UPnP and trigger a code execution vulnerability."
+            },
+            {
               "id": "CVE-2026-58644",
               "desc": "Microsoft SharePoint contains a deserialization of untrusted data vulnerability that allows an unauthorized attacker to execute code over a network."
             },
@@ -86,22 +102,6 @@
             {
               "id": "CVE-2026-56155",
               "desc": "Microsoft Active Directory Federation Services contains an insufficient granularity of access control vulnerability that allows an authorized attacker to elevate privileges locally."
-            },
-            {
-              "id": "CVE-2026-56164",
-              "desc": "Microsoft SharePoint contains a missing authentication for critical function vulnerability that allows an unauthorized attacker to elevate privileges over a network."
-            },
-            {
-              "id": "CVE-2026-15409",
-              "desc": "SonicWall SMA1000 Appliances contain a server-side request forgery vulnerability that could allow a remote unauthenticated attacker to potentially cause the appliance to make requests to unintended location."
-            },
-            {
-              "id": "CVE-2026-15410",
-              "desc": "SonicWall SMA1000 Appliances contain a code injection vulnerability which in specific conditions could potentially enable a remote authenticated attacker as administrator to execute arbitrary OS commands."
-            },
-            {
-              "id": "CVE-2008-4128",
-              "desc": "Cisco IOS 12.4 contains multiple cross-site forgery vulnerabilities that allows remote attackers to execute arbitrary commands via (1) a certain \"show privilege\" command to the /level/15/exec/- URI, and (2) a certain \"alias exec\" command to the /level/15/exec/-/configure/http URI."
             }
           ]
         },

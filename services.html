@@ -577,10 +577,13 @@ function selectService(name){
   document.getElementById('contact-form').scrollIntoView({behavior:'smooth'});
 }
 
-function submitForm(){
+const FORMSPREE = 'https://formspree.io/f/xlgqlqgj';
+
+async function submitForm(){
   const name    = document.getElementById('f-name').value.trim();
   const email   = document.getElementById('f-email').value.trim();
   const org     = document.getElementById('f-org').value.trim();
+  const phone   = document.getElementById('f-phone').value.trim();
   const service = document.getElementById('f-service').value;
   const size    = document.getElementById('f-size').value;
   const desc    = document.getElementById('f-desc').value.trim();
@@ -598,47 +601,37 @@ function submitForm(){
   btn.disabled = true;
   btn.textContent = '⏳ Sending...';
 
-  const subject = encodeURIComponent(`[InfoSec Pakistan Services] ${service} — ${org}`);
-  const body = encodeURIComponent(
-`New Service Request from InfoSec Pakistan Website
+  try{
+    const res = await fetch(FORMSPREE, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({
+        name, email, organization: org, phone,
+        service, org_size: size, message: desc,
+        _subject: `[InfoSec Pakistan] ${service} — ${org}`,
+        _replyto: email,
+      })
+    });
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-CONTACT DETAILS
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-Name:          ${name}
-Email:         ${email}
-Organization:  ${org}
-Phone:         ${document.getElementById('f-phone').value || 'Not provided'}
-Org Size:      ${size || 'Not specified'}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-SERVICE REQUESTED
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-${service}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-REQUIREMENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-${desc}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-Sent from: https://pakistaninfosec.github.io/services.html`
-  );
-
-  window.location.href = `mailto:pakistaninfosec@gmail.com?subject=${subject}&body=${body}`;
-
-  setTimeout(()=>{
-    btn.disabled = false;
-    btn.innerHTML = '📩 Send Request to InfoSec Pakistan';
-    document.getElementById('success-msg').classList.add('show');
-    document.getElementById('f-name').value = '';
-    document.getElementById('f-email').value = '';
-    document.getElementById('f-org').value = '';
-    document.getElementById('f-phone').value = '';
-    document.getElementById('f-service').value = '';
-    document.getElementById('f-size').value = '';
-    document.getElementById('f-desc').value = '';
-  }, 1500);
+    if(res.ok){
+      btn.textContent = '✅ Request Sent!';
+      document.getElementById('success-msg').classList.add('show');
+      document.getElementById('f-name').value='';
+      document.getElementById('f-email').value='';
+      document.getElementById('f-org').value='';
+      document.getElementById('f-phone').value='';
+      document.getElementById('f-service').value='';
+      document.getElementById('f-size').value='';
+      document.getElementById('f-desc').value='';
+      setTimeout(()=>{ btn.disabled=false; btn.innerHTML='📩 Send Request to InfoSec Pakistan'; },4000);
+    } else {
+      throw new Error('Server error');
+    }
+  } catch(e){
+    btn.disabled=false;
+    btn.innerHTML='📩 Send Request to InfoSec Pakistan';
+    alert('Something went wrong. Please email us directly at pakistaninfosec@gmail.com');
+  }
 }
 </script>
 </body>

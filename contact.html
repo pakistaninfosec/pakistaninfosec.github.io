@@ -429,46 +429,58 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 </footer>
 
 <script>
-function submitForm() {
+const FORMSPREE = 'https://formspree.io/f/xlgqlqgj';
+
+async function submitForm() {
   const name    = document.getElementById('name').value.trim();
   const email   = document.getElementById('email').value.trim();
   const subject = document.getElementById('subject').value;
   const message = document.getElementById('message').value.trim();
+  const org     = document.getElementById('org').value.trim();
 
-  if (!name || !email || !subject || !message) {
+  if(!name || !email || !subject || !message){
     alert('Please fill in all required fields.');
     return;
   }
-  if (!email.includes('@')) {
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
     alert('Please enter a valid email address.');
     return;
   }
 
-  // Build mailto link with form data
-  const subjectMap = {
-    'vulnerability': 'Vulnerability Report',
-    'subscribe':     'Subscribe to Daily Digest',
-    'collaboration': 'Collaboration / Partnership',
-    'feedback':      'Feedback / Suggestions',
-    'media':         'Media / Press Inquiry',
-    'other':         'General Inquiry'
-  };
+  const btn = document.querySelector('.submit-btn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Sending...';
 
-  const org = document.getElementById('org').value.trim();
-  const emailSubject = encodeURIComponent(`[InfoSec Pakistan] ${subjectMap[subject] || subject}`);
-  const emailBody = encodeURIComponent(
-    `Name: ${name}\nEmail: ${email}\nOrganization: ${org || 'N/A'}\n\nMessage:\n${message}`
-  );
+  try{
+    const res = await fetch(FORMSPREE, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({
+        name, email,
+        organization: org || 'Not provided',
+        subject, message,
+        _subject: `[InfoSec Pakistan] ${subject} — ${name}`,
+        _replyto: email,
+      })
+    });
 
-  window.location.href = `mailto:pakistaninfosec@gmail.com?subject=${emailSubject}&body=${emailBody}`;
-
-  // Show success message
-  document.getElementById('success-msg').classList.add('show');
-  document.getElementById('name').value    = '';
-  document.getElementById('email').value   = '';
-  document.getElementById('org').value     = '';
-  document.getElementById('subject').value = '';
-  document.getElementById('message').value = '';
+    if(res.ok){
+      btn.textContent = '✅ Message Sent!';
+      document.getElementById('success-msg').classList.add('show');
+      document.getElementById('name').value    = '';
+      document.getElementById('email').value   = '';
+      document.getElementById('org').value     = '';
+      document.getElementById('subject').value = '';
+      document.getElementById('message').value = '';
+      setTimeout(()=>{ btn.disabled=false; btn.textContent='✉ Send Message to InfoSec Pakistan'; }, 4000);
+    } else {
+      throw new Error('Server error');
+    }
+  } catch(e){
+    btn.disabled = false;
+    btn.textContent = '✉ Send Message to InfoSec Pakistan';
+    alert('Something went wrong. Please email us directly at pakistaninfosec@gmail.com');
+  }
 }
 
 function toggleFaq(item) {

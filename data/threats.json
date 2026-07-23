@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-23T02:53:30.347565+00:00",
-  "summary": "Today's digest contains 300 vulnerabilities across 5 sources. 80 zero-day exploits detected, 30 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-23T05:45:16.412540+00:00",
+  "summary": "Today's digest contains 304 vulnerabilities across 5 sources. 80 zero-day exploits detected, 30 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 300,
+    "new": 304,
     "changed": 0,
     "removed": 0,
-    "total": 178456,
+    "total": 178760,
     "zeroday": 80,
     "exploited": 30,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 205
+      "count": 209
     },
     {
       "name": "Exploit-DB",
@@ -4576,6 +4576,78 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16653",
       "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-21723",
+      "desc": "The alertmanager templates test endpoint (/api/alertmanager/grafana/config/api/v1/templates/test) can execute templates with no memory limits. Mass-executing templates in a short period causes OOM and crashes the Grafana service. The endpoint requires very low privileges and is exploitable with anon",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-21723",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15074",
+      "desc": "@fastify/static up to and including version 10.1.0 fails to reject dot-dot path segments in request pathnames before the file-resolution stage. This is a bypass of the earlier fix for CVE-2026-6414, which only covered encoded forward slashes. Because the underlying send library normalizes dot segmen",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15074",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-7120",
+      "desc": "@fastify/static evaluates the allowedPath callback before normalizing dot segments and duplicate path separators in the pathname used for file resolution. Versions up to and including 10.1.1 are affected. An unauthenticated attacker can bypass allowedPath restrictions by requesting equivalent non-ca",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7120",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-6390",
+      "desc": "A flaw was found in GNU nano's multi-buffer error message handling. When a user opens multiple files at startup and one triggers an ALERT-level error, a specially crafted filename containing printf format specifiers can be reinterpreted. This format string vulnerability may allow an attacker to achi",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6390",
+      "cvss": "6.8",
       "cwe": ""
     },
     {

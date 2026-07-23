@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-23T05:57:29.210856+00:00",
-  "summary": "Today's digest contains 304 vulnerabilities across 5 sources. 80 zero-day exploits detected, 30 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-23T08:40:02.962932+00:00",
+  "summary": "Today's digest contains 319 vulnerabilities across 5 sources. 80 zero-day exploits detected, 30 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 304,
+    "new": 319,
     "changed": 0,
     "removed": 0,
-    "total": 179064,
+    "total": 179383,
     "zeroday": 80,
     "exploited": 30,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 209
+      "count": 224
     },
     {
       "name": "Exploit-DB",
@@ -4648,6 +4648,276 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6390",
       "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63226",
+      "desc": "Printers and Multifunction Printers (MFPs) provided by Ricoh Company, Ltd. do not implement restrictions on SSH port forwarding, allowing to connect to arbitrary destinations. When SSH is enabled on an affected product, SSH port forwarding may be leveraged to connect to other node on the LAN.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63226",
+      "cvss": "5.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64600",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: resample the data fork mapping after cycling ILOCK\n\nxfs_reflink_fill_{cow_hole,delalloc} are both presented with an inode,\na data fork mapping, and a cow fork mapping.  Unfortunately, these two\nhelpers cycle the ILOCK to grab ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64600",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-7232",
+      "desc": "The FormCraft plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the '[parameter name]' parameter in all versions up to, and including, 3.9.14 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web s",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7232",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-7534",
+      "desc": "The SUMO Reward Points plugin for WordPress is vulnerable to Unauthenticated Stored Cross-Site Scripting via the REST API endpoint `/wp-json/wc-srp/v1/earning` in versions up to, and including, 32.7.0. This is due to the `user_has_cap` filter in the `SRP_REST_Earning_Controller` class unconditionall",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7534",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-12082",
+      "desc": "The Praison AI SEO WordPress plugin before 5.0.7 does not perform authorization checks on several of its REST API routes, allowing unauthenticated users to modify the permalink of any published post and to read Praison AI SEO WordPress plugin before 5.0.7 configuration data.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12082",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-14291",
+      "desc": "The security-ninja-premium WordPress plugin before 5.290 does not verify the second authentication factor in one of its two-factor authentication code paths, allowing an unauthenticated attacker who knows a user's password to complete authentication without the one-time code and bypass enforced two-",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14291",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59676",
+      "desc": "A Time-of-check Time-of-use (TOCTOU) Race Condition vulnerability in seunshare of selinux policycoreutils allows a user calling seunshare that is running in the unconfined SELinux domain to delete arbitrary root-owned files,\n\n\n\n\n\n\nThis issue affects policycoreutils through 3.10.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59676",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-9066",
+      "desc": "The WP Compress  WordPress plugin before 7.10.04 does not validate the value of a query parameter that controls the asset CDN host before using it to build the URLs of JavaScript files emitted on the page, leading to Reflected XSS. When a visitor follows a crafted link, the WP Compress  WordPress pl",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9066",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-9577",
+      "desc": "The Post Status Notifier Lite WordPress plugin before 1.13.0 does not properly escape the `mod` URL parameter before reflecting it into the admin settings page (`admin.php?page=post-status-notifier-lite`), leading to a Reflected Cross-Site Scripting vulnerability that fires in the administrator's se",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9577",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-12421",
+      "desc": "The ARforms plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'password' Field Values in all versions up to, and including, 7.2.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pa",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12421",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59677",
+      "desc": "A Missing Authorization vulnerability in selinux policycoreutils seunshares allows a user that is running in unconfined context to kill e.g. root-owned processes running also in\nunconfined context\n\n\n\n\n\n\nThis issue affects policycoreutils through 3.10.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59677",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59678",
+      "desc": "An Incorrect Authorization vulnerability in Linux-Gaming PortProtonQt allows any users to mount and unmount arbitrary file systems and modify the network configuration via NetworkManager.\n\n\n\n\n\n\nThis issue affects PortProtonQt before 0d0f0950ebd948cdf82e8c3e1ebd2bcb9b8bafbe.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59678",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-9635",
+      "desc": "The WP Shortcode by MyThemeShop plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'title' parameter of the [tab] shortcode in versions up to, and including, 1.4.17. This is due to insufficient input sanitization and output escaping in the mts_tabs() function, which outputs th",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9635",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-9713",
+      "desc": "The Lumise Product Designer for WooCommerce plugin for WordPress is vulnerable to SQL Injection via the 'id' and 'table' parameters in the uploaded cart JSON file processed by the checkout AJAX action in versions up to, and including, 2.1.1. This is due to insufficient escaping on the user-supplied ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9713",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-9729",
+      "desc": "The Webpushr Push Notifications plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'webpushr_notification_title' and 'webpushr_notification_body' parameters in versions up to, and including, 4.39.0. This is due to insufficient input sanitization in the save_send_notification_f",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9729",
+      "cvss": "6.4",
       "cwe": ""
     },
     {

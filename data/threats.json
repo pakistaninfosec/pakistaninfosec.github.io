@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-23T15:31:37.585387+00:00",
-  "summary": "Today's digest contains 566 vulnerabilities across 5 sources. 80 zero-day exploits detected, 30 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-23T17:24:30.194032+00:00",
+  "summary": "Today's digest contains 595 vulnerabilities across 5 sources. 80 zero-day exploits detected, 30 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 566,
+    "new": 595,
     "changed": 0,
     "removed": 0,
-    "total": 181212,
+    "total": 181807,
     "zeroday": 80,
     "exploited": 30,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 471
+      "count": 500
     },
     {
       "name": "Exploit-DB",
@@ -34,6 +34,25 @@
   ],
   "threats": [
     {
+      "id": "PKCERT-78CA5DA2",
+      "desc": "Pakistan CERT Security Advisory: Advisory: Critical Unauthenticated Remote Code Execution Vulnerabilities in WordPress Core. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
+      "severity": "HIGH",
+      "source": "Pakistan CERT",
+      "date": "2026-07-23",
+      "pakistan": true,
+      "zeroday": false,
+      "tags": [
+        "pakistan",
+        "cert",
+        "advisory",
+        "government",
+        "Pakistan Advisory"
+      ],
+      "url": "https://pkcert.gov.pk/advisory/26/14.pdf",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
       "id": "PKCERT-BA33D102",
       "desc": "Pakistan CERT Security Advisory: Advisory: Critical Vulnerabilities in Fortinet FortiSandbox Under Active Exploitation (CVE-2026-39808, CVE-2026-39813, CVE-2026-25089). Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
       "severity": "HIGH",
@@ -49,25 +68,6 @@
         "Pakistan Advisory"
       ],
       "url": "https://pkcert.gov.pk/advisory/26/13.pdf",
-      "cvss": "7.5",
-      "cwe": ""
-    },
-    {
-      "id": "PKCERT-6AEF826A",
-      "desc": "Pakistan CERT Security Advisory: Advisory: Critical Vulnerability in Palo Alto Networks GlobalProtect (CVE-2026-0257) Actively Exploited in the Wild. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
-      "severity": "HIGH",
-      "source": "Pakistan CERT",
-      "date": "2026-07-23",
-      "pakistan": true,
-      "zeroday": false,
-      "tags": [
-        "pakistan",
-        "cert",
-        "advisory",
-        "government",
-        "Pakistan Advisory"
-      ],
-      "url": "https://pkcert.gov.pk/advisory/26/11.pdf",
       "cvss": "7.5",
       "cwe": ""
     },
@@ -1124,7 +1124,7 @@
     },
     {
       "id": "CVE-2026-63047",
-      "desc": "The Joomla extension Events Booking prior version 5.0-5.8.1 did not properly verify that an actor is allowed to download invoice information.",
+      "desc": "Joomla Extension - joomdonation.com - Invoice data exfiltration via incorrect ACL check in Events Booking 5.0.0-5.8.1 - The Joomla extension Events Booking prior version 5.0-5.8.1 did not properly verify that an actor is allowed to download invoice information.",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -1142,7 +1142,7 @@
     },
     {
       "id": "CVE-2026-63048",
-      "desc": "The Joomla extension Page Builder CK is vulnerable to an authenticated arbitrary file upload, leading to RCE.",
+      "desc": "Joomla Extension - joomlack.fr - Improper access control in Page Builder CK < 3.6.2 - The Joomla extension Page Builder CK is vulnerable to an authenticated arbitrary file upload, leading to RCE.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -1196,7 +1196,7 @@
     },
     {
       "id": "CVE-2026-63264",
-      "desc": "The Joomla extension JoomShopping is vulnerable to an reflected XSS vulnerability in the product frontend controller.",
+      "desc": "Joomla Extension - joomshopping.com - Reflective XSS in JoomShopping < 5.9.3 - The Joomla extension JoomShopping is vulnerable to an reflected XSS vulnerability in the product frontend controller.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -3968,7 +3968,7 @@
     },
     {
       "id": "CVE-2026-63265",
-      "desc": "Privileged Regular Labs AJAX endpoints did not consistently require valid CSRF tokens, matching component/item permissions and trusted server-generated form configuration. Authenticated lower-privileged users or CSRF attacks could invoke lookups or mutations outside their authorization.",
+      "desc": "Joomla Extension - regularlabs.com - Inconsistent CSRF token checks / privilege checks in various Regular Labs extension AJAX endpoints - Privileged Regular Labs AJAX endpoints did not consistently require valid CSRF tokens, matching component/item permissions and trusted server-generated form confi",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -3986,7 +3986,7 @@
     },
     {
       "id": "CVE-2026-63280",
-      "desc": "Conditions administration did not consistently enforce tokens and component/mapped-item permissions.",
+      "desc": "Joomla Extension - regularlabs.com - Inconsistent CSRF token checks / privilege checks in Regular Labs conditions manager - Conditions administration did not consistently enforce tokens and component/mapped-item permissions.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -4004,7 +4004,7 @@
     },
     {
       "id": "CVE-2026-63281",
-      "desc": "Stored condition values could also execute HTML/JavaScript in administrator summaries.",
+      "desc": "Joomla Extension - regularlabs.com - XSS vulnerability in Regular Labs conditions manager - Stored condition values could also execute HTML/JavaScript in administrator summaries.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -4022,7 +4022,7 @@
     },
     {
       "id": "CVE-2026-63683",
-      "desc": "IP and GeoIP conditions trusted spoofable forwarded headers, allowing remote clients to bypass location-based rules.",
+      "desc": "Joomla Extension - regularlabs.com - Client IP spoofing vulnerability in Regular Labs conditions manager - IP and GeoIP conditions trusted spoofable forwarded headers, allowing remote clients to bypass location-based rules.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -4040,7 +4040,7 @@
     },
     {
       "id": "CVE-2026-63684",
-      "desc": "Administrator actions, editor popups and import/export requests lacked consistent token, item-permission and input-validation checks. Unauthorized backend users or CSRF attacks could expose, create or modify extension configuration and items.",
+      "desc": "Joomla Extension - regularlabs.com - Inconsistent CSRF token checks / privilege checks in various admin/import/export actions of multiple Regular Labs extension - Administrator actions, editor popups and import/export requests lacked consistent token, item-permission and input-validation checks. Una",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -4058,7 +4058,7 @@
     },
     {
       "id": "CVE-2026-63685",
-      "desc": "Administrator routes and replacement requests did not consistently require Super User permission and a valid token. An unauthorized backend user or CSRF attack could perform database replacements, potentially causing major data corruption or site compromise.",
+      "desc": "Joomla Extension - regularlabs.com - Authorization bypass in DB Replacer extension - Administrator routes and replacement requests did not consistently require Super User permission and a valid token. An unauthorized backend user or CSRF attack could perform database replacements, potentially causin",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -4076,7 +4076,7 @@
     },
     {
       "id": "CVE-2026-64791",
-      "desc": "Administrator routes and install/update/uninstall processing did not consistently enforce component-management and installation permissions. An unauthorized backend user or CSRF attack could install, update or remove extensions.",
+      "desc": "Joomla Extension - regularlabs.com - Inconsistent CSRF token checks / privilege checks in Regular Labs Extension Manager - Administrator routes and install/update/uninstall processing did not consistently enforce component-management and installation permissions. An unauthorized backend user or CSRF",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -4094,7 +4094,7 @@
     },
     {
       "id": "CVE-2026-64792",
-      "desc": "Smart Search indexing could render generated content using the indexing administrator’s identity instead of a public guest. Restricted or administrator-only content could consequently be stored in the public search index and disclosed to visitors.",
+      "desc": "Joomla Extension - regularlabs.com - disclosure of restricted content via search index in various Regular Labs extensions - Smart Search indexing could render generated content using the indexing administrator’s identity instead of a public guest. Restricted or administrator-only content could conse",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -4112,7 +4112,7 @@
     },
     {
       "id": "CVE-2026-64793",
-      "desc": "Content tags could use ignore flags or property overrides to render restricted or unpublished articles or modules. A content author could thereby expose content to visitors who lacked the required access.",
+      "desc": "Joomla Extension - regularlabs.com - Content access and publication bypass in Articles Anywhere and Modules Anywhere extensions - Content tags could use ignore flags or property overrides to render restricted or unpublished articles or modules. A content author could thereby expose content to visito",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -4130,7 +4130,7 @@
     },
     {
       "id": "CVE-2026-64794",
-      "desc": "User tags, filters and conditions allowed access to insufficiently restricted user fields. Crafted content could expose authentication-related data, raw user parameters or restricted contact details.",
+      "desc": "Joomla Extension - regularlabs.com - restricted user-data exposure in Users Anywhere and Articles Anywhere extensions - User tags, filters and conditions allowed access to insufficiently restricted user fields. Crafted content could expose authentication-related data, raw user parameters or restrict",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -4148,7 +4148,7 @@
     },
     {
       "id": "CVE-2026-64795",
-      "desc": "Tag-provided custom HTML, module content/title overrides and decoded modal or tooltip values could execute unsafe markup. A content author could inject JavaScript that ran in visitors’ browsers.",
+      "desc": "Joomla Extension - regularlabs.com - XSS vectors in tag-provided inputs in various Regular Labs extensions - Tag-provided custom HTML, module content/title overrides and decoded modal or tooltip values could execute unsafe markup. A content author could inject JavaScript that ran in visitors’ browse",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -4166,7 +4166,7 @@
     },
     {
       "id": "CVE-2026-64796",
-      "desc": "Free did not require both the article creator and last modifier to be Super Users before executing article PHP. Pro did not consistently enforce configured CSS, JavaScript and PHP permissions across tags, attributes, files and both article owners. PHP include attributes could also escape the configu",
+      "desc": "Joomla Extension - regularlabs.com - various code injection vectors in Sourcerer extension - Free did not require both the article creator and last modifier to be Super Users before executing article PHP. Pro did not consistently enforce configured CSS, JavaScript and PHP permissions across tags, at",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -4184,7 +4184,7 @@
     },
     {
       "id": "CVE-2026-64797",
-      "desc": "IP Login trusted forwarded client-IP headers without requiring a configured trusted proxy. Attackers could spoof the IP used for automatic login and potentially impersonate mapped accounts.",
+      "desc": "Joomla Extension - regularlabs.com - IP spoofing vulnerability in IP login extension - IP Login trusted forwarded client-IP headers without requiring a configured trusted proxy. Attackers could spoof the IP used for automatic login and potentially impersonate mapped accounts.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -4202,7 +4202,7 @@
     },
     {
       "id": "CVE-2026-64798",
-      "desc": "Persistent URL login keys were also generated using a non-cryptographic random generator with insufficient entropy.",
+      "desc": "Joomla Extension - regularlabs.com - Insecure login URL keys in IP login extension - Persistent URL login keys were also generated using a non-cryptographic random generator with insufficient entropy.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-22",
@@ -5390,7 +5390,7 @@
     },
     {
       "id": "CVE-2026-64799",
-      "desc": "Content-controlled image URLs could request private or reserved network services, follow unsafe redirects and save responses without validating that they were images. This could result in SSRF, internal-data access or writing attacker-controlled files into a web-accessible folder.",
+      "desc": "Joomla Extension - regularlabs.com - SSRF via remote image downloads in Articles Anywhere and Users Anywhere extensions - Content-controlled image URLs could request private or reserved network services, follow unsafe redirects and save responses without validating that they were images. This could ",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -5408,7 +5408,7 @@
     },
     {
       "id": "CVE-2026-64871",
-      "desc": "Administrator URL purges did not consistently require a valid token and cache-management permission.",
+      "desc": "Joomla Extension - regularlabs.com - Inconsistent CSRF token checks / privilege checks in Cache Cleaner extension - Administrator URL purges did not consistently require a valid token and cache-management permission.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -5426,7 +5426,7 @@
     },
     {
       "id": "CVE-2026-64872",
-      "desc": "Custom purge and log paths could escape the site webroot directory.",
+      "desc": "Joomla Extension - regularlabs.com - Path traversal in Cache Cleaner Pro extension - Custom purge and log paths could escape the site webroot directory.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -5444,7 +5444,7 @@
     },
     {
       "id": "CVE-2026-64873",
-      "desc": "Custom query URLs could access internal or reserved network services.",
+      "desc": "Joomla Extension - regularlabs.com - SSRF in Cache Cleaner Pro extension - Custom query URLs could access internal or reserved network services.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -5462,7 +5462,7 @@
     },
     {
       "id": "CVE-2026-64874",
-      "desc": "CDN credentials were exposed in administrator request URLs.",
+      "desc": "Joomla Extension - regularlabs.com - CDN Credential leakage Cache Cleaner Pro extension - CDN credentials were exposed in administrator request URLs.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -5480,7 +5480,7 @@
     },
     {
       "id": "CVE-2026-64875",
-      "desc": "GeoIP lookups trusted spoofable forwarded client-IP headers, this could cause GeoIP-rule bypass.",
+      "desc": "Joomla Extension - regularlabs.com - IP spoofing vulnerability in GeoIP extension - GeoIP lookups trusted spoofable forwarded client-IP headers, this could cause GeoIP-rule bypass.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -5498,7 +5498,7 @@
     },
     {
       "id": "CVE-2026-64876",
-      "desc": "Database-update requests lacked consistent token and Super User checks, this could cause unauthorized updates.",
+      "desc": "Joomla Extension - regularlabs.com - Inconsistent CSRF token checks / privilege checks  in GeoIP extension - Database-update requests lacked consistent token and Super User checks, this could cause unauthorized updates.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -5516,7 +5516,7 @@
     },
     {
       "id": "CVE-2026-65430",
-      "desc": "MaxMind credentials where leaked in request URLs, causing a credential leakage vulnerability.",
+      "desc": "Joomla Extension - regularlabs.com - MaxMind Credential leakage in GeoIP extension - MaxMind credentials where leaked in request URLs, causing a credential leakage vulnerability.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -5534,7 +5534,7 @@
     },
     {
       "id": "CVE-2026-65431",
-      "desc": "Geo IP database update archives have been broadly extracted without path validation, leading to unsafe file extractions.",
+      "desc": "Joomla Extension - regularlabs.com - Zipslip in GeoIP extension - Geo IP database update archives have been broadly extracted without path validation, leading to unsafe file extractions.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -5552,7 +5552,7 @@
     },
     {
       "id": "CVE-2026-65712",
-      "desc": "CDN versioning could check file paths outside the site directory, exposing local file existence and modification metadata.",
+      "desc": "Joomla Extension - regularlabs.com - Insecure path handling in CDN for Joomla Pro extension - CDN versioning could check file paths outside the site directory, exposing local file existence and modification metadata.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -5570,7 +5570,7 @@
     },
     {
       "id": "CVE-2026-65713",
-      "desc": "Modals gallery paths could enumerate unintended directories.",
+      "desc": "Joomla Extension - regularlabs.com - Insecure path handling in Modals Pro extension - Modals gallery paths could enumerate unintended directories.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -5588,7 +5588,7 @@
     },
     {
       "id": "CVE-2026-65754",
-      "desc": "ReReplacer XML include paths could read files outside the site directory.",
+      "desc": "Joomla Extension - regularlabs.com - Insecure path handling in ReReplacer Pro extension - ReReplacer XML include paths could read files outside the site directory.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -5606,7 +5606,7 @@
     },
     {
       "id": "CVE-2026-65755",
-      "desc": "Date-sensitive query cache keys did not retain a bounded time component. Cached results could remain active across future publication or expiry boundaries, potentially exposing content after it should become unavailable.",
+      "desc": "Joomla Extension - regularlabs.com - Date-sensitive query-cache leakage in Articles Anywhere and Users Anywhere extension - Date-sensitive query cache keys did not retain a bounded time component. Cached results could remain active across future publication or expiry boundaries, potentially exposing",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -5624,7 +5624,7 @@
     },
     {
       "id": "CVE-2026-65756",
-      "desc": "Shortcut configuration accepted arbitrary inline JavaScript.",
+      "desc": "Joomla Extension - regularlabs.com - XSS vector in Keyboard Shortcuts extension - Shortcut configuration accepted arbitrary inline JavaScript.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -5642,7 +5642,7 @@
     },
     {
       "id": "CVE-2026-65757",
-      "desc": "The editor popup could expose restricted module data to authenticated users without the required module permissions or valid request tokens.",
+      "desc": "Joomla Extension - regularlabs.com - Inconsistent CSRF token checks / privilege checks in Modules Anywhere extension - The editor popup could expose restricted module data to authenticated users without the required module permissions or valid request tokens.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -5660,7 +5660,7 @@
     },
     {
       "id": "CVE-2026-65758",
-      "desc": "The front-end Submissions view did not enforce access control. An unauthenticated visitor could therefore list a form's submissions.",
+      "desc": "Joomla Extension - tassos.gr - Sensitive data exposure in Convert Forms extension 2.5.0-5.2.2 - The front-end Submissions view did not enforce access control. An unauthenticated visitor could therefore list a form's submissions.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-07-23",
@@ -9363,6 +9363,528 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-43823",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-11804",
+      "desc": "Improper handling of insufficient permissions or privileges vulnerability in Tridium Niagara Framework on Windows, Linux, QNX, Tridium Niagara Enterprise Security on Windows, Linux, QNX allows Privilege Abuse.\n\nThis issue affects Niagara Framework: before 4.14.6, before 4.15.5; Niagara Enterprise Se",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11804",
+      "cvss": "5.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15611",
+      "desc": "Logto allows unverified email-based SSO account linking, enabling an attacker to register an identity at a permissive IdP using a victim’s email and gain unauthorized access to the victim’s account.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15611",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15612",
+      "desc": "Logto bypasses OIDC nonce validation when the nonce claim is absent from the id_token, enabling replay of authentication tokens and weakening session-binding.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15612",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15614",
+      "desc": "Logto silently fails to delete IdP-initiated SAML sessions, enabling session replay and reuse within the session’s validity window.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15614",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15615",
+      "desc": "Logto omits validation of the SAML <Conditions> element, enabling attackers to strip time and audience restrictions and replay assertions indefinitely.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15615",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15616",
+      "desc": "Logto does not enforce locally configured MFA during SSO authentication, allowing users to bypass second-factor requirements and grants unauthorized access.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15616",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15617",
+      "desc": "Logto performs principal lookup without normalizing email and identifier strings, enabling principal collision and unauthorized account access via case- or Unicode-different identities.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15617",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16584",
+      "desc": "Improper handling of an initialization failure in AWS API MCP Server from 0.2.13 through 1.3.46 might allow an actor to bypass the user-configured security policy and execute AWS API operations that the policy was set to deny or gate. When initialization of the security policy enforcement data fails",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16584",
+      "cvss": "7.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-48530",
+      "desc": "GFI Archiver before 15.13 contains a stored cross-site scripting vulnerability in the Classification Rules configuration that allows authenticated attackers to inject arbitrary web script or HTML via the rule name and email criteria parameters to /Archiver/CategorizationPolicyWizard.aspx. The inject",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48530",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-48531",
+      "desc": "GFI Archiver before 15.13 contains a stored cross-site scripting vulnerability in the Retention Policy configuration that allows authenticated attackers to inject arbitrary web script or HTML via the policy name parameter to /Archiver/RetentionPolicyWizard.aspx. The injected payload is stored by Ret",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48531",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-48532",
+      "desc": "GFI Archiver before 15.13 contains a stored cross-site scripting vulnerability in the File History Retention Policy configuration that allows authenticated attackers to inject arbitrary web script or HTML via the policy name parameter to /Archiver/FAARetentionPolicyWizard.aspx. The injected payload ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48532",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-48533",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48533",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-48534",
+      "desc": "GFI Archiver before 15.13 contains a stored cross-site scripting vulnerability in the IMAP Server configuration that allows authenticated attackers to inject arbitrary web script or HTML via the server URL parameter to /Archiver/ImapServerWizard.aspx. The injected payload is stored by ImapServerWiza",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48534",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-48535",
+      "desc": "GFI Archiver before 15.13 contains a stored cross-site scripting vulnerability in the Call Home proxy server configuration that allows authenticated attackers to inject arbitrary web script or HTML via the proxy server address parameter to /Archiver/CallHomeSettingsWizard.aspx. The injected payload ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48535",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-48536",
+      "desc": "GFI Archiver before 15.13 contains a stored cross-site scripting vulnerability in the General Settings SMTP configuration that allows authenticated attackers to inject arbitrary web script or HTML via the SMTP server address parameter to /Archiver/GeneralSettingsWizard.aspx. The injected payload is ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48536",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-48537",
+      "desc": "GFI Archiver before 15.13 contains a stored cross-site scripting vulnerability in the File Archive Assistant configuration that allows authenticated attackers to inject arbitrary web script or HTML via the excluded extensions parameter to /Archiver/FileArchiveAssistantWizard.aspx. The injected paylo",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48537",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-48538",
+      "desc": "GFI Archiver before 15.13 contains a stored cross-site scripting vulnerability in the default import settings configuration that allows authenticated attackers to inject arbitrary web script or HTML via the configured folders parameter to /Archiver/ImportSettingsWizard.ashx. The injected payload is ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48538",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-48539",
+      "desc": "GFI Archiver before 15.13 contains a stored cross-site scripting vulnerability in the MailInsights scheduled report configuration that allows authenticated attackers to inject arbitrary web script or HTML via the report name parameter to /Archiver/MailInsights.aspx. The injected payload is stored by",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48539",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65916",
+      "desc": "CyberPanel through 1.9.1, fixed in commit b198460, contains a missing authorization vulnerability in the cancelBackupCreation handler that allows authenticated users to kill, delete, and corrupt other tenants' backups. Attackers can send crafted POST requests with arbitrary backupCancellationDomain ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65916",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65917",
+      "desc": "CyberPanel through 1.9.1, fixed in commit b198460, contains an insecure direct object reference (IDOR) vulnerability in the IncBackups application's incremental-backup handlers (deleteBackup, fetchRestorePoints, and restorePoint) that allows authenticated panel users to access or manipulate other te",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65917",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16768",
+      "desc": "A flaw was found in gdk-pixbuf. When parsing a specially crafted ICO file with pixel values that exceed the defined palette range, an out-of-bounds read can occur due to improper bounds checking against the actual palette size. This vulnerability causes heap bytes to be interpreted as valid palette ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16768",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-44909",
+      "desc": "Proxygen lacked a generalized slow-consumer detection mechanism in its core HTTP session layer. A remote, unauthenticated attacker could exploit HTTP/2 flow-control by setting SETTINGS_INITIAL_WINDOW_SIZE to 0 or withholding WINDOW_UPDATE frames, causing the server to buffer complete response bodies",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44909",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65695",
+      "desc": "Office-Word-MCP-Server through 1.1.11 contains a path traversal vulnerability in its document tools that allows attackers who can influence the filename argument to read arbitrary .docx files or create and overwrite .docx files outside the intended working directory. Attackers can supply absolute pa",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65695",
+      "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65696",
+      "desc": "Overseerr through 1.35.0 contains an authorization bypass through user-controlled key vulnerability in the push subscription API that allows authenticated users to list, read, and delete any other user's push subscriptions by supplying an arbitrary userId in the path parameters. Attackers can exploi",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65696",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65697",
+      "desc": "Fathom Lite through 1.3.1 contains a stored cross-site scripting vulnerability in the analytics collection endpoint that allows unauthenticated attackers to inject a javascript: URI into the Top Pages dashboard by supplying a crafted hostname and pathname to the unauthenticated /collect endpoint. Th",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65697",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65698",
+      "desc": "Void through 1.3.4 contains a path traversal vulnerability in the AI agent file-reading tools that allows network-adjacent attackers to read arbitrary host files outside the open workspace by injecting instructions into content the agent processes. Attackers can supply absolute paths or file:// URIs",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65698",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65759",
+      "desc": "Joomla Extension - joomshaper.com - unauthenticated payment/order forgery in Easy Store extension 1.0.0-2.0.1 - Critical order and payment information, including states, are processed from client side input, enabling unauthenticated attackers to manipulate payment and order states of arbritrary orde",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65759",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65760",
+      "desc": "Joomla Extension - joomshaper.com - cross-customer order and personal information disclosure in Easy Store extension 1.0.0-2.0.1 - Improper access checks allow logged in users to retreive order and customer information of any order in the system.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65760",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65761",
+      "desc": "Joomla Extension - joomshaper.com - Unauthenticated SQL injection in Easy Store extension 1.0.0-2.0.1 - Improper validation of order parameters lead to an unauthenticated SQL injection in easystore, allowing full DB read access including credentials and sessions.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65761",
       "cvss": "0.0",
       "cwe": ""
     },

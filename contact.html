@@ -451,28 +451,67 @@ async function submitForm() {
   btn.disabled = true;
   btn.textContent = '⏳ Sending...';
 
+  const now = new Date().toLocaleString('en-PK',{
+    weekday:'long',year:'numeric',month:'long',day:'numeric',
+    hour:'2-digit',minute:'2-digit',timeZoneName:'short'
+  });
+
+  const professionalBody = `
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  NEW INQUIRY — INFOSEC PAKISTAN
+  Received: ${now}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SUBJECT / SERVICE
+─────────────────
+${subject}
+
+CONTACT INFORMATION
+─────────────────
+Full Name     : ${name}
+Email Address : ${email}
+Organization  : ${org || 'Not provided'}
+
+MESSAGE
+─────────────────
+${message}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Please reply to: ${email}
+  Source: https://pakistaninfosec.github.io/contact.html
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  InfoSec Pakistan — Pakistan Threat Intelligence Platform
+  pakistaninfosec@gmail.com
+  https://pakistaninfosec.github.io
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+
   try{
     const res = await fetch(FORMSPREE, {
       method: 'POST',
       headers: {'Content-Type':'application/json','Accept':'application/json'},
       body: JSON.stringify({
-        name, email,
-        organization: org || 'Not provided',
-        subject, message,
-        _subject: `[InfoSec Pakistan] ${subject} — ${name}`,
+        _subject: `Inquiry: ${subject} | ${name} | InfoSec Pakistan`,
         _replyto: email,
+        'Full Name':    name,
+        'Email':        email,
+        'Organization': org || 'Not provided',
+        'Subject':      subject,
+        'Message':      message,
+        'Submitted At': now,
+        'Source Page':  'https://pakistaninfosec.github.io/contact.html',
+        message: professionalBody,
       })
     });
 
     if(res.ok){
-      btn.textContent = '✅ Message Sent!';
+      btn.textContent = '✅ Message Sent Successfully!';
       document.getElementById('success-msg').classList.add('show');
       document.getElementById('name').value    = '';
       document.getElementById('email').value   = '';
       document.getElementById('org').value     = '';
       document.getElementById('subject').value = '';
       document.getElementById('message').value = '';
-      setTimeout(()=>{ btn.disabled=false; btn.textContent='✉ Send Message to InfoSec Pakistan'; }, 4000);
+      setTimeout(()=>{ btn.disabled=false; btn.textContent='✉ Send Message to InfoSec Pakistan'; },5000);
     } else {
       throw new Error('Server error');
     }

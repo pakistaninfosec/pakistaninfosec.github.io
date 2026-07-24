@@ -265,55 +265,71 @@ async function callGroq(prompt){
 
 // ── Parse AI response into sections ───────────────
 function parseAI(text){
-  const sections = {};
+  const result = {
+    TECHNICAL_DETAILS: '',
+    RISK_ASSESSMENT: '',
+    AFFECTED_PRODUCTS: '',
+    MITIGATION_STEPS: '',
+    PAKISTAN_ANALYSIS: ''
+  };
 
-  // Map of keywords to section keys — catches any format Groq uses
-  const keyMap = [
-    { key:'TECHNICAL_DETAILS',  words:['technical','technical detail','vulnerability detail','overview'] },
-    { key:'RISK_ASSESSMENT',    words:['risk assessment','risk analysis','risk','threat level'] },
-    { key:'AFFECTED_PRODUCTS',  words:['affected product','affected system','impacted product','impact','affected version'] },
-    { key:'MITIGATION_STEPS',   words:['mitigation','remediation','fix','patch','recommendation','steps','action'] },
-    { key:'PAKISTAN_ANALYSIS',  words:['pakistan','pk','regional','local analysis'] },
-  ];
+  // Split on section markers — handle ##SECTION, ## SECTION, **SECTION**, SECTION:
+  const sectionMap = {
+    'TECHNICAL_DETAILS':  ['technical','technical detail','overview','vulnerability detail','background'],
+    'RISK_ASSESSMENT':    ['risk assessment','risk analysis','risk level','threat level','risk'],
+    'AFFECTED_PRODUCTS':  ['affected product','affected system','impacted product','affected version','products affected','affected software'],
+    'MITIGATION_STEPS':   ['mitigation','remediation','fix','patch','recommendation','steps to','how to fix','action item'],
+    'PAKISTAN_ANALYSIS':  ['pakistan','regional','local analysis','impact on pakistan','pakistan-specific'],
+  };
 
   const lines = text.split('\n');
-  let current = null;
+  let currentKey = null;
 
   for(const line of lines){
-    const trimmed = line.trim();
-    const lower   = trimmed.toLowerCase().replace(/[#\*_]/g,'').trim();
-    let matched   = false;
+    const clean = line.replace(/^#{1,4}\s*/,'').replace(/\*\*/g,'').trim();
+    const lower = clean.toLowerCase();
 
-    // Check if this line is a section header
-    if(trimmed.startsWith('#') || trimmed.startsWith('**') || trimmed.endsWith('**') || trimmed.endsWith(':')){
-      for(const {key, words} of keyMap){
+    // Detect section header
+    let foundKey = null;
+    if(line.match(/^#{1,4}\s/) || line.match(/^\*\*[^*]+\*\*$/) || (clean.endsWith(':') && clean.length < 50)){
+      for(const [key, words] of Object.entries(sectionMap)){
         if(words.some(w => lower.includes(w))){
-          current = key;
-          if(!sections[key]) sections[key] = '';
-          matched = true;
+          foundKey = key;
           break;
         }
       }
     }
 
-    if(!matched && current){
-      sections[current] = (sections[current]||'') + line + '\n';
+    if(foundKey){
+      currentKey = foundKey;
+    } else if(currentKey && line.trim()){
+      result[currentKey] += line + '\n';
     }
   }
 
-  // If parsing failed entirely, put everything in TECHNICAL_DETAILS
-  if(Object.keys(sections).length === 0){
-    sections['TECHNICAL_DETAILS'] = text;
+  // If parsing got nothing useful, try splitting by ## markers directly
+  const anyContent = Object.values(result).some(v => v.trim().length > 20);
+  if(!anyContent){
+    // Fallback: split on ## and assign sequentially
+    const parts = text.split(/\n#{1,3}\s+/);
+    const keys = ['TECHNICAL_DETAILS','RISK_ASSESSMENT','AFFECTED_PRODUCTS','MITIGATION_STEPS','PAKISTAN_ANALYSIS'];
+    parts.slice(1).forEach((part, i) => {
+      if(i < keys.length) result[keys[i]] = part.trim();
+    });
   }
 
-  // If some sections are empty, fill with a note
-  for(const {key} of keyMap){
-    if(!sections[key] || sections[key].trim().length < 10){
-      sections[key] = sections['TECHNICAL_DETAILS'] || text;
+  // Final fallback — put everything in technical details if still empty
+  const stillEmpty = Object.values(result).every(v => v.trim().length < 20);
+  if(stillEmpty) result['TECHNICAL_DETAILS'] = text;
+
+  // Fill any empty section with a sensible default
+  for(const key of Object.keys(result)){
+    if(!result[key].trim()){
+      result[key] = result['TECHNICAL_DETAILS'] || 'Please refer to the NVD entry for full details.';
     }
   }
 
-  return sections;
+  return result;
 }
 
 // ── Format AI text to HTML ─────────────────────────

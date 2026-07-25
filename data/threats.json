@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-25T14:10:43.506338+00:00",
-  "summary": "Today's digest contains 570 vulnerabilities across 5 sources. 76 zero-day exploits detected, 26 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-25T15:41:01.355750+00:00",
+  "summary": "Today's digest contains 571 vulnerabilities across 5 sources. 76 zero-day exploits detected, 26 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 570,
+    "new": 571,
     "changed": 0,
     "removed": 0,
-    "total": 193969,
+    "total": 194540,
     "zeroday": 76,
     "exploited": 26,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 479
+      "count": 480
     },
     {
       "name": "Exploit-DB",
@@ -9432,6 +9432,24 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66013",
       "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-10681",
+      "desc": "In Zephyr's userspace dynamic-objects subsystem, thread_idx_alloc() in kernel/userspace/userspace.c allocated a new thread permission index from the global _thread_idx_map[] bitmap without holding lists_lock.\n\nOn SMP systems, two user-mode threads invoking the k_object_alloc(K_OBJ_THREAD) syscall co",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10681",
+      "cvss": "6.5",
       "cwe": ""
     },
     {

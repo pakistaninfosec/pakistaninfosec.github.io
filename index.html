@@ -334,7 +334,24 @@ canvas#radar{width:560px;height:560px;}
   .method-step{grid-template-columns:1fr;}
 }
 
-/* ═══════ HAMBURGER ═══════ */
+/* ═══════ LIGHT MODE ═══════ */
+body.light{
+  --bg:#f0f4f8;--bg2:#ffffff;--bg3:#e8edf3;--bg4:#dde3ec;
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.14);--border3:rgba(0,0,0,0.2);
+  --text:#0f172a;--text2:#334155;--text3:#64748b;
+}
+body.light::before{background-image:linear-gradient(rgba(37,99,235,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.04) 1px,transparent 1px);}
+body.light::after{background:radial-gradient(ellipse,rgba(37,99,235,0.05) 0%,transparent 65%);}
+body.light nav{background:rgba(240,244,248,0.95);border-bottom:1px solid var(--border);}
+body.light .hamburger span{background:var(--text);}
+body.light .sc-icon{filter:none;}
+
+/* ═══════ THEME TOGGLE ═══════ */
+.theme-toggle{width:44px;height:24px;background:var(--bg3);border:1px solid var(--border2);border-radius:12px;cursor:pointer;position:relative;transition:all 0.3s;flex-shrink:0;}
+.theme-toggle::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;background:#fff;border-radius:50%;transition:all 0.3s;box-shadow:0 1px 4px rgba(0,0,0,0.3);}
+body.light .theme-toggle{background:var(--blue);border-color:var(--blue);}
+body.light .theme-toggle::after{left:23px;background:#fff;}
+.theme-icon{font-size:13px;line-height:1;}
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:200;}
 .hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all 0.3s;}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
@@ -504,6 +521,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     <a href="sandbox.html">Sandbox</a>
   </div>
   <div style="display:flex;align-items:center;gap:12px;">
+    <span class="theme-icon" id="theme-icon">🌙</span>
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode"></button>
     <div class="live-badge"><div class="live-dot"></div>LIVE</div>
     <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -989,6 +1008,23 @@ function openModal(t){
 function closeModal(e){if(e.target===document.getElementById('modal'))document.getElementById('modal').classList.remove('open');}
 loadData();
 setInterval(loadData,5*60*1000);
+
+// Theme toggle
+function toggleTheme(){
+  const isLight = document.body.classList.toggle('light');
+  document.getElementById('theme-icon').textContent = isLight ? '☀️' : '🌙';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+}
+
+// Apply saved theme on load
+(function(){
+  const saved = localStorage.getItem('theme');
+  if(saved === 'light'){
+    document.body.classList.add('light');
+    const icon = document.getElementById('theme-icon');
+    if(icon) icon.textContent = '☀️';
+  }
+})();
 
 // Hamburger menu
 function toggleNav(){

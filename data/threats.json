@@ -1,19 +1,19 @@
 {
-  "generated": "2026-07-27T16:59:18.837262+00:00",
-  "summary": "Today's digest contains 273 vulnerabilities across 5 sources. 74 zero-day exploits detected, 24 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-27T18:42:03.586794+00:00",
+  "summary": "Today's digest contains 306 vulnerabilities across 5 sources. 75 zero-day exploits detected, 25 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 273,
+    "new": 306,
     "changed": 0,
     "removed": 0,
-    "total": 204045,
-    "zeroday": 74,
-    "exploited": 24,
+    "total": 204351,
+    "zeroday": 75,
+    "exploited": 25,
     "pakistan": 15
   },
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 184
+      "count": 216
     },
     {
       "name": "Exploit-DB",
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 24
+      "count": 25
     },
     {
       "name": "Pakistan CERT",
@@ -316,6 +316,25 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-68686",
+      "desc": "Fortinet FortiOS contains an exposure of sensitive information to an unauthorized actor vulnerability. This may allow a remote unauthenticated attacker to bypass the patch developed for the symbolic link persistency mechanism observed in some post-exploit cases, via crafted HTTP requests. An attacke",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-68686",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -1173,7 +1192,7 @@
     {
       "id": "CVE-2026-12493",
       "desc": "The Clover Payment Gateway by Zaytech for WooCommerce WordPress plugin before 1.3.6 does not verify that an approved external payment record actually belongs to the WooCommerce order being completed, nor that the paid amount matches the order total, allowing unauthenticated users to mark arbitrary o",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-27",
       "pakistan": false,
@@ -1185,7 +1204,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12493",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -1383,7 +1402,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14203",
-      "cvss": "0.0",
+      "cvss": "4.8",
       "cwe": ""
     },
     {
@@ -1419,13 +1438,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14236",
-      "cvss": "0.0",
+      "cvss": "4.7",
       "cwe": ""
     },
     {
       "id": "CVE-2026-14289",
       "desc": "The FacturaONE para WooCommerce con VeriFactu WordPress plugin before 5.37 does not authenticate one of its request handlers, whose only protection is derived from a cryptographic key that is empty in the default, unconfigured state, allowing unauthenticated attackers to write an arbitrary file into",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-27",
       "pakistan": false,
@@ -1437,7 +1456,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14289",
-      "cvss": "0.0",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -1455,7 +1474,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14568",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -1473,7 +1492,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14820",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -1491,7 +1510,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14827",
-      "cvss": "0.0",
+      "cvss": "6.8",
       "cwe": ""
     },
     {
@@ -1515,7 +1534,7 @@
     {
       "id": "CVE-2026-9830",
       "desc": "The bookingpress-appointment-booking-pro WordPress plugin before 5.7.3 does not correctly invoke its REST permission callback, leaving every route in one of its API namespaces reachable without authentication and allowing unauthenticated attackers to read customer booking data and modify other users",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-27",
       "pakistan": false,
@@ -1527,7 +1546,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9830",
-      "cvss": "0.0",
+      "cvss": "8.2",
       "cwe": ""
     },
     {
@@ -3585,7 +3604,7 @@
     {
       "id": "CVE-2025-50455",
       "desc": "SQL injection vulnerability exists in the order_by parameter of the /customers/search endpoint in Alex Tselegidis EasyAppointments <= 1.5.1. The vulnerability arises from unsanitized user input passed to the order_by method of the CodeIgniter Query Builder, enabling attackers to perform time-based q",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-07-27",
       "pakistan": false,
@@ -3597,7 +3616,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-50455",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
@@ -3855,7 +3874,7 @@
     {
       "id": "CVE-2026-51304",
       "desc": "sqlite 3.41 has a use-after-free (UAF) vulnerability in the ORDER BY clause parsing routine. The affected code first releases the memory of an ExprList object via sqlite3ExprListDelete(), then attempts to access the nExpr member of the already freed object. This dangling pointer access causes invali",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-27",
       "pakistan": false,
@@ -3867,7 +3886,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51304",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -4084,6 +4103,582 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66399",
       "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-17191",
+      "desc": "An input validation vulnerability exists in an API component of the orchestrator. An authenticated user can exploit this flaw to manipulate backend queries, which may result in unauthorized access to data beyond their intended privileges and cause the underlying system to initiate unintended outboun",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17191",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-17192",
+      "desc": "A VCO feature does not sufficiently validate caller-supplied input, allowing requests to be made on behalf of authenticated tenant accounts to internal services that are not otherwise accessible. This vulnerability requires a minimum role of Enterprise Standard Admin.\n\n\n\n\nThis issue was discovered i",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17192",
+      "cvss": "8.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-17531",
+      "desc": "A weakness has been identified in unitedbyai droidclaw up to 0.5.3. Affected by this issue is some unknown functionality of the file server/src/routes/goals.ts of the component Unsigned Scheduled Callback. This manipulation causes authorization bypass. Remote exploitation of the attack is possible. ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17531",
+      "cvss": "5.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-24252",
+      "desc": "NVIDIA NeMo for Linux contains a vulnerability where an attacker may cause OS command injection. A successful exploit of this vulnerability may lead to code execution, data tampering, escalation of privileges and information disclosure.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24252",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63077",
+      "desc": "In JetBrains TeamCity before 2026.1.3, 2025.11.7 unauthenticated remote code execution was possible via the agent polling protocol",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63077",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-66390",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Apache Wicket.\n\nThis issue affects Apache Wicket: from 9.0.0 through 9.23.0, from 10.0.0 through 10.9.0.\n\nUsers are recommended to upgrade to version 10.10.0, which fixes the issue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66390",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-66391",
+      "desc": "Use of Insufficiently Random Values, Protection Mechanism Failure vulnerability in Apache Wicket.\n\nThis issue affects Apache Wicket: from 9.0.0 through 9.23.0, from 10.0.0 through 10.9.0.\n\nUsers are recommended to upgrade to version 10.10.0, which fixes the issue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66391",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-66729",
+      "desc": "facil.io 0.6.0 through 0.7.6 contains an integer underflow vulnerability in the multipart MIME body parser that allows unauthenticated remote attackers to crash the server process by sending a crafted Content-Disposition header with an empty field name. Attackers can trigger a uint32_t wraparound in",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66729",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-66730",
+      "desc": "facil.io 0.6.0 through 0.7.6 contains a denial-of-service vulnerability in the multipart body parser that allows an unauthenticated remote attacker to permanently freeze worker processes at 100% CPU by sending a multipart/form-data request with a partial closing boundary. The missing progress guard ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66730",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-66731",
+      "desc": "facil.io 0.7.5 through 0.7.6 contains a denial-of-service vulnerability in the HTTP/1.1 chunked transfer encoding parser that allows unauthenticated remote attackers to crash the server by sending a negative chunk size value. Attackers can send a single POST request with a Transfer-Encoding: chunked",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66731",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-17552",
+      "desc": "Plack::App::Prerender versions before 0.3.0 for Perl can proxy to an arbitrary host via unvalidated REQUEST_URI concatenation in call.\n\nWhen the rewrite base is a plain string, the REQUEST_URI is appended to it, with no check that the path starts with a forward slash ('/').\n\nWhen the rewrite base do",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17552",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-17568",
+      "desc": "Improper access control in the role membership management endpoint in Devolutions Server allows an authenticated non-administrative user holding the user-group membership management permission to escalate privileges to administrator via a crafted API request.\n\nThis issue affects :\n\n  *  Devolutions ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17568",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-17569",
+      "desc": "Improper access control in the NetBox synchronizer in Devolutions Server allows an authenticated user with view-only permission on an entry to obtain a stored API token via the partial connection endpoint.\n\nThis issue affects :\n\n  *  Devolutions Server 2026.2.4.0 through 2026.2.12.0\n  *  Devolutions",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17569",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-17570",
+      "desc": "Improper access control in the PAM password history endpoints in Devolutions Server allows an authenticated low-privileged user to disclose plaintext credential secrets via crafted API requests.\n\nThis issue affects :\n\n  *  Devolutions Server 2026.2.4.0 through 2026.2.12.0\n  *  Devolutions Server 202",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17570",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-45623",
+      "desc": "PostCSS takes a CSS file and provides an API to analyze and modify its rules by transforming the rules into an Abstract Syntax Tree. In versions 8.5.11 and prior, the PreviousMap parses the /*# sourceMappingURL=PATH */ comment from any CSS string passed to process() and dereferences PATH against the",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45623",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-48030",
+      "desc": "Pheditor is a single-file editor and file manager written in PHP. From version 2.0.1 to before version 2.0.4, an OS Command Injection vulnerability in the terminal action handler allows any authenticated user to execute arbitrary OS commands by injecting shell metacharacters into the 'dir' POST para",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48030",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-48051",
+      "desc": "Papra is a minimalistic document management and archiving platform. Prior to version 26.5.0, Papra's webhook delivery system contains an SSRF protection bypass that allows any authenticated organisation member to cause the server to make HTTP requests to internal addresses — loopback, link-local, an",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48051",
+      "cvss": "3.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-48052",
+      "desc": "Papra is a minimalistic document management and archiving platform. Prior to version 26.5.0, an authenticated user who is a member of any organization can delete or rename tags belonging to a different organization, given the target tag's ID. The route handler verifies the caller's membership of the",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-48052",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-51235",
+      "desc": "LibRaw 0.21 is vulnerable to Buffer Overflow in the stretch() function (src/libraw_cxx.cpp) and fuji_rotate() function (src/decoders/fuji.cpp).",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51235",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-54272",
+      "desc": "ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. Versions 10.1.1 through 10.2.0 are vulnerable to SSRF through misclassification of IPv4-mapped/NAT64 IPv6 addresses. Address6.getType() classifies an address by matching it against a table of known IPv6 speci",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54272",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-54540",
+      "desc": "Pheditor is a single-file editor and file manager written in PHP. Prior to version 2.0.5, there is an authenticated terminal command whitelist bypass. The terminal feature checks whether the submitted command starts with one of the configured TERMINAL_COMMANDS values, then passes the full command st",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54540",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55578",
+      "desc": "Pheditor is a single-file editor and file manager written in PHP. From version 2.0.1 to before version 2.0.6, the terminal feature in Pheditor uses an incomplete character blocklist to sanitize user-supplied commands before passing them to shell_exec(). After the fix for GHSA-9643-6xjp-vx57 (which a",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55578",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55579",
+      "desc": "Pheditor is a single-file editor and file manager written in PHP. From version 2.0.1 to before version 2.0.6, Pheditor ships with a hardcoded default password admin (SHA-512 hash stored at pheditor.php:11). There is no mechanism to force a password change on first login. Any deployment using the def",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55579",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59239",
+      "desc": "Stored Cross-site Scripting (CWE-79) in the email module in Roskus Prospero Flow CRM before 5.4.4 allows a remote, authenticated low-privileged user to execute arbitrary JavaScript in another user's browser, including administrators, leading to session compromise and account takeover, via a payload ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59239",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64641",
+      "desc": "Next.js is a React framework for building full-stack web applications. In versions 13.0.0 through 15.5.20 and 16.0.0 through 16.2.10, crafted requests targeting Next.js applications using App Router with at least one Server Action can lead to excessive CPU usage blocking processing of further reques",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64641",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64642",
+      "desc": "Next.js is a React framework for building full-stack web applications. In versions 16.0.0 through 16.2.10, crafted requests targeting Next.js applications using App Router built with Turbopack and a single entry in config.i18n.locales can bypass middleware/proxy based authentication. This issue has ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64642",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64643",
+      "desc": "Next.js is a React framework for building full-stack web applications. In versions 12.0.0 through 15.5.20 and 16.0.0 through 16.2.10, Next.js applications using App Router, Server Actions (use server) or use cache endpoints can be disclosed bypassing any authentication on the pages where these endpo",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64643",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64644",
+      "desc": "Next.js is a React framework for building full-stack web applications. In versions 15.5.0 through 15.5.20 and 16.0.0 through 16.2.10, when self-hosting Next.js with the default image loader, the Image Optimization API can optimize remotely hosted images if configured (not enabled by default). If tho",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64644",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64645",
+      "desc": "Next.js is a React framework for building full-stack web applications. In versions 12.0.0 through 15.5.20 and 16.0.0 through 16.2.10, a\n rewrites() or redirects() rule that builds its external destination hostname from request-controlled input can be pointed at an arbitrary hostname, regardless of t",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64645",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-66028",
+      "desc": "Ekushey Project Manager CRM through version 5.0 contains a missing uniqueness constraint vulnerability that allows authenticated administrators to create duplicate client accounts with identical email and password credentials. Attackers can exploit the lack of email field uniqueness enforcement to c",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66028",
+      "cvss": "6.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-66029",
+      "desc": "Ekushey Project Manager CRM through version 5.0 contains a stored cross-site scripting vulnerability that allows authenticated client users to inject arbitrary HTML and JavaScript by entering malicious payloads into the client Name field on the Edit Profile page without sanitization. Attackers can c",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66029",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-66030",
+      "desc": "Ekushey Project Manager CRM through version 5.0 ccontains a stored cross-site scripting vulnerability that allows authenticated client users to inject arbitrary HTML and JavaScript by entering malicious payloads into the Ticket Title field on the Create New Ticket page. Attackers can craft and store",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66030",
+      "cvss": "5.4",
       "cwe": ""
     },
     {

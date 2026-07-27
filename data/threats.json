@@ -1,23 +1,23 @@
 {
-  "generated": "2026-07-27T08:01:54.691312+00:00",
-  "summary": "Today's digest contains 131 vulnerabilities across 5 sources. 74 zero-day exploits detected, 24 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-07-27T10:24:12.054566+00:00",
+  "summary": "Today's digest contains 148 vulnerabilities across 5 sources. 74 zero-day exploits detected, 24 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 131,
+    "new": 148,
     "changed": 0,
     "removed": 0,
-    "total": 203289,
+    "total": 203437,
     "zeroday": 74,
     "exploited": 24,
     "pakistan": 15
   },
   "sources": [
     {
-      "name": "Exploit-DB",
-      "count": 50
+      "name": "NVD/NIST",
+      "count": 59
     },
     {
-      "name": "NVD/NIST",
-      "count": 42
+      "name": "Exploit-DB",
+      "count": 50
     },
     {
       "name": "CISA KEV",
@@ -1528,6 +1528,312 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9830",
       "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-14837",
+      "desc": "Multiple Lenze products are affected by an improper signature verification vulnerability in the SSH enablement mechanism. A low-privileged local attacker can bypass verification of the SSH enable file signature and enable SSH access on the device. Successful exploitation may result in unauthorized a",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14837",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64531",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: openvswitch: reject oversized nested action attrs\n\nOpen vSwitch stores generated flow actions as nlattrs, whose nla_len\nfield is u16. Commit a1e64addf3ff (\"net: openvswitch: remove\nmisbehaving actions length check\") allowed th",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64531",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64532",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: bound NTFS_DE view.data_off in UpdateRecordData{Root,Allocation}\n\nIn do_action()'s UpdateRecordDataRoot (fslog.c:3489) and\nUpdateRecordDataAllocation (fslog.c:3697) cases, the memmove\ndestination is `Add2Ptr(e, le16_to_cp",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64532",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64533",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: validate lcns_follow in log_replay conversion\n\nlog_replay() converts DIR_PAGE_ENTRY_32 records into DIR_PAGE_ENTRY\nrecords when replaying version 0 restart tables.\n\nDuring this conversion, the memmove() length is derived ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64533",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64534",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet-tcp: check INIT_FAILED before nvmet_req_uninit in digest error path\n\nIn nvmet_tcp_try_recv_ddgst(), when a data digest mismatch is detected,\nnvmet_req_uninit() is called unconditionally. However, if the command\narrived via th",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64534",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64535",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet-tcp: Fix potential UAF when ddgst mismatch\n\nShivam Kumar found via vulnerability testing:\nWhen data digest is enabled on an NVMe/TCP connection and a digest\nmismatch occurs on a non-final H2C_DATA PDU during an R2T-based\ndata",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64535",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64536",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: rtl8723bs: fix OOB reads in is_ap_in_tkip() IE loop\n\nThe loop in is_ap_in_tkip() iterates over IEs without verifying that\nenough bytes remain before dereferencing the IE header or its payload:\n\n- pIE->element_id and pIE->l",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64536",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65893",
+      "desc": "This vulnerability exists in CP PLUS EZ-P21 IP Camera due to an insecure debug feature enabled in the firmware.\n\nAn attacker with physical access could exploit this vulnerability by placing arbitrary code on removable media and triggering their execution through the debug mechanism.\n\n\n\nSuccessful ex",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65893",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65894",
+      "desc": "This vulnerability exists in CP PLUS EZ-P21 IP Camera due to improper authentication of HTTP endpoints. A remote attacker could exploit this vulnerability by conducting brute-force attacks against HTTP endpoint on the targeted device.\n\n\n\nSuccessful exploitation of this vulnerability could allow an a",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65894",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15799",
+      "desc": "Rejected reason: duplicate",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15799",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16554",
+      "desc": "cJSON library is vulnerable to an integer overflow in the print_string_ptr() function in cJSON.c on 32-bit platforms. The escape_characters counter, a 32-bit size_t, can wrap around when processing strings containing approximately 858,993,460 or more control characters, causing the output buffer to ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16554",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65764",
+      "desc": "Joomla Extension - phoca.cz - Reflected XSS vulnerability in Phoca Commander 5.0.0-6.1.1 - Improper validation of user inputs lead to a reflective XSS vulnerability.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65764",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65765",
+      "desc": "Joomla Extension - phoca.cz - Path Traversal vulnerability in Phoca Commander 1.0.0-6.1.1 - Improper limitation of paths for save and download actions lead to path traversal vulnerabilities.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65765",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-17523",
+      "desc": "A flaw was found in the kernel. An unprivileged local user can exploit this vulnerability to execute arbitrary code within the kernel, which leads to a local privilege escalation (LPE). This allows the attacker to gain root privileges and take full control of the affected system.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17523",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-17527",
+      "desc": "In containerized-data-importer (CDI), the aggregated cdi.kubevirt.io:view ClusterRole, intended to provide read-only access to CDI resources, includes a rule granting create on the datavolumes/source subresource. CDI's DataVolume clone authorization accepts this permission as sufficient to authorize",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17527",
+      "cvss": "7.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-17534",
+      "desc": "Kimi Code (@moonshot-ai/kimi-code) before 0.27.0 implements FetchURL SSRF hardening as a static hostname and IP-literal denylist in assertSafeFetchTarget, without resolving DNS or re-validating hosts after HTTP redirects. An attacker who can influence a FetchURL call (for example via prompt injectio",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17534",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-40000",
+      "desc": "The Activity zte.com.cn.filer/zte.com.cn.filer.FilePreViewActivity within ZTE File Manager is designed to preview compressed files. Third-party applications can launch this Activity and supply arbitrary file paths (e.g., content://zte.com.cn.filer.fileprovider/root_path), enabling file access with t",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-07-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40000",
+      "cvss": "1.8",
       "cwe": ""
     },
     {

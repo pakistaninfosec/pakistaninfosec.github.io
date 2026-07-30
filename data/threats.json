@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-30T05:43:18.697157+00:00",
+  "generated": "2026-07-30T08:29:32.251831+00:00",
   "summary": "Today's digest contains 591 vulnerabilities across 5 sources. 76 zero-day exploits detected, 26 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
     "new": 591,
     "changed": 0,
     "removed": 0,
-    "total": 219025,
+    "total": 219616,
     "zeroday": 76,
     "exploited": 26,
     "pakistan": 15
@@ -1841,7 +1841,7 @@
     {
       "id": "CVE-2026-64556",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf/core: Detach event groups during remove_on_exec\n\nperf_event_remove_on_exec() removes events by calling\nperf_event_exit_event(). For top-level events, this removes the event from\nthe context with DETACH_EXIT only.\n\nThis can lea",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-29",
       "pakistan": false,
@@ -1853,13 +1853,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64556",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-64557",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: L2CAP: Fix use-after-free in l2cap_sock_new_connection_cb()\n\nl2cap_sock_new_connection_cb() returned l2cap_pi(sk)->chan after\nrelease_sock(parent). Once the parent lock is dropped the newly\nenqueued child socket sk is re",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-29",
       "pakistan": false,
@@ -1871,7 +1871,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64557",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -4073,7 +4073,7 @@
     {
       "id": "CVE-2026-64558",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/pkey: Check length in pkey_pckmo handler implementation\n\nExplicitly check the length of the target buffer in the pkey_pckmo\nimplementation of the key_to_protkey() handler function. The handler\nfunction fails, if the generated ",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-29",
       "pakistan": false,
@@ -4085,13 +4085,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64558",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-64559",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/pkey: Check length in PKEY_VERIFYPROTK ioctl\n\nExplicitly check the buffer length request structure provided by\nuser-space and fail, if it exceeds the buffer size.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-29",
       "pakistan": false,
@@ -4103,13 +4103,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64559",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-64560",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nposix-cpu-timers: Prevent UAF caused by non-leader exec() race\n\nWongi and Jungwoo decoded and reported a non-leader exec() related race\nwhich can result in an UAF:\n\n sys_timer_delete()\t\t\texec()\n   posix_cpu_timer_del()\n   // Observ",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-07-29",
       "pakistan": false,
@@ -4121,7 +4121,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64560",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {

@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-03T13:25:51.078163+00:00",
-  "summary": "Today's digest contains 282 vulnerabilities across 5 sources. 75 zero-day exploits detected, 25 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-03T16:03:25.806323+00:00",
+  "summary": "Today's digest contains 312 vulnerabilities across 5 sources. 75 zero-day exploits detected, 25 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 282,
+    "new": 312,
     "changed": 0,
     "removed": 0,
-    "total": 241163,
+    "total": 241475,
     "zeroday": 75,
     "exploited": 25,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 192
+      "count": 222
     },
     {
       "name": "Exploit-DB",
@@ -4247,6 +4247,546 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56609",
       "cvss": "4.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18089",
+      "desc": "Net::SAML2 versions before 0.86 for Perl allow SAML authentication bypass by verifying responses against the response-embedded certificate in verify_xml when no trust anchor is configured.\n\nverify_xml in Net::SAML2::Role::VerifyXML runs \"return if !$anchors && !$cacert;\" as soon as the XML::Sig chec",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18089",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18092",
+      "desc": "Net::SAML2 versions before 0.86 for Perl allow SAML authentication bypass via XML signature wrapping because new_from_xml reads assertion identity with document-wide XPath instead of the signed subtree.\n\nnew_from_xml reads the NameID, attribute values, SessionIndex, audience and other identity field",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18092",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18108",
+      "desc": "Net::SAML2 versions before 0.86 for Perl allow authentication bypass because _verify_encrypted_assertion accepts an EncryptedAssertion whose decrypted content carries no signature.\n\n_verify_encrypted_assertion decrypts the EncryptedAssertion and returns it as verified when it carries no signature, v",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18108",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18600",
+      "desc": "A vulnerability has been found in GL.iNet GL-MT3000 up to 4.4.5. This affects the function network.switch_info/network.switch_status of the file /usr/lib/oui-httpd/rpc/network of the component Network Lua RPC Plugin. Such manipulation of the argument switch leads to command injection. The attack may",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18600",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18601",
+      "desc": "A vulnerability was found in GL.iNet GL-MT3000 up to 4.4.5. This impacts the function ovpn-client.check_config of the file /cgi-bin/glc of the component ovpn-client.so Native Plugin. Performing a manipulation of the argument filename results in command injection. Remote exploitation of the attack is",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18601",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18642",
+      "desc": "Deserialization of untrusted data vulnerability in TUBITAK BILGEM Software Technologies Research Institute eta-otp-lock allows Object Injection.\n\nThis issue affects eta-otp-lock: before 1.0.4.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18642",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64827",
+      "desc": "Telenia Software TVox 26.5.3 and prior 26.x versions, and 24.9.21 and prior 24.x versions, contain an authentication bypass vulnerability in set_env.php where the redirectToLoginAdminIRequestHaveAccessToken() function derives the current page name from PHP_SELF and skips authentication when the valu",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64827",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-67608",
+      "desc": "Telenia Software TVox 26.5.3 and prior 26.x versions, and 24.9.21 and prior 24.x versions, contain an OS command injection vulnerability in action_audio.php that allows authenticated attackers to execute arbitrary operating system commands by passing an unsanitized pid parameter into an exec() call ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67608",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68584",
+      "desc": "SiYuan versions before v3.7.3 contain an authentication bypass vulnerability in publish mode where content-returning endpoints getHeadingChildrenDOM, getHeading*Transaction, and getBacklinkDoc perform no password check despite protecting the primary getDoc endpoint. Anonymous attackers can retrieve ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68584",
+      "cvss": "8.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68585",
+      "desc": "SiYuan versions before v3.7.3 contain a metadata disclosure vulnerability in the /api/block/getBlockInfo endpoint that returns document root metadata including title for publish-forbidden documents without publish-access checks. Anonymous readers or publish RoleReader tokens can supply a block ID to",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68585",
+      "cvss": "5.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68586",
+      "desc": "SiYuan before v3.7.3 fails to apply publish-access filters to the getBacklinkDoc and getBackmentionDoc content endpoints (/api/ref/getBacklinkDoc and /api/ref/getBackmentionDoc). While the corresponding backlink list endpoints filter publish-forbidden documents, the content endpoints (gated only by ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68586",
+      "cvss": "8.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68587",
+      "desc": "SiYuan versions before v3.7.3 contain an information disclosure vulnerability in the getHeadingDeleteTransaction, getHeadingLevelTransaction, and getHeadingInsertTransaction endpoints that return rendered block DOM without publish-access checks. Anonymous readers or publish RoleReader tokens can sup",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68587",
+      "cvss": "8.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69083",
+      "desc": "SiYuan versions before v3.7.3 contain SQL injection vulnerabilities in the fullTextSearchAssetContent endpoint reachable by unauthenticated users and publish RoleReader tokens. Attackers can execute arbitrary SQL on the read-write asset-content database via unescaped method parameters and REGEXP cla",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69083",
+      "cvss": "10.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69084",
+      "desc": "SiYuan versions <= v3.7.2 expose the /api/search/searchEmbedBlock endpoint, which passes a client-supplied SQL statement verbatim to the main read-write siyuan.db handle with no single-statement, read-only, or admin restrictions. The endpoint is gated only by CheckAuth, making it reachable by the pu",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69084",
+      "cvss": "10.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69085",
+      "desc": "SiYuan before v3.7.3 contains a SQL injection vulnerability in the /api/filetree/searchDocs endpoint, where the caller-supplied keyword parameter is concatenated directly into SQL statements with no escaping or parameter binding. The endpoint is reachable by a publish RoleReader token, or unauthenti",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69085",
+      "cvss": "10.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69086",
+      "desc": "SiYuan versions before v3.7.3 fail to validate the avID parameter on all code branches in attribute-view read endpoints, allowing attackers to construct traversal paths that escape the storage directory. Authenticated users with RoleReader permissions or anonymous clients when publish authentication",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69086",
+      "cvss": "7.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69087",
+      "desc": "The Grav form plugin (getgrav/grav-plugin-form) before 9.1.13 contains an open redirect vulnerability. Since v9.1.11, the redirect process action evaluates user-supplied form data inside Twig expressions, and Grav::redirect() accepts external URLs without origin validation. When a form blueprint def",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69087",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69088",
+      "desc": "Grav CMS versions 2.0.7 through 2.0.10 fail to validate fully-qualified static method calls (Class::method) in blueprint dynamic-field directives because Blueprint::isSafeDynamicCall() only applies its dangerous-callable denylist to strings that do not contain '::'. An account with only page-editing",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69088",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69089",
+      "desc": "Grav CMS 2.0.10 contains a path traversal vulnerability in ImageMedium::watermark(), which passes its unsanitized $image argument to RocketTheme\\Toolbox\\ResourceLocator\\UniformResourceLocator::findResource(). Because the file:// scheme branch only lexically collapses '..' segments without a realpath",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69089",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69090",
+      "desc": "Admidio before 5.0.11 fails to validate target organization membership in role handlers, allowing authenticated role administrators to delete, activate, deactivate, or edit roles belonging to other organizations. Attackers can supply a role UUID from another organization to groups_roles.php handlers",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69090",
+      "cvss": "4.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69091",
+      "desc": "Admidio before 5.0.11 contains an authentication bypass vulnerability in the forum module when configured in login-only mode. The access control logic in modules/forum.php fails to validate the login-only configuration state, allowing unauthenticated attackers to read forum topics and posts by direc",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69091",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69092",
+      "desc": "Admidio versions before 5.0.11 contain a reflected cross-site scripting vulnerability in the SSO/SAML endpoint that echoes unencoded exception messages to the HTTP response. Unauthenticated attackers can inject arbitrary JavaScript through SAML Issuer elements or LightSaml library parameters to exec",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69092",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69093",
+      "desc": "Admidio before 5.0.11 does not validate the adm_csrf_token in modules/category-report/preferences.php, which performs persistent Category Report configuration changes based on GET parameters (delete and copy). An attacker can trick an authenticated administrator into visiting a crafted URL to delete",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69093",
+      "cvss": "4.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69094",
+      "desc": "Admidio before 5.0.11 contains an insecure direct object reference vulnerability in the save_temporary mode of mylist_function.php that allows authenticated users to hijack list configurations. Attackers can enumerate global list UUIDs and overwrite admin-curated global lists or other users' private",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69094",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69095",
+      "desc": "OpenWrt luci-app-bmx7 before commit 5890760a454dad2cb00389dba2cdc5e779e0ffdd contains a path traversal vulnerability in the bmx7-info CGI script that allows unauthenticated attackers to read files outside the configured runtimeDir. Attackers can supply directory traversal sequences in the query stri",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69095",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69096",
+      "desc": "OpenWrt luci-app-dockerman (LuCI master and openwrt-25.12 snapshots containing the ucode docker_rpc.uc RPC backend after the JS/ucode conversion) contains an OS command injection vulnerability. The package's read ACL grants broad ubus access to docker.* / docker.container.*, which exposes the docker",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69096",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69097",
+      "desc": "GitPython before 3.1.53 fails to properly escape section names in git config files, allowing attackers to inject arbitrary configuration directives through malicious submodule names. Attackers can inject core.sshCommand or other dangerous config keys into the victim's .git/config via create_submodul",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69097",
+      "cvss": "7.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-9390",
+      "desc": "XML::Sig versions before 0.71 for Perl allow XPath injection in ID lookup.\n\nverify() and _get_signed_xml() in lib/XML/Sig.pm build XPath expressions by concatenating the SignedInfo/Reference/@URI value read from the document being verified. The value is neither escaped nor checked against the NCName",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9390",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-9487",
+      "desc": "XML::Sig versions before 0.71 for Perl allow signature wrapping via duplicate ID.\n\n_get_signed_xml() in lib/XML/Sig.pm, called from verify(), resolves the SignedInfo Reference/@URI to a node with the XPath expression \"//*[@ID='$id']\" and returns the first node of the resulting node set. A document i",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9487",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-67609",
+      "desc": "Telenia Software TVox 26.5.3 and prior 26.x versions, and 24.9.21 and prior 24.x versions, contain a privilege escalation vulnerability that allows attackers with access to the apache account to execute arbitrary commands as root by exploiting an insecure sudoers configuration in /etc/sudoers.d/tele",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67609",
+      "cvss": "7.8",
       "cwe": ""
     },
     {

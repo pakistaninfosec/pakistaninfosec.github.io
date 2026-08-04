@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-04T00:59:53.926756+00:00",
-  "summary": "Today's digest contains 405 vulnerabilities across 5 sources. 76 zero-day exploits detected, 26 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-04T04:21:04.846087+00:00",
+  "summary": "Today's digest contains 421 vulnerabilities across 5 sources. 76 zero-day exploits detected, 26 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 405,
+    "new": 421,
     "changed": 0,
     "removed": 0,
-    "total": 243764,
+    "total": 244185,
     "zeroday": 76,
     "exploited": 26,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 314
+      "count": 330
     },
     {
       "name": "Exploit-DB",
@@ -6462,6 +6462,294 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66326",
       "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56845",
+      "desc": "An unauthenticated path traversal (LFI) vulnerability exists under /custom-sounds/ when CustomSounds storage is configured to FileSystem. By including ../ sequences in the request path, an attacker can read arbitrary files outside the base directory.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56845",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56846",
+      "desc": "A flaw in Node.js HTTP/2 handling can cause HTTP/2 retained header blocks evade maxSessionMemory and enable remote memory exhaustion.\r\n\r\nThis vulnerability affects Node.js **24.x** and **22.x**.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56846",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-58041",
+      "desc": "A flaw in Node.js node:sqlite allows a stale StatementSyncIterator created through DatabaseSync#createTagStore() to continue executing a cached prepared statement after it has been reset and rebound with new parameters. SQLTagStore resets cached statements using sqlite3_reset() directly, bypassing t",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58041",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-58042",
+      "desc": "A flaw in Node.js can cause dns.resolveAny() Aborts the Node.js Process When a DNS Response Contains More Than 256 A Records.\r\n\r\nRepeated triggering of this condition can lead to denial of service.\r\n\r\nThis vulnerability affects Node.js **26.x**, **24.x**, and **22.x**.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58042",
+      "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-58044",
+      "desc": "A flaw in Node.js HTTP client can cause a request desynchronization for Node.js-based forwarding proxies that rebuild outbound headers from the visible `IncomingMessage` headers while piping the original body to a reused backend connection.\r\n\r\nNode.js can omit headers beyond `maxHeadersCount` / `max",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58044",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-58045",
+      "desc": "A flaw in Node.js allows a spoofed `TypedArray` `byteLength` to trigger a reachable assertion in the synchronous `node:zlib` APIs, causing the entire process to crash. All 11 synchronous zlib functions are affected.\r\n\r\nRepeated exploitation of this condition can result in a denial of service.\r\n\r\nThi",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58045",
+      "cvss": "6.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18719",
+      "desc": "A vulnerability was detected in cemtan sar2html 4.0.0. This affects an unknown part of the file sar2html.py of the component Search. Performing a manipulation of the argument Search results in sql injection. It is possible to initiate the attack remotely. The exploit is now public and may be used. T",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18719",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-17614",
+      "desc": "A path traversal flaw was found in WildFly's domain mode\n  implementation. The LocalFileRepository.getFile() and\n  getConfigurationFile() methods in\n  wildfly-core/deployment-repository do not validate that the\n  resolved file path remains within the configured repository or\n  configuration root dir",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17614",
+      "cvss": "4.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18720",
+      "desc": "A flaw has been found in kalcaddle kodbox 1.67 Build 02. This vulnerability affects unknown code of the file /index.php?plugin/msgWarning/action of the component msgWarning Plugin. Executing a manipulation can lead to improper authorization. It is possible to launch the attack remotely. The exploit ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18720",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-6837",
+      "desc": "A post-authentication command injection vulnerability in the \"export-cgi\" CGI program in Zyxel WAX650S firmware versions through 7.10(ABRM.4)C0 could allow an authenticated attacker with administrator privileges to execute OS commands on an affected device.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6837",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-8508",
+      "desc": "An improper authentication vulnerability in the \"social_login.cgi\" CGI program in Zyxel WAX650S firmware versions through 7.10(ABRM.4)C0 could allow an attacker on the WLAN to bypass captive portal authentication.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8508",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-14818",
+      "desc": "A path traversal vulnerability in the CLI command used to execute configuration files in Zyxel ATP series firmware versions from V4.32 through V5.42 Patch 1, USG FLEX series firmware versions from V4.50 through V5.42 Patch 1, USG FLEX 50(W) series firmware versions from V4.16 through V5.42 Patch 1, ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14818",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18721",
+      "desc": "A vulnerability has been found in kalcaddle kodbox 1.67 Build 02. This issue affects some unknown processing of the file /user/sso/apiLogin of the component SSO API Login. The manipulation of the argument callbackUrl leads to open redirect. The attack can be initiated remotely. The exploit has been ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18721",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18722",
+      "desc": "A vulnerability was found in diaowen DWSurvey up to 6.14.0. Impacted is the function in DwDeisgnSurveyController.devSurvey. of the file /api/dwsurvey/app/v6/dw-design-survey/dev-survey.do of the component Survey Handler. The manipulation results in authorization bypass. The attack can be launched re",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18722",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18723",
+      "desc": "A vulnerability was determined in diaowen DWSurvey up to 6.14.0. The affected element is an unknown function of the file /api/dwsurvey/app/survey/up-survey-status.do of the component Survey Status Handler. This manipulation causes improper authorization. The attack may be initiated remotely. The exp",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18723",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-42169",
+      "desc": "A heap-buffer-overflow vulnerability exists in the APNG (Animated PNG) file loader of GIMP. This flaw occurs when the `fcTL` width exceeds the `IHDR` width, leading to pixel data being written past the end of a heap allocation. Additionally, a heap-based buffer overflow exists in the DDS plug-in due",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-42169",
+      "cvss": "7.3",
       "cwe": ""
     },
     {

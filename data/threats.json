@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-04T15:03:12.992032+00:00",
-  "summary": "Today's digest contains 491 vulnerabilities across 5 sources. 76 zero-day exploits detected, 26 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-04T17:13:03.329760+00:00",
+  "summary": "Today's digest contains 527 vulnerabilities across 5 sources. 76 zero-day exploits detected, 26 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 491,
+    "new": 527,
     "changed": 0,
     "removed": 0,
-    "total": 245982,
+    "total": 246509,
     "zeroday": 76,
     "exploited": 26,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 400
+      "count": 436
     },
     {
       "name": "Exploit-DB",
@@ -6839,13 +6839,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10526",
-      "cvss": "0.0",
+      "cvss": "5.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-11366",
       "desc": "The MonsterInsights  WordPress plugin before 11.1.0 does not correctly validate the signature on one of its unauthenticated AJAX actions: when the MonsterInsights  WordPress plugin before 11.1.0 is not connected to Google Analytics the HMAC signing key is empty, which lets unauthenticated attackers ",
-      "severity": "MEDIUM",
+      "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-08-04",
       "pakistan": false,
@@ -6857,7 +6857,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11366",
-      "cvss": "0.0",
+      "cvss": "3.7",
       "cwe": ""
     },
     {
@@ -6875,7 +6875,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12698",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -6893,7 +6893,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14816",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -7073,13 +7073,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16069",
-      "cvss": "0.0",
+      "cvss": "6.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-16070",
       "desc": "The Brizy  WordPress plugin before 2.8.19 does not properly verify authorization on the object being modified before updating a template's type meta, validating a request parameter that is different from the one used in the write operation, allowing users with Contributor-level access and above to c",
-      "severity": "MEDIUM",
+      "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-08-04",
       "pakistan": false,
@@ -7091,7 +7091,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16070",
-      "cvss": "0.0",
+      "cvss": "2.7",
       "cwe": ""
     },
     {
@@ -7109,7 +7109,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16293",
-      "cvss": "0.0",
+      "cvss": "6.8",
       "cwe": ""
     },
     {
@@ -7127,7 +7127,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16295",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -7145,7 +7145,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16296",
-      "cvss": "0.0",
+      "cvss": "4.7",
       "cwe": ""
     },
     {
@@ -7163,7 +7163,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16536",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -7181,7 +7181,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16546",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -7199,7 +7199,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16547",
-      "cvss": "0.0",
+      "cvss": "5.9",
       "cwe": ""
     },
     {
@@ -7217,7 +7217,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16548",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -8010,6 +8010,654 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70368",
       "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-11368",
+      "desc": "The Bluetooth host ATT layer (subsys/bluetooth/host/att.c) associates each in-flight ATT TX buffer with its owning channel via the static tx_meta_data_storage[] array (data->att_chan = chan). When a buffer's last reference is dropped, its net-buf destroy callback defers the completion handling to th",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11368",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18401",
+      "desc": "The non-blocking (asynchronous) JSON parser in jackson-core does not enforce the maxNumberLength constraint defined in StreamReadConstraints (default: 1000 characters). An attacker able to submit JSON to an application that uses the async parser API can supply a number token of arbitrary length, lea",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18401",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18650",
+      "desc": "Missing Authorization vulnerability in HAVELSAN Inc. Liman MYS allows Privilege Escalation.\n\nThis issue affects Liman MYS: from 2.2.3 before 2.3.1.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18650",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18766",
+      "desc": "A flaw has been found in chetans9 core-php-admin-panel up to 90d07ed5aac5e0f09b6a5828d7bb2eb83010763f. This issue affects some unknown processing of the file /Applications/MAMP/htdocs/core-php-admin-panel-master/customers.php. Executing a manipulation of the argument filter_col can lead to sql injec",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18766",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18770",
+      "desc": "A vulnerability has been found in vibesurf-ai VibeSurf up to cd6e519d507cdd4d63061300bf60fb176e1f57e0. Impacted is an unknown function of the file /code of the component Python Validation Handler. The manipulation leads to code injection. Remote exploitation of the attack is possible. This product f",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18770",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-61514",
+      "desc": "Puwell IP Camera firmware versions 2.x through 4.x contains an authentication bypass vulnerability that allows unauthenticated attackers to access device functions by sending protocol-conforming packets over TCP port 23456 without credentials. Attackers can exploit the unvalidated Session field in t",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61514",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-61515",
+      "desc": "Puwell IP Camera firmware versions 2.x through 4.x contains an unauthenticated command injection vulnerability that allows remote attackers to execute arbitrary operating system commands by sending a crafted JSON payload to the DebugShell interface exposed on TCP port 34567. Attackers can exploit th",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61515",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-67195",
+      "desc": "Perspective 5.0.0 contains a remote code execution vulnerability that allows unauthenticated attackers to execute arbitrary operating system commands by submitting crafted expression strings to the PolarsVirtualServer backend, which passes client-supplied input directly to Python's eval() with only ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67195",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-67196",
+      "desc": "Perspective 5.0.0 contains a cross-site scripting vulnerability in the built-in Debug plugin that allows attackers to inject arbitrary HTML and JavaScript by writing table cell values containing unescaped HTML markup, which are interpolated directly into innerHTML during CSV serialization rendering.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67196",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-67198",
+      "desc": "Perspective 5.0.0 contains a denial-of-service vulnerability in the VirtualServer protocol dispatcher that allows unauthenticated remote attackers to crash the server process by sending malformed or incomplete protobuf messages. Attackers can send well-formed requests such as ViewToArrowReq with no ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67198",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-67199",
+      "desc": "Perspective 5.0.0 contains a denial of service vulnerability that allows remote attackers to block the server event loop indefinitely by submitting a crafted expression containing unbounded for or while loop constructs in a TableMakeViewReq message. Attackers can embed an arbitrarily large iteration",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67199",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-67200",
+      "desc": "Perspective 5.0.0 contains a path traversal vulnerability that allows unauthenticated remote attackers to read arbitrary files from the server filesystem by including literal ../ segments in HTTP request URL paths. Attackers can bypass the insufficient query-string-stripping sanitization to traverse",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67200",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-67618",
+      "desc": "marimo before 0.23.15 contains a configuration injection vulnerability that allows notebook authors to exfiltrate operator API keys by embedding a malicious base_url in PEP-723 inline script metadata, which is merged into session configuration with higher precedence than the operator's own settings ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67618",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68494",
+      "desc": "The fix released in jackson-core 2.18.6 and 2.21.1 for CVE-2026-18401 (GHSA-72hv-8253-57qq, number length constraint bypass in the non-blocking parser) is incomplete. This record covers the remaining bypass.\n\n\n\nThe earlier fix wired validateIntegerLength() into a new _setIntLength() helper and invok",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68494",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69250",
+      "desc": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.3, the OAuth2 token refresh endpoint POST /api/v1/oauth2-credential/refresh/:credentialId is unauthenticated by design and performs a server-side HTTP request to the credential-controlled accessToke",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69250",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69251",
+      "desc": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.3, Flowise record manager and agent memory nodes allowed users to set arbitrary TypeORM DataSource options through the additionalConfig input in packages/components/nodes/recordmanager/MySQLRecordMa",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69251",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-10032",
+      "desc": "The openUrl function in @a2ui/web_core passes an agent-controlled URL directly to window.open() without validating the URI scheme. A malicious agent can supply a javascript: URI as the url argument of a Button component's functionCall action. When the user clicks the rendered button, arbitrary JavaS",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10032",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18773",
+      "desc": "A vulnerability was detected in NousResearch hermes-agent up to 2026.6.5. Affected by this issue is the function _check_slash_access of the file gateway/run.py of the component Quick Command Handler. The manipulation results in incorrect authorization. The attack can be launched remotely. The exploi",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18773",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18801",
+      "desc": "OpenMeter contains a stored, or second-order, SQL injection vulnerability in the handling of customer usage-attribution values.\n\n\n\nAn attacker who can create or update a customer can store a malicious value in the usageAttribution.key or usageAttribution.subjectKeys fields. When that customer is sub",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18801",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-21366",
+      "desc": "Memory corruption while processing a packet with a size close to the maximum allowed value.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-21366",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-24076",
+      "desc": "Memory Corruption when processing registry values with incorrect types using a direct query method.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24076",
+      "cvss": "6.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-24077",
+      "desc": "Information Disclosure when processing wireless network channel switch information with improperly formatted length fields.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24077",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-24078",
+      "desc": "Information Disclosure when IPSec negotiation fails or is not established properly during NG-eCall SIP signaling.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24078",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-24079",
+      "desc": "Cryptographic Issue while processing registration requests with malformed or missing authentication parameters.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24079",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-24080",
+      "desc": "Memory Corruption when handling malformed request parameters in the fingerprint TA.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24080",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-24083",
+      "desc": "Memory Corruption while processing IOCTL device driver requests with invalid arguments.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24083",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-24084",
+      "desc": "Weak configuration when UE does not verify the consistency of its additional security capabilities with the replayed capabilities.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24084",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-25288",
+      "desc": "Transient DOS when processing a short target wake time channel usage response frame with insufficient packet size.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25288",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-25289",
+      "desc": "Memory Corruption when processing Device Capability Extended attributes in certain NAN Service Discovery Frames with invalid length values.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25289",
+      "cvss": "9.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-25292",
+      "desc": "Memory Corruption when processing untrusted user input in the fastboot command handler for audio framework configuration.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25292",
+      "cvss": "7.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69098",
+      "desc": "kotaemon through 0.12.0 contains an insecure deserialization vulnerability in the check_connection endpoint that allows unauthenticated attackers to instantiate arbitrary Python classes by supplying crafted YAML/JSON input with a __type__ field. Attackers can exploit this to override the __type__ fi",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69098",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69100",
+      "desc": "LAMP Rapid Development Platform through 5.6.2, fixed in commit 84b0c27, contains a remote code execution vulnerability in GlueFactory that executes unsandboxed Groovy scripts from database template fields without compilation restrictions or whitelisting. Attackers can write or influence the script f",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69100",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69110",
+      "desc": "OpenCode Studio before 2.4.4 contains a missing authentication vulnerability that allows unauthenticated remote attackers to read arbitrary files within the temp and static/music directories by directly accessing the GET /api/tmp/:tmpFile and GET /api/music/:fileName endpoints. Attackers can retriev",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69110",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69252",
+      "desc": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.3, the /api/v1/files route was protected only by the feat:files feature gate and did not enforce checkPermission on GET or DELETE. A low-privileged authenticated API key with unrelated permissions c",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69252",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69253",
+      "desc": "Flowise is a drag-and-drop user interface for building customized large language model (LLM) flows. Prior to version 3.1.3, several custom-tool components — AgentAsTool, ChatflowTool, and ExecuteFlow — ran code in the in-process  vm2  sandbox. To build that code, they inserted a user-controlled  bas",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69253",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69254",
+      "desc": "Flowise is a drag & drop user interface to build a customized large language model flow. Prior to 3.1.3, executeJavaScriptCode() accepted caller-provided nodeVMOptions and merged them over the default NodeVM security settings in packages/components/src/utils.ts. An authenticated attacker reaching pa",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69254",
+      "cvss": "0.0",
       "cwe": ""
     },
     {

@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-05T13:11:42.695007+00:00",
-  "summary": "Today's digest contains 576 vulnerabilities across 5 sources. 79 zero-day exploits detected, 29 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-05T15:39:03.917942+00:00",
+  "summary": "Today's digest contains 594 vulnerabilities across 5 sources. 79 zero-day exploits detected, 29 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 576,
+    "new": 594,
     "changed": 0,
     "removed": 0,
-    "total": 251337,
+    "total": 251931,
     "zeroday": 79,
     "exploited": 29,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 482
+      "count": 500
     },
     {
       "name": "Exploit-DB",
@@ -2618,7 +2618,7 @@
     {
       "id": "CVE-2026-70369",
       "desc": "Koha's reports/acquisitions_stats.pl builds its per-cell statistics query in sub calculate by interpolating the user-controlled Filter request parameters directly into WHERE fragments covering aqbasket.closedate, aqorders.datereceived, aqbooksellers.name, items.homebranch, items.ccode, biblioitems.i",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-04",
       "pakistan": false,
@@ -2630,13 +2630,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70369",
-      "cvss": "6.5",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-70370",
       "desc": "Koha's reports/catalogue_stats.pl builds dynamic SQL in sub calculate by interpolating the user-controlled Line and Column request parameters directly into identifier positions of the query (SELECT DISTINCTROW, GROUP BY, ORDER BY) with no whitelist validation. When Line contains itemcallnumber and t",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-04",
       "pakistan": false,
@@ -2648,13 +2648,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70370",
-      "cvss": "6.5",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-70371",
       "desc": "Koha's reports/issues_avg_stats.pl builds dynamic SQL in sub calculate by concatenating several user-controlled request parameters directly into the query string. The Line and Column parameters are not validated against any whitelist and land verbatim in identifier positions (SELECT DISTINCTROW, GRO",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-04",
       "pakistan": false,
@@ -2666,13 +2666,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70371",
-      "cvss": "6.5",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-70372",
       "desc": "Koha's reports/bor_issues_top.pl builds dynamic SQL in sub calculate by concatenating several user-controlled request parameters directly into the query string. The Criteria parameter is only normalized by a table-name prefix and is never whitelisted, landing verbatim in identifier positions (SELECT",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-04",
       "pakistan": false,
@@ -2684,13 +2684,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70372",
-      "cvss": "6.5",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-70373",
       "desc": "Koha's reports/issues_stats.pl (the circulation statistics report) builds its calculation query in sub calculate by concatenating several user-controlled request parameters directly into the SQL string. The PeriodTypeSel, PeriodDaySel, and PeriodMonthSel parameters are interpolated raw into single-q",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-04",
       "pakistan": false,
@@ -2702,7 +2702,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70373",
-      "cvss": "6.5",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -3427,7 +3427,7 @@
     },
     {
       "id": "CVE-2025-29296",
-      "desc": "H3C Magic BE18000 V200R007, H3C NX400 V100R015, H3C Magic NX30 Pro V100R0011, H3C Magic R3010 V100R009, H3C Magic NX15 V100R017, H3C Magic R1510 V100R016, and H3C NE36 Pro V100R002 contain multiple command injection vulnerabilities in the /api/esps request handler. The affected object interfaces and",
+      "desc": "H3C Magic BE18000 V200R007, H3C NX400 V100R015, H3C Magic NX30 Pro V100R0011, H3C Magic R3010 V100R009, H3C Magic NX15 V100R017, H3C Magic R1510 V100R016, H3C NE36 Pro V100R002 and H3C MC102G HM1A0V200R010 contain multiple command injection vulnerabilities in the /api/esps request handler. The affec",
       "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-04",
@@ -5600,7 +5600,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51144",
-      "cvss": "0.0",
+      "cvss": "6.1",
       "cwe": ""
     },
     {
@@ -6722,7 +6722,7 @@
     {
       "id": "CVE-2025-15677",
       "desc": "The GeoDirectory  WordPress plugin before 2.8.110 does not sanitise and escape a place-category setting before outputting it back in an admin page, allowing high-privilege users such as editors and above to perform Stored Cross-Site Scripting attacks even when the unfiltered_html capability is disal",
-      "severity": "MEDIUM",
+      "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-08-05",
       "pakistan": false,
@@ -6734,7 +6734,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-15677",
-      "cvss": "0.0",
+      "cvss": "3.5",
       "cwe": ""
     },
     {
@@ -6848,7 +6848,7 @@
     {
       "id": "CVE-2026-16055",
       "desc": "The Contest Gallery  WordPress plugin before 30.0.7 does not route its front-end login through the standard WordPress authentication flow, issuing an authentication cookie directly after the password check, which bypasses installed brute-force-protection and two-factor-authentication Contest Gallery",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-05",
       "pakistan": false,
@@ -6860,7 +6860,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16055",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -6884,7 +6884,7 @@
     {
       "id": "CVE-2026-16573",
       "desc": "The Bit Form  WordPress plugin before 3.2.0 does not sanitize an uploaded signature image before storing it, allowing unauthenticated attackers to upload a crafted SVG file containing JavaScript that executes when the file is viewed, leading to Stored Cross-Site Scripting.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-05",
       "pakistan": false,
@@ -6896,7 +6896,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16573",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -7118,7 +7118,7 @@
     {
       "id": "CVE-2026-16993",
       "desc": "The DHL Shipping Germany for WooCommerce WordPress plugin before 4.0.1 does not protect its shipping-label storage directory with server-independent access control, relying only on an Apache .htaccess file, so on a web server that does not honor .htaccess (such as nginx) an unauthenticated visitor c",
-      "severity": "MEDIUM",
+      "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-08-05",
       "pakistan": false,
@@ -7130,7 +7130,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16993",
-      "cvss": "0.0",
+      "cvss": "3.7",
       "cwe": ""
     },
     {
@@ -7148,7 +7148,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17515",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -7460,7 +7460,7 @@
     {
       "id": "CVE-2026-70374",
       "desc": "HashBrown CMS through 1.4.6 contains an OS Command Injection vulnerability (CWE-78) in the media upload thumbnail generation routine. Media.generateThumbnail() in src/Server/Entity/Resource/Media.js builds a temporary file path as 'thumbnail' + Path.extname(filename) and passes it, unescaped, into a",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-05",
       "pakistan": false,
@@ -7472,13 +7472,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70374",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-70375",
       "desc": "HashBrown CMS through 1.4.6 contains an OS Command Injection vulnerability (CWE-78) in the Git deployer component. GitDeployer.pullRepo() in src/Server/Entity/Deployer/GitDeployer.js executes AppService.exec(`git checkout ${this.branch || 'master'}`), interpolating the configured branch value direct",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-05",
       "pakistan": false,
@@ -7490,7 +7490,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70375",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -7928,7 +7928,7 @@
     {
       "id": "CVE-2026-61484",
       "desc": "** UNSUPPORTED WHEN ASSIGNED ** Deserialization of Untrusted Data vulnerability in Apache Lucy.\n\nThis issue affects Apache Lucy: all versions.\n\nAs this project is retired, we do not plan to release a version that fixes this issue. Users are recommended to find an alternative or restrict access to th",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-05",
       "pakistan": false,
@@ -7940,13 +7940,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61484",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-61485",
       "desc": "** UNSUPPORTED WHEN ASSIGNED ** Memory Allocation with Excessive Size Value vulnerability in Apache Lucy.\n\nThis issue affects Apache Lucy: all versions.\n\nAs this project is retired, we do not plan to release a version that fixes this issue. Users are recommended to find an alternative or restrict ac",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-05",
       "pakistan": false,
@@ -7958,13 +7958,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61485",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-61486",
       "desc": "** UNSUPPORTED WHEN ASSIGNED ** Stack-based Buffer Overflow vulnerability in Apache Lucy.\n\nThis issue affects Apache Lucy: all versions.\n\nAs this project is retired, we do not plan to release a version that fixes this issue. Users are recommended to find an alternative or restrict access to the inst",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-05",
       "pakistan": false,
@@ -7976,7 +7976,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61486",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -9543,6 +9543,330 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71256",
       "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-0516",
+      "desc": "A improper neutralization of HTTP Headers for Scripting Syntax vulnerability in SonicOS could allow a remote attacker to manipulate the Host header and redirect firewall management users to arbitrary web domains.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0516",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16022",
+      "desc": "@oblique/cli 15.4.0 contains an OS command injection vulnerability in the project creation functionality. The CLI constructs shell commands through string concatenation and executes them with execSync(). A user-controlled project-name argument is inserted into the shell command without proper neutra",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16022",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71225",
+      "desc": "A flaw was found in libkcapi. When performing one-shot symmetric cipher operations on large inputs (over 64 KiB) in stateful modes such as Counter (CTR) or Cipher Block Chaining (CBC), the library improperly reuses the Initialization Vector (IV) for each internal data chunk. A remote attacker could ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71225",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71226",
+      "desc": "Memory Corruption via Uncanceled AIO Requests on Error: libkcapi's one-shot AIO path can return an error before all submitted IOCBs are drained, allowing later kernel writes into caller-owned output buffers.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71226",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71227",
+      "desc": "A flaw was found in libkcapi. A local attacker can influence an application that uses the Asynchronous Input/Output (AIO) interface. By reusing an AIO-enabled handle after a prior completion error, the _kcapi_aio_read_all() function can enter a non-terminating wait loop. This can lead to a persisten",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71227",
+      "cvss": "5.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71259",
+      "desc": "ESPHome through 2026.7.0-dev contains an operator-precedence bug in the cv.url() validator in esphome/config_validation.py: `if parsed.scheme and parsed.netloc or parsed.scheme == \"file\": return parsed.geturl()`. Because `and` binds tighter than `or`, any file: URI passes validation regardless of ne",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71259",
+      "cvss": "8.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71260",
+      "desc": "ESPHome through 2026.7.0-dev discloses plaintext passwords via its web_server component. In WebServer::text_json_() (esphome/components/web_server/web_server.cpp), a text entity configured with mode: password (TEXT_MODE_PASSWORD) has its JSON \"state\" field correctly masked as \"********\", but the sam",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71260",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71261",
+      "desc": "dr_libs dr_wav.h (all versions through current master) contains an integer overflow in W64 CUE chunk metadata parsing. In drwav__metadata_process_chunk(), a stage-1 capacity estimate truncates the 64-bit W64 chunk sizeInBytes to size_t before dividing by DRWAV_CUE_POINT_BYTES; on 32-bit builds this ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71261",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71262",
+      "desc": "IoTSharp BlobStorageController.cs lacks the [Authorize] attribute applied to every other controller in the application (DevicesController, CustomersController, TenantsController, etc.), and no global authorization FallbackPolicy is configured in Startup.cs, leaving its Upload/Download/List/Modify/De",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71262",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71263",
+      "desc": "The LINUXTCP port of FreeModbus contains an off-by-one bounds check in xMBPortTCPPool() (demo/LINUXTCP/port/porttcp.c). The check `if (usTCPFrameBytesLeft > MB_TCP_BUF_SIZE)` uses a strict greater-than comparison instead of greater-than-or-equal against the 263-byte MB_TCP_BUF_SIZE limit. An MBAP fr",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71263",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71264",
+      "desc": "WLED's GET /json/cfg endpoint (registered in wled00/wled_server.cpp) calls serveJson() with no settings-PIN check, unlike the /edit endpoint which explicitly checks correctPIN, disclosing the device's general configuration (network, hardware, LED setup) to any unauthenticated client on the network. ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71264",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71265",
+      "desc": "Domoticz's MochadTCP::MatchLine() handler for MOCHAD_RFSEC messages (hardware/MochadTCP.cpp) copies network-received data from the up-to-1028-byte m_mochadbuffer into a fixed 50-byte stack buffer tempRFSECbuf using strcpy() with no length check, across three separate code branches (DS10A/KR10A/MS10A",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71265",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71266",
+      "desc": "tinyobjloader-c's tinyobj_parse_and_index_mtl_file() (tinyobj_loader_c.h) reads each line of a .mtl material file into a fixed 4096-byte stack buffer `linebuf` via memcpy(linebuf, p, p_len), guarded only by `assert(p_len < 4095)`. Because assert() compiles to a no-op under -DNDEBUG (standard for rel",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71266",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71267",
+      "desc": "microtar's mtar_write_file_header() and mtar_write_dir_header() functions (src/microtar.c) copy a caller-supplied entry name into the 100-byte `name` field of a stack-allocated mtar_header_t via strcpy(h.name, name), with no check that strlen(name) is less than 100 before the copy. Any application t",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71267",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71268",
+      "desc": "OpenPLC Runtime v3's compile_program() function (webserver/openplc.py) parses `(*FILE:path content*)` directives from uploaded Structured Text (.st) program files and writes the referenced content to `os.path.join('./core', file_path)` with no validation that file_path stays within the ./core direct",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71268",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71269",
+      "desc": "Node-RED's local-filesystem library storage module (getLibraryEntry() and saveLibraryEntry() in packages/node_modules/@node-red/runtime/lib/storage/localfilesystem/library.js), reachable via GET/POST /library/:lib/:type/*path, joins the user-supplied path parameter directly into the filesystem path ",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71269",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71270",
+      "desc": "Stirling-PDF's POST /api/v1/convert/url/pdf endpoint (ConvertWebsiteToPDF.java) was not updated with the CustomHtmlSanitizer/SsrfProtectionService SSRF protections that were added to three sibling conversion endpoints (html/pdf, file/pdf, markdown/pdf). The endpoint validates only that the initial r",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71270",
+      "cvss": "8.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71271",
+      "desc": "Memos' webhook URL validation, isReservedIP() (internal/webhook/validate.go), checks a candidate IP against a reservedCIDRs list that omits 0.0.0.0/8 and never calls ip.IsUnspecified() — unlike the correctly implemented sibling function isInternalIP() in internal/httpgetter/html_meta.go, which does.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71271",
+      "cvss": "8.5",
       "cwe": ""
     },
     {

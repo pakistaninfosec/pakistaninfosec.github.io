@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-05T11:22:38.239989+00:00",
-  "summary": "Today's digest contains 569 vulnerabilities across 5 sources. 79 zero-day exploits detected, 29 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-05T13:11:42.695007+00:00",
+  "summary": "Today's digest contains 576 vulnerabilities across 5 sources. 79 zero-day exploits detected, 29 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 569,
+    "new": 576,
     "changed": 0,
     "removed": 0,
-    "total": 250761,
+    "total": 251337,
     "zeroday": 79,
     "exploited": 29,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 475
+      "count": 482
     },
     {
       "name": "Exploit-DB",
@@ -9417,6 +9417,132 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71252",
       "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18933",
+      "desc": "The wp-downloadmanager WordPress plugin, in version 1.68.11 (also affecting the 6.9.4 release line), allows an admin-privileged user (current_user_can('manage_downloads')) to upload arbitrary files via download-add.php with no extension or MIME-type validation of any kind - no wp_check_filetype_and_",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18933",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-46581",
+      "desc": "In Eclipse Mojarra versions 2.3 and following, URL handing in `DefaultFaceletFactory` does not properly sanitize and/or block remote URLs, allowing an attacker to specify a URL to a remote Facelet which will be included and processed as part of the normal request, with the privileges of the target s",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-46581",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-61891",
+      "desc": "In Eclipse Theia versions up to and including 1.73.1, the `@theia/filesystem` backend exposes HTTP file-download endpoints (`GET /file`, `GET /files/`, `PUT /files/`) that convert a client-supplied URI directly to a filesystem path and stream the file, without confining it to the workspace or any al",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-61891",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64582",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/rxe: Fix a use-after-free problem in rxe_mmap\n\nrxe_mmap() removes a rxe_mmap_info struct from the pending_mmaps list\nand releases pending_lock while the struct's kref is still at 1:\n\n   list_del_init(&ip->pending_mmaps);\n   sp",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64582",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71254",
+      "desc": "nanoMODBUS through v1.23.0 contains an out-of-bounds write in the Modbus server-side handle_read_file_record() function (FC 0x14, Read File Record) in nanomodbus.c. The function validates that the total request size does not exceed 245 bytes and that each sub-request's record_length is at most 124, ",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71254",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71255",
+      "desc": "nanoMODBUS through v1.23.0 contains an out-of-bounds write in the Modbus client-side recv_read_device_identification_res() function (FC 0x2B/MEI 0x0E, Read Device Identification) in nanomodbus.c. The server-supplied object_length field (0-246) is validated only against the remaining PDU size (res_si",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71255",
+      "cvss": "8.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71256",
+      "desc": "nanoMODBUS through v1.23.0 contains an out-of-bounds stack read leading to a wild-pointer write in nmbs_read_device_identification_basic() / recv_read_device_identification_res() in nanomodbus.c. A fixed 3-element stack array order[3] = {0,1,2} maps object IDs to buffer indices. The server-supplied ",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-05",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71256",
+      "cvss": "9.8",
       "cwe": ""
     },
     {

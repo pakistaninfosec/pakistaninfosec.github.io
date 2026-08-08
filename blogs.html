@@ -1,364 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog | InfoSec Pakistan</title>
-<meta name="description" content="Analysis, advisories breakdowns, and practical guidance for Pakistani CISOs and security teams — from InfoSec Pakistan.">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1391334995238896" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Daily Cyber Digests | InfoSec Pakistan</title>
+  <meta name="description" content="Daily AI-generated cybersecurity digests for Pakistani organizations — threat stats, top global news, and Pakistan-specific impact analysis, published every day.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0a0e14;
-    --bg-alt:#0f1520;
-    --card:#131a26;
-    --border:#1e2937;
-    --text:#e6edf3;
-    --text-dim:#8b98a9;
-    --accent:#00d9a3;
-    --accent-dim:#0a3d33;
-    --danger:#ff4d5e;
-    --warn:#ffb020;
-  }
-  body.light{
-    --bg:#f5f7fa;
-    --bg-alt:#ffffff;
-    --card:#ffffff;
-    --border:#e2e8f0;
-    --text:#1a2330;
-    --text-dim:#5b6b7f;
-    --accent-dim:#e3fbf4;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
-    line-height:1.6;
-    transition:background .2s, color .2s;
-  }
+:root{--bg:#05070d;--bg2:#090d16;--bg3:#0e1420;--bg4:#141b28;--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);--text:#fff;--text2:#94a3b8;--text3:#64748b;--blue:#2563eb;--blue2:#3b82f6;--blue3:#60a5fa;--red:#ef4444;--red2:#f87171;--orange:#f97316;--green:#22c55e;--cyan:#06b6d4;--purple:#a855f7;--body:'Inter',sans-serif;--display:'Space Grotesk',sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(37,99,235,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.02) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0;}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(5,7,13,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.brand-icon{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.brand-name{font-family:var(--display);font-weight:700;font-size:16px;color:#fff;}
+.brand-name span{color:var(--blue3);}
+.nav-links{display:flex;gap:2px;}
+.nav-links a{color:var(--text3);text-decoration:none;padding:8px 18px;font-size:13.5px;font-weight:500;border-radius:8px;transition:all 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:var(--bg3);}
+.live-badge{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--green);background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);padding:7px 16px;border-radius:6px;}
+.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-  /* NAV */
-  header{
-    position:sticky;top:0;z-index:100;
-    background:var(--bg);
-    border-bottom:1px solid var(--border);
-  }
-  nav{
-    max-width:1280px;margin:0 auto;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:14px 24px;
-  }
-  .logo{
-    display:flex;align-items:center;gap:8px;
-    font-weight:700;font-size:1.05rem;color:var(--text);
-    text-decoration:none;letter-spacing:0.3px;
-  }
-  .nav-links{display:flex;gap:22px;list-style:none;align-items:center;}
-  .nav-links a{
-    color:var(--text-dim);text-decoration:none;font-size:0.9rem;
-    transition:color .2s;white-space:nowrap;
-  }
-  .nav-links a:hover, .nav-links a.active{color:var(--accent);}
-  .nav-right{display:flex;align-items:center;gap:16px;}
-  .theme-toggle{
-    background:var(--card);border:1px solid var(--border);
-    border-radius:6px;width:34px;height:34px;
-    display:flex;align-items:center;justify-content:center;
-    cursor:pointer;font-size:1rem;
-  }
-  .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;}
+.page-wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:48px 48px 80px;}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text3);margin-bottom:24px;}
+.breadcrumb a{color:var(--blue3);text-decoration:none;}
+.page-cat{display:inline-flex;align-items:center;gap:6px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.25);color:var(--purple);font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:14px;}
+.page-title{font-family:var(--display);font-size:clamp(24px,4vw,40px);font-weight:700;line-height:1.15;color:#fff;letter-spacing:-0.02em;margin-bottom:12px;}
+.page-sub{font-size:14.5px;color:var(--text2);max-width:620px;margin-bottom:32px;}
 
-  /* HERO */
-  .hero{
-    padding:56px 24px 36px;
-    max-width:1280px;margin:0 auto;
-    border-bottom:1px solid var(--border);
-  }
-  .hero h1{font-size:2.2rem;margin-bottom:10px;}
-  .hero p{color:var(--text-dim);max-width:620px;font-size:1.02rem;}
-  .hero .eyebrow{
-    color:var(--accent);font-size:0.8rem;letter-spacing:1.5px;
-    text-transform:uppercase;font-weight:600;margin-bottom:10px;
-    display:block;
-  }
+.search-row{display:flex;gap:10px;margin-bottom:32px;}
+.search-box{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text);font-size:14px;font-family:var(--body);}
+.search-box::placeholder{color:var(--text3);}
+.search-box:focus{outline:none;border-color:var(--blue3);}
 
-  /* FILTER BAR */
-  .filter-bar{
-    max-width:1280px;margin:26px auto 0;padding:0 24px;
-    display:flex;flex-wrap:wrap;gap:12px;align-items:center;
-  }
-  .search-box{
-    flex:1;min-width:220px;
-    background:var(--card);border:1px solid var(--border);
-    border-radius:8px;padding:10px 14px;
-    color:var(--text);font-size:0.95rem;
-  }
-  .search-box::placeholder{color:var(--text-dim);}
-  .search-box:focus{outline:none;border-color:var(--accent);}
-  .tag-filters{display:flex;gap:8px;flex-wrap:wrap;}
-  .tag-btn{
-    background:var(--card);border:1px solid var(--border);
-    color:var(--text-dim);padding:8px 14px;border-radius:20px;
-    font-size:0.82rem;cursor:pointer;transition:all .2s;
-  }
-  .tag-btn:hover{border-color:var(--accent);color:var(--accent);}
-  .tag-btn.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+.posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;}
+.post-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:22px;text-decoration:none;display:flex;flex-direction:column;gap:12px;transition:all 0.2s;}
+.post-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.post-card .post-cat{display:inline-flex;align-items:center;gap:6px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.2);color:var(--blue3);font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 10px;border-radius:4px;width:fit-content;}
+.post-card .card-title{font-family:var(--display);font-size:17px;font-weight:650;color:#fff;line-height:1.35;}
+.post-card .card-snippet{font-size:13px;color:var(--text2);flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.post-card .card-meta{display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:var(--text3);padding-top:10px;border-top:1px solid var(--border);}
+.post-card .card-read{color:var(--blue3);font-weight:600;}
 
-  /* GRID */
-  .blog-grid{
-    max-width:1280px;margin:32px auto;padding:0 24px;
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
-    gap:22px;
-  }
-  .post-card{
-    background:var(--card);border:1px solid var(--border);
-    border-radius:12px;overflow:hidden;
-    display:flex;flex-direction:column;
-    transition:transform .2s, border-color .2s;
-    text-decoration:none;color:inherit;
-  }
-  .post-card:hover{transform:translateY(-3px);border-color:var(--accent);}
-  .post-thumb{
-    height:140px;
-    background:linear-gradient(135deg, var(--accent-dim), var(--bg-alt));
-    display:flex;align-items:center;justify-content:center;
-    font-size:2.1rem;
-  }
-  .post-body{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1;}
-  .post-meta{
-    display:flex;gap:10px;align-items:center;
-    font-size:0.76rem;color:var(--text-dim);
-  }
-  .badge{
-    padding:3px 9px;border-radius:5px;font-size:0.7rem;font-weight:700;
-    text-transform:uppercase;letter-spacing:0.5px;
-  }
-  .badge.threat-intel{background:rgba(255,77,94,0.15);color:var(--danger);}
-  .badge.advisory{background:rgba(255,176,32,0.15);color:var(--warn);}
-  .badge.research{background:rgba(0,217,163,0.15);color:var(--accent);}
-  .badge.guide{background:rgba(120,140,255,0.15);color:#7d8cff;}
-  .badge.pk::before{content:"🇵🇰 ";}
-  .badge.pk{background:rgba(0,217,163,0.12);color:var(--accent);}
-  .post-title{font-size:1.1rem;font-weight:650;line-height:1.35;}
-  .post-excerpt{color:var(--text-dim);font-size:0.88rem;flex:1;}
-  .read-more{color:var(--accent);font-size:0.84rem;font-weight:600;}
+.empty-state, .loading-state{text-align:center;padding:60px 20px;color:var(--text3);grid-column:1/-1;font-size:14px;}
+.error-state{text-align:center;padding:40px 20px;color:var(--red2);grid-column:1/-1;font-size:13.5px;background:var(--bg2);border:1px solid rgba(239,68,68,0.2);border-radius:10px;}
 
-  .empty-state{
-    text-align:center;padding:60px 20px;color:var(--text-dim);
-    grid-column:1/-1;
-  }
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-brand{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text2);}
+.footer-brand span{color:var(--blue3);}
+.footer-link{color:var(--blue3);text-decoration:none;font-size:12px;}
+.footer-txt{font-size:12px;color:var(--text3);}
 
-  footer{
-    border-top:1px solid var(--border);
-    padding:28px 24px;text-align:center;
-    color:var(--text-dim);font-size:0.85rem;
-  }
-  footer .foot-brand{
-    font-weight:700;letter-spacing:1px;color:var(--text);
-    font-size:0.85rem;margin-bottom:12px;
-  }
-  footer .foot-links{
-    display:flex;gap:18px;justify-content:center;flex-wrap:wrap;
-    margin-bottom:12px;
-  }
-  footer a{color:var(--text-dim);text-decoration:none;}
-  footer a:hover{color:var(--accent);}
-
-  @media (max-width:860px){
-    .nav-links{
-      position:fixed;top:60px;left:0;right:0;
-      background:var(--bg);flex-direction:column;align-items:flex-start;
-      padding:20px 24px;border-bottom:1px solid var(--border);
-      display:none;gap:14px;
-    }
-    .nav-links.open{display:flex;}
-    .nav-toggle{display:block;}
-    .hero h1{font-size:1.7rem;}
-  }
+@media(max-width:768px){nav{padding:0 16px;}.hamburger{display:flex;}.nav-links{display:none;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(5,7,13,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px;gap:4px;z-index:150;}.nav-links.open{display:flex;}.nav-links a{padding:12px 16px;font-size:15px;border-radius:8px;border-bottom:1px solid var(--border);}.page-wrap{padding:28px 16px 60px;}footer{padding:20px 16px;flex-direction:column;text-align:center;}}
 </style>
 </head>
 <body>
+<nav>
+  <a class="brand" href="index.html"><div class="brand-icon">🛡</div><div class="brand-name">INFOSEC <span>PAKISTAN</span></div></a>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html">Dashboard</a><a href="reports.html">Daily Reports</a>
+    <a href="database.html">CVE Database</a><a href="news.html">News</a>
+    <a href="blogs.html" class="active">Blogs</a><a href="about.html">About</a>
+    <a href="contact.html">Contact</a><a href="sandbox.html">Sandbox</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
 
-<header>
-  <nav>
-    <a href="index.html" class="logo">🛡 INFOSEC PAKISTAN</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Dashboard</a></li>
-      <li><a href="reports.html">Daily Reports</a></li>
-      <li><a href="database.html">CVE Database</a></li>
-      <li><a href="news.html">News</a></li>
-      <li><a href="blogs.html" class="active">Blog</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="sandbox.html">Sandbox</a></li>
-    </ul>
-    <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
-      <button class="nav-toggle" id="navToggle">☰</button>
-    </div>
-  </nav>
-</header>
+<div class="page-wrap">
+  <div class="breadcrumb"><a href="index.html">Home</a> › Blogs</div>
+  <div class="page-cat">📰 Daily AI Digest</div>
+  <h1 class="page-title">Cybersecurity Digests for Pakistan</h1>
+  <p class="page-sub">A new AI-written digest every day — pulling today's threat stats, the top global cybersecurity news, and what it means for Pakistani banking, telecom, government, and healthcare sectors.</p>
 
-<section class="hero">
-  <span class="eyebrow">InfoSec Pakistan / Blog</span>
-  <h1>Analysis &amp; commentary on threats facing Pakistan</h1>
-  <p>Deep dives, advisory breakdowns, and practical guidance for Pakistani CISOs and security teams — written by the InfoSec Pakistan team.</p>
-</section>
+  <div class="search-row">
+    <input type="text" class="search-box" id="searchBox" placeholder="Search past digests...">
+  </div>
 
-<div class="filter-bar">
-  <input type="text" class="search-box" id="searchBox" placeholder="Search posts...">
-  <div class="tag-filters" id="tagFilters">
-    <button class="tag-btn active" data-tag="all">All</button>
-    <button class="tag-btn" data-tag="threat-intel">Threat Intel</button>
-    <button class="tag-btn" data-tag="advisory">Advisory</button>
-    <button class="tag-btn" data-tag="research">Research</button>
-    <button class="tag-btn" data-tag="guide">Guide</button>
+  <div class="posts-grid" id="postsGrid">
+    <div class="loading-state">Loading digests…</div>
   </div>
 </div>
 
-<div class="blog-grid" id="blogGrid"></div>
-
 <footer>
-  <div class="foot-brand">INFOSEC PAKISTAN</div>
-  <div class="foot-links">
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="disclaimer.html">Disclaimer</a>
-    <a href="terms.html">Terms &amp; Conditions</a>
-    <a href="contact.html">Contact</a>
+  <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>
+  <div style="display:flex;gap:16px;flex-wrap:wrap;">
+    <a class="footer-link" href="privacy.html">Privacy</a>
+    <a class="footer-link" href="disclaimer.html">Disclaimer</a>
+    <a class="footer-link" href="terms.html">Terms</a>
   </div>
-  <p>Automated threat intelligence · Updated every 30 min · <a href="https://pakistaninfosec.github.io">pakistaninfosec.github.io</a></p>
+  <div class="footer-txt">AI-Assisted Digest · <a class="footer-link" href="https://pakistaninfosec.github.io">pakistaninfosec.github.io</a></div>
 </footer>
 
 <script>
-/* Theme toggle — persists only for this session (in-memory) */
-const themeToggle = document.getElementById('themeToggle');
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('light');
-  themeToggle.textContent = document.body.classList.contains('light') ? '☀️' : '🌙';
-});
-
-document.getElementById('navToggle').addEventListener('click', () => {
-  document.getElementById('navLinks').classList.toggle('open');
-});
-
-/*
-  POSTS DATA
-  ----------
-  Replace/extend this array with your real blog posts. Each post needs:
-  title, excerpt, tag (threat-intel | advisory | research | guide),
-  date (YYYY-MM-DD), icon (any emoji), pk (true/false — Pakistan-specific),
-  and url (link to the full post, e.g. posts/post-slug.html).
-*/
-const posts = [
-  {
-    title: "Why Pakistani Organizations Are Underprepared for Ransomware",
-    excerpt: "A look at the gap between global ransomware trends and local incident response readiness across Pakistani sectors.",
-    tag: "research",
-    date: "2026-07-20",
-    icon: "🦠",
-    pk: true,
-    url: "#"
-  },
-  {
-    title: "Breaking Down the Latest PKCERT Advisory",
-    excerpt: "What the newest national advisory means for local network defenders, and the concrete steps to act on it.",
-    tag: "advisory",
-    date: "2026-07-14",
-    icon: "📋",
-    pk: true,
-    url: "#"
-  },
-  {
-    title: "Tracking a Phishing Campaign Targeting Local Banks",
-    excerpt: "Indicators of compromise and infrastructure overlap observed in a recent campaign spoofing Pakistani financial institutions.",
-    tag: "threat-intel",
-    date: "2026-07-05",
-    icon: "🎣",
-    pk: true,
-    url: "#"
-  },
-  {
-    title: "A CISO's Guide to Building a Threat Intel Feed on a Zero Budget",
-    excerpt: "Practical, no-cost building blocks — from open feeds to lightweight automation — for standing up threat monitoring in-house.",
-    tag: "guide",
-    date: "2026-06-28",
-    icon: "🧭",
-    pk: false,
-    url: "#"
-  }
-];
-
-const grid = document.getElementById('blogGrid');
-const searchBox = document.getElementById('searchBox');
-const tagButtons = document.querySelectorAll('.tag-btn');
-let activeTag = 'all';
-
-function badgeLabel(tag){
-  return {
-    'threat-intel': 'Threat Intel',
-    'advisory': 'Advisory',
-    'research': 'Research',
-    'guide': 'Guide'
-  }[tag] || tag;
+function toggleNav(){
+  document.getElementById('nav-links').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
 }
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    document.getElementById('nav-links').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
 
-function formatDate(d){
-  return new Date(d).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
+let allPosts = [];
+const grid = document.getElementById('postsGrid');
+const searchBox = document.getElementById('searchBox');
+
+function niceDate(dateStr){
+  try{
+    const d = new Date(dateStr + 'T00:00:00');
+    return d.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+  }catch(e){ return dateStr; }
 }
 
 function render(){
-  const query = searchBox.value.trim().toLowerCase();
-  const filtered = posts.filter(p => {
-    const matchesTag = activeTag === 'all' || p.tag === activeTag;
-    const matchesQuery = !query ||
-      p.title.toLowerCase().includes(query) ||
-      p.excerpt.toLowerCase().includes(query);
-    return matchesTag && matchesQuery;
-  });
+  const q = searchBox.value.trim().toLowerCase();
+  const filtered = allPosts.filter(p =>
+    !q ||
+    (p.title || '').toLowerCase().includes(q) ||
+    (p.snippet || '').toLowerCase().includes(q)
+  );
 
-  grid.innerHTML = '';
-
-  if (filtered.length === 0) {
-    grid.innerHTML = '<div class="empty-state">No posts match your search.</div>';
+  if (filtered.length === 0){
+    grid.innerHTML = '<div class="empty-state">No digests match your search.</div>';
     return;
   }
 
-  filtered
-    .sort((a,b) => new Date(b.date) - new Date(a.date))
-    .forEach(p => {
-      const card = document.createElement('a');
-      card.className = 'post-card';
-      card.href = p.url;
-      card.innerHTML = `
-        <div class="post-thumb">${p.icon}</div>
-        <div class="post-body">
-          <div class="post-meta">
-            <span class="badge ${p.tag}">${badgeLabel(p.tag)}</span>
-            ${p.pk ? '<span class="badge pk">PK</span>' : ''}
-            <span>${formatDate(p.date)}</span>
-          </div>
-          <div class="post-title">${p.title}</div>
-          <div class="post-excerpt">${p.excerpt}</div>
-          <div class="read-more">Read more →</div>
-        </div>
-      `;
-      grid.appendChild(card);
-    });
+  grid.innerHTML = filtered.map(p => `
+    <a class="post-card" href="${p.slug}">
+      <span class="post-cat">📰 Daily Digest</span>
+      <div class="card-title">${p.title || ('Cybersecurity Digest — ' + p.date)}</div>
+      <div class="card-snippet">${p.snippet || ''}</div>
+      <div class="card-meta">
+        <span>📅 ${niceDate(p.date)}</span>
+        <span class="card-read">Read digest →</span>
+      </div>
+    </a>
+  `).join('');
 }
 
-tagButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    tagButtons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeTag = btn.dataset.tag;
+async function loadPosts(){
+  try{
+    const res = await fetch('data/blogs.json?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    allPosts = (data.posts || []).sort((a,b) => new Date(b.date) - new Date(a.date));
+
+    if (allPosts.length === 0){
+      grid.innerHTML = '<div class="empty-state">No digests published yet — check back after the next daily run.</div>';
+      return;
+    }
     render();
-  });
-});
+  }catch(e){
+    grid.innerHTML = '<div class="error-state">Couldn\\'t load digests right now (' + e.message + '). Try refreshing, or check <code>data/blogs.json</code> directly.</div>';
+  }
+}
 
 searchBox.addEventListener('input', render);
-
-render();
+loadPosts();
 </script>
-
 </body>
 </html>

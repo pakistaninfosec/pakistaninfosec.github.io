@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-08T01:45:34.406861+00:00",
-  "summary": "Today's digest contains 329 vulnerabilities across 5 sources. 77 zero-day exploits detected, 27 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-08T03:27:32.412780+00:00",
+  "summary": "Today's digest contains 330 vulnerabilities across 5 sources. 77 zero-day exploits detected, 27 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 329,
+    "new": 330,
     "changed": 0,
     "removed": 0,
-    "total": 269863,
+    "total": 270193,
     "zeroday": 77,
     "exploited": 27,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 236
+      "count": 237
     },
     {
       "name": "Exploit-DB",
@@ -3408,7 +3408,7 @@
     },
     {
       "id": "CVE-2026-44964",
-      "desc": "The OnCallNotificationActivity in the Datadog Android application is declared android:exported=\"true\" in AndroidManifest.xml with no permission guard. Any co-installed application on the same device can launch it with attacker-controlled Intent extras: on_call_page_content (rendered as full-screen l",
+      "desc": "In versions of the Datadog Android application prior to v545-5.9.2, OnCallNotificationActivity is declared exported with no permission guard. A co-installed application can launch it with attacker-controlled Intent extras, including a full-screen lock-screen message, an arbitrary on-call page ID, an",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-08-07",
@@ -3426,7 +3426,7 @@
     },
     {
       "id": "CVE-2026-44965",
-      "desc": "Six Android App Widget configuration activities in the Datadog Android application are declared android:exported=\"true\" with no permission guard: IncidentWidgetActivity, MonitorSavedViewWidgetActivity, OnCallShiftsWidgetActivity, OnCallPagesWidgetActivity, SloWidgetActivity, and DashboardWidgetActiv",
+      "desc": "In versions of the Datadog Android application prior to v545-5.9.2, six App Widget configuration activities (IncidentWidgetActivity, MonitorSavedViewWidgetActivity, OnCallShiftsWidgetActivity, OnCallPagesWidgetActivity, SloWidgetActivity, DashboardWidgetActivity) are exported with no permission guar",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-08-07",
@@ -3444,7 +3444,7 @@
     },
     {
       "id": "CVE-2026-47361",
-      "desc": "BubbleChatActivity in the Datadog Android application is declared android:exported=\"true\" with no permission guard and accepts a SEND intent with mimeType text/plain. The activity reads a conversation_id from Intent extras and, on onDestroy, calls BubbleChatNotification.dismiss whenever no active in",
+      "desc": "In versions of the Datadog Android application prior to v541-5.9.2, BubbleChatActivity is exported with no permission guard and accepts a SEND intent with a caller-supplied conversation_id. When the activity closes and no in-process session matches that ID, it unconditionally cancels notification ID",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-08-07",
@@ -3462,7 +3462,7 @@
     },
     {
       "id": "CVE-2026-47362",
-      "desc": "The Datadog Android application stores operationally sensitive content in plaintext SQLite databases via Room. Two databases were reviewed: LocalNotificationDatabase (table local_notifications, columns including title, message, recipient, service, tags, and on-call/incident deeplinks) and SearchRece",
+      "desc": "In versions of the Datadog Android application prior to v554-5.9.4, two Room-backed SQLite databases store sensitive content in plaintext: LocalNotificationDatabase (notification title, message, recipient, service, tags, and on-call/incident deep links) and SearchRecentDatabase (the user's full in-a",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-08-07",
@@ -3480,7 +3480,7 @@
     },
     {
       "id": "CVE-2026-47363",
-      "desc": "The launcher activity AppActivity in the Datadog Android application is declared android:exported=\"true\" with launchMode=\"singleTask\" and no permission guard. On every onCreate and onNewIntent, it invokes Intent.getUserSession(), an extension that deserializes a full UserSession — user identity, OAu",
+      "desc": "In versions of the Datadog Android application prior to v541-5.9.2, the exported launcher activity AppActivity accepts an attacker-supplied session (including OAuth tokens) from Intent extras with no permission guard, and signs the app into that session without validating it against the backend.\r\nTh",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-08-07",
@@ -3498,7 +3498,7 @@
     },
     {
       "id": "CVE-2026-47364",
-      "desc": "On every successful login, the Datadog Android application calls FirebaseCrashlytics.setUserId with the signed-in user's Datadog UUID — a stable per-user identifier that is meaningful inside Datadog. This associates the Datadog user UUID with the device's Firebase installation ID on Google's backend",
+      "desc": "In versions of the Datadog Android application prior to v545-5.9.2, the app tags Crashlytics data with the user's Datadog UUID, with no user-facing opt-out.\r\n\r\nImpact: The Datadog user UUID and crash data are visible within Firebase Crashlytics. This UUID is not identifying outside Datadog's own sys",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-08-07",
@@ -5095,6 +5095,24 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8798",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13505",
+      "desc": "In Bouncy Castle for Java FIPS (BC-FJA) before bc-fips 1.0.2.7 (1.0.X series), 2.0.2 (2.0.X series) and 2.1.3 (2.1.X series), sensitive key material held by the AES and DESede engines, the SP 800-90A DRBGs, SymmetricSecretKey and the PBKD and scrypt parameter classes was zeroised on garbage collecti",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13505",
       "cvss": "0.0",
       "cwe": ""
     },

@@ -1,374 +1,92 @@
+// ═══════════════════════════════════════════════════
+//  CURATED EXPERT BLOGS — matches the "10 Expert Blogs" stat
+// ═══════════════════════════════════════════════════
+const EXPERT_BLOGS = [
+  { name: "The Hacker News",       feed: "https://feeds.feedburner.com/TheHackersNews",              color: "#2563eb" },
+  { name: "Krebs on Security",     feed: "https://krebsonsecurity.com/feed/",                         color: "#ef4444" },
+  { name: "Bleeping Computer",     feed: "https://www.bleepingcomputer.com/feed/",                    color: "#f97316" },
+  { name: "Dark Reading",          feed: "https://www.darkreading.com/rss.xml",                       color: "#a855f7" },
+  { name: "SANS ISC",              feed: "https://isc.sans.edu/rssfeed_full.xml",                     color: "#06b6d4" },
+  { name: "Schneier on Security",  feed: "https://www.schneier.com/feed/atom/",                       color: "#22c55e" },
+  { name: "Troy Hunt",             feed: "https://www.troyhunt.com/rss/",                              color: "#eab308" },
+  { name: "Google Project Zero",   feed: "https://googleprojectzero.blogspot.com/feeds/posts/default", color: "#60a5fa" },
+  { name: "Unit 42 (Palo Alto)",   feed: "https://unit42.paloaltonetworks.com/feed/",                 color: "#f87171" },
+  { name: "WeLiveSecurity (ESET)", feed: "https://www.welivesecurity.com/en/rss/feed/",               color: "#3b82f6" },
+];
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1391334995238896" crossorigin="anonymous"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cybersecurity Blogs — InfoSec Pakistan</title>
-  <meta name="description" content="Original cybersecurity analysis, daily AI-powered threat digests, and expert guides — written for Pakistani security professionals.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#05070d;--bg2:#090d16;--bg3:#0e1420;--bg4:#141b28;
-  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);
-  --text:#ffffff;--text2:#94a3b8;--text3:#64748b;
-  --blue:#2563eb;--blue2:#3b82f6;--blue3:#60a5fa;
-  --red:#ef4444;--red2:#f87171;--orange:#f97316;--green:#22c55e;--yellow:#eab308;--cyan:#06b6d4;--purple:#a855f7;
-  --body:'Inter',sans-serif;--display:'Space Grotesk',sans-serif;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:14px;line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(37,99,235,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.025) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;z-index:0;}
-body::after{content:'';position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:500px;background:radial-gradient(ellipse,rgba(37,99,235,0.06) 0%,transparent 65%);pointer-events:none;z-index:0;}
-
-/* NAV */
-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(5,7,13,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
-.brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
-.brand-icon{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 24px rgba(37,99,235,0.4);}
-.brand-name{font-family:var(--display);font-weight:700;font-size:16px;color:#fff;}
-.brand-name span{color:var(--blue3);}
-.nav-links{display:flex;gap:2px;}
-.nav-links a{color:var(--text3);text-decoration:none;padding:8px 18px;font-size:13.5px;font-weight:500;border-radius:8px;transition:all 0.2s;}
-.nav-links a:hover{color:#fff;background:var(--bg3);}
-.nav-links a.active{color:#fff;background:var(--bg3);}
-.live-badge{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--green);background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);padding:7px 16px;border-radius:6px;}
-.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:blink 2s infinite;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:200;}
-.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all 0.3s;}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.hamburger.open span:nth-child(2){opacity:0;}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-
-/* MAIN */
-main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:48px 48px 80px;}
-
-/* PAGE HEADER */
-.page-header{margin-bottom:48px;}
-.page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.25);color:var(--purple);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:16px;}
-.page-title{font-family:var(--display);font-size:clamp(28px,4vw,42px);font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:#fff;margin-bottom:10px;}
-.page-title span{color:var(--purple);}
-.page-desc{font-size:14px;color:var(--text2);line-height:1.7;max-width:640px;}
-.human-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);color:var(--green);font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;margin-top:12px;}
-
-/* STATS BAR */
-.stats-bar{display:flex;align-items:center;gap:24px;margin-bottom:32px;padding:16px 24px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;flex-wrap:wrap;}
-.stat-item{text-align:center;}
-.stat-num{font-family:var(--display);font-size:22px;font-weight:700;color:var(--purple);}
-.stat-label{font-size:11px;color:var(--text3);}
-.stat-div{width:1px;height:32px;background:var(--border2);}
-.refresh-info{margin-left:auto;font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px;}
-.refresh-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 2s infinite;}
-
-/* FILTER BAR */
-.search-wrap{position:relative;margin-bottom:28px;}
-.search-input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:11px 14px 11px 40px;color:#fff;font-size:13.5px;font-family:var(--body);outline:none;transition:border-color 0.2s;}
-.search-input:focus{border-color:var(--purple);}
-.search-input::placeholder{color:var(--text3);}
-.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text3);}
-
-/* FEATURED BLOG */
-.featured-section{margin-bottom:32px;}
-.featured-label{font-size:11px;font-weight:700;color:var(--purple);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
-.featured-label::before{content:'';width:3px;height:14px;background:var(--purple);border-radius:2px;}
-
-/* BLOG GRID */
-.blogs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px;}
-
-/* BLOG CARD */
-.blog-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all 0.25s;display:flex;flex-direction:column;}
-.blog-card:hover{border-color:var(--border2);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.4);}
-.card-top{height:4px;width:100%;}
-.card-content{padding:24px;flex:1;display:flex;flex-direction:column;}
-.card-rank{font-family:var(--display);font-size:11px;font-weight:700;color:var(--text3);letter-spacing:0.1em;margin-bottom:12px;}
-.author-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
-.author-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;border:2px solid var(--border2);}
-.author-name{font-family:var(--display);font-size:15px;font-weight:700;color:#fff;}
-.author-title{font-size:11px;color:var(--text3);margin-top:2px;}
-.blog-name{font-size:12px;color:var(--blue3);font-weight:600;}
-.card-desc{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:16px;flex:1;}
-.card-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
-.ctag{font-size:10px;padding:3px 10px;border-radius:10px;background:var(--bg3);color:var(--text3);border:1px solid var(--border);}
-.card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--border);}
-.follow-btn{display:inline-flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--text2);text-decoration:none;transition:all 0.2s;}
-.follow-btn:hover{color:#fff;border-color:var(--purple);}
-.freq-badge{font-size:10px;color:var(--text3);display:flex;align-items:center;gap:4px;}
-
-.posts-loading{padding:32px;text-align:center;color:var(--text3);}
-.spinner{width:22px;height:22px;border:2px solid var(--border);border-top-color:var(--purple);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 12px;}
-@keyframes spin{to{transform:rotate(360deg)}}
-.posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;}
-.post-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px 20px;text-decoration:none;display:flex;flex-direction:column;gap:8px;transition:all 0.2s;}
-.post-card:hover{border-color:var(--border2);transform:translateY(-2px);}
-.post-source{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;}
-.post-title{font-size:13.5px;font-weight:600;color:#fff;line-height:1.45;}
-.post-desc{font-size:12px;color:var(--text2);line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-.post-meta{font-size:11px;color:var(--text3);margin-top:4px;}
-.post-arrow{font-size:11px;color:var(--purple);font-weight:600;margin-top:auto;}
-
-/* FOOTER */
-footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.footer-brand{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text2);}
-.footer-brand span{color:var(--blue3);}
-.footer-links{display:flex;gap:16px;flex-wrap:wrap;}
-.footer-link{color:var(--blue3);text-decoration:none;font-size:12px;}
-.footer-txt{font-size:12px;color:var(--text3);}
-
-/* MOBILE */
-@media(max-width:768px){
-  nav{padding:0 16px;}
-  .hamburger{display:flex;}
-  .nav-links{display:none;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(5,7,13,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px;gap:4px;z-index:150;}
-  .nav-links.open{display:flex;}
-  .nav-links a{padding:12px 16px;font-size:15px;border-radius:8px;border-bottom:1px solid var(--border);}
-  .nav-links a:last-child{border-bottom:none;}
-  main{padding:28px 16px 60px;}
-  .page-title{font-size:26px;}
-  .blogs-grid{grid-template-columns:1fr;}
-  .posts-grid{grid-template-columns:1fr;}
-  .stats-bar{gap:14px;}
-  .stat-div{display:none;}
-  footer{padding:20px 16px;flex-direction:column;text-align:center;}
-  .footer-links{justify-content:center;}
-}
-</style>
-</head>
-<body>
-<nav>
-  <a class="brand" href="index.html">
-    <div class="brand-icon">🛡</div>
-    <div class="brand-name">INFOSEC <span>PAKISTAN</span></div>
-  </a>
-  <div class="nav-links" id="nav-links">
-    <a href="index.html">Dashboard</a>
-    <a href="reports.html">Daily Reports</a>
-    <a href="database.html">CVE Database</a>
-    <a href="news.html">News</a>
-    <a href="blogs.html" class="active">Blogs</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="contact.html">Contact</a>
-    <a href="sandbox.html">Sandbox</a>
-  </div>
-  <div style="display:flex;align-items:center;gap:12px;">
-    <div class="live-badge"><div class="live-dot"></div>LIVE</div>
-    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<main>
-  <!-- PAGE HEADER -->
-  <div class="page-header">
-    <div class="page-badge">✍️ InfoSec Pakistan Blog</div>
-    <div class="page-title">InfoSec Pakistan <span>Blog</span></div>
-    <div class="page-desc">Top 10 human-written cybersecurity blogs — expert analysis, original research and real-world insights from the world's most respected security researchers, practitioners and investigators. </div>
-    <div class="human-badge">🇵🇰 Pakistan Focused · 🤖 AI Daily Digests · 📚 Original Research</div>
-  </div>
-
-  <!-- STATS BAR -->
-  <div class="stats-bar">
-    <div class="stat-item">
-      <div class="stat-num">10</div>
-      <div class="stat-label">Expert Blogs</div>
-    </div>
-    <div class="stat-div"></div>
-    <div class="stat-item">
-      <div class="stat-num" id="post-count">—</div>
-      <div class="stat-label">Latest Posts</div>
-    </div>
-    <div class="stat-div"></div>
-    <div class="stat-item">
-      <div class="stat-num">100%</div>
-      <div class="stat-label">Human Written</div>
-    </div>
-    <div class="stat-div"></div>
-    <div class="stat-item">
-      <div class="stat-num">Free</div>
-      <div class="stat-label">No Paywall</div>
-    </div>
-    <div class="refresh-info">
-      <div class="refresh-dot"></div>
-      <span id="refresh-time">Loading latest posts...</span>
-    </div>
-  </div>
-
-
-    <span class="search-icon">🔍</span>
-    <input class="search-input" id="search-input" type="text" placeholder="Search blogs or authors...">
-  </div>
-
-
-  <!-- OWN BLOG POSTS SECTION -->
-  <div class="featured-section" style="margin-bottom:48px;">
-    <div class="featured-label" style="color:var(--green);border-left-color:var(--green)">
-      📝 All Blog Posts — Date Wise
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px;" id="own-posts">
-      <a href="blog-owasp-top10.html" style="text-decoration:none;">
-        <div class="blog-card" style="border-color:rgba(34,197,94,0.2);">
-          <div class="card-top" style="background:linear-gradient(90deg,#22c55e,#06b6d4);"></div>
-          <div class="card-content">
-            <div class="card-rank" style="color:var(--green)">🆕 LATEST POST · JULY 2026</div>
-            <div class="author-row">
-              <div class="author-avatar" style="background:rgba(34,197,94,0.15);border-color:rgba(34,197,94,0.3);">🛡</div>
-              <div>
-                <div class="author-name">InfoSec Pakistan</div>
-                <div class="author-title">Pakistan Threat Intelligence Platform</div>
-                <div class="blog-name" style="color:var(--green);">📝 Original Research</div>
-              </div>
-            </div>
-            <div style="font-family:var(--display);font-size:17px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.35;">OWASP Top 10: The 10 Vulnerabilities Breaking Pakistani Web Applications Right Now</div>
-            <div class="card-desc">A practical, no-nonsense guide to the most critical web security risks — with real attack examples, code-level explanations, and actionable fixes for Pakistani developers and security teams.</div>
-            <div class="card-tags">
-              <span class="ctag">OWASP</span>
-              <span class="ctag">Web Security</span>
-              <span class="ctag">SQL Injection</span>
-              <span class="ctag">Pakistan</span>
-              <span class="ctag" style="color:var(--green);">✍️ Human Written</span>
-            </div>
-            <div class="card-footer">
-              <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:6px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--green);">
-                📖 Read Full Post →
-              </div>
-              <div class="freq-badge">⏱ 25 min read</div>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <!-- LATEST POSTS -->
-  <div class="latest-section">
-    <div class="section-title">Latest Posts from All Blogs</div>
-    <div id="posts-container">
-      <div class="posts-loading"><div class="spinner"></div>Fetching latest posts...</div>
-    </div>
-  </div>
-</main>
-
-<footer>
-  <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>
-  <div class="footer-links">
-    <a class="footer-link" href="privacy.html">Privacy Policy</a>
-    <a class="footer-link" href="disclaimer.html">Disclaimer</a>
-    <a class="footer-link" href="terms.html">Terms</a>
-    <a class="footer-link" href="contact.html">Contact</a>
-  </div>
-  <div class="footer-txt">Curated human-written blogs · <a class="footer-link" href="https://pakistaninfosec.github.io">pakistaninfosec.github.io</a></div>
-</footer>
-
-<script>
-'use strict';
-
-
-document.getElementById('search-input').addEventListener('input', e => {
-  currentSearch = e.target.value;
-  renderBlogs();
-});
+let allFetchedPosts = []; // cached for search filtering
+let currentSearch = "";
 
 // ═══════════════════════════════════════════════════
-//  NAV
+//  LATEST POSTS FROM ALL BLOGS  (fixes #posts-container / #refresh-time)
 // ═══════════════════════════════════════════════════
-function toggleNav(){
-  const nav=document.getElementById('nav-links');
-  const btn=document.getElementById('hamburger');
-  nav.classList.toggle('open');
-  btn.classList.toggle('open');
-}
-document.querySelectorAll('.nav-links a').forEach(a=>{
-  a.addEventListener('click',()=>{
-    document.getElementById('nav-links').classList.remove('open');
-    document.getElementById('hamburger').classList.remove('open');
-  });
-});
+async function loadLatestPosts(){
+  const container = document.getElementById('posts-container');
+  const refreshEl = document.getElementById('refresh-time');
 
-// ═══════════════════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════════════════
-
-// ── Load AI Daily Digest Posts from blogs.json ──────────────
-async function loadAIDigestPosts(){
-  const container = document.getElementById('own-posts');
   try{
-    // Use relative URL to avoid CORS issues
-    const res = await fetch('data/blogs.json?t='+Date.now());
-    if(!res.ok) throw new Error('HTTP '+res.status);
-    const data = await res.json();
-    const posts = (data.posts||[]).slice(0,10);
-    if(!posts.length){ console.warn('No posts in blogs.json'); return; }
+    const results = await Promise.allSettled(
+      EXPERT_BLOGS.map(async blog => {
+        const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(blog.feed)}&count=2`;
+        const res = await fetch(proxyUrl);
+        if(!res.ok) throw new Error('HTTP '+res.status);
+        const data = await res.json();
+        if(data.status !== 'ok') throw new Error('feed error');
+        return (data.items||[]).map(item => ({
+          source: blog.name,
+          color: blog.color,
+          title: item.title,
+          desc: (item.description||'').replace(/<[^>]*>/g,'').slice(0,160),
+          link: item.link,
+          date: item.pubDate ? new Date(item.pubDate) : new Date(),
+        }));
+      })
+    );
 
-    // Remove existing AI digest cards
-    container.querySelectorAll('.ai-digest-card').forEach(c=>c.remove());
+    let posts = [];
+    results.forEach(r => { if(r.status === 'fulfilled') posts.push(...r.value); });
 
-    // Insert AI digest cards BEFORE the OWASP card
-    const owaspCard = container.querySelector('a[href="blog-owasp-top10.html"]');
+    if(!posts.length) throw new Error('No posts fetched from any source');
 
-    posts.forEach(post=>{
-      const dt = new Date(post.date);
-      const niceDt = isNaN(dt) ? post.date : dt.toLocaleDateString('en-PK',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-      const today = new Date().toISOString().slice(0,10);
-      const isToday = post.date === today;
+    posts.sort((a,b) => b.date - a.date);
+    posts = posts.slice(0, 12);
+    allFetchedPosts = posts;
 
-      const card = document.createElement('a');
-      card.href = post.slug;
-      card.className = 'ai-digest-card';
-      card.style.textDecoration = 'none';
-      card.innerHTML = `
-        <div class="blog-card" style="border-color:rgba(37,99,235,0.3);">
-          <div class="card-top" style="background:linear-gradient(90deg,var(--blue),var(--purple));"></div>
-          <div class="card-content">
-            <div class="card-rank" style="color:var(--blue3);">
-              ${isToday ? '🆕 TODAY\'S DIGEST' : '📅 DAILY DIGEST'} · ${post.date}
-            </div>
-            <div class="author-row">
-              <div class="author-avatar" style="background:rgba(37,99,235,0.15);border-color:rgba(37,99,235,0.3);font-size:20px;">🤖</div>
-              <div>
-                <div class="author-name">InfoSec Pakistan</div>
-                <div class="author-title">AI-Generated Daily Analysis</div>
-                <div class="blog-name" style="color:var(--blue3);">📰 Cybersecurity Digest</div>
-              </div>
-            </div>
-            <div style="font-family:var(--display);font-size:16px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.35;">
-              ${post.title}
-            </div>
-            <div class="card-desc">${post.snippet||'Daily AI-powered cybersecurity digest covering the latest threats, news and Pakistan-specific security alerts.'}</div>
-            <div class="card-tags">
-              <span class="ctag">Daily Digest</span>
-              <span class="ctag">AI Analysis</span>
-              <span class="ctag">🇵🇰 Pakistan</span>
-              <span class="ctag" style="color:var(--blue3);">🤖 LLaMA 70B</span>
-            </div>
-            <div class="card-footer">
-              <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.3);border-radius:6px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--blue3);">
-                📖 Read Digest →
-              </div>
-              <div class="freq-badge">📅 ${niceDt}</div>
-            </div>
-          </div>
-        </div>`;
-
-      if(owaspCard){
-        container.insertBefore(card, owaspCard);
-      } else {
-        container.appendChild(card);
-      }
-    });
-
-    document.getElementById('post-count').textContent = posts.length + 1;
-    console.log(`[✓] Loaded ${posts.length} AI digest posts`);
+    renderPosts(posts);
+    refreshEl.textContent = 'Updated ' + new Date().toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});
   }catch(e){
-    console.warn('Failed to load blogs.json:', e.message);
+    console.warn('Failed to load latest posts:', e.message);
+    container.innerHTML = `<div class="posts-loading">⚠️ Could not load latest posts right now. <a href="javascript:loadLatestPosts()" style="color:var(--purple)">Retry</a></div>`;
+    refreshEl.textContent = 'Update failed';
   }
 }
 
-loadAIDigestPosts();
-setInterval(loadAIDigestPosts, 30*60*1000);
-</script>
-</body>
-</html>
+function renderPosts(posts){
+  const container = document.getElementById('posts-container');
+  const q = currentSearch.trim().toLowerCase();
+  const filtered = q
+    ? posts.filter(p => p.title.toLowerCase().includes(q) || p.source.toLowerCase().includes(q))
+    : posts;
+
+  if(!filtered.length){
+    container.innerHTML = `<div class="posts-loading">No posts match "${currentSearch}"</div>`;
+    return;
+  }
+
+  container.innerHTML = `<div class="posts-grid">${filtered.map(p => `
+    <a href="${p.link}" target="_blank" rel="noopener" class="post-card">
+      <div class="post-source" style="color:${p.color}">${p.source}</div>
+      <div class="post-title">${p.title}</div>
+      <div class="post-desc">${p.desc}</div>
+      <div class="post-meta">${p.date.toLocaleDateString('en-PK',{month:'short',day:'numeric'})}</div>
+      <div class="post-arrow">Read post →</div>
+    </a>`).join('')}</div>`;
+}
+
+// Re-render on search (also fixes the ReferenceError from the old broken listener)
+function renderBlogs(){
+  renderPosts(allFetchedPosts);
+}
+
+loadLatestPosts();
+setInterval(loadLatestPosts, 30*60*1000);

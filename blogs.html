@@ -1,92 +1,364 @@
-// ═══════════════════════════════════════════════════
-//  CURATED EXPERT BLOGS — matches the "10 Expert Blogs" stat
-// ═══════════════════════════════════════════════════
-const EXPERT_BLOGS = [
-  { name: "The Hacker News",       feed: "https://feeds.feedburner.com/TheHackersNews",              color: "#2563eb" },
-  { name: "Krebs on Security",     feed: "https://krebsonsecurity.com/feed/",                         color: "#ef4444" },
-  { name: "Bleeping Computer",     feed: "https://www.bleepingcomputer.com/feed/",                    color: "#f97316" },
-  { name: "Dark Reading",          feed: "https://www.darkreading.com/rss.xml",                       color: "#a855f7" },
-  { name: "SANS ISC",              feed: "https://isc.sans.edu/rssfeed_full.xml",                     color: "#06b6d4" },
-  { name: "Schneier on Security",  feed: "https://www.schneier.com/feed/atom/",                       color: "#22c55e" },
-  { name: "Troy Hunt",             feed: "https://www.troyhunt.com/rss/",                              color: "#eab308" },
-  { name: "Google Project Zero",   feed: "https://googleprojectzero.blogspot.com/feeds/posts/default", color: "#60a5fa" },
-  { name: "Unit 42 (Palo Alto)",   feed: "https://unit42.paloaltonetworks.com/feed/",                 color: "#f87171" },
-  { name: "WeLiveSecurity (ESET)", feed: "https://www.welivesecurity.com/en/rss/feed/",               color: "#3b82f6" },
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | InfoSec Pakistan</title>
+<meta name="description" content="Analysis, advisories breakdowns, and practical guidance for Pakistani CISOs and security teams — from InfoSec Pakistan.">
+<style>
+  :root{
+    --bg:#0a0e14;
+    --bg-alt:#0f1520;
+    --card:#131a26;
+    --border:#1e2937;
+    --text:#e6edf3;
+    --text-dim:#8b98a9;
+    --accent:#00d9a3;
+    --accent-dim:#0a3d33;
+    --danger:#ff4d5e;
+    --warn:#ffb020;
+  }
+  body.light{
+    --bg:#f5f7fa;
+    --bg-alt:#ffffff;
+    --card:#ffffff;
+    --border:#e2e8f0;
+    --text:#1a2330;
+    --text-dim:#5b6b7f;
+    --accent-dim:#e3fbf4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    line-height:1.6;
+    transition:background .2s, color .2s;
+  }
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+  }
+  nav{
+    max-width:1280px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;
+  }
+  .logo{
+    display:flex;align-items:center;gap:8px;
+    font-weight:700;font-size:1.05rem;color:var(--text);
+    text-decoration:none;letter-spacing:0.3px;
+  }
+  .nav-links{display:flex;gap:22px;list-style:none;align-items:center;}
+  .nav-links a{
+    color:var(--text-dim);text-decoration:none;font-size:0.9rem;
+    transition:color .2s;white-space:nowrap;
+  }
+  .nav-links a:hover, .nav-links a.active{color:var(--accent);}
+  .nav-right{display:flex;align-items:center;gap:16px;}
+  .theme-toggle{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:6px;width:34px;height:34px;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;font-size:1rem;
+  }
+  .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;}
+
+  /* HERO */
+  .hero{
+    padding:56px 24px 36px;
+    max-width:1280px;margin:0 auto;
+    border-bottom:1px solid var(--border);
+  }
+  .hero h1{font-size:2.2rem;margin-bottom:10px;}
+  .hero p{color:var(--text-dim);max-width:620px;font-size:1.02rem;}
+  .hero .eyebrow{
+    color:var(--accent);font-size:0.8rem;letter-spacing:1.5px;
+    text-transform:uppercase;font-weight:600;margin-bottom:10px;
+    display:block;
+  }
+
+  /* FILTER BAR */
+  .filter-bar{
+    max-width:1280px;margin:26px auto 0;padding:0 24px;
+    display:flex;flex-wrap:wrap;gap:12px;align-items:center;
+  }
+  .search-box{
+    flex:1;min-width:220px;
+    background:var(--card);border:1px solid var(--border);
+    border-radius:8px;padding:10px 14px;
+    color:var(--text);font-size:0.95rem;
+  }
+  .search-box::placeholder{color:var(--text-dim);}
+  .search-box:focus{outline:none;border-color:var(--accent);}
+  .tag-filters{display:flex;gap:8px;flex-wrap:wrap;}
+  .tag-btn{
+    background:var(--card);border:1px solid var(--border);
+    color:var(--text-dim);padding:8px 14px;border-radius:20px;
+    font-size:0.82rem;cursor:pointer;transition:all .2s;
+  }
+  .tag-btn:hover{border-color:var(--accent);color:var(--accent);}
+  .tag-btn.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent);}
+
+  /* GRID */
+  .blog-grid{
+    max-width:1280px;margin:32px auto;padding:0 24px;
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+    gap:22px;
+  }
+  .post-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:12px;overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:transform .2s, border-color .2s;
+    text-decoration:none;color:inherit;
+  }
+  .post-card:hover{transform:translateY(-3px);border-color:var(--accent);}
+  .post-thumb{
+    height:140px;
+    background:linear-gradient(135deg, var(--accent-dim), var(--bg-alt));
+    display:flex;align-items:center;justify-content:center;
+    font-size:2.1rem;
+  }
+  .post-body{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1;}
+  .post-meta{
+    display:flex;gap:10px;align-items:center;
+    font-size:0.76rem;color:var(--text-dim);
+  }
+  .badge{
+    padding:3px 9px;border-radius:5px;font-size:0.7rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:0.5px;
+  }
+  .badge.threat-intel{background:rgba(255,77,94,0.15);color:var(--danger);}
+  .badge.advisory{background:rgba(255,176,32,0.15);color:var(--warn);}
+  .badge.research{background:rgba(0,217,163,0.15);color:var(--accent);}
+  .badge.guide{background:rgba(120,140,255,0.15);color:#7d8cff;}
+  .badge.pk::before{content:"🇵🇰 ";}
+  .badge.pk{background:rgba(0,217,163,0.12);color:var(--accent);}
+  .post-title{font-size:1.1rem;font-weight:650;line-height:1.35;}
+  .post-excerpt{color:var(--text-dim);font-size:0.88rem;flex:1;}
+  .read-more{color:var(--accent);font-size:0.84rem;font-weight:600;}
+
+  .empty-state{
+    text-align:center;padding:60px 20px;color:var(--text-dim);
+    grid-column:1/-1;
+  }
+
+  footer{
+    border-top:1px solid var(--border);
+    padding:28px 24px;text-align:center;
+    color:var(--text-dim);font-size:0.85rem;
+  }
+  footer .foot-brand{
+    font-weight:700;letter-spacing:1px;color:var(--text);
+    font-size:0.85rem;margin-bottom:12px;
+  }
+  footer .foot-links{
+    display:flex;gap:18px;justify-content:center;flex-wrap:wrap;
+    margin-bottom:12px;
+  }
+  footer a{color:var(--text-dim);text-decoration:none;}
+  footer a:hover{color:var(--accent);}
+
+  @media (max-width:860px){
+    .nav-links{
+      position:fixed;top:60px;left:0;right:0;
+      background:var(--bg);flex-direction:column;align-items:flex-start;
+      padding:20px 24px;border-bottom:1px solid var(--border);
+      display:none;gap:14px;
+    }
+    .nav-links.open{display:flex;}
+    .nav-toggle{display:block;}
+    .hero h1{font-size:1.7rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">🛡 INFOSEC PAKISTAN</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="reports.html">Daily Reports</a></li>
+      <li><a href="database.html">CVE Database</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="blogs.html" class="active">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="sandbox.html">Sandbox</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+      <button class="nav-toggle" id="navToggle">☰</button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <span class="eyebrow">InfoSec Pakistan / Blog</span>
+  <h1>Analysis &amp; commentary on threats facing Pakistan</h1>
+  <p>Deep dives, advisory breakdowns, and practical guidance for Pakistani CISOs and security teams — written by the InfoSec Pakistan team.</p>
+</section>
+
+<div class="filter-bar">
+  <input type="text" class="search-box" id="searchBox" placeholder="Search posts...">
+  <div class="tag-filters" id="tagFilters">
+    <button class="tag-btn active" data-tag="all">All</button>
+    <button class="tag-btn" data-tag="threat-intel">Threat Intel</button>
+    <button class="tag-btn" data-tag="advisory">Advisory</button>
+    <button class="tag-btn" data-tag="research">Research</button>
+    <button class="tag-btn" data-tag="guide">Guide</button>
+  </div>
+</div>
+
+<div class="blog-grid" id="blogGrid"></div>
+
+<footer>
+  <div class="foot-brand">INFOSEC PAKISTAN</div>
+  <div class="foot-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="disclaimer.html">Disclaimer</a>
+    <a href="terms.html">Terms &amp; Conditions</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p>Automated threat intelligence · Updated every 30 min · <a href="https://pakistaninfosec.github.io">pakistaninfosec.github.io</a></p>
+</footer>
+
+<script>
+/* Theme toggle — persists only for this session (in-memory) */
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  themeToggle.textContent = document.body.classList.contains('light') ? '☀️' : '🌙';
+});
+
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+/*
+  POSTS DATA
+  ----------
+  Replace/extend this array with your real blog posts. Each post needs:
+  title, excerpt, tag (threat-intel | advisory | research | guide),
+  date (YYYY-MM-DD), icon (any emoji), pk (true/false — Pakistan-specific),
+  and url (link to the full post, e.g. posts/post-slug.html).
+*/
+const posts = [
+  {
+    title: "Why Pakistani Organizations Are Underprepared for Ransomware",
+    excerpt: "A look at the gap between global ransomware trends and local incident response readiness across Pakistani sectors.",
+    tag: "research",
+    date: "2026-07-20",
+    icon: "🦠",
+    pk: true,
+    url: "#"
+  },
+  {
+    title: "Breaking Down the Latest PKCERT Advisory",
+    excerpt: "What the newest national advisory means for local network defenders, and the concrete steps to act on it.",
+    tag: "advisory",
+    date: "2026-07-14",
+    icon: "📋",
+    pk: true,
+    url: "#"
+  },
+  {
+    title: "Tracking a Phishing Campaign Targeting Local Banks",
+    excerpt: "Indicators of compromise and infrastructure overlap observed in a recent campaign spoofing Pakistani financial institutions.",
+    tag: "threat-intel",
+    date: "2026-07-05",
+    icon: "🎣",
+    pk: true,
+    url: "#"
+  },
+  {
+    title: "A CISO's Guide to Building a Threat Intel Feed on a Zero Budget",
+    excerpt: "Practical, no-cost building blocks — from open feeds to lightweight automation — for standing up threat monitoring in-house.",
+    tag: "guide",
+    date: "2026-06-28",
+    icon: "🧭",
+    pk: false,
+    url: "#"
+  }
 ];
 
-let allFetchedPosts = []; // cached for search filtering
-let currentSearch = "";
+const grid = document.getElementById('blogGrid');
+const searchBox = document.getElementById('searchBox');
+const tagButtons = document.querySelectorAll('.tag-btn');
+let activeTag = 'all';
 
-// ═══════════════════════════════════════════════════
-//  LATEST POSTS FROM ALL BLOGS  (fixes #posts-container / #refresh-time)
-// ═══════════════════════════════════════════════════
-async function loadLatestPosts(){
-  const container = document.getElementById('posts-container');
-  const refreshEl = document.getElementById('refresh-time');
-
-  try{
-    const results = await Promise.allSettled(
-      EXPERT_BLOGS.map(async blog => {
-        const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(blog.feed)}&count=2`;
-        const res = await fetch(proxyUrl);
-        if(!res.ok) throw new Error('HTTP '+res.status);
-        const data = await res.json();
-        if(data.status !== 'ok') throw new Error('feed error');
-        return (data.items||[]).map(item => ({
-          source: blog.name,
-          color: blog.color,
-          title: item.title,
-          desc: (item.description||'').replace(/<[^>]*>/g,'').slice(0,160),
-          link: item.link,
-          date: item.pubDate ? new Date(item.pubDate) : new Date(),
-        }));
-      })
-    );
-
-    let posts = [];
-    results.forEach(r => { if(r.status === 'fulfilled') posts.push(...r.value); });
-
-    if(!posts.length) throw new Error('No posts fetched from any source');
-
-    posts.sort((a,b) => b.date - a.date);
-    posts = posts.slice(0, 12);
-    allFetchedPosts = posts;
-
-    renderPosts(posts);
-    refreshEl.textContent = 'Updated ' + new Date().toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});
-  }catch(e){
-    console.warn('Failed to load latest posts:', e.message);
-    container.innerHTML = `<div class="posts-loading">⚠️ Could not load latest posts right now. <a href="javascript:loadLatestPosts()" style="color:var(--purple)">Retry</a></div>`;
-    refreshEl.textContent = 'Update failed';
-  }
+function badgeLabel(tag){
+  return {
+    'threat-intel': 'Threat Intel',
+    'advisory': 'Advisory',
+    'research': 'Research',
+    'guide': 'Guide'
+  }[tag] || tag;
 }
 
-function renderPosts(posts){
-  const container = document.getElementById('posts-container');
-  const q = currentSearch.trim().toLowerCase();
-  const filtered = q
-    ? posts.filter(p => p.title.toLowerCase().includes(q) || p.source.toLowerCase().includes(q))
-    : posts;
+function formatDate(d){
+  return new Date(d).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
+}
 
-  if(!filtered.length){
-    container.innerHTML = `<div class="posts-loading">No posts match "${currentSearch}"</div>`;
+function render(){
+  const query = searchBox.value.trim().toLowerCase();
+  const filtered = posts.filter(p => {
+    const matchesTag = activeTag === 'all' || p.tag === activeTag;
+    const matchesQuery = !query ||
+      p.title.toLowerCase().includes(query) ||
+      p.excerpt.toLowerCase().includes(query);
+    return matchesTag && matchesQuery;
+  });
+
+  grid.innerHTML = '';
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="empty-state">No posts match your search.</div>';
     return;
   }
 
-  container.innerHTML = `<div class="posts-grid">${filtered.map(p => `
-    <a href="${p.link}" target="_blank" rel="noopener" class="post-card">
-      <div class="post-source" style="color:${p.color}">${p.source}</div>
-      <div class="post-title">${p.title}</div>
-      <div class="post-desc">${p.desc}</div>
-      <div class="post-meta">${p.date.toLocaleDateString('en-PK',{month:'short',day:'numeric'})}</div>
-      <div class="post-arrow">Read post →</div>
-    </a>`).join('')}</div>`;
+  filtered
+    .sort((a,b) => new Date(b.date) - new Date(a.date))
+    .forEach(p => {
+      const card = document.createElement('a');
+      card.className = 'post-card';
+      card.href = p.url;
+      card.innerHTML = `
+        <div class="post-thumb">${p.icon}</div>
+        <div class="post-body">
+          <div class="post-meta">
+            <span class="badge ${p.tag}">${badgeLabel(p.tag)}</span>
+            ${p.pk ? '<span class="badge pk">PK</span>' : ''}
+            <span>${formatDate(p.date)}</span>
+          </div>
+          <div class="post-title">${p.title}</div>
+          <div class="post-excerpt">${p.excerpt}</div>
+          <div class="read-more">Read more →</div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
 }
 
-// Re-render on search (also fixes the ReferenceError from the old broken listener)
-function renderBlogs(){
-  renderPosts(allFetchedPosts);
-}
+tagButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tagButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeTag = btn.dataset.tag;
+    render();
+  });
+});
 
-loadLatestPosts();
-setInterval(loadLatestPosts, 30*60*1000);
+searchBox.addEventListener('input', render);
+
+render();
+</script>
+
+</body>
+</html>

@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-10T13:12:16.890837+00:00",
-  "summary": "Pakistani organizations should prioritize patching critical vulnerabilities, particularly CVE-2026-8037 and CVE-2026-63077, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple vendors including Microsoft and Adobe. The presence of 75 zero-day exploits, including CVE-2026-18556 and CVE-2026-34486, poses a significant threat to local networks, and immediate attention is required to mitigate these risks. Pakistani CERT alerts, such as PKCERT-917CDA37 and PKCERT-78CA5DA2, also highlight the need for organizations to review their security posture and implement measures to protect against targeted attacks, especially those leveraging vulnerabilities in widely used software like Adobe Acrobat and Microsoft Office.",
+  "generated": "2026-08-10T14:37:08.942556+00:00",
+  "summary": "Pakistani organizations should immediately prioritize patching critical vulnerabilities including CVE-2026-8037 and CVE-2026-63077, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple vendors such as Microsoft and Adobe. The Pakistan CERT has also issued specific alerts for PKCERT-917CDA37 and PKCERT-78CA5DA2, which target local businesses and require urgent attention to prevent potential breaches. To mitigate these threats, organizations should focus on applying patches for CVE-2026-18556, CVE-2026-34486, and CVE-2026-9198, and ensure all systems and software are up-to-date, particularly those from vendors like Cisco and Oracle, to prevent exploitation of these high-severity vulnerabilities.",
   "stats": {
-    "new": 342,
+    "new": 591,
     "changed": 0,
     "removed": 0,
-    "total": 285821,
+    "total": 286412,
     "zeroday": 75,
     "exploited": 25,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 251
+      "count": 500
     },
     {
       "name": "Exploit-DB",
@@ -2542,7 +2542,7 @@
     },
     {
       "id": "CVE-2026-17519",
-      "desc": "Rejected reason: none",
+      "desc": "Rejected reason: This is rejected.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-08-10",
@@ -5331,6 +5331,4560 @@
       "cwe": ""
     },
     {
+      "id": "CVE-2026-12984",
+      "desc": "Insufficiently Protected Credentials vulnerability in Zyxel Networks WAH7601 allows Retrieve Embedded Sensitive Data.\n\nThis issue affects WAH7601: through 20072026.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12984",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13206",
+      "desc": "Improper neutralization of special elements used in an OS command ('OS command injection') vulnerability in Zyxel Networks WAH7601 allows OS Command Injection.\n\nThis issue affects WAH7601: through 20072026.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13206",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18370",
+      "desc": "entr is vulnerable to Heap-based buffer overflow in run_utility() function. The function allocates a fixed-size heap buffer using malloc(ARG_MAX) and copies command-line arguments into it. It advances the destination pointer based on the return value of strlcpy(), which returns the total length of t",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18370",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19278",
+      "desc": "A flaw was found in StackRox/RHACS Central's Auth Machine-to-Machine (M2M) token exchange. When an administrator configures M2M role mappings, the system uses unanchored regular expressions for matching claim values. This allows an attacker with a valid OpenID Connect (OIDC) token, whose claim value",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19278",
+      "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19429",
+      "desc": "Jenkins FilePath.untarFrom() (all versions) validates symlink destinations but not targets, bypassing CVE-2026-33001. Any user with Item/Build access can trigger extraction of a malicious tar via POST /job/{name}/build, planting symlinks to secrets/master.key, secrets/hudson.util.Secret, and credent",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19429",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59090",
+      "desc": "A flaw was found in GIMP's PSD file format plugin. This vulnerability, an unsigned integer underflow in the `block_rem` variable, occurs when a user opens a specially crafted `.psd` image file. The underflow leads to parser confusion, enabling an attacker to inject arbitrary data as layer resource b",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59090",
+      "cvss": "8.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59233",
+      "desc": "Missing Authorization in the permission management component in Roskus Prospero Flow CRM before 5.2.1 allows any authenticated user to grant any role, including their own, the complete set of application permissions via a crafted POST request to the permission save endpoint, which performs no author",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59233",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68093",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SVM: Bump asid_generation on CPU online to avoid ASID collision after hotplug\n\nIf a vCPU stays scheduled out (or blocked) while the last pCPU it ran\non goes through a hotplug cycle (online->offline->online), and the vCPU\nthen ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68093",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68094",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nsched_ext: Preserve rq tracking across local DSQ dispatch\n\ndispatch_to_local_dsq() can run from scx_bpf_dsq_move_to_local() while\nops.dispatch() has recorded the current rq. Moving a task to a local DSQ\nmay switch to the source or ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68094",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68095",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nfuse-uring: fix race between registration and connection abortion\n\nThis fixes this race:\n- thread a: io_uring_enter -> register sqe ->\n  fuse_uring_create_ring_ent -> allocate ent but doesn't grab queue_ref\n  yet\n- thread b: fuse_c",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68095",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68096",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\naudit: fix recursive locking deadlock in audit_dupe_exe()\n\nA deadlock occurs in the audit subsystem when duplicating\nexecutable-related rules.\n\nWhen a file is moved (e.g., via do_renameat2()), the VFS layer locks\nthe parent directo",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68096",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68097",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: validate ACE size against SID sub-authorities\n\nset_ntacl_dacl() validates sid.num_subauth before copying an ACE, but\ndoes not verify that the declared ACE size contains all sub-authorities\ndescribed by that field. An undersi",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68097",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68098",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: bound DACL dedup walk to copied ACEs\n\nset_ntacl_dacl() can stop copying ACEs before consuming the full input\nDACL when size accounting overflows.\n\nWhen that happens, num_aces reflects only the ACEs that were actually\ncopied ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68098",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68099",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: restore DACL size on check_add_overflow() to avoid malformed ACL\n\ncheck_add_overflow() unconditionally writes the truncated sum into *d\neven on overflow, per its contract in include/linux/overflow.h.\nThe four check_add_overf",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68099",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68100",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: validate num_subauth when copying ACE in set_ntacl_dacl\n\nset_ntacl_dacl() copies each ACE from the attacker-controlled stored\nsecurity descriptor verbatim into the response DACL without checking\nsid.num_subauth. The ACE byte",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68100",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68101",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: fix check in amdgpu_hmm_invalidate_gfx\n\nFor a short moment during alloc/free the userptr BO is not part of his VM,\nso bo->vm_bo can be NULL.\n\nKeep a reference to the VM root PD as parent of the userptr BO so that\nwe can",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68101",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68102",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: fix aperture mapping leak\n\namdgpu_pci_remove() calls drm_dev_unplug() before invoking the driver\nfini routines. This causes drm_dev_enter() in amdgpu_ttm_fini() to\nalways return false, so iounmap(aper_base_kaddr) never ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68102",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68103",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: reject mapping a reserved doorbell to a new queue\n\nWhen creating an user-queue, the user space\nprovides a doorbell BO handle and an offset within\nthe bo to obtain a doorbell.\n\nHowever current implementation using xa_sto",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68103",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68104",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: invoke pm_genpd_remove() before freeing genpd\n\nCall pm_genpd_remove() to unregister from global list prior to releasing\nacp_genpd memory, and clear the pointer after free.\n\n(cherry picked from commit cd8650d7a91ee8b768e",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68104",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68105",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Fix kernel panic during driver load failure\n\nAvoid kernel panic if MES init fails during driver load. The KIQ ring is\nfalsely marked as ready as ASICs that use MES, KIQ is owned by MES.\n\nBUG: kernel NULL pointer derefer",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68105",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68106",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: fix division by zero with invalid uvd dimensions\n\nWhen width or height is less than 16, width_in_mb or height_in_mb\nbecomes 0, leading to fs_in_mb being 0. This causes a division by\nzero when calculating num_dpb_buffer ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68106",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68107",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/vcn4: avoid rereading IB param length\n\nReuse the parameter length returned by\nvcn_v4_0_enc_find_ib_param() instead of rereading it from\nthe IB.\n\nThis avoids a potential TOCTOU issue if the IB contents\nchange between read",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68107",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68108",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/vce: fix integer overflow in image size\n\nFix a security vulnerability where malicious VCE command streams\nwith oversized dimensions (e.g. 65536×65536) cause 32-bit integer\noverflow, wrapping the calculated buffer size to",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68108",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68109",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/sdma7.1: replace BUG_ON() with WARN_ON()\n\nThere's no need to crash the kernel for these cases.\n\n(cherry picked from commit c4f230b51cf2d3e7e8b1c800331f3dbed2a9e3f5)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68109",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68110",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/sdma4.4.2: replace BUG_ON() with WARN_ON()\n\nThere's no need to crash the kernel for these cases.\n\n(cherry picked from commit fa4f86a148271e325e95287630a3a15a9cd35fdc)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68110",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68111",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/gfx9: replace BUG_ON() with WARN_ON()\n\nThere's no need to crash the kernel for these cases.\n\n(cherry picked from commit b71604f8685b0eba07866f4e8dc30f93e1931054)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68111",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68112",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/gfx9.4.3: replace BUG_ON() with WARN_ON()\n\nThere's no need to crash the kernel for these cases.\n\n(cherry picked from commit 5676593d08998d7a6d9e2d51d6b54b3820e3755c)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68112",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68113",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/gfx12: replace BUG_ON() with WARN_ON()\n\nThere's no need to crash the kernel for these cases.\n\n(cherry picked from commit f952076f76d62f783e8ba4995a7c400d39354ccf)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68113",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68114",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/gfx12.1: replace BUG_ON() with WARN_ON()\n\nThere's no need to crash the kernel for these cases.\n\n(cherry picked from commit e4d99e04b2e9b13b97d3b17804c735f62689db23)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68114",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68115",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/gfx10: replace BUG_ON() with WARN_ON()\n\nThere's no need to crash the kernel for these cases.\n\n(cherry picked from commit ac6f00beb658239bced4aaed9efbb04a35348d48)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68115",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68116",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nvxlan: mdb: Fix source list corruption on a failed replace\n\nWhen replacing the source list of an MDB remote entry, all existing\nsources are first marked for deletion and vxlan_mdb_remote_srcs_add()\nis then called to add the new sou",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68116",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68117",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: clear sock->sk on the failed-insert path in tipc_sk_create()\n\nWhen tipc_sk_create() fails to insert the new socket (tipc_sk_insert()\nreturns non-zero), its error path frees the sk with sk_free() but leaves\nsock->sk pointing a",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68117",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68118",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: challenge ACK for non-exact RST in SYN-RECEIVED\n\nThe SYN-RECEIVED request-socket path in tcp_check_req() accepts an\nin-window RST without requiring SEG.SEQ to exactly match RCV.NXT.  A\nnon-exact RST therefore removes the reque",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68118",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68119",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ntcp: initialize standalone TCP-AO response padding\n\ntcp_v4_send_ack() and tcp_v6_send_response() construct standalone TCP\nresponses with TCP-AO options.  The option length carries the actual MAC\nlength, but the TCP header length in",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68119",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68120",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtase: Workaround for TX hang caused by hardware packet parsing\n\nThe hardware performs packet parsing before packet transmission.\nParsing incomplete IPv4, IPv6, TCP, or UDP headers may trigger a TX\nhang because the hardware parser ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68120",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68121",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\npppoe: reload header pointer after dev_hard_header()\n\npppoe_sendmsg() saves a pointer to the PPPoE header before calling\ndev_hard_header(). Device header callbacks are allowed to reallocate the\nskb head, invalidating pointers into ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68121",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68122",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\novpn: fix peer refcount leak in TCP error paths\n\nWhen either the TCP RX or TX error path calls ovpn_peer_hold() followed\nby schedule_work(&peer->tcp.defer_del_work), and the work item is already\npending from the other path, schedul",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68122",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68123",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nopenvswitch: fix GSO userspace truncation underflow\n\nOVS_ACTION_ATTR_TRUNC currently stores a delta from the original skb\nlength in OVS_CB(skb)->cutlen. When a later userspace action segments a\nGSO skb, queue_gso_packets() reuses t",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68123",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68124",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmctp: serial: handle zero-length frames to prevent rx buffer overflow\n\nThe MCTP serial receive state machine reads a frame length byte in\nmctp_serial_push_header() case 2 and validates it upper-bound-only:\n\n\tif (c > MCTP_SERIAL_FRA",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68124",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68125",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmac802154: llsec: reject frames shorter than the authentication tag\n\nllsec_do_decrypt_auth() computes the associated-data length for the\nAEAD request as\n\n\tassoclen += datalen - authlen;\n\nwhere datalen is the number of bytes after t",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68125",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68126",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmac802154: hold an interface reference across the scan worker\n\nmac802154_scan_worker() captures the scanning sub-interface under RCU\nand then keeps dereferencing sdata->dev after rcu_read_unlock() and\noutside the rtnl -- in the fai",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68126",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68127",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nila: reload IPv6 header after pskb_may_pull in checksum adjust\n\nila_csum_adjust_transport() caches ip6h = ipv6_hdr(skb) before calling\npskb_may_pull(). On a non-linear skb whose transport header sits in a page\nfragment, pskb_may_pu",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68127",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68128",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nice: reject out-of-range ptype in ice_parser_profile_init\n\nset_bit(rslt->ptype, prof->ptypes) operates on a DECLARE_BITMAP of\nICE_FLOW_PTYPE_MAX (1024) bits. Nothing prevents a malicious VF from\nproviding ptype >= 1024 through VIRT",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68128",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68129",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ngve: fix Rx queue stall on alloc failure\n\nWhen the system is under extreme memory pressure, page allocations can\nfail during the Rx buffer refill loop. If the number of buffers posted\nto hardware falls below a critical low threshol",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68129",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68130",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: defer destroy_previous_session() until after NTLM authentication\n\nIn ntlm_authenticate(), destroy_previous_session() is called using a\nuser pointer resolved from the client-supplied NTLM blob username field\nbefore the NTLMv2",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68130",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68131",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nrbd: Reset positive result codes to zero in object map update path\n\nIn a reply message to an RBD request, a positive result code indicates\na data payload, which is not allowed for writes. While\nrbd_osd_req_callback() already resets",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68131",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68132",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nsuper: fix emergency thaw deadlock on frozen block devices\n\ndo_thaw_all_callback() calls bdev_thaw() while holding sb->s_umount\nexclusively. If the block device was frozen via bdev_freeze() dropping\nthe last block layer freeze refe",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68132",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68133",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nice: fix PTP Call Trace during PTP release\n\nIf a PF reset occurs when the PTP state is ICE_PTP_UNINIT, then\nice_ptp_rebuild() will update the state to ICE_PTP_ERROR. This will\nresult in the following PTP release call trace during d",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68133",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68134",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nptp: ptp_s390: Add missing facility check\n\nOnly register the physical clock when facility 28 is installed\nand PTFF QAF returns that PTFF QPT is available.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68134",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68135",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: hip04: fix RX buffer leak on build_skb failure\n\nWhen build_skb() fails in hip04_rx_poll(), the driver jumps to the\nrefill path without releasing the current RX buffer and its DMA mapping.\nInstalling a replacement buffer then o",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68135",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68136",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: gro: fix double aggregation of flush-marked skbs\n\nCommit 0ab03f353d36 (\"net-gro: Fix GRO flush when receiving a GSO\npacket.\") added a flush check to skb_gro_receive(), but\nskb_gro_receive_list() lacks the same validation.\n\nAs ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68136",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68137",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/x25: fix use-after-free in x25_kill_by_neigh()\n\nx25_kill_by_neigh() walks the global X.25 socket list looking for sockets\nattached to a terminating neighbour. x25_list_lock protects list membership\nwhile the lookup is in progre",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68137",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68138",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: serialize qdisc_rtab_list against concurrent get/put\n\nqdisc_get_rtab() and qdisc_put_rtab() mutate the process-global singly\nlinked list qdisc_rtab_list and a plain non-atomic 'int refcnt' with no\nlock. This was only saf",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68138",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68139",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5e: Use sender devcom for MPV master-up\n\nAfter PCIe DPC recovery, mlx5 reloads the affected functions and\nreplays multiport affiliation events. In the reported failure, the\nfirst relevant device error was:\n\n  pcieport 0000:1",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68139",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68140",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/iucv: fix use-after-free of a severed iucv_path\n\naf_iucv queues not-yet-received message notifications on iucv->message_q,\neach holding a raw pointer to the connection's iucv_path.  When the peer\nsevers the connection, iucv_sev",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68140",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68141",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/af_iucv: fix NULL deref in afiucv_hs_callback_syn()\n\nafiucv_hs_callback_syn() allocates the child socket with GFP_ATOMIC.\nIf the allocation fails, nsk is NULL.\n\nThe connection-refused path is entered when the listen state check",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68141",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68142",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ngeneve: require CAP_NET_ADMIN in the device netns for changelink\n\nA tunnel changelink() operates on at most two netns, dev_net(dev) and\nthe sticky underlay netns geneve->net. They differ once the device is\ncreated in or moved to a ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68142",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68143",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: slip: serialize receive against buffer reallocation\n\nsl_realloc_bufs() replaces rbuff and updates buffsize while holding\nsl->lock. slip_receive_buf() reads those fields and writes through rbuff\nwithout holding the lock.\n\nAn MT",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68143",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68144",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nphonet: pep: fix use-after-free in pep_get_sb()\n\npep_get_sb() doesn't consider that pskb_may_pull() might have relocated\nthe skb data, and continue to access the older pointer, causing UAF.\n\nReproduced under KASAN:\n\n  BUG: KASAN: s",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68144",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68145",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\niomap: fix out-of-bounds bitmap_set() with zero-length range\n\nifs_set_range_dirty() and ifs_set_range_uptodate() compute last_blk\nas (off + len - 1) >> i_blkbits.  When off is 0 and len is 0, the\nunsigned subtraction underflows to ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68145",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68146",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nftrace: Add global mutex to serialize trace_parser access\n\nIn ftrace, the trace_parser structure is allocated and initialized when\na trace file is opened, and is subsequently used across write and release\nhandlers to parse user inp",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68146",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68147",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nfscrypt: Avoid dynamic allocation in fscrypt_get_devices()\n\nWhen a blk_crypto_key starts being used or is evicted, fs/crypto/ calls\nfscrypt_get_devices() to get the filesystem's list of block devices,\nthen iterates over them and ca",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68147",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68148",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nfscrypt: Add missing superblock check in find_or_insert_direct_key()\n\nThe legacy 'fscrypt_direct_keys' table caches master keys that are used\nby v1 encryption policies that have FSCRYPT_POLICY_FLAG_DIRECT_KEY.\nIt's just a global ta",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68148",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68149",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs: preserve ACL_DONT_CACHE state in forget_cached_acl()\n\nThe ACL_DONT_CACHE state is meant to be a constant state for the inode\nfor filesystems that want to opt out of posix acl caching.\n\nCommit facd61053cff1 (\"fuse: fixes after a",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68149",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68150",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/super: fix emergency thaw double-unlock of s_umount\n\ndo_thaw_all() iterates over all superblocks via __iterate_supers()\nwith SUPER_ITER_EXCL, which acquires s_umount exclusively before\ncalling the callback and releases it afterw",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68150",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68151",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nbinfmt_elf_fdpic: only honour the first PT_INTERP\n\nThe program header scan handles PT_INTERP from a switch nested in the\nscan loop, so its break leaves the switch and not the loop. A binary\ncarrying more than one PT_INTERP runs the",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68151",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68152",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\namt: fix use-after-free in AMT delayed works\n\nWhen an AMT device is removed, pending delayed works can still access\nthe freed amt_dev structure, which may result in kernel crashes or\nmemory corruption.\n\namt_dev_stop() cancels req_w",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68152",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68153",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: remove debugfs files before client teardown\n\nceph_destroy_client() tears down the monitor client before removing\nthe per-client debugfs files. A concurrent read of the monmap debugfs\nfile can enter monmap_show() after ceph",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68153",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68154",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: reject zero bucket types in crush_decode\n\nCRUSH bucket type 0 is reserved for devices.  The mapper relies on\nthat invariant and uses type 0 to identify leaf devices.\n\nIf crush_decode() accepts a bucket with type 0, a malfo",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68154",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68155",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: Reject monmaps advertising zero monitors\n\nA message of type CEPH_MSG_MON_MAP contains a monmap that is sent from a\nmonitor to the client. This monmap contains information about the\nexisting monitors in the cluster. Current",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68155",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68156",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: refresh auth->authorizer_buf{,_len} after authorizer update\n\nceph_x_create_authorizer() caches au->buf->vec.iov_base and\nau->buf->vec.iov_len in struct ceph_auth_handshake.  These\ncached values are then used by the messeng",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68156",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68157",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: guard missing CRUSH type name lookup\n\nLocalized read selection can walk a parent bucket whose name exists in\nthe CRUSH map while its type has no matching entry in type_names.\nget_immediate_parent() then dereferences a NULL",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68157",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68158",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: Fix multiplication overflow in decode_new_up_state_weight()\n\nIf a message of type CEPH_MSG_OSD_MAP contains a (maliciously) corrupted\nosdmap, out-of-bounds memory accesses may occur in\ndecode_new_up_state_weight(). This ha",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68158",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68159",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: bound pg_{temp,upmap,upmap_items} length to CEPH_PG_MAX_SIZE\n\n__decode_pg_temp() decodes an user-controlled length but only rejects\nvalues large enough to overflow the allocation; it does not bound it to\nCEPH_PG_MAX_SIZE. ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68159",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68160",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nceph: fix pre-auth out-of-bounds read on snaptrace in ceph_handle_caps()\n\nceph_handle_caps() reads snap_trace_len from the wire-format\nceph_mds_caps header and uses it unconditionally to build a fake\nend pointer (snaptrace + snaptr",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68160",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68161",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: close UDP tunnel sockets during netns teardown\n\nproc_sctp_do_udp_port() starts per-net SCTP UDP tunneling sockets when\nnet.sctp.udp_port is set, and stops/restarts them when the sysctl value\nchanges. The netns exit path does ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68161",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68162",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: avoid auth_enable sysctl UAF during netns teardown\n\nproc_sctp_do_auth() updates the SCTP control socket after changing\nnet.sctp.auth_enable. The handler gets the per-net SCTP state from\nctl->data, so an already opened sysctl ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68162",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68163",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/page_vma_mapped: fix device-private PMD handling\n\nCommit 65edfda6f3f2 (\"mm/rmap: extend rmap and migration support\ndevice-private entries\") introduced the concept of device-private PMD\nentries, but did not correctly update the r",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68163",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68164",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/damon/core: disallow overlapping input ranges for damon_set_regions()\n\ndamon_set_regions() assumes the input ranges are sorted by the address and\ndon't overlap each other.  Hence the assumption was initially to be\nexplicitly val",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68164",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68165",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/damon/core: validate ranges in damon_set_regions()\n\nDAMON core logic assumes zero length regions don't exist.  However, a few\nDAMON API callers including DAMON_SYSFS, DAMON_RECLAIM and DAMON_LRU_SORT\nallow users to set empty mon",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68165",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68166",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nuserfaultfd: prevent registration of special VMAs\n\nVova Tokarev says:\n\n  userfaultfd allows registration on shadow stack VMAs.  With userfaultfd\n  access, you can register on the shadow stack, discard a page ... and\n  inject a page",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68166",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68167",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: do not try compression for data reloc inodes\n\n[BUG]\nThere is a syzbot report that the check inside get_new_location()\ntriggered:\n\n  BTRFS info (device loop0): found 31 extents, stage: move data extents\n  BTRFS info (device l",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68167",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68168",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nafs: Fix afs_edit_dir_remove() to get, not find, block 0\n\nFix afs_edit_dir_remove() to use afs_dir_get_block() to get block 0 rather\nthan afs_dir_find_block() as the latter caches the found block in the\nafs_dir_iter and may[*] swit",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68168",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68169",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: pm: userspace: fix use-after-free in get_local_id\n\nIn mptcp_pm_userspace_get_local_id(), the address entry is looked up under\nspinlock, but its id is read after dropping the lock. A concurrent deletion\ncan free the entry bet",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68169",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68170",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmptcp: fix stale skb->sk reference on subflow close\n\nThe backlog list is updated by mptcp_data_ready() under\nmptcp_data_lock(). The cleanup of backlog references to a closing\nsubflow, however, was performed in mptcp_close_ssk(), be",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68170",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68171",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\narm64: syscall: Ensure saved x0 is kept in-sync with tracer updates\n\nWhen seccomp support was originally added to arm64 in a1ae65b21941\n(\"arm64: add seccomp support\"), seccomp was erroneously called _before_\nthe ptrace syscall-ente",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68171",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68172",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\narm64: make huge_ptep_get handled unaligned addresses\n\nhuge_ptep_get() can be handed a virtual address pointing to the middle\nof a contpmd/contpte mapped hugetlb folio (examples of callers are\npagemap_hugetlb_range, page_mapped_in_",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68172",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68173",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nublk: wait on ublk_dev_ready() instead of ub->completion\n\nub->completion is only re-armed by a successful START_USER_RECOVERY. If\nthe ublk server sends END_USER_RECOVERY without one - e.g. its START\nfailed with -EBUSY and the error",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68173",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68174",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Fix union collision of module and refcnt for dynamic events\n\nIn 'struct trace_event_call', the 'module' pointer and the 'refcnt'\natomic variable share the same memory space in a union. For dynamic\nevents, the union member ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68174",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68175",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Fix resource leak on mmiotrace trace_pipe close\n\nThe mmiotrace tracer was added May 12th 2008. At that time, resources\ncreated in pipe_open() could not be freed because there was not\npipe_close function pointer of the trac",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68175",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68176",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Fix mmiotrace possible NULL dereferencing of hiter->dev\n\nIf the mmio_pipe_open() fails to find a PCI device, the hiter->dev\nwill be assigned to NULL. The mmiotrace read() function dereferences the\nhiter->dev if hiter exist",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68176",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68177",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Delay module ref count for \"enable_event\" trigger\n\nTriggers are now delayed from freeing, but can still be triggered until\nafter the RCU grace period has ended. The freeing of the enable_event data\nis put into the private_",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68177",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68178",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmisc: nsm: pin the module while the device is open\n\nmisc_open() installs a misc driver's file operations with fops_get(),\nwhich pins file_operations::owner before replacing the file's f_op.  The\nNSM misc device leaves nsm_dev_fops.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68178",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68179",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmisc: nsm: only unlock nsm_dev on post-lock error paths\n\nnsm_dev_ioctl() jumps to the common out label even when the initial\ncopy_from_user() fails before nsm->lock has been taken.  The error path\nthen blindly unlocks a mutex that ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68179",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68180",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nintel_th: fix MSC output device reference leak\n\nintel_th_output_open() looks up the output device with\nbus_find_device_by_devt(), which returns the device with a reference that\nmust be dropped after use.\n\ncommit 95fc36a234da (\"inte",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68180",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68181",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmei: bus: access mei_device under device_lock on cleanup\n\nFix couple of problems in mei_cl_bus_dev_release():\n\nmei_cl_flush_queues() is running without lock.\nbus->file_list access after mei_dev_bus_put(bus) can become a\nuse-after-f",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68181",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68182",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ncomedi: comedi_parport: deal with premature interrupt\n\nSyzbot reported a general protection fault in\n`comedi_get_is_subdevice_running()`, which was called from the interrupt\nhandler `parport_interrupt()` in the \"comedi_parport\" dri",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68182",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68183",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: stratix10-svc: fix memory leaks and list corruption bugs\n\nFix a memory leak when gen_pool_alloc() fails by freeing pmem on the error\npath. Switch pmem allocation from devm_kzalloc() to kzalloc() with\nexplicit kfree() in t",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68183",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68184",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ncdrom: fix stack out-of-bounds read in CDROMVOLCTRL\n\nmmc_ioctl_cdrom_volume() first reads the audio control mode page into a\n32-byte stack buffer with cgc->buflen set to 24.  If the device reports a\nblock descriptor, the function i",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68184",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68185",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nLoongArch: Move jump_label_init() before parse_early_param()\n\nWhen enabling both CONFIG_MEM_ALLOC_PROFILING=y and\nCONFIG_MEM_ALLOC_PROFILING_ENABLED_BY_DEFAULT=y, then diabling memory\nprofiling by adding the boot parameter 'sysctl.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68185",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68186",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nbinfmt_misc: set have_execfd only once the interpreter is opened\n\nload_misc_binary() raises bprm->have_execfd as soon as it sees the 'O'\n(or 'C') flag. This happens well before it opens the interpreter. If\nthat open fails the flag ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68186",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68187",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nexec: fix unsigned loop counter wrap in transfer_args_to_stack()\n\nThe stop value is derived from bprm->p >> PAGE_SHIFT. The index variable\nis an unsigned long. If bprm->p drops below PAGE_SIZE and stop becomes\nzero the loop conditi",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68187",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68188",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: RFCOMM: Fix session UAF in set_termios\n\nrfcomm_tty_set_termios() tests dlc->session without rfcomm_mutex and\nlater passes the pointer to rfcomm_send_rpn(). The latter dereferences\nboth session->initiator and session->soc",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68188",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68189",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: Protect UUID list traversal\n\nThe hci_sync conversion moved class-of-device and EIR generation from an\nHCI request built under hdev->lock to asynchronous command sync work.\nThe worker holds hdev->req_lock, but t",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68189",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68190",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: rtl8723bs: fix OOB reads in rtw_get_wps_ie()\n\nrtw_get_wps_ie() iterates over IE data from network frames without\nvalidating that the IE header and payload fit within the remaining\nbuffer before reading them. Specifically:\n",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68190",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68191",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath12k: fix NULL pointer dereference in rhash table destroy\n\nWhen unbinding the ath12k driver, kernel NULL pointer dereferences\noccur in irq_work_sync() called from rhashtable_destroy().\n\nTwo hash tables are affected:\n1. ath1",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68191",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68192",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: brcmfmac: make release_scratchbuffers idempotent\n\nbrcmf_pcie_release_scratchbuffers() frees the shared.scratch and\nshared.ringupd DMA buffers with dma_free_coherent() but does not clear\nthe pointers afterwards, unlike the sib",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68192",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68193",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7925: drop TXRX_NOTIFY on non-mmio buses\n\nPKT_TYPE_TXRX_NOTIFY is an mmio-only event, but mt7925_rx_check() and\nmt7925_queue_rx_skb() dispatch it to mt7925_mac_tx_free() on every bus.\nmt7925_mac_tx_free() cleans the D",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68193",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68194",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7921: drop TXRX_NOTIFY on non-mmio buses\n\nPKT_TYPE_TXRX_NOTIFY is an mmio-only event, but mt7921_rx_check() and\nmt7921_queue_rx_skb() dispatch it to mt7921_mac_tx_free() on every bus.\nmt7921_mac_tx_free() cleans the D",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68194",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68195",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7615: drop TXRX_NOTIFY on non-mmio buses\n\nPKT_TYPE_TXRX_NOTIFY is an mmio-only event, but mt7615_rx_check() and\nmt7615_queue_rx_skb() dispatch it to mt7615_mac_tx_free() on every bus.\nmt7615_mac_tx_free() cleans the D",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68195",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68196",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: wilc1000: validate assoc response length before subtracting header\n\nwilc_parse_assoc_resp_info() computes the trailing IE length as\n\n\ties_len = buffer_len - sizeof(*res);\n\nwithout first checking that buffer_len is at least si",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68196",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68197",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mwifiex: fix NULL dereference when the AP has HT-cap but no HT-oper\n\nmwifiex_tdls_add_ht_oper() gates its follow-the-AP-bandwidth path on\nbss_desc->bcn_ht_cap being present, but then dereferences a different\npointer, bss_desc",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68197",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68198",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath6kl: fix use-after-free in aggr_reset_state()\n\nThe aggr_reset_state() function uses timer_delete() (non-synchronous)\nfor the aggregation timer before proceeding to delete TID state and\nbefore the structure is freed by call",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68198",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68199",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: ath6kl: fix OOB access from firmware ADDBA window size\n\naggr_recv_addba_req_evt() logs a debug message when the firmware-supplied\nwin_sz is outside [AGGR_WIN_SZ_MIN, AGGR_WIN_SZ_MAX] but does not\nreturn. The out-of-range win_",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68199",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68200",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: timer: don't re-enter an instance callback that is still running\n\nThe userspace-driven timer (utimer) TRIGGER ioctl calls\nsnd_timer_interrupt() directly with no serialization, so two threads\ntriggering the same utimer can run",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68200",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68201",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: timer: drain a slave's callback before its master detaches it\n\nsnd_timer_close_locked() drains the closing instance's own in-flight\ncallback (IFLG_CALLBACK) before freeing it, but not its slaves'. When a\nmaster instance is cl",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68201",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68202",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nALSA: seq: close a re-opened queue timer in the destructor\n\nqueue_delete() closes the queue timer, then frees it. snd_seq_timer_close()\nclears q->timer->timeri. snd_use_lock_sync() then drains borrowers, and\nsnd_seq_timer_delete() ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68202",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68203",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: vivid: fix cleanup bugs in vivid_init()\n\nWhen platform_device_register() fails in vivid_init(), the embedded\nstruct device in vivid_pdev has already been initialized by\ndevice_initialize(), but the failure path jumps to free",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68203",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68204",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: vivid: check for vb2_is_busy() when toggling caps\n\nThe vivid_update_format_cap/out() functions must only be called if the\ncapture/output queue are not busy. But for the controls that select\nthe CROP/COMPOSE/SCALE capability ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68204",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68205",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: v4l2-fwnode: Fix subdev owner overwritten in v4l2_async_register_subdev_sensor()\n\nThe v4l2 helper v4l2_async_register_subdev_sensor() calls\nv4l2_async_register_subdev(), which is a macro that expands to\n__v4l2_async_register",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68205",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68206",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: v4l2-ctrls: validate HEVC active reference counts\n\nHEVC slice parameters are shared stateless V4L2 controls, but the common\nvalidation path does not verify the active L0/L1 reference counts before\ndriver-specific code consum",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68206",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68207",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: ti: vpe: unwind v4l2 device registration on probe error\n\nIf the vpe_top resource is missing, vpe_probe() returns -ENODEV after\nv4l2_device_register() has succeeded. Probe failures do not call the\ndriver's remove callback, so",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68207",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68208",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: ti: vpe: Fix the error code of devm_kzalloc() in vip_probe_slice()\n\nIn vip_probe_slice(), the error check for devm_kzalloc() incorrectly\nuses PTR_ERR_OR_ZERO() which returns 0 for NULL pointer.\n\nReturn -ENOMEM for devm_kzall",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68208",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68209",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: sun4i-csi: Return queued buffers on start_streaming() failure\n\nThe vb2 framework hands buffers to the driver via buf_queue() before\ncalling start_streaming().  If start_streaming() returns an error\nwithout first returning th",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68209",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68210",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: stm32: dcmi: unregister notifier on probe failure\n\ndcmi_graph_init() registers the async notifier before dcmi_probe() toggles\nthe reset line. If reset_control_assert() or reset_control_deassert()\nfails afterwards, probe retu",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68210",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68211",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: stm32-dcmipp: Return queued buffers on start_streaming() failure\n\nThe vb2 framework hands buffers to the driver via buf_queue() before\ncalling start_streaming().  If start_streaming() returns an error\nwithout first returning",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68211",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68212",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: saa7134: Fix a possible memory leak in saa7134_video_init1\n\nIn saa7134_video_init1(), the return value of the first\nsaa7134_pgtable_alloc() is not checked. If it fails, the function\ncontinues as if successful, leaving the dr",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68212",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68213",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: rtl2832_sdr: Return queued buffers on start_streaming() failure\n\nThe vb2 framework hands buffers to the driver via buf_queue() before\ncalling start_streaming().  If start_streaming() returns an error\nwithout first returning ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68213",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68214",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: rtl2832: fix use-after-free in rtl2832_remove()\n\ncancel_delayed_work_sync() is called before i2c_mux_del_adapters()\nin rtl2832_remove(). While the cancel waits for any running instance\nof i2c_gate_work to finish, it does not",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68214",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68215",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: radio-si476x: Unregister v4l2_device on probe failure\n\nsi476x_radio_probe() registers radio->v4l2dev before allocating the V4L2\ncontrols and before registering the video device. If any of those later\nsteps fails, probe retur",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68215",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68216",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: pwc: Return queued buffers on start_streaming() failure\n\nThe vb2 framework hands buffers to the driver via buf_queue() before\ncalling start_streaming().  If start_streaming() returns an error\nwithout first returning those bu",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68216",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68217",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: pwc: Drain fill_buf on start_streaming() failure\n\npwc_isoc_init() submits its isochronous URBs with\nusb_submit_urb(.., GFP_KERNEL) in a loop. After the first URB is\nsubmitted, its completion handler pwc_isoc_handler() can ru",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68217",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68218",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: pci: dm1105: Free allocated workqueue\n\nDestroy allocated workqueue in remove() callback to free its resources,\nthus fixing memory leak.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68218",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68219",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: nxp: imx8-isi: Fix potential out-of-bounds issues\n\nThe maximum downscaling factor supported by ISI can be up to 16. Add\nminimum value constraint before applying the setting to hardware.\nOtherwise, the process will not respon",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68219",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68220",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: nxp: imx8-isi: Add missing v4l2_subdev_cleanup() in crossbar and pipe\n\nBoth mxc_isi_crossbar_init() and mxc_isi_pipe_init() call\nv4l2_subdev_init_finalize() which allocates the subdev active state,\nbut neither mxc_isi_crossb",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68220",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68221",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: nuvoton: npcm-video: fix memory leaks in probe and remove\n\nnpcm_video_probe() allocates the npcm_video structure with kzalloc_obj()\nbut never frees it on any probe error path or in npcm_video_remove(),\nleaking the allocation",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68221",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68222",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: msi2500: Return queued buffers on start_streaming() failure\n\nThe vb2 framework hands buffers to the driver via buf_queue() before\ncalling start_streaming().  If start_streaming() returns an error\nwithout first returning thos",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68222",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68223",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: meson: vdec: Fix memory leak in error path of vdec_open\n\nThe vdec_open() function previously jumped directly to\nerr_m2m_release when vdec_init_ctrls() failed, skipping\nrelease of the m2m context. This caused a resource leak.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68223",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68224",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: mali-c55: Fix possible ERR_PTR in enable_streams\n\nThe media_pad_remote_pad_unique() function returns either a valid\npointer or an ERR_PTR() on failure (-ENOTUNIQ if multiple links are\nenabled, -ENOLINK if no connected pad is",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68224",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68225",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: i2c: alvium: fix critical pointer access in alvium_ctrl_init\n\nThe current implementation of alvium_ctrl_init creates several controls in\nfunction alvium_ctrl_init and uses the returned pointer without check. That\ncan cause w",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68225",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68226",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: cx23885: add ioremap return check and cleanup\n\nAdd a check for the return value of pci_ioremap_bar()\nin cx23885_dev_setup().\nIf ioremap for BAR0 fails, release the already allocated\nPCI memory region,\ndecrement the device co",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68226",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68227",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: cx231xx: fix devres lifetime\n\nUSB drivers bind to USB interfaces and any device managed resources\nshould have their lifetime tied to the interface rather than parent USB\ndevice. This avoids issues like memory leaks when driv",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68227",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68228",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: chips-media: wave5: Move src_buf Removal to finish_encode\n\nDuring encoder processing, there is a case where the IRQ response could\nreturn the buffer back to userspace via v4l2_m2m_buf_done call. In this\ntime, userspace could",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68228",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68229",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: cedrus: skip invalid H.264 reference list entries\n\nCedrus consumes H.264 ref_pic_list0/ref_pic_list1 entries from the\nstateless slice control and later uses their indices to look up\ndecode->dpb[] in _cedrus_write_ref_list().",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68229",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68230",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: amlogic-c3: Add validations for ae and awb config\n\nAvoid invalid memory access if the zones_num is bigger than\nzone_weight.\n\nThis patch fixes the following smatch errors:\ndrivers/media/platform/amlogic/c3/isp/c3-isp-params.c",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68230",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68231",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmedia: airspy: Return queued buffers on start_streaming() failure\n\nThe vb2 framework hands buffers to the driver via buf_queue() before\ncalling start_streaming().  If start_streaming() returns an error\nwithout first returning those",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68231",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68232",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/gpusvm: Fix MM reference leak in drm_gpusvm_range_evict\n\nIf kvmalloc_array() fails in drm_gpusvm_range_evict(), the MM\nreference acquired earlier is not released, resulting in a reference\nleak.\n\nFix this by dropping the MM refe",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68232",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68233",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vc4: Shut down BO cache timer before teardown\n\nThe BO cache timer callback schedules time_work, and time_work can rearm\nthe timer through vc4_bo_cache_free_old().\n\nvc4_bo_cache_destroy() deletes the timer and then cancels the w",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68233",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68234",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: fix bo->pin leaking in amdgpu_bo_create_reserved\n\namdgpu_bo_create_reserved() only allocates a new BO when\n*bo_ptr (struct amdgpu_bo **bo_ptr as input parameter) is\nNULL, it simply skips creation when *bo_ptr is non-NUL",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68234",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68235",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: dce100: skip non-DP stream encoders for DP MST\n\nOn DCE8-class ASICs (e.g. Bonaire), the resource pool contains digital\nDIG stream encoders plus one analog DAC encoder. When assigning a stream\nencoder for a second D",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68235",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68236",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: set new_stream to NULL after release\n\nIn dm_update_crtc_state(), the skip_modeset path releases new_stream\nvia dc_stream_release() but does not set the pointer to NULL.\n\nIf a later error (e.g., color management fai",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68236",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68237",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/userq: fix indefinite fence wait during GPU reset\n\npre_reset only force-completes fences of MAPPED queues. A queue in any\nother state (e.g. mid-eviction) keeps its last_fence pending; after a\nGPU reset that fence never s",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68237",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68238",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Release VFCT ACPI table reference\n\namdgpu_acpi_vfct_bios() fetches the VFCT table with acpi_get_table()\nbut never releases it. acpi_get_table() takes a reference on the\ntable (incrementing its validation_count and mappi",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68238",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68239",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/ttm: Account for NULL and handle pages in ttm_pool_backup\n\nPages in ttm_pool_backup can be NULL or backup handles\n(ttm_backup_page_ptr_is_handle()), neither of which can be passed to\nset_pages_array_wb() or freed. Add a dedicat",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68239",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68240",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/gpusvm: publish dpagemap early to avoid device mapping leak on error\n\ndrm_gpusvm_get_pages() only stored the local dpagemap into\nsvm_pages->dpagemap on the success path. If a later page failed (e.g.\n-EOPNOTSUPP when ctx->allow_",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68240",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68241",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/mst: limit DP MST ESI service loop\n\nThe loop in intel_dp_check_mst_status() keeps servicing interrupts\noriginating from the sink without bound. Add an upper bound to the new\ninterrupts occurring during interrupt processing",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68241",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68242",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/gt: Fix NULL deref on sched_engine alloc failure\n\nAvoid using intel_context_put() before intel_context_init() in\nexeclists_create_virtual() as the kref_put() inside would lead\nto NULL deref on the IOCTL path when sched_eng",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68242",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68243",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/gem: Fix NULL deref in I915_CONTEXT_PARAM_SSEU\n\nSetting context engine slot N into I915_ENGINE_CLASS_INVALID /\nI915_ENGINE_CLASS_INVALID_NONE and attempting to apply\nI915_CONTEXT_PARAM_SSEU to the same slot N will deref NU",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68243",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68244",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/gem: Do not leak siblings[] on proto context error\n\nAfter a successful BALANCE/PARALLEL_SUBMIT extension on context\ncreation, error during processing of next user extension leaks\nthe siblings[] array. Fix that.\n\nDiscovered",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68244",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68245",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: fix lifetime issue of amdgpu_vm_get_task_info_pasid()\n\nThe vm pointer returned from amdgpu_vm_get_vm_from_pasid() is only\nvalid while the lock is still being held. Once xa_unlock_irqrestore is\ncalled and returned, the p",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68245",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68246",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/gfx11: replace BUG_ON() with WARN_ON()\n\nThere's no need to crash the kernel for these cases.\n\n(cherry picked from commit daa62107452d2451787c4248ca38fa2d1a0cbefd)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68246",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68247",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/bios: range check LFP Data Block panel_type2\n\nWhile the panel_type from LFP Data Block is range checked, panel_type2\nis not. Add a few helpers for range checking, and use them to not only\ncheck panel_type2, but also improv",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68247",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68248",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915: Return NULL on error in active_instance\n\nAvoid returning &node->base when node is NULL due to OOM\nduring GFP_ATOMIC allocation.\n\nDiscovered using AI-assisted static analysis confirmed by\nIntel Product Security.\n\n(cherry p",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68248",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68249",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/sdma5.0: replace BUG_ON() with WARN_ON()\n\nThere's no need to crash the kernel for these cases.\n\n(cherry picked from commit 8d144a0eb09537055841af48c9e7c2d4cd48e84d)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68249",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68250",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/sdma5.2: replace BUG_ON() with WARN_ON()\n\nThere's no need to crash the kernel for these cases.\n\n(cherry picked from commit ae658afc7f47f6147371ec42cc6b1a793dfdb5af)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68250",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68251",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/sdma6.0: replace BUG_ON() with WARN_ON()\n\nThere's no need to crash the kernel for these cases.\n\n(cherry picked from commit c17a508a7d652da3728f8bbc481bfffe96d65a87)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68251",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68252",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/sdma7.0: replace BUG_ON() with WARN_ON()\n\nThere's no need to crash the kernel for these cases.\n\n(cherry picked from commit 9723a8bed3aa251a26bee4583bac9d8fb064dd44)",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68252",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68253",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/hdcp: check streams[] bounds before overflow\n\nThe data->streams[] overflow check is done after the buffer overflow has\nalready happened. Move the overflow check before the write.\n\nSide note, emitting a warning splat with a",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68253",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68254",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/vrr: require valid min/max vfreq for VRR\n\nEnsure the EDID provided min/max vfreq are valid. Most scenarios are\nalready covered (by coincidence) through the checks in\nintel_vrr_is_capable() and intel_vrr_is_in_range(), but ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68254",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68255",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/virtio: bound EDID block reads to the response buffer\n\nvirtio_get_edid_block() validates the read offset only against the\ndevice-supplied resp->size field, never against the fixed-size resp->edid\narray. The EDID block index is ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68255",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68256",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: detect_link_and_local_sink: DP alt mode timeout path leaks prev_sink reference\n\nprev_sink is unconditionally retained via dc_sink_retain at function\n  entry, but the DP alt mode timeout path inside SIGNAL_TYPE_DISP",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68256",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68257",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: fix 32-bit overflow in CWSR total size calculation\n\ntotal_cwsr_size was computed in 32-bit before being used as a BO/SVM\nallocation size.\nWith large ctx_save_restore_area_size and debug_memory_size\nmultiplied by the XCC",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68257",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68258",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Check bounds on CRIU restore queue type and mqd size\n\nWe weren't checking whether the values provided in the private\ndata in kfd CRIU restore were within bounds.\n\nFor queue type, add a KFD_QUEUE_TYPE_MAX and ensure the ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68258",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68259",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Check bounds in allocate_event_notification_slot\n\nThe valid event ids go from 0 to KFD_SIGNAL_EVENT_LIMIT\n\nallocate_event_notification_slot has an option to specify\nan event id to allocate at, used by CRIU. We weren't c",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68259",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68260",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/imagination: acquire vm_ctx->lock before mapping memory to GPU VM\n\nThe drm gpuvm code doesn't protect find operation against map operation,\nand the driver needs to ensure a map operation shouldn't happen when a\nfind operation i",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68260",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68261",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/imagination: fix error checking of pvr_vm_context_lookup()\n\nSince pvr_vm_context_lookup() returns either NULL or a pointer, then stop\nusing IS_ERR() for checking the return value.\n\nUsing IS_ERR() leads to the kernel oops report",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68261",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68262",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/imagination: Fix user array stride in pvr_set_uobj_array()\n\npvr_set_uobj_array() copies an array of kernel objects to a userspace\narray whose element size is described by out->stride. When out->stride\nis different from the kern",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68262",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68263",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/imagination: Fix double call to drm_sched_entity_fini()\n\nCall sequence of double call:\npvr_context_destroy\n  pvr_context_kill_queues\n    pvr_queue_kill\n      drm_sched_entity_destroy\n        drm_sched_entity_fini // here\n  pvr_",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68263",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68264",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/pt: Reset current_op in xe_pt_update_ops_init()\n\nxe_pt_update_ops_init() fails to reset current_op to 0. On the\nvm_bind path, ops_execute() calls xe_pt_update_ops_prepare() inside\nthe xe_validation_guard() / drm_exec_until_a",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68264",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68265",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/vm: Fix BO prefetch with CONSULT_MEM_ADVISE_PREF_LOC\n\nWhen prefetch region is DRM_XE_CONSULT_MEM_ADVISE_PREF_LOC for a BO VMA,\nthe code used it as an index into region_to_mem_type[], causing an\nout-of-bounds access since the",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68265",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68266",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe: Hold a dma-buf reference for imported BOs\n\nAn imported dma-buf BO is created as a ttm_bo_type_sg BO whose\nreservation object is the exporter's dma_buf->resv. The importer,\nhowever, only takes a dma-buf reference after a suc",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68266",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68267",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/rtp: Add RING_FORCE_TO_NONPRIV_DENY to OA whitelists\n\nUnconditionally whitelisting OA registers is a security violation. Set\nRING_FORCE_TO_NONPRIV_DENY bit in OA nonpriv slots, so that OA registers\ndon't get whitelisted by d",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68267",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68268",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe: Return error on non-migratable faults requiring devmem\n\nNon-migratable faults that require devmem incorrectly jump to the 'out'\nlabel, which squashes the error code intended to be returned to the\nupper layers. Fix this by r",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68268",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68269",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/gem: Add missing nospec on parallel submit slot\n\nAdd missing Spectre mitigation for userspace controlled parallel\nsubmission slot.\n\nDiscovered using AI-assisted static analysis confirmed by Intel\nProduct Security.\n\n(cherry",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68269",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68270",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/sysfb: Avoid possible truncation with calculating visible size\n\nCalculating the visible size of the system framebuffer can result in\ntruncation of the result. The calculation uses 32-bit arithmetics,\nwhich can overflow if the v",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68270",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68271",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/nouveau: fix reversed error cleanup order in ucopy functions\n\nnouveau_uvmm_vm_bind_ucopy() and nouveau_exec_ucopy() place their error\ncleanup labels in allocation order rather than reverse allocation order.\nOn a u_memcpya() fai",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68271",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68272",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: validate CP_GFX_SHADOW chunk size in CS pass1\n\nAdd a minimum-length check for the AMDGPU_CHUNK_ID_CP_GFX_SHADOW chunk in\namdgpu_cs_pass1(), matching the gate already present for the IB, FENCE and\nBO_HANDLES chunk types.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68272",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68273",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: Fix context pstate override handling\n\nThere are several problems in the context pstate handling code.\n\nThe most serious ones are potential use-after-free and NULL pointer\ndereferences at context initialization time. Bot",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68273",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68274",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/guc: Fix buffer overflow in steered register list allocation\n\nThe size calculation for the steered register extarray uses only the\ngeometry DSS mask (g_dss_mask) to determine the number of entries to\nallocate:\n\n  total = bit",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68274",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68275",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu: check amdgpu_vm_bo_find() result in GET_MAPPING_INFO\n\nThe AMDGPU_GEM_OP_GET_MAPPING_INFO path of amdgpu_gem_op_ioctl() looks\nup the bo_va for the buffer object in the caller's VM via\namdgpu_vm_bo_find(), but uses the re",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68275",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68276",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdgpu/gfx: fix cleaner shader IB buffer overflow\n\nThe cleaner shader sysfs path allocates a 16-dword (64 byte) IB but\nincorrectly fills (align_mask + 1) dwords. On GFX rings align_mask is\n0xff, so the loop wrote 256 dwords int",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68276",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68277",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/dp/mst: fix OOB reads on 2-byte fields in sideband reply parsers\n\nThree sideband reply parsers read 16-bit fields as:\n\n  val = (raw->msg[idx] << 8) | (raw->msg[idx+1]);\n\nand check bounds only after the fact. When idx == raw->cu",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68277",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68278",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/dp/mst: fix buffer overflows in sideband chunk accumulation\n\ndrm_dp_sideband_append_payload() has three related bugs when processing\ndevice-provided sideband reply data:\n\n1. Zero-length curchunk_len underflow: msg_len is a 6-bi",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68278",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68279",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/dp/mst: fix OOB reads in remote DPCD/I2C sideband reply parsers\n\ndrm_dp_sideband_parse_remote_dpcd_read() reads num_bytes from the raw\nmessage and then unconditionally does:\n\n  memcpy(bytes, &raw->msg[idx], num_bytes);\n\nwithout",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68279",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68280",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/bridge: cdns-dsi: Replace deprecated UNIVERSAL_DEV_PM_OPS()\n\nThe deprecated UNIVERSAL_DEV_PM_OPS() macro uses the provided callbacks\nfor both runtime PM and system sleep. This causes the DSI clocks to be\ndisabled twice: once du",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68280",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68281",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/imagination: Count paired job fence as dependency in prepare_job()\n\nThe DRM scheduler's prepare_job() callback counts the remaining\nnon-signaled native dependencies for a job, preventing job submission\nuntil those (plus job dat",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68281",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68282",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/rockchip: analogix_dp: Add missing error check for platform_get_resource()\n\nAdd missing error check for platform_get_resource() return value to\nprevent NULL pointer dereference when memory resource is not available.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68282",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68283",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Fix use-after-free freeing trigger private data\n\nCommit 61d445af0a7c (\"tracing: Add bulk garbage collection of freeing\nevent_trigger_data\") moved the kfree() of event_trigger_data to a kthread\nthat runs tracepoint_synchron",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68283",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68284",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf, sockmap: Fix cork use-after-free in tcp_bpf_sendmsg()\n\ntcp_bpf_sendmsg() keeps msg_tx across sk_stream_wait_memory(), which\ndrops and reacquires the socket lock.  Its error path tries to decide\nwhether msg_tx names the local t",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68284",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68285",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nLoongArch: BPF: Fix memory leak in bpf_jit_free()\n\nWhen bpf_int_jit_compile() is called for subprograms, it returns early\nduring the first pass (!prog->is_func || extra_pass is false), keeping\nctx->offset alive for the subsequent e",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68285",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68286",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrop_monitor: perform u64_stats updates under IRQ-disabled section\n\nIn net_dm_packet_trace_kfree_skb_hit() and net_dm_hw_trap_packet_probe(),\nu64_stats_update_begin() / u64_stats_inc() / u64_stats_update_end() were\ncalled after spi",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68286",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68287",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrop_monitor: fix size calculations for 64-bit attributes\n\nnet_dm_packet_report_fill() and net_dm_hw_packet_report_fill() use\nnla_put_u64_64bit() to append 64-bit attributes (NET_DM_ATTR_PC and\nNET_DM_ATTR_TIMESTAMP).\n\nOn 32-bit ar",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68287",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68288",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: drop_monitor: fix info leak in NET_DM_ATTR_PAYLOAD\n\nnet_dm_packet_report_fill() and net_dm_hw_packet_report_fill() open code\nthe NET_DM_ATTR_PAYLOAD attribute to avoid zeroing the packet payload\nbefore overwriting it with skb_",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68288",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68289",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: fix integer overflow in tipc_recvmsg() and tipc_recvstream()\n\nIn tipc_recvmsg(), the copy length is computed as:\n\n  copy = min_t(int, dlen - offset, buflen);\n\nbuflen is size_t but min_t(int, ...) casts it to int. When buflen\n",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68289",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68290",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nrds: tcp: unregister sysctl before tearing down listen socket\n\nrds_tcp_exit_net() frees the per-netns RDS TCP listen socket via\nrds_tcp_kill_sock() before unregistering the per-netns sysctl table.  Since\nrds_tcp_skbuf_handler() der",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68290",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68291",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nidpf: fix max_vport related crash on allocation error during init\n\nSet adapter->max_vports only after successful allocation of vports, netdevs\nand  vport_config buffers. This fixes possible crashes on reset or rmmod,\nfollowing fail",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68291",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68292",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nice: prevent tstamp ring allocation for non-PF VSI types\n\nThe pf->txtime_txqs bitmap tracks which Tx queues have ETF (Earliest\nTxTime First) offload enabled. This bitmap is indexed by queue number\nand is set by ice_offload_txtime()",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68292",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68293",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5: Fix MCIA register buffer overflow on 32 dword reads\n\nThe MCIA register can return up to 32 dwords (128 bytes) when the device\nadvertises the mcia_32dwords capability, but struct\nmlx5_ifc_mcia_reg_bits only defines dword_0",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68293",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68294",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: qrtr: restrict socket creation to the initial network namespace\n\nQRTR keeps its entire port and node state in module-global variables\nthat are not partitioned per network namespace: qrtr_local_nid is a\nsingle global node id (a",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68294",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68295",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nLoongArch: BPF: Zero-extend signed ALU32 div/mod results\n\nALU32 operations write a 32-bit result and leave the upper 32 bits of\nthe BPF register zero. The LoongArch JIT sign-extends the result of\nsigned ALU32 BPF_DIV and BPF_MOD (o",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68295",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68296",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: gre: fix lltx regression for GRE tunnels with SEQ/CSUM\n\nBefore commit 00d066a4d4ed (\"netdev_features: convert NETIF_F_LLTX to\ndev->lltx\"), NETIF_F_LLTX was set unconditionally in both\n__gre_tunnel_init() and ip6gre_tnl_init_fe",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68296",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68297",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: fix u16 MTU truncation in media and bearer MTU validation\n\nBoth TIPC_NL_MEDIA_SET and TIPC_NL_BEARER_SET accept user-supplied\nMTU values but only enforce a minimum bound, not a maximum. When a user\nsets the MTU to a value exc",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68297",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68298",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/vm: Fix SVM leak on resv obj alloc failure in xe_vm_create()\n\nCommit 9e9787414882 (\"drm/xe/userptr: replace xe_hmm with gpusvm\") made\nxe_svm_init() unconditional in xe_vm_create() and extended it to also\ninitialize a \"simple",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68298",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68299",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nvmxnet3: fix BUG_ON in vmxnet3_get_hdr_len() for Geneve packets\n\nvmxnet3_get_hdr_len() assumes gdesc->rcd.v4/v6/tcp always describe the\nouter header, but for a Geneve-encapsulated packet the device can set\nthem based on the inner h",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68299",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68300",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: auth: verify auth requirement when auth_chunk is NULL\n\nsctp_auth_chunk_verify() returns true unconditionally when\nchunk->auth_chunk is NULL, silently skipping authentication.\nThis is incorrect when:\n\n1. skb_clone() failed in ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68300",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68301",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: hsr: fix memory leak on slave unregistration by removing synced VLANs\n\nWhen an HSR master device is brought UP, it auto-adds VLAN 0 via\nvlan_vid0_add(), which propagates VID 0 to its slave devices (slave A and B).\n\nIf a slave ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68301",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68302",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\namt: re-read skb header pointers after every pull\n\nSeveral AMT receive and transmit paths cache a pointer into the skb head\n(ip_hdr(), ipv6_hdr(), eth_hdr() or the AMT message header) and then call\na helper that can reallocate that",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68302",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68303",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vc4: hvs/v3d: Fix null dereference in unbind\n\nThe hvs and v3d drivers use dev_get_drvdata(master) in their unbind\nfunctions. Since the vc4-drm gets removed before its dependent drivers\n(vc4_hvs/vc4_v3d) the vc4_hvs_unbind/vc4_v",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68303",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68304",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: brcmfmac: fix 802.1X-SHA256 call trace warning\n\nBased on wpa_auth as 1x_256 mode, need to set up\n\"use_fwsup\" with BRCMF_PROFILE_FWSUP_1X.\nOr it will happen trace warning when call brcmf_cfg80211_set_pmk().\n\n[ 4481.831101] ---",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68304",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68305",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe/vf: Add drm_dev guards when detaching CCS read/write buffers\n\nCCS read/write buffers are freed during BO destruction. In some cases,\nBOs may be destroyed after the device is unbound but while the DRM\nstructure remains valid,",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68305",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68306",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7996: fix possible NULL-pointer deref in mt7996_mcu_sta_bfer_eht()\n\nmt76_connac_get_eht_phy_cap routine can theoretically return NULL so\ncheck cap pointer before dereferencing it.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68306",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68307",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7925: fix crash in reset link replay\n\nDuring reset recovery, mt7925_vif_connect_iter() replays firmware state\nfor links tracked in mvif->valid_links. After MLO link changes or MCU\ntimeout recovery, the driver bitmap c",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68307",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68308",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7996: check pointer returned by mt76_connac_get_he_phy_cap()\n\nmt76_connac_get_he_phy_cap routine can theoretically return NULL so\ncheck cap pointer before dereferencing it.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68308",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68309",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: connac: fix possible NULL-pointer deref in mt76_connac_mcu_uni_bss_he_tlv()\n\nmt76_connac_get_he_phy_cap routine can theoretically return NULL so\ncheck cap pointer before dereferencing it.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68309",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68310",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7915: guard HE capability lookups\n\nmt7915_mcu_bss_he_tlv() and mt7915_mcu_sta_bfer_tlv() both run after\nchecking HE support, then dereference the HE PHY capability returned by\nmt76_connac_get_he_phy_cap(). That helper",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68310",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68311",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7925: guard link STA in decap offload\n\nmt7925_sta_set_decap_offload() iterates over the vif valid_links mask\nwhen updating decap offload state for an MLO station. The station may not\nhave a link STA for every valid li",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68311",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68312",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: fix cifsFileInfo leak on kmalloc failure in deferred close drain paths\n\nIn cifs_close_deferred_file(), cifs_close_all_deferred_files(), and\ncifs_close_deferred_file_under_dentry(), when a pending deferred close\nis cancelled v",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68312",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68313",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: fix infinite loop in __tipc_nl_compat_dumpit\n\ncmd->dumpit callback can return a negative errno, causing an infinite\nloop due to the while(len) condition. As the loop never terminates,\ngenl_mutex is never released, and other t",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68313",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68314",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: mctp i3c: clean up notifier and buses if driver register fails\n\nmctp_i3c_mod_init() registers the I3C bus notifier and then walks the\nexisting buses with i3c_for_each_bus_locked(mctp_i3c_bus_add_new, NULL)\nbefore registering t",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68314",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68315",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: validate stream count in sctp_process_strreset_inreq()\n\nWhen processing a RESET_IN_REQUEST from a peer,\nsctp_process_strreset_inreq() derives the stream count from the\nparameter length but does not check whether the resulting",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68315",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68316",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\naccel: ethosu: Fix element size accounting for cmd stream validation\n\nThere are 2 issues with the element size handling in the command stream\nvalidation which result in too small of a size calculated when the\nelement size is 16/32/",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68316",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68317",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\npds_core: fix auxiliary device add/del races\n\nTwo paths add or delete the same slot (pf->vfs[vf_id].padev): a VF's\npdsc_reset_done() and the PF's devlink enable_vnet/disable_vnet handler.\nThey serialize on config_lock, but neither ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68317",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68318",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\npds_core: fix use-after-free on workqueue during remove\n\nIn pdsc_remove(), the workqueue is destroyed before pdsc_teardown()\nis called. This ordering allows two paths to queue work on the\ndestroyed workqueue:\n\n1. If pdsc_teardown()",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68318",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68319",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\npds_core: fix deadlock between reset thread and remove\n\npci_reset_function() acquires device_lock before performing the reset.\npdsc_remove() is called by the PCI core with device_lock already held.\nIf pdsc_pci_reset_thread() is run",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68319",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68320",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: fix auth_chunk_list capacity check in sctp_auth_ep_add_chunkid\n\nsctp_auth_ep_add_chunkid() uses SCTP_NUM_CHUNK_TYPES (20) as the\ncapacity limit for ep->auth_chunk_list, allowing it to hold up to\n20 chunk entries (param_hdr.le",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68320",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68321",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: txgbe: fix FDIR filter leak on remove\n\nPerfect FDIR filters can be added while the interface is down and are\nkept on the software list for later restore. unregister_netdev() only\ncalls ndo_stop when the device is up, so txgbe_",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68321",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68322",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nrds: Fix inet6_addr_lst NULL dereference when IPv6 is disabled\n\nWhen booting with the 'ipv6.disable=1' parameter, inet6_addr_lst\nis never initialized because inet6_init() exits before addrconf_init()\nis called to initialize it. An ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68322",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68323",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: serialize udp bearer replicast list updates\n\ntipc_udp_rcast_add() and cleanup_bearer() both update ub->rcast.list with\nlist_add_rcu() / list_del_rcu(), but nothing serializes them. The add runs\nfrom the encap receive softirq ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68323",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68324",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/intel: Fix out-of-bounds memset in dmar_latency_disable()\n\ndmar_latency_disable() intends to zero out only the single\nlatency_statistic entry for the given type, but the memset size was\ncomputed as sizeof(*lstat) * DMAR_LATEN",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68324",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68325",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/amd: Bound the early ACPI HID map\n\nThe ivrs_acpihid command-line parser appends entries to a fixed\nfour-element early_acpihid_map array. Unlike the sibling IOAPIC and HPET\nparsers, it does not reject a fifth entry before incr",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68325",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68326",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mwifiex: bound uAP association event IEs to the event buffer\n\nmwifiex_process_uap_event() handles EVENT_UAP_STA_ASSOC by exposing the\n(re)association request IEs that the firmware copies into the event:\n\n\tsinfo->assoc_req_ies",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68326",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68327",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwan: wanxl: Only reset hardware after BAR mapping\n\nwanxl_pci_init_one() stores the freshly allocated card in driver data\nbefore the PLX BAR is mapped.  Several early probe failures then unwind\nthrough wanxl_pci_remove_one(), includ",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68327",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68328",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnfp: Check resource mutex allocation\n\nnfp_cpp_resource_find() allocates a CPP mutex handle for the matching\nresource-table entry and then reports success.  nfp_resource_try_acquire()\nimmediately passes that handle to nfp_cpp_mutex_",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68328",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68329",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/amd: Wait for completion instead of returning early in iommu_completion_wait()\n\nneed_sync is a per-IOMMU flag shared by all domains and devices behind\nthat IOMMU. It is set whenever a command is queued with sync == true and\nc",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68329",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68330",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: airoha: Fix DMA direction for NPU mailbox buffer\n\nairoha_npu_send_msg() always maps the mailbox buffer with DMA_TO_DEVICE,\nbut some callers expect the NPU to write response data back into the\nsame buffer:\n\n- airoha_npu_wlan_ms",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68330",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68331",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndpaa2-eth: put MAC endpoint device on disconnect\n\nfsl_mc_get_endpoint() returns the MAC endpoint device with a reference\ntaken through device_find_child(). The Ethernet connect path stores that\ndevice in mac->mc_dev and keeps it fo",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68331",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68332",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: airoha: Fix potential use-after-free in airoha_ppe_deinit()\n\nairoha_ppe_deinit() replaces the NPU pointer with NULL via\nrcu_replace_pointer() but does not wait for existing RCU readers\nto exit before calling ppe_deinit() and a",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68332",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68333",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndpaa2-switch: put MAC endpoint device on disconnect\n\nfsl_mc_get_endpoint() returns the MAC endpoint device with a reference\ntaken through device_find_child(). The switch port connect path stores\nthat device in mac->mc_dev and keeps",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68333",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68334",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nrxrpc: fix io_thread race in rxrpc_wake_up_io_thread()\n\nrxrpc_wake_up_io_thread() checks local->io_thread before waking it, but\nthen reloads the pointer for wake_up_process().\n\nlocal->io_thread is cleared with WRITE_ONCE() when the",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68334",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-E5C1DEF6",
+      "desc": "OrkesConductor 3.30.2 - Unauthenticated Remote Code Execution",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52633",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-EDA84DDE",
+      "desc": "Microsoft Edge 150.0.4078.48 - RCE",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52632",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-51C22D6A",
+      "desc": "CorgetGpsDget 2_3.2 - OS Command Injection",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52631",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-732591C9",
+      "desc": "Joomla 2.9.99.4 - Unauthenticated Remote Code Execution",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-08-10",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52630",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
       "id": "EDB-6E4203BD",
       "desc": "Krayin CRM v2.2.x - Authenticated Remote Code Execution",
       "severity": "HIGH",
@@ -6155,78 +10709,6 @@
         "Zero Day Exploit"
       ],
       "url": "https://www.exploit-db.com/exploits/52582",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-4381C4CD",
-      "desc": "MeiG Smart FORGE_SLT711 - OS Command Injection",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-10",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52581",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-989256B2",
-      "desc": "Realtek rtl819x  - Local Privilege",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-10",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52580",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-83E74837",
-      "desc": "OpenCATS 0.9.7.4 - SQL Injection",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-10",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52579",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-068C05C2",
-      "desc": "Grav CMS 2.0.0-beta.2 -  Remote Code Execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-10",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52578",
       "cvss": "8.0",
       "cwe": ""
     }

@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-10T14:57:09.990960+00:00",
-  "summary": "Pakistani organizations should prioritize patching critical vulnerabilities, particularly CVE-2026-8037 and CVE-2026-63077, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple vendors including Microsoft and Adobe. The presence of 75 zero-day exploits, including CVE-2026-18556 and CVE-2026-34486, poses a significant threat to local networks, and immediate attention is required to mitigate these risks. Pakistani CERT/NCCS alerts, such as PKCERT-917CDA37 and PKCERT-78CA5DA2, also highlight specific threats to local organizations, and it is essential to review and implement the recommended mitigations to prevent potential breaches.",
+  "generated": "2026-08-10T15:19:58.803854+00:00",
+  "summary": "Pakistani organizations should immediately prioritize patching critical vulnerabilities including CVE-2026-8037 and CVE-2026-63077, which are being actively exploited and listed in the CISA KEV catalog, affecting multiple vendors such as Microsoft and Adobe. The presence of 75 zero-day exploits, including CVE-2026-18556 and CVE-2026-34486, poses a significant threat to local networks, and organizations should ensure their security controls are up to date to mitigate these risks. Pakistani CERT/NCCS alerts, such as PKCERT-917CDA37 and PKCERT-78CA5DA2, also warrant attention, and organizations should review these alerts and apply the recommended mitigations to protect against targeted attacks.",
   "stats": {
     "new": 591,
     "changed": 0,
     "removed": 0,
-    "total": 287003,
+    "total": 287594,
     "zeroday": 75,
     "exploited": 25,
     "pakistan": 16
@@ -5404,8 +5404,8 @@
     },
     {
       "id": "CVE-2026-19429",
-      "desc": "Jenkins FilePath.untarFrom() (all versions) validates symlink destinations but not targets, bypassing CVE-2026-33001. Any user with Item/Build access can trigger extraction of a malicious tar via POST /job/{name}/build, planting symlinks to secrets/master.key, secrets/hudson.util.Secret, and credent",
-      "severity": "MEDIUM",
+      "desc": "Jenkins FilePath.untarFrom() (all versions) validates symlink destinations but not targets, bypassing CVE-2026-33001. Any user with Item/Build access triggers tar extraction via POST /job/{name}/build, writing persistent symlinks into the tool cache. Symlinks to secrets/master.key, hudson.util.Secre",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-10",
       "pakistan": false,
@@ -5417,7 +5417,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19429",
-      "cvss": "6.5",
+      "cvss": "8.8",
       "cwe": ""
     },
     {

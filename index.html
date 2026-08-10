@@ -147,11 +147,10 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 
 /* Left hero text */
 .hero-left{padding:64px 48px;background:linear-gradient(135deg,rgba(37,99,235,0.05) 0%,transparent 60%);}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.25);color:var(--blue3);font-size:11.5px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:5px 14px;border-radius:4px;margin-bottom:24px;}
-.hero-badge::before{content:'●';font-size:7px;animation:blink 2s infinite;}
+
 .hero-title{font-family:var(--display);font-size:clamp(36px,3.5vw,52px);font-weight:700;line-height:1.1;letter-spacing:-0.03em;color:#fff;margin-bottom:18px;}
 .hero-title span{color:var(--blue3);}
-.hero-desc{font-size:15px;color:var(--text2);font-weight:400;line-height:1.75;max-width:480px;margin-bottom:36px;}
+.hero-desc{font-size:15px;color:var(--text2);font-weight:400;line-height:1.75;max-width:480px;margin-bottom:0;}
 .hero-stats{display:flex;gap:36px;}
 .hs-item{}
 .hs-num{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-0.03em;color:#fff;}
@@ -178,10 +177,14 @@ canvas#radar{width:560px;height:560px;}
 .pill-7{top:58%;left:-4%;color:var(--cyan);border-color:rgba(6,182,212,0.25);animation-delay:0.6s;}
 
 /* MAIN */
-.main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:40px 48px;}
+.main{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:24px 48px 40px;}
 
 /* Stat strip */
-.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px;}
+.stat-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:36px;}
+.intro-block{max-width:800px;margin:0 0 8px;display:flex;flex-direction:column;gap:16px;}
+.intro-text{font-size:15px;color:var(--text2);line-height:1.85;}
+.intro-text b{color:#fff;font-weight:600;}
+.intro-text i{color:var(--blue3);font-style:normal;}
 .stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:22px;display:flex;align-items:center;gap:18px;transition:all 0.2s;cursor:default;}
 .stat-card:hover{border-color:var(--border2);transform:translateY(-1px);}
 .sc-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
@@ -198,8 +201,7 @@ canvas#radar{width:560px;height:560px;}
 .sc-sub{font-size:11px;color:var(--text3);margin-top:4px;}
 
 /* Last updated */
-.lu-bar{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text3);margin-bottom:28px;padding:10px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;width:fit-content;}
-.lu-dot2{width:6px;height:6px;background:var(--blue2);border-radius:50%;}
+
 
 /* Two col */
 .two-col{display:grid;grid-template-columns:1fr 380px;gap:20px;}
@@ -568,6 +570,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     <a href="reports.html">Daily Reports</a>
     <a href="database.html">CVE Database</a>
     <a href="news.html">News</a>
+    <a href="blogs.html">Blogs</a>
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
     <a href="contact.html">Contact</a>
@@ -600,23 +603,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 <!-- HERO WITH RADAR -->
 <div class="hero">
   <div class="hero-left">
-    <div class="hero-badge">Pakistan Threat Intelligence Platform</div>
     <div class="hero-title">Real-Time <span>Cybersecurity</span><br>Threat Intelligence</div>
-    <div class="hero-desc">Automated threat intelligence aggregated from CISA KEV, NVD/NIST, Exploit-DB, Pakistan CERT and NCCS Pakistan. AI-powered analysis by LLaMA — updated every 30 minutes.</div>
-    <div class="hero-stats">
-      <div class="hs-item">
-        <div class="hs-num red" id="hero-new">—</div>
-        <div class="hs-label">New threats today</div>
-      </div>
-      <div class="hs-item">
-        <div class="hs-num green" id="hero-pk">—</div>
-        <div class="hs-label">Pakistan alerts</div>
-      </div>
-      <div class="hs-item">
-        <div class="hs-num blue" id="hero-total">—</div>
-        <div class="hs-label">Total monitored</div>
-      </div>
-    </div>
+    <div class="hero-desc">Free, AI-powered threat intelligence for Pakistani organizations — refreshed every 30 minutes, around the clock.</div>
   </div>
 
   <!-- RADAR SIDE -->
@@ -636,65 +624,15 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 
 <!-- MAIN CONTENT -->
 <div class="main">
-  <div class="lu-bar">
-    <div class="lu-dot2"></div>
-    <span id="last-updated">Fetching latest data...</span>
-  </div>
-
-  <!-- STATS -->
-  <div class="stat-strip">
-    <div class="stat-card">
-      <div class="sc-icon sci-red">🔴</div>
-      <div><div class="sc-label">Zero Day Exploits</div><div class="sc-val red" id="cnt-zeroday">0</div><div class="sc-sub">CISA KEV · ZDI · Exploit-DB</div></div>
-    </div>
-    <div class="stat-card">
-      <div class="sc-icon sci-orange">🟠</div>
-      <div><div class="sc-label">Actively Exploited</div><div class="sc-val orange" id="cnt-exploited">0</div><div class="sc-sub">From CISA KEV catalog</div></div>
-    </div>
-    <div class="stat-card">
-      <div class="sc-icon sci-green">🇵🇰</div>
-      <div><div class="sc-label">Pakistan Alerts</div><div class="sc-val green" id="cnt-pakistan">0</div><div class="sc-sub">Pakistan CERT advisories</div></div>
-    </div>
-    <div class="stat-card">
-      <div class="sc-icon sci-blue">📊</div>
-      <div><div class="sc-label">Total Monitored</div><div class="sc-val blue" id="cnt-total">0</div><div class="sc-sub">All sources combined</div></div>
-    </div>
-  </div>
-
-  <!-- TWO COL -->
-  <div class="two-col">
-    <div class="panel">
-      <div class="panel-head">
-        <div class="ph-left"><div class="ph-dot phd-red"></div><div class="ph-title">Latest Threats</div></div>
-        <span class="ph-badge" id="showing-count">Loading...</span>
-      </div>
-      <div class="search-bar">
-        <input class="s-input" id="search" type="text" placeholder="Search CVE ID, description, source...">
-        <button class="f-btn on" onclick="filterSev('all',this)">All</button>
-        <button class="f-btn" onclick="filterSev('CRITICAL',this)">Critical</button>
-        <button class="f-btn" onclick="filterSev('HIGH',this)">High</button>
-        <button class="f-btn" onclick="filterSev('pakistan',this)">🇵🇰 PK</button>
-      </div>
-      <div class="t-list" id="threat-list"><div class="loading"><div class="spinner"></div>Loading...</div></div>
-    </div>
-
-    <div class="sidebar">
-      <div class="ai-box">
-        <div class="ai-head">
-          <div class="ai-icon">◆</div>
-          <div><div class="ai-label">AI Analysis</div><div class="ai-sub">Powered by LLaMA AI</div></div>
-        </div>
-        <div class="ai-body"><div class="ai-text" id="ai-summary">Loading executive summary...</div></div>
-      </div>
-      <div class="panel">
-        <div class="panel-head"><div class="ph-left"><div class="ph-dot phd-blue"></div><div class="ph-title">Source Breakdown</div></div></div>
-        <div id="source-breakdown"><div class="loading"><div class="spinner"></div></div></div>
-      </div>
+  <!-- BRIEF INTRODUCTION -->
+  <div class="intro-block">
+    <div class="intro-text">
+      InfoSec Pakistan continuously aggregates vulnerability and advisory data from <b>CISA KEV, NVD/NIST, Exploit-DB, Pakistan CERT, and NCCS Pakistan</b>, then uses AI to translate raw feeds into clear, actionable analysis. The goal is simple: give security teams, CISOs, and IT administrators across Pakistani banking, telecom, government, and healthcare a single place to see what threats matter <i>right now</i> — without a budget, a vendor contract, or a dedicated intel team.
     </div>
   </div>
 </div>
 
-<!-- MODAL -->
+<!-- MODAL (used by ticker item clicks) -->
 <div class="modal-ov" id="modal" onclick="closeModal(event)">
   <div class="modal-box">
     <div class="modal-top">
@@ -987,7 +925,7 @@ function buildTicker(threats) {
 /* ══════════════════════════════
    DATA
 ══════════════════════════════ */
-let allThreats=[],currentFilter='all',currentSearch='';
+let allThreats=[];
 const DATA_URL='https://pakistaninfosec.github.io/data/threats.json';
 
 async function loadData(){
@@ -997,54 +935,40 @@ async function loadData(){
     renderAll(await res.json());
   }catch(e){
     console.error('loadData failed:',e);
-    document.getElementById('hero-new').textContent='—';
-    document.getElementById('hero-pk').textContent='—';
-    document.getElementById('hero-total').textContent='—';
-    document.getElementById('last-updated').textContent='Unable to load live data — please refresh.';
   }
 }
 function renderAll(d){
   allThreats=d.threats||[];
-  const dt=new Date(d.generated||Date.now());
-  document.getElementById('last-updated').textContent='Last updated: '+dt.toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'})+' · Auto-refreshes every 30 minutes';
   const s=d.stats||{};
-  const n=s.new||allThreats.length;
-  document.getElementById('hero-new').textContent='+'+n;
-  document.getElementById('hero-pk').textContent=s.pakistan||allThreats.filter(t=>t.pakistan).length;
-  document.getElementById('hero-total').textContent=s.total||allThreats.length;
-  document.getElementById('cnt-zeroday').textContent=s.zeroday||0;
-  document.getElementById('cnt-exploited').textContent=s.exploited||0;
-  document.getElementById('cnt-pakistan').textContent=s.pakistan||allThreats.filter(t=>t.pakistan).length;
-  document.getElementById('cnt-total').textContent=s.total||allThreats.length;
-  document.getElementById('ai-summary').textContent=d.summary||'No summary available.';
-  renderSources(d.sources||[]);
-  renderThreats();
+  updateRadarPills(allThreats);
   buildTicker(allThreats);
 }
-function renderSources(sources){
-  const max=Math.max(...sources.map(s=>s.count),1);
-  document.getElementById('source-breakdown').innerHTML=sources.map(s=>`
-    <div class="src-row"><span class="src-name">${s.name}</span>
-    <div class="src-bg"><div class="src-fill" style="width:${s.count/max*100}%"></div></div>
-    <span class="src-num">${s.count}</span></div>`).join('');
-}
 
-function renderThreats(){
-  let f=allThreats;
-  if(currentFilter==='pakistan') f=f.filter(t=>t.pakistan);
-  else if(currentFilter!=='all') f=f.filter(t=>t.severity===currentFilter);
-  if(currentSearch){const q=currentSearch.toLowerCase();f=f.filter(t=>t.id.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q)||(t.source||'').toLowerCase().includes(q));}
-  document.getElementById('showing-count').textContent=f.length+' entries';
-  document.getElementById('threat-list').innerHTML=f.length?f.map(t=>`
-    <div class="t-row" onclick="openModal(${JSON.stringify(t).replace(/"/g,'&quot;')})">
-      <span class="sev sev-${t.severity.toLowerCase()}">${t.severity}</span>
-      <div><div class="t-id">${t.id}${t.pakistan?' 🇵🇰':''}</div><div class="t-desc">${t.desc}</div></div>
-      <div><div class="t-src">${t.source}</div><div class="t-date">${t.date}</div></div>
-    </div>`).join('') :
-    '<div class="loading"><span style="color:var(--text3)">No results</span></div>';
+function updateRadarPills(threats){
+  const pills = document.querySelectorAll('.threat-pill');
+  if(!threats.length || !pills.length) return;
+  const w={CRITICAL:3,HIGH:2,MEDIUM:1,LOW:0};
+  const scored = [...threats].sort((a,b)=>{
+    const ap=(a.pakistan?2:0)+(w[a.severity]||0);
+    const bp=(b.pakistan?2:0)+(w[b.severity]||0);
+    return bp-ap;
+  });
+  const picks=[], seen=new Set();
+  for(const t of scored){
+    if(seen.has(t.id)) continue;
+    seen.add(t.id);
+    picks.push(t);
+    if(picks.length>=pills.length) break;
+  }
+  pills.forEach((el,i)=>{
+    const t = picks[i];
+    if(!t) return;
+    const icon = t.pakistan ? '🇵🇰' : t.severity==='CRITICAL' ? '🔴' : t.severity==='HIGH' ? '🟠' : '🛡';
+    let label = (t.id||'').slice(0,20);
+    if(t.pakistan) label += ' · PK';
+    el.innerHTML = `<span class="tp-icon">${icon}</span>${label}`;
+  });
 }
-function filterSev(sev,btn){currentFilter=sev;document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderThreats();}
-document.getElementById('search').addEventListener('input',e=>{currentSearch=e.target.value;renderThreats();});
 function openModal(t){
   if(typeof t==='string')t=JSON.parse(t);
   document.getElementById('modal-cve').textContent=t.id;

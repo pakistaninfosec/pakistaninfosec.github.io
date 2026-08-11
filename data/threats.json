@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-11T07:47:59.048258+00:00",
-  "summary": "Pakistani organizations should prioritize patching critical vulnerabilities such as CVE-2026-8037 and CVE-2026-63077, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple vendors including Microsoft and Adobe. The Pakistan CERT/NCCS has also issued alerts for PKCERT-917CDA37 and PKCERT-78CA5DA2, which target local businesses and require immediate attention to prevent potential breaches. To mitigate these threats, organizations should apply the latest security updates, especially for CVE-2026-18556 and CVE-2026-34486, which are zero-day exploits being leveraged by attackers to gain unauthorized access to systems.",
+  "generated": "2026-08-11T08:58:46.992118+00:00",
+  "summary": "Pakistani organizations should prioritize patching critical vulnerabilities, particularly CVE-2026-8037 and CVE-2026-63077, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple vendors including Microsoft and Adobe. The presence of 75 zero-day exploits, including CVE-2026-18556 and CVE-2026-34486, poses a significant threat to local networks, and immediate attention is required to mitigate these risks. Pakistani CERT/NCCS alerts, such as PKCERT-917CDA37 and PKCERT-78CA5DA2, also warrant urgent attention, and organizations should review these alerts and apply the recommended patches and mitigations to protect their systems and data.",
   "stats": {
     "new": 591,
     "changed": 0,
     "removed": 0,
-    "total": 295868,
+    "total": 296459,
     "zeroday": 75,
     "exploited": 25,
     "pakistan": 16
@@ -3892,8 +3892,8 @@
     },
     {
       "id": "CVE-2026-19429",
-      "desc": "Jenkins FilePath.untarFrom() in all versions, including those with the CVE-2026-33001 and CVE-2026-70427 patches applied, contains two distinct symlink validation weaknesses that independently allow arbitrary file read.\n\n1. SYMLINK TARGET NOT VALIDATED (all versions): The CVE-2026-33001 fix enforces",
-      "severity": "MEDIUM",
+      "desc": "Jenkins FilePath.untarFrom() does not validate symlink targets in extracted TAR archives, even in versions patched for CVE-2026-33001 and CVE-2026-70427. An authenticated attacker with job configuration privileges can include a malicious archive in a build step that creates workspace symlinks pointi",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-10",
       "pakistan": false,
@@ -3905,7 +3905,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19429",
-      "cvss": "6.5",
+      "cvss": "8.8",
       "cwe": ""
     },
     {

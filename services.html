@@ -482,11 +482,13 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">Full Name <span>*</span></label>
-            <input class="form-input" id="f-name" type="text" placeholder="Your full name" required>
+            <input class="form-input" id="f-name" type="text" placeholder="Your full name" maxlength="60"
+              oninput="this.value=this.value.replace(/[^a-zA-Z\s.'-]/g,'')" required>
           </div>
           <div class="form-group">
             <label class="form-label">Email Address <span>*</span></label>
-            <input class="form-input" id="f-email" type="email" placeholder="your@email.com" required>
+            <input class="form-input" id="f-email" type="email" placeholder="your@email.com"
+              oninput="this.value=this.value.replace(/\s/g,'')" required>
           </div>
         </div>
 
@@ -497,7 +499,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
           </div>
           <div class="form-group">
             <label class="form-label">Phone Number</label>
-            <input class="form-input" id="f-phone" type="tel" placeholder="+92 300 0000000">
+            <input class="form-input" id="f-phone" type="tel" placeholder="+92 300 0000000" maxlength="20"
+              inputmode="tel" oninput="this.value=this.value.replace(/[^0-9+\-\s()]/g,'')">
           </div>
         </div>
 
@@ -592,8 +595,19 @@ async function submitForm(){
     alert('Please fill in all required fields marked with *');
     return;
   }
+  if(!/^[a-zA-Z\s.'-]{2,60}$/.test(name)){
+    alert('Please enter a valid name (letters only)');
+    document.getElementById('f-name').focus();
+    return;
+  }
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
     alert('Please enter a valid email address');
+    document.getElementById('f-email').focus();
+    return;
+  }
+  if(phone && !/^[0-9+\-\s()]{7,20}$/.test(phone)){
+    alert('Please enter a valid phone number (digits only)');
+    document.getElementById('f-phone').focus();
     return;
   }
 

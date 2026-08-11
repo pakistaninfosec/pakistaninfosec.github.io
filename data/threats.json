@@ -1,13 +1,13 @@
 {
-  "generated": "2026-08-11T18:28:04.045800+00:00",
-  "summary": "Pakistani organizations should prioritize patching critical vulnerabilities such as CVE-2026-8037 and CVE-2026-63077, which are being actively exploited and listed in the CISA KEV catalog, affecting multiple vendors including Microsoft and Adobe. The Pakistan CERT has also issued alerts for PKCERT-917CDA37 and PKCERT-78CA5DA2, which target local businesses and require immediate attention to prevent potential breaches. To mitigate these threats, organizations should apply the latest security updates, especially for CVE-2026-18556 and CVE-2026-34486, which are being exploited as zero-day attacks, and ensure all systems and software are up-to-date to prevent exploitation by malicious actors.",
+  "generated": "2026-08-11T19:37:54.077650+00:00",
+  "summary": "Pakistani organizations should prioritize patching critical vulnerabilities, particularly CVE-2026-20349 and CVE-2026-68820, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple vendors including Microsoft and Adobe. The Pakistan CERT has also issued alerts for PKCERT-917CDA37 and PKCERT-78CA5DA2, which target local organizations, and it is essential to apply the recommended mitigations to prevent potential attacks. To minimize the risk of zero-day exploits, such as CVE-2026-72898 and CVE-2026-8037, organizations should ensure their systems and software are up-to-date, and implement a robust security framework to detect and respond to emerging threats.",
   "stats": {
-    "new": 591,
+    "new": 594,
     "changed": 0,
     "removed": 0,
-    "total": 302313,
-    "zeroday": 75,
-    "exploited": 25,
+    "total": 302907,
+    "zeroday": 78,
+    "exploited": 28,
     "pakistan": 16
   },
   "sources": [
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 25
+      "count": 28
     },
     {
       "name": "Pakistan CERT",
@@ -335,6 +335,63 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-20349",
+      "desc": "Cisco Secure Firewall Adaptive Security Appliance (ASA) and Secure Firewall Threat Defense (FTD) contain a heap inspection vulnerability that could allow an unauthenticated, remote attacker to cause the device to reload unexpectedly, resulting in a denial of service (DoS) condition.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-08-11",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-20349",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68820",
+      "desc": "Microsoft Windows Ancillary Function Driver for WinSock contains a use-after-free vulnerability that allows an authorized attacker to elevate privileges locally.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-08-11",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68820",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-72898",
+      "desc": "Metabase contains a SQL Injection vulnerability that allows an unauthenticated remote attacker to inject arbitrary SQL into the Metabase application database, which can give them administrator access to the instance. From there, the attacker could change the application configuration, steal stored c",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-08-11",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72898",
+      "cvss": "9.0",
       "cwe": ""
     },
     {

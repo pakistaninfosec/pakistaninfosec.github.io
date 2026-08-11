@@ -3,20 +3,32 @@
     {
       "date": "2026-08-11",
       "stats": {
-        "new": 591,
+        "new": 594,
         "changed": 0,
         "removed": 0,
-        "total": 302313,
-        "zeroday": 75,
-        "exploited": 25,
+        "total": 302907,
+        "zeroday": 78,
+        "exploited": 28,
         "pakistan": 16
       },
-      "summary": "Pakistani organizations should prioritize patching critical vulnerabilities such as CVE-2026-8037 and CVE-2026-63077, which are being actively exploited and listed in the CISA KEV catalog, affecting multiple vendors including Microsoft and Adobe. The Pakistan CERT has also issued alerts for PKCERT-917CDA37 and PKCERT-78CA5DA2, which target local businesses and require immediate attention to prevent potential breaches. To mitigate these threats, organizations should apply the latest security updates, especially for CVE-2026-18556 and CVE-2026-34486, which are being exploited as zero-day attacks, and ensure all systems and software are up-to-date to prevent exploitation by malicious actors.",
+      "summary": "Pakistani organizations should prioritize patching critical vulnerabilities, particularly CVE-2026-20349 and CVE-2026-68820, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple vendors including Microsoft and Adobe. The Pakistan CERT has also issued alerts for PKCERT-917CDA37 and PKCERT-78CA5DA2, which target local organizations, and it is essential to apply the recommended mitigations to prevent potential attacks. To minimize the risk of zero-day exploits, such as CVE-2026-72898 and CVE-2026-8037, organizations should ensure their systems and software are up-to-date, and implement a robust security framework to detect and respond to emerging threats.",
       "sections": [
         {
           "label": "Zero Day Exploits",
           "color": "red",
           "items": [
+            {
+              "id": "CVE-2026-20349",
+              "desc": "Cisco Secure Firewall Adaptive Security Appliance (ASA) and Secure Firewall Threat Defense (FTD) contain a heap inspection vulnerability that could allow an unauthenticated, remote attacker to cause the device to reload unexpectedly, resulting in a denial of service (DoS) condition."
+            },
+            {
+              "id": "CVE-2026-68820",
+              "desc": "Microsoft Windows Ancillary Function Driver for WinSock contains a use-after-free vulnerability that allows an authorized attacker to elevate privileges locally."
+            },
+            {
+              "id": "CVE-2026-72898",
+              "desc": "Metabase contains a SQL Injection vulnerability that allows an unauthenticated remote attacker to inject arbitrary SQL into the Metabase application database, which can give them administrator access to the instance. From there, the attacker could change the application configuration, steal stored c"
+            },
             {
               "id": "CVE-2026-8037",
               "desc": "Progress LoadMaster contains a command injection vulnerability that allows an un-authenticated attacker to execute arbitrary commands on the LoadMaster appliance by exploiting unsanitized input in multiple command endpoints."
@@ -44,18 +56,6 @@
             {
               "id": "CVE-2026-20316",
               "desc": "Cisco Secure Firewall Management Center (FMC) formerly known as Firepower Management Center contains a use of hard-coded password vulnerability that could allow an unauthenticated, remote attacker to log in to an affected device using a low-privileged account to access sensitive data within the impa"
-            },
-            {
-              "id": "CVE-2025-68686",
-              "desc": "Fortinet FortiOS contains an exposure of sensitive information to an unauthorized actor vulnerability. This may allow a remote unauthenticated attacker to bypass the patch developed for the symbolic link persistency mechanism observed in some post-exploit cases, via crafted HTTP requests. An attacke"
-            },
-            {
-              "id": "CVE-2026-16812",
-              "desc": "Arista VeloCloud Orchestrator On-Prem contains an OS command injection vulnerability that may allow a remote attacker to access privileged internal functionality and impact the VCO host. Successful exploitation may compromise the confidentiality, integrity, and availability of the orchestrator and d"
-            },
-            {
-              "id": "CVE-2026-16232",
-              "desc": "Check Point SmartConsole contains an improper authentication vulnerability which could allow an unauthenticated remote attacker to obtain an application login token and use it to authenticate with full administrative privileges."
             }
           ]
         },
@@ -64,6 +64,18 @@
           "color": "orange",
           "items": [
             {
+              "id": "CVE-2026-20349",
+              "desc": "Cisco Secure Firewall Adaptive Security Appliance (ASA) and Secure Firewall Threat Defense (FTD) contain a heap inspection vulnerability that could allow an unauthenticated, remote attacker to cause the device to reload unexpectedly, resulting in a denial of service (DoS) condition."
+            },
+            {
+              "id": "CVE-2026-68820",
+              "desc": "Microsoft Windows Ancillary Function Driver for WinSock contains a use-after-free vulnerability that allows an authorized attacker to elevate privileges locally."
+            },
+            {
+              "id": "CVE-2026-72898",
+              "desc": "Metabase contains a SQL Injection vulnerability that allows an unauthenticated remote attacker to inject arbitrary SQL into the Metabase application database, which can give them administrator access to the instance. From there, the attacker could change the application configuration, steal stored c"
+            },
+            {
               "id": "CVE-2026-8037",
               "desc": "Progress LoadMaster contains a command injection vulnerability that allows an un-authenticated attacker to execute arbitrary commands on the LoadMaster appliance by exploiting unsanitized input in multiple command endpoints."
             },
@@ -90,18 +102,6 @@
             {
               "id": "CVE-2026-20316",
               "desc": "Cisco Secure Firewall Management Center (FMC) formerly known as Firepower Management Center contains a use of hard-coded password vulnerability that could allow an unauthenticated, remote attacker to log in to an affected device using a low-privileged account to access sensitive data within the impa"
-            },
-            {
-              "id": "CVE-2025-68686",
-              "desc": "Fortinet FortiOS contains an exposure of sensitive information to an unauthorized actor vulnerability. This may allow a remote unauthenticated attacker to bypass the patch developed for the symbolic link persistency mechanism observed in some post-exploit cases, via crafted HTTP requests. An attacke"
-            },
-            {
-              "id": "CVE-2026-16812",
-              "desc": "Arista VeloCloud Orchestrator On-Prem contains an OS command injection vulnerability that may allow a remote attacker to access privileged internal functionality and impact the VCO host. Successful exploitation may compromise the confidentiality, integrity, and availability of the orchestrator and d"
-            },
-            {
-              "id": "CVE-2026-16232",
-              "desc": "Check Point SmartConsole contains an improper authentication vulnerability which could allow an unauthenticated remote attacker to obtain an application login token and use it to authenticate with full administrative privileges."
             }
           ]
         },

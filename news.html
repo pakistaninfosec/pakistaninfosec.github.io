@@ -142,7 +142,12 @@ main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:48px 48p
 .error-msg{padding:40px;text-align:center;color:var(--red2);}
 
 /* LOAD MORE */
-.load-more-wrap{text-align:center;margin-top:28px;}
+.day-section{margin-bottom:36px;}
+.day-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+.day-title{font-family:var(--display);font-size:16px;font-weight:700;color:#fff;}
+.day-count{font-size:11.5px;font-weight:600;color:var(--text3);background:var(--bg2);border:1px solid var(--border);padding:3px 10px;border-radius:20px;}
+.day-more-btn{display:block;margin:14px auto 0;background:var(--bg2);border:1px solid var(--border2);color:var(--blue3);font-size:12.5px;font-weight:600;padding:9px 18px;border-radius:8px;cursor:pointer;transition:all 0.2s;}
+.day-more-btn:hover{border-color:var(--blue3);background:var(--bg3);}
 .load-more-btn{background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:12px 32px;font-size:13px;font-weight:600;color:var(--text2);cursor:pointer;transition:all 0.2s;}
 .load-more-btn:hover{color:#fff;border-color:var(--blue2);}
 
@@ -240,13 +245,9 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     <input class="search-input" id="search-input" type="text" placeholder="Search cybersecurity news...">
   </div>
 
-  <!-- NEWS GRID -->
+  <!-- NEWS GRID (grouped by day) -->
   <div id="news-container">
     <div class="loading"><div class="spinner"></div>Fetching latest cybersecurity news...</div>
-  </div>
-
-  <div class="load-more-wrap" id="load-more-wrap" style="display:none">
-    <button class="load-more-btn" onclick="loadMore()">Load More Articles</button>
   </div>
 </main>
 
@@ -340,7 +341,6 @@ let allArticles = [];
 let filteredArticles = [];
 let currentSource = 'all';
 let currentSearch = '';
-let displayCount = 30;
 
 // ═══════════════════════════════════════════════════
 //  FETCH RSS — Multi-proxy fallback system
@@ -523,7 +523,6 @@ function buildSourceFilters() {
 
 function filterSource(id, btn) {
   currentSource = id;
-  displayCount = 30;
   document.querySelectorAll('.src-filter').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   applyFilters();
@@ -544,7 +543,6 @@ function applyFilters() {
 
 document.getElementById('search-input').addEventListener('input', e => {
   currentSearch = e.target.value;
-  displayCount = 30;
   applyFilters();
 });
 
@@ -553,65 +551,90 @@ document.getElementById('search-input').addEventListener('input', e => {
 // ═══════════════════════════════════════════════════
 function renderArticles() {
   const container = document.getElementById('news-container');
-  const toShow = filteredArticles.slice(0, displayCount);
 
-  if (!toShow.length) {
+  if (!filteredArticles.length) {
     container.innerHTML = '<div class="loading"><span style="color:var(--text3)">No articles found</span></div>';
-    document.getElementById('load-more-wrap').style.display = 'none';
+    return;
+  }
+
+  // Group articles by calendar date (one entry per day, not per article)
+  const groups = {};
+  filteredArticles.forEach(a => {
+    const key = isNaN(a.date) ? null : a.date.toISOString().slice(0, 10); // YYYY-MM-DD
+    if (!key) return;
+    (groups[key] = groups[key] || []).push(a);
+  });
+
+  // Rolling 7-day window: keep only the 7 most recent distinct dates.
+  // As new days appear this naturally pushes the oldest day out.
+  const dateKeys = Object.keys(groups).sort((a, b) => b.localeCompare(a));
+  const last7Dates = dateKeys.slice(0, 7);
+
+  if (!last7Dates.length) {
+    container.innerHTML = '<div class="loading"><span style="color:var(--text3)">No articles found</span></div>';
     return;
   }
 
   container.innerHTML = '';
-  const grid = document.createElement('div');
-  grid.className = 'news-grid';
+  const CAP_PER_DAY = 12;
 
-  toShow.forEach(a => {
-    const card = document.createElement('a');
-    card.className = 'news-card';
-    card.href = a.link || '#';
-    card.target = '_blank';
-    card.rel = 'noopener noreferrer';
+  last7Dates.forEach(dateKey => {
+    const dayArticles = groups[dateKey].sort((a, b) => b.date - a.date);
+    const dateObj = new Date(dateKey + 'T00:00:00');
+    const today = new Date(); today.setHours(0,0,0,0);
+    const isToday = dateObj.getTime() === today.getTime();
+    const label = (isToday ? 'Today — ' : '') + dateObj.toLocaleDateString('en-PK', {weekday:'long', month:'long', day:'numeric', year:'numeric'});
 
-    const dateStr = isNaN(a.date)
-      ? '—'
-      : a.date.toLocaleDateString('en-PK',{month:'short',day:'numeric',year:'numeric'});
+    const section = document.createElement('div');
+    section.className = 'day-section';
+    section.innerHTML = `<div class="day-header"><span class="day-title">${label}</span><span class="day-count">${dayArticles.length} article${dayArticles.length===1?'':'s'}</span></div>`;
 
-    const timeStr = isNaN(a.date)
-      ? ''
-      : a.date.toLocaleTimeString('en-PK',{hour:'2-digit',minute:'2-digit'});
+    const grid = document.createElement('div');
+    grid.className = 'news-grid';
+    dayArticles.slice(0, CAP_PER_DAY).forEach(a => grid.appendChild(makeCard(a)));
+    section.appendChild(grid);
 
-    card.innerHTML = `
-      <div class="card-accent ${a.sourceAccent}"></div>
-      <div class="card-body">
-        <div class="card-source">
-          <span class="src-badge ${a.sourceCls}">${a.source}</span>
-          <span class="card-date">${dateStr} ${timeStr}</span>
-        </div>
-        <div class="card-title">${esc(a.title)}</div>
-        ${a.desc ? `<div class="card-desc">${esc(a.desc)}</div>` : ''}
-      </div>
-      ${a.tags.length ? `
-      <div class="card-footer">
-        <div class="card-tags">${a.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-        <span class="read-more">Read →</span>
-      </div>` : `<div class="card-footer"><span class="read-more">Read full article →</span></div>`}`;
-    grid.appendChild(card);
+    if (dayArticles.length > CAP_PER_DAY) {
+      const remaining = dayArticles.length - CAP_PER_DAY;
+      const moreBtn = document.createElement('button');
+      moreBtn.className = 'day-more-btn';
+      moreBtn.textContent = `Show ${remaining} more from this day`;
+      moreBtn.onclick = () => {
+        dayArticles.slice(CAP_PER_DAY).forEach(a => grid.appendChild(makeCard(a)));
+        moreBtn.remove();
+      };
+      section.appendChild(moreBtn);
+    }
+
+    container.appendChild(section);
   });
-
-  container.appendChild(grid);
-
-  // Load more button
-  const lmw = document.getElementById('load-more-wrap');
-  if (filteredArticles.length > displayCount) {
-    lmw.style.display = 'block';
-  } else {
-    lmw.style.display = 'none';
-  }
 }
 
-function loadMore() {
-  displayCount += 30;
-  renderArticles();
+function makeCard(a) {
+  const card = document.createElement('a');
+  card.className = 'news-card';
+  card.href = a.link || '#';
+  card.target = '_blank';
+  card.rel = 'noopener noreferrer';
+
+  const timeStr = isNaN(a.date) ? '' : a.date.toLocaleTimeString('en-PK', {hour:'2-digit', minute:'2-digit'});
+
+  card.innerHTML = `
+    <div class="card-accent ${a.sourceAccent}"></div>
+    <div class="card-body">
+      <div class="card-source">
+        <span class="src-badge ${a.sourceCls}">${a.source}</span>
+        <span class="card-date">${timeStr}</span>
+      </div>
+      <div class="card-title">${esc(a.title)}</div>
+      ${a.desc ? `<div class="card-desc">${esc(a.desc)}</div>` : ''}
+    </div>
+    ${a.tags.length ? `
+    <div class="card-footer">
+      <div class="card-tags">${a.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <span class="read-more">Read →</span>
+    </div>` : `<div class="card-footer"><span class="read-more">Read full article →</span></div>`}`;
+  return card;
 }
 
 function esc(s) {

@@ -191,12 +191,11 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 <script>
 'use strict';
 
-// Key configured for InfoSec Pakistan frontend
-const _k = ['Z3NrX2ZEZmhl','S1RodDhGeUQy','d1hkT0NUV0dk','eWIzRlk2eE96','aFNlV0pjekFp','T1N0VnlmdzRv','SWQ='];
-const GROQ_KEY = atob(_k.join(''));
-const DATA_URL  = 'https://pakistaninfosec.github.io/data/threats.json';
-const GROQ_URL  = 'https://api.groq.com/openai/v1/chat/completions';
-const MODEL     = 'llama-3.3-70b-versatile';
+// AI analysis is now generated server-side by bridge_to_github.py (using the
+// GROQ_API_KEY GitHub Actions secret) and published here — no key lives in
+// this public page anymore.
+const DATA_URL     = 'https://pakistaninfosec.github.io/data/threats.json';
+const ANALYSIS_URL = 'https://pakistaninfosec.github.io/data/cve-analysis.json';
 
 // ── Helpers ────────────────────────────────────────
 function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
@@ -242,26 +241,6 @@ function renderError(msg){
         <a href="database.html" style="color:var(--blue3);font-size:13px">← Back to CVE Database</a>
       </div>
     </div>`;
-}
-
-// ── Call Groq AI ───────────────────────────────────
-async function callGroq(prompt){
-  const r = await fetch(GROQ_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + GROQ_KEY
-    },
-    body: JSON.stringify({
-      model: MODEL,
-      max_tokens: 1800,
-      temperature: 0.4,
-      messages: [{ role: 'user', content: prompt }]
-    })
-  });
-  if(!r.ok) throw new Error('Groq API error: ' + r.status);
-  const d = await r.json();
-  return d.choices[0].message.content.trim();
 }
 
 // ── Parse AI response into sections ───────────────
@@ -368,7 +347,7 @@ function renderPage(threat, ai){
     ? `https://nvd.nist.gov/vuln/detail/${threat.id}`
     : (threat.url || '#');
 
-  const sections = parseAI(ai);
+  const sections = (typeof ai === 'string') ? parseAI(ai) : ai;
 
   document.title = `${threat.id} — InfoSec Pakistan`;
 
@@ -534,49 +513,36 @@ async function main(){
   document.getElementById('main-content').innerHTML = `
     <div class="ai-generating" style="padding:40px;justify-content:center;flex-direction:column;text-align:center;gap:16px;">
       <div class="ai-spinner" style="width:28px;height:28px;margin:0 auto"></div>
-      <div>🤖 Generating AI analysis for <strong style="color:var(--blue3)">${esc(cveId)}</strong>...<br>
-      <span style="font-size:12px;color:var(--text3)">This takes 3-8 seconds</span></div>
+      <div>Loading AI analysis for <strong style="color:var(--blue3)">${esc(cveId)}</strong>...</div>
     </div>`;
 
-const prompt = `You are a senior cybersecurity analyst at Pakistan's national CERT. Analyze this vulnerability and write a structured threat advisory.
-
-CVE ID: ${threat.id}
-Description: ${threat.desc}
-Severity: ${threat.severity}
-Source: ${threat.source}
-Date: ${threat.date}
-Pakistan Alert: ${threat.pakistan ? 'YES' : 'No'}
-Tags: ${(threat.tags||[]).join(', ')||'None'}
-
-CRITICAL INSTRUCTION: You MUST use EXACTLY these section headers, with ## prefix and UPPERCASE:
-
-##TECHNICAL_DETAILS
-Write 2-3 paragraphs explaining: what type of vulnerability this is (RCE, SQLi, XSS, buffer overflow, etc.), how it works technically, attack vector (network/local/physical), authentication needed, and impact on confidentiality, integrity, availability.
-
-##RISK_ASSESSMENT
-Write 1-2 paragraphs covering: exploitability score, whether it is actively exploited in the wild, potential business impact, data breach risk, and operational disruption likelihood for Pakistani organizations.
-
-##AFFECTED_PRODUCTS
-List ALL affected products and versions as bullet points using - prefix. Include vendor name, product name, and specific version ranges.
-
-##MITIGATION_STEPS
-List numbered steps (1. 2. 3.) for immediate mitigation. Include: apply patches, update versions, workarounds if no patch, detection methods, monitoring recommendations.
-
-##PAKISTAN_ANALYSIS
-Write 1-2 paragraphs on: which Pakistani sectors are at risk (banking, telecom, government, healthcare, education), specific recommendations for Pakistani organizations, any relation to Pakistan CERT advisories.
-
-Use these EXACT section headers. Do not rename them. Do not add other sections.`;
-
-
-  // Call Groq
-  let aiText = '';
+  // Fetch pre-generated analysis (produced server-side by bridge_to_github.py,
+  // where the Groq key stays safely in a GitHub Actions secret — never shipped
+  // to this public page).
+  let sections = null;
   try{
-    aiText = await callGroq(prompt);
+    const res = await fetch(ANALYSIS_URL + '?t=' + Date.now());
+    if(res.ok){
+      const all = await res.json();
+      sections = all[threat.id] || all[(threat.id||'').toUpperCase()] || null;
+    }
   } catch(e){
-    aiText = `##TECHNICAL_DETAILS\nAI analysis temporarily unavailable. Please refer to the NVD entry for ${threat.id} for technical details.\n\n##RISK_ASSESSMENT\nBased on severity rating of ${threat.severity}, this vulnerability requires immediate attention.\n\n##AFFECTED_PRODUCTS\nSee official vendor advisory for affected product versions.\n\n##MITIGATION_STEPS\n1. Apply vendor patches immediately.\n2. Monitor systems for signs of exploitation.\n3. Review Pakistan CERT advisories at pkcert.gov.pk.\n\n##PAKISTAN_ANALYSIS\nPakistani organizations using affected products should apply patches immediately and contact Pakistan CERT for guidance.`;
+    console.error('Could not load cve-analysis.json:', e);
   }
 
-  renderPage(threat, aiText);
+  if(!sections){
+    // Not yet processed — analysis is generated in small batches every 30
+    // minutes, so newer or lower-priority CVEs may not have one yet.
+    sections = {
+      TECHNICAL_DETAILS: `Detailed analysis for ${threat.id} hasn't been generated yet. It's queued and will appear within the next few automated update cycles. In the meantime, see the NVD entry linked below for full technical details.`,
+      RISK_ASSESSMENT: `Based on its severity rating of ${threat.severity}, this vulnerability should be treated with appropriate urgency in the meantime.`,
+      AFFECTED_PRODUCTS: 'See the official vendor advisory or NVD entry for affected product versions.',
+      MITIGATION_STEPS: '1. Apply vendor patches immediately.\n2. Monitor systems for signs of exploitation.\n3. Review Pakistan CERT advisories at pkcert.gov.pk.',
+      PAKISTAN_ANALYSIS: 'Pakistani organizations using affected products should apply patches immediately and contact Pakistan CERT for guidance.'
+    };
+  }
+
+  renderPage(threat, sections);
 }
 
 // Hamburger

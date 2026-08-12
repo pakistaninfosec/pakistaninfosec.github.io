@@ -471,8 +471,111 @@ Write 3 sentences. Mention specific CVE IDs and vendors. Focus on what Pakistani
         return None
 
 
-def convert_records(raw_records):
-    threats = []
+def parse_ai_sections(text):
+    """Split raw AI output into the 5 fixed sections, robust to header formatting."""
+    keys = ["TECHNICAL_DETAILS", "RISK_ASSESSMENT", "AFFECTED_PRODUCTS", "MITIGATION_STEPS", "PAKISTAN_ANALYSIS"]
+    result = {k: "" for k in keys}
+    import re as _re
+    # Find each ##KEY marker (with or without space) and slice content between them
+    pattern = r'#{1,4}\s*(' + '|'.join(keys) + r')\s*\n'
+    matches = list(_re.finditer(pattern, text, _re.IGNORECASE))
+    if matches:
+        for i, m in enumerate(matches):
+            key = m.group(1).upper()
+            start = m.end()
+            end = matches[i+1].start() if i+1 < len(matches) else len(text)
+            if key in result:
+                result[key] = text[start:end].strip()
+    else:
+        result["TECHNICAL_DETAILS"] = text.strip()
+    for k in keys:
+        if not result[k]:
+            result[k] = "Please refer to the NVD entry for full details."
+    return result
+
+
+def generate_cve_analysis(threats, max_new_per_run=8):
+    """
+    Generate the 5-section AI analysis for CVEs server-side (secret stays safe
+    in the Actions runner) and merge into data/cve-analysis.json.
+    Only processes a small batch of the newest CRITICAL/HIGH CVEs per run —
+    every run picks up a few more, so full coverage builds up over time
+    without blowing through Groq rate limits or run duration.
+    """
+    if not GROQ_API_KEY:
+        print("::warning::No GROQ_API_KEY — skipping CVE analysis generation")
+        return {}
+    try:
+        from groq import Groq
+        client = Groq(api_key=GROQ_API_KEY)
+    except Exception as e:
+        print(f"::warning::CVE analysis: Groq client init failed: {e}")
+        return {}
+
+    # Load existing analysis so we only top up what's missing
+    existing = {}
+    try:
+        url = f"https://raw.githubusercontent.com/{GITHUB_REPO}/main/data/cve-analysis.json"
+        res = requests.get(url, timeout=15)
+        if res.status_code == 200:
+            existing = res.json()
+    except Exception as e:
+        print(f"[!] Could not load existing cve-analysis.json: {e}")
+
+    current_ids = {t["id"] for t in threats}
+    # Prune entries for CVEs no longer tracked, so the file doesn't grow forever
+    existing = {k: v for k, v in existing.items() if k in current_ids}
+
+    candidates = [t for t in threats if t["id"] not in existing and t.get("severity") in ("CRITICAL", "HIGH")]
+    candidates.sort(key=lambda t: t.get("date", ""), reverse=True)
+    batch = candidates[:max_new_per_run]
+
+    if not batch:
+        print("[✓] CVE analysis: nothing new to generate this run")
+        return existing
+
+    print(f"[→] Generating AI analysis for {len(batch)} CVE(s)...")
+    for t in batch:
+        prompt = f"""You are a senior cybersecurity analyst. Write a structured analysis of this vulnerability for Pakistani security teams.
+
+CVE: {t['id']}
+Description: {t.get('description','')}
+Severity: {t.get('severity','')}
+Source: {t.get('source','')}
+Date: {t.get('date','')}
+
+Respond in EXACTLY this format, with each section header on its own line exactly as written:
+
+##TECHNICAL_DETAILS
+(2-3 sentences on what the vulnerability is and how it works)
+
+##RISK_ASSESSMENT
+(2-3 sentences on real-world risk and exploitability)
+
+##AFFECTED_PRODUCTS
+(list the affected products/versions if known, else say to check the vendor advisory)
+
+##MITIGATION_STEPS
+(numbered list of 3 concrete remediation steps)
+
+##PAKISTAN_ANALYSIS
+(2-3 sentences on relevance to Pakistani organizations specifically)"""
+        try:
+            response = client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=900, temperature=0.4,
+            )
+            raw_text = response.choices[0].message.content.strip()
+            existing[t["id"]] = parse_ai_sections(raw_text)
+            print(f"  [✓] {t['id']}")
+        except Exception as e:
+            print(f"  ::warning::CVE analysis failed for {t['id']}: {e}")
+
+    return existing
+
+
+
     for r in raw_records:
         tags_raw = r.get("tags", "")
         tags = tags_raw if isinstance(tags_raw, list) else \
@@ -634,10 +737,20 @@ def main():
     except Exception as e:
         print(f"::warning::Blog generation failed: {e}")
 
+    # Generate per-CVE AI analysis (batched — a few new CVEs per run)
+    print("\n🔬 Generating CVE analysis batch...")
+    try:
+        cve_analysis = generate_cve_analysis(td["threats"])
+    except Exception as e:
+        print(f"::warning::CVE analysis generation failed: {e}")
+        cve_analysis = None
+
     if GITHUB_TOKEN:
         print("\n📤 Pushing to GitHub...")
         push_to_github("threats.json", td)
         push_to_github("reports.json", rd)
+        if cve_analysis is not None:
+            push_to_github("cve-analysis.json", cve_analysis)
     else:
         print("[!] No GITHUB_TOKEN — data not pushed")
 

@@ -575,7 +575,8 @@ Respond in EXACTLY this format, with each section header on its own line exactly
     return existing
 
 
-
+def convert_records(raw_records):
+    threats = []
     for r in raw_records:
         tags_raw = r.get("tags", "")
         tags = tags_raw if isinstance(tags_raw, list) else \

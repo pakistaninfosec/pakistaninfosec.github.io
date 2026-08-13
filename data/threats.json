@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-13T22:43:33.224764+00:00",
-  "summary": "Pakistani organizations should immediately prioritize patching critical vulnerabilities, particularly CVE-2026-20349 and CVE-2026-68820, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple vendors including Microsoft and Adobe. The presence of 77 zero-day exploits, including CVE-2026-72898 and CVE-2026-8037, poses a significant threat to local networks, and organizations should ensure their security controls are up-to-date to mitigate these risks. To protect against threats specific to Pakistan, organizations should review the latest alerts from Pakistan CERT, including PKCERT-71DA9F40 and PKCERT-E48A22A6, and take proactive measures to secure their systems and networks against these emerging threats.",
+  "generated": "2026-08-13T23:42:34.920615+00:00",
+  "summary": "Pakistani organizations should immediately prioritize patching critical vulnerabilities, particularly CVE-2026-20349 and CVE-2026-68820, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple vendors including Microsoft and Adobe. The Pakistan CERT/NCCS has also issued alerts for PKCERT-71DA9F40 and PKCERT-E48A22A6, which target local organizations, and it is essential that these alerts are reviewed and mitigated promptly to prevent potential breaches. To mitigate the risk of zero-day exploits, such as CVE-2026-72898 and CVE-2026-8037, Pakistani organizations should ensure that their security systems are up-to-date and that they have implemented robust vulnerability management and incident response plans.",
   "stats": {
     "new": 590,
     "changed": 0,
     "removed": 0,
-    "total": 331174,
+    "total": 331764,
     "zeroday": 77,
     "exploited": 27,
     "pakistan": 13
@@ -850,7 +850,7 @@
     {
       "id": "CVE-2026-68431",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: validate minimum PDU size for transform requests\n\nThe receive path applies the minimum SMB2 PDU size check only when\nProtocolId is SMB2_PROTO_NUMBER. A packet carrying\nSMB2_TRANSFORM_PROTO_NUM bypasses the check even when th",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-12",
       "pakistan": false,
@@ -862,13 +862,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68431",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-68432",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nvxlan: require CAP_NET_ADMIN in the device netns for changelink\n\nA tunnel changelink() operates on at most two netns, dev_net(dev) and\nthe sticky underlay netns vxlan->net. They differ once the device is\ncreated in or moved to a ne",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-12",
       "pakistan": false,
@@ -880,13 +880,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68432",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-68433",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nlibceph: bound get_version reply decode to front len\n\nhandle_get_version_reply() uses msg->front_alloc_len as the decode\nboundary for MON_GET_VERSION_REPLY.  That is the size of the reused\nreply buffer, not the number of bytes actu",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-12",
       "pakistan": false,
@@ -898,7 +898,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68433",
-      "cvss": "0.0",
+      "cvss": "8.6",
       "cwe": ""
     },
     {
@@ -1012,7 +1012,7 @@
     {
       "id": "CVE-2026-68440",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: txgbe: fix heap overflow when reading module EEPROM\n\ntxgbe_read_eeprom_hostif() always copies round_up(length, 4) bytes\ninto the caller buffer, which ethtool allocates with exactly 'length'\nbytes. A non-4-aligned length theref",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-12",
       "pakistan": false,
@@ -1024,7 +1024,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68440",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -1048,7 +1048,7 @@
     {
       "id": "CVE-2026-68442",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: don't propagate EXTENT_FLAG_LOGGING to split extent maps\n\nWhen btrfs_drop_extent_map_range() splits an extent map, the new split\nmaps inherit the original map's flags through a local 'flags' variable.\nCommit f86f7a75e2fb (\"b",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-12",
       "pakistan": false,
@@ -1060,7 +1060,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68442",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -1102,7 +1102,7 @@
     {
       "id": "CVE-2026-68445",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vc4: Prevent shader BO mappings from becoming writable\n\nvc4_gem_object_mmap() rejects a writable mapping of a validated shader\nBO, but leaves VM_MAYWRITE set.  Userspace can map the BO read-only and\nthen turn it writable with m",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-12",
       "pakistan": false,
@@ -1114,13 +1114,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68445",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-68446",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vmwgfx: Validate vmw_surface_metadata::array_size\n\nThis field comes from userspace and should be validated against specific\nlimits depending on which Shader Model (SM) is available.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-12",
       "pakistan": false,
@@ -1132,7 +1132,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68446",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -1156,7 +1156,7 @@
     {
       "id": "CVE-2026-68447",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: clamp v9 CRIU control stack checkpoint copy to BO size\n\nCRIU checkpoint copies the MQD control stack using cp_hqd_cntl_stack_size\nfrom hardware without bounding it to the allocated BO region. If the HW\nfield is larger t",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-12",
       "pakistan": false,
@@ -1168,7 +1168,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68447",
-      "cvss": "0.0",
+      "cvss": "7.1",
       "cwe": ""
     },
     {

@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-13T13:15:24.636097+00:00",
-  "summary": "Pakistani organizations should prioritize patching critical vulnerabilities, particularly CVE-2026-20349 and CVE-2026-68820, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple vendors including Microsoft and Adobe. The presence of 77 zero-day exploits, including CVE-2026-72898 and CVE-2026-8037, poses a significant threat to local networks, and immediate attention is required to mitigate these risks. Pakistani CERT alerts PKCERT-71DA9F40 and PKCERT-E48A22A6 also warrant attention, as they involve vulnerabilities in widely used software, and organizations should review these alerts and apply the recommended patches to prevent potential attacks.",
+  "generated": "2026-08-13T16:00:30.929494+00:00",
+  "summary": "Pakistani organizations should prioritize patching critical vulnerabilities, particularly CVE-2026-20349 and CVE-2026-68820, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple vendors including Microsoft and Google. The presence of 77 zero-day exploits, including CVE-2026-72898 and CVE-2026-8037, poses a significant threat to local networks, and immediate attention is required to mitigate these risks. Pakistani CERT/NCCS alerts, such as PKCERT-71DA9F40 and PKCERT-E48A22A6, also warrant urgent attention, and organizations should review the latest threat intelligence from Pakistan CERT to ensure they are adequately protected against these emerging threats.",
   "stats": {
     "new": 590,
     "changed": 0,
     "removed": 0,
-    "total": 318834,
+    "total": 319424,
     "zeroday": 77,
     "exploited": 27,
     "pakistan": 13
@@ -4282,7 +4282,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65017",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -4450,7 +4450,7 @@
     {
       "id": "CVE-2026-67587",
       "desc": "Apache Airflow's Task SDK rebuilt a `Callback` object from serialized data by re-running its constructor, which imports the module named by the stored callback path. Because `SyncCallback` is itself an Airflow class it passes the default `allowed_deserialization_classes` allow-list, so tightening th",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-12",
       "pakistan": false,
@@ -4462,7 +4462,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-67587",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -4522,7 +4522,7 @@
     {
       "id": "CVE-2026-68968",
       "desc": "Apache Airflow's Backfill API authorized a request against a Dag id supplied by the caller whenever the `backfill_id` path segment failed to parse. The authorization dependency parsed it with `int()` while the route handler parsed it as pydantic's `NonNegativeInt`, which accepts values `int()` rejec",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-12",
       "pakistan": false,
@@ -4534,7 +4534,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68968",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -4552,7 +4552,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68969",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -4588,7 +4588,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68971",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -8752,7 +8752,7 @@
     {
       "id": "CVE-2026-16770",
       "desc": "PDF::WebKit versions through 1.2 for Perl allow argument injection into wkhtmltopdf via meta tags in the source document.\n\nFor an HTML string or file source, the constructor collects every <meta name=\"pdf-webkit-KEY\" content=\"VALUE\"> element in the document head through _pdf_webkit_meta_tags and tur",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-13",
       "pakistan": false,
@@ -8764,7 +8764,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16770",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -8782,7 +8782,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17431",
-      "cvss": "0.0",
+      "cvss": "6.1",
       "cwe": ""
     },
     {
@@ -9220,7 +9220,7 @@
     {
       "id": "CVE-2026-14182",
       "desc": "The Customer Email Verification for WooCommerce WordPress plugin before 3.2.6 does not correctly validate the email-verification activation code, relying on a loose comparison that an attacker can satisfy with a crafted value type, allowing unauthenticated users to verify and take over the account o",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-13",
       "pakistan": false,
@@ -9232,13 +9232,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14182",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-14213",
       "desc": "The Booking for Appointments and Events Calendar  WordPress plugin before 2.4.6 does not verify that an authenticated employee (provider) is assigned to the appointment being accessed, allowing any employee to read any appointment by its identifier and disclose the booked customer's personal data.",
-      "severity": "MEDIUM",
+      "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-08-13",
       "pakistan": false,
@@ -9250,13 +9250,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14213",
-      "cvss": "0.0",
+      "cvss": "3.7",
       "cwe": ""
     },
     {
       "id": "CVE-2026-18945",
       "desc": "The WP Helper Premium WordPress plugin before 4.7.6 does not verify the order key when rendering its custom order confirmation page or when handling the related AJAX actions, allowing unauthenticated users to view other customers' order details, including personal information, as well as change the ",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-13",
       "pakistan": false,
@@ -9268,7 +9268,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18945",
-      "cvss": "0.0",
+      "cvss": "8.2",
       "cwe": ""
     },
     {
@@ -9286,7 +9286,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19088",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {

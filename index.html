@@ -30,7 +30,8 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 /* NAV */
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(5,7,13,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
-.brand-icon{width:36px;height:36px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 24px rgba(37,99,235,0.4);}
+.brand-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 0 10px rgba(2,105,55,0.55));}
+.brand-icon svg{width:100%;height:100%;}
 .brand-name{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-0.01em;color:#fff;}
 .brand-name span{color:var(--blue3);}
 .nav-links{display:flex;gap:2px;}
@@ -143,7 +144,12 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 /* ── END TICKER ─────────────────────────────────────────────── */
 
 /* HERO — split layout like CTM360 */
-.hero{position:relative;z-index:1;padding:56px 48px;min-height:auto;border-bottom:1px solid var(--border);overflow:hidden;}
+.hero{position:relative;z-index:1;display:grid;grid-template-columns:1fr 340px;min-height:auto;border-bottom:1px solid var(--border);overflow:hidden;}
+.hero-right{position:relative;display:flex;align-items:center;justify-content:center;border-left:1px solid var(--border);background:radial-gradient(ellipse at center,rgba(37,99,235,0.08) 0%,rgba(5,7,13,0) 70%);}
+.hero-graphic{width:100%;max-width:330px;height:auto;filter:drop-shadow(0 12px 28px rgba(0,0,0,0.45));}
+.hero-graphic-light{display:none;}
+body.light .hero-graphic-dark{display:none;}
+body.light .hero-graphic-light{display:block;}
 
 /* Left hero text */
 .hero-left{padding:64px 48px;background:linear-gradient(135deg,rgba(37,99,235,0.05) 0%,transparent 60%);}
@@ -151,6 +157,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .hero-title{font-family:var(--display);font-size:clamp(36px,3.5vw,52px);font-weight:700;line-height:0.98;letter-spacing:-0.03em;color:#fff;margin-bottom:18px;}
 .hero-title span{color:var(--blue3);}
 .hero-desc{font-size:15px;color:var(--text2);font-weight:400;line-height:1.75;max-width:480px;margin-bottom:0;}
+
 .hero-stats{display:flex;gap:36px;}
 .hs-item{}
 .hs-num{font-family:var(--display);font-size:28px;font-weight:700;letter-spacing:-0.03em;color:#fff;}
@@ -410,7 +417,8 @@ body.light .theme-toggle::after{left:23px;background:#fff;}
   .nav-links a:last-child{border-bottom:none;}
 
   /* Hero */
-  .hero{padding:28px 16px 24px;}
+  .hero{grid-template-columns:1fr;padding:28px 16px 24px;}
+  .hero-right{display:none;}
   .hero-left{padding:0;}
   .hero-title{font-size:clamp(26px,7vw,38px);}
   .hero-desc{font-size:13px;}
@@ -544,7 +552,23 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 <!-- NAV -->
 <nav>
   <a class="brand" href="index.html">
-    <div class="brand-icon">🛡</div>
+    <div class="brand-icon">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="logoShieldClip">
+            <path d="M50 4 L88 18 L88 50 C88 72 71 88 50 96 C29 88 12 72 12 50 L12 18 Z"/>
+          </clipPath>
+        </defs>
+        <g clip-path="url(#logoShieldClip)">
+          <rect x="0" y="0" width="100" height="100" fill="#026937"/>
+          <rect x="0" y="0" width="26" height="100" fill="#ffffff"/>
+        </g>
+        <path d="M50 4 L88 18 L88 50 C88 72 71 88 50 96 C29 88 12 72 12 50 L12 18 Z" fill="none" stroke="#026937" stroke-width="2"/>
+        <circle cx="60" cy="46" r="15" fill="#fff"/>
+        <circle cx="67" cy="41" r="12.5" fill="#026937"/>
+        <path d="M62.0 34.0 L64.47 41.6 L72.46 41.6 L66.0 46.3 L68.47 53.9 L62.0 49.2 L55.53 53.9 L58.0 46.3 L51.54 41.6 L59.53 41.6 Z" fill="#fff"/>
+      </svg>
+    </div>
     <div class="brand-name">INFOSEC <span>PAKISTAN</span></div>
   </a>
   <div class="nav-links" id="nav-links">
@@ -552,11 +576,11 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     <a href="reports.html">Daily Reports</a>
     <a href="database.html">CVE Database</a>
     <a href="news.html">News</a>
-    <a href="blogs.html">Blogs</a>       
-    <a href="sandbox.html">Sandbox</a>
-     <a href="services.html">Services</a>
-     <a href="about.html">About</a>
+    <a href="blogs.html">Blogs</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
     <a href="contact.html">Contact</a>
+    <a href="sandbox.html">Sandbox</a>
   </div>
   <div style="display:flex;align-items:center;gap:12px;">
     <span class="theme-icon" id="theme-icon">🌙</span>
@@ -582,11 +606,15 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 </div>
 <!-- ── END TICKER ──────────────────────────────────────────── -->
 
-<!-- HERO WITH RADAR -->
+<!-- HERO -->
 <div class="hero">
   <div class="hero-left">
     <div class="hero-title">Real-Time <span>Cybersecurity</span><br>Threat Intelligence</div>
     <div class="hero-desc">Free, AI-powered threat intelligence for Pakistani organizations — refreshed every 30 minutes, around the clock.</div>
+  </div>
+  <div class="hero-right">
+    <img src="hero-graphic-dark.png" alt="Cybersecurity threat intelligence for Pakistan" class="hero-graphic hero-graphic-dark">
+    <img src="hero-graphic-light.png" alt="Cybersecurity threat intelligence for Pakistan" class="hero-graphic hero-graphic-light" onerror="this.onerror=null;this.src='hero-graphic-dark.png';">
   </div>
 </div>
 

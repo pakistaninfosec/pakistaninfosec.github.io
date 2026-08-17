@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-17T05:35:58.290728+00:00",
-  "summary": "Pakistani organizations should prioritize patching critical vulnerabilities in Microsoft and Adobe products, particularly CVE-2026-20349 and CVE-2026-68820, which are being actively exploited and have been added to the CISA KEV catalog. The Pakistan CERT has also issued alerts for PKCERT-917CDA37 and PKCERT-78CA5DA2, which target vulnerabilities in locally used software and should be addressed immediately to prevent potential attacks. To mitigate the risk of zero-day exploits, organizations should focus on implementing security updates for CVE-2026-72898 and CVE-2026-8037, which affect multiple vendors including Google and Mozilla, and ensure that all systems and applications are up-to-date with the latest security patches.",
+  "generated": "2026-08-17T06:58:15.094833+00:00",
+  "summary": "Pakistani organizations should immediately prioritize patching critical vulnerabilities, particularly CVE-2026-20349 and CVE-2026-68820, which are being actively exploited and have been added to the CISA KEV catalog, affecting multiple Microsoft and Adobe products. The Pakistan CERT/NCCS has also issued alerts for PKCERT-917CDA37 and PKCERT-78CA5DA2, which target local vulnerabilities in commonly used software, and organizations should take immediate action to mitigate these threats. To minimize risk, Pakistani organizations should focus on remediating these specific vulnerabilities, as well as applying patches for CVE-2026-72898 and CVE-2026-8037, which are also being exploited in the wild and pose a significant threat to their networks and systems.",
   "stats": {
-    "new": 219,
+    "new": 226,
     "changed": 0,
     "removed": 0,
-    "total": 385867,
+    "total": 386093,
     "zeroday": 68,
     "exploited": 18,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 135
+      "count": 142
     },
     {
       "name": "Exploit-DB",
@@ -2032,7 +2032,7 @@
     {
       "id": "CVE-2026-74578",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ncrypto: algif_skcipher - force synchronous processing on trees without ctx->state\n\nThe AIO/async path in skcipher_recvmsg() passes the socket-wide ctx->iv\ndirectly into the skcipher request. After io_submit() the socket lock is\ndro",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-16",
       "pakistan": false,
@@ -2044,7 +2044,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74578",
-      "cvss": "0.0",
+      "cvss": "7.1",
       "cwe": ""
     },
     {
@@ -3107,6 +3107,132 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19986",
       "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13700",
+      "desc": "The WooMS WordPress plugin through 9.14 does not validate a user-supplied URL before using it in a server-side request and attaches stored third-party integration credentials to every such request, allowing unauthenticated attackers to perform Server-Side Request Forgery and to disclose the configur",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13700",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-14832",
+      "desc": "The ShopSmart Loyalty for WooCommerce WordPress plugin through 1.0.0 does not perform any authorization or ownership check on a phone-number lookup exposed to unauthenticated users, allowing anyone who knows a customer's phone number to retrieve that customer's loyalty profile, including name, email",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14832",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19987",
+      "desc": "A security vulnerability has been detected in SourceCodester Best Employee Management System 1.0. This affects an unknown function of the file /assets/uploadImage/Profile/. Such manipulation leads to exposure of information through directory listing. It is possible to launch the attack remotely.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19987",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19988",
+      "desc": "A vulnerability was detected in Alaev SEO Tools Extension up to 1.0.10 on Chrome. This impacts the function addDiv of the file src/popup.html of the component Popup UI. Performing a manipulation results in basic cross site scripting. The attack can be initiated remotely. The exploit is now public an",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19988",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19992",
+      "desc": "A flaw has been found in Orange View Limited DualSafe Password Manager & Digital Vault Extension up to 1.4.35 on Chrome. Affected is an unknown function of the component postMessage-based Bridge. Executing a manipulation can lead to information disclosure. The attack can be launched remotely. A high",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-08-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19992",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19993",
+      "desc": "A vulnerability has been found in Webkul Bagisto up to 2.4.4. Affected by this vulnerability is an unknown functionality of the file /customer/account/rma/update-status of the component RMA State Validation. The manipulation leads to enforcement of behavioral workflow. The attack may be initiated re",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19993",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-74579",
+      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nft_payload: fix mask build for partial field offload\n\nnft_payload_offload_mask() builds the offload match mask for a payload\nexpression that covers only part of a header field.  For a partial IPv6\naddress match (field_l",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74579",
+      "cvss": "0.0",
       "cwe": ""
     },
     {

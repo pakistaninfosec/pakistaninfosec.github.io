@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy — InfoSec Pakistan</title>
+<meta name="description" content="Privacy policy for InfoSec Pakistan, covering data collection, cookies, Google AdSense, and analytics.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1391334995238896" crossorigin="anonymous"></script>
@@ -35,6 +36,11 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .live-badge{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--green);background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);padding:7px 16px;border-radius:6px;}
 .live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
 /* MAIN */
 main{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:60px 48px;}
@@ -87,6 +93,17 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
 .footer-brand span{color:var(--blue3);}
 .footer-txt{font-size:12px;color:var(--text3);}
 .footer-link{color:var(--blue3);text-decoration:none;}
+
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .hamburger{display:flex;}
+  .nav-links{display:none;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(5,7,13,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px;gap:4px;z-index:150;}
+  .nav-links.open{display:flex;}
+  .nav-links a{padding:12px 16px;font-size:15px;border-radius:8px;border-bottom:1px solid var(--border);}
+  main{padding:32px 16px;}
+  .page-title{font-size:28px;}
+  footer{padding:20px 16px;flex-direction:column;text-align:center;}
+}
 </style>
 </head>
 <body>
@@ -96,16 +113,21 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     <div class="brand-icon">🛡</div>
     <div class="brand-name">INFOSEC <span>PAKISTAN</span></div>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="nav-links">
     <a href="index.html">Dashboard</a>
     <a href="reports.html">Daily Reports</a>
     <a href="database.html">CVE Database</a>
+    <a href="news.html">News</a>
+    <a href="blogs.html">Blogs</a>
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
     <a href="contact.html">Contact</a>
-    <a href="privacy.html" class="active">Privacy</a>
+    <a href="sandbox.html">Sandbox</a>
   </div>
-  <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
 <main>
@@ -116,7 +138,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
     <div class="page-title">Privacy <span>Policy</span></div>
     <div class="page-meta">
       <span class="pm-item">Effective Date: May 13, 2026</span>
-      <span class="pm-item">Last Updated: May 13, 2026</span>
+      <span class="pm-item">Last Updated: August 14, 2026</span>
       <span class="pm-item">Website: pakistaninfosec.github.io</span>
     </div>
   </div>
@@ -327,9 +349,18 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   <div class="footer-txt">
     © 2026 InfoSec Pakistan · All rights reserved ·
     <a class="footer-link" href="privacy.html">Privacy Policy</a> ·
+    <a class="footer-link" href="disclaimer.html">Disclaimer</a> ·
+    <a class="footer-link" href="terms.html">Terms</a> ·
     <a class="footer-link" href="contact.html">Contact</a>
   </div>
 </footer>
+
+<script>
+function toggleNav(){
+  document.getElementById('nav-links').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+</script>
 
 </body>
 </html>

@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-20T18:40:54.127674+00:00",
+  "generated": "2026-08-20T19:33:08.446842+00:00",
   "summary": "Today's digest contains 589 vulnerabilities across 5 sources. 76 zero-day exploits detected, 26 actively exploited from CISA KEV, and 13 Pakistan CERT/NCCS advisories.",
   "stats": {
     "new": 589,
     "changed": 0,
     "removed": 0,
-    "total": 442912,
+    "total": 443501,
     "zeroday": 76,
     "exploited": 26,
     "pakistan": 13
@@ -1101,7 +1101,7 @@
     {
       "id": "CVE-2026-49415",
       "desc": "During execve(2) of a SUID binary, the new virtual address space is installed before the process credentials are updated.  During this window, a process running as the same user can access the target process's memory via procfs or linprocfs, because the kernel's debugging permission check still saw the original credentials.\n\nAn unprivileged local user can exploit this race to modify the address space of a SUID binary before its credentials are elevated, potentially gaining full control of the affected system.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-19",
       "pakistan": false,
@@ -1113,13 +1113,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49415",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-49418",
       "desc": "When msync(MS_INVALIDATE) is called on a mapping of an unmanaged device object, the physical pages in the mapping range are marked invalid but remain in the pager's page list.  A subsequent page fault will cause the fault handler to re-insert the page into the object's list.  This corrupts the list, and on object destruction the page is freed twice.\n\nAn unprivileged local user with access to a device that provides memory-mapped I/O can trigger a use-after-free in the kernel, though this is limited to a pool of objects (\"fictitious pages\") that are never recycled for a different purpose.  It may be possible to exploit this to escalate privileges.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-19",
       "pakistan": false,
@@ -1131,13 +1131,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49418",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-49419",
       "desc": "When the JAIL_AT_DESC flag is specified, kern_jail_set() and kern_jail_get() released the reference to the caller's current prison before looking up the jail descriptor.  If the descriptor lookup failed, error-handling paths released the same reference a second time.\n\nAn unprivileged local user can trigger a prison reference count underflow, which may cause the prison structure to be freed while still in use.  When this is done on the jail host, the bug will generally result in an immediate panic.  However, if the user is running in a jail, then it may be possible to exploit the bug to elevate privileges.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-19",
       "pakistan": false,
@@ -1149,7 +1149,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49419",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -1947,7 +1947,7 @@
     {
       "id": "CVE-2026-49427",
       "desc": "Pages belonging to largepage shared memory objects were not explicitly wired.  When sendfile(2) transmitted such an object with the SF_NOCACHE flag, it freed the underlying pages after transmission even though existing mappings still referred to them.\n\nAn unprivileged local user can abuse the bug to access freed kernel memory.  This can be exploited to escalate privileges.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-19",
       "pakistan": false,
@@ -1959,7 +1959,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49427",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {

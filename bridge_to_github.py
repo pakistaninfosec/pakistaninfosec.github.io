@@ -298,7 +298,7 @@ def _scrape_nvd_recent(days_back=1, max_results=500):
                 "category":          "CVE Vulnerability",
                 "id":                cid,
                 "title":             f"{cid}: {desc[:100]}",
-                "description":       desc[:300],
+                "description":       desc.strip(),
                 "severity":          severity,
                 "cvss_score":        score,
                 "cwe":               "",
@@ -584,7 +584,7 @@ def convert_records(raw_records):
         cat = r.get("category", "")
         if cat and cat not in tags:
             tags.append(cat)
-        desc = str(r.get("description", "") or r.get("title", "") or "")[:300]
+        desc = str(r.get("description", "") or r.get("title", "") or "").strip()
         threats.append({
             "id":       r.get("id") or r.get("title", "UNKNOWN"),
             "desc":     desc,

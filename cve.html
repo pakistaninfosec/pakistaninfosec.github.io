@@ -206,6 +206,11 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   }
   .cve-header *, .section *, .risk-card *{color:#111 !important;}
   .section-head, .cve-header{border-bottom-color:#ddd !important;}
+  [data-ai-section="true"]{display:none !important;}
+  .print-ai-note{
+    display:block !important;font-size:9pt;color:#666;font-style:italic;
+    margin-bottom:14pt;padding:8pt 10pt;border:1px dashed #ccc;
+  }
   .badge, .sev-badge, .src-badge{
     background:#eee !important;color:#111 !important;border:1px solid #999 !important;
   }
@@ -445,7 +450,7 @@ function renderPage(threat, ai){
 
   const genTime = new Date().toLocaleString('en-PK', {dateStyle:'long', timeStyle:'short'});
   document.getElementById('print-footer-text').textContent =
-    `${threat.id} · Generated ${genTime} · ${window.location.href} · This report includes AI-generated analysis — verify against the official NVD entry before acting.`;
+    `${threat.id} · Generated ${genTime} · Source: ${cveUrl} · This document reflects the official vulnerability record only.`;
 
   document.getElementById('main-content').innerHTML = `
     <!-- BREADCRUMB -->
@@ -497,28 +502,32 @@ function renderPage(threat, ai){
       <div class="risk-desc" style="color:${color};font-weight:600;font-size:13px">${riskLabel(score)}<br><span style="color:var(--text2);font-weight:400">Based on CVSS severity rating</span></div>
     </div>
 
+    <div class="print-ai-note" style="display:none;">
+      This report shows the official vulnerability record as published by the source authority (NVD/CISA/vendor advisory). AI-generated technical analysis and mitigation guidance are available on the live page at ${window.location.href} but are omitted here to keep this document limited to authoritative source data.
+    </div>
+
     <!-- AI SECTIONS -->
-    <div class="section">
+    <div class="section" data-ai-section="true">
       <div class="section-head"><span class="section-icon">🔬</span><span class="section-title">Technical Details</span><span style="margin-left:auto;font-size:10px;color:var(--blue3);font-weight:600">AI GENERATED</span></div>
       <div class="section-body">${fmtAI(sections['TECHNICAL_DETAILS'])}</div>
     </div>
 
-    <div class="section">
+    <div class="section" data-ai-section="true">
       <div class="section-head"><span class="section-icon">⚠️</span><span class="section-title">Risk Assessment</span><span style="margin-left:auto;font-size:10px;color:var(--blue3);font-weight:600">AI GENERATED</span></div>
       <div class="section-body">${fmtAI(sections['RISK_ASSESSMENT'])}</div>
     </div>
 
-    <div class="section">
+    <div class="section" data-ai-section="true">
       <div class="section-head"><span class="section-icon">🖥</span><span class="section-title">Affected Products</span><span style="margin-left:auto;font-size:10px;color:var(--blue3);font-weight:600">AI GENERATED</span></div>
       <div class="section-body">${fmtAI(sections['AFFECTED_PRODUCTS'])}</div>
     </div>
 
-    <div class="section">
+    <div class="section" data-ai-section="true">
       <div class="section-head"><span class="section-icon">🛡</span><span class="section-title">Mitigation Steps</span><span style="margin-left:auto;font-size:10px;color:var(--blue3);font-weight:600">AI GENERATED</span></div>
       <div class="section-body">${fmtAI(sections['MITIGATION_STEPS'])}</div>
     </div>
 
-    <div class="section">
+    <div class="section" data-ai-section="true">
       <div class="section-head"><span class="section-icon">🇵🇰</span><span class="section-title">Pakistan-Specific Analysis</span><span style="margin-left:auto;font-size:10px;color:var(--blue3);font-weight:600">AI GENERATED</span></div>
       <div class="section-body">${fmtAI(sections['PAKISTAN_ANALYSIS'])}</div>
     </div>

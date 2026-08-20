@@ -179,6 +179,45 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   footer{padding:20px 16px;flex-direction:column;text-align:center;}
   .footer-links{justify-content:center;}
 }
+
+/* ══════════════════════════════
+   PRINT / PDF EXPORT
+══════════════════════════════ */
+.print-header{display:none;}
+@media print{
+  @page{margin:18mm 15mm;}
+  body{background:#fff !important;color:#111 !important;font-size:11pt;}
+  body::before{display:none !important;}
+  nav, footer, .share-bar, .breadcrumb{display:none !important;}
+  .print-header{
+    display:flex !important;align-items:center;gap:12px;
+    border-bottom:2px solid #026937;padding-bottom:12px;margin-bottom:20px;
+  }
+  .print-header .ph-icon{width:34px;height:34px;flex-shrink:0;}
+  .print-header .ph-text{display:flex;flex-direction:column;}
+  .print-header .ph-title{font-family:var(--display);font-weight:700;font-size:15pt;color:#111;}
+  .print-header .ph-sub{font-size:9pt;color:#555;}
+  main{max-width:100% !important;padding:0 !important;}
+  .cve-header, .section, .risk-card{
+    background:#fff !important;border:1px solid #ccc !important;
+    box-shadow:none !important;filter:none !important;
+    page-break-inside:avoid;break-inside:avoid;
+    margin-bottom:14pt !important;
+  }
+  .cve-header *, .section *, .risk-card *{color:#111 !important;}
+  .section-head, .cve-header{border-bottom-color:#ddd !important;}
+  .badge, .sev-badge, .src-badge{
+    background:#eee !important;color:#111 !important;border:1px solid #999 !important;
+  }
+  a{color:#0645ad !important;text-decoration:underline !important;}
+  a[href]:after{content:" (" attr(href) ")";font-size:8pt;color:#666;font-weight:400;}
+  a[href^="#"]:after, a[href^="javascript:"]:after{content:"";}
+  .print-footer{
+    display:block !important;margin-top:24pt;padding-top:10pt;
+    border-top:1px solid #ccc;font-size:8pt;color:#666;text-align:center;
+  }
+}
+.print-footer{display:none;}
 </style>
 </head>
 <body>
@@ -207,12 +246,28 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   </div>
 </nav>
 
+<div class="print-header">
+  <svg class="ph-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs><clipPath id="phClip"><path d="M50 4 L88 18 L88 50 C88 72 71 88 50 96 C29 88 12 72 12 50 L12 18 Z"/></clipPath></defs>
+    <g clip-path="url(#phClip)"><rect width="100" height="100" fill="#026937"/><rect width="26" height="100" fill="#fff"/></g>
+    <path d="M50 4 L88 18 L88 50 C88 72 71 88 50 96 C29 88 12 72 12 50 L12 18 Z" fill="none" stroke="#026937" stroke-width="2"/>
+    <circle cx="60" cy="46" r="15" fill="#fff"/><circle cx="67" cy="41" r="12.5" fill="#026937"/>
+    <path d="M62 34 L64.47 41.6 L72.46 41.6 L66 46.3 L68.47 53.9 L62 49.2 L55.53 53.9 L58 46.3 L51.54 41.6 L59.53 41.6 Z" fill="#fff"/>
+  </svg>
+  <div class="ph-text">
+    <div class="ph-title">InfoSec Pakistan — Vulnerability Report</div>
+    <div class="ph-sub">Generated from pakistaninfosec.github.io</div>
+  </div>
+</div>
+
 <main id="main-content">
   <div class="ai-generating" style="padding:60px;justify-content:center;">
     <div class="ai-spinner"></div>
     Loading threat intelligence...
   </div>
 </main>
+
+<div class="print-footer" id="print-footer-text"></div>
 
 <footer>
   <div class="footer-brand">INFOSEC <span>PAKISTAN</span></div>
@@ -388,6 +443,10 @@ function renderPage(threat, ai){
 
   document.title = `${threat.id} — InfoSec Pakistan`;
 
+  const genTime = new Date().toLocaleString('en-PK', {dateStyle:'long', timeStyle:'short'});
+  document.getElementById('print-footer-text').textContent =
+    `${threat.id} · Generated ${genTime} · ${window.location.href} · This report includes AI-generated analysis — verify against the official NVD entry before acting.`;
+
   document.getElementById('main-content').innerHTML = `
     <!-- BREADCRUMB -->
     <div class="breadcrumb">
@@ -404,6 +463,7 @@ function renderPage(threat, ai){
       <a class="share-btn" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(threat.id+' — '+threat.desc.slice(0,100)+'... via InfoSec Pakistan')}" target="_blank">𝕏 Share</a>
       <a class="share-btn" href="${cveUrl}" target="_blank">📋 View on NVD</a>
       <a class="share-btn" href="sandbox.html">🔬 Analyze in Sandbox</a>
+      <button class="share-btn" onclick="window.print()">🖨️ Download PDF</button>
     </div>
 
     <!-- CVE HEADER -->

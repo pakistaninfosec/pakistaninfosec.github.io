@@ -188,29 +188,17 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:24
   @page{margin:18mm 15mm;}
   body{background:#fff !important;color:#111 !important;font-size:11pt;}
   body::before{display:none !important;}
-  nav, footer, .share-bar, .breadcrumb{display:none !important;}
-  .print-header{
-    display:flex !important;align-items:center;gap:12px;
-    border-bottom:2px solid #026937;padding-bottom:12px;margin-bottom:20px;
-  }
-  .print-header .ph-icon{width:34px;height:34px;flex-shrink:0;}
-  .print-header .ph-text{display:flex;flex-direction:column;}
-  .print-header .ph-title{font-family:var(--display);font-weight:700;font-size:15pt;color:#111;}
-  .print-header .ph-sub{font-size:9pt;color:#555;}
+  nav, footer, .share-bar, .breadcrumb, .print-header, .risk-card, .print-ai-note{display:none !important;}
   main{max-width:100% !important;padding:0 !important;}
-  .cve-header, .section, .risk-card{
+  .cve-header, .section{
     background:#fff !important;border:1px solid #ccc !important;
     box-shadow:none !important;filter:none !important;
     page-break-inside:avoid;break-inside:avoid;
     margin-bottom:14pt !important;
   }
-  .cve-header *, .section *, .risk-card *{color:#111 !important;}
+  .cve-header *, .section *{color:#111 !important;}
   .section-head, .cve-header{border-bottom-color:#ddd !important;}
   [data-ai-section="true"]{display:none !important;}
-  .print-ai-note{
-    display:block !important;font-size:9pt;color:#666;font-style:italic;
-    margin-bottom:14pt;padding:8pt 10pt;border:1px dashed #ccc;
-  }
   .badge, .sev-badge, .src-badge{
     background:#eee !important;color:#111 !important;border:1px solid #999 !important;
   }
@@ -448,9 +436,8 @@ function renderPage(threat, ai){
 
   document.title = `${threat.id} — InfoSec Pakistan`;
 
-  const genTime = new Date().toLocaleString('en-PK', {dateStyle:'long', timeStyle:'short'});
   document.getElementById('print-footer-text').textContent =
-    `${threat.id} · Generated ${genTime} · Source: ${cveUrl} · This document reflects the official vulnerability record only.`;
+    `Source: ${cveUrl}`;
 
   document.getElementById('main-content').innerHTML = `
     <!-- BREADCRUMB -->

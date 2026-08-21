@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-21T03:51:27.695154+00:00",
-  "summary": "Today's digest contains 583 vulnerabilities across 5 sources. 72 zero-day exploits detected, 22 actively exploited from CISA KEV, and 13 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-21T04:39:57.538366+00:00",
+  "summary": "Today's digest contains 585 vulnerabilities across 5 sources. 72 zero-day exploits detected, 22 actively exploited from CISA KEV, and 13 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 583,
+    "new": 585,
     "changed": 0,
     "removed": 0,
-    "total": 448771,
+    "total": 449356,
     "zeroday": 72,
     "exploited": 22,
     "pakistan": 13
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 498
+      "count": 500
     },
     {
       "name": "Exploit-DB",
@@ -9659,6 +9659,42 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76158",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18409",
+      "desc": "The WPForms Pro plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Single Line Text and Paragraph Text Field Values in all versions up to, and including, 2.0.0.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The exploit relies on the plugin's own wp_kses_allowed_html filter widening the 'post' allowlist to permit iframe elements with a data-src attribute, which is not on WordPress's URI-attribute sanitization list, allowing a javascript: URI stored in data-src to survive kses processing and subsequently be promoted to a live src attribute by the bundled admin script view-entry.min.js.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18409",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-45199",
+      "desc": "Kernel software installed and running inside a Guest VM may post improper commands to the GPU Firmware to trigger a write of data outside the Guest's virtualised GPU memory.\n\n\n\nSoftware installed and run under a Guest VM can send commands to the GPU which result in out of bounds memory accesses. These can be used to escalate privileges.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-21",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45199",
       "cvss": "0.0",
       "cwe": ""
     },

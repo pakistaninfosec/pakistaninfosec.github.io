@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-22T12:41:29.143326+00:00",
-  "summary": "Today's digest contains 408 vulnerabilities across 5 sources. 71 zero-day exploits detected, 21 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-22T13:32:54.721017+00:00",
+  "summary": "Today's digest contains 427 vulnerabilities across 5 sources. 71 zero-day exploits detected, 21 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 408,
+    "new": 427,
     "changed": 0,
     "removed": 0,
-    "total": 471527,
+    "total": 471954,
     "zeroday": 71,
     "exploited": 21,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 321
+      "count": 340
     },
     {
       "name": "Exploit-DB",
@@ -6512,6 +6512,348 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77988",
       "cvss": "6.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-11947",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11947",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-11948",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11948",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-4244",
+      "desc": "The Post Duplicator plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the `duplicate_post()` function in all versions up to, and including, 3.0.11. This is due to the function not verifying that the user has `edit_others_posts` capability before accepting a `selectedAuthorId` parameter via the `duplicate-post` REST endpoint. This makes it possible for authenticated attackers, with Contributor-level access and above, to create duplicated posts attributed to any user, including administrators.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4244",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56380",
+      "desc": "AVideo through commit 9c39d8c8 contains an information exposure vulnerability in feed/index.php that allows unauthenticated attackers to retrieve channel owner email addresses by supplying a public channel name parameter. Attackers can enumerate all creator email addresses by iterating through public channel names and extract them from the itunes:email and itunes:author RSS elements, enabling account takeover attempts and phishing campaigns.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56380",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57944",
+      "desc": "AVideo through commit 9c39d8c8 contains a cross-site request forgery vulnerability in channelToGallery.json.php that allows attackers to modify site-wide Gallery configuration by performing unauthorized writes to plugin data. Attackers can craft a cross-site GET request carrying an administrator's session cookie to promote arbitrary channels to the front page or delete curated sections without token validation.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57944",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57998",
+      "desc": "better-npm-audit through 3.11.0, and the 4.0.0-rc.2 prerelease, builds its npm audit command by interpolating the user-supplied --registry option into a command string in src/handlers/handleInput.ts without validation or quoting, then passes that string to child_process.exec() in index.ts, which spawns a shell. A registry value containing shell metacharacters such as a semicolon, pipe, or command substitution executes arbitrary operating system commands with the privileges of the process running the audit.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57998",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-58001",
+      "desc": "WWBN AVideo through commit 9c39d8c8 contains a cross-site request forgery vulnerability in objects/videoEditLight.php that lacks request authenticity checks and accepts GET requests. Attackers can store an img tag in a video description that transfers video ownership to an attacker-controlled account when an administrator views the video page.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58001",
+      "cvss": "5.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-58002",
+      "desc": "WWBN AVideo through commit 9c39d8c8b4c1f75540788d6b391740852ceb0732 contains an authorization bypass vulnerability in the Users_affiliations add.json.php endpoint that allows authenticated users to forge two-party consent records by supplying the counterparty's agreement timestamp. Attackers can create a forged affiliation with status='a' and then reassign video ownership to arbitrary users through the videoAddNew.json.php endpoint, which trusts the forged affiliation as an authorization term.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58002",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-58003",
+      "desc": "WWBN AVideo through commit 9c39d8c8 contains a cross-site request forgery vulnerability in the releaseVideoNow.json.php endpoint that lacks authenticity checks and accepts GET requests. Attackers can craft a malicious cross-site GET request carrying an administrator's session cookie to permanently publish any embargoed video by manipulating the videos_id parameter.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58003",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59256",
+      "desc": "WWBN AVideo through commit 9c39d8c8 contains an authorization bypass vulnerability where getToken() creates tokens without binding to user identity or purpose, and plugin/Gallery/view/sections.php issues valid tokens to unauthenticated visitors. Attackers can retrieve a token from the Gallery endpoint and use it to bypass authorization checks in other subsystems like view/hls.php to access restricted video content.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59256",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59808",
+      "desc": "AVideo through commit 9c39d8c8 contains an authentication bypass vulnerability where deduplicateByEncoderQueueId() returns video_id_hash credentials for any video by encoder_queue_id without ownership verification, and useVideoHashOrLogin() converts this hash into passwordless login as the video owner. Attackers with upload permission can retrieve an administrator's video_id_hash by omitting the videos_id parameter, then use that hash in an unauthenticated request to gain administrative session access and modify system configuration.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59808",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59809",
+      "desc": "SiYuan before v3.8.0 interpolates secret placeholders into the destination URL parameter of the http_request MCP tool, allowing attackers to exfiltrate stored secrets. An MCP client can craft a request with an attacker-controlled URL containing secret placeholders to send plaintext secret values to any public host without confirmation.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59809",
+      "cvss": "4.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-60083",
+      "desc": "SiYuan versions before v3.8.0 contain an incomplete path blocklist in the MCP file tool that fails to restrict access to sensitive workspace files protected by the HTTP API. Authenticated administrators can read plaintext publish-mode passwords from data/.siyuan/publishAccess.json and access other sensitive files like data/templates and data/snippets/conf.json.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60083",
+      "cvss": "4.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-60084",
+      "desc": "SiYuan versions before v3.7.4 contain an arbitrary file deletion vulnerability in the /api/search/removeTemplate endpoint that accepts an unvalidated path parameter passed directly to os.RemoveAll. Authenticated admin attackers can supply absolute filesystem paths to recursively delete any file or directory the kernel process has permission to remove, anywhere on the host filesystem.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60084",
+      "cvss": "8.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-62204",
+      "desc": "SiYuan versions before v3.7.4 fail to validate that packageName matches the downloaded package content in bazaar install endpoints. Attackers with same-origin access can overwrite existing trusted plugins by supplying mismatched packageName and repoURL parameters, achieving persistence across application restarts.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62204",
+      "cvss": "6.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-62243",
+      "desc": "Netty (io.netty:netty-handler) versions from 4.2.0.Final through 4.2.16.Final and versions through 4.1.136.Final disable TLS hostname verification on the SslProvider.OPENSSL client path when a plain (non-extended) X509TrustManager is used and Unsafe-based trust-manager wrapping is unavailable (Java 25+). In this configuration the OpenSSL client does not perform hostname verification, allowing a man-in-the-middle attacker to present a certificate issued for a different hostname that is accepted without validation. Fixed in 4.2.17.Final and 4.1.137.Final.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62243",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-62380",
+      "desc": "Netty (io.netty:netty-codec-socks) versions 4.2.0.Final through 4.2.16.Final and 4.1.x through 4.1.136.Final contain null byte, CRLF, and credential injection vulnerabilities in the SOCKS4 (Socks4ClientEncoder) and SOCKS5 (Socks5ClientEncoder) client encoders, which fail to validate domain address and authentication (username/password) fields. An attacker able to control these fields can inject null bytes or CRLF characters to truncate or alter values, potentially enabling domain spoofing, SOCKS4 userid truncation, authentication data injection, and protocol confusion. Fixed in 4.2.17.Final and 4.1.137.Final.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62380",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-62381",
+      "desc": "luci-lib-px5g (LuCI) contains a heap-based buffer overflow in the native ASN.1 encoding routine asn1_add_obj (x509write.c) when signing a certificate with a 2040-bit RSA key. For a 255-byte signature, the BIT STRING allocation is computed from the DER length encoding of 255 bytes, but the payload written after prepending the unused-bits byte is 256 bytes, requiring one additional DER length octet. As a result the allocation is 259 bytes while the tag, length, unused-bits byte, and signature require 260 bytes, and the final memcpy writes one byte beyond the heap buffer. The overflow is reachable through the exported Lua interface via create_selfsigned(); whether it is remotely exploitable depends on the embedding application. The vulnerable code is present on the openwrt-18.06 through openwrt-25.12 release branches and is absent from master, where the luci-lib-px5g package has been removed rather than patched.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62381",
+      "cvss": "6.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-62382",
+      "desc": "PasswordPusher versions v1.45.11 through v2.9.5 contain an improper authorization vulnerability in the push deletion logic. The ownership check compares @push.user against current_user; for an anonymously created push both values are nil, and Ruby evaluates nil == nil as true, so the check passes and the deletable_by_viewer restriction is never enforced. An attacker who knows only the secret URL can permanently delete an anonymous push even when the creator disabled viewer deletion and even without the passphrase. Only deployments that allow anonymous pushes (the default) are affected. The issue is fixed in v2.9.6.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62382",
+      "cvss": "0.0",
       "cwe": ""
     },
     {

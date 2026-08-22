@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-22T11:46:17.693831+00:00",
-  "summary": "Today's digest contains 403 vulnerabilities across 5 sources. 71 zero-day exploits detected, 21 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-22T12:41:29.143326+00:00",
+  "summary": "Today's digest contains 408 vulnerabilities across 5 sources. 71 zero-day exploits detected, 21 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 403,
+    "new": 408,
     "changed": 0,
     "removed": 0,
-    "total": 471119,
+    "total": 471527,
     "zeroday": 71,
     "exploited": 21,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 316
+      "count": 321
     },
     {
       "name": "Exploit-DB",
@@ -6422,6 +6422,96 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77946",
       "cvss": "10.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-3424",
+      "desc": "The The kk Star Ratings – Rate Post & Collect User Feedbacks plugin for WordPress is vulnerable to arbitrary shortcode execution in all versions up to, and including, 5.4.10.3. This is due to the software allowing users to execute an action that does not properly validate the 'payload' value before running do_shortcode. This makes it possible for unauthenticated attackers to execute arbitrary shortcodes.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-3424",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-4245",
+      "desc": "The Post Duplicator plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 3.0.11. This is due to the `duplicate_post_permissions()` permission callback only verifying the `duplicate_posts` capability without checking whether the requesting user holds `publish_posts` or other status-gated capabilities. This makes it possible for authenticated attackers, with Contributor-level access and above, to create duplicate posts with `future` (scheduled, auto-publishes) or `private` status, bypassing editorial review. Additionally, the REST endpoint does not enforce administrator-configured post-type duplication restrictions, allowing duplication of post types that have been explicitly disabled.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4245",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-66916",
+      "desc": "Joomla Extension - joomgalleryfriends.net - Password-Protected Category Bypass via JSON Format in JoomGallery < 4.4.0- An unauthenticated access control bypass exists in JoomGallery's category JSON view. When a gallery category is protected with a password, the HTML view correctly enforces the password gate - but the JSON view ( format=json ) skips this check entirely.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66916",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-66917",
+      "desc": "Joomla Extension - joomgalleryfriends.net - Stored XSS in JoomGallery < 4.4.0 - An authenticated, privileged can store an XSS payload in any image causing JS execution in every visitor's browser.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66917",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-77988",
+      "desc": "A weakness has been identified in TRENDnet TEW-823DRU 1.1.02b01. This vulnerability affects the function nvram_get of the component CLI Configuration Tool. This manipulation causes command injection. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be used for attacks.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77988",
+      "cvss": "6.6",
       "cwe": ""
     },
     {

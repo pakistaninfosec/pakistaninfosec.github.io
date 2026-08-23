@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-23T19:45:57.376015+00:00",
-  "summary": "Today's digest contains 366 vulnerabilities across 5 sources. 71 zero-day exploits detected, 21 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-23T20:24:30.506294+00:00",
+  "summary": "Today's digest contains 369 vulnerabilities across 5 sources. 71 zero-day exploits detected, 21 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 366,
+    "new": 369,
     "changed": 0,
     "removed": 0,
-    "total": 492011,
+    "total": 492380,
     "zeroday": 71,
     "exploited": 21,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 279
+      "count": 282
     },
     {
       "name": "Exploit-DB",
@@ -5755,6 +5755,60 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75922",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19565",
+      "desc": "Apache::AppSamurai::Util versions through 1.01 for Perl generate predictable session authentication keys from the clock and process id in CreateSessionAuthKey.\n\nCreateSessionAuthKey runs five rounds of SHA-256, each over a fresh Time::HiRes reading formatted to six decimal places, the running digest, and the process id. CreateSession calls it with an empty key source on every login, and the optional Keysource directive is the only route to the other branch. The result is 64 hex characters. The microsecond field of the first reading takes one of a million values, the later readings follow it within microseconds, and the process id is drawn from a small range.\n\nThe key is returned to the browser as the session cookie, and is combined with the configured server key to compute the session id and to encrypt the stored session data. An attacker who knows the second in which a session was created and the process id of the worker that created it can enumerate candidate keys and recover the victim's cookie, bypassing authentication for the protected resources. Each candidate has to be tried against the server, which validates the cookie with a key the attacker does not hold.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19565",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78140",
+      "desc": "A flaw has been found in Dromara UJCMS up to 10.1.3. The impacted element is the function update of the file src/main/java/com/ujcms/cms/ext/web/backendapi/WebFileTemplateController.java of the component web-file-template Endpoint. Executing a manipulation can lead to improper neutralization of special elements used in a template engine. The attack can be launched remotely. The exploit has been published and may be used.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78140",
+      "cvss": "4.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78183",
+      "desc": "DBD::Pg version 3.21.0 for Perl has a heap out-of-bounds write in quote_float.\n\nquote_float() allocates the length of the string + 1, which is the size of the bare numeric symbol plus NULL.  But for special literals NaN, Inf, +Inf, -Inf, Infinity, +Infinity, -Infinity it emits the literal surrounded by quotes plus NULL, which is length + 3 bytes. Every recognised literal (case-insensitive) overflows by 2 bytes, a single quote and a NULL.\n\nThis can be reached by the $dbh->quote method, for example\n\n    $dbh->quote( \"Infinity\", DBI::SQL_NUMERIC ).\n\nThis regression was introduced in 3.21.0 by the quote.c rewrite.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78183",
       "cvss": "0.0",
       "cwe": ""
     },

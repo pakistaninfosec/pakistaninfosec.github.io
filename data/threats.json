@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-23T13:33:03.862643+00:00",
-  "summary": "Today's digest contains 354 vulnerabilities across 5 sources. 71 zero-day exploits detected, 21 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-23T14:24:43.491478+00:00",
+  "summary": "Today's digest contains 365 vulnerabilities across 5 sources. 71 zero-day exploits detected, 21 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 354,
+    "new": 365,
     "changed": 0,
     "removed": 0,
-    "total": 488044,
+    "total": 488409,
     "zeroday": 71,
     "exploited": 21,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 267
+      "count": 278
     },
     {
       "name": "Exploit-DB",
@@ -5540,6 +5540,204 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78155",
       "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-4671",
+      "desc": "justhtml before 1.18.0 contains multiple low-severity denial-of-service issues in CSS selector handling and linkification. Applications that evaluate attacker-controlled selector strings (via query(), matches(), or selector-based transforms), run selector matching over very large untrusted documents, construct DOM trees from untrusted structure, or enable linkification over attacker-controlled text may consume disproportionate CPU or memory. Triggers include oversized selectors, large selector lists, oversized compound selectors, long combinator chains, deeply nested functional pseudo-classes, repeated token/positional matching, cyclic DOM graphs causing non-terminating traversal, and punctuation-heavy or trailing-bracket linkification input. These are availability-only concerns and do not by themselves allow script execution, data disclosure, or sanitizer bypass. Default JustHTML(sanitize=True) usage is not expected to be exposed, since selectors are normally supplied by application code.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4671",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-5388",
+      "desc": "justhtml before 1.15.0 contains multiple security issues in URL sanitization helpers (clean_url_value/clean_url_in_js_string), HTML serialization, Markdown passthrough (html_passthrough=True), and several custom sanitization-policy edge cases. Depending on configuration, an attacker can bypass sanitization to inject active HTML and JavaScript — for example via encoded javascript: URLs, backslash-based relative URLs resolved as remote hosts, markup-breaking programmatic element/attribute names or HTML comments, raw </textarea> reintroduction through Markdown passthrough, or preserved <style>/<meta http-equiv=refresh>/<base href> tags in custom policies. Most custom-policy issues do not affect the default sanitize=True configuration; they primarily affect helper APIs, programmatic DOM construction, html_passthrough=True, and custom policies/transform pipelines.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5388",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-5389",
+      "desc": "justhtml versions before 1.13.0 contain a cross-site scripting vulnerability in the to_markdown() function when serializing attacker-controlled pre content. Attackers can place backticks inside sanitized pre elements to break out of fixed-length code fences, allowing raw HTML to execute when the generated Markdown is rendered by CommonMark or GFM-style renderers.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5389",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-5751",
+      "desc": "justhtml versions 1.13.0 and earlier contain a parser-differential / mutation cross-site scripting (mXSS) vulnerability when using a custom SanitizationPolicy that preserves foreign namespaces (e.g., drop_foreign_namespaces=False with allowlisted SVG/MathML elements or raw-text containers such as <style>). Specially crafted input can sanitize into markup that appears safe but becomes unsafe when re-parsed by a browser or another HTML parser, allowing markup injection. The default safe configuration (sanitize=True) is not affected. Fixed in 1.14.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-5751",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-6827",
+      "desc": "justhtml before 1.17.0 contains multiple security issues in sanitization, serialization, and programmatic DOM handling. When custom policies preserve foreign namespaces (SVG/MathML), dangerous content such as HTML integration points (SVG <foreignObject>, MathML <annotation-xml encoding=\"text/html\">) and mutation-XSS parser-differential payloads could survive sanitization and become active HTML after reparse; SVG filter=\"url(...)\" and preserved <style> could leave resource-loading CSS (@import, background-image:url()). Programmatic script/style/Comment nodes could serialize into active markup. Additional hardening fixes address sanitize-pipeline cache mutation and DOM parent/child cycles that could cause infinite loops. Most issues affect advanced or custom configurations rather than the default JustHTML(..., sanitize=True) safe path.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6827",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-74793",
+      "desc": "justhtml before 3.11.0 contains a cross-site scripting vulnerability where the default sanitizer bypasses event handler removal in selectedcontent projections. Attackers can inject SVG or MathML elements with event handlers that are cloned and reinserted into output without sanitization, enabling stored or reflected XSS attacks.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74793",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-77088",
+      "desc": "justhtml versions 0.9.0 through 1.21.0 contain a cross-site scripting vulnerability in to_markdown() where inline code spans fail to account for blank lines as block boundaries. Attackers can inject blank lines into code or pre element text to break the inline span, causing sanitized HTML to be emitted unescaped and re-parsed as live Markdown by compliant renderers.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77088",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-7808",
+      "desc": "justhtml before 1.16.0 contains multiple HTML sanitization bypass issues that can allow active/dangerous content (e.g., script or style) to survive sanitization, potentially leading to cross-site scripting. The issues primarily affect advanced usage rather than the default JustHTML(..., sanitize=True) path for ordinary parsed HTML: mutating or reusing sanitization policy objects (including exported defaults) could weaken later sanitization; programmatic DOM input to sanitize()/sanitize_dom() could miss mixed-case tag names (e.g., ScRiPt, StYlE); crafted programmatic doctype names could serialize into active markup; and custom policies preserving SVG or MathML could allow animation elements, presentation attributes with external url(...) references, or DOM trees mislabeled as namespace=\"html\" to bypass foreign-content checks. Fixed in 1.16.0.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7808",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-8445",
+      "desc": "justhtml versions <= 1.11.0 (fixed in 1.12.0) do not sufficiently escape HTML-significant characters (angle brackets) in text nodes when converting a parsed document to Markdown via to_markdown(). While a small set of Markdown metacharacters are escaped, characters such as < and > are preserved, so untrusted input that is safe in to_html() — including entity-decoded text (e.g. &lt;script&gt;) or text from RCDATA/RAWTEXT-parsed elements like <title>, <textarea>, <noscript>, and <plaintext> — can be emitted as raw HTML in the Markdown output, enabling a sanitizer bypass and potential cross-site scripting when that output is rendered.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8445",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-8630",
+      "desc": "justhtml before 1.12.0 (versions <= 1.11.0) contains a mutation cross-site scripting (mXSS) vulnerability in the serialization of raw-text elements such as <style> and <script>. When a DOM tree is processed by sanitize_dom() using a custom policy that keeps these elements, text nodes inside them are serialized literally without escaping, allowing attacker-controlled text containing the matching closing tag sequence to break out of the raw-text context and inject arbitrary HTML into the serialized output. The default sanitization policy is not affected because it drops the contents of style and script.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8630",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-9769",
+      "desc": "justhtml through 1.9.1 (fixed in 1.10.0) is vulnerable to uncontrolled recursion leading to denial of service. During JustHTML() construction, TreeBuilder.finish() unconditionally calls _populate_selectedcontent(), which recursively traverses the DOM tree via _find_elements()/_find_element() without a depth bound. An attacker who can supply HTML for parsing can provide deeply nested elements (e.g., ~1000 nested <div> tags, roughly 11 KB) to exceed CPython's default recursion limit and trigger an unhandled RecursionError, which may abort parsing, fail requests, or terminate a worker/process depending on the host application's exception handling.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-23",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9769",
+      "cvss": "7.5",
       "cwe": ""
     },
     {

@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-24T21:30:44.247044+00:00",
-  "summary": "Today's digest contains 427 vulnerabilities across 5 sources. 72 zero-day exploits detected, 22 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-24T22:28:03.859926+00:00",
+  "summary": "Today's digest contains 452 vulnerabilities across 5 sources. 72 zero-day exploits detected, 22 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 427,
+    "new": 452,
     "changed": 0,
     "removed": 0,
-    "total": 500112,
+    "total": 500564,
     "zeroday": 72,
     "exploited": 22,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 339
+      "count": 364
     },
     {
       "name": "Exploit-DB",
@@ -6855,6 +6855,456 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7455",
       "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-17113",
+      "desc": "A flaw was found in CRI-O's container-creation environment-variable handling\n(`mergeEnvs` in `server/utils.go`, consumed by `setupContainerEnvironmentAndWorkdir` in\n`server/container_create.go`). When a `CreateContainer` request supplies a `nil` CRI\n`Envs` field, CRI-O falls back to using the target OCI image's `config.Env` entries\nunfiltered, in contrast to the normal merge path, which validates each entry for a\n`key=value` form before use. An OCI image whose `config.Env` contains an entry with no\n`=` character (e.g. a bare `NOEQUALS` string) causes CRI-O to split that entry into a\nsingle-element slice and then index its second element, which is out of range. This\ntriggers an unrecovered Go runtime panic in the `crio` daemon process, crashing it and\nterminating the container-runtime service for all workloads on the node until it is\nrestarted.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17113",
+      "cvss": "6.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-27364",
+      "desc": "Subscriber Broken Access Control in Style Kits <= 2.6.5 versions.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27364",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-32554",
+      "desc": "Unauthenticated SQL Injection in WooBeWoo Product Filter Pro <= 3.1.8 versions.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-32554",
+      "cvss": "9.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-32555",
+      "desc": "Unauthenticated SQL Injection in Boost <= 2.0.4 versions.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-32555",
+      "cvss": "9.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-32556",
+      "desc": "Unauthenticated Cross Site Scripting (XSS) in Boost <= 2.0.4 versions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-32556",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-32559",
+      "desc": "Subscriber Arbitrary File Upload in UltimateAI <= 3.1.0 versions.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-32559",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-32560",
+      "desc": "Subscriber Local File Inclusion in MagicAI for WordPress - AI Text, Image, Chat, Code, and Voice Generator <= 1.4 versions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-32560",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-32561",
+      "desc": "Subscriber Privilege Escalation in Booking Hub <= 1.3.0 versions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-32561",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-32563",
+      "desc": "Subscriber PHP Object Injection in ACPT (Pro) - Custom Post Types Plugin for WordPress <= 2.0.63 versions.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-32563",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-45404",
+      "desc": "OpenTelemetry-Go is the Go implementation of OpenTelemetry. From version 0.11.0 through 1.44.0, the OpenTracing bridge's bridgeSpan contains an unsynchronized extraBaggageItems map which can cause a panic. Because Go maps are not safe for concurrent read/write access, concurrent SetBaggageItem and correlation.MapFromContext calls on the same hooked bridgeSpan can trigger a fatal runtime error—such as concurrent map read and map write or concurrent map iteration and map write—terminating the process and causing denial of service. This issue is fixed in version 1.45.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45404",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68516",
+      "desc": "OpenEXR is the reference implementation and specification for the EXR image format, widely used in the motion picture industry. From version 3.4.0 through 3.4.13, a crafted HTJ2K-compressed EXR can crash OpenEXR during normal decode. An HTJ2K-compressed EXR whose JPEG 2000 SIZ fields place the first tile outside the visible image can reach invalid tile and codeblock geometry in the vendored OpenJPH AVX2 decoder, causing a stack out-of-bounds write and denial of service. OpenEXR's HTJ2K path validates the decoded codestream dimensions against the EXR chunk size, but it does not reject SIZ image-offset/tile-grid geometry where the first tile does not intersect the image. This issue is fixed in version 3.4.14.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68516",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-77337",
+      "desc": "CakePHP Authentication is an authentication plugin for CakePHP that can also be used in PSR-7 based applications. Versions before 2.11.2, from 3.0.0 through 3.3.6, and from 4.0.0 through 4.2.0 allow authentication bypass and potential CPU or memory exhaustion when CookieAuthenticator uses unencrypted, forgeable legacy tokens. This issue is fixed in versions 2.11.2, 3.3.7, and 4.2.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77337",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-77384",
+      "desc": "libp2p is a JavaScript implementation of the libp2p networking stack. Prior to version 4.2.9, the reservation refresh path in reservation-store.ts reuses the same retimeableSignal but unconditionally registers another abort listener on every refresh. As a result, a remote peer can repeatedly send valid RESERVE requests for the same reservation, causing unbounded listener and closure growth in @libp2p/circuit-relay-v2 relay servers and leading to denial of service. This issue is fixed in version 4.2.9.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77384",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78259",
+      "desc": "Unauthenticated Broken Authentication in WPLegalPages <= 3.7.0 versions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78259",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78262",
+      "desc": "Unauthenticated PHP Object Injection in WP Project Manager <= 4.0.6 versions.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78262",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78263",
+      "desc": "Unauthenticated Cross Site Scripting (XSS) in Event Tickets <= 5.29.2.1 versions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78263",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78264",
+      "desc": "Unauthenticated Cross Site Scripting (XSS) in Toolset Blocks <= 1.6.26 versions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78264",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78265",
+      "desc": "Unauthenticated PHP Object Injection in The Events Calendar <= 6.17.2 versions.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78265",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78266",
+      "desc": "Subscriber Broken Access Control in AutomatorWP <= 5.8.3 versions.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78266",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78267",
+      "desc": "Unauthenticated Privilege Escalation in TranslatePress <= 3.3.2 versions.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78267",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78268",
+      "desc": "Unauthenticated Sensitive Data Exposure in Lead Generation Contact Widget &amp; AI Chatbot: Chat Button, Phone Call, Telegram, Email – SiteLeads <= 1.2.0 versions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78268",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78282",
+      "desc": "Unauthenticated Cross Site Scripting (XSS) in Stripe Payments <= 2.1.2 versions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78282",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78284",
+      "desc": "Unauthenticated Arbitrary File Deletion in MasterStudy LMS <= 3.7.42 versions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78284",
+      "cvss": "8.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78434",
+      "desc": "A flaw has been found in Faveo Helpdesk up to 2.0.3. This impacts the function FormController::post_ticket_reply of the file app/Http/Controllers/Client/helpdesk/FormController.php of the component post-ticket-reply Endpoint. This manipulation causes missing authentication. The attack can be initiated remotely. The exploit has been published and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78434",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78435",
+      "desc": "A vulnerability has been found in Faveo Helpdesk up to 2.0.3. Affected is the function unlink of the file app/Http/Controllers/Admin/helpdesk/SettingsController.php of the component Logo Handler. Such manipulation of the argument data1 leads to path traversal. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78435",
+      "cvss": "3.8",
       "cwe": ""
     },
     {

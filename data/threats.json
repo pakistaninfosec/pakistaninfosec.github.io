@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-24T17:32:07.702717+00:00",
-  "summary": "Today's digest contains 316 vulnerabilities across 5 sources. 71 zero-day exploits detected, 21 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-24T18:42:07.754176+00:00",
+  "summary": "Today's digest contains 368 vulnerabilities across 5 sources. 71 zero-day exploits detected, 21 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 316,
+    "new": 368,
     "changed": 0,
     "removed": 0,
-    "total": 498520,
+    "total": 498888,
     "zeroday": 71,
     "exploited": 21,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 229
+      "count": 281
     },
     {
       "name": "Exploit-DB",
@@ -4519,7 +4519,7 @@
     {
       "id": "CVE-2025-36940",
       "desc": "Use-After-Free vulnerability in a zircon kernel pager proxy (Fuchsia), which could lead to a Privilege Escalation from Userspace to Kernel (AP)",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-24",
       "pakistan": false,
@@ -4531,7 +4531,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-36940",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -4729,7 +4729,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75099",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -4856,6 +4856,942 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78465",
       "cvss": "7.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13213",
+      "desc": "The Hearing Access Service (HAS) GATT server in subsys/bluetooth/audio/has.c installs a connection-callback set unconditionally via BT_CONN_CB_DEFINE, so security_changed() runs for every connection that establishes security even before the application has called bt_has_register(). The service attribute pointers hearing_aid_features_attr, preset_control_point_attr, and active_preset_index_attr remain NULL until bt_has_register() resolves them and sets has.registered.\n\nWith CONFIG_BT_SETTINGS, settings_set_cb() restores each bonded client's persisted context at boot and unconditionally sets context->flags to BONDED_CLIENT_INIT_FLAGS (non-zero). When a previously bonded peer reconnects and re-establishes security during the startup window before bt_has_register() has been called, security_changed() sees the non-zero flags and schedules notify_work_handler, which calls bt_gatt_is_subscribed() with a still-NULL attribute pointer. That triggers an assertion (__ASSERT(attr, ...) in bt_gatt_is_subscribed()), or a NULL dereference of attr->uuid when assertions are compiled out.\n\nThe result is a remotely triggerable (Bluetooth, adjacent) crash of the HAS peripheral. Exploitation requires the peer to have previously bonded with the device and to reconnect within the boot-time race window before the application registers the service; a peer that reconnects persistently can prolong the outage. Impact is denial of service only, with no memory corruption or information disclosure.\n\nThe fix adds an early if (!has.registered) { return; } guard in security_changed(), so no notification work is scheduled until the GATT service is registered and its attribute pointers are valid.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13213",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16348",
+      "desc": "An authenticated command injection vulnerability in TP-Link Archer BE800 V1 allows an attacker with administrative access to execute arbitrary system commands with root privileges by injecting shell metacharacters via a VPN connection. \n\n\n\n\nSuccessful exploitation may enable persistent backdoors, credential theft, LAN reconnaissance, and router-assisted attacks against connected devices.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16348",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-34491",
+      "desc": "Improper neutralization of input during web page generation ('cross-site scripting') vulnerability in Johnson Controls Metasys 14 and Johnson Controls Metasys 15 allows Cross Site Scripting.\n\nThis issue affects Metasys 14: before 14.1.5; Metasys 15: before 15.0.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34491",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71904",
+      "desc": "Multiple DrayTek VigorAP models contain a command injection vulnerability in the tr069TestInform function. The vulnerability is caused by insufficient filtering of dangerous characters before the event_code field is concatenated into a system command. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71904",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71905",
+      "desc": "Multiple DrayTek VigorAP models contain a command injection vulnerability in the ExportSettings function. The vulnerability is caused by insufficient filtering of the backupkey, backuptype, and realtime fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71905",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71906",
+      "desc": "Multiple DrayTek VigorAP models contain a command injection vulnerability in the setLan function. The vulnerability is caused by insufficient validation of the lanIp and lanNetmask fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71906",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71907",
+      "desc": "Multiple DrayTek VigorAP models contain a command injection vulnerability in the setcamset function. The vulnerability is caused by insufficient filtering of the selectSlaves field before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71907",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71908",
+      "desc": "Multiple DrayTek VigorAP models contain a command injection vulnerability in the mesh_start_speed_test function. The vulnerability is caused by insufficient sanitization of the meshdevice_index and meshdevice_ip fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71908",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71909",
+      "desc": "Multiple DrayTek VigorAP models contain a command injection vulnerability in the InquierTime function. The vulnerability is caused by insufficient filtering of the time field before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71909",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71910",
+      "desc": "Multiple DrayTek VigorAP models contain a command injection vulnerability in the apautotest function. The vulnerability is caused by insufficient validation of the CMD0, CMD3, and CMD6 fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71910",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71911",
+      "desc": "Multiple DrayTek VigorAP models contain a buffer overflow vulnerability in the setLan function. The vulnerability is caused by missing length checks during memory copy operations involving the lanVlanId0, lanIp, and lanNetmask fields. A remote attacker can trigger this vulnerability via crafted input, causing a denial of service or potentially executing arbitrary commands. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71911",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71912",
+      "desc": "Multiple DrayTek VigorAP models contain a buffer overflow vulnerability in the apautotest function. The vulnerability is caused by missing length checks during memory copy operations involving the CMD6 field. A remote attacker can trigger this vulnerability via crafted input, causing a denial of service or potentially executing arbitrary commands. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71912",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71913",
+      "desc": "Multiple DrayTek VigorAP models contain a command injection vulnerability in the upload_settings.cgi interface. The vulnerability is caused by insufficient filtering before the restorekey field is concatenated into a shell command. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71913",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71914",
+      "desc": "Multiple DrayTek VigorAP models contain a command injection vulnerability in the dray_apm component. The vulnerability is caused by insufficient validation of UDP message content after START_SPEED_TEST before command execution. A remote attacker can trigger this vulnerability via a crafted message to execute arbitrary commands with root privileges.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71914",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71915",
+      "desc": "Multiple DrayTek VigorSwitch models contain a command injection vulnerability in the jsonstatus function. The vulnerability is caused by insufficient filtering of the usescript, usefile, and option fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71915",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71916",
+      "desc": "Multiple DrayTek VigorSwitch models contain a command injection vulnerability in the commandTable function. The vulnerability is caused by incomplete filtering of dangerous characters such as backticks, newline characters, and single quotes in the parameter field. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71916",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71917",
+      "desc": "Multiple DrayTek VigorSwitch models contain a command injection vulnerability in the pingtrace function. The vulnerability is caused by insufficient validation of the host field before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71917",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71918",
+      "desc": "Multiple DrayTek VigorSwitch models contain a command injection vulnerability in the webBackupAction function. The vulnerability is caused by insufficient filtering of the option, key, pw_encode, pathN, and valueN fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71918",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71919",
+      "desc": "Multiple DrayTek VigorSwitch models contain a command injection vulnerability in the sysreboot function. The vulnerability is caused by insufficient filtering of the config, act, pathN, and valueN fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71919",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71920",
+      "desc": "Multiple DrayTek VigorSwitch models contain a null pointer dereference vulnerability in the formlogout function. The vulnerability is caused by missing checks for an empty or absent Cookie header before string handling. A remote attacker can trigger this vulnerability via a crafted request to crash the service and cause a denial of service. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71920",
+      "cvss": "4.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71921",
+      "desc": "Multiple DrayTek VigorSwitch models contain a pre-authentication command injection vulnerability in the setget.cgi interface. The vulnerability is caused by insufficient filtering of the pass field before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71921",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71922",
+      "desc": "Multiple DrayTek VigorSwitch models contain a pre-authentication null pointer dereference vulnerability in the setget.cgi interface. The vulnerability is caused by missing validation when the pass field is absent. A remote attacker can trigger this vulnerability via a crafted request to crash the service and cause a denial of service.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71922",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71923",
+      "desc": "Multiple DrayTek VigorSwitch models contain a command injection vulnerability in the auth_set function. The vulnerability is caused by insufficient filtering of the username and password fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71923",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71924",
+      "desc": "Multiple DrayTek VigorSwitch models contain a command injection vulnerability in the getVid function. The vulnerability is caused by insufficient filtering of the username and password fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71924",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71925",
+      "desc": "Multiple DrayTek VigorSwitch models contain a command injection vulnerability in the getDetail function. The vulnerability is caused by insufficient filtering of the username and password fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71925",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71926",
+      "desc": "Multiple DrayTek VigorSwitch models contain a command injection vulnerability in the setDevice function. The vulnerability is caused by insufficient sanitization of the username, password, and location fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71926",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71927",
+      "desc": "Multiple DrayTek VigorSwitch models contain a command injection vulnerability in the rebDevice function. The vulnerability is caused by insufficient filtering of the username and password fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71927",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71928",
+      "desc": "Multiple DrayTek VigorSwitch models contain a command injection vulnerability in the fdftDevice function. The vulnerability is caused by insufficient filtering of the username and password fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71928",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71929",
+      "desc": "Multiple DrayTek VigorSwitch models contain a command injection vulnerability in the setDevProto function. The vulnerability is caused by insufficient filtering of the username and password fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71929",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71930",
+      "desc": "Multiple DrayTek VigorSwitch models contain a command injection vulnerability in the setTime function. The vulnerability is caused by insufficient filtering of the username and password fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71930",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71931",
+      "desc": "Multiple DrayTek VigorSwitch models contain a command injection vulnerability in the tftp_upgrade function. The vulnerability is caused by insufficient filtering before the filename field is concatenated into a command. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71931",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71932",
+      "desc": "Multiple DrayTek VigorSwitch models contain a directory traversal vulnerability in the getSyslogFile function. The vulnerability is caused by insufficient validation of the option field. A remote attacker can trigger this vulnerability via crafted input containing path traversal sequences to access arbitrary files on the device. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71932",
+      "cvss": "4.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71933",
+      "desc": "Multiple DrayTek VigorSwitch models contain unauthorized operation vulnerabilities in multiple syslog functions. The vulnerability is caused by missing authorization checks. A remote attacker can trigger these vulnerabilities via crafted requests to modify configuration, restart services, save startup configuration, or clear logs.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71933",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71934",
+      "desc": "Multiple DrayTek VigorSwitch models contain a buffer overflow vulnerability in the pingtrace function. The vulnerability is caused by missing length checks when the host, count, and interval fields are concatenated into a fixed-size buffer. A remote attacker can trigger this vulnerability via crafted input, causing a denial of service or potentially executing arbitrary commands. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71934",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71935",
+      "desc": "Multiple DrayTek VigorSwitch models contain a buffer overflow vulnerability in the webBackupAction function. The vulnerability is caused by repeated string concatenation of the pathN, valueN, key, and option fields into fixed-size stack buffers without total length checks. A remote attacker can trigger this vulnerability via crafted input, causing a denial of service or potentially executing arbitrary commands. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71935",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71936",
+      "desc": "Multiple DrayTek VigorSwitch models contain a buffer overflow vulnerability in the sysreboot function. The vulnerability is caused by unsafe concatenation of split valueN data into a fixed-size buffer. A remote attacker can trigger this vulnerability via crafted input, causing a denial of service or potentially executing arbitrary commands. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71936",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71937",
+      "desc": "Multiple DrayTek VigorSwitch models contain a buffer overflow vulnerability in the poe_schedule_profile function. The vulnerability is caused by repeated concatenation of the start_date, start_time, duration_time, how_often, weekdays, monthly_date, and cycle_duration fields into small fixed-size buffers without proper length checks. A remote attacker can trigger this vulnerability via crafted input, causing a denial of service or potentially executing arbitrary commands. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71937",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71938",
+      "desc": "Multiple DrayTek VigorSwitch models contain a buffer overflow vulnerability in the switch_lan_gvrp function. The vulnerability is caused by unsafe copying of the portList field into an undersized buffer. A remote attacker can trigger this vulnerability via crafted input, causing a denial of service or potentially executing arbitrary commands. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71938",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71939",
+      "desc": "Multiple DrayTek VigorSwitch models contain a buffer overflow vulnerability in the acl_general_setup Add ACE function. The vulnerability is caused by copying the name field into a fixed-size buffer without length validation. A remote attacker can trigger this vulnerability via crafted input, causing a denial of service or potentially executing arbitrary commands. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71939",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71940",
+      "desc": "Multiple DrayTek VigorSwitch models contain a buffer overflow vulnerability in the acl_general_setup Edit ACE function. The vulnerability is caused by copying the name field into a fixed-size buffer without length validation. A remote attacker can trigger this vulnerability via crafted input, causing a denial of service or potentially executing arbitrary commands. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71940",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71941",
+      "desc": "Multiple DrayTek VigorSwitch models contain a buffer overflow vulnerability in the diag_logmail function. The vulnerability is caused by concatenating multiple smtpReceiver email addresses into a fixed-size buffer without checking the remaining buffer size. A remote attacker can trigger this vulnerability via crafted input, causing a denial of service or potentially executing arbitrary commands. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71941",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71942",
+      "desc": "Multiple DrayTek VigorSwitch models contain a buffer overflow vulnerability in the mail_mailalert function. The vulnerability is caused by concatenating multiple smtpReceiver email addresses into a fixed-size buffer without checking the remaining buffer size. A remote attacker can trigger this vulnerability via crafted input, causing a denial of service or potentially executing arbitrary commands. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71942",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71943",
+      "desc": "Multiple DrayTek VigorSwitch models contain a command injection vulnerability in the setDevNet function. The vulnerability is caused by insufficient filtering of the username and password fields before command execution. A remote attacker can trigger this vulnerability via crafted input to execute arbitrary commands with root privileges. Exploitation requires valid administrative credentials for the device's web management interface.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71943",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71982",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71982",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76072",
+      "desc": "The Continue CLI applies an incomplete denylist as its only barrier to destructive shell commands when running unattended. In headless mode and auto mode the default policy in extensions/cli/src/permissions/defaultPolicies.ts grants the Bash tool the allow permission, and permissionChecker.ts hard-blocks a command only when the terminal-security evaluator returns a disabled verdict, so isCriticalCommand in packages/terminal-security/src/evaluateTerminalCommandSecurity.ts is the sole control. Its dangerous-path test matches only /, /*, ~, ~/*, /usr, /etc, /bin and /sbin and their prefixes, so a recursive forced removal of /home, /root, /var, /opt or /srv is not disabled. The command line is parsed with shell-quote, which reduces $HOME to an empty token, so rm -rf $HOME also fails the dangerous-path test while the shell re-expands the variable when the command is spawned. find with -delete is rated high risk rather than disabled, and shred, wipefs, truncate and pkexec are not handled. Because the agent autonomously reads content it does not control, including fetched web pages, repository files and issue text, an indirect prompt injection in that content can cause an unattended run to destroy the invoking user's data.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76072",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76073",
+      "desc": "Label Studio does not scope the annotation detail endpoint to the requesting user's organization. AnnotationAPI in label_studio/tasks/api.py declares queryset = Annotation.objects.all() and provides no get_queryset override, so the default lookup retrieves any annotation by primary key. The view's permission_required entries name annotations.view, annotations.change and annotations.delete, and label_studio/core/permissions.py registers every permission with rules.is_authenticated, so the check is satisfied by any logged-in account and no object-level organization test runs. The sibling task endpoint does constrain its queryset with project__organization set to the requester's active organization, which is the boundary this path omits. Annotation identifiers are sequential integers, so an authenticated user of one organization can enumerate identifiers to read, modify and delete annotations belonging to other organizations on the same instance. The same unscoped queryset appears on AnnotationConvertAPI in the same file.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76073",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76835",
+      "desc": "OAuth2 Proxy honours a client-supplied X-Forwarded-Uri header when deciding whether a request may skip authentication, because the guard added for CVE-2026-40575 is inert in the default reverse-proxy configuration. GetRequestURI in pkg/requests/util/util.go prefers that header over the real request URI whenever CanTrustForwardedHeaders returns true, and isAllowedPath in oauthproxy.go matches the skip_auth_routes and skip_auth_regex allow list against the resulting path. CanTrustForwardedHeaders in pkg/apis/middleware/scope.go grants that trust when the caller's address is in the trusted proxy set, and buildTrustedProxyNetSet falls back to defaultTrustedProxyIPs, which is 0.0.0.0/0 and ::/0, whenever reverse proxy mode is enabled without trusted_proxy_ip configured. Every client is therefore treated as a trusted proxy. An unauthenticated attacker can request a protected upstream path while setting X-Forwarded-Uri to a value matching an allow-listed route, so the skip-auth decision is made against the spoofed value while the upstream receives the protected path unchanged.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76835",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76836",
+      "desc": "AzuraCast exposes the Liquidsoap custom configuration fields through an endpoint that does not require the permission guarding them. The backend_config property in backend/src/Entity/Station.php is annotated with GROUP_GENERAL, and PUT /api/station/{station_id}/profile/edit in backend/src/Controller/Api/Stations/ProfileEditController.php deserializes with that group while requiring only StationPermissions::Profile. AbstractArrayEntity::fromArray() then assigns every public property with no field-level permission check, so custom_config_top, custom_config, custom_config_pre_playlists, custom_config_pre_live, custom_config_pre_fade and custom_config_bottom are writable through it. ConfigWriter::writeCustomConfigurationSection() emits those values verbatim into the generated Liquidsoap .liq script, where the process.run() and process.exec() built-ins execute operating system commands when the backend restarts, which the built-in sync task triggers automatically once needs_restart is set. The dedicated endpoint for the same data, PUT /api/station/{id}/liquidsoap-config, requires StationPermissions::Broadcasting, so a station manager holding only the profile permission reaches configuration that the intended boundary reserves for broadcasting operators.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76836",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76837",
+      "desc": "Baserow interpolates a user's display name into the rich-text mention markup without HTML encoding. PATCH /api/user/account/ stores the first_name value verbatim, and the mention renderer in web-frontend/modules/core/editor/mention.js builds its element with a template literal that places the name into a data-label attribute and the element body unescaped. A name containing a double quote closes that attribute and the opening tag, so following markup lands in the element content. The result is rendered through v-html by the rich-text field components, so any rich-text cell mentioning the account executes the stored script for every workspace member who views the table, without a click. Any workspace member, at the lowest permission level, can set the name and reach every other member of the workspace, and the payload persists until the name is changed or the mentioning row is removed. Version 2.3.0 escapes the value before interpolation.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76837",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76838",
+      "desc": "Hi.Events validates a webhook destination only when it is registered, never when it is used. NoInternalUrlRule in backend/app/Validators/Rules/NoInternalUrlRule.php resolves the hostname with gethostbyname() and rejects private and reserved ranges, which any public hostname passes. At dispatch, WebhookDispatchService takes the stored URL and calls it through spatie/laravel-webhook-server without repeating the check, and backend/config/webhook-server.php sets no Guzzle options, so redirect following remains enabled by default. A destination that answers with a redirect to a loopback, private or cloud metadata address therefore causes the server to issue that request, and changing the hostname's DNS record after registration reaches the same result because no resolution is repeated. The response is not discarded: WebhookResponseHandlerService stores the body on the webhook log and WebhookLogResource returns it from the webhook logs endpoint, so the requester reads what the internal service replied rather than inferring it. Both event and organizer webhooks share the rule and the dispatch path. Version 1.11.1-beta revalidates at dispatch, pins the validated address, checks every redirect hop, and decodes IPv6 transition addresses that previously bypassed the filter.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76838",
+      "cvss": "8.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78475",
+      "desc": "A flaw was found in the file-pix (ESM) plugin in GIMP. When processing a specially crafted PIX image file, the plugin allocates a Variable-Length Array (VLA) on the stack without proper bounds checking, causing an unbounded stack allocation followed by a 21-byte stack over-read. This can result in a denial of service due to stack exhaustion and a limited information disclosure of stack memory contents into an intermediate file.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78475",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-9254",
+      "desc": "An unauthenticated OS command injection vulnerability exists in the parental control functionality of Archer BE800 V1, BE3600 V1, and AX75 V1 due to improper filtering and neutralization of special characters in certain parameters. A LAN-based attacker can inject arbitrary commands and execute them with root privileges.\n\n\n\n\n\n\nSuccessful exploitation may result in complete device compromise and impact the confidentiality, integrity, and availability of the affected device and network traffic.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9254",
+      "cvss": "0.0",
       "cwe": ""
     },
     {

@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-24T14:43:31.276525+00:00",
-  "summary": "Today's digest contains 272 vulnerabilities across 5 sources. 71 zero-day exploits detected, 21 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-24T15:40:18.721430+00:00",
+  "summary": "Today's digest contains 283 vulnerabilities across 5 sources. 71 zero-day exploits detected, 21 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 272,
+    "new": 283,
     "changed": 0,
     "removed": 0,
-    "total": 497625,
+    "total": 497908,
     "zeroday": 71,
     "exploited": 21,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 185
+      "count": 196
     },
     {
       "name": "Exploit-DB",
@@ -3564,7 +3564,7 @@
     },
     {
       "id": "CVE-2026-30512",
-      "desc": "A local privilege escalation vulnerability in Entevo HMI V2 R5 P0 M4 allows attackers to escape Kiosk Mode by opening the application manual in an external PDF viewer and abusing the Print functionality to access Windows Explorer and execute arbitrary commands with administrative privileges.",
+      "desc": "A local privilege escalation vulnerability exists in the Restricted Access (Kiosk) Mode implementation of Scheidt & Bachmann entervo HMI prior to V2 R5 P0 M5. The vulnerability affects the external PDF viewer functionality used to display the application manual and its interaction with the underlying Windows operating system. An authenticated low-privileged user can escape the kiosk environment by opening the application manual in the external PDF viewer and abusing the print functionality. Successful exploitation allows execution of arbitrary commands outside the kiosk environment with local administrator privileges.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-08-24",
@@ -4064,6 +4064,204 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78386",
       "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19874",
+      "desc": "A heap-based buffer overflow vulnerability exists in Konami's Metal Gear Online 3, originating from improper validation of lobby data fields related to kicked players. The affected function processes a list of kicked player identifiers using the lobby data key \"kick_num\" to determine the number of entries, and individual kicked player IDs supplied via keys in the format \"kicked_id_%i\". The function does not validate that \"kick_num\" falls within the expected bounds. The game design limits matches to a maximum of 16 players, and the corresponding buffer for storing kicked player IDs is sized accordingly. If \"kick_num\" exceeds this limit, the function continues writing the provided player IDs past the end of the intended buffer and into adjacent memory regions. These adjacent regions contain Steam callback handler structures responsible for processing lobby data updates, lobby messages, and other related events. By supplying an oversized \"kick_num\" value and appropriate \"kicked_id_%i\" fields, an attacker can overwrite fields within the callback handler structures, including function pointers and callback argument values. Successful exploitation may enable control-flow hijacking, potentially allowing arbitrary code execution within the game process.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19874",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-21755",
+      "desc": "HCL Hive is affected by a missing rate limit which could allow an attacker unauthorized access via brute-force or credential stuffing attacks, or cause a denial of service.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-21755",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-39914",
+      "desc": "TIM Flow before 26.0.6 contains an improper authorization vulnerability that allows any authenticated user to submit arbitrary SQL queries to a privileged dashboard Excel export endpoint intended for administrative use only. Attackers can craft and submit unauthorized SQL queries to the export endpoint to retrieve sensitive database contents as a downloadable spreadsheet, bypassing role-based access controls.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-39914",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-39915",
+      "desc": "TIM Flow before 26.0.6 contains a CRLF injection vulnerability that allows remote attackers to inject arbitrary HTTP headers and response body content by embedding unsanitized carriage return and line feed sequences in the rt URL parameter and access_token cookie, which are reflected into Set-Cookie response headers. Attackers can craft malicious requests to induce authenticated users to execute arbitrary JavaScript in their browser context, enabling session token theft and account credential modification.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-39915",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65053",
+      "desc": "Horde IMP's AppleDouble MIME viewer writes an attacker-controlled attachment name into an HTML status block without escaping it. In lib/Mime/Viewer/Appledouble.php, _IMPrender() obtains the name of the data part with IMP_Contents::getPartName(), which returns the MIME part's own name parameter as supplied by the message, and passes it through sprintf into the text of an IMP_Mime_Status object. IMP_Mime_Status::__toString() concatenates each text entry directly into the surrounding table markup, so the value reaches the rendered page verbatim. A message crafted as multipart/appledouble whose data part carries markup in its name parameter therefore executes script in the context of any user who views it, and the payload persists in the mailbox. Exploitation requires no account on the target system, only the ability to send mail to a user. Version 7.2.0 escapes the value with htmlspecialchars(). The researcher additionally chains this flaw with the arbitrary file read of CVE-2026-58451, and reports that script running in an administrator's session can reach an application code-execution path.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65053",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76054",
+      "desc": "Invocation of Process Using Visible Sensitive Information in Black Duck blackduck-c-cpp 1.0.17 through 3.0.6 allows an actor able to execute code within the scanned project's build to obtain the Black Duck API token via the ambient process environment, which is inherited by subprocesses launched during build capture and signature scanning. This applies only where the token is supplied through the BLACKDUCK_API_TOKEN or BD_HUB_TOKEN environment variable.\n\n\n\nUpgrading does not remediate prior disclosure; any token supplied to an affected version through an environment variable should be rotated.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76054",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76055",
+      "desc": "Improper Neutralization of Special Elements used in an OS Command in the package manager component of Black Duck blackduck-c-cpp before 3.0.7 allows an actor able to create a file within the scanned build directory to execute operating system commands as the account running the scan.\n\n\n\nFilesystem paths encountered while traversing the scanned directory are interpolated into command strings that are executed through a shell without quoting or escaping, so shell metacharacters within those paths are interpreted rather than treated as literal text. No control over the build command or the tool's configuration is required.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76055",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78387",
+      "desc": "RansomLook contains an authorization weakness in the web-based configuration editor exposed through the /admin/config endpoint. The endpoint requires an authenticated session but does not perform an explicit privilege or administrator authorization check before allowing access to configuration-management functionality.\n\nAn authenticated low-privileged user able to access the endpoint can submit crafted configuration values that are written directly to the application's config/generic.json file. The affected functionality permits modification of configuration sections including notification, LDAP, SMTP, and general application settings. Successful exploitation could therefore allow an attacker to alter security-sensitive application behavior, redirect integrations or notifications, modify authentication-related configuration, disrupt external services, or render the RansomLook installation unavailable.\n\nThe configuration editor also operated on a configuration file containing sensitive values such as passwords, tokens, secrets, and API keys. Although the affected version contains logic intended to prevent recognized secret values from being returned to the browser, exposing configuration management through insufficiently authorized web functionality significantly increases the impact of a compromised or low-privileged account.\n\nThe patch resolves the issue by completely removing the /admin/config route and associated configuration-editing interface, preventing application configuration from being modified through the web UI.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78387",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78391",
+      "desc": "RansomLook contains a stored cross-site scripting (XSS) vulnerability in the cryptocurrency wallet detail view. Cryptocurrency addresses and blockchain names originating from external sources, including the public crowd-sourced ransomwhe.re feed, were stored without sufficient validation and later embedded directly into an inline JavaScript onclick handler.\n\n\nAlthough Jinja HTML autoescaping was applied, it does not provide adequate protection when untrusted data is inserted into a JavaScript string inside an HTML attribute. HTML entities such as &#39; are decoded by the browser's HTML parser before the resulting attribute is interpreted as JavaScript. Consequently, a specially crafted cryptocurrency address containing quote characters and JavaScript syntax could escape the intended string literal and execute arbitrary JavaScript when a user clicked the affected wallet's CSV export button.\n\n\nBecause cryptocurrency information imported from an untrusted upstream could reach the vulnerable rendering path, exploitation may not require an authenticated RansomLook account if an attacker can introduce a malicious wallet record into a consumed external data source. Successful exploitation could allow attacker-controlled JavaScript to execute in the security context of the RansomLook web application, potentially exposing information accessible to the victim or performing actions with the victim's privileges.\n\n\nThe patch mitigates the issue by validating cryptocurrency addresses and blockchain identifiers before storage, restricting them to a safe character set, and replacing the inline JavaScript handler with data-* attributes and an external event listener so wallet values are treated strictly as data rather than executable JavaScript.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78391",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78414",
+      "desc": "Cross-site scripting in the Web Administration interface of Network Optix Nx Witness VMS before version 6.1.3 on Linux, Windows and MacOS allows an adjacent-network attacker to execute arbitrary JavaScript in the browser of an authenticated administrator and steal the administrator's session token, resulting in Administrator Account Takeover. An attacker who controls an Nx server on the same network segment can set that server's site name to a script payload, which executes when an administrator opens the \"Merge with Another Site\" dialog and the site selection list is displayed.Solution:\n\nUpdate to Nx Witness VMS version 6.1.3 or later.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78414",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-9728",
+      "desc": "The userspace syscall verifier z_vrfy_mbox_send() in drivers/mbox/mbox_handlers.c validated the nested msg->data/msg->size fields by reading them directly out of live userspace memory, and then forwarded the original, still-mutable userspace struct mbox_msg * pointer to z_impl_mbox_send() and the underlying driver. Between the access check and the driver's use of msg->data, the validated pointer could be replaced, leaving a time-of-check/time-of-use window.\n\nOn a system built with CONFIG_USERSPACE, any unprivileged userspace thread may invoke the mbox_send() system call. A second thread sharing the caller's address space can race to overwrite msg->data with a supervisor (kernel) address after the verifier's bounds check has passed but before the driver dereferences it. The driver then reads from the attacker-chosen address in supervisor context (for example memcpy(&data32, msg->data, msg->size) in the NXP mailbox driver, whose bytes are subsequently emitted to the peer mailbox endpoint).\n\nThe impact is a userspace-to-supervisor access-control bypass: disclosure of kernel memory contents (high confidentiality impact), or, for an invalid/unmapped target address, a faulting kernel read causing denial of service. The fix snapshots the entire struct mbox_msg into a kernel-stack copy with k_usermode_from_copy() and validates and forwards that immutable copy, closing the race.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9728",
+      "cvss": "6.4",
       "cwe": ""
     },
     {

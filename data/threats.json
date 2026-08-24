@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-24T11:02:18.017567+00:00",
-  "summary": "Today's digest contains 191 vulnerabilities across 5 sources. 71 zero-day exploits detected, 21 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-24T11:55:02.519097+00:00",
+  "summary": "Today's digest contains 198 vulnerabilities across 5 sources. 71 zero-day exploits detected, 21 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 191,
+    "new": 198,
     "changed": 0,
     "removed": 0,
-    "total": 496677,
+    "total": 496875,
     "zeroday": 71,
     "exploited": 21,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 104
+      "count": 111
     },
     {
       "name": "Exploit-DB",
@@ -34,6 +34,44 @@
   ],
   "threats": [
     {
+      "id": "PKCERT-BFB4F019",
+      "desc": "Pakistan CERT Security Advisory: Advisory: Adobe Acrobat Chrome Extension Vulnerability Exposing WhatsApp Web Sessions. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
+      "severity": "HIGH",
+      "source": "Pakistan CERT",
+      "date": "2026-08-24",
+      "pakistan": true,
+      "zeroday": false,
+      "tags": [
+        "pakistan",
+        "cert",
+        "advisory",
+        "government",
+        "Pakistan Advisory"
+      ],
+      "url": "https://pkcert.gov.pk/advisory/26/17.pdf",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "PKCERT-0C8150B6",
+      "desc": "Pakistan CERT Security Advisory: Advisory: Malware Targeting Synchronized Passkeys on Compromised Windows Systems. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
+      "severity": "HIGH",
+      "source": "Pakistan CERT",
+      "date": "2026-08-24",
+      "pakistan": true,
+      "zeroday": false,
+      "tags": [
+        "pakistan",
+        "cert",
+        "advisory",
+        "government",
+        "Pakistan Advisory"
+      ],
+      "url": "https://pkcert.gov.pk/advisory/26/16.pdf",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
       "id": "PKCERT-917CDA37",
       "desc": "Pakistan CERT Security Advisory: Advisory: Critical Authentication Bypass and Account Takeover Vulnerability in N-able N-central. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
       "severity": "HIGH",
@@ -49,44 +87,6 @@
         "Pakistan Advisory"
       ],
       "url": "https://pkcert.gov.pk/advisory/26/15.pdf",
-      "cvss": "7.5",
-      "cwe": ""
-    },
-    {
-      "id": "PKCERT-78CA5DA2",
-      "desc": "Pakistan CERT Security Advisory: Advisory: Critical Unauthenticated Remote Code Execution Vulnerabilities in WordPress Core. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
-      "severity": "HIGH",
-      "source": "Pakistan CERT",
-      "date": "2026-08-24",
-      "pakistan": true,
-      "zeroday": false,
-      "tags": [
-        "pakistan",
-        "cert",
-        "advisory",
-        "government",
-        "Pakistan Advisory"
-      ],
-      "url": "https://pkcert.gov.pk/advisory/26/14.pdf",
-      "cvss": "7.5",
-      "cwe": ""
-    },
-    {
-      "id": "PKCERT-BA33D102",
-      "desc": "Pakistan CERT Security Advisory: Advisory: Critical Vulnerabilities in Fortinet FortiSandbox Under Active Exploitation (CVE-2026-39808, CVE-2026-39813, CVE-2026-25089). Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
-      "severity": "HIGH",
-      "source": "Pakistan CERT",
-      "date": "2026-08-24",
-      "pakistan": true,
-      "zeroday": false,
-      "tags": [
-        "pakistan",
-        "cert",
-        "advisory",
-        "government",
-        "Pakistan Advisory"
-      ],
-      "url": "https://pkcert.gov.pk/advisory/26/13.pdf",
       "cvss": "7.5",
       "cwe": ""
     },
@@ -2606,6 +2606,132 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78317",
       "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-10582",
+      "desc": "Hugo's security.http.urls allowlist is the only control on outbound fetches made by resources.GetRemote, and it inspects the URL text alone. CheckAllowedHTTPURL in config/security/securityConfig.go applies the configured pattern list and then re-checks a canonicalised form of an integer, hex or octal IPv4 host, but it never resolves the hostname and never inspects the address the HTTP client actually connects to. The client constructed in resources/resource_factories/create/create.go installs no dial-time hook, so no check occurs at connection time either. A hostname that resolves to a loopback, private or cloud-metadata address therefore satisfies the policy, and the response body is embedded in the generated site. An attacker who can supply a URL through content, for example a front-matter field or a CMS field, can make the build fetch an internal endpoint and publish the response in the static output, so the build artifact itself carries the data out.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10582",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-10618",
+      "desc": "Hugo's default fenced-code-block renderer writes attribute values taken from the code-fence info string into the rendered HTML without escaping them. New in markup/internal/attributes/attributes.go converts every attribute value from a byte slice to a string as it is stored, deliberately dropping the escaping that used to happen there, and RenderAttributes in the same file escapes only values that are still byte slices, so its escaping branch is never reached and every value is written verbatim. The function's documentation states that it performs HTML escaping of string attributes, which it does not. A quote inside an attribute value in the info string therefore terminates the attribute and allows a further attribute, including an event handler, to be placed on the wrapper element, and the script runs for every visitor who loads the page. This path is reached under the default configuration, with code fences enabled and without goldmark's unsafe setting or any custom render hook. Attribute names beginning with on are filtered when the attributes are parsed, so injection is achieved through the value rather than the name.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10618",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59295",
+      "desc": "Micrometer-instrumented Apache HttpAsyncClient (4.x or 5.x) usage via MicrometerHttpClientInterceptor can leak memory unboundedly when asynchronous requests fail before receiving a response (e.g. connection resets or timeouts). Tracking state for these requests remains in memory indefinitely, and sustained failures lead to heap exhaustion and OutOfMemoryError crashes.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59295",
+      "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76172",
+      "desc": "fast-uri is a URI parser for Node.js. During parsing it runs a legacy decoding pass over the scheme component and never re-escapes the result, and serialization writes the scheme back out verbatim, unlike the host component which is re-escaped. As a result an input whose scheme carries percent-encoded slashes parses as a scheme with no authority, so the parsed host and error are both undefined, yet resolving or normalizing that same input emits a network-path reference whose authority is attacker-chosen and re-parses to that host. An application that allowlists on the parsed host, or treats a reference with no authority as safe to resolve against its base, gets the opposite of what it checked, giving an off-site redirect, server-side request forgery, or address-policy bypass. The legacy decoder also expands non-standard escape forms, widening the issue past upstream filters, and control characters in the scheme can reach the output as raw carriage return and line feed. The affected versions are 2.3.1 up to but not including 2.4.5, 3.0.0 up to but not including 3.1.6, and 4.0.0 up to but not including 4.1.3. The issue is fixed in 2.4.5, 3.1.6, and 4.1.3, which reject a scheme that is not valid after decoding. Users should upgrade to a patched version.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76172",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78244",
+      "desc": "A vulnerability was detected in itsourcecode Real Estate Management System 1.0. Affected by this issue is some unknown functionality of the file search.php. Performing a manipulation of the argument search/delivery_type/search_price/property_type results in sql injection. The attack may be initiated remotely. The exploit is now public and may be used.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78244",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78245",
+      "desc": "A flaw has been found in itsourcecode Online Pharmacy System 1.0. This affects the function move_uploaded_file of the file all_users/register.php of the component User Registration. Executing a manipulation of the argument photo can lead to unrestricted upload. The attack may be launched remotely. The exploit has been published and may be used.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78245",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78337",
+      "desc": "Unrestricted Upload of File with Dangerous Type in the company logo upload in Roskus Prospero Flow CRM before 5.15.13 allows an authenticated user holding the create company and update company permissions to execute arbitrary JavaScript in the application origin via an SVG document containing an embedded script element.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78337",
+      "cvss": "0.0",
       "cwe": ""
     },
     {

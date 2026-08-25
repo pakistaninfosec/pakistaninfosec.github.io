@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-25T01:20:37.749102+00:00",
-  "summary": "Today's digest contains 413 vulnerabilities across 5 sources. 72 zero-day exploits detected, 22 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-25T02:39:40.344051+00:00",
+  "summary": "Today's digest contains 451 vulnerabilities across 5 sources. 72 zero-day exploits detected, 22 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 413,
+    "new": 451,
     "changed": 0,
     "removed": 0,
-    "total": 502335,
+    "total": 502786,
     "zeroday": 72,
     "exploited": 22,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 325
+      "count": 363
     },
     {
       "name": "Exploit-DB",
@@ -6603,6 +6603,690 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66766",
       "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-10630",
+      "desc": "The WP Courses LMS – Online Courses Builder, eLearning Courses, Courses Solution, Education Courses plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 3.2.29 via the 'resultID' parameter due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with custom-level access and above, to read any other user's quiz answers and scores by enumerating the incrementing resultID value via the wpcq_get_quiz_result AJAX action. The only access control on this endpoint is a nonce check (wpc_nonce) that is exposed to every logged-in user on the frontend, providing no meaningful authorization barrier.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10630",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15023",
+      "desc": "The Events Manager – Calendar, Bookings, Tickets, and more! plugin for WordPress is vulnerable to generic SQL Injection via Stored 'meta_key' via Event/Location Duplicate Action in all versions up to, and including, 7.4.0 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with contributor-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. This is a second-order SQL injection: an attacker first plants SQL metacharacters in a custom meta key via the standard add-meta flow (WordPress stores these verbatim in wp_postmeta), then triggers the injection by invoking the event_duplicate or location_duplicate action, which reads the stored meta keys via get_post_meta() and concatenates them unsafely into the INSERT query.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15023",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16434",
+      "desc": "Adminer 4.6.0 through 5.5.0 (fixed in 5.5.1) contains an incomplete fix for a prior X-Forwarded-Prefix vulnerability (GHSA-8478-xrj3-h9c2). The validation guard (bootstrap.inc.php) only rejects prefixes matching ^/[^/], blocking //evil.com but allowing values such as /\\evil.com whose second character is a backslash. Because browsers normalize backslash to forward slash, a network-path reference survives into REQUEST_URI and reaches cookie_path(), affecting the Set-Cookie Path attribute. Exploitation requires that clients can set the X-Forwarded-Prefix header (a misconfigured or absent reverse proxy). Impact is limited to anomalous cookie-path scoping.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16434",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19801",
+      "desc": "The BetterLinks – Link Shortener, Link Cloaking, Redirects, Affiliate Link Manager & MCP plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 3.1.0. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to create arbitrary BetterLinks short URLs with attacker-controlled slugs and redirect destinations, enabling phishing and SEO abuse. Exploitation requires the Fluent Boards companion plugin to be installed and active (so that the FLUENT_BOARDS constant is defined), and is further facilitated by the betterlinks_admin_nonce nonce being emitted on every frontend page via wp_localize_script, making it accessible to any authenticated user.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19801",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-34959",
+      "desc": "Adminer 4.6.0 before 5.5.0 prepends the client-supplied X-Forwarded-Prefix header to $_SERVER[\"REQUEST_URI\"] with no trusted-proxy check and no validation of the prefix value. An attacker can supply an absolute URL (e.g. X-Forwarded-Prefix: https://evil.example) that flows into Location redirect headers, the Set-Cookie path attribute, and self-referential links. This enables an authenticated open redirect after state-changing POSTs, unauthenticated control of the session cookie path attribute, and poisoning of self-referential links; CR/LF cannot be injected, so header splitting/XSS is not possible.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34959",
+      "cvss": "4.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-34964",
+      "desc": "Adminer before 5.5.0 contains a server-side request forgery vulnerability in the login form's server field validator, which only inspects leading integers for privileged ports and fails to reject non-numeric port values. Attackers can inject PDO DSN keys like host= and port= into the server parameter to bypass the privileged-port restriction and establish TCP connections to arbitrary internal hosts and ports before authentication.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34964",
+      "cvss": "5.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-34967",
+      "desc": "Adminer versions 5.3.0 through 5.4.2 with the sql-log plugin enabled contain an arbitrary file write vulnerability in the ns parameter of plugins/sql-log.php. An authenticated user can supply path traversal sequences in the ns parameter to write arbitrary .sql files with attacker-controlled content to any writable directory on the host.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34967",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-34968",
+      "desc": "Adminer before 5.4.3 contains an arbitrary file deletion vulnerability in SQLite mode where the database-list drop action fails to validate file extensions before deletion. An authenticated attacker can submit arbitrary relative file paths in the db[] parameter to delete any files writable by the PHP process.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34968",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56702",
+      "desc": "Adminer versions before 5.4.3 contain an unrestricted file upload vulnerability in the AdminerFileUpload plugin that allows authenticated users to upload PHP files by exploiting a permissive default extension allowlist. Attackers can upload PHP webshells to columns ending in _path and execute arbitrary code as the web-server user when uploadPath is web-served.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56702",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56703",
+      "desc": "Adminer before 5.4.3 contains a remote code execution vulnerability in SQLite query handling where VACUUM INTO is not blocked despite ATTACH restrictions. Authenticated attackers can execute VACUUM INTO to write PHP code to arbitrary file paths and execute commands on the server.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56703",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56704",
+      "desc": "Adminer before 5.4.3 inserts unsanitized database server version strings into script tags with valid CSP nonces without proper validation. Attackers controlling a rogue MySQL server can return crafted version strings that break out of the JavaScript context and execute arbitrary code, bypassing Content Security Policy protections.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56704",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56705",
+      "desc": "Adminer before 5.4.3 fails to sanitize the server field before constructing a PDO DSN string, allowing unauthenticated attackers to inject ODBC parameters via semicolons. Attackers can inject TraceFile and TraceOn parameters to write PHP code to the web root, achieving remote code execution when the trace file is accessed.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56705",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56706",
+      "desc": "Adminer before 5.4.3 uses a CSRF token scheme that transmits both the XOR mask and the masked value in every token (format (rand XOR secret):rand), allowing anyone who observes a single CSRF token (e.g., via network sniffing, log files, Referrer header, or XSS) to recover the session secret with a single XOR operation and forge unlimited valid tokens. The implementation is further weakened by a low-entropy session token (rand(1,1e6), ~20 bits) that permits blind brute-force, and by use of loose comparison (==) in token verification, enabling PHP type juggling. Exploitation enables cross-site request forgery against authenticated sessions, including execution of arbitrary SQL queries.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56706",
+      "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56707",
+      "desc": "Grav Flex Objects plugin versions 1.4.0 through 1.4.7 contain an authorization bypass vulnerability in the flex-objects shortcode that allows users with page-edit access to render any registered Flex collection without permission checks. Attackers can place the shortcode in published pages to expose sensitive directory contents including user account information, bypassing the authorize ACL enforced in the admin panel.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56707",
+      "cvss": "7.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56708",
+      "desc": "Grav API plugin before 1.0.16 contains a server-side request forgery vulnerability in webhook delivery that allows attackers to bypass hostname validation by DNS rebinding. Attackers controlling authoritative DNS for a configured webhook hostname can answer validation lookups with public addresses and delivery lookups with private addresses to reach internal network resources.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56708",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56709",
+      "desc": "Grav before 3.9.2 fails to validate untrusted Host headers in the sendInvitationEmail() function when constructing token-bearing invitation links. Attackers can manipulate the Host header to poison invitation links and redirect users to attacker-controlled domains, bypassing the require_trusted_host protection which only covers password reset flows.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56709",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56710",
+      "desc": "Grav Login plugin versions before 1.0.16 fail to validate the target account's privilege level in the onApiUserListRowAction unlock handler. An attacker with api.users.write permission can clear login lockout counters on admin.super accounts, removing brute-force protection from the highest-privilege accounts without requiring equivalent permissions.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56710",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-72695",
+      "desc": "Grav before 2.0.16 contains a path traversal vulnerability in MediaUploadTrait::deleteFile() that allows authenticated users with media management permissions to delete arbitrary files by supplying filenames with directory traversal sequences. The method validates only the basename portion of the filename while preserving unvalidated directory paths containing ../ sequences that are passed to unlink(), enabling deletion of files outside the intended media storage directory.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72695",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-72696",
+      "desc": "Grav CMS before 2.0.16 contains a symlink following vulnerability in Scheduler Job::createLockFile() that allows local attackers to overwrite arbitrary files by pre-creating symlinks at predictable lock file paths in the world-writable temp directory. Attackers can place a symlink at the predictable lock path pointing to any file the web server process can write to, and the next scheduled job run will follow the symlink and overwrite the target file's content with the job ID string.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72696",
+      "cvss": "8.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-72697",
+      "desc": "Grav CMS before 2.0.16 contains a path traversal vulnerability in the media_directory() Twig function that fails to validate filesystem paths, allowing authenticated users to enumerate and access files outside intended scope. Attackers with page authoring privileges can supply arbitrary filesystem paths to media_directory() and use the allow-listed filepath accessor on Medium objects to read file contents of any file matching configured media extensions that the web server process can access.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72697",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-72698",
+      "desc": "Grav CMS before 2.0.16 fails to filter system, site, and theme configuration arrays in sandboxed Twig renders, allowing content editors to read sensitive configuration values. Attackers with page-content edit access can access raw configuration arrays including secrets like cache credentials by using dot notation in Twig templates, bypassing the config_denied_paths restrictions.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72698",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-72699",
+      "desc": "The Grav Login plugin (getgrav/grav-plugin-login) before 3.9.1 is vulnerable to email address enumeration. The register() method in classes/Login.php throws a distinct exception (EMAIL_NOT_AVAILABLE) when a submitted email address already belongs to an existing account, while allowing registration to proceed otherwise. Because the registration endpoint has no rate limiting, an attacker can enumerate which email addresses have accounts on the site, one guess per request.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72699",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-72700",
+      "desc": "The getgrav/grav-plugin-login Composer plugin before 3.9.1 (used by Grav) compares password reset and account activation tokens using a non-constant-time === string comparison instead of hash_equals() in classes/Controller.php (taskReset()) and login.php (activation handler). Because the token-submission endpoint (taskReset) also lacks rate limiting, an attacker could in principle send repeated token guesses against a known username and use the timing differences to attempt to recover a valid token, though the vendor rates the practical exploitability as low and no end-to-end network exploit has been demonstrated.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72700",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-72701",
+      "desc": "Grav CMS before 2.0.16 contains a timing vulnerability in Utils::verifyNonce() that uses non-constant-time string comparison with the === operator instead of hash_equals() for CSRF nonce validation. Attackers can measure response timing differences to recover valid nonce values byte-by-byte through multiple requests, weakening CSRF protection below its intended security margin.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72701",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-72702",
+      "desc": "Grav CMS before 2.0.16 contains an origin validation bypass in the Uri::referrer() and Pages::referrerRoute() methods, which validate the Referer header using an unanchored string prefix match (str_starts_with($referrer, $base)) with no trailing delimiter. An attacker who controls a domain that begins with the victim site's origin (e.g. https://example.com.attacker.tld) can send a request with such a Referer to be treated as same-origin, bypassing the Referer-based origin check.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72702",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-75574",
+      "desc": "The Grav Email plugin (getgrav/grav-plugin-email) before 4.2.2 renders page-editor-controlled Email action parameters as unsandboxed Twig templates. An authenticated remote user with only api.access and api.pages.write permissions can place a Twig expression in header.form.process.email.body, publish the page, and submit the form to execute an arbitrary operating-system command as the account running PHP.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75574",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-75575",
+      "desc": "Rocket.Chat exposes the sendForgotPasswordEmail Meteor method without a DDP rate limit, so an unauthenticated caller may invoke it as often as it likes. The method is reachable over DDP and over the HTTP route POST /api/v1/method.callAnon/sendForgotPasswordEmail, and it triggers a password reset message for any address that matches an account. With no DDPRateLimiter rule registered for it, a caller can drive an unbounded volume of reset mail at a chosen address from the deployment's own mail sender, and can probe addresses at scale: the method answers true for an address with no account and for a successful send, but false when the address belongs to an account that authenticates through an external provider and Accounts_AllowPasswordChangeForOAuthUsers is off, so repeated calls distinguish that class of account. Later versions register a rule permitting ten calls per minute per client address.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75575",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76839",
+      "desc": "Grav before 2.0.16 allows sandboxed Twig templates to access sensitive User fields through allow-listed offsetGet() and offsetexists() methods that lack field filtering. Attackers with page-edit permissions can call offsetGet() on User objects to extract hashed passwords and 2FA secrets, enabling offline password cracking and authentication bypass.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76839",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76846",
+      "desc": "Grav before 2.0.16 contains an incomplete default denylist in the Twig sandbox configuration that fails to block access to system configuration secrets. Attackers with page-edit permission can use config.get() or config.toArray() in Twig templates to retrieve sensitive values like system.cache.redis.password when config_access is enabled.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76846",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78675",
+      "desc": "GitPython before 3.1.59 fails to disable merge_includes when parsing .gitmodules, allowing attackers to disclose local file content by including arbitrary file paths via [include] directives. Attackers can craft a malicious .gitmodules file with include directives pointing to sensitive files; when repo.submodules is accessed, GitConfigParser raises MissingSectionHeaderError embedding the target file's first line verbatim in the exception message.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78675",
+      "cvss": "8.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78676",
+      "desc": "GitPython before 3.1.59 fails to safely re-serialize multi-line git-config values during write operations, corrupting dormant quoted values into injected directives like core.hooksPath. Attackers can craft config files with embedded newlines that become live git directives after any unrelated GitPython config write, enabling arbitrary code execution via hook invocation.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78676",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78677",
+      "desc": "GitPython before 3.1.59 omits --separate-git-dir from unsafe_git_clone_options, allowing attackers to create arbitrary git directories outside the intended clone destination. Attackers can pass a separate_git_dir parameter to Repo.clone_from() or Repo.clone() to redirect repository metadata to an attacker-controlled filesystem path, enabling arbitrary directory creation and potential hook execution.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78677",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78678",
+      "desc": "GitPython versions before 3.1.59 contain an incomplete denylist in the unsafe_git_revision_options guard that omits --contents and -S options, allowing attackers to read arbitrary files by passing these options to Repo.blame(). Attackers can supply revision values like --contents=/etc/passwd to leak file contents through the blame result returned to the caller.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78678",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78679",
+      "desc": "GitPython before 3.1.59 contains an arbitrary file read vulnerability in TagReference.create() where a positional reference parameter bypasses the unsafe option guard. Attackers can supply a reference value like --file=<path> to read arbitrary files, with contents returned in the annotated tag message.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78679",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78680",
+      "desc": "NLTK versions before 3.10.3 fail to use validated absolute paths when invoking the Graphviz dot binary in dependencygraph.dot2img and AlignedSent._repr_svg_, allowing attackers to execute arbitrary code by placing a malicious dot binary in the search path or current working directory. Attackers can exploit bare-name binary resolution on Windows via the current working directory or on Unix-like systems via relative PATH entries to execute their binary instead of the legitimate Graphviz tool.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78680",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78681",
+      "desc": "NLTK versions before 3.10.3 use xml.etree.ElementTree to parse XML in multiple modules, which honors entity declarations in document DTDs. Attackers can craft XML payloads with nested entity declarations that expand from hundreds of bytes to megabytes in memory, causing denial of service.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78681",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78682",
+      "desc": "NLTK before 3.10.3 contains a server-side request forgery vulnerability in nltk.pathsec.urlopen (and callers nltk.data.load, nltk.downloader.Downloader.index/download) when an HTTP proxy is configured. pathsec.urlopen validates the requested hostname locally, but proxy-handler inheritance disables the safe HTTP/HTTPS handlers so the actual fetch is performed by the proxy against a destination that is never re-validated. An attacker can supply a validated public URL that the proxy forwards to an internal loopback-only service, allowing disclosure of internal HTTP resources, loading of forged downloader indexes, and installation of attacker-chosen package content.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78682",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78683",
+      "desc": "NLTK before 3.10.0 (affected versions <=3.9.4) contains an unsafe pickle deserialization vulnerability in the TransitionParser.parse() method (nltk/parse/transitionparser.py). The method calls pickle_load() with the default restricted=False, routing deserialization through WarningUnpickler, which does not override find_class() and therefore permits arbitrary class resolution. When an application loads an attacker-crafted model file, embedded pickle gadget chains execute arbitrary Python code with the privileges of the user running the application. NLTK provides a RestrictedUnpickler for safe deserialization, but it is not used by production code paths. Fixed in 3.10.0.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78683",
+      "cvss": "9.6",
       "cwe": ""
     },
     {

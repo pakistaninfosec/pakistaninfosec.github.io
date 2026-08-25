@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-25T03:50:29.920388+00:00",
-  "summary": "Today's digest contains 456 vulnerabilities across 5 sources. 72 zero-day exploits detected, 22 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-25T04:40:46.471664+00:00",
+  "summary": "Today's digest contains 462 vulnerabilities across 5 sources. 72 zero-day exploits detected, 22 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 456,
+    "new": 462,
     "changed": 0,
     "removed": 0,
-    "total": 503242,
+    "total": 503704,
     "zeroday": 72,
     "exploited": 22,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 368
+      "count": 374
     },
     {
       "name": "Exploit-DB",
@@ -7377,6 +7377,114 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78685",
       "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-14280",
+      "desc": "The Events Manager – Calendar, Bookings, Tickets, and more! plugin for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 7.3.7.4 via the em_options_save function. This makes it possible for authenticated attackers, with administrator-level access and above, to include and execute arbitrary .php files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or achieve code execution in cases where .php file types can be uploaded and included. The stored traversal key is subsequently executed via an include_once() call that fires on every admin_init invocation — including unauthenticated admin-ajax.php requests — meaning once the malicious key is stored by an administrator, the inclusion is triggered without any further authentication or capability check.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-14280",
+      "cvss": "6.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-17089",
+      "desc": "The Events Manager – Calendar, Bookings, Tickets, and more! plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'header_format' parameter in all versions up to, and including, 7.4.0.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link. The shortcode entry point sanitizes 'header_format' via wp_kses(), but the unauthenticated 'search_events_grouped' AJAX action bypasses this sanitization entirely, leaving the parameter unsanitized before it is echoed into the HTML body in output_grouped().",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17089",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19892",
+      "desc": "The InfusedWoo Pro plugin for WordPress is vulnerable to Privilege Escalation via Account Takeover in all versions up to, and including, 5.1.17. This is due to a missing capability check in the `ajax_iwar_preview_email()` function, which uses `is_admin()` as its only authorization check and allows low-privilege users to render email preview merge fields for an arbitrary email address. This makes it possible for authenticated attackers, with subscriber-level access and above, to generate and retrieve a valid password reset link for any WordPress user, including administrators, enabling account takeover.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19892",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19943",
+      "desc": "The Gutenverse – WordPress Blocks, Page Builder & Site Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'titleTag' Block Attribute in all versions up to, and including, 4.0.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The malicious titleTag value survives wp_kses_post on save because it is stored inside a block-comment delimiter and the live HTML is only synthesized at render time by do_blocks(), meaning the payload also fires in administrator and editor sessions during post preview.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19943",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-75930",
+      "desc": "The FundEngine – Donation and Crowdfunding Platform plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 1.8.1. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to modify arbitrary posts and pages — overwriting title and content, and seizing ownership by supplying an attacker-controlled post_author integer that bypasses wp_kses_post sanitization. The wp_rest nonce required by the handler is trivially obtainable by any logged-in user via /wp-admin/admin-ajax.php?action=rest-nonce and therefore does not constitute an authorization barrier.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75930",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76063",
+      "desc": "The FundEngine – Donation and Crowdfunding Platform plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'wfp_featured_video_url' parameter in all versions up to, and including, 1.8.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The REST endpoint used to submit the video URL has its permission_callback set to __return_true, meaning any authenticated user — including those with Subscriber-level access — can reach the vulnerable code path.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76063",
+      "cvss": "6.4",
       "cwe": ""
     },
     {

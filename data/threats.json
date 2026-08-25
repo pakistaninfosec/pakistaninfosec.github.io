@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-25T19:33:00.727029+00:00",
+  "generated": "2026-08-25T20:30:34.591710+00:00",
   "summary": "Today's digest contains 589 vulnerabilities across 5 sources. 73 zero-day exploits detected, 23 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
     "new": 589,
     "changed": 0,
     "removed": 0,
-    "total": 512438,
+    "total": 513027,
     "zeroday": 73,
     "exploited": 23,
     "pakistan": 16
@@ -2775,7 +2775,7 @@
     {
       "id": "CVE-2026-30512",
       "desc": "A local privilege escalation vulnerability exists in the Restricted Access (Kiosk) Mode implementation of Scheidt & Bachmann entervo HMI prior to V2 R5 P0 M5. The vulnerability affects the external PDF viewer functionality used to display the application manual and its interaction with the underlying Windows operating system. An authenticated low-privileged user can escape the kiosk environment by opening the application manual in the external PDF viewer and abusing the print functionality. Successful exploitation allows execution of arbitrary commands outside the kiosk environment with local administrator privileges.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-24",
       "pakistan": false,
@@ -2787,7 +2787,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-30512",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -3813,7 +3813,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59230",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -3831,7 +3831,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60093",
-      "cvss": "0.0",
+      "cvss": "5.5",
       "cwe": ""
     },
     {
@@ -3849,13 +3849,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63621",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
       "id": "CVE-2026-66906",
       "desc": "Relative path traversal vulnerability in Apache Camel Azure Storage Blob component.\n\n\n\nThis issue affects Apache Camel: from 4.0.0 before 4.14.9, from 4.15.0 before 4.18.4, from 4.19.0 before 4.22.0.\n\n\n\nThe camel-azure-storage-blob component can download an Azure Storage blob to the local filesystem through its downloadBlobToFile operation, writing into the directory named by the fileDir endpoint option, which is documented as usable from both the producer and the consumer. BlobOperations.downloadBlobToFile built the local target by joining fileDir with the remote blob name exactly as the Azure SDK reported it (new File(fileDir, client.getBlobName())) and passed the result straight to the SDK download call, with no lexical normalization and no check that the resolved location stayed inside fileDir. The blob name is not route-controlled data: the consumer enumerates the container in BlobConsumer.createBatchExchangesFromContainer, which lists blobs and creates one exchange per entry from BlobItem.getName() verbatim, applying no name filtering by default. A blob name containing parent-directory segments therefore resolved to a location outside the configured fileDir, letting anyone able to influence the names present in the consumed container cause Camel to create or overwrite a file at a location of their choosing, with the privileges of the Camel process. Depending on what the process can write to, overwriting a file outside the download directory can escalate beyond the loss of integrity of that file. Azure Storage blob containers use a flat namespace in which the blob name is an opaque key, so a name carrying such segments is stored and listed as given. The fileDir option is an ordinary common-group configuration parameter and carries no security marker, so nothing signalled to users that its value was not being enforced as a containment boundary. Camel's other file-download consumers - camel-file, camel-ftp, camel-smb, camel-mina-sftp and camel-azure-files - already constrained their local downloads to the configured directory using a path-segment boundary check; the camel-azure-storage-blob download path was not covered by that work.\n\n\n\nUsers are recommended to upgrade to version 4.22.0, which fixes the issue. If users are on the 4.14.x LTS releases stream, then they are suggested to upgrade to 4.14.9. If users are on the 4.18.x releases stream, then they are suggested to upgrade to 4.18.4. For deployments that cannot upgrade immediately, constrain the names the consumer will act on using the regex endpoint option, which is applied to each listed blob name as a full-string match, so that only simple single-segment names are accepted and any name carrying a path separator or a parent-directory segment is filtered out before an exchange is created; the prefix option can additionally narrow the listing server-side, noting that when both are set regex takes priority and prefix is ignored. Alternatively, avoid the downloadBlobToFile operation on untrusted containers and write the payload from the route under a file name the route itself controls, rather than one taken from the remote listing. As defence in depth, treat the blob names in any externally writable container as untrusted input and do not derive local filesystem paths from them.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-24",
       "pakistan": false,
@@ -3867,13 +3867,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66906",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-66907",
       "desc": "Relative path traversal vulnerability in Apache Camel Google Storage component.\n\n\n\nThis issue affects Apache Camel: from 4.0.0 before 4.14.9, from 4.15.0 before 4.18.4, from 4.19.0 before 4.22.0.\n\n\n\nThe camel-google-storage consumer downloads Google Cloud Storage objects to the local filesystem when the downloadFileName option is set. That option is documented as a folder or a filename, and when its value contains no expression token the consumer builds the local destination by appending the object name to it: evaluateFileExpression sets the Exchange file-name header to the remote object name and evaluates downloadFileName + \"/${file:name}\". The ${file:name} token returns the file-name header verbatim, unlike ${file:onlyname}, which applies FileUtil.stripPath to it. The resulting string was passed directly to new File(result) and blob.downloadTo(file.toPath()) with no lexical normalization and no check that the destination stayed inside the configured directory. The object name is not route-controlled data: the consumer lists the bucket, iterates every returned blob and creates one exchange per object from blob.getBlobId().getName() verbatim, and the filter option that could restrict those names is not applied at all unless it has been explicitly set. Google Cloud Storage object names are opaque UTF-8 keys that the service stores and lists exactly as written, with no server-side canonicalization, and a forward slash is only a display convention for pseudo-directories, so a key containing parent-directory segments survives round-tripping intact. An object name containing such segments therefore resolved to a location outside the configured downloadFileName directory, letting anyone able to influence the names present in the consumed bucket cause Camel to create or overwrite a file at a location of their choosing, with the privileges of the Camel process. Depending on what the process can write to, overwriting a file outside the download directory can escalate beyond the loss of integrity of that file. The downloadFileName option is an ordinary consumer parameter and carries no security marker, so nothing signalled to users that its value was not being enforced as a containment boundary. The defect is consumer-only; the producer has no download-to-file sink. Camel's other file-download consumers - camel-file, camel-ftp, camel-smb, camel-mina-sftp, camel-azure-files and the Azure Storage download paths - already constrained their local downloads to the configured directory using a path-segment boundary check; camel-google-storage was the remaining object-store download sink not covered by that work.\n\n\n\nUsers are recommended to upgrade to version 4.22.0, which fixes the issue. If users are on the 4.14.x LTS releases stream, then they are suggested to upgrade to 4.14.9. If users are on the 4.18.x releases stream, then they are suggested to upgrade to 4.18.4. For deployments that cannot upgrade immediately, set the filter option to a regular expression that accepts only simple single-segment object names, so that any name carrying a path separator or a parent-directory segment is excluded before an exchange is created; note that no filtering whatsoever is applied when the option is left unset, and that the expression is matched against the whole object name. Alternatively, give downloadFileName an explicit expression that does not carry the remote path through, for example one built on ${file:onlyname} rather than the implicit ${file:name}, keeping in mind that a downloadFileName containing an expression is treated as route-author-controlled and is not covered by the containment check added in the fix. As defence in depth, treat the object names in any externally writable bucket as untrusted input and do not derive local filesystem paths from them.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-24",
       "pakistan": false,
@@ -3885,13 +3885,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66907",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-66908",
       "desc": "Improper Authentication vulnerability in Apache Camel Platform HTTP Main component.\n\n\n\nThis issue affects Apache Camel: from 4.8.0 before 4.22.0.\n\n\n\nThe camel-main embedded HTTP server can protect its endpoints with JWT authentication, configured through authenticationEnabled together with the JWT keystore properties. JWTAuthenticationConfigurer.buildJwtOptions returned null when neither jwtIssuer nor jwtAudience was configured, and the caller then skipped the JWTAuthOptions.setJWTOptions call entirely, so the Vert.x JWTAuth instance was built from the keystore alone. The result was that inbound tokens were checked only for signature and expiry: the iss and aud claims were not validated at all. Nothing signalled this - the server started normally and reported no warning - so a deployment configured the documented way silently enforced less than the operator believed it had enabled, and the component documentation itself presented signature and expiry checking as the default with issuer and audience as an optional extra. Both the application server and the management server were affected, because the omission was in each of the two configureAuthentication paths. Any unexpired token signed by any key the configured keystore trusts was therefore accepted, regardless of which issuer minted it or which audience it was intended for. How far that reaches depends on the trust set of the keystore: where the signing key belongs to a shared or multi-tenant identity provider, a token legitimately issued for an entirely different audience is accepted, while a keystore holding a dedicated signer narrows it to reuse of tokens minted for other services within the same trust domain. The jwtIssuer and jwtAudience options did not exist before 4.21.0, so on earlier releases there was no supported way to have these claims enforced at all.\n\n\n\nUsers are recommended to upgrade to version 4.22.0, which fixes the issue. From 4.22.0 the server refuses to start when a JWT keystore is configured but neither jwtIssuer nor jwtAudience is set, naming the properties involved, and a deployment that genuinely wants signature and expiry validation only must say so explicitly with the new jwtAllowMissingIssuerAndAudience option, which defaults to false. This behaviour is fixed only on 4.22.0. The 4.14.9 and 4.18.4 releases do not change the default: they add the jwtIssuer and jwtAudience options so that operators on those maintenance lines can enforce the claims by configuration, and an installation that upgrades to 4.14.9 or 4.18.4 without also setting at least one of those two properties is still accepting any unexpired token signed by a trusted key. Users on 4.14.x or 4.18.x should therefore upgrade to 4.14.9 or 4.18.4 and then set jwtIssuer, jwtAudience, or both. Releases from 4.8.0 up to and including 4.21.x offer no way to enforce these claims and should be moved to a version that does. Independently of version, restrict the JWT keystore to the smallest possible trust set - ideally a signer dedicated to this service rather than a shared identity-provider key - and where a gateway already validates issuer and audience in front of the server, ensure it cannot be bypassed.\n\n\n\nNotes:\n\n\n\nThe JIRA ticket:  https://issues.apache.org/jira/browse/CAMEL-24281  refers to the various commits that resolved the issue, and has more details.\n\n\n\nThe fail-closed guard could not be backported. The jwtIssuer and jwtAudience options were themselves only introduced in 4.21.0 by CAMEL-23525, so on camel-4.18.x and camel-4.14.x there was nothing an operator could set to satisfy the requirement and the guard would have broken every JWT deployment on those branches with no remedy available.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-24",
       "pakistan": false,
@@ -3903,13 +3903,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66908",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-71300",
       "desc": "Improper input validation vulnerability in Apache Camel Atmosphere Websocket component.\n\n\n\nThis issue affects Apache Camel: from 4.0.0 before 4.14.9, from 4.15.0 before 4.18.4, from 4.19.0 before 4.22.0.\n\n\n\nThe camel-atmosphere-websocket producer selects which connected WebSocket peers a message is delivered to through Exchange headers, and the string values of those headers sat outside the Camel namespace: websocket.connectionKey and websocket.connectionKey.list, along with websocket.sendToAll, websocket.eventType and websocket.errorType. WebsocketEndpoint extends ServletEndpoint and so inherits HttpHeaderFilterStrategy, which filters only the Camel and camel prefixes; the dotted names therefore fell outside the filtered namespace and were admitted in both directions by every HTTP-family consumer. In a route bridging an HTTP consumer into an atmosphere-websocket producer, an external sender could supply the list header and take over the producer's dispatch decision. WebsocketProducer.process tests the list header before the single-key header, so an injected value discarded the recipient the route had selected: a notification intended for one connected client could be suppressed, or delivered instead to a different client whose connection key the sender knows. The header need not be a query parameter and need not be supplied as a list literally - Camel's HTTP binding promotes a repeated header name, and a bracketed value, to a List when mapping onto the Exchange - so an ordinary inbound HTTP header is sufficient to reach the list-valued branch. This is distinct from CVE-2026-55993, which concerns the consumer-side query-parameter path in the same component. The behaviour dates back to the introduction of these constants, first released in 2.17.0, and was unchanged until this fix.\n\n\n\nUsers are recommended to upgrade to version 4.22.0, which fixes the issue. If users are on the 4.14.x LTS releases stream, then they are suggested to upgrade to 4.14.9. If users are on the 4.18.x releases stream, then they are suggested to upgrade to 4.18.4. For deployments that cannot upgrade immediately, strip the dispatch headers at the trust boundary before the producer, for example with removeHeaders(“websocket.*”) placed between the HTTP consumer and the atmosphere-websocket producer. Note that the fix renames the header string values into the Camel namespace, which is a breaking change for routes that set them by literal string: routes referencing the WebsocketConstants fields symbolically are unaffected, and the change is documented in the upgrade guides. As defence in depth, do not bridge an untrusted HTTP consumer directly into a WebSocket producer whose dispatch is header-driven without stripping the dispatch namespace first.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-24",
       "pakistan": false,
@@ -3921,7 +3921,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71300",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -5289,13 +5289,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75370",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-75371",
       "desc": "An integer handling flaw in the cobs_decode function of SpaceDot AcubeSAT OBC software commit eaf90ec allows physically-proximate attackers with UART access to cause a Denial of Service (DoS) via a crafted input.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-24",
       "pakistan": false,
@@ -5307,7 +5307,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75371",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -5817,7 +5817,7 @@
     {
       "id": "CVE-2026-52490",
       "desc": "An issue in libtiff 85f2ac8e0b01cb7db2bbecf4a3b891bdbef67938 allows an attacker to execute arbitrary code via the process_command_opts() function in tools/tiffcrop.c",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-24",
       "pakistan": false,
@@ -5829,7 +5829,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-52490",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -5925,7 +5925,7 @@
     {
       "id": "CVE-2026-75464",
       "desc": "OneNav 1.2.4 contains an authenticated arbitrary file deletion vulnerability via import_link().",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-24",
       "pakistan": false,
@@ -5937,7 +5937,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75464",
-      "cvss": "0.0",
+      "cvss": "8.1",
       "cwe": ""
     },
     {
@@ -8841,7 +8841,7 @@
     {
       "id": "CVE-2026-49845",
       "desc": "SQL injection in Hive Metastore direct SQL partition-name resolution in Apache Hive before 4.2.1 on all platforms allows authenticated users with access to Hive Metastore APIs to read, modify, or affect unintended partition metadata (including statistics updates, truncation targets, and file-metadata cache operations) via crafted partition names in metastore RPC requests when direct SQL is enabled (the default). Users are recommended to upgrade to version 4.2.1, which fixes this issue.\n\nDetails about the issue:\nSeveral Hive Metastore RPCs resolve partitions by full partition name (PART_NAME) through direct-SQL helpers. In those paths, client-supplied partition names are embedded into SQL using string concatenation (DirectSqlUpdatePart.quoteString() → '...') instead of bind parameters. A partition name containing a single quote (and crafted SQL) can alter the generated WHERE clause so that lookups intended for one partition match additional rows. That can affect reads, stats updates, truncate targets, metadata-cache targets, and related operations when metastore.try.direct.sql is enabled (default: true). An authenticated or network-trusted caller with the ability to invoke Hive Metastore partition-name APIs against a target table (directly or via Hive/other clients), when direct SQL is enabled can perform this attack. Also, the impact is mainly within table & partition targeting (read/update/truncate/drop/cache the wrong partitions in a table they can reference), not arbitrary cross-database access via this bug alone.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-25",
       "pakistan": false,
@@ -8853,7 +8853,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49845",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {

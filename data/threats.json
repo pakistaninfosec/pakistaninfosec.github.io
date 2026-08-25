@@ -1,19 +1,19 @@
 {
-  "generated": "2026-08-25T10:34:30.309948+00:00",
-  "summary": "Today's digest contains 529 vulnerabilities across 5 sources. 72 zero-day exploits detected, 22 actively exploited from CISA KEV, and 13 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-25T11:29:46.853041+00:00",
+  "summary": "Today's digest contains 542 vulnerabilities across 5 sources. 72 zero-day exploits detected, 22 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 529,
+    "new": 542,
     "changed": 0,
     "removed": 0,
-    "total": 506665,
+    "total": 507207,
     "zeroday": 72,
     "exploited": 22,
-    "pakistan": 13
+    "pakistan": 16
   },
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 444
+      "count": 454
     },
     {
       "name": "Exploit-DB",
@@ -25,7 +25,7 @@
     },
     {
       "name": "Pakistan CERT",
-      "count": 12
+      "count": 15
     },
     {
       "name": "NCCS Pakistan",
@@ -33,6 +33,63 @@
     }
   ],
   "threats": [
+    {
+      "id": "PKCERT-BFB4F019",
+      "desc": "Pakistan CERT Security Advisory: Advisory: Adobe Acrobat Chrome Extension Vulnerability Exposing WhatsApp Web Sessions. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
+      "severity": "HIGH",
+      "source": "Pakistan CERT",
+      "date": "2026-08-25",
+      "pakistan": true,
+      "zeroday": false,
+      "tags": [
+        "pakistan",
+        "cert",
+        "advisory",
+        "government",
+        "Pakistan Advisory"
+      ],
+      "url": "https://pkcert.gov.pk/advisory/26/17.pdf",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "PKCERT-0C8150B6",
+      "desc": "Pakistan CERT Security Advisory: Advisory: Malware Targeting Synchronized Passkeys on Compromised Windows Systems. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
+      "severity": "HIGH",
+      "source": "Pakistan CERT",
+      "date": "2026-08-25",
+      "pakistan": true,
+      "zeroday": false,
+      "tags": [
+        "pakistan",
+        "cert",
+        "advisory",
+        "government",
+        "Pakistan Advisory"
+      ],
+      "url": "https://pkcert.gov.pk/advisory/26/16.pdf",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "PKCERT-917CDA37",
+      "desc": "Pakistan CERT Security Advisory: Advisory: Critical Authentication Bypass and Account Takeover Vulnerability in N-able N-central. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
+      "severity": "HIGH",
+      "source": "Pakistan CERT",
+      "date": "2026-08-25",
+      "pakistan": true,
+      "zeroday": false,
+      "tags": [
+        "pakistan",
+        "cert",
+        "advisory",
+        "government",
+        "Pakistan Advisory"
+      ],
+      "url": "https://pkcert.gov.pk/advisory/26/15.pdf",
+      "cvss": "7.5",
+      "cwe": ""
+    },
     {
       "id": "PKCERT-71DA9F40",
       "desc": "Pakistan CERT Security Advisory: Advisory No 13: Critical Vulnerabilities in Fortinet FortiSandbox Under Active Exploitation. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF.",
@@ -8688,6 +8745,186 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78576",
       "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-12600",
+      "desc": "Denial-of-service (DoS) vulnerability in the internal JPEG2000 (JPX) decoding implementation of the Poppler fork developed by Innodata Labs. When an application processes an untrusted PDF file containing specially crafted JPXDecode images, a remote attacker can cause uncontrolled memory consumption. The flaw occurs in the JPXStream::readCodestream() function, where values controlled from the SIZ segment (such as img.nComps) are used for the memory allocation of tiles and components without adequate validation. This allows an attacker to force excessive memory allocation and cause a resource exhaustion, ultimately causing the pdftoppm process to terminate due to out-of-memory (OOM) conditions.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12600",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-21753",
+      "desc": "HCL Hive is affected by weak software supply chain governance, which could lead to the inclusion of vulnerable, unmaintained, or malicious third-party dependencies within the application environment.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-21753",
+      "cvss": "4.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-21754",
+      "desc": "HCL Hive is affected by multiple infrastructure and network configuration vulnerabilities, which could lead to unauthorized lateral movement, container breakout, and sensitive data exposure within internal communications.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-21754",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-21758",
+      "desc": "HCL Hive is affected by an information disclosure vulnerability, which could lead to an attacker gathering sensitive information about the host environment.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-21758",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-49845",
+      "desc": "SQL injection in Hive Metastore direct SQL partition-name resolution in Apache Hive before 4.2.1 on all platforms allows authenticated users with access to Hive Metastore APIs to read, modify, or affect unintended partition metadata (including statistics updates, truncation targets, and file-metadata cache operations) via crafted partition names in metastore RPC requests when direct SQL is enabled (the default). Users are recommended to upgrade to version 4.2.1, which fixes this issue.\n\nDetails about the issue:\nSeveral Hive Metastore RPCs resolve partitions by full partition name (PART_NAME) through direct-SQL helpers. In those paths, client-supplied partition names are embedded into SQL using string concatenation (DirectSqlUpdatePart.quoteString() → '...') instead of bind parameters. A partition name containing a single quote (and crafted SQL) can alter the generated WHERE clause so that lookups intended for one partition match additional rows. That can affect reads, stats updates, truncate targets, metadata-cache targets, and related operations when metastore.try.direct.sql is enabled (default: true). An authenticated or network-trusted caller with the ability to invoke Hive Metastore partition-name APIs against a target table (directly or via Hive/other clients), when direct SQL is enabled can perform this attack. Also, the impact is mainly within table & partition targeting (read/update/truncate/drop/cache the wrong partitions in a table they can reference), not arbitrary cross-database access via this bug alone.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-49845",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53561",
+      "desc": "An improper authentication vulnerability in HiveServer2 SAML bearer-token validation in Apache Hive 4.0.0 through 4.2.0 (and later unreleased branches) on deployments using HTTP transport with hive.server2.authentication=SAML allows an unauthenticated network attacker to authenticate as an arbitrary Hive user and obtain an authenticated HiveServer2 session via a forged Authorization: Bearer token sent to the /cliservice HTTP endpoint. Users are recommended to upgrade to 4.2.1 version that includes the fix for this issue.\n\nAccess / authorization required: No Hive credentials, SAML IdP login, or knowledge of the server signing secret is required. The attacker only needs network reachability to the HiveServer2 HTTP port (typically /cliservice), directly or through a reverse proxy such as Apache Knox that forwards unauthenticated requests to HS2. The instance must have SAML authentication enabled in HTTP mode. Deployments where Knox handles SSO and HiveServer2 uses LDAP/Kerberos (not native SAML mode) are not affected by this specific issue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53561",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-55976",
+      "desc": "Server-Side Request Forgery (SSRF) in Avro SerDe schema resolution in Apache Hive before 4.2.1 allows an authenticated remote attacker with CREATE TABLE privilege to cause the Hive server to fetch an attacker-controlled URL when resolving the avro.schema.url table property on an Avro table that is subsequently queried. This can expose cloud instance metadata, internal network services, or local server files to the Hive process identity. Users are recommended to upgrade to version 4.2.1, which fixes this issue.\n\n\n\nAttacker access requirements:\n\n  *  Network access to HiveServer2 / Metastore: required (remote attacker model).\n  *  Valid Hive authentication: required.\n  *  CREATE TABLE (or equivalent) privilege: required, so the attacker can set avro.schema.url in table properties.\n  *  SELECT privilege on the malicious table: not required for the creator, who can typically query their own table; any other user granted SELECT can also trigger the fetch.\n  *  Write access to the table LOCATION: not required; the attack uses the schema URL, not the data path.\n  *  Admin / superuser privileges: not required; an ordinary authenticated user with DDL rights is sufficient.\n  *  External tables enabled: typically required in practice, and enabled by default in most deployments.\n\n\n\n\nDetection guidance:\n\n  *  Inspect metastore / Hive table metadata for Avro tables whose avro.schema.url uses unexpected schemes such as http, https, file, or ftp, or points at link-local / cloud metadata addresses (for example 169.254.169.254) or other internal hosts.\n  *  Review HiveServer2 and Metastore logs around CREATE/ALTER TABLE and queries against Avro tables for schema-resolution failures or outbound fetches of avro.schema.url.\n  *  Correlate CREATE TABLE / ALTER TABLE activity that sets avro.schema.url with subsequent SELECT activity on the same table, especially when the URL target is unusual for schema distribution.\n  *  On cloud deployments, check instance / VPC flow logs and metadata service access logs for unexpected requests from Hive host identities shortly after Avro DDL or query activity.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55976",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59335",
+      "desc": "Improper handling of case sensitivity (CWE-178) in the identity zone authorization check in the Identity Zone Endpoint in Cloud Foundry UAA allows a remote authenticated attacker holding only the zones.write authority to bypass the intended restriction that this authority does not grant access to the privileged uaa (system) identity zone, by referring to the zone identifier in a non-lowercase form (e.g. UAA) in the request path and body. The authorization layer performs a case-sensitive comparison against the system zone identifier, while the underlying MySQL persistence layer resolves identifiers case-insensitively under its default collation, so the request is authorized incorrectly and is then resolved against the real system zone record. This allows the attacker to overwrite the system zone's JWT signing key with attacker-controlled key material, forge JWTs claiming the admin client and administrator scopes, and fully compromise UAA and any Cloud Foundry deployment that trusts it. This issue only affects UAA deployments backed by MySQL using its default collation; PostgreSQL and HSQLDB backends are not affected.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59335",
+      "cvss": "8.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78863",
+      "desc": "A vulnerability was found in liketrek TREK up to 3.0.22. Impacted is the function loginUser of the file server/src/services/authService.ts of the component Pre-2FA mfa_token Handler. The manipulation results in improper authentication. The attack may be performed from remote. Upgrading to version 3.1.0 is recommended to address this issue. Upgrading the affected component is recommended.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78863",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79652",
+      "desc": "A flaw was found in the JWT Bearer authorization grant implementation within the keycloak-services component of Red Hat Build of Keycloak. This component handles various OAuth2 and OpenID Connect grant types used for issuing access tokens. The issue occurs because the JWT Bearer grant fails to check if a client requires user consent before issuing a token. This allows an authenticated attacker with valid client credentials and a trusted identity provider assertion to bypass the consent requirement and obtain unauthorized access to a user account at a consent-gated client.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79652",
+      "cvss": "5.9",
       "cwe": ""
     },
     {

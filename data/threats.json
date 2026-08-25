@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-25T11:57:36.156717+00:00",
-  "summary": "Today's digest contains 542 vulnerabilities across 5 sources. 72 zero-day exploits detected, 22 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-25T13:02:22.956311+00:00",
+  "summary": "Today's digest contains 571 vulnerabilities across 5 sources. 72 zero-day exploits detected, 22 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 542,
+    "new": 571,
     "changed": 0,
     "removed": 0,
-    "total": 507749,
+    "total": 508320,
     "zeroday": 72,
     "exploited": 22,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 454
+      "count": 483
     },
     {
       "name": "Exploit-DB",
@@ -8925,6 +8925,528 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79652",
       "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-17587",
+      "desc": "The My Agile Privacy® – CMP, Cookie Consent & Privacy Tools plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 3.3.6. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to modify plugin settings including missing_cookie_shield, cookie_shield_running, cmode_v2_js_on_error, cmode_v2_js_error_code, and cmode_v2_js_error_motivation stored in the plugin's settings key.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17587",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18547",
+      "desc": "The Ultimate Member – User Profile, Registration, Login, Member Directory, Content Restriction & Membership Plugin plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Textarea Profile Field with HTML Support (DOM Gadget via id Attribute) in all versions up to, and including, 2.12.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is possible because the wp_kses 'templates' allowlist permits the id attribute on div elements but does not neutralize unescaped quotes within its value; when pickadate.js concatenates the stored id value into an HTML string via jQuery .html() on profile page load, the smuggled onfocus and autofocus attribute syntax breaks out of attribute context and executes as JavaScript.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18547",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19949",
+      "desc": "The All-in-One WP Migration and Backup plugin for WordPress is vulnerable to SQL Injection via archive restore functionality in all versions up to, and including, 7.109 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. This can be leveraged to obtain the ai1wm_secret_key when a site administrator performs an archive restore and achieve remote code execution once able to leverage the ai1wm_secret_key value.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19949",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57909",
+      "desc": "A path traversal vulnerability in WatchGuard Agent allows a remote, unauthenticated attacker on an adjacent network to execute arbitrary code on an affected system.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57909",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57910",
+      "desc": "Improper authentication in the WatchGuard Agent allows an unauthenticated attacker with network access to cause the agent to execute arbitrary code with elevated privileges.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57910",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-75908",
+      "desc": "The Newsletters plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 4.17. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with author-level access and above, to send arbitrary newsletter emails to users of any WordPress role, including administrators, by forging POST fields during a normal post submission. This allows an attacker-supplied role slug via the newsletters_mailinglistsroles POST field to be passed directly to get_users(), enabling unauthorized mass-mailing and potential phishing against privileged site users through the site's own outbound email channel.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75908",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-75971",
+      "desc": "The ShopEngine Elementor WooCommerce Builder Addon – All in One WooCommerce Solution plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 4.9.4. This is due to the `rum_importer()` function being registered on the WordPress core `import_start` action hook with no plugin-owned capability check and no allowlist filtering, causing arbitrary `<wp_option>` name/value pairs parsed from an attacker-supplied WXR import file to be passed directly to `update_option()`. This makes it possible for authenticated attackers, with Shop Manager-level access and above, to write arbitrary WordPress options — most critically setting `users_can_register` to `1` and `default_role` to `administrator` — enabling open self-registration of Administrator accounts and full site takeover. This is exploitable by Shop Manager-level users because WooCommerce grants that role the `import` capability, allowing it to reach the WordPress Importer flow that fires the `import_start` hook on which `rum_importer()` is registered, contrary to the assumption that the hook is restricted to Administrators.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75971",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-77824",
+      "desc": "The Media Sweep – WordPress Media Cleaner plugin for WordPress is vulnerable to generic SQL Injection via the 'fields' parameter in all versions up to, and including, 1.1.3 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77824",
+      "cvss": "4.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-77996",
+      "desc": "Joomla Extension - yootheme.com - Authenticated, privileged stored XSS in YOOtheme Pro 1.0.0-5.0.41 - Lack of escaping in the location custom field lead to a XSS vector.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77996",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-77997",
+      "desc": "Joomla Extension - yootheme.com - Authenticated, privileged information disclosure in YOOtheme Pro 1.0.0-5.0.41 - A missing access check allowed users with com_template editing permissions to access information about arbitrary modules without the respective com_modules permissions.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77997",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78684",
+      "desc": "vLLM before 0.27.0 fails to properly classify DeepStream as a GPU backend and omits pixel-limit enforcement in its decode path. Unauthenticated attackers can activate DeepStream at request time to initialize the process-wide GPU decode pool and submit video that bypasses resource controls, causing partial denial of service for concurrent requests.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78684",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78864",
+      "desc": "A vulnerability was determined in liketrek TREK up to 3.0.22. The affected element is the function journeyService.updateEntry of the file server/src/nest/journey/journey.controller.t of the component Journey Entry Update. This manipulation causes sql injection. It is possible to initiate the attack remotely. Upgrading to version 3.1.0 is sufficient to fix this issue. It is recommended to upgrade the affected component.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78864",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79657",
+      "desc": "NLTK versions before 3.10.3 contain a remote code execution vulnerability in allowlisted pickle loaders that trust entire module namespaces instead of specific safe callables. Attackers can craft malicious pickle payloads invoking dangerous in-namespace functions like ReppTokenizer._execute and numpy.f2py.crackfortran.myeval through pickle REDUCE to execute arbitrary commands during model or tokenizer artifact loading.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79657",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79658",
+      "desc": "Ech0 before 5.0.1 does not impose any size or shape limit on the Accept-Language header processed by its i18n middleware, which runs on every HTTP request. The header is passed unfiltered to go-i18n's NewLocalizer, which internally calls golang.org/x/text/language.ParseAcceptLanguage. The CVE-2022-32149 mitigation in x/text caps '-' characters but not '_' characters, which the parser aliases to '-', allowing quadratic-time parsing to be triggered with a large header (up to Go's default 1 MiB) built from underscore separators. An unauthenticated attacker can send such requests to consume roughly 1.5 seconds of CPU each, and concurrent requests can saturate a multi-core server (denial of service).",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79658",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79659",
+      "desc": "Ech0 before 4.7.3 contains a server-side request forgery vulnerability in the fetchPeerConnectInfo function that uses unvalidated HTTP requests instead of safe request methods with URL validation. Authenticated attackers can supply arbitrary URLs to access internal services and cloud metadata endpoints by triggering connection health checks or peer connection operations.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79659",
+      "cvss": "7.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79660",
+      "desc": "Ech0 versions before 4.7.3 expose guest commenter email addresses through public API endpoints due to improper JSON serialization tags on the Comment model. Unauthenticated attackers can harvest all commenter emails by calling the /api/comments and /api/comments/public endpoints without authentication.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79660",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79661",
+      "desc": "Ech0 through 4.5.6 registers the PUT /api/echo/like/:id endpoint on the public router group without authentication or rate limiting. Unauthenticated attackers can increment the fav_count counter of any echo (including private echoes) by supplying its UUID, which can be harvested from the public GET /api/echo/page feed. Repeated requests are accepted without deduplication, each triggering a database write and a four-key cache invalidation, allowing attackers to inflate popularity metrics and amplify load on the database and cache. Fixed in 4.7.3.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79661",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79662",
+      "desc": "Ech0 through 4.5.6 contains an OAuth redirect URI validation vulnerability in parseAndValidateClientRedirect (internal/service/auth/auth.go) that compares only the scheme and host of the client-supplied redirect_uri against the admin-configured allowlist, ignoring path, query, and fragment components. The redirect_uri is embedded into the signed state JWT at login time without validation. An attacker can craft a redirect_uri whose host matches an allowed origin but whose path is attacker-influenced; after the OAuth exchange the victim is redirected to that path with a one-time exchange code in the query string. If the code leaks (e.g., via Referer, analytics, or an open redirect on that host), the attacker can trade it at the public POST /api/auth/exchange endpoint for the victim's access and refresh tokens. Fixed in 4.7.3.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79662",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79663",
+      "desc": "Ech0 before 4.7.3 contains a stored cross-site scripting vulnerability in the public RSS feed where tag names and markdown content are rendered without HTML escaping. Attackers with admin privileges can inject malicious tag names or raw HTML in echo content that executes as JavaScript in RSS readers that render HTML-type summaries, affecting anonymous subscribers and other users.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79663",
+      "cvss": "4.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79664",
+      "desc": "Ech0 before 4.7.3 fails to properly revoke access tokens created with never-expire option, allowing attackers to maintain perpetual authenticated access after token theft. Three independent revocation mechanisms fail: logout panics on nil ExpiresAt field, RevokeToken skips when remainTTL is zero, and admin delete does not blacklist the JTI, leaving stolen tokens cryptographically valid until JWT secret rotation.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79664",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79665",
+      "desc": "Ech0 before 4.5.1 contains an authorization bypass vulnerability where session tokens skip scope validation in RequireScopes middleware, allowing logged-in non-admin users to access admin endpoints. Attackers can read system logs, visitor statistics, user emails, and subscribe to live WebSocket logs by sending authenticated session tokens to unprotected endpoints.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79665",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79666",
+      "desc": "Ech0 before 4.4.3 fails to enforce administrator authorization on dashboard log endpoints, allowing any authenticated user to access system logs. Attackers with valid user sessions can query GET /api/system/logs and subscribe to SSE and WebSocket log streams to retrieve sensitive operational data including file paths, stack traces, and internal URLs.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79666",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79667",
+      "desc": "Ech0 version 4.3.4 and earlier fails to reliably enforce scoped access token (least-privilege) restrictions on several privileged admin routes. Multiple privileged endpoints (e.g., /api/inbox, /api/panel/comments, /api/backup/export) omit scope checks and authorize based only on the user's admin role, and the backup export handler discards token scope metadata entirely. An attacker holding a deliberately limited (low-scope) admin access token can reach broader privileged functionality than intended, including reading the inbox and exporting a full database backup ZIP archive. Fixed in 4.4.3.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79667",
+      "cvss": "7.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79668",
+      "desc": "Ech0 before 4.7.3 contains an authentication bypass vulnerability in the PUT /api/echo/like/:id endpoint that allows unauthenticated attackers to increment engagement metrics without identity verification or rate limiting. Attackers can send repeated requests to arbitrarily inflate the fav_count field for any known echo identifier, compromising the integrity of engagement metrics and social ranking systems.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79668",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79669",
+      "desc": "Ech0 before 4.4.3 lacks authorization checks on system log endpoints allowing any authenticated non-admin user to read and stream all server logs. Attackers can access historical logs and real-time log streams via GET /api/system/logs, GET /api/system/logs/stream, and WS /ws/system/logs to gather reconnaissance data including internal file paths, error stack traces, and application state.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79669",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79670",
+      "desc": "Ech0 before 4.4.3 contains a stored cross-site scripting vulnerability in the file upload endpoint that validates Content-Type using only client-supplied headers without server-side inspection. Attackers with admin privileges can upload SVG or HTML files containing JavaScript that executes in the application origin when accessed by any user, enabling session hijacking and data exfiltration.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79670",
+      "cvss": "4.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79671",
+      "desc": "Ech0 through 4.2.1 contains a server-side request forgery vulnerability in the validateWebhookURL function (webhook_setting_service.go), which only validates literal IP addresses via net.ParseIP() and fails to reject hostnames that DNS-resolve to private or internal IPs (e.g., 169.254.169.254.nip.io). An attacker with admin privileges can create a webhook with such a hostname to bypass validation and cause the server to make requests to internal services, cloud metadata endpoints, and private network resources. The issue is fixed in 4.4.3.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79671",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79672",
+      "desc": "Ech0 before 4.4.3 fails to enforce scope-based authorization on nine comment panel admin endpoints, allowing access tokens with minimal scopes to perform full comment moderation operations. Attackers with a limited-scope access token can list, approve, reject, delete comments, and modify comment system settings by directly accessing the unprotected panel endpoints.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79672",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79673",
+      "desc": "Ech0 before 4.4.3 protects the PUT /user endpoint with the profile:read scope, a read-only scope, but allows write operations including password changes. An attacker with an admin's profile:read access token can change the admin's password and login to obtain an unrestricted session token that bypasses all scope enforcement.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79673",
+      "cvss": "6.5",
       "cwe": ""
     },
     {

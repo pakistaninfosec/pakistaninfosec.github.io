@@ -3,20 +3,44 @@
     {
       "date": "2026-08-26",
       "stats": {
-        "new": 589,
+        "new": 595,
         "changed": 0,
         "removed": 0,
-        "total": 524707,
-        "zeroday": 73,
-        "exploited": 23,
+        "total": 525302,
+        "zeroday": 79,
+        "exploited": 29,
         "pakistan": 16
       },
-      "summary": "Today's digest contains 589 vulnerabilities across 5 sources. 73 zero-day exploits detected, 23 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+      "summary": "Today's digest contains 595 vulnerabilities across 5 sources. 79 zero-day exploits detected, 29 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
       "sections": [
         {
           "label": "Zero Day Exploits",
           "color": "red",
           "items": [
+            {
+              "id": "CVE-2021-23758",
+              "desc": "Ajax.NET Professional (AjaxPro) contains a deserialization of untrusted data vulnerability that could allow for remote code execution via arbitrary .NET classes. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
+            },
+            {
+              "id": "CVE-2015-3246",
+              "desc": "Red Hat libuser contains a race condition vulnerability that allows authenticated local users to corrupt the /etc/passwd file to cause a denial of service or privilege escalation."
+            },
+            {
+              "id": "CVE-2015-5287",
+              "desc": "Red Hat Automatic Bug Reporting Tool (ABRT) contains a privilege escalation vulnerability that could allow local users with certain permissions to gain privileges via a symlink attack on a file with a predictable name. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
+            },
+            {
+              "id": "CVE-2022-0995",
+              "desc": "Linux Kernel contains an out-of-bounds memory write vulnerability which could allow a local user to gain privileged access or cause a denial of service on the system."
+            },
+            {
+              "id": "CVE-2026-8452",
+              "desc": "Citrix NetScaler ADC and NetScaler Gateway contain an improper restriction of operations within the bounds of a memory buffer vulnerability which could lead to denial of service."
+            },
+            {
+              "id": "CVE-2019-1068",
+              "desc": "Microsoft SQL Server contains a remote code execution vulnerability that could allow an attacker to execute code in the context of the SQL Server Database Engine service account."
+            },
             {
               "id": "CVE-2026-60004",
               "desc": "Gitea contains a code injection vulnerability that allows an attacker with repository write access to send a malicious patch to the diffpatch API endpoint to plant an executable Git hook and run shell commands as the Gitea service account."
@@ -32,30 +56,6 @@
             {
               "id": "CVE-2026-72530",
               "desc": "TrueConf Server contains a code injection vulnerability that could allow an unauthorized remote attacker with network access via port 4307/TCP to use a specially crafted script to break out of the isolated environment and execute arbitrary code on the host system."
-            },
-            {
-              "id": "CVE-2026-72529",
-              "desc": "TrueConf Server contains a missing authentication for critical function vulnerability which could allow a remote unauthorized attacker with network access via port 4307/TCP to execute an arbitrary script."
-            },
-            {
-              "id": "CVE-2026-64849",
-              "desc": "MLflow contains a server-side request forgery vulnerability that can allow attackers to reach internal or cloud metadata services and receive response_status and response_body."
-            },
-            {
-              "id": "CVE-2026-33824",
-              "desc": "Microsoft Internet Key Exchange (IKE) Service Extensions contains a double free vulnerability that could enable remote code execution."
-            },
-            {
-              "id": "CVE-2026-59310",
-              "desc": "Broadcom VMware vCenter contains a path traversal vulnerability which could allow a threat actor with network access to vCenter to execute arbitrary code."
-            },
-            {
-              "id": "CVE-2026-55040",
-              "desc": "Microsoft SharePoint contains a weak authentication vulnerability which allows an unauthorized attacker to bypass a security feature over a network."
-            },
-            {
-              "id": "CVE-2026-65400",
-              "desc": "Apple macOS contains an improper authentication vulnerability that could allow an attacker on the network to authenticate to Screen Sharing without valid credentials."
             }
           ]
         },
@@ -64,6 +64,30 @@
           "color": "orange",
           "items": [
             {
+              "id": "CVE-2021-23758",
+              "desc": "Ajax.NET Professional (AjaxPro) contains a deserialization of untrusted data vulnerability that could allow for remote code execution via arbitrary .NET classes. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
+            },
+            {
+              "id": "CVE-2015-3246",
+              "desc": "Red Hat libuser contains a race condition vulnerability that allows authenticated local users to corrupt the /etc/passwd file to cause a denial of service or privilege escalation."
+            },
+            {
+              "id": "CVE-2015-5287",
+              "desc": "Red Hat Automatic Bug Reporting Tool (ABRT) contains a privilege escalation vulnerability that could allow local users with certain permissions to gain privileges via a symlink attack on a file with a predictable name. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
+            },
+            {
+              "id": "CVE-2022-0995",
+              "desc": "Linux Kernel contains an out-of-bounds memory write vulnerability which could allow a local user to gain privileged access or cause a denial of service on the system."
+            },
+            {
+              "id": "CVE-2026-8452",
+              "desc": "Citrix NetScaler ADC and NetScaler Gateway contain an improper restriction of operations within the bounds of a memory buffer vulnerability which could lead to denial of service."
+            },
+            {
+              "id": "CVE-2019-1068",
+              "desc": "Microsoft SQL Server contains a remote code execution vulnerability that could allow an attacker to execute code in the context of the SQL Server Database Engine service account."
+            },
+            {
               "id": "CVE-2026-60004",
               "desc": "Gitea contains a code injection vulnerability that allows an attacker with repository write access to send a malicious patch to the diffpatch API endpoint to plant an executable Git hook and run shell commands as the Gitea service account."
             },
@@ -78,30 +102,6 @@
             {
               "id": "CVE-2026-72530",
               "desc": "TrueConf Server contains a code injection vulnerability that could allow an unauthorized remote attacker with network access via port 4307/TCP to use a specially crafted script to break out of the isolated environment and execute arbitrary code on the host system."
-            },
-            {
-              "id": "CVE-2026-72529",
-              "desc": "TrueConf Server contains a missing authentication for critical function vulnerability which could allow a remote unauthorized attacker with network access via port 4307/TCP to execute an arbitrary script."
-            },
-            {
-              "id": "CVE-2026-64849",
-              "desc": "MLflow contains a server-side request forgery vulnerability that can allow attackers to reach internal or cloud metadata services and receive response_status and response_body."
-            },
-            {
-              "id": "CVE-2026-33824",
-              "desc": "Microsoft Internet Key Exchange (IKE) Service Extensions contains a double free vulnerability that could enable remote code execution."
-            },
-            {
-              "id": "CVE-2026-59310",
-              "desc": "Broadcom VMware vCenter contains a path traversal vulnerability which could allow a threat actor with network access to vCenter to execute arbitrary code."
-            },
-            {
-              "id": "CVE-2026-55040",
-              "desc": "Microsoft SharePoint contains a weak authentication vulnerability which allows an unauthorized attacker to bypass a security feature over a network."
-            },
-            {
-              "id": "CVE-2026-65400",
-              "desc": "Apple macOS contains an improper authentication vulnerability that could allow an attacker on the network to authenticate to Screen Sharing without valid credentials."
             }
           ]
         },

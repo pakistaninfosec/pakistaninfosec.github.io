@@ -1,12 +1,12 @@
 {
-  "generated": "2026-08-26T18:15:56.536010+00:00",
-  "summary": "Today's digest contains 595 vulnerabilities across 5 sources. 79 zero-day exploits detected, 29 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-26T20:36:33.508853+00:00",
+  "summary": "Today's digest contains 545 vulnerabilities across 4 sources. 29 zero-day exploits detected, 29 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 595,
+    "new": 545,
     "changed": 0,
     "removed": 0,
-    "total": 525302,
-    "zeroday": 79,
+    "total": 525847,
+    "zeroday": 29,
     "exploited": 29,
     "pakistan": 16
   },
@@ -14,10 +14,6 @@
     {
       "name": "NVD/NIST",
       "count": 500
-    },
-    {
-      "name": "Exploit-DB",
-      "count": 50
     },
     {
       "name": "CISA KEV",
@@ -3231,7 +3227,7 @@
     {
       "id": "CVE-2026-53561",
       "desc": "An improper authentication vulnerability in HiveServer2 SAML bearer-token validation in Apache Hive 4.0.0 through 4.2.0 (and later unreleased branches) on deployments using HTTP transport with hive.server2.authentication=SAML allows an unauthenticated network attacker to authenticate as an arbitrary Hive user and obtain an authenticated HiveServer2 session via a forged Authorization: Bearer token sent to the /cliservice HTTP endpoint. Users are recommended to upgrade to 4.2.1 version that includes the fix for this issue.\n\nAccess / authorization required: No Hive credentials, SAML IdP login, or knowledge of the server signing secret is required. The attacker only needs network reachability to the HiveServer2 HTTP port (typically /cliservice), directly or through a reverse proxy such as Apache Knox that forwards unauthenticated requests to HS2. The instance must have SAML authentication enabled in HTTP mode. Deployments where Knox handles SSO and HiveServer2 uses LDAP/Kerberos (not native SAML mode) are not affected by this specific issue.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-25",
       "pakistan": false,
@@ -3243,13 +3239,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53561",
-      "cvss": "0.0",
+      "cvss": "7.4",
       "cwe": ""
     },
     {
       "id": "CVE-2026-55976",
       "desc": "Server-Side Request Forgery (SSRF) in Avro SerDe schema resolution in Apache Hive before 4.2.1 allows an authenticated remote attacker with CREATE TABLE privilege to cause the Hive server to fetch an attacker-controlled URL when resolving the avro.schema.url table property on an Avro table that is subsequently queried. This can expose cloud instance metadata, internal network services, or local server files to the Hive process identity. Users are recommended to upgrade to version 4.2.1, which fixes this issue.\n\n\n\nAttacker access requirements:\n\n  *  Network access to HiveServer2 / Metastore: required (remote attacker model).\n  *  Valid Hive authentication: required.\n  *  CREATE TABLE (or equivalent) privilege: required, so the attacker can set avro.schema.url in table properties.\n  *  SELECT privilege on the malicious table: not required for the creator, who can typically query their own table; any other user granted SELECT can also trigger the fetch.\n  *  Write access to the table LOCATION: not required; the attack uses the schema URL, not the data path.\n  *  Admin / superuser privileges: not required; an ordinary authenticated user with DDL rights is sufficient.\n  *  External tables enabled: typically required in practice, and enabled by default in most deployments.\n\n\n\n\nDetection guidance:\n\n  *  Inspect metastore / Hive table metadata for Avro tables whose avro.schema.url uses unexpected schemes such as http, https, file, or ftp, or points at link-local / cloud metadata addresses (for example 169.254.169.254) or other internal hosts.\n  *  Review HiveServer2 and Metastore logs around CREATE/ALTER TABLE and queries against Avro tables for schema-resolution failures or outbound fetches of avro.schema.url.\n  *  Correlate CREATE TABLE / ALTER TABLE activity that sets avro.schema.url with subsequent SELECT activity on the same table, especially when the URL target is unusual for schema distribution.\n  *  On cloud deployments, check instance / VPC flow logs and metadata service access logs for unexpected requests from Hive host identities shortly after Avro DDL or query activity.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-25",
       "pakistan": false,
@@ -3261,7 +3257,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-55976",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
@@ -7869,13 +7865,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78893",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-78894",
       "desc": "Race condition in Payments in Google Chrome prior to 152.0.7977.65 allowed a remote attacker who had compromised the renderer process to leak cross-origin data via a crafted HTML page. (Chromium security severity: Medium)",
-      "severity": "MEDIUM",
+      "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-08-25",
       "pakistan": false,
@@ -7887,7 +7883,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78894",
-      "cvss": "0.0",
+      "cvss": "3.1",
       "cwe": ""
     },
     {
@@ -7923,7 +7919,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78896",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -7941,7 +7937,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78897",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -8103,7 +8099,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78907",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -8229,7 +8225,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78914",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -8481,7 +8477,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78946",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -8679,7 +8675,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78957",
-      "cvss": "0.0",
+      "cvss": "5.5",
       "cwe": ""
     },
     {
@@ -8769,7 +8765,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78962",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -8877,7 +8873,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78968",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -8931,7 +8927,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78975",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -9039,7 +9035,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78981",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -9183,7 +9179,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78991",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -9237,7 +9233,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79001",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -9309,7 +9305,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79005",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -9453,7 +9449,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79013",
-      "cvss": "0.0",
+      "cvss": "5.9",
       "cwe": ""
     },
     {
@@ -9525,7 +9521,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79017",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -9543,7 +9539,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79018",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -9633,7 +9629,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79023",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -9651,7 +9647,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79024",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -9741,7 +9737,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79030",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -9801,7 +9797,7 @@
     {
       "id": "CVE-2026-79034",
       "desc": "Information leak in CORS in Google Chrome prior to 152.0.7977.65 allowed a remote attacker who had compromised the renderer process to leak cross-origin data via a crafted HTML page. (Chromium security severity: Medium)",
-      "severity": "MEDIUM",
+      "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-08-25",
       "pakistan": false,
@@ -9813,7 +9809,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79034",
-      "cvss": "0.0",
+      "cvss": "3.1",
       "cwe": ""
     },
     {
@@ -9831,7 +9827,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79038",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -9885,907 +9881,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79041",
-      "cvss": "0.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-F8C515D8",
-      "desc": "CVE-2026-42167 - ProFTPD mod_sql post-authentication SQLi - RCE",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52658",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-34ABCCA9",
-      "desc": "PCMan 2.0.7 - Buffer Overflow",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52657",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-1591AD00",
-      "desc": "NanaZip 6.5  - DoS",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52656",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-29F7855E",
-      "desc": "flyto-core 2.26.7 - Arbitrary File Write",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52655",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-5D43727B",
-      "desc": "Nodemailer 9.0.0 - File Read/ SSRF",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52654",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-2AD8B752",
-      "desc": "Linuxfabrik monitoring_plugins_6.0.0 - SSRF",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52653",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-84F68690",
-      "desc": "NanaZip 6.5  -  DoS",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52652",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-3BAC1305",
-      "desc": "flyto_core 2.26.7 - Server-Side Request Forgery",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52651",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-A878E4C6",
-      "desc": "Probo 0.222.2 -  IDOR",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52650",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-DB6DEA5F",
-      "desc": "webpack_devserver 5.2.5 -  CSRF",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52649",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-903164F2",
-      "desc": "phpSysInfo 3.4.5 - IP Allowlist Bypass",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52648",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-09151BBB",
-      "desc": "Nmap  7.99  - Extension Header Integer Underflow",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52647",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-C15F9877",
-      "desc": "Duplicati 2.2.0.3 - JWT Signing Key Leak",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52646",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-66426991",
-      "desc": "Joomla JCE_2.9.15 - Remote Code Execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52645",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-9053850D",
-      "desc": "ipTIME A3004T  - Remote Code Execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52644",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-2F3233E9",
-      "desc": "D-Link DNS_340L - OS Command Injection",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52643",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-2EE16274",
-      "desc": "WooCommerce 1.5.0 - Unauthenticated Arbitrary File Upload",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52642",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-378E3062",
-      "desc": "Apache Gravitino 1.2.1 - SSRF",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52641",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-9C38926D",
-      "desc": "Blocksy Companion  2.1.46 - RCE",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52640",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-EBFC6CD0",
-      "desc": "PraisonAI praisonaiagents  1.6.77 - Remote Code Execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52639",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-7AD0CD64",
-      "desc": "mcp-server-kubernetes 3.8.x - Argument Injection",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52638",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-A021B13C",
-      "desc": "LuCI DHCPv6 -  Lease Hostname Stored Cross-Site Scripting",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52637",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-B11329F3",
-      "desc": "Planyo_Online_Reservation_System  3.0 - Arbitrary File Read via SSRF",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52636",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-297F4263",
-      "desc": "Ray 2.56.0 - Directory Traversal & Local File Inclusion",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52635",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-E5C1DEF6",
-      "desc": "OrkesConductor 3.30.2 - Unauthenticated Remote Code Execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52633",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-EDA84DDE",
-      "desc": "Microsoft Edge 150.0.4078.48 - RCE",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52632",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-51C22D6A",
-      "desc": "CorgetGpsDget 2_3.2 - OS Command Injection",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52631",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-732591C9",
-      "desc": "Joomla 2.9.99.4 - Unauthenticated Remote Code Execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52630",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-6E4203BD",
-      "desc": "Krayin CRM v2.2.x - Authenticated Remote Code Execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52629",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-60737A25",
-      "desc": "Atarim WordPress Plugin  4.2.2 - Sensitive Information Exposure",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52628",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-706202DA",
-      "desc": "Langflow 1.9.0 - RCE",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52627",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-944818E3",
-      "desc": "Joomla Page Builder CK  3.5.10 -  Arbitrary File Upload",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52626",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-67DDE09E",
-      "desc": "MCPJam Inspector - Remote Code Execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52625",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-D7013A73",
-      "desc": "ProtonVPN v4.4.1 - Unquoted Service Path",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52624",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-EE1E29F4",
-      "desc": "Flowise  3.1.3 - arbitrary code execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52623",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-FF60926D",
-      "desc": "Hydra - Stack Buffer Overflow",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52622",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-3E608A8E",
-      "desc": "Discuz! X5.0 - Authentication Bypass",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52621",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-1ACC2A47",
-      "desc": "Tenable Nessus 10.12.1 - SQL Injection",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52620",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-D4CEA2C9",
-      "desc": "WordPress Bricks Builder Theme  -  RCE",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52619",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-598ABAE9",
-      "desc": "iOS Bluetooth PAN Exploit - Ethernet Gateway without Adapter",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52618",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-29167E43",
-      "desc": "Joomla Extension 4.1.4 - PHP Object injection",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52617",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-A4128769",
-      "desc": "Pulpy 0.1.1-Beta - Filesystem Sandbox Bypass",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52616",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-5F8E962A",
-      "desc": "MEmu Android Emulator 9.2.7.0 - Local Privilege Escalation",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52615",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-F55CB7AF",
-      "desc": "KeepInMind 0.8.4.2 -  Stored XSS",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52614",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-4EC46963",
-      "desc": "KNX visualisering - Broken Access Control",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52613",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-6436C559",
-      "desc": "Windows Defender (MsMpEng.exe) - Race Condition",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52612",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-4C6A1BA7",
-      "desc": "WordPress Plugin WPZOOM Portfolio 1.4.21 -  Reflected Cross-Site Scripting (XSS)",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52611",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-999BEA06",
-      "desc": "OpenEMR 7.0.2 - Arbitrary File Read",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52610",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-58A8B952",
-      "desc": "WordPress Contest Gallery 28.1.4 - Unauthenticated Blind SQL Injection",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52609",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-7AD59350",
-      "desc": "Drupal Core 10.5.5 - Error-Based SQL Injection",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-08-26",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52608",
-      "cvss": "8.0",
+      "cvss": "4.3",
       "cwe": ""
     }
   ]

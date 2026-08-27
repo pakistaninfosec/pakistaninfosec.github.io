@@ -1,13 +1,13 @@
 {
-  "generated": "2026-08-27T10:58:12.601129+00:00",
-  "summary": "Today's digest contains 593 vulnerabilities across 5 sources. 77 zero-day exploits detected, 27 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-27T20:58:15.944587+00:00",
+  "summary": "Today's digest contains 596 vulnerabilities across 5 sources. 80 zero-day exploits detected, 30 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 593,
+    "new": 596,
     "changed": 0,
     "removed": 0,
-    "total": 526935,
-    "zeroday": 77,
-    "exploited": 27,
+    "total": 527531,
+    "zeroday": 80,
+    "exploited": 30,
     "pakistan": 16
   },
   "sources": [
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 27
+      "count": 30
     },
     {
       "name": "Pakistan CERT",
@@ -335,6 +335,63 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2023-49105",
+      "desc": "ownCloud contains an improper authentication vulnerability that allows an attacker to access, modify, or delete any file without authentication if the username of a victim is known, and the victim has no signing-key configured.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-08-27",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-49105",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53362",
+      "desc": "Linux Kernel contains an unspecified vulnerability that can allow for privilege escalation via IPv6 networking subsystem. This vulnerability can impact multiple products, including but not limited to Suse, Red Hat, and other products using Linux.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-08-27",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53362",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-66384",
+      "desc": "JFrog Artifactory contains an improper limitation of a pathname to a restricted directory vulnerability. This can allow an authenticated user to write data outside the intended Docker cache path under specific remote-repository conditions.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-08-27",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66384",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -1015,7 +1072,7 @@
     {
       "id": "CVE-2026-58092",
       "desc": "In FreeBSD 15.0, the kernel structure used to represent user credentials changed: previously the primary group ID was stored in the first element of the array containing the list of supplementary group IDs, whereas now the primary group ID is stored in a dedicated field.  This change was largely internal to the kernel and not user-visible.\n\nOne function, group_is_primary(), was not properly updated as a part of this transition.  This function is used by mac_do to determine the primary group ID of the credential after applying a transition rule, used when the rule target does not explicitly specify a group.\n\nAs a result, with certain mac_do rules, it is possible for a credential switch to incorrectly set the primary group ID to the ID stored in the first element of the original credential's supplementary group array.\n\nIf the list of supplementary groups is empty, this value will be 0, corresponding to the \"wheel\" group.  For example, a rule such as \"uid=1001>uid=1002\" can be abused to set the primary group ID to 0 even if the process did not originally belong to group 0.\n\n\n\nCertain mac_do rules can be abused to set a process' group ID to 0.  Note however, that the rule must apply to the caller in order for the bug to be triggered, e.g., given the ruleset \"uid=1001>uid=1002\", the user must have user ID 1001 in order to trigger the bug.\n\nFurther, logged-in users will in general have a non-empty supplementary group list, in which case the bug can at worst be used to set the credential's first supplementary group ID as its primary group ID.  Processes must explicitly remove themselves from all supplementary groups, using the privileged setgroups(2) system call, in order to exploit the bug to set 0 as the primary group ID.\n\nSince membership in group 0 is often used to enable controlled privilege escalation, the bug might be further exploitable to obtain root privileges, depending on the system configuration.  For instance, a ruleset such as the following could be exploited by a process running as user 1001 and with an empty supplementary group list: \"uid=1001>uid=1002;gid=0>uid=0\".",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -1027,7 +1084,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58092",
-      "cvss": "5.4",
+      "cvss": "8.1",
       "cwe": ""
     },
     {
@@ -1717,7 +1774,7 @@
     {
       "id": "CVE-2026-58095",
       "desc": "mp_Enddisc() used incorrect length calculations when formatting endpoint discriminator addresses for display, allowing a received endpoint option to overflow a global result buffer.\n\nA malicious PPP peer can crash ppp(8) or potentially execute arbitrary code as root.",
-      "severity": "CRITICAL",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -1729,13 +1786,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58095",
-      "cvss": "9.8",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-58096",
       "desc": "LcpDecodeConfig() did not validate the length of received endpoint discriminator options against the minimum required by RFC 1717.  Undersized options would trigger an out-of-bounds write.\n\nA malicious PPP peer can exploit CVE-2026-58095 and CVE-2026-58096 to crash ppp(8) or potentially execute arbitrary code as root.",
-      "severity": "CRITICAL",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -1747,7 +1804,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58096",
-      "cvss": "9.8",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -3211,7 +3268,7 @@
     {
       "id": "CVE-2026-63041",
       "desc": "Reliance on Untrusted Inputs in a Security Decision vulnerability in Apache APISIX.\n\nThis vulnerability allows an attacker to escalate privilege or perform an authorization bypass by sending certain values that the attach-consumer-label plugin does not sanitise correctly.\n\n\nThis issue affects Apache APISIX: from 3.11.0 through 3.17.0.\n\n\n\nUsers are recommended to upgrade to version 3.18.0, which fixes the issue.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -3223,7 +3280,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63041",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -5857,7 +5914,7 @@
     {
       "id": "CVE-2025-56798",
       "desc": "Cross-Site Request Forgery (CSRF) vulnerability in Lime Technology, Inc.'s Unraid OS version 6.12.14 and earlier allows remote attackers to escalate privileges via the Unraid authentication cookie's lax same-site policy.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -5869,7 +5926,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-56798",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -6019,7 +6076,7 @@
     {
       "id": "CVE-2025-61162",
       "desc": "Incorrect access control in Cohere North AI v1.1.5 allows attackers to arbitrarily overwrite user info via a crafted request to the /api/internal/v1/users/{{USER_ID}} endpoint",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -6031,13 +6088,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-61162",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2025-61163",
       "desc": "Cohere North AI v1.1.5 was discovered to contain excessively permissive cross-domain policy with untrusted domains. This occurs via the server failing to validate the Origin header of incoming connection requests.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -6049,13 +6106,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-61163",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2025-61164",
       "desc": "Cohere North AI v1.1.5 was discovered to contain an information leak via the WebSocket Endpoint.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -6067,13 +6124,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-61164",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2025-61165",
       "desc": "An arbitrary file upload vulnerability in the /v1/my_drive/batch_upload component of cohere North AI v1.1.5 allows attackers to exeute arbitrary code via uploading a crafted file.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -6085,7 +6142,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-61165",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -6109,7 +6166,7 @@
     {
       "id": "CVE-2026-36851",
       "desc": "Path traversal vulnerability in UnPoller 2.33.0 password field allows arbitrary file read and network exfiltration.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -6121,7 +6178,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-36851",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -6163,7 +6220,7 @@
     {
       "id": "CVE-2026-51106",
       "desc": "An issue in TokTok qTox v1.18.4 allows a local attacker to cause a denial of service via the src/persistence/serialize.cpp component",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -6175,7 +6232,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51106",
-      "cvss": "0.0",
+      "cvss": "9.3",
       "cwe": ""
     },
     {
@@ -6235,7 +6292,7 @@
     {
       "id": "CVE-2026-75325",
       "desc": "DWSurvey v6.14.0 is is vulnerable to authentication bypass via the '/api/dwsurvey/none/' and '/api/dwsurvey/up/**' parameters.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -6247,7 +6304,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75325",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -6265,7 +6322,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75466",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -6289,7 +6346,7 @@
     {
       "id": "CVE-2025-70290",
       "desc": "An issue was discovered in Denx U-Boot before 2026.04. An integer overflow vulnerability in the ZFS filesystem support can be triggered by malformed on-disk metadata. The issue may result in incorrect memory allocation followed by out-of-bounds memory access, potentially leading to a crash or arbitrary code execution during the boot process.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -6301,7 +6358,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-70290",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -6361,7 +6418,7 @@
     {
       "id": "CVE-2026-26446",
       "desc": "Stomper 5e2741e is vulnerable to Denial of Service. When a broker sends data to a client whose TCP connection was already closed by the peer, the server process receives SIGPIPE and immediately terminates, resulting in a denial of service. Any unauthenticated client can trigger the crash by closing the socket at specific points.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -6373,13 +6430,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26446",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-26447",
       "desc": "Stomper 5e2741e is vulnerable to Use-After-Free. When a single client repeatedly issues SUBSCRIBE commands for the same destination over one connection and then closes that connection, the broker performs incorrect cleanup of its internal subscription structures. This results in a heap use-after-free during StompClient destruction, causing the broker process to crash. An unauthenticated client can exploit this to reliably trigger a denial of service.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -6391,13 +6448,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26447",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-26448",
       "desc": "Stomper 5e2741e is vulnerable to Use-After-Free. When a client sends multiple CONNECT frames on the same TCP connection, and subsequently another client (or a later connection) sends SEND frames to a destination previously subscribed on that connection, the broker may dereference a pointer to a StompStreamSocket object that has already been freed. This results in a heap use-after-free and process crash. Because the protocol does not authenticate or restrict such sequences by default.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -6409,13 +6466,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26448",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-26449",
       "desc": "In Stomper 5e2741e when a client sends a SEND frame missing the destination header field, the server triggers a null pointer dereference (or access to invalid memory) while processing the frame, causing the process to crash.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -6427,7 +6484,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26449",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -6955,7 +7012,7 @@
     {
       "id": "CVE-2025-51675",
       "desc": "An issue was discovered in openRISC OR1200 commit 83ac6b. An inaccurate update of program counter (PC) values when SPR changes can lead to a Denial of Service (DoS).",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -6967,13 +7024,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-51675",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2025-51679",
       "desc": "An issue was discovered in openRISC OR1200 commit 83ac6b. A mismatch between the RTL and netlist can lead to unexpected behavior.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -6985,13 +7042,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-51679",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
       "id": "CVE-2025-61478",
       "desc": "An issue in Vanderbilt Industries, Acre Security SPC5300.000 Main Board v.3.14.1 allows a physically proximate attacker to cause a denial of service via Spoofed SYN packets.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -7003,13 +7060,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-61478",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2025-61479",
       "desc": "An issue in Vanderbilt Industries, Acre Security SPC5300.000 Main Board v.3.14.1 allows a physically proximate attacker to cause a denial of service via the SPC Connect Pro software accepts replayed application-layer payloads injected into an active TCP session.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -7021,13 +7078,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-61479",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2025-61480",
       "desc": "An issue in Vanderbilt Industries, Acre Security SPC5300.000 Main Board v.3.14.1 allows a physically proximate attacker to cause a denial of service via spoofed TCP FIN packets without validating the sequence or acknowledgment numbers.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -7039,7 +7096,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-61480",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -7075,7 +7132,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-39275",
-      "cvss": "0.0",
+      "cvss": "6.1",
       "cwe": ""
     },
     {
@@ -7657,7 +7714,7 @@
     {
       "id": "CVE-2026-75328",
       "desc": "In DocSys-master V2.02.85, the downloadDocEx interface in src/com/DocSystem/controller/DocController.java has an arbitrary file read vulnerability:",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -7669,13 +7726,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75328",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-75329",
       "desc": "The Netty configuration distribution service (port 8283) of super-diamond-server <= 1.3.3 has no authentication mechanism. Attackers can directly obtain the full configuration of any project (including database passwords, API keys, etc.) by sending a TCP request without any credential.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -7687,7 +7744,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75329",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -7705,13 +7762,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75331",
-      "cvss": "0.0",
+      "cvss": "4.6",
       "cwe": ""
     },
     {
       "id": "CVE-2026-75333",
       "desc": "yx-image-recognition v1.0 is vulnerable to Path Traversal. Parameters such as dir, filePath are directly passed to new File() for file system operations without any path sanitization or whitelist validation.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -7723,7 +7780,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75333",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -7963,7 +8020,7 @@
     {
       "id": "CVE-2026-75330",
       "desc": "The front-end interface /superdiamond/preview/{projectCode}/{module}/{type} of super-diamond-server <= 1.3.3 is vulnerable to SQL injection. The module parameter is directly concatenated into the SQL IN clause through StringUtils.split() and string concatenation without being parameterized and bound.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -7975,13 +8032,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75330",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-75332",
       "desc": "Zyplayer-Doc <=1.0.0 is vulnerable to Server-Side Request Forgery (SSRF) via WikiPageWebService.download().",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -7993,13 +8050,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75332",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-75336",
       "desc": "Funiture 1.0.0 is vulnerable to SQL Injection in the backend tool interfaces /sys/tool/select.json and /sys/tool/update.json.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -8011,13 +8068,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75336",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-75338",
       "desc": "disconf (Distributed Configuration Management Platform) 2.6.36 is vulnerable to Incorrect Access Control. The config-fetching APIs /api/config/item, /api/config/file, /api/config/list and /api/config/simple/list are exposed without authentication. The LoginInterceptor explicitly whitelists these four paths, so any anonymous attacker can read every configuration item and configuration file managed by the config center.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -8029,13 +8086,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75338",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-75340",
       "desc": "The device metadata import interface /device/instance/{productId}/property-metadata/import of jetlinks community 2.11 is vulnerable to Server-side request forgery (SSRF).",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-26",
       "pakistan": false,
@@ -8047,7 +8104,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75340",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
@@ -8749,13 +8806,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13414",
-      "cvss": "0.0",
+      "cvss": "4.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-13415",
       "desc": "The CMP  WordPress plugin before 4.1.18 does not enforce an option-name allow-list when importing settings via one of its AJAX actions, allowing users with the Editor role (when the administrator has granted the Editor role access to the CMP  WordPress plugin before 4.1.18's admin-bar controls) to update arbitrary WordPress options, including options that lead to privilege escalation to Administrator.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -8767,13 +8824,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13415",
-      "cvss": "0.0",
+      "cvss": "7.2",
       "cwe": ""
     },
     {
       "id": "CVE-2026-13416",
       "desc": "The CMP  WordPress plugin before 4.1.18 does not sanitise and escape a settings value before outputting it on the coming-soon page, allowing users with the Editor role (when the administrator has granted the Editor role access to the CMP  WordPress plugin before 4.1.18's admin-bar controls) to inject arbitrary web scripts that execute when a visitor views the page.",
-      "severity": "MEDIUM",
+      "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -8785,7 +8842,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13416",
-      "cvss": "0.0",
+      "cvss": "3.5",
       "cwe": ""
     },
     {
@@ -8803,7 +8860,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16567",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -8821,7 +8878,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16568",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -8839,13 +8896,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16569",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
       "id": "CVE-2026-19223",
       "desc": "The Smush  WordPress plugin before 4.3.2 does not restrict a network-wide setting to network administrators, allowing an administrator of any single site on a multisite network to execute arbitrary code across the entire network.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -8857,7 +8914,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19223",
-      "cvss": "0.0",
+      "cvss": "7.2",
       "cwe": ""
     },
     {
@@ -8875,7 +8932,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19225",
-      "cvss": "0.0",
+      "cvss": "6.6",
       "cwe": ""
     },
     {
@@ -8893,13 +8950,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19454",
-      "cvss": "0.0",
+      "cvss": "4.4",
       "cwe": ""
     },
     {
       "id": "CVE-2026-19715",
       "desc": "The WP OAuth Server ( Login with WordPress ) WordPress plugin before 6.3.1 does not restrict access to the debug log it writes, which is stored at a fixed and publicly reachable location, allowing unauthenticated users to read the OAuth tokens and authorisation codes it has issued as well as user records including password hashes when debug logging is enabled.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -8911,7 +8968,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19715",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -9073,13 +9130,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47883",
-      "cvss": "0.0",
+      "cvss": "6.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-47884",
       "desc": "Use of XsltView in a Spring MVC application can result in SSRF and RCE attack if the application has an \"/**\" mapping that results in view rendering, and where the view name is not explicitly specified.\nSpring Framework 7.0.0 - 7.0.8\nSpring Framework 6.2.0 - 6.2.19\nSpring Framework 6.1.0 - 6.1.28\nSpring Framework 6.0.0 - 6.0.30\nSpring Framework 5.3.0 - 5.3.49\nSpring Framework 5.2.25.RELEASE and earlier",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -9091,13 +9148,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47884",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-47885",
       "desc": "The PartEventHttpMessageReader in Spring WebFlux does not enforce the maxPartSize limit when maxInMemorySize is set to -1.\nSpring Framework 7.0.0 - 7.0.8\nSpring Framework 6.2.0 - 6.2.19\nSpring Framework 6.1.0 - 6.1.28",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -9109,13 +9166,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47885",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-47886",
       "desc": "Applications that evaluate user-supplied Spring Expression Language (SpEL) expressions may be vulnerable to a Denial of Service (DoS) attack when the power operator (^) is used with a BigDecimal or BigInteger operand and a large exponent value.\nSpring Framework 7.0.0 - 7.0.8\nSpring Framework 6.2.0 - 6.2.19\nSpring Framework 6.1.0 - 6.1.28\nSpring Framework 6.0.0 - 6.0.30\nSpring Framework 5.3.0 - 5.3.49\nSpring Framework 5.2.25.RELEASE and earlier",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -9127,7 +9184,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47886",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -9145,13 +9202,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47887",
-      "cvss": "0.0",
+      "cvss": "6.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-47888",
       "desc": "A Spring RSocket application is exposed to a memory leak via a malformed SETUP frame.\nSpring Framework 7.0.0 - 7.0.8\nSpring Framework 6.2.0 - 6.2.19\nSpring Framework 6.1.0 - 6.1.28\nSpring Framework 6.0.0 - 6.0.30\nSpring Framework 5.3.0 - 5.3.49\nSpring Framework 5.2.0.RELEASE - 5.2.25.RELEASE",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -9163,13 +9220,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47888",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-47889",
       "desc": "A WebFlux application running on the Jetty 12 Core reactive adapter serializes response cookies without the sameSite attribute.\nSpring Framework 7.0.0 - 7.0.8\nSpring Framework 6.2.0 - 6.2.19",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -9181,13 +9238,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47889",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-47890",
       "desc": "Spring MVC and WebFlux applications are vulnerable to stream corruption when using Server-Sent Events (SSE) with view fragments.\nSpring Framework 7.0.0 - 7.0.8\nSpring Framework 6.2.0 - 6.2.19",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -9199,13 +9256,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47890",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-47891",
       "desc": "A Spring WebFlux application that relies on the Aalto XML processor to parse XML input does not correctly enforce the maxInMemorySize limit.\nSpring Framework 7.0.0 - 7.0.8\nSpring Framework 6.2.0 - 6.2.19\nSpring Framework 6.1.0 - 6.1.28\nSpring Framework 6.0.0 - 6.0.30\nSpring Framework 5.3.0 - 5.3.49\nSpring Framework 5.2.25.RELEASE and earlier",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -9217,7 +9274,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47891",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -9379,13 +9436,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76549",
-      "cvss": "0.0",
+      "cvss": "5.9",
       "cwe": ""
     },
     {
       "id": "CVE-2026-77016",
       "desc": "The Workeera  WordPress plugin before 1.0.6 does not restrict which values may be written to a user's own candidate profile, and does not validate or contain the stored file path before deleting it, allowing users with a role as low as subscriber to delete arbitrary files on the server.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -9397,13 +9454,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77016",
-      "cvss": "0.0",
+      "cvss": "9.6",
       "cwe": ""
     },
     {
       "id": "CVE-2026-77017",
       "desc": "The Workeera  WordPress plugin before 1.0.6 does not restrict which profile values a candidate may submit, nor confine the stored file location to an allowed directory before serving it, allowing users with a role as low as subscriber to read arbitrary files on the server, including its configuration file and authentication secrets.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -9415,13 +9472,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77017",
-      "cvss": "0.0",
+      "cvss": "7.7",
       "cwe": ""
     },
     {
       "id": "CVE-2026-77018",
       "desc": "The Workeera  WordPress plugin before 1.0.6 does not restrict which profile values a candidate may submit, nor validate the type of the file it subsequently writes into a publicly reachable directory, allowing users with a role as low as subscriber to upload arbitrary files and achieve remote code execution.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -9433,7 +9490,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77018",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -9541,13 +9598,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78125",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
       "id": "CVE-2026-78137",
       "desc": "The StoreGrowth  WordPress plugin before 2.1.2 does not validate a browser-supplied product price on two of its unauthenticated actions, allowing unauthenticated attackers to add a product to the cart at an arbitrary, attacker-chosen price that carries through to the checkout total when the BOGO offer feature is enabled.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -9559,7 +9616,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78137",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -9577,7 +9634,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78138",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -9595,13 +9652,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78139",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
       "id": "CVE-2026-78333",
       "desc": "The 12 Step Meeting List WordPress plugin before 3.19.17 does not sanitise and escape a value submitted by unauthenticated users before storing it in its activity log and outputting it back in an admin area page, leading to a Stored Cross-Site Scripting issue which could be used against high privilege users such as admin.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -9613,7 +9670,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78333",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -9709,7 +9766,7 @@
     {
       "id": "CVE-2026-59354",
       "desc": "In versions of Spring Security's OAuth2 Authorization Server module 7.0.0 through 7.0.4, when Dynamic Client Registration is explicitly enabled, the registration endpoint performs insufficient validation of certain client metadata fields supplied by the registering client. An attacker who possesses a valid Initial Access Token can register a malicious client with crafted metadata, which, depending on server configuration and how the metadata is later rendered or used, may result in Stored Cross-Site Scripting (XSS), Privilege Escalation, or Server-Side Request Forgery (SSRF).",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-08-27",
       "pakistan": false,
@@ -9721,7 +9778,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59354",
-      "cvss": "6.1",
+      "cvss": "9.6",
       "cwe": ""
     },
     {

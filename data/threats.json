@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-30T17:41:48.588940+00:00",
-  "summary": "Today's digest contains 233 vulnerabilities across 5 sources. 79 zero-day exploits detected, 29 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-30T20:42:54.009115+00:00",
+  "summary": "Today's digest contains 254 vulnerabilities across 5 sources. 79 zero-day exploits detected, 29 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 233,
+    "new": 254,
     "changed": 0,
     "removed": 0,
-    "total": 533015,
+    "total": 533269,
     "zeroday": 79,
     "exploited": 29,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 138
+      "count": 159
     },
     {
       "name": "Exploit-DB",
@@ -3370,6 +3370,384 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82553",
       "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81319",
+      "desc": "Deserialization of Untrusted Data vulnerability in ash-project ash_cloak allows an attacker who can influence the bytes of an encrypted column to crash the BEAM node, by triggering unbounded atom creation or a decompression bomb during decryption.\n\nAshCloak.Calculations.Decrypt decodes the decrypted binary with Ash.Helpers.non_executable_binary_to_term/1 without the :safe option, so atoms in the payload are interned during the decode and never garbage collected, and the term format's compressed form is inflated transparently. vault.decrypt!() is the only barrier and stops tampering only for an authenticated cipher. Cloak also ships the unauthenticated AES.CTR, whose ciphertext an attacker who knows their own plaintext can XOR into any same-length payload without the key, so an ordinary read of the forged column reaches the decoder. A few hundred kilobytes of distinct atoms exhausts the atom table, or a small compressed payload inflates to gigabytes.\n\nThis issue affects ash_cloak: from 0.1.0 before 0.4.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81319",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81322",
+      "desc": "Exposure of Sensitive Information to an Unauthorized Actor vulnerability in ash-project ash_cloak allows anyone with access to logs, error trackers, or crash reports, or anyone who can trigger a validation error, to recover the plaintext of a field the library encrypts.\n\nAshCloak.Transformers.SetUpEncryption removes each cloaked attribute from the action's accept list and adds an action argument that carries the plaintext into the encryption change. That argument is built with sensitive?: attr.sensitive?, inheriting the flag from the source attribute, so a cloaked attribute declared without sensitive? true produces a non-sensitive argument. It is the only place the cleartext value lives, and the one place Ash will not redact: it appears verbatim in inspect(changeset), Ash.Error.Invalid and validation error messages, telemetry, :sys dumps, and error-tracker payloads. The generated encrypted attribute and decrypt calculation are already hardcoded sensitive.\n\nThis issue affects ash_cloak: from 0.1.0 before 0.4.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81322",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82554",
+      "desc": "A flaw has been found in SourceCodester Queue Management System 1.0. This affects an unknown part of the file /api/add_customer.php. This manipulation of the argument Name causes cross site scripting. It is possible to initiate the attack remotely. The exploit has been published and may be used.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82554",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82555",
+      "desc": "A vulnerability has been found in TOTOLINK N600R 4.3.0cu.7866_B20220506. This vulnerability affects the function loginAuth of the file /web_cste/cgi-bin/cstecgi.cgi of the component Authentication Handler. Such manipulation leads to insufficiently random values. It is possible to launch the attack remotely. This attack is characterized by high complexity. It is stated that the exploitability is difficult. The exploit has been disclosed to the public and may be used.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82555",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82556",
+      "desc": "A vulnerability was found in Forgejo up to 15.0.4. This issue affects the function net.LookupIP of the file services/migrations/allowlist/is_migrate_allowed.go of the component Repository Migration Handler. Performing a manipulation results in server-side request forgery. The attack can be initiated remotely. The exploit has been made public and could be used. The patch is named b313bb83f5ff22bcc0378e0e0ca7bbd58303f168. It is recommended to apply a patch to fix this issue. The project maintainer explains: \"I don't intend to backport this to v15 or v16 as it is a breaking change.\"",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82556",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56713",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56713",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56715",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56715",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78693",
+      "desc": "Generation of Error Message Containing Sensitive Information vulnerability in ash-project ash_graphql allows a remote client to read internal field names that an application configured its error_handler to redact.\n\nIn AshGraphql.Errors, each error is passed to the configured error_handler and the returned map is merged with the pre-handler path via Map.put_new(handled, :path, path). Because put_new defers to the handler only when the handler itself set :path, a sanitizing handler that returns a fresh map or deletes :path has that decision reverted. The re-injected path comes from build_error_path/5, which falls back to raw internal Ash attribute and argument names when no field_names mapping is configured. A validation failure on a non-exposed or nested field therefore returns internal names in the GraphQL error path, defeating the application's redaction.\n\nThis issue affects ash_graphql: from 1.9.0 before 1.11.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78693",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-80223",
+      "desc": "Incorrect Authorization vulnerability in ash-project ash_graphql allows an authenticated subscriber in one tenant to receive another tenant's records over GraphQL subscriptions.\n\nThe subscription resolver in AshGraphql.Graphql.Resolver authorizes each notification payload in memory: its fast path calls Ash.can/3 with run_queries?: false, which evaluates the read policy filter against the in-memory record via Ash.Expr.eval/2 and never issues a query. Ash applies multitenancy at query-build and data-layer-prefix time, not inside query.filter, so the evaluated policy carries no tenant condition and a tenant-B notification routed to a tenant-A subscriber is emitted whenever the policy filter is true. The single-notification clause has no tenant guard at all, and the batched clause checks only the head of the notification list, so non-head entries authorize purely in memory. A tenant-scoped read is reached only when filter evaluation fails.\n\nThis issue affects ash_graphql: from 1.4.0 before 1.11.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80223",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81633",
+      "desc": "Improper Input Validation vulnerability in ash-project ash_graphql allows an unauthenticated client to crash a relay node(id: ...) query with an unhandled KeyError.\n\nAshGraphql.Graphql.Resolver.resolve_node/2 decodes the client-supplied global ID with decode_relay_id/1, which only base64-decodes the string and splits it on : without validating the type segment. The decoded type is passed straight to Map.fetch!(type_to_domain_and_resource_map, type). Because fetch! raises on a missing key, a relay ID whose type segment is a valid atom that is not a relay-exposed type aborts the resolver before its resolve/2 clauses and their rescue handlers run, so the error never becomes a GraphQL error and may expose a stacktrace. Common resource names are easy to guess. The fix uses Map.fetch/2 and returns an Invalid node id error for unknown types.\n\nThis issue affects ash_graphql: from 0.27.0 before 1.11.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81633",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81636",
+      "desc": "Allocation of Resources Without Limits or Throttling vulnerability in ash-project ash_graphql allows an unauthenticated client to bypass the configured GraphQL query-complexity limit and force an unbounded database read.\n\nAshGraphql.Graphql.Resolver.query_complexity/3 multiplies child complexity by the requested page size only when the argument map contains :limit (offset pagination). Relay connections and keyset pagination use first and last, which never match that clause and fall through to the catch-all that returns child_complexity + 1. A nested relay query such as posts(first: 500) { edges { node { comments(first: 500) { ... } } } } therefore scores as trivially cheap while materializing the full fan-out, passing an Absinthe max_complexity cap that rejects the equivalent limit-based query. The fix adds first and last clauses clamped to the action's page size.\n\nThis issue affects ash_graphql: from 0.16.23 before 1.11.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81636",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81643",
+      "desc": "Incorrect Authorization vulnerability in ash-project ash_graphql delivers GraphQL subscription payloads for records a subscriber is not authorized to see.\n\nIn AshGraphql.Subscription.Batcher, do_send/5 resolves the first notification of a batch and filters it with should_send?/1, which drops results whose errors are coded forbidden or not_found or carry no code, precisely so that unauthorized results are not disclosed. The remaining notifications in the batch are read from the process dictionary, re-run through the pipeline, and appended to the outgoing results without that filter. They reach pubsub.publish_subscription/2, and the not is_nil(record) guard drops only nil records, not error-carrying results. Any two qualifying notifications arriving within the default one-second batch interval suffice, and batching is the default path. The fix applies should_send?/1 to the whole batch.\n\nThis issue affects ash_graphql: from 1.4.0 before 1.11.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81643",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82367",
+      "desc": "Exposure of Data Element to Wrong Session vulnerability in ash-project ash_graphql can deliver one subscription's resolved records to a different subscriber's topic.\n\nAshGraphql.Subscription.Batcher.do_send/5 reads the resolved batch from the process dictionary via Process.get(:batch_resolved) and then unconditionally deletes it. That is sound only inside a task the library owns. On the :backpressure_sync and :noproc fallbacks do_send/5 runs inline in the publishing caller's process, so if a resolver inside an outer do_send/5 triggers another synchronous Ash notification, the inner call finds the outer run's value still under :batch_resolved, adopts it as its own result, and publishes it to the inner topic, a different subscription document with a different actor and tenant. It then deletes the key, so the outer run publishes nothing. The key is not namespaced by run, so records cannot be told apart. The fix saves, clears, and restores :batch_resolved around each run.\n\nThis issue affects ash_graphql: from 1.4.0 before 1.11.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82367",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82587",
+      "desc": "A vulnerability was determined in Open5GS up to 2.7.7. This vulnerability affects the function amf_namf_comm_decode_ue_mm_context_list of the file src/amf/namf-handler.c of the component AMF. This manipulation of the argument ueContext.mmContextList[*].allowedNssai causes memory corruption. The attack can be initiated remotely. The exploit has been publicly disclosed and may be utilized. Upgrading to version 2.8.0 is able to resolve this issue. Patch name: abf8a836564b966b5141110fc25ed413c4f17522. It is recommended to upgrade the affected component.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82587",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56716",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56716",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64839",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64839",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64840",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64840",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64841",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64841",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64842",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64842",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64843",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64843",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-64844",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-30",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-64844",
+      "cvss": "0.0",
       "cwe": ""
     },
     {

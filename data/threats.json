@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-31T01:29:50.333315+00:00",
-  "summary": "Today's digest contains 204 vulnerabilities across 5 sources. 79 zero-day exploits detected, 29 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-08-31T07:33:13.587932+00:00",
+  "summary": "Today's digest contains 251 vulnerabilities across 5 sources. 79 zero-day exploits detected, 29 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 204,
+    "new": 251,
     "changed": 0,
     "removed": 0,
-    "total": 533729,
+    "total": 533980,
     "zeroday": 79,
     "exploited": 29,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 109
+      "count": 156
     },
     {
       "name": "Exploit-DB",
@@ -2848,6 +2848,852 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82599",
       "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-75760",
+      "desc": "Generation of Error Message Containing Sensitive Information vulnerability in ash-project ash_ai discloses provider request state and credentials in a user-facing validation error.\n\nIn AshAi.Changes.Vectorize, when the embedding provider call fails the change added a changeset error whose message inspected the raw error term (An error occurred while generating embeddings: #{inspect(error)}). A plain-string add_error produces an Ash.Error.Changes.InvalidChanges in the :invalid class, which AshJsonApi and AshGraphql render back to the caller. The embedding client's error term is not sanitized, so it can carry the request URL, the provider response body, and, for HTTP clients that keep the request in the error struct, the outbound Authorization header with the provider API key. Failures are attacker-reachable via oversized or malformed vectorized content. The fix logs the raw error and returns a generic message.\n\nThis issue affects ash_ai: from 0.1.0 before 1.0.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75760",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82564",
+      "desc": "Authorization Bypass Through User-Controlled Key vulnerability in ash-project ash_ai allows a caller of an identity-configured tool to update or destroy records it never identified, including every row in the table.\n\nIn AshAi.Tool.Execution, identity_filter/3 built the update/destroy filter directly from the raw tool arguments as [{key, Map.get(arguments, to_string(key))}] and passed it to Ash.Query.do_filter/2. A map value is parsed as a predicate expression rather than a literal, so a caller can send {\"public_ref\": {\"not_eq\": \"<own-ref>\"}} and, combined with Ash.Query.limit(1) and Ash.bulk_update!/Ash.bulk_destroy!, retarget the write at a record it never identified; an omitted key yields an IS NULL filter that matches an arbitrary row. The fix casts each identity value to the field type, rejecting non-scalar inputs.\n\nThis issue affects ash_ai: from 0.6.0 before 1.0.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82564",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82579",
+      "desc": "Loop with Unreachable Exit Condition (Infinite Loop) vulnerability in ash-project ash_ai allows an attacker who can influence a model's output to hang the tool loop and drive unbounded, repeated model requests.\n\nAshAi.ToolLoop classifies a model response of :tool_calls, then filters the calls through normalize_tool_calls/2 and unprocessed_tool_calls/2. Both can empty the list: a call missing a valid name, or one reusing a tool_call_id that already has a result in history, is dropped. With an empty list the loop appended nothing and recursed with a byte-identical message list, so the conversation never advanced and the same request was re-sent every iteration. Under the supported max_iterations: :infinity this never terminated; otherwise it exhausted the full budget. Prompt-injected content can make the model re-emit a spent tool_call_id. The fix treats an empty post-filter list as terminal.\n\nThis issue affects ash_ai: from 0.6.0 before 1.0.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82579",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82580",
+      "desc": "Generation of Error Message Containing Sensitive Information vulnerability in ash-project ash_ai discloses internal error text to chat users.\n\nIn AshAi.ToolLoop and AshAi.Tools, an exception raised while executing a tool was serialized verbatim with Exception.message/1 into the tool-result content. That content is appended to the conversation, emitted as a {:tool_result, ...} stream event, and sent back to the model, which typically relays it to the user. No filtering happened first, so anything raised inside a tool callback or lifecycle hook (database constraint messages, adapter errors, query fragments, policy or validation internals) was echoed as-is. A chat user who can steer tool arguments into a raising code path receives the raw internal text. The fix routes raised tool errors through the same safe formatter used for other tool errors.\n\nThis issue affects ash_ai: from 0.6.0 before 1.0.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82580",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82600",
+      "desc": "A security flaw has been discovered in SeaCMS up to 13.6. Affected by this issue is some unknown functionality of the file /zyapi.php?ac=videolist. Performing a manipulation of the argument ids results in sql injection. The attack can be initiated remotely. The exploit has been released to the public and may be used for attacks.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82600",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82601",
+      "desc": "A weakness has been identified in SeaCMS up to 13.6. This affects an unknown part of the file /err.php. Executing a manipulation of the argument errtxt can lead to cross site scripting. The attack can be launched remotely. The exploit has been made available to the public and could be used for attacks.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82601",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82602",
+      "desc": "A security vulnerability has been detected in SeaCMS up to 13.6. This vulnerability affects unknown code of the file /ass.php. The manipulation leads to authorization bypass. The attack may be initiated remotely. The exploit has been disclosed publicly and may be used.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82602",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82603",
+      "desc": "A vulnerability was detected in SeaCMS up to 13.6. This issue affects some unknown processing of the file /member.php?action=del_pl of the component Comment Cache. The manipulation of the argument itype/vid results in path traversal. The attack may be launched remotely. The exploit is now public and may be used.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82603",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82604",
+      "desc": "A flaw has been found in BareBones BBEdit up to 15.5.5. Impacted is an unknown function of the component Java Language Module. This manipulation causes uncontrolled recursion. Remote exploitation of the attack is possible. Upgrading to version 16.0 is recommended to address this issue. You should upgrade the affected component.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82604",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-75757",
+      "desc": "Reliance on Cookies without Validation and Integrity Checking vulnerability in ash-project ash_admin lets an attacker who controls a sibling subdomain rebind an admin's session to a different actor, tenant, or authorization mode.\n\nAshAdmin's client JavaScript read its state cookies (tenant, actor_resource, actor_primary_key, actor_action, actor_domain, actor_authorizing, actor_paused) by matching the cookie name with an unanchored regular expression (new RegExp(name + \"=([^;]+)\")) against the whole document.cookie. Any cookie whose name merely ends with the requested name therefore matches, and whichever is serialized first wins. Because cookies are shared across a registrable domain, a compromised sibling subdomain can set a shadowing cookie (for example xactor_authorizing) with Domain=.example.com that flows unvalidated into the admin's LiveSocket connect params. The fix matches cookie names by exact equality.\n\nThis issue affects ash_admin: from 0.9.1 before 1.3.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75757",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-77850",
+      "desc": "Stored Cross-site Scripting vulnerability in ash-project ash_admin executes attacker-supplied record content as script in an administrator's browser.\n\nThe relationship typeahead components AshAdmin.Components.Resource.RelationshipField and AshAdmin.Components.Resource.ManagedRelationshipSelectField highlight the matched search term by wrapping it in <b> tags and rendering the whole string with Phoenix.HTML.raw/1. The highlighted value is the destination record's label_field, ordinary database content that is often written by lower-privileged users. Because raw/1 disables output escaping for the entire string, a stored label such as <img src=x onerror=...> runs as JavaScript in the admin's session as soon as a matching record appears in the dropdown, giving the attacker the admin's privileges over everything AshAdmin exposes. The fix HTML-escapes the label before inserting the highlight markup.\n\nThis issue affects ash_admin: from 0.13.0 before 1.3.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77850",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81852",
+      "desc": "Use of Insufficiently Random Values vulnerability in ash-project ash_admin ships a hardcoded, publicly known CSP nonce, defeating nonce-based Content-Security-Policy protection.\n\nWhen mounted without :csp_nonce_assign_key, AshAdmin.Router.ash_admin/2 defaulted the img, style, and script nonces to the literal constant ash_admin-Ed55GFnX, which AshAdmin.Layouts wrote verbatim into the nonce attribute of its inline <style> and <script> tags on every response. The value is a compile-time constant published in the repository and is never rotated per request. If an application's CSP script-src allow-lists that documented default, any HTML-injection sink on an admin page can reuse the known nonce to run inline scripts the policy was meant to block. The fix generates a fresh random nonce per request.\n\nThis issue affects ash_admin: from 0.10.8 before 1.3.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81852",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81853",
+      "desc": "Authorization Bypass Through User-Controlled Key vulnerability in ash-project ash_admin turns a record-lookup URL into an equality oracle over sensitive attributes.\n\nAshAdmin.Helpers.decode_primary_key/2 decodes the composite-primary-key form (Base64 plus ETF) and returns the decoded map verbatim as the lookup filter, without checking that its keys are the resource's primary-key fields. The deserialization guards bound size, block new atoms and funs, and reject nested expressions, but none restricts which fields come back, and :safe still allows any already-interned attribute name. An attacker can therefore encode %{api_token: \"guess\"} and have it spliced into the lookup filter, brute-forcing a sensitive attribute value (API token, reset token) one equality guess at a time; Map.to_list/1 also accepts structs, yielding a bogus __struct__ key. The fix rejects any decoded key that is not a real primary-key field.\n\nThis issue affects ash_admin: from 0.1.0 before 1.3.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81853",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82605",
+      "desc": "A vulnerability has been found in BareBones BBEdit up to 15.5.5. The affected element is an unknown function of the component Lasso Language Tokenizer. Such manipulation leads to infinite loop. The attack can be executed remotely. Upgrading to version 16.0 is sufficient to fix this issue. The affected component should be upgraded.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82605",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82607",
+      "desc": "A vulnerability was found in Cozmoslabs Profile Builder Plugin up to 3.16.1 on WordPress. The impacted element is the function wppb_ajax_simple_avatar of the file /wp-admin/admin-ajax.php of the component Avatar Simple Upload AJAX Handler. Performing a manipulation results in unrestricted upload. The attack is possible to be carried out remotely. The exploit has been made public and could be used. Upgrading to version 3.16.2 is sufficient to resolve this issue. It is suggested to upgrade the affected component.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82607",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82608",
+      "desc": "A vulnerability was determined in Kamailio up to 5.5.0/6.0.7. This affects the function get_4bytes of the file src/modules/ims_registrar_scscf/cxdx_avp.c of the component AVP Handler. Executing a manipulation can lead to out-of-bounds read. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized. This patch is called abb5d60af6eefbd367bf6588c5589566b090e272. It is advisable to implement a patch to correct this issue. The vendor points out, that \"[v]ersion 5.5.0 is old and not maintained anymore.\"",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82608",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82673",
+      "desc": "Improper Limitation of a Pathname to a Restricted Directory (Path Traversal) vulnerability in ash-project ash_admin allows writing attacker-controlled bytes to arbitrary paths on the server.\n\nAshAdmin.Components.Resource.Form.consume_file_uploads/1 builds the destination as Path.join([tmp_dir, entry.client_name]) and writes it with File.cp!/2. entry.client_name is the browser-supplied filename and is not sanitized, and Path.join/1 does not normalize ... An upload named ../../../../var/www/app/priv/static/x.png therefore escapes the random temp directory and lands anywhere the BEAM user can write, enabling arbitrary file write and potentially remote code execution by overwriting application assets, configuration, or cron/ssh files. The only guard is an extension allowlist defaulting to :any that checks only the extension. The fix strips path components with Path.basename/1 before joining.\n\nThis issue affects ash_admin: from 0.13.7 before 1.3.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82673",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82681",
+      "desc": "Improper Encoding or Escaping of Output vulnerability in ash-project ash_admin lets an attacker who controls a record's string primary key rewrite the target of AshAdmin's row-action links.\n\nThe Table, DataTable, and Show components built row-action URLs by raw string interpolation, splicing the primary key (and table, domain, and resource names) into the query string without URL-encoding. Ash resources routinely use user-settable string primary keys (slugs, emails). Because Plug.Conn.Query resolves duplicate parameters last-wins and primary_key is interpolated last, a stored key such as foo&action_type=destroy injects parameters that override the link, so an admin clicking edit is sent to a destroy form or an arbitrary resource; a # truncates the query into a fragment. The fix builds every link with URI.encode_query/1, encoding all interpolated values.\n\nThis issue affects ash_admin: from 0.3.0-rc.0 before 1.3.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82681",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82722",
+      "desc": "Allocation of Resources Without Limits or Throttling vulnerability in ash-project ash_admin lets any client that can reach the admin LiveView exhaust the BEAM atom table and crash the entire node.\n\nTwo LiveView event handlers interned atoms from unvalidated client input: AshAdmin.PageLive's set_actor built modules from the resource/domain payload with Module.concat/1, and AshAdmin.Components.Resource.Show's calculate converted every submitted form key with String.to_atom/1. Atoms are never garbage collected and the table is capped, so flooding either event with random names mints a new atom per request until the VM aborts, taking down every application on the node. The fix resolves the submitted resource/domain against the known shown resources and maps calculation keys to declared arguments, so no client-supplied string is interned.\n\nThis issue affects ash_admin: from 0.1.0 before 1.3.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82722",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82609",
+      "desc": "A vulnerability was identified in itsourcecode Sales and Inventory System 1.0. This impacts an unknown function of the file /pages/inv_edit.php. The manipulation of the argument ID leads to sql injection. It is possible to initiate the attack remotely. The exploit is publicly available and might be used.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82609",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82610",
+      "desc": "A security flaw has been discovered in itsourcecode Online Medicine Delivery System 1.0. Affected is the function Employee::employeeAuthentication of the file /rider/login.php of the component Login Interface. The manipulation of the argument emp_email results in sql injection. It is possible to launch the attack remotely. The exploit has been released to the public and may be used for attacks.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82610",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82611",
+      "desc": "A weakness has been identified in itsourcecode Online Medicine Delivery System 1.0. Affected by this vulnerability is the function Customer::cusAuthentication of the file /login.php of the component Customer Login Interface. This manipulation of the argument U_USERNAME causes sql injection. The attack can be initiated remotely. The exploit has been made available to the public and could be used for attacks.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82611",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82612",
+      "desc": "A security vulnerability has been detected in itsourcecode Online Medicine Delivery System 1.0. Affected by this issue is the function loadResultList of the file /index.php?q=single-item of the component Product Detail Page. Such manipulation of the argument ID leads to sql injection. The attack can be launched remotely. The exploit has been disclosed publicly and may be used.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82612",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82613",
+      "desc": "A vulnerability was detected in itsourcecode Online Medicine Delivery System 1.0. This affects the function loadResultList of the file /index.php?q=product of the component Product Search Interface. Performing a manipulation of the argument Search results in sql injection. The attack may be initiated remotely. The exploit is now public and may be used.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82613",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82724",
+      "desc": "Incorrect Authorization vulnerability in ash-project ash_phoenix invokes the SubdomainHook authorization callback with a nil tenant, so tenant-scoped access checks never see the tenant they are meant to enforce.\n\nAshPhoenix.LiveView.SubdomainHook.on_mount/4 attached a handle_params hook to assign the tenant and then immediately called handle_subdomain in the same on_mount. The tenant assign is only written when LiveView later runs handle_params, strictly after on_mount returns, so handle_subdomain read an unset assign and ran as apply(m, f, [socket, nil | a]). A consumer gate that halts when the user does not belong to the tenant instead evaluated nil, either crashing or taking a permissive branch, and it was never re-run once the real subdomain was assigned or on later navigations. The fix runs handle_subdomain inside the handle_params hook with the real tenant on every navigation.\n\nThis issue affects ash_phoenix: from 2.1.26 before 2.3.25.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82724",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82725",
+      "desc": "Authorization Bypass Through User-Controlled Key vulnerability in ash-project ash_phoenix lets an attacker who controls filter form parameters filter across relationships the resource author marked non-public, turning the returned rows into a boolean oracle over private related data.\n\nAshPhoenix.FilterForm resolved every relationship hop in the user-supplied path with Ash.Resource.Info.related/2, which traverses private relationships, and only checked the terminal field for publicity. parse_path_and_field/2 also rewrote a field naming a relationship into an extra path segment, so field=some_private_rel was accepted too. Both path and field come straight from form params, and the resulting ref went to Ash.Query.do_filter/2 without the public-only enforcement of Ash.Filter.parse_input/2. The fix resolves each hop with Ash.Resource.Info.public_relationship/2, rejecting the first non-public hop, and requires the terminal field to be public.\n\nThis issue affects ash_phoenix: from 0.6.0-rc.1 before 2.3.25.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82725",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82726",
+      "desc": "Permissive Regular Expression vulnerability in ash-project ash_phoenix lets a remote client select the tenant an Ash application uses, or degrade the request, by sending a crafted Host header.\n\nAshPhoenix.Helpers.get_subdomain/2 stripped the root domain with String.replace(host, ~r/.?#{root_host}/, \"\"). The root host was interpolated raw, so each . became a wildcard and any metacharacter a pattern, and the replace was global and unanchored, so a match was removed from anywhere in the string. With root_host example.com, Host: foo.exampleXcom.attacker.net returned the tenant foo.attacker.net. A metacharacter-bearing or nil root host degraded the pattern or raised on every request. The comparison was also case-sensitive, so TENANT.EXAMPLE.COM and EXAMPLE.COM slipped past the root-host allowlist. conn.host comes from the client Host header. The fix matches the root host case-insensitively and only as an exact trailing suffix.\n\nThis issue affects ash_phoenix: from 2.1.26 before 2.3.25.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82726",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82727",
+      "desc": "Generation of Error Message Containing Sensitive Information vulnerability in ash-project ash_phoenix writes the entire raw submitted param map into an exception message, so secrets submitted alongside a union form field leak into logs, crash reports and the dev error page.\n\nWhen AshPhoenix.Form.Auto builds a union sub-form and the submitted _union_type does not match a configured type, both raise sites built the message with inspect(params, pretty: true), embedding the full untrusted param map, and also inspected the internal union constraints[:types]. Because the message is constructed by the library rather than Phoenix's parameter logger, config :phoenix, :filter_parameters never redacts it. An attacker controls both the trigger and the contents: submitting %{\"_union_type\" => \"nope\", \"password\" => \"...\"} puts the password verbatim in the raised message. The fix reports only the offending _union_type and the valid type names, dropping the param and constraints dumps.\n\nThis issue affects ash_phoenix: from 1.2.17 before 2.3.25.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82727",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82614",
+      "desc": "A flaw has been found in itsourcecode Online Medicine Delivery System 1.0. This vulnerability affects the function loadResultList of the file /index.php?q=product of the component Product Category Filter Interface. Executing a manipulation of the argument Category can lead to sql injection. The attack may be launched remotely. The exploit has been published and may be used.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82614",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82615",
+      "desc": "A vulnerability has been found in itsourcecode Online Medicine Delivery System 1.0. This issue affects the function Customer::find_phone of the file /passwordrecover.php of the component Password Recovery Interface. The manipulation of the argument phonenumber leads to sql injection. Remote exploitation of the attack is possible. The exploit has been disclosed to the public and may be used.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82615",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82616",
+      "desc": "A vulnerability was found in TOTOLINK NR1800X 9.1.0u.6681_B20230703. Impacted is the function setUploadSetting of the file /cgi-bin/cstecgi.cgi. The manipulation of the argument FileName results in stack-based buffer overflow. The attack can be executed remotely. The exploit has been made public and could be used.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82616",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82618",
+      "desc": "A vulnerability was determined in Systerel S2OPC up to 1.7.3. The affected element is the function set_range_matrix_on_string_array of the file src/Common/opcua_types/sopc_builtintypes.c of the component String Array Range Writing. This manipulation causes out-of-bounds read. The attack is possible to be carried out remotely. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82618",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82619",
+      "desc": "A vulnerability was identified in Systerel S2OPC up to 1.7.3. The impacted element is the function monitored_item_event_filter_treatment_bs__init_event_filter_ctx_and_result of the file src/ClientServer/services/bgenc/subscription_mgr.c. Such manipulation of the argument EventFilter leads to use after free. The attack may be performed from remote. The exploit is publicly available and might be used. The name of the patch is a4cee16a851b971be447a6ed531173702c722b99. It is best practice to apply a patch to resolve this issue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82619",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82620",
+      "desc": "A security flaw has been discovered in Soarkey StudentManagement and 学生信息管理系统 up to e08f7f1d5015af407aa4cca0ada3dea189b4937e. This affects the function CourseDao.course_ranking of the file code/src/dao/CourseDao.java. Performing a manipulation of the argument cno results in sql injection. It is possible to initiate the attack remotely. The exploit has been released to the public and may be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82620",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82621",
+      "desc": "A weakness has been identified in Soarkey StudentManagement and 学生信息管理系统 up to e08f7f1d5015af407aa4cca0ada3dea189b4937e. This impacts the function AdminDao.doGet of the file code/src/service/AdminDao.java of the component Administrative Servlet. Executing a manipulation of the argument action can lead to authorization bypass. It is possible to launch the attack remotely. The exploit has been made available to the public and could be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82621",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-40463",
+      "desc": "WaveSuite is affected by an insufficient role-based access control vulnerability in the CPB Log Files feature. Successful exploitation allows an authenticated low-privilege user to load pages restricted to higher-privilege roles by requesting the corresponding URL directly in the browser.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40463",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-40464",
+      "desc": "NSP is vulnerable to a stored XSS due to insufficient validation or encoding of user-controlled input in a workflow application. An authenticated attacker with access to the workflow application could embed harmful code that runs when another user views the content.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40464",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-40465",
+      "desc": "NSP is vulnerable to an open redirect due to insufficient server-side validation of the URL (or redirect) parameter.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40465",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-53620",
+      "desc": "GROWI contains a vulnerability with an authorization bypass through user-controlled key in the bookmark folder APIs. If this vulnerability is exploited, an authenticated attacker could retrieve, tamper with, and/or delete the other user's bookmark data.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-53620",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-58574",
+      "desc": "Dell PowerStore contains a Missing Authentication for Critical Function vulnerability. An unauthenticated attacker with network access to the restricted management interface could potentially exploit this vulnerability to read internal system information from the appliance filesystem. This is a Critical vulnerability as it could expose sensitive information and credentials which allow full administrative access to the array.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58574",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68951",
+      "desc": "GROWI contains an incorrect authorization vulnerability. If this vulnerability is exploited, an unauthenticated attacker could retrieve the other user's bookmark data.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68951",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-77013",
+      "desc": "The 爱采集数据采集和发布插件 WordPress plugin through 1.0.0 does not restrict which of its handler methods a request may invoke, and performs no capability or nonce check on them, allowing unauthenticated users to create WordPress user accounts and taxonomy terms.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77013",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82622",
+      "desc": "A security vulnerability has been detected in code-projects Employee Leave Managing System 1.0. Affected is an unknown function of the file /EmpManageSys/editaction.php of the component Employee Profile Update. The manipulation of the argument Name leads to cross site scripting. The attack can be initiated remotely. The exploit has been disclosed publicly and may be used.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82622",
+      "cvss": "3.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82623",
+      "desc": "A vulnerability was detected in open62541 up to 1.5.5. Affected by this vulnerability is the function UA_DataValue_backend_copyRange of the file plugins/historydata/ua_history_data_backend_memory.c of the component History Backend. The manipulation results in use after free. The attack can be launched remotely. The exploit is now public and may be used. The project closed the issue report, stating that this is not the official way to report a security vulnerability.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82623",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82624",
+      "desc": "A flaw has been found in code-projects Simple Inventory System 1.0. Affected by this issue is some unknown functionality of the file inventorymanagement.sql of the component Database Backup File Handler. This manipulation causes information disclosure. The attack may be initiated remotely. The exploit has been published and may be used.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82624",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82625",
+      "desc": "A vulnerability has been found in code-projects Simple Inventory System 1.0. This affects an unknown part of the file /register.php of the component User Registration. Such manipulation of the argument last_name leads to cross site scripting. The attack may be launched remotely. The exploit has been disclosed to the public and may be used.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82625",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82628",
+      "desc": "A vulnerability was found in Colorful iGameCenter 2.0.0.81. This vulnerability affects the function sub_11504 in the library WinRing0x64.sys of the component IOCTL Dispatch. Performing a manipulation of the argument PhysicalAddress/AlignNumer/AlignSize results in improper privilege management. Attacking locally is a requirement.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-08-31",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82628",
+      "cvss": "8.8",
       "cwe": ""
     },
     {

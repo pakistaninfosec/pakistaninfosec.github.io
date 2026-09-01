@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-01T16:14:05.647074+00:00",
+  "generated": "2026-09-01T19:28:44.053309+00:00",
   "summary": "Today's digest contains 597 vulnerabilities across 5 sources. 81 zero-day exploits detected, 31 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
     "new": 597,
     "changed": 0,
     "removed": 0,
-    "total": 536997,
+    "total": 537594,
     "zeroday": 81,
     "exploited": 31,
     "pakistan": 16
@@ -1949,7 +1949,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-58301",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -2963,7 +2963,7 @@
     {
       "id": "CVE-2026-71257",
       "desc": "Apache Wicket enforces the upload limits configured on a form or upload field while parsing a multipart request with Apache Commons FileUpload. If the request body has already been consumed by another component, Commons FileUpload returns no items and Wicket falls back to reading the upload through HttpServletRequest#getParts(). The per-file size limit (for example Form#setFileMaxSize) and the file count limit (Form#setFileCountMax) are not applied to the parts obtained that way, and no exception is raised, so the upload is processed as though those limits had been satisfied. A remote uploader can therefore submit files that are larger, or more numerous, than the application permits, up to whatever the component that parsed the request allows. A part carrying no Content-Type header is additionally read into memory in full during parsing, so the size of that allocation is determined by the request and bounded only by those same external limits.\n\nThe total upload size limit (Form#setMaxSize) is not affected. Commons FileUpload compares the declared Content-Length against it before reading the body, so a request declaring an oversized length is rejected before the fallback is reached.\n\nThe fallback is reached in deployments where a servlet or filter has already parsed the request body — for example a servlet annotated with @MultipartConfig, Spring Boot's multipart resolver, or any filter that calls HttpServletRequest#getParameter() on a multipart request. It applies to the Wicket components that accept uploads on that path, including Form with FileUploadField, FileUploadToResourceField and AjaxFileDropBehavior. Applications that configure neither a per-file nor a file-count limit are not affected, as Wicket applies neither by default.\n\nThis issue affects Apache Wicket: from 8.0.0 through 8.18.0, from 9.0.0 through 9.23.0, from 10.0.0 through 10.10.0.\n\nUsers are recommended to upgrade to version 8.19.0, 9.24.0 or 10.11.0, which fix the issue. Users of Apache Wicket 7.x or older, which are no longer supported, should upgrade to a supported version. As a workaround, configure equivalent limits in the component that parses the request — for example spring.servlet.multipart.max-file-size and max-request-size, or maxFileSize and maxRequestSize in @MultipartConfig or in the web.xml <multipart-config> element.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-08-31",
       "pakistan": false,
@@ -2975,7 +2975,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71257",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -3011,7 +3011,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75802",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -3029,7 +3029,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76982",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -3047,7 +3047,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76983",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -3065,7 +3065,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76984",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -3173,7 +3173,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51666",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -3191,7 +3191,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51667",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -3551,7 +3551,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51678",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -3641,7 +3641,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76985",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -3875,7 +3875,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51683",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -4325,7 +4325,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51153",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -4415,7 +4415,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51702",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -4433,7 +4433,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51703",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -4451,7 +4451,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51704",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -4487,7 +4487,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51706",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
@@ -4577,7 +4577,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51712",
-      "cvss": "0.0",
+      "cvss": "5.9",
       "cwe": ""
     },
     {
@@ -4613,7 +4613,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51714",
-      "cvss": "0.0",
+      "cvss": "5.9",
       "cwe": ""
     },
     {
@@ -5117,7 +5117,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19953",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -5171,7 +5171,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51727",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -5783,7 +5783,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51732",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -5909,7 +5909,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51739",
-      "cvss": "0.0",
+      "cvss": "5.9",
       "cwe": ""
     },
     {
@@ -9131,13 +9131,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51742",
-      "cvss": "0.0",
+      "cvss": "5.9",
       "cwe": ""
     },
     {
       "id": "CVE-2026-51743",
       "desc": "Incorrect access control in the guest_wifi_sync function of TOTOLINK T6 4.1.5cu.748_B20211015 allows unauthenticated attackers to disable guest virtual AP interfaces via sending a crafted MQTT message to the cs_broker component.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-09-01",
       "pakistan": false,
@@ -9149,7 +9149,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51743",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
@@ -9329,7 +9329,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84118",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -9401,7 +9401,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84122",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -9551,7 +9551,7 @@
     {
       "id": "CVE-2026-84131",
       "desc": "Privilege escalation due to invalid pointer in the Graphics component. This vulnerability was fixed in Firefox 155, Firefox ESR 115.40, Firefox ESR 140.15, and Firefox ESR 153.2.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-01",
       "pakistan": false,
@@ -9563,7 +9563,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84131",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {

@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-01T06:05:35.501955+00:00",
-  "summary": "Today's digest contains 507 vulnerabilities across 5 sources. 81 zero-day exploits detected, 31 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-01T11:55:26.977347+00:00",
+  "summary": "Today's digest contains 528 vulnerabilities across 5 sources. 81 zero-day exploits detected, 31 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 507,
+    "new": 528,
     "changed": 0,
     "removed": 0,
-    "total": 535872,
+    "total": 536400,
     "zeroday": 81,
     "exploited": 31,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 410
+      "count": 431
     },
     {
       "name": "Exploit-DB",
@@ -8304,6 +8304,384 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-83744",
       "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18488",
+      "desc": "The Blocksy Companion plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'tagName' Block Attribute (blocksy/dynamic-data) in all versions up to, and including, 2.1.51 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18488",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-75964",
+      "desc": "The User Profile Builder – Beautiful User Registration Forms, User Profiles & User Role Editor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'email' parameter in all versions up to, and including, 4.0.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The payload reaches administrators with the manage_options capability when they visit the Users > Unconfirmed Email Addresses list table and interact with row-action links, as the poisoned javascript: href is rendered verbatim into the page HTML by row_actions().",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75964",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-75980",
+      "desc": "The BetterDocs – AI Documentation, Knowledge Base, Docs, Wikis, FAQ with Chatbot plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Heading 'id' Attribute in Post Content in all versions up to, and including, 4.8.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The exploit survives wp_kses_post because entity-encoded quotes in a heading id attribute are treated as a single legitimate attribute value at save time; the dangerous payload only materialises after process_content_for_toc() calls html_entity_decode() on the stored content and the broken id is extracted by a lazy regex before being echoed unescaped into the Table of Contents output.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75980",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-77189",
+      "desc": "The Charitable – Donation & Fundraising Platform (Donation Forms, Recurring Donations & Fundraising Campaigns) plugin for WordPress is vulnerable to generic SQL Injection via 'order' Shortcode Attribute in all versions up to, and including, 1.8.12.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with contributor-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. The [charitable_donors] shortcode is accessible to Contributor-level users via draft or pending post previews, providing an authenticated but low-privileged entry point for exploitation.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-77189",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-83772",
+      "desc": "A vulnerability was detected in Cobham SATCOM VSAT7090 Maritime Satellite Router up to 20260704. This issue affects the function c_set_reports_decode of the file mail-report.sh of the component JSON Parsing. The manipulation of the argument sender/recipients results in command injection. It is possible to launch the attack remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-83772",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78319",
+      "desc": "A service running on the affected products contains a potential Time-of-Check Time-of-Use (TOCTOU) race condition.\nAn unauthenticated remote attacker could exploit this race condition to bypass intended security controls.\nThis may result in the execution of unauthorized code.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78319",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13611",
+      "desc": "The KiviCare WordPress plugin before 4.5.5 does not perform authorization checks on some of its REST endpoints, allowing unauthenticated attackers to disclose the patient roster and, when a payment gateway is configured, the payment gateway secret key.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13611",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-74916",
+      "desc": "The WP Fastest Cache WordPress plugin before 1.5.1 does not include a set of tracking-related query parameters in its page-cache key while still caching pages requested with them, allowing unauthenticated attackers to have a page rendered under their own request context stored under, and served from, the clean URL's cache entry to every subsequent visitor.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74916",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78363",
+      "desc": "The MW WP Form WordPress plugin before 5.1.5 does not prevent shortcodes in user-submitted values from being executed when it merges those values into a message that it later processes for shortcodes, allowing unauthenticated users to run any shortcode registered on the site. Exploitation requires the site to have been configured to echo a submitted value back to the visitor after submission.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78363",
+      "cvss": "4.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15101",
+      "desc": "The WPBakery Page Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'data' parameter in all versions up to, and including, 8.7.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The wp_kses_post sanitization applied during save does not neutralize the payload because the malicious script content is base64-encoded as plain alphanumeric text with no HTML tags to strip; the vc_raw_html shortcode template then decodes and echoes this content unescaped at render time.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15101",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16786",
+      "desc": "The Live Composer – Free WordPress Website Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via dslc_module_testimonials_output Shortcode in all versions up to, and including, 2.1.19 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The injected payload survives save-time wp_kses_post filtering because KSES treats shortcode delimiters as opaque, and the unescaped fields — including main_heading_title, view_all_link, main_heading_link_title, and main_filter_title_all — are only rendered when do_shortcode() executes at page-view time.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16786",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16788",
+      "desc": "The Live Composer – Free WordPress Website Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via dslc_module_projects_output Shortcode in all versions up to, and including, 2.1.19 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. WordPress's shortcode-aware kses handling preserves the serialized shortcode body as a placeholder before content filtering runs, allowing attacker-controlled values such as view_all_link, main_heading_link_title, main_filter_title_all, and button_text to reach render-time sinks entirely unescaped.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16788",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19914",
+      "desc": "The Welcart e-Commerce plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'custom_order' parameter in all versions up to, and including, 2.12.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The injected payload is delivered via the guest checkout form, requiring no authentication, and executes when an administrator views the affected order in the WordPress admin panel.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19914",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-25706",
+      "desc": "Improper neutralization of special elements used in an OS command in yast2-samba-client allows an attacker who controls the content of an Active Directory directory tree - a rogue domain controller, or a directory user delegated the right to create objects - to execute arbitrary commands as root on a machine being joined to that domain.\nThis issue affects yast2-samba-client through 5.0.4.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25706",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59680",
+      "desc": "An OS command injection vulnerability was found in yast2-users. When displaying the \"Password Settings\" tab of a user, get_password_term() in src/include/users/dialogs.rb read the shadowLastChange and shadowExpire fields with GetString(), which performs no numeric validation, and passed the resulting string to format_days_after_epoch(). That helper interpolated the value into a shell command executed via Ruby backticks without quoting or escaping.\n\nImpact: an administrator who manages users against an external/federated LDAP directory via `yast2 users` triggers root command execution the moment they view or edit that particular user's \"Password Settings\" tab. No \"join domain\" or trust setup is required, just browsing/editing one user entry.\n\nThis issue affects yast2-users through 5.0.8.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59680",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-59681",
+      "desc": "A OS command injection vulnerability in yast2-auth-client allows an attacker who controls Active Directory configuration values to execute arbitrary commands as root on the configured host.\n Auth::AuthConf in src/lib/auth/authconf.rb assembles the Samba net ads join, net ads lookup -S and net ads testjoin invocations by interpolating configuration values into a single command string and passing that string to Open3.popen2 / Open3.capture2, which causes Ruby to run it through /bin/sh. The Organizational Unit (ou), dnshostname, AD user name and AD domain name values are neither validated nor shell-quoted.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59681",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-4813",
+      "desc": "A vulnerability in the Lutece Core XSL export management module up to version 7.1.7, which allows authenticated administrators to execute code remotely. The XML/XSLT processing configuration does not enable secure processing mode (FEATURE_SECURE_PROCESSING), allowing Java extension functions to be executed from malicious XSL stylesheets. An attacker with administrator privileges can upload a manipulated XSL transformation file and trigger its execution during user export operations, resulting in the execution of arbitrary code on the server.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4813",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82926",
+      "desc": "NULL pointer dereference vulnerability in Samsung Open Source mTower allows Pointer Manipulation.\n\nThis issue affects mTower: before afef59aa6f55c5d5ebf9b14bc020bf1c2c37489a.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82926",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82927",
+      "desc": "Untrusted pointer dereference vulnerability in Samsung Open Source mTower allows Pointer Manipulation.\n\nThis issue affects mTower: before 06994e303637512e39062f3e037c222e8448e57e.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82927",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84059",
+      "desc": "A flaw has been found in ICP DAS UA-2200 and UA-5200 up to 20260704. The affected element is the function ArmAngstromInstructionSet of the file /CGI?RestApi=SetHostname. Executing a manipulation of the argument ParameterArray can lead to command injection. The attack can be executed remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84059",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84165",
+      "desc": "A vulnerability relating to incorrect access control in OpenNebula by OpenNebula Systems, affecting all versions prior to 7.4. This vulnerability could allow an authenticated user with basic permissions to execute commands on virtual machines belonging to other users via the `one.vm.exec` function, without proper verification of access permissions. To exploit the vulnerability, it is only necessary to know the virtual machine’s identifier and for qemu-agent to be enabled on that machine. Exploitation could allow commands to be executed and compromise the confidentiality, integrity and availability of the affected virtual machines.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84165",
+      "cvss": "0.0",
       "cwe": ""
     },
     {

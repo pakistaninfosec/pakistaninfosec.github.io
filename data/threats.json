@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-02T20:01:04.252815+00:00",
+  "generated": "2026-09-02T22:46:25.451190+00:00",
   "summary": "Today's digest contains 604 vulnerabilities across 5 sources. 88 zero-day exploits detected, 38 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
     "new": 604,
     "changed": 0,
     "removed": 0,
-    "total": 541780,
+    "total": 542384,
     "zeroday": 88,
     "exploited": 38,
     "pakistan": 16
@@ -9036,7 +9036,7 @@
     {
       "id": "CVE-2026-84642",
       "desc": "The values of the mail.allowed_attachment_hostnames advanced config setting were used in a regular expression without escaping. For some possible valid hostnames, this could allow certain unintended hostnames to also match and serve remote attachments. This vulnerability was fixed in Thunderbird 155 and Thunderbird 153.2.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-01",
       "pakistan": false,
@@ -9048,7 +9048,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84642",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -9234,7 +9234,7 @@
     {
       "id": "CVE-2026-81928",
       "desc": "Net::DNS versions before 1.57 for Perl allow memory exhaustion via unbounded recursion in sig_data when re-encoding a message with a misplaced TSIG record.\n\nsig_data signs a message by re-encoding it, and removes TSIG records only from the additional section. A TSIG decoded into the answer or authority section survives that step and is signed again, so encoding re-enters sig_data with no termination condition. Decoding does not reject such a message: a TSIG that is not the last record on the wire raises \"misplaced or corrupt TSIG\", but the error is caught, reported as a warning, and the record is left in the packet. RFC 8945 section 5.2 requires the message to be dropped.\n\nThe recursion is reached only when the decoded TSIG carries an empty MAC, since a MAC recovered from the wire short-circuits the signing step. It is reached only from code that re-encodes a message it decoded, such as a forwarder or a proxy. A decoded message that is never re-encoded is unaffected. Message direction does not matter: a query reaches the same path as a response.\n\nEach cycle re-encodes the whole message, so fewer than 100 bytes on the wire exhaust available memory and terminate the process.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-02",
       "pakistan": false,
@@ -9246,7 +9246,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81928",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {

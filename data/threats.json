@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-03T14:54:34.241694+00:00",
-  "summary": "Today's digest contains 583 vulnerabilities across 5 sources. 87 zero-day exploits detected, 37 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-03T18:23:39.807958+00:00",
+  "summary": "Today's digest contains 603 vulnerabilities across 5 sources. 87 zero-day exploits detected, 37 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 583,
+    "new": 603,
     "changed": 0,
     "removed": 0,
-    "total": 544348,
+    "total": 544951,
     "zeroday": 87,
     "exploited": 37,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 480
+      "count": 500
     },
     {
       "name": "Exploit-DB",
@@ -5651,7 +5651,7 @@
     {
       "id": "CVE-2026-84652",
       "desc": "In Jenkins 2.579 and earlier, LTS 2.568.2 and earlier, Jenkins does not rotate the session when a user is authenticated via the \"remember me\" cookie, allowing attackers able to serve content on the same site as Jenkins to set a known session cookie in the victim's browser, which after the victim authenticates via the \"remember me\" cookie, grants the attacker access to Jenkins as that user.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-02",
       "pakistan": false,
@@ -5663,7 +5663,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84652",
-      "cvss": "0.0",
+      "cvss": "7.3",
       "cwe": ""
     },
     {
@@ -7163,7 +7163,7 @@
     {
       "id": "CVE-2026-56855",
       "desc": "Previously, after a channel has been established, a malicious peer could send crafted messages that would deadlock the entire connection. Now, we handle all RFC 4254 channel messages; global requests are handled explicitly. Then, treat all other messages as a protocol error and tear the connection down instead of buffering and blocking.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-02",
       "pakistan": false,
@@ -7175,7 +7175,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56855",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -9678,6 +9678,366 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85110",
       "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-35160",
+      "desc": "Dell SmartFabric OS10 Software, versions prior to 10.5.6.14, contains an Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection') vulnerability. A high privileged attacker with remote access could potentially exploit this vulnerability, leading to Command execution.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-35160",
+      "cvss": "5.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56126",
+      "desc": "pfSense Plus before 26.07 and CE before 2.9.0 allow authenticated users with the Status: Monitoring privilege to inject arbitrary JavaScript via graph configuration parameters in /status_monitoring.php. Multiple POST parameters including graph-left, graph-right, time-period, resolution, start-date, end-date, start-time, end-time, graph-type, invert, and refresh-interval are concatenated and written to the global pfSense XML configuration without sanitization, then echoed unsanitized into a JavaScript string context on page render. Because the setting is stored in the global configuration, the payload executes in the browser of every user who visits the Status: Monitoring page.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56126",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56127",
+      "desc": "pfSense Plus before 26.07 and CE before 2.9.0 allow authenticated users with the Firewall: Rules: Edit privilege to inject arbitrary JavaScript via the descr parameter in /firewall_rules_edit.php. The firewall rule description is stored in the pfSense XML configuration with only backslash-escaping applied and no HTML sanitization, then rendered without encoding in the firewall log table in /status_logs_filter.php. The payload executes in the browser of any user with the Status: Logs: Firewall privilege who views the affected log entries.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56127",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56128",
+      "desc": "pfSense Plus before 26.07 and CE before 2.9.0 allow authenticated users with the Firewall: Schedules: Edit privilege to inject arbitrary JavaScript via the descr parameter in /firewall_schedule_edit.php. The schedule description is stored without HTML sanitization and subsequently inserted into an HTML attribute value in /firewall_rules.php with only single-quote escaping applied, permitting double-quote breakout. The payload executes in the browser of any user with the Firewall: Rules privilege who views the rules list with the affected schedule attached.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56128",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63694",
+      "desc": "Dell SmartFabric OS10 Software, versions prior to 10.5.6.14, contains an Improper Neutralization of Special Elements used in a Command ('Command Injection') vulnerability. A high privileged attacker with remote access could potentially exploit this vulnerability, leading to Command execution.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63694",
+      "cvss": "5.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71403",
+      "desc": "A flaw was found in Rancher Manager. The /v3/users update path did not enforce immutability of a User resource's `username` and `principalIds` fields. A user holding the `update` verb on `users.management.cattle.io` could inject a foreign identity provider principal into any account, so that the next login by the owner of that principal was bound to the victim's account and inherited its role bindings.\n\n\nThis issue affects Rancher: before 2.15.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71403",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71404",
+      "desc": "A flaw was found in Rancher Manager. The GlobalRole controller derived the target ClusterRole name from the user-settable `authz.management.cattle.io/cr-name` annotation and overwrote that object's rules without verifying ownership. A user with delegated GlobalRole create or update permission could point the annotation at any existing ClusterRole, such as `cluster-admin`, and revoke the permissions of every principal bound to it. The change persists after the malicious GlobalRole is deleted.\n\n\nThis issue affects Rancher: before 2.15.1.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71404",
+      "cvss": "8.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-75033",
+      "desc": "A flaw was found in Rancher Manager. Project Secrets were propagated into a namespace based only on its `field.cattle.io/projectId` annotation, without verifying that the referenced project belonged to the same downstream cluster. A user able to create namespaces on one cluster could set the annotation to a project ID from another cluster and have that project's secrets copied into a namespace under their control.\n\n\nThis issue affects Rancher: before 2.15.1.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75033",
+      "cvss": "7.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84969",
+      "desc": "A memory-handling error in the BSON-to-JSON conversion helpers of the MongoDB C Driver can write a small number of bytes past the end of a heap buffer when a binary field is encoded and the output is cut short at a caller-configured length limit. A party who supplies the document content, with no privileges on the application that links the driver, may cause a small amount of data outside the intended buffer to be altered.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84969",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84970",
+      "desc": "A numeric truncation weakness exists in the JSON parsing component of the MongoDB C++ Driver's BSON library. An actor who controls the text that an embedding application hands to the library's public JSON parsing interface, when that text is very large, can cause the library to read memory beyond the supplied buffer and return it to the caller, to silently accept only part of the input as a complete document, or to terminate the process. No MongoDB server, credentials, or non-default configuration is required; the effect is confined to the process that uses the library.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84970",
+      "cvss": "6.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84971",
+      "desc": "Improper handling of an unexpected value size in the decryption path of a client-side encryption library can cause a failed internal check that terminates the process using the library. A party able to place a suitably formed encrypted value where an application will decrypt it, or able to control the responses the application receives, may cause that application to stop running.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84971",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84989",
+      "desc": "ntopng is a web-based network traffic monitoring application. In versions 6.7.0 through 6.7.260717, two REST v2 endpoints that manage ntopng's tag/badge feature — `POST /lua/rest/v2/delete/tag/tag.lua` and `POST /lua/rest/v2/edit/tag/tag.lua` — perform no authorization check at all. Any authenticated user, including a non-administrator (\"unprivileged\") account, can delete or rename any tag in the system, including tags created by an administrator. Version 6.7.260718 contains a fix.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84989",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85135",
+      "desc": "A security flaw has been discovered in ILIAS up to 9.21/10.9/11.2. This affects the function ilObjMediaObjectGUI::uploadMultipleSubtitleFileObject of the file Services/Repository/Service/Resources/ZipAdapter.php of the component MediaPool. The manipulation results in unrestricted upload. The attack may be launched remotely. Upgrading to version 9.22, 10.10 and 11.3 is able to mitigate this issue. The patch is identified as ef5d7f99fe1ea0381db04b333a2906548b3590e4/b0d61be43671b6bfe91baf469a5ee11e764f2e23. It is recommended to upgrade the affected component.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85135",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85176",
+      "desc": "DbGate fails to validate jslid parameters in the jsldata controller, allowing authenticated users to read and write arbitrary files via file:// scheme resolution. Attackers can exploit getJslFileName() to bypass directory containment and access sensitive files including encrypted database credentials stored in connections configuration.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85176",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85177",
+      "desc": "CRMEB through 6.0.0 fails to validate message ownership in the edit_message handler of MessageSystemController.php, allowing authenticated users to modify arbitrary system inbox messages. Attackers can update any message's columns including is_del, look, and uid to delete, mark read, or reassign victim notifications without authorization.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85177",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85178",
+      "desc": "Helicone's VaultManager.getDecryptedProviderKeyById() function in the GET /v1/vault/key/{providerKeyId} endpoint fails to validate the requester's organization against the vault key's organization identifier. Attackers with admin or owner privileges in any organization can retrieve decrypted upstream provider credentials for other tenants, including plaintext OpenAI, Anthropic, and Bedrock API keys.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85178",
+      "cvss": "7.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85179",
+      "desc": "Label Studio through 1.23.0 fails to validate webhook URLs, allowing authenticated users to dispatch requests to internal services including RFC 1918 addresses and cloud metadata endpoints. Attackers can create webhooks targeting private networks and exfiltrate annotation data by enabling payload transmission in outbound requests.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85179",
+      "cvss": "8.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85180",
+      "desc": "Ollama fails to validate redirect destinations when pulling tensor-layer models, allowing unauthenticated attackers to redirect blob downloads to arbitrary hosts. An attacker can control a registry, serve a malicious tensor-layer manifest, and cause the server to issue GET requests to internal hosts including cloud metadata endpoints.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85180",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85181",
+      "desc": "CAT uses Java String.hashCode as the sole integrity check for session cookies without server-side keying, allowing attackers to forge valid checksums offline. Attackers can set the x-forwarded-for header to bypass IP binding validation and create admin sessions with full configuration access.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85181",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85182",
+      "desc": "vhr through commit 03abbd3 fails to verify that the account ID in PUT /hr/pass requests belongs to the authenticated caller. Authenticated attackers can change arbitrary account passwords by supplying a target account ID and that account's current password in the request body.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85182",
+      "cvss": "7.5",
       "cwe": ""
     },
     {

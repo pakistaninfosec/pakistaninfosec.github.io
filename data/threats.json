@@ -1,13 +1,13 @@
 {
-  "generated": "2026-09-04T15:56:07.024591+00:00",
-  "summary": "Today's digest contains 600 vulnerabilities across 5 sources. 84 zero-day exploits detected, 34 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-04T18:54:15.917585+00:00",
+  "summary": "Today's digest contains 601 vulnerabilities across 5 sources. 85 zero-day exploits detected, 35 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 600,
+    "new": 601,
     "changed": 0,
     "removed": 0,
-    "total": 548200,
-    "zeroday": 84,
-    "exploited": 34,
+    "total": 548801,
+    "zeroday": 85,
+    "exploited": 35,
     "pakistan": 16
   },
   "sources": [
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 34
+      "count": 35
     },
     {
       "name": "Pakistan CERT",
@@ -335,6 +335,25 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85046",
+      "desc": "Google Chromium V8 contains a type confusion vulnerability that allows a remote attacker to execute arbitrary code inside the sandbox via a crafted HTML page. This vulnerability could affect multiple web browsers that utilize Chromium, including, but not limited to, Google Chrome, Microsoft Edge, and Opera.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85046",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -5876,7 +5895,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85044",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -9823,7 +9842,7 @@
     },
     {
       "id": "CVE-2026-74235",
-      "desc": "GFI Exinda AI before 7.6.5 contains a path traversal vulnerability in the system maintenance configuration download handler. The wcf_handle_download() function accepts parameters prefixed with v_del_ and appends their values directly to the base configuration directory path without sanitizing for directory traversal sequences. An authenticated attacker with Admin privileges can read arbitrary files from the system in the context of root.",
+      "desc": "GFI Exinda AI and ClearView before 7.6.5 contains a path traversal vulnerability in the system maintenance configuration download handler. The wcf_handle_download() function accepts parameters prefixed with v_del_ and appends their values directly to the base configuration directory path without sanitizing for directory traversal sequences. An authenticated attacker with Admin privileges can read arbitrary files from the system in the context of root.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-09-04",
@@ -9841,7 +9860,7 @@
     },
     {
       "id": "CVE-2026-74236",
-      "desc": "GFI Exinda AI before 7.6.5 contains a path traversal vulnerability in the diagnostic file deletion handler. The unlink_or_email_file() function accepts parameters prefixed with v_file_row_ and appends their values directly to a base directory path without sanitizing for directory traversal sequences. An authenticated attacker with Admin privileges can delete arbitrary files from the system in the context of root.",
+      "desc": "GFI Exinda AI and ClearView before 7.6.5 contains a path traversal vulnerability in the diagnostic file deletion handler. The unlink_or_email_file() function accepts parameters prefixed with v_file_row_ and appends their values directly to a base directory path without sanitizing for directory traversal sequences. An authenticated attacker with Admin privileges can delete arbitrary files from the system in the context of root.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-09-04",
@@ -9859,7 +9878,7 @@
     },
     {
       "id": "CVE-2026-74237",
-      "desc": "GFI Exinda AI before 7.6.5 contains an argument injection vulnerability in the Tools Iperf Client functionality. The web_tools_cmd() function constructs an iperf command using the server and options parameters without sanitization, permitting injection of arbitrary iperf flags. An authenticated attacker with Unprivileged (lowest-level) access can supply the iperf -F flag to read an arbitrary file from the system and transmit its contents to an attacker-controlled server.",
+      "desc": "GFI Exinda AI and ClearView before 7.6.5 contains an argument injection vulnerability in the Tools Iperf Client functionality. The web_tools_cmd() function constructs an iperf command using the server and options parameters without sanitization, permitting injection of arbitrary iperf flags. An authenticated attacker with Unprivileged (lowest-level) access can supply the iperf -F flag to read an arbitrary file from the system and transmit its contents to an attacker-controlled server.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-09-04",

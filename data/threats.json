@@ -1,23 +1,19 @@
 {
-  "generated": "2026-09-04T01:13:40.347656+00:00",
-  "summary": "Today's digest contains 457 vulnerabilities across 5 sources. 84 zero-day exploits detected, 34 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-04T06:22:55.023158+00:00",
+  "summary": "Today's digest contains 437 vulnerabilities across 4 sources. 34 zero-day exploits detected, 34 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 457,
+    "new": 437,
     "changed": 0,
     "removed": 0,
-    "total": 546614,
-    "zeroday": 84,
+    "total": 547051,
+    "zeroday": 34,
     "exploited": 34,
     "pakistan": 16
   },
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 357
-    },
-    {
-      "name": "Exploit-DB",
-      "count": 50
+      "count": 387
     },
     {
       "name": "CISA KEV",
@@ -1760,7 +1756,7 @@
     {
       "id": "CVE-2026-80726",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: x86/mmu: WARN and clear role.invalid when creating a child shadow page\n\nExplicitly clear role.invalid when deriving a child shadow page's role from\nits parent to harden against bugs elsewhere in KVM, as violating KVM's\ninvariant that invalid pages are NOT on the list of active MMU pages leads\nto use-after-free due to __kvm_mmu_prepare_zap_page() using list_add()\ninstead of list_move() when processing an invalid shadow page, i.e. makes a\nbad situation far worse.\n\nYell loudly if the parent is invalid, as it means KVM has missed a validity\ncheck, i.e. KVM is attempting to map memory using an invalid/obsolete root,\nbut continue on as the child is otherwise still a valid shadow page.\n\n  ==================================================================\n  BUG: KASAN: slab-use-after-free in __kvm_mmu_get_shadow_page+0x1817/0x1860 [kvm]\n  Write of size 8 at addr ff11000153dd1368 by task repro/853\n\n  CPU: 1 UID: 1000 PID: 853 Comm: repro Not tainted 7.2.0-rc2-3aec122bdcaf-next-vm #5 PREEMPT\n  Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 0.0.0 02/06/2015\n  Call Trace:\n   <TASK>\n   dump_stack_lvl+0x4b/0x70\n   print_report+0x153/0x49c\n   kasan_report+0xbc/0xf0\n   __kvm_mmu_get_shadow_page+0x1817/0x1860 [kvm]\n   mmu_alloc_root+0x141/0x320 [kvm]\n   kvm_mmu_load+0x612/0x20f0 [kvm]\n   kvm_arch_vcpu_ioctl_run+0x3dd5/0x6150 [kvm]\n   kvm_vcpu_ioctl+0x5e4/0x10d0 [kvm]\n   __x64_sys_ioctl+0x131/0x1b0\n   do_syscall_64+0x67/0x5f0\n   entry_SYSCALL_64_after_hwframe+0x4b/0x53\n   </TASK>\n\n  Allocated by task 853:\n   kasan_save_stack+0x20/0x40\n   kasan_save_track+0x14/0x30\n   __kasan_slab_alloc+0x5f/0x70\n   kmem_cache_alloc_noprof+0xfe/0x2e0\n   __kvm_mmu_topup_memory_cache+0x135/0x530 [kvm]\n   paging64_page_fault+0x318/0x1e30 [kvm]\n   kvm_mmu_do_page_fault+0x21d/0x630 [kvm]\n   kvm_mmu_page_fault+0x18c/0x17b0 [kvm]\n   kvm_arch_vcpu_ioctl_run+0x1f35/0x6150 [kvm]\n   kvm_vcpu_ioctl+0x5e4/0x10d0 [kvm]\n   __x64_sys_ioctl+0x131/0x1b0\n   do_syscall_64+0x67/0x5f0\n   entry_SYSCALL_64_after_hwframe+0x4b/0x53\n\n  Freed by task 853:\n   kasan_save_stack+0x20/0x40\n   kasan_save_track+0x14/0x30\n   kasan_save_free_info+0x3b/0x60\n   __kasan_slab_free+0x43/0x70\n   kmem_cache_free+0xe2/0x400\n   kvm_mmu_commit_zap_page.part.0+0x1e2/0x310 [kvm]\n   kvm_mmu_free_roots+0x283/0x560 [kvm]\n   kvm_arch_vcpu_ioctl_run+0x33c8/0x6150 [kvm]\n   kvm_vcpu_ioctl+0x5e4/0x10d0 [kvm]\n   __x64_sys_ioctl+0x131/0x1b0\n   do_syscall_64+0x67/0x5f0\n   entry_SYSCALL_64_after_hwframe+0x4b/0x53",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -1772,7 +1768,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80726",
-      "cvss": "0.0",
+      "cvss": "9.3",
       "cwe": ""
     },
     {
@@ -1850,7 +1846,7 @@
     {
       "id": "CVE-2026-80731",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: remove CAP_SYS_RAWIO zero-padding in dev_validate_header\n\ndev_validate_header() reads dev->hard_header_len directly when\nzero-padding short link layer headers for CAP_SYS_RAWIO holders:\n\n    if (capable(CAP_SYS_RAWIO)) {\n        memset(ll_header + len, 0, dev->hard_header_len - len);\n        return true;\n    }\n\nPacket send paths call dev_validate_header() on skbs whose headroom was\nallocated from an earlier hard_header_len read. If the device is\nreconfigured so that dev->hard_header_len increases before validation,\nthe memset writes past the reserved buffer, an out-of-bounds write.\n\nThis out-of-bounds write is masked in some SOCK_RAW paths today because\nthe same concurrent increase can first make skb_push() exceed the\nreserved headroom and trigger skb_under_panic(). Remove the zero-padding\nbranch before making those hard_header_len reads consistent, so the\nsnapshot fixes do not turn a loud panic into a silent overwrite.\n\nThis path is only reached for variable length L2 protocols, where\nlen < hard_header_len but len >= min_header_len. No remaining in-tree\nvariable length L2 protocol implements header_ops->validate, and the\nCAP_SYS_RAWIO bypass that zero-pads and accepts short headers has no\nreal value beyond allowing testing of intentionally malformed input.\n\nDrop the CAP_SYS_RAWIO branch. The remaining reads of\ndev->hard_header_len in dev_validate_header() are comparisons only and\nhave no memory safety impact.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -1862,13 +1858,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80731",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-80732",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nata: pata_sl82c105: fix bridge revision use-after-free\n\npci_get_slot() returns a referenced PCI device. Commit 44c10138fd4b\n(\"PCI: Change all drivers to use pci_device->revision\") replaced a\nconfiguration-space read with direct access to the cached revision field,\nbut left that access after pci_dev_put(). The bridge may therefore be freed\nbefore its revision is read.\n\nRead the revision before dropping the reference.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -1880,7 +1876,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80732",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -1904,7 +1900,7 @@
     {
       "id": "CVE-2026-80734",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: initialize inode mapping flags for cached inodes\n\n[BUG]\nWhen running generic/795 with 8K block size, 4K page size, the test\nalways fails, triggering some ASSERT()s related to folio size:\n\n  795 (241074): drop_caches: 3\n  assertion failed: IS_ALIGNED(start, blocksize) && IS_ALIGNED(end + 1, blocksize), in extent_io.c:1404 (blocksize=8192 root=262 ino=258 start=16826368 end=16830463 mapping min order=0)\n  ------------[ cut here ]------------\n  kernel BUG at extent_io.c:1404!\n  Oops: invalid opcode: 0000 [#1] SMP\n  CPU: 8 UID: 0 PID: 241105 Comm: fsstress Tainted: G           OE       7.2.0-rc5-custom+ #442 PREEMPT(full)  f4bfb352566f3949f29c233ce6f735050a03b245\n  Tainted: [O]=OOT_MODULE, [E]=UNSIGNED_MODULE\n  Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS unknown 02/02/2022\n  RIP: 0010:assert_folio_range.cold+0x3d/0x3f [btrfs]\n  Call Trace:\n   <TASK>\n   btrfs_read_folio+0x9e/0x170 [btrfs 4cd1dd93b341b8ef766643f9512f4a86259567a3]\n   prepare_one_folio.constprop.0+0x104/0x2a0 [btrfs 4cd1dd93b341b8ef766643f9512f4a86259567a3]\n   btrfs_buffered_write+0x285/0xa50 [btrfs 4cd1dd93b341b8ef766643f9512f4a86259567a3]\n   btrfs_do_write_iter+0x1aa/0x210 [btrfs 4cd1dd93b341b8ef766643f9512f4a86259567a3]\n   iter_file_splice_write+0x31a/0x540\n   direct_splice_actor+0x53/0x170\n   splice_direct_to_actor+0xe9/0x240\n   do_splice_direct+0x76/0xb0\n   vfs_copy_file_range+0x1fd/0x630\n   __x64_sys_copy_file_range+0xf9/0x220\n   do_syscall_64+0xe1/0x790\n   entry_SYSCALL_64_after_hwframe+0x4b/0x53\n   </TASK>\n  ---[ end trace 0000000000000000 ]---\n\nThe ASSERT() itself is added by a later patch.\nThe crash is triggered with that new debug patch, and without this fix.\n\n[CAUSE]\nIn the above case, the start 16826368 is properly 8K aligned, but the\nend (16830463 + 1) is not 8K aligned.\nFurthermore the mapping's minimal folio order is 0, not the expected 1\nfor 8K block size with 4K page size.\n\nSo this means some inodes do not have btrfs_set_inode_mapping_order()\ncalled on it.\n\nThe missing btrfs_set_inode_mapping_order() call happens for cached\ninodes, through the following events:\n\n- btrfs_create_new_inode() called for inode X\n  Which properly sets minimal folio order for the VFS inode.\n\n- btrfs_update_inode() called for inode X\n  Which calls btrfs_delayed_update_inode() to create a delayed_node\n  into root->delayed_nodes xarray.\n\n- Drop cache/memory pressure, evicting in-memory inode X\n  Which evicted the inode X, but delayed_node is still in\n  root->delayed_nodes for future reuse.\n\n- btrfs_iget() for inode X called again\n\n  btrfs_iget()\n  |- btrfs_iget_locked()\n  |  |- iget5_locked_rcu()\n  |     Which creates a new vfs_inode for btrfs, whose mapping still\n  |     has the minimal order as 0.\n  |\n  |- btrfs_read_locked_inode()\n     |- btrfs_fill_inode()\n     |  |- btrfs_get_delayed_node()\n     |     Which found out the previous node, and use that delayed\n     |     node to initialize the new inode.\n     |\n     |- filled = true;\n     |- if (filled) goto cache_index;\n        Which skips the btrfs_update_inode_mapping_flags() and\n\tbtrfs_set_inode_mapping_order() calls.\n\tSo the inode still has minimal folio order set as 0, not\n\tthe required 1.\n\nThus later page cache read will get a folio whose size is smaller than\nblock size, as the mapping has its minimal folio order set as 0 not 1,\nthen trigger the ASSERT().\n\n[FIX]\nMove the btrfs_update_inode_mapping_flags() and\nbtrfs_set_inode_mapping_order() calls under cache_index label,\nso that the mapping flags and minimal folio order is always set\nno matter if we have a cached inode.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -1916,13 +1912,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80734",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-80735",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\novpn: ensure socket is owned by ovpn before deref sk_user_data\n\nSome subsystems, like BPF SOCKMAP, set sk_user_data without\nactually setting the encap_type.\n\nFor this reason, we must make sure that the type is the\none ovpn expects before dereferencing sk_user_data.\n\nFailing to do so may lead to out-of-bounds reads.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -1934,13 +1930,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80735",
-      "cvss": "0.0",
+      "cvss": "7.3",
       "cwe": ""
     },
     {
       "id": "CVE-2026-80736",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nthunderbolt: Fix bandwidth group reservation indexing\n\nValid bandwidth group IDs range from 1 through MAX_GROUPS, while Group\nID 0 is reserved. tb_consumed_dp_bandwidth() uses the Group ID directly\nto index its local group_reserved[] array.\n\nThe array currently has MAX_GROUPS entries, so its valid indices are 0\nthrough MAX_GROUPS - 1. Group ID MAX_GROUPS therefore accesses one\nelement past the end, and the final group's reserved bandwidth is not\nincluded when the array is summed.\n\nGive group_reserved[] MAX_GROUPS + 1 entries so direct Group ID\nindexing covers the reserved ID 0 and valid IDs 1 through MAX_GROUPS.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -1952,13 +1948,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80736",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-80737",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nserial: amba-pl011: synchronize DMA teardown\n\ndmaengine_terminate_all() does not wait for a running callback, so the TX\ncallback can still touch the TX buffer after it is freed. The RX poll\ntimer reads the RX buffers without the port lock.\n\nSwitch to dmaengine_terminate_sync() and delete the RX timer before\nfreeing the buffers.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -1970,13 +1966,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80737",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-80738",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Check sk_state before sk_protocol in bpf_tcp_*_syncookie\n\nbpf_tcp_gen_syncookie and bpf_tcp_check_syncookie accept a socket pointer\n'sk' with argument type ARG_PTR_TO_BTF_ID_SOCK_COMMON. However, they access\nsk->sk_protocol without validating whether 'sk' represents a full socket.\n\nFix this issue by checking sk->sk_state != TCP_LISTEN before inspecting\nsk->sk_protocol in both bpf_tcp_gen_syncookie and bpf_tcp_check_syncookie.\nSince mini-sockets are never in the TCP_LISTEN state, the condition\nshort-circuits and prevents dereferencing fullsock-specific fields.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -1988,7 +1984,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80738",
-      "cvss": "0.0",
+      "cvss": "7.3",
       "cwe": ""
     },
     {
@@ -2030,7 +2026,7 @@
     {
       "id": "CVE-2026-80741",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/log: Fix out-of-bounds read on empty message length\n\ndrm_log_draw_kmsg_record() accesses s[len - 1] to strip the trailing\nnewline, but len is unsigned int. If len is 0, the subtraction wraps\nto UINT_MAX, causing an out-of-bounds read.\n\nAdd an early return when len is 0.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -2042,7 +2038,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80741",
-      "cvss": "0.0",
+      "cvss": "7.1",
       "cwe": ""
     },
     {
@@ -2102,7 +2098,7 @@
     {
       "id": "CVE-2026-80745",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nregulator: fp9931: Fix VPOS/VNEG voltage selector table\n\nThe VPOSNEG_table[] mapping does not match the FP9931 datasheet.\n\nThe datasheet defines the VPOS/VNEG voltage mapping as:\n\n  00h-04h ->  7.04V (-7.04V)\n  05h     ->  7.26V (-7.26V)\n  06h     ->  7.49V (-7.49V)\n  ...\n  28h-3Fh -> 15.06V (-15.06V)\n\nHowever, VPOSNEG_table[] has two issues:\n\n1. Selector 0x00~0x04 should all map to 7.04V (5 entries), but the\n   table has 6 entries of 7.04V, causing all subsequent entries to be\n   shifted by one position.\n\n2. Selectors 0x29~0x3F should all clamp to 15.06V (23 entries), but\n   the table has only 41 entries. Any selector value above 0x28\n   would result in an out-of-bounds table access.\n\nFix both issues by removing the duplicate 7.04V entry and appending\nthe missing 23 clamped 15.06V entries, bringing the table to the\ncorrect size of 64 entries (0x00~0x3F).",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -2114,7 +2110,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80745",
-      "cvss": "0.0",
+      "cvss": "8.4",
       "cwe": ""
     },
     {
@@ -2138,7 +2134,7 @@
     {
       "id": "CVE-2026-80747",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amdkfd: Add bounds check for CRAT subtype length\n\nThe CRAT parser validates that the subtype header fits within the image,\nbut does not verify that the advertised subtype length fits. A malformed\nCRAT table with an oversized length field causes out-of-bounds reads when\nkfd_parse_subtype() casts the header to specific subtype structures.\n\nAdd validation that sub_type_hdr + length does not exceed the image\nboundary before parsing the subtype contents.\n\n(cherry picked from commit 48e1d1e6e8798aef0312e68d8e586021b5b3cf4d)",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -2150,13 +2146,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80747",
-      "cvss": "0.0",
+      "cvss": "8.0",
       "cwe": ""
     },
     {
       "id": "CVE-2026-80748",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nmmc: loongson2: Fix sg iteration in data reorder functions\n\nIn ls2k0500_mmc_reorder_cmd_data() and ls2k2000_mmc_reorder_cmd_data(),\nthe for_each_sg() macro already iterates over the scatterlist entries,\nwith 'sg' pointing to the current entry. However, the code incorrectly\nuses '&sg[i]' and 'sg_dma_len(&sg[i])' inside the loop, which treats\n'sg' as an array base and indexes it again, leading to access of\nwrong sg entries (or out-of-bounds if the list is not an array).",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -2168,13 +2164,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80748",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-80749",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/connector/hdmi: Fix out of bounds memory read\n\nA helper function was copying a given audio infoframe into the\nconnector's copy but using the size of the destination (a generic\ntarget, sized to accept many different data blocks) not the source (a\nvery specific type of data block). Thus, it was copying 60 bytes of\ndata from a 28 byte allocation.\n\nFix that by using the source size instead, together with a build bug\non the source size actually being smaller than the destination.\n\nI hit this running KUnit tests under KASAN (while debugging something\nelse entirely). In the real world, it seems unlikely to cause an\nactual problem. It is a read not a write so it can't corrupt any\nmemory. However, it could potentially fall off the end of a page and\ncause an accvio bug.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -2186,13 +2182,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80749",
-      "cvss": "0.0",
+      "cvss": "7.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-80750",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\npmdomain: mediatek: fix remaining %pOF after of_node_put()\n\nscpsys_get_bus_protection_legacy() looks up several legacy bus\nprotection regmaps from device-tree nodes.\n\nTwo error paths put the device node before checking whether the regmap\nlookup failed, but still pass that node to dev_err_probe() with %pOF on\nfailure. If of_node_put() drops the last reference, the later %pOF\nformatting can dereference a freed device node.\n\nKeep the node reference until after the error message has been emitted in\nthe infracfg and SMI lookup paths. Also drop the SMI node before\nreturning when the SMI phandle is missing.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -2204,13 +2200,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80750",
-      "cvss": "0.0",
+      "cvss": "8.4",
       "cwe": ""
     },
     {
       "id": "CVE-2026-80751",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\npmdomain: mediatek: mfg: initialize prev_o in mtk_mfg_attach_dev()\n\nmtk_mfg_attach_dev() reads prev_o on the first iteration of its loop,\nin \"if (prev_o && prev_o->freq == o->freq)\", before prev_o is assigned\nat the end of the loop body. On that first iteration, evaluating prev_o\nreads an indeterminate value. If it is non-NULL, the condition\ndereferences a stale or invalid pointer, potentially faulting or\nincorrectly skipping the first OPP.\n\nInitialize prev_o to NULL. This matches the intent as well: there is no\nprevious OPP to compare against on the first iteration.\n\nFound with Clang's -Wconditional-uninitialized.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -2222,13 +2218,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80751",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-80752",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: psxpad-spi - set driver data before use\n\npsxpad_spi_suspend() retrieves the controller state with\nspi_get_drvdata(), but probe never stores it, so suspend dereferences a\nNULL pointer. Store it during probe.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -2240,13 +2236,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80752",
-      "cvss": "0.0",
+      "cvss": "8.4",
       "cwe": ""
     },
     {
       "id": "CVE-2026-80753",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\novpn: run deferred work on a module-owned workqueue\n\novpn queues several work items whose callbacks execute module text.\nThese works currently run on the global system workqueues, so module\nexit has no driver-owned drain point that guarantees the callbacks have\nfully returned before the module text can be freed.\n\nObject references protect the objects used by the callbacks, but they do\nnot prove that a workqueue function has returned. In particular, a\nworker can drop the final reference that unblocks device teardown while\nit is still executing ovpn code.\n\nAdd a module-owned workqueue and queue all ovpn work items on it. During\nmodule exit, unregister rtnl and netlink first, flush the workqueue so\nordinary ovpn workers finish, run the final RCU barrier, and destroy the\nworkqueue last. This keeps the workqueue available for cleanup work\nqueued from RCU callbacks, while ensuring no ovpn work item can outlive\nthe module text.\n\nThe per-device delayed keepalive work remains explicitly disabled during\nnetdev teardown (disable_delayed_work_sync in ndo_uninit), since\nflush_workqueue does not flush delayed work that is still only pending\non its timer.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -2258,13 +2254,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80753",
-      "cvss": "0.0",
+      "cvss": "8.4",
       "cwe": ""
     },
     {
       "id": "CVE-2026-80754",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: synaptics-rmi4 - fix F55 transmitter electrode count typo\n\nDuring F55 sensor detection, the transmitter (TX) electrode count was\nincorrectly assigned the value of the receiver (RX) electrode count\ndue to copy-paste typos.\n\nThis incorrect value was then propagated to the driver data and used\nby F54 to determine the diagnostics report size. On devices with more\nRX than TX electrodes, this inflated the perceived TX count, leading\nto incorrect report size calculations and potential out-of-bounds\nbuffer accesses.\n\nFix the typos by correctly assigning the TX electrode counts.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-03",
       "pakistan": false,
@@ -2276,7 +2272,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80754",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -7410,903 +7406,543 @@
       "cwe": ""
     },
     {
-      "id": "EDB-750F6E5C",
-      "desc": "FreePBX  17.0.2 - Remote Code Execution (RCE)",
+      "id": "CVE-2026-85379",
+      "desc": "A security flaw has been discovered in light0011 cms c774dce31c6df0055568a8d5c53d964d99be199d/f72cf46f601efb2a0618c3814cc2f61380b38930. This affects the function ChapterModel::searchChapter of the file App/Home/Controller/ChapterController.class.php of the component Query Builder. The manipulation of the argument content results in sql injection. The attack can be launched remotely. The exploit has been released to the public and may be used for attacks. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The project was informed of the problem early through an issue report but has not responded yet.",
       "severity": "HIGH",
-      "source": "Exploit-DB",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52681",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85379",
+      "cvss": "7.3",
       "cwe": ""
     },
     {
-      "id": "EDB-EADD1509",
-      "desc": "Metabase 0.61.0  - Authenticated Remote Code Execution",
+      "id": "CVE-2026-85380",
+      "desc": "A weakness has been identified in light0011 cms c774dce31c6df0055568a8d5c53d964d99be199d/f72cf46f601efb2a0618c3814cc2f61380b38930. This vulnerability affects the function catchimage of the file Public/ueditor/php/controller.php of the component UEditor. This manipulation of the argument source[] causes server-side request forgery. The attack may be initiated remotely. The exploit has been made available to the public and could be used for attacks. This product uses a rolling release model to deliver continuous updates. As a result, specific version information for affected or updated releases is not available. The project was informed of the problem early through an issue report but has not responded yet.",
       "severity": "HIGH",
-      "source": "Exploit-DB",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52680",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85380",
+      "cvss": "7.3",
       "cwe": ""
     },
     {
-      "id": "EDB-61D83639",
-      "desc": "EVerest 2025.9.0 - DoS",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85381",
+      "desc": "A security vulnerability has been detected in light0011 cms c774dce31c6df0055568a8d5c53d964d99be199d/f72cf46f601efb2a0618c3814cc2f61380b38930. This issue affects some unknown processing of the file App/Home/Controller/ChapterController.class.php of the component Chapter Controller. Such manipulation of the argument content leads to authorization bypass. The attack may be launched remotely. The exploit has been disclosed publicly and may be used. This product operates on a rolling release basis, ensuring continuous delivery. Consequently, there are no version details for either affected or updated releases. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52679",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85381",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
-      "id": "EDB-D3D6E19F",
-      "desc": "Bludit CMS  3.20.0 - Reflected Cross-Site Scripting",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-45197",
+      "desc": "Kernel software installed and running inside a Guest VM may post improper commands to the GPU Firmware to trigger a read and/or write data outside the Guest's virtualised GPU memory.\n\n\n\nThe firmware uses data provided by the Guest VM to set up accesses to memory. It validated this before use, but a TOCTOU bug was present which allowed the earlier check results to be invalidated.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52678",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45197",
+      "cvss": "0.0",
       "cwe": ""
     },
     {
-      "id": "EDB-638ED676",
-      "desc": "PodcastGenerator 3.2.9 - Stored XSS",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-45200",
+      "desc": "Software installed and run as a non-privileged user may conduct improper GPU driver IOCTL calls to create an allocation scenario that when freed would cause double free and kernel heap corruption.\n\n\n\nScenario caused by fabricating a specific combination of flags on the allocation interface that would cause an incorrect double free event when freed.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52677",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-45200",
+      "cvss": "0.0",
       "cwe": ""
     },
     {
-      "id": "EDB-9C18AD48",
-      "desc": "Ghost_CMS 6.19.0  - Remote Code Execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85382",
+      "desc": "A vulnerability was detected in light0011 cms c774dce31c6df0055568a8d5c53d964d99be199d/f72cf46f601efb2a0618c3814cc2f61380b38930. Impacted is the function htmlspecialchars_decode of the file App/Home/View/Default/Chapter/oneChapter.tpl of the component Chapter Content Output. Performing a manipulation of the argument content results in cross site scripting. Remote exploitation of the attack is possible. The exploit is now public and may be used. This product follows a rolling release approach for continuous delivery, so version details for affected or updated releases are not provided. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52676",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85382",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
-      "id": "EDB-931B5AA7",
-      "desc": "Langflow 1.10.0 - RCE",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85383",
+      "desc": "A flaw has been found in itsourcecode Sales and Inventory System 1.0. The affected element is an unknown function of the file /pages/inv_del.php. Executing a manipulation of the argument ID can lead to sql injection. The attack can be executed remotely. The exploit has been published and may be used.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52675",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85383",
+      "cvss": "6.3",
       "cwe": ""
     },
     {
-      "id": "EDB-CC46CA04",
-      "desc": "Fullhan FH8626V100 - Multiple Vulnerabilities",
+      "id": "CVE-2026-85397",
+      "desc": "A vulnerability was determined in code-projects Hospital Information System 1.0. This impacts the function findBySearch of the file addReq.php. This manipulation of the argument Search causes sql injection. It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized.",
       "severity": "HIGH",
-      "source": "Exploit-DB",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52674",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85397",
+      "cvss": "7.3",
       "cwe": ""
     },
     {
-      "id": "EDB-D6C4C940",
-      "desc": "Marimo  0.20.4 - RCE",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-75754",
+      "desc": "Missing Authentication for Critical Function, Server-Side Request Forgery (SSRF), and Use of Hard-coded Credentials in ASUS Control Center allow an unauthorized user to obtain the encryption key via an HTTP request, causing a local service to enable SSH on port 2222. The attacker can then log in with the hardcode credentials to obtain a root shell, enabling direct reading, writing, and deletion of data on ASUS Control Center, as well as remote control of all servers, PCs, and workstations within the company.\nRefer to the 'Security Update for ASUS Control Center' section on the ASUS Security Advisory for more information.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52673",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75754",
+      "cvss": "0.0",
       "cwe": ""
     },
     {
-      "id": "EDB-4DFDF756",
-      "desc": "Wolf CMS 0.8.3.1 - RCE v",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85146",
+      "desc": "SmartIT Desktop Manager developed by Lightstar has a Use of Hard-coded Credentials vulnerability. Unauthenticated remote attackers can obtain the SSH service account credentials and passwords for the SmartIT Agent directly from the application source code.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52672",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85146",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
-      "id": "EDB-1E593F3D",
-      "desc": "Payload CMS 3.72.0 - Blind SQL Injection",
+      "id": "CVE-2026-85147",
+      "desc": "SmartIT Desktop Manager developed by Lightstar has a Use of Hard-coded Credentials vulnerability. Unauthenticated remote attackers can obtain a specific password from the source code, which can be used to retrieve the AES encryption key used for communication.",
       "severity": "HIGH",
-      "source": "Exploit-DB",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52671",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85147",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
-      "id": "EDB-0CF3DC35",
-      "desc": "Bludit CMS - Stored XSS",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85148",
+      "desc": "SmartIT Desktop Manager developed by Lightstar has a Use of Hard-coded Credentials vulnerability. Unauthenticated remote attackers can exploit a fixed password to remotely access user hosts.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52670",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85148",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
-      "id": "EDB-FBD32049",
-      "desc": "Grav CMS 2.0.7 - RCE",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85149",
+      "desc": "SmartIT Desktop Manager developed by Lightstar has a Use of Hard-coded Credentials vulnerability. Unauthenticated remote attackers can obtain the SFTP service credentials of the SmartIT Agent application from the source code, thereby browsing the file system of the user's host.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52669",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85149",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
-      "id": "EDB-D519E782",
-      "desc": "miniOrange  5.4.3 - Unauthenticated Auth Bypass",
+      "id": "CVE-2026-85398",
+      "desc": "A vulnerability was identified in code-projects Hospital Information System 1.0. Affected is the function viewReq of the file viewReq.php. Such manipulation of the argument ID leads to sql injection. It is possible to launch the attack remotely. The exploit is publicly available and might be used.",
       "severity": "HIGH",
-      "source": "Exploit-DB",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52668",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85398",
+      "cvss": "7.3",
       "cwe": ""
     },
     {
-      "id": "EDB-DB505A92",
-      "desc": "EasyAppointments  1.5.1 - Blind SQL Injection",
+      "id": "CVE-2026-85399",
+      "desc": "A security flaw has been discovered in code-projects Hospital Information System 1.0. Affected by this vulnerability is the function getSinglePresp of the file includes/presp/PrespController.php. Performing a manipulation of the argument ID results in sql injection. The attack can be initiated remotely. The exploit has been released to the public and may be used for attacks.",
       "severity": "HIGH",
-      "source": "Exploit-DB",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52667",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85399",
+      "cvss": "7.3",
       "cwe": ""
     },
     {
-      "id": "EDB-FE6A68B9",
-      "desc": "C-MOR  6.0104 - Directory Traversal",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85401",
+      "desc": "A weakness has been identified in Dolibarr up to 21.0.4/22.0.5/23.0.3. Affected by this issue is some unknown functionality of the file htdocs/core/filemanagerdol/connectors/php/config.inc.php of the component Legacy File Manager. Executing a manipulation can lead to improper access controls. The attack can be launched remotely. The exploit has been made available to the public and could be used for attacks. Upgrading to version 23.0.4 can resolve this issue. This patch is called ef6631e9bd5ec4b8cec0e88f1796d3d10dad02ec. It is suggested to upgrade the affected component.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52666",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85401",
+      "cvss": "6.3",
       "cwe": ""
     },
     {
-      "id": "EDB-1531EA3C",
-      "desc": "C-MOR  6.0104 - Cross-Site Scripting (XSS)",
+      "id": "CVE-2026-85402",
+      "desc": "A vulnerability was detected in code-projects Doctor Appointment System 1.0. This vulnerability affects unknown code of the file /patient/booking.php. The manipulation of the argument doc_id results in sql injection. The attack may be launched remotely. The exploit is now public and may be used.",
       "severity": "HIGH",
-      "source": "Exploit-DB",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52665",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85402",
+      "cvss": "7.3",
       "cwe": ""
     },
     {
-      "id": "EDB-63163484",
-      "desc": "CubeCart 6.7.4 - SQL injection",
+      "id": "CVE-2026-85403",
+      "desc": "A flaw has been found in code-projects Doctor Appointment System 1.0. This issue affects some unknown processing of the file /contactus.php. This manipulation of the argument firstname causes sql injection. Remote exploitation of the attack is possible. The exploit has been published and may be used.",
       "severity": "HIGH",
-      "source": "Exploit-DB",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52664",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85403",
+      "cvss": "7.3",
       "cwe": ""
     },
     {
-      "id": "EDB-F99487F0",
-      "desc": "CubeCart 6.7.4 - SQL",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85405",
+      "desc": "A flaw has been found in Eleveo Call Recording Software 9.7.0. This affects an unknown part of the file /callrec/roleAddAction.do. Executing a manipulation of the argument name/username can lead to cross site scripting. The attack may be launched remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52663",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85405",
+      "cvss": "3.5",
       "cwe": ""
     },
     {
-      "id": "EDB-E65A6E60",
-      "desc": "CubeCart 6.7.4 - Stored XSS",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85406",
+      "desc": "A vulnerability has been found in Eleveo Quality Management 9.7.0. This vulnerability affects unknown code of the component Conversation Review. The manipulation leads to cross site scripting. Remote exploitation of the attack is possible. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52662",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85406",
+      "cvss": "3.5",
       "cwe": ""
     },
     {
-      "id": "EDB-5F60F15B",
-      "desc": "CubeCart 6.7.4 - Cross-Site Scripting",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-11613",
+      "desc": "The Divi Ajax Filter plugin for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 5.1.2 via the 'custom_loop_template' parameter parameter. This makes it possible for unauthenticated attackers to include and execute arbitrary .php files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or achieve code execution in cases where .php file types can be uploaded and included. This vulnerability is only exploitable when the loop_templates parameter is set to 'custom-template'.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52661",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11613",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
-      "id": "EDB-C4289F52",
-      "desc": "Linksys E1200_2.0.04 - Unauthenticated OS Command Injection",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85407",
+      "desc": "A vulnerability was found in Eleveo Quality Management 9.7.0. This issue affects some unknown processing of the file /enc-fwk-data/api/v3/conversations/<ID>/events of the component Conversation Handler. The manipulation of the argument labels results in denial of service. The attack can be executed remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52660",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85407",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
-      "id": "EDB-66544C41",
-      "desc": "Langflow  1.8.4 - Path Traversal to Remote Code Execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85408",
+      "desc": "A vulnerability was determined in Eleveo Quality Management 9.7.0. Impacted is an unknown function of the file /enc-fwk-data/api/v3/conversations/<ID>/events of the component Conversation Handler. This manipulation of the argument createdBy causes dynamically-determined object attributes. The attack is possible to be carried out remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52659",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85408",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
-      "id": "EDB-F8C515D8",
-      "desc": "CVE-2026-42167 - ProFTPD mod_sql post-authentication SQLi - RCE",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85409",
+      "desc": "A vulnerability was identified in Eleveo Quality Management 9.7.0. The affected element is the function QuestionnaireService.runDataExportNow of the component Questionnaire Service. Such manipulation of the argument file_name leads to path traversal. The attack may be performed from remote. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52658",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85409",
+      "cvss": "6.3",
       "cwe": ""
     },
     {
-      "id": "EDB-34ABCCA9",
-      "desc": "PCMan 2.0.7 - Buffer Overflow",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85504",
+      "desc": "FreeIPMI before 1.6.19 has a stack-based buffer overflow in _ipmi_sel_oem_fujitsu_get_sel_entry_long_text in libfreeipmi/sel/ipmi-sel-string-fujitsu-irmc-common.c via malformed Fujitsu SEL long-text responses.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52657",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85504",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
-      "id": "EDB-1591AD00",
-      "desc": "NanaZip 6.5  - DoS",
+      "id": "CVE-2026-85505",
+      "desc": "ipmi-oem in FreeIPMI before 1.6.19 has a stack-based buffer over-read in ipmi_oem_fujitsu_get_sel_entry_long_text in ipmi-oem/ipmi-oem-fujitsu.c when a BMC provides a short response, a different vulnerability than CVE-2026-50031 (which has different affected versions).",
       "severity": "HIGH",
-      "source": "Exploit-DB",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52656",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85505",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
-      "id": "EDB-29F7855E",
-      "desc": "flyto-core 2.26.7 - Arbitrary File Write",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85506",
+      "desc": "ipmi-oem in FreeIPMI before 1.6.19 has a stack-based buffer overflow in _get_dell_system_info_idrac_info in ipmi-oem/ipmi-oem-dell.c (idrac-info subcommand to dell get-system-info).",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52655",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85506",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
-      "id": "EDB-5D43727B",
-      "desc": "Nodemailer 9.0.0 - File Read/ SSRF",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85507",
+      "desc": "ipmi-oem in FreeIPMI before 1.6.19 has a stack-based buffer overflow in _output_dell_system_info_cmc_info in ipmi-oem/ipmi-oem-dell.c (cmc-info subcommand to dell get-system-info).",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52654",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85507",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
-      "id": "EDB-2AD8B752",
-      "desc": "Linuxfabrik monitoring_plugins_6.0.0 - SSRF",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85508",
+      "desc": "ipmi-oem in FreeIPMI before 1.6.19 has a stack-based buffer overflow in _output_dell_system_info_cmc_ipv6_info in ipmi-oem/ipmi-oem-dell.c (cmc-ipv6-info subcommand to dell get-system-info).",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52653",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85508",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
-      "id": "EDB-84F68690",
-      "desc": "NanaZip 6.5  -  DoS",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
+      "id": "CVE-2026-85509",
+      "desc": "FreeIPMI before 1.6.19 has a stack-based buffer overflow in _read_fru_data in libfreeipmi/fru/ipmi-fru.c when a BMC returns more bytes than requested.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
       "date": "2026-09-04",
       "pakistan": false,
-      "zeroday": true,
+      "zeroday": false,
       "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
       ],
-      "url": "https://www.exploit-db.com/exploits/52652",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-3BAC1305",
-      "desc": "flyto_core 2.26.7 - Server-Side Request Forgery",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52651",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-A878E4C6",
-      "desc": "Probo 0.222.2 -  IDOR",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52650",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-DB6DEA5F",
-      "desc": "webpack_devserver 5.2.5 -  CSRF",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52649",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-903164F2",
-      "desc": "phpSysInfo 3.4.5 - IP Allowlist Bypass",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52648",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-09151BBB",
-      "desc": "Nmap  7.99  - Extension Header Integer Underflow",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52647",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-C15F9877",
-      "desc": "Duplicati 2.2.0.3 - JWT Signing Key Leak",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52646",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-66426991",
-      "desc": "Joomla JCE_2.9.15 - Remote Code Execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52645",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-9053850D",
-      "desc": "ipTIME A3004T  - Remote Code Execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52644",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-2F3233E9",
-      "desc": "D-Link DNS_340L - OS Command Injection",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52643",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-2EE16274",
-      "desc": "WooCommerce 1.5.0 - Unauthenticated Arbitrary File Upload",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52642",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-378E3062",
-      "desc": "Apache Gravitino 1.2.1 - SSRF",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52641",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-9C38926D",
-      "desc": "Blocksy Companion  2.1.46 - RCE",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52640",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-EBFC6CD0",
-      "desc": "PraisonAI praisonaiagents  1.6.77 - Remote Code Execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52639",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-7AD0CD64",
-      "desc": "mcp-server-kubernetes 3.8.x - Argument Injection",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52638",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-A021B13C",
-      "desc": "LuCI DHCPv6 -  Lease Hostname Stored Cross-Site Scripting",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52637",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-B11329F3",
-      "desc": "Planyo_Online_Reservation_System  3.0 - Arbitrary File Read via SSRF",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52636",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-297F4263",
-      "desc": "Ray 2.56.0 - Directory Traversal & Local File Inclusion",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52635",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-E5C1DEF6",
-      "desc": "OrkesConductor 3.30.2 - Unauthenticated Remote Code Execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52633",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-EDA84DDE",
-      "desc": "Microsoft Edge 150.0.4078.48 - RCE",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52632",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-51C22D6A",
-      "desc": "CorgetGpsDget 2_3.2 - OS Command Injection",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-09-04",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52631",
-      "cvss": "8.0",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85509",
+      "cvss": "9.8",
       "cwe": ""
     }
   ]

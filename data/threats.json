@@ -1,19 +1,23 @@
 {
-  "generated": "2026-09-04T06:22:55.023158+00:00",
-  "summary": "Today's digest contains 437 vulnerabilities across 4 sources. 34 zero-day exploits detected, 34 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-04T11:35:22.556646+00:00",
+  "summary": "Today's digest contains 549 vulnerabilities across 5 sources. 84 zero-day exploits detected, 34 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 437,
+    "new": 549,
     "changed": 0,
     "removed": 0,
-    "total": 547051,
-    "zeroday": 34,
+    "total": 547600,
+    "zeroday": 84,
     "exploited": 34,
     "pakistan": 16
   },
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 387
+      "count": 449
+    },
+    {
+      "name": "Exploit-DB",
+      "count": 50
     },
     {
       "name": "CISA KEV",
@@ -7943,6 +7947,2022 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85509",
       "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-15691",
+      "desc": "The WPFunnels  WordPress plugin before 3.13.0 does not check whether user registration is enabled on the site before creating accounts from opt-in form submissions, relying on a value supplied in the request instead, allowing unauthenticated attackers to create WordPress user accounts even when registration is disabled.\n\nThis is an incomplete fix for CVE-2025-12353: the check added in 3.6.3 covers only one of the three registration paths.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-15691",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15354",
+      "desc": "The ACPT (Premium) plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 2.0.66. This is due to missing authorization in the `submit()` function, which allows unauthenticated form submissions to control the target user ID before calling `wp_update_user()`. This makes it possible for unauthenticated attackers to overwrite any WordPress user's email address and password, including an administrator's, and take over the account. Successful exploitation requires a public ACPT user form that permits anonymous submissions.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15354",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16281",
+      "desc": "The Classified Listing  WordPress plugin before 6.1.1 does not verify that the caller owns or can edit the target listing before its AI image-editing AJAX action deletes or attaches media, allowing any authenticated user, including a subscriber, to permanently delete attachments from, and attach files to, any listing owned by another user.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16281",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-17517",
+      "desc": "The Content Views  WordPress plugin before 4.5.1.2 does not check whether the user requesting a view is allowed to read the posts it returns, allowing unauthenticated attackers to obtain the title and content of non-public posts, such as draft, pending, private and scheduled posts, when a view has been configured to include them.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-17517",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19224",
+      "desc": "The Hummingbird Performance  WordPress plugin before 3.21.2 does not restrict a network-wide setting to network administrators, allowing an administrator of any single site on a multisite network to execute arbitrary code across the entire network.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19224",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-62928",
+      "desc": "XING CPTrans-ME-X contains an OS Command Injection (CWE-78). Unauthenticated OS command may be injected.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-62928",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-66840",
+      "desc": "XING CPTrans-ME-X contains an Exposure of Sensitive System Information to an Unauthorized Control Sphere (CWE-497). Sensitive system information may be leaked.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66840",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-69657",
+      "desc": "XING CPTrans-ME-X contains a Use of Default Password (CWE-1393). Anyone with the knowledge of the credential may log in to the affected device.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-69657",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-70403",
+      "desc": "XING CPTrans-ME-X contains a Use of Hard-coded Password (CWE-259). Anyone with the knowledge of the credential may log in to the affected device.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70403",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-71216",
+      "desc": "PagerDuty alarm hook transmits the integration routing key over cleartext HTTP.\n\n\n\nPagerDuty serves this endpoint over HTTPS and will\nnormally answer plain HTTP with a redirect. That does not remove the exposure.\nThe initial POST -- including the JSON body containing the routing key -- is\nwritten to the socket unencrypted before any redirect response is received.\nRedirection affects only whether the request is retried securely, not whether\nthe first copy left the host in the clear.\n\n\n\nThis issue affects Apache SkyWalking: from 9.6.0 through 11.0.0.\n\n\n\nUsers are recommended to upgrade to version 11.0.0, which fixes the issue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-71216",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-74853",
+      "desc": "The Pods  WordPress plugin before 3.3.9.2 does not restrict which functions a display callback may resolve to, allowing users with the author role and above to read arbitrary files from the server, including files outside the web root. Only sites using the restricted display-callback mode are affected, which is the automatic default on installations whose first Pods version predates 3.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74853",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79630",
+      "desc": "The WPFunnels  WordPress plugin before 3.13.0 does not verify that the product requested through a checkout order bump is the product that bump's discount was configured for, allowing unauthenticated users to obtain any purchasable product at a discount intended for a different one, with the reduced price carried through to the total of the order they place.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79630",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79631",
+      "desc": "The WPFunnels  WordPress plugin before 3.13.0 does not restrict access to the log files it writes to a predictable location under the public uploads directory, allowing unauthenticated users to download customer order details and opt-in form submissions when logging is enabled.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79631",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79632",
+      "desc": "The WPFunnels  WordPress plugin before 3.13.0 does not perform any authorisation or nonce check in one of its opt-in submission handlers, and takes the notification recipients and subject from the request, allowing unauthenticated users to make the site send emails to arbitrary recipients with an arbitrary subject.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79632",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-80180",
+      "desc": "Stored XSS via markdown HTML processing in Apache Allura.\n\n\n\nThis issue affects Apache Allura: from through 1.20.0.\n\n\n\nUsers are recommended to upgrade to version 1.21.0, which fixes the issue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80180",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-80181",
+      "desc": "Apache Allura's webhooks are vulnerable to Server-Side Request Forgery (SSRF).\n\n\n\n\nThis issue affects Apache Allura: through 1.20.0.\n\n\n\nUsers are recommended to upgrade to version 1.21.0, which fixes the issue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80181",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-80438",
+      "desc": "The Ninja Forms  WordPress plugin before 3.15.2 does not restrict its REST abilities to administrators, accepting a Ninja Forms  WordPress plugin before 3.15.2-specific capability as equivalent to full site administration, which allows any user granted that capability to read Ninja Forms  WordPress plugin before 3.15.2 settings and stored form submissions, overwrite the Ninja Forms  WordPress plugin before 3.15.2's configuration, and create or modify arbitrary posts and pages.\nThe capability belongs to no default WordPress role and the Ninja Forms  WordPress plugin before 3.15.2 never grants it, so an administrator must have assigned it, typically when delegating access to the form builder.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80438",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81270",
+      "desc": "Apache Allura: exposure of non-public information via search.\n\n\n\nThis issue affects Apache Allura: through 1.20.0.\n\n\n\nUsers are recommended to upgrade to version 1.21.0, which fixes the issue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81270",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81347",
+      "desc": "The Frontend Admin by DynamiApps WordPress plugin before 3.29.13 does not properly validate a user-controllable directory path before deleting files within it, allowing unauthenticated attackers to delete index.php and .htaccess files outside the intended directory, including the WordPress root, which can render the site inoperable. Successful exploitation requires a non-default form configuration.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81347",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82186",
+      "desc": "The WPLP Cookie Consent  WordPress plugin before 4.4.2 does not properly validate a pagination parameter before using it in a SQL query, allowing users with administrator privileges to perform SQL injection attacks.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82186",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82193",
+      "desc": "The WPvivid — Backup, Migration & Staging WordPress plugin before 0.9.134 does not validate a user supplied file name before using it to build a write path, allowing administrators to write files of permitted types to arbitrary locations on the server and to overwrite existing files.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82193",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82194",
+      "desc": "The WPvivid — Backup, Migration & Staging WordPress plugin before 0.9.134 does not validate a user supplied path before using it in a file deletion routine, allowing administrators to delete arbitrary files on the server, including files outside the web root.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82194",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84066",
+      "desc": "The Directorist: AI-Powered Business Directory, Listings & Classified Ads WordPress plugin before 8.9 does not verify that the requesting user owns the post being modified before writing uploaded file references to its metadata, allowing users with the subscriber role and above to overwrite image metadata on posts belonging to other users.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84066",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84146",
+      "desc": "The Xpro Addons — 140+ Widgets for Elementor WordPress plugin before 1.7.8 does not perform any capability or post-status check before rendering a WooCommerce product summary from a supplied product identifier, allowing unauthenticated visitors to retrieve the title, price, SKU, description and stock details of products that are not publicly published (draft, pending, private or scheduled status).",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84146",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85085",
+      "desc": "The Canva Android App before 2.376.0 allowed an external origin to be loaded in a privileged WebView. A threat actor who controls the page loaded by the user is able to communicate with Canva using the user’s session.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85085",
+      "cvss": "9.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85094",
+      "desc": "The Canva Android App  before 2.376.0 did not restrict the headers returned to an external origin running in a privileged WebView. A threat actor with control of the WebView could access a user’s session.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85094",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-6217",
+      "desc": "Use of a One-Way hash without a salt vulnerability in Pik Online Software Solutions Inc. Pik Online Portal allows Cryptanalysis.\n\nThis issue affects Pik Online Portal: through 3.5.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6217",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-80190",
+      "desc": "Apache Allura: stored XSS via SVN code repositories.  Git repositories are not known to be affected.  The vulnerability is likely mitigated via default CSP headers.\n\n\n\nThis issue affects Apache Allura: through 1.20.0.\n\n\n\nUsers are recommended to upgrade to version 1.21.0, which fixes the issue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80190",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85197",
+      "desc": "A flaw was found in libsoup. A malicious HTTP/2 server or a Man-in-the-Middle (MITM) attacker can exploit a heap use-after-free vulnerability in the HTTP/2 client implementation. This occurs when a GNOME application uploads a file using HTTP/2, and the server sends a GOAWAY frame while the file body is being read asynchronously. This can lead to memory corruption, potentially resulting in information disclosure or arbitrary code execution.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85197",
+      "cvss": "7.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85229",
+      "desc": "** UNSUPPORTED WHEN ASSIGNED ** Improper neutralization of input during web page generation ('cross-site scripting') vulnerability in Apache SkyWalking Booster UI.\n\n\n\nThis issue affects Apache SkyWalking UI : from 10.2.0 through 10.4.0.\n\n\n\nUsers are recommended to upgrade to Horizon UI 1.0.0, which fixes the issue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85229",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15937",
+      "desc": "Improper certificate validation in Checkmk <2.5.0p10 allows a relay and a push agent that share the same UUID to reuse each other's mTLS certificate to authenticate against agent receiver endpoints in either direction, because the endpoints do not verify that the certificate was issued by their own root certificate.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15937",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-27432",
+      "desc": "Authorization Bypass Through User-Controlled Key vulnerability in sc Internet Vivoo WP Rentals allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects WP Rentals: from n/a before 3.16.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27432",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-32480",
+      "desc": "Missing Authorization vulnerability in WC Lovers WCFM Membership allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects WCFM Membership: from n/a through 2.11.11.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-32480",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-57777",
+      "desc": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Automattic WooCommerce allows Blind SQL Injection.\n\nThis issue affects WooCommerce: from n/a before 11.0.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-57777",
+      "cvss": "7.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81302",
+      "desc": "PALLET CONTROL products contain an incorrect default permission vulnerability, which may allow a local attacker to execute arbitrary code with SYSTEM privileges on the affected product.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81302",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81665",
+      "desc": "A heap-based buffer overflow was found in Corosync's Totem Process Group (totempg) message reassembly. When processing fragmented multicast messages, the buffer used to reassemble fragments lacks a runtime bounds check in release builds. A network-adjacent attacker able to send crafted multicast protocol messages to the cluster could cause a heap buffer overflow with attacker-controlled data. This can crash the Corosync daemon, causing a denial of service to the entire cluster, and may potentially allow further exploitation given sufficient heap-corruption control.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81665",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85311",
+      "desc": "Missing Authorization vulnerability in Kings Plugins MarketKing allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects MarketKing: from n/a through 2.1.60.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85311",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85525",
+      "desc": "Improper OCSP response validation in the Snowflake Python, Go, JDBC, and Node.js drivers allowed a revoked TLS certificate to be accepted as valid, because OCSP responses were not reliably bound to the certificate being validated and definitive verification failures were treated as transient. A man-in-the-middle attacker holding a revoked certificate and its private key for a Snowflake or stage hostname could cause the driver to establish a TLS session to the attacker-controlled endpoint anyway, allowing the attacker to read and modify data transmitted within that connection. Successful exploitation requires that on-path position and the corresponding private key, and impact is limited to data carried within the intercepted connection. The fix is available in the patched versions listed above. Users must manually upgrade.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85525",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85528",
+      "desc": "Improper input validation of the auto-configuration account identifier in Snowflake JDBC Driver versions 4.2.0 through 4.3.3 allowed a credential-bearing login request to be redirected to an attacker-selected HTTPS endpoint. An attacker able to control the account value could cause the driver to transmit a reusable login credential to a host of their choosing and replay it to obtain the privileges granted to that credential. Successful exploitation requires an application using jdbc:snowflake:auto with a connections.toml section that omits an explicit host and a lower-trust principal able to set the account value; ordinary JDBC URLs are unaffected. The fix is available in Snowflake JDBC Driver version 4.3.4. Users must manually upgrade.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85528",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85533",
+      "desc": "An authorization flaw in MISP allowed an authenticated user to submit a sharing_group_id without verifying that the user was authorized to use the referenced Sharing Group.\n\nIn several attribute and Galaxy Cluster creation and editing workflows, validation of the submitted Sharing Group was performed only when the request explicitly set the distribution field to 4 (\"Sharing Group\"). An attacker could therefore craft a request containing a sharing_group_id while omitting the distribution parameter, or otherwise avoiding the distribution == 4 condition, causing the Sharing Group authorization check to be skipped.\n\nThis could allow a user with permission to create or modify the affected MISP objects to associate data with a Sharing Group that they are not authorized to use. Depending on the affected object's existing distribution settings and subsequent processing, this could bypass intended information-sharing boundaries and result in unauthorized placement or distribution of data to members of another Sharing Group.\n\nThe issue affected attribute attachment and editing operations as well as Galaxy Cluster creation and editing. The fix ensures that authorization is performed whenever a non-empty sharing_group_id is submitted, independently of the distribution parameter. It also centralizes the authorization decision in SharingGroup::canUse() and explicitly rejects empty Sharing Group identifiers rather than allowing them to be interpreted as an unrestricted query.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85533",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85538",
+      "desc": "An incorrect authorization vulnerability in MISP allowed authenticated users to delete attributes from events despite lacking the required perm_modify or perm_modify_org permissions.\n\nThe affected attribute deletion paths relied on organization membership checks performed by MispAttribute::deleteAttribute() but did not consistently enforce MISP's event modification authorization rules. Consequently, a user belonging to the organization associated with an event could potentially delete individual attributes or perform bulk attribute deletion even when their assigned role was not authorized to modify the event.\n\nThis created an inconsistency between attribute editing and deletion: editing an attribute correctly used MISP's ACL::canModifyEvent() authorization logic, whereas the affected deletion operations could bypass these permission checks.\n\nAn authenticated attacker with access to an affected MISP instance and membership in the organization owning an event could exploit this flaw to remove attributes from that event, potentially causing unauthorized modification or loss of threat intelligence data.\n\nThe patch introduces a common authorization check for all affected deletion paths. Before deletion, MISP now resolves the associated events and verifies that the current user is authorized to modify each event using the same authorization mechanism used by normal event and attribute modification operations.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85538",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13148",
+      "desc": "Missing release of memory after effective lifetime vulnerability in Softing smartLink allows resource leak exposure.\n\nThis issue affects smartLink HW-PN: from 1.04 before 1.10.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13148",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-27086",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Xtemos WoodMart allows DOM-Based XSS.\n\nThis issue affects WoodMart: from n/a before 8.3.8.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27086",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76169",
+      "desc": "fastify versions >= 4.0.0 and before 5.12.2 can route a malformed URL sent under one plugin prefix to the custom not-found handler of a different sibling plugin, and invoke it without the preHandler hook declared for that handler. The internal not-found router for encapsulated handlers dispatches malformed paths through a single shared handler pointer before URL decoding, ignoring the prefix and skipping the selected handler's normal lifecycle. An unauthenticated attacker can therefore reach an authentication-protected private fallback through an unrelated public prefix and read its full response, bypassing the authentication hook and breaking prefix encapsulation. Users should upgrade to fastify 5.12.2 or later.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76169",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81666",
+      "desc": "An integer overflow was found in Corosync's handling of membership commit token messages. The length-validation check for these messages can be bypassed on 32-bit systems due to an integer overflow in the calculation of the expected message length, allowing a crafted network packet to trigger an out-of-bounds memory access that crashes the Corosync daemon. This results in a denial of service for the affected cluster node. The overflow does not occur on 64-bit systems, where the length calculation is correctly performed in 64-bit arithmetic.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81666",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82923",
+      "desc": "The AI Website Builder WordPress plugin (GitHub build) 1.0.0 does not perform any authorisation or nonce check on its REST API routes, allowing unauthenticated attackers to install and activate plugins and themes, import content from a URL under their control, write a file of their choosing into the uploads directory, and delete site content and media. On a host that serves PHP from the uploads directory, that file write is remote code execution.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82923",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84043",
+      "desc": "The ePayco Payment Gateway for WooCommerce WordPress plugin before 8.4.7 does not properly verify the authenticity of payment confirmation requests, allowing unauthenticated attackers to mark orders as paid without a valid gateway signature.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84043",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84044",
+      "desc": "The Restaurant Menu and Food Ordering WordPress plugin before 2.4.12 does not verify that a PayPal payment notification genuinely originates from PayPal, allowing unauthenticated attackers to forge a payment notification and mark their own order as paid and completed without making any payment.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84044",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84469",
+      "desc": "fastify versions before 5.12.2 decide whether to compile a request schema based on JavaScript truthiness, but JSON Schema Draft 7 defines the boolean false as a valid schema that rejects every instance. When an application assigns false to a route's body, querystring, params, or headers schema to deny all input, fastify treats it as a missing schema, compiles no validator, and runs the route handler on any request. An unauthenticated remote client can therefore reach a handler that a valid deny-all schema was intended to make unreachable, a complete validation bypass that can lead to unauthorized state changes or execution of disabled operations. Users should upgrade to fastify 5.12.2 or later.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84469",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84504",
+      "desc": "fastify versions before 5.12.2 treat the object resolved by a successful Ajv async validator as the value result protocol used by custom validator compilers. If a request that passes its route schema contains a property named value at the root, fastify replaces the entire request body with that property's value before the handler runs, so the handler receives a different object than the one that satisfied the schema. An authenticated low-privilege caller can use this to make nested data replace the validated body and trigger an operation the route schema did not authorize, leading to unauthorized state changes and data disclosure. Users should upgrade to fastify 5.12.2 or later.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84504",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85184",
+      "desc": "@fastify/middie versions >= 9.1.0 and before 9.3.4 decide whether to run path-scoped middleware by matching against the raw request target, while the Fastify router resolves an absolute-form request target to its path before dispatching. Because the two layers evaluate different strings, a request using an absolute-form target reaches the route handler while the path-scoped middleware, such as authentication or authorization, is skipped. An unauthenticated network attacker can use this to bypass path-based access controls in a Fastify application that relies on middie for those controls. Users should upgrade to @fastify/middie 9.3.4 or later.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85184",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85540",
+      "desc": "DreamMaker developed by Interinfo has a SQL Injection vulnerability. Authenticated remote attackers can inject arbitrary SQL commands to read, modify, and delete database contents.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85540",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85541",
+      "desc": "DreamMaker developed by Interinfo has a Reflected Cross-site Scripting vulnerability. Authenticated remote attackers can execute arbitrary JavaScript codes in user's browser via a malicious website.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85541",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85546",
+      "desc": "MISP contains a cross-site request forgery (CSRF) vulnerability in the sharing group quick-edit functionality. The addOrg, removeOrg, addServer, and removeServer actions share the __initialiseSGQuickEdit() helper, where the HTTP method validation intended to restrict these operations to POST requests was commented out.\n\nAs a result, these state-changing actions could be invoked using GET requests. An attacker could craft a URL targeting one of the affected actions and cause an authenticated MISP user with sufficient privileges to request it, for example through a malicious link or embedded web resource.\n\nSuccessful exploitation could modify the membership of a MISP sharing group without the victim intentionally performing the operation. Depending on the action performed, an attacker could add or remove organisations or servers from a sharing group, potentially granting unintended access to information distributed through that sharing group or disrupting legitimate information sharing.\n\nThe patch restores HTTP method enforcement centrally in __initialiseSGQuickEdit() by calling allowMethod(['post']), ensuring that all four affected quick-edit operations require POST requests and are therefore subject to the application's normal protections for state-changing requests.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85546",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85547",
+      "desc": "A cross-site request forgery (CSRF) vulnerability exists in MISP due to form-security and CSRF protections being disabled based on whether an incoming request was identified as a REST request.\n\nMISP's REST detection can be influenced by request properties such as the URL suffix or the HTTP Accept header. Because Accept: application/json can be supplied by a cross-origin page without requiring a CORS preflight, an attacker could cause a request originating from another website to be treated as REST traffic. MISP would consequently disable its normal form-security and CSRF validation even though the request was authenticated using the victim's existing browser session.\n\nAn unauthenticated remote attacker could exploit this behavior by convincing an authenticated MISP user to visit or interact with a malicious web page. The attacker's page could then issue crafted requests to susceptible state-changing MISP endpoints using the victim's privileges. Depending on the permissions of the victim and the targeted endpoint, this could allow unauthorized modification, creation, publication, or removal of data and other state changes.\n\nThe vulnerability originates from granting the form-security exemption based on _isRest() rather than on the authentication mechanism used by the request. The patch changes this behavior so that CSRF and form-security exemptions are granted only when the request actually carries a MISP API key. Session-authenticated REST-style requests remain subject to CSRF protection.\nThe fix also introduces support for transmitting CSRF tokens through the X-CSRF-Token header for legitimate same-origin AJAX requests. Such a header cannot normally be attached by a cross-origin page without triggering a CORS preflight, preventing it from being used to reproduce the original attack.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85547",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-27347",
+      "desc": "Missing Authorization vulnerability in Crocoblock JetPopup allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects JetPopup: from n/a through 2.0.20.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-27347",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-4644",
+      "desc": "A Missing Authorization vulnerability in HTTP Connector in Google Cloud Integration Connectors versions prior to 2025-12-11 on Google Cloud Platform allows an authenticated user to escalate privileges and take over a Google Cloud Project using unauthorized service account attachment.\n\n\n\nThis vulnerability was patched on 11 December 2025, and no customer action is needed.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4644",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79707",
+      "desc": "A Path Traversal vulnerability in the builder endpoint in Google Cloud Agent Development Kit (ADK) versions 1.9.0 through 1.21.0 on Python allows an unauthenticated remote attacker to read arbitrary files using a crafted file_path query parameter.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79707",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84045",
+      "desc": "The E-cab Taxi Booking Manager for Woocommerce WordPress plugin before 2.0.5 does not validate a client-supplied trip distance and base-price value on the server before pricing a booking, allowing unauthenticated attackers to manipulate the order total down to zero and place real taxi-booking orders at an arbitrary price.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84045",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84428",
+      "desc": "fastify versions before 5.12.2 implement the case-insensitive nature of HTTP header names by lowercasing names in a route's header schema before compiling it, but the transformation is incomplete: it lowercases the properties keys and the root-level required array, and does not lowercase the trigger and dependent names inside the JSON Schema Draft 7 dependencies keyword. Because Node stores request header names in lowercase, a canonical-case dependency such as requiring an authentication header whenever a privileged-mode header is present never matches, and the presence assertion is silently skipped. An unauthenticated remote client can therefore send the header that activates a privileged branch while omitting the header the dependency was meant to require, bypassing the conditional check. Users should upgrade to fastify 5.12.2 or later.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84428",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85512",
+      "desc": "A security flaw has been discovered in SourceCodester Class and Exam Timetabling System 1.0. This vulnerability affects unknown code of the file /admin/session.php. The manipulation of the argument ID results in missing authorization. The attack can be executed remotely. The exploit has been released to the public and may be used for attacks.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85512",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85534",
+      "desc": "A flaw was found in libsoup. When a client sends an HTTP/2 request body from a non-pollable input stream, the library can buffer more data than the current flow-control window later allows. A malicious HTTP/2 server can shrink SETTINGS_INITIAL_WINDOW_SIZE while that buffered read is still in progress. The client then copies the full buffer into a smaller DATA callback without a runtime bounds check, which can abort the process or fail the HTTP/2 session.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85534",
+      "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-750F6E5C",
+      "desc": "FreePBX  17.0.2 - Remote Code Execution (RCE)",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52681",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-EADD1509",
+      "desc": "Metabase 0.61.0  - Authenticated Remote Code Execution",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52680",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-61D83639",
+      "desc": "EVerest 2025.9.0 - DoS",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52679",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-D3D6E19F",
+      "desc": "Bludit CMS  3.20.0 - Reflected Cross-Site Scripting",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52678",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-638ED676",
+      "desc": "PodcastGenerator 3.2.9 - Stored XSS",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52677",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-9C18AD48",
+      "desc": "Ghost_CMS 6.19.0  - Remote Code Execution",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52676",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-931B5AA7",
+      "desc": "Langflow 1.10.0 - RCE",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52675",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-CC46CA04",
+      "desc": "Fullhan FH8626V100 - Multiple Vulnerabilities",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52674",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-D6C4C940",
+      "desc": "Marimo  0.20.4 - RCE",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52673",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-4DFDF756",
+      "desc": "Wolf CMS 0.8.3.1 - RCE v",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52672",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-1E593F3D",
+      "desc": "Payload CMS 3.72.0 - Blind SQL Injection",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52671",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-0CF3DC35",
+      "desc": "Bludit CMS - Stored XSS",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52670",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-FBD32049",
+      "desc": "Grav CMS 2.0.7 - RCE",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52669",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-D519E782",
+      "desc": "miniOrange  5.4.3 - Unauthenticated Auth Bypass",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52668",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-DB505A92",
+      "desc": "EasyAppointments  1.5.1 - Blind SQL Injection",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52667",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-FE6A68B9",
+      "desc": "C-MOR  6.0104 - Directory Traversal",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52666",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-1531EA3C",
+      "desc": "C-MOR  6.0104 - Cross-Site Scripting (XSS)",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52665",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-63163484",
+      "desc": "CubeCart 6.7.4 - SQL injection",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52664",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-F99487F0",
+      "desc": "CubeCart 6.7.4 - SQL",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52663",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-E65A6E60",
+      "desc": "CubeCart 6.7.4 - Stored XSS",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52662",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-5F60F15B",
+      "desc": "CubeCart 6.7.4 - Cross-Site Scripting",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52661",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-C4289F52",
+      "desc": "Linksys E1200_2.0.04 - Unauthenticated OS Command Injection",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52660",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-66544C41",
+      "desc": "Langflow  1.8.4 - Path Traversal to Remote Code Execution",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52659",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-F8C515D8",
+      "desc": "CVE-2026-42167 - ProFTPD mod_sql post-authentication SQLi - RCE",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52658",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-34ABCCA9",
+      "desc": "PCMan 2.0.7 - Buffer Overflow",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52657",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-1591AD00",
+      "desc": "NanaZip 6.5  - DoS",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52656",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-29F7855E",
+      "desc": "flyto-core 2.26.7 - Arbitrary File Write",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52655",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-5D43727B",
+      "desc": "Nodemailer 9.0.0 - File Read/ SSRF",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52654",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-2AD8B752",
+      "desc": "Linuxfabrik monitoring_plugins_6.0.0 - SSRF",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52653",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-84F68690",
+      "desc": "NanaZip 6.5  -  DoS",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52652",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-3BAC1305",
+      "desc": "flyto_core 2.26.7 - Server-Side Request Forgery",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52651",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-A878E4C6",
+      "desc": "Probo 0.222.2 -  IDOR",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52650",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-DB6DEA5F",
+      "desc": "webpack_devserver 5.2.5 -  CSRF",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52649",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-903164F2",
+      "desc": "phpSysInfo 3.4.5 - IP Allowlist Bypass",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52648",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-09151BBB",
+      "desc": "Nmap  7.99  - Extension Header Integer Underflow",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52647",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-C15F9877",
+      "desc": "Duplicati 2.2.0.3 - JWT Signing Key Leak",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52646",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-66426991",
+      "desc": "Joomla JCE_2.9.15 - Remote Code Execution",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52645",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-9053850D",
+      "desc": "ipTIME A3004T  - Remote Code Execution",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52644",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-2F3233E9",
+      "desc": "D-Link DNS_340L - OS Command Injection",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52643",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-2EE16274",
+      "desc": "WooCommerce 1.5.0 - Unauthenticated Arbitrary File Upload",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52642",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-378E3062",
+      "desc": "Apache Gravitino 1.2.1 - SSRF",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52641",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-9C38926D",
+      "desc": "Blocksy Companion  2.1.46 - RCE",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52640",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-EBFC6CD0",
+      "desc": "PraisonAI praisonaiagents  1.6.77 - Remote Code Execution",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52639",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-7AD0CD64",
+      "desc": "mcp-server-kubernetes 3.8.x - Argument Injection",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52638",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-A021B13C",
+      "desc": "LuCI DHCPv6 -  Lease Hostname Stored Cross-Site Scripting",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52637",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-B11329F3",
+      "desc": "Planyo_Online_Reservation_System  3.0 - Arbitrary File Read via SSRF",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52636",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-297F4263",
+      "desc": "Ray 2.56.0 - Directory Traversal & Local File Inclusion",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52635",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-E5C1DEF6",
+      "desc": "OrkesConductor 3.30.2 - Unauthenticated Remote Code Execution",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52633",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-EDA84DDE",
+      "desc": "Microsoft Edge 150.0.4078.48 - RCE",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52632",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-51C22D6A",
+      "desc": "CorgetGpsDget 2_3.2 - OS Command Injection",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-09-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52631",
+      "cvss": "8.0",
       "cwe": ""
     }
   ]

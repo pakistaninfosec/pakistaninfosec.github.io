@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-06T00:40:46.630859+00:00",
-  "summary": "Today's digest contains 243 vulnerabilities across 5 sources. 84 zero-day exploits detected, 34 actively exploited from CISA KEV, and 13 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-06T05:37:32.603002+00:00",
+  "summary": "Today's digest contains 259 vulnerabilities across 5 sources. 84 zero-day exploits detected, 34 actively exploited from CISA KEV, and 13 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 243,
+    "new": 259,
     "changed": 0,
     "removed": 0,
-    "total": 555037,
+    "total": 555296,
     "zeroday": 84,
     "exploited": 34,
     "pakistan": 13
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 146
+      "count": 162
     },
     {
       "name": "Exploit-DB",
@@ -3552,6 +3552,294 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86151",
       "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86152",
+      "desc": "A flaw has been found in Tenda CP3 27.5.57.101. The impacted element is the function CAutoAddWifi::ThreadProc of the file Functions/AutoAddWifi.cpp of the component Kylin. Executing a manipulation can lead to os command injection. The attack may be launched remotely.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86152",
+      "cvss": "10.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86153",
+      "desc": "A vulnerability has been found in Tenda CP3 27.5.57.101. This affects the function CRedirServer::SetRedirectEnable of the file Functions/Redirect.cpp. The manipulation leads to improper privilege management. Remote exploitation of the attack is possible.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86153",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16310",
+      "desc": "The MemberDash plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 1.8.5 via the 'id' parameter due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to change the password of any WordPress user, including administrators, by supplying an arbitrary user ID during registration, and take over their account without any notification sent to the victim.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16310",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18056",
+      "desc": "The HivePress Authentication plugin for WordPress is vulnerable to Authentication Bypass via the access_token parameter in all versions up to, and including, 1.1.4. This is due to the authenticate_user function's Facebook authenticator resolving third-party identity by forwarding the attacker-supplied access_token to the Facebook Graph API and trusting the returned email and ID verbatim, without performing any application ID or audience validation — specifically, no /debug_token verification and no comparison of the token's app_id against the configured hp_facebook_app_id. This makes it possible for unauthenticated attackers to authenticate as any existing WordPress user, including administrators, whose email address is associated with a Facebook account for which the attacker can obtain any valid access token. Important Note: To exploit the vulnerability, the attacker must obtain the victim's access token.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18056",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-75816",
+      "desc": "The Frontend Admin by DynamiApps plugin for WordPress is vulnerable to Authentication Bypass to Account Takeover in all versions up to, and including, 3.29.12. This is due to the pre_update_value function lacking any capability or ownership check, and ActionPost::conditions_logic() short-circuiting its current_user_can('edit_post') authorization gate whenever the post ID is non-numeric — such as the string user_1 — allowing unauthenticated form submissions to be routed to arbitrary user records without restriction. This makes it possible for unauthenticated attackers to overwrite any user's registered email address, including an administrator's, and then leverage WordPress's native password-reset flow to fully take over the targeted account.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75816",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86159",
+      "desc": "A flaw has been found in SourceCodester Online Voting System 1.0. Impacted is an unknown function of the file /ajax.php?action=save_user. This manipulation of the argument ID causes sql injection. The attack may be initiated remotely. The exploit has been published and may be used.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86159",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86160",
+      "desc": "A vulnerability has been found in SourceCodester Online Voting System 1.0. The affected element is an unknown function of the file /ajax.php?action=delete_voting. Such manipulation of the argument ID leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86160",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86161",
+      "desc": "A vulnerability was found in SourceCodester Online Voting System 1.0. The impacted element is an unknown function of the file /ajax.php?action=delete_category. Performing a manipulation of the argument ID results in sql injection. Remote exploitation of the attack is possible. The exploit has been made public and could be used.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86161",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86162",
+      "desc": "A vulnerability was determined in SourceCodester Online Voting System 1.0. This affects an unknown function of the file /ajax.php?action=login. Executing a manipulation of the argument Username can lead to sql injection. The attack can be executed remotely. The exploit has been publicly disclosed and may be utilized.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86162",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86218",
+      "desc": "N-central is vulnerable to a pre-auth remote code execution This issue affects N-central: before 2026.3.1.14.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86218",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86163",
+      "desc": "A vulnerability was identified in itsourcecode Sales and Inventory System 1.0. This impacts an unknown function of the file /pages/pro_del.php. The manipulation of the argument ID leads to sql injection. The attack is possible to be carried out remotely. The exploit is publicly available and might be used.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86163",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86164",
+      "desc": "A security flaw has been discovered in itsourcecode Sales and Inventory System 1.0. Affected is an unknown function of the file /pages/trans_view.php. The manipulation of the argument ID results in sql injection. The attack may be performed from remote. The exploit has been released to the public and may be used for attacks.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86164",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86165",
+      "desc": "A vulnerability was found in Tenda HG10 300001138. This vulnerability affects the function formURL of the file /boaform/admin/formURL. Performing a manipulation of the argument Keywd/urlFQDN results in buffer overflow. The attack may be initiated remotely. The exploit has been made public and could be used.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86165",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86166",
+      "desc": "A vulnerability was determined in Tenda HG10 300001138. This issue affects the function formWanRedirect of the file /boaform/formWanRedirect of the component Boa Web Server. Executing a manipulation of the argument if can lead to buffer overflow. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86166",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86167",
+      "desc": "A vulnerability was identified in Tenda HG10 300001138. Impacted is the function formgponConf of the file /boaform/admin/formgponConf of the component Boa. The manipulation of the argument fmgpon_loid leads to os command injection. Remote exploitation of the attack is possible. The exploit is publicly available and might be used.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86167",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86168",
+      "desc": "A security flaw has been discovered in code-projects Content Management System 1.0. The affected element is an unknown function of the file /login.php. The manipulation of the argument user_name results in sql injection. The attack can be executed remotely. The exploit has been released to the public and may be used for attacks.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86168",
+      "cvss": "7.3",
       "cwe": ""
     },
     {

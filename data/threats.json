@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-06T16:45:22.504871+00:00",
-  "summary": "Today's digest contains 308 vulnerabilities across 5 sources. 84 zero-day exploits detected, 34 actively exploited from CISA KEV, and 13 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-06T18:55:53.530644+00:00",
+  "summary": "Today's digest contains 321 vulnerabilities across 5 sources. 84 zero-day exploits detected, 34 actively exploited from CISA KEV, and 13 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 308,
+    "new": 321,
     "changed": 0,
     "removed": 0,
-    "total": 556185,
+    "total": 556506,
     "zeroday": 84,
     "exploited": 34,
     "pakistan": 13
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 211
+      "count": 224
     },
     {
       "name": "Exploit-DB",
@@ -4722,6 +4722,240 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-83534",
       "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82750",
+      "desc": "Improper Validation of Specified Quantity in Input in ZenHive mpp allows an unauthenticated remote client to inflate the fee-payer's gas cost per sponsored payment by a large multiplier and to have the sponsor pay for EIP-7702 account delegations of the client's choosing.\n\nWhen the server sponsors Tempo payments, MPP.Methods.Tempo.FeePayerPolicy.measure/3 in lib/mpp/methods/tempo/fee_payer_policy.ex bounds the gas fields, the fee budget, the validity window and the access list of the client-signed 0x76 envelope, but never reads its aa_authorization_list field. Every signed delegation in that list is charged as intrinsic gas before the payment call runs, so a client attaching delegations from throwaway authority keys makes the sponsor pay for them within the default gas_limit ceiling. At the reporter's default of seven entries the sponsored cost rises from about 46,575 gas to about 1,884,087 gas. Because each entry is applied as a persistent set-code delegation, a client can also upgrade its own accounts to delegated code at the sponsor's expense.\n\nThis issue affects mpp: from 0.2.0 before 0.16.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82750",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82751",
+      "desc": "Improper Validation of Specified Quantity in Input in ZenHive mpp allows an unauthenticated remote client to inflate the fee-payer's gas cost per sponsored payment by a large multiplier and to have the sponsor pay for provisioning an access key on the client's own account.\n\nWhen the server sponsors Tempo payments, MPP.Methods.Tempo.FeePayerPolicy.measure/3 in lib/mpp/methods/tempo/fee_payer_policy.ex bounds the gas fields, the fee budget, the validity window and the access list of the client-signed 0x76 envelope, but does not check whether the envelope carries the optional key_authorization field. A client can attach a fully signed key authorization, provisioning a new access key with token spending limits on its own account, alongside the normal payment call. The key and each limit entry are persistent storage writes billed as intrinsic gas to the sponsor, bounded only by the gas_limit ceiling. At the reporter's default of one key with three token limits the sponsored cost rises from about 46,587 gas to about 1,808,700 gas, and the client keeps a valid access key it paid nothing for.\n\nThis issue affects mpp: from 0.2.0 before 0.16.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82751",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13608",
+      "desc": "A flaw in the libcurl SASL negotiation for LDAP authentication allows an\nincomplete handshake sequence to be misinterpreted as a successful\ncryptographic verification. An attacker executing a Man-in-the-Middle (MITM)\nattack can inject a premature or shortcut response that bypasses complete peer\nvalidation.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13608",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18924",
+      "desc": "A flaw in libcurl's handling of HTTP/2 Server Push streams, when the parent\nhandle is set to share connections with other handles, can lead to\nuse-after-free in the cleanup process.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18924",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19931",
+      "desc": "A flaw in libcurl makes it wrongly reuse an HTTP connection setup for a given\nhostname using Negotiate authentication, when the initial request is done\nusing empty credentials. This can make user B's request get sent over user A's\npreviously authenticated connection.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19931",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-80229",
+      "desc": "When performing transfers via libcurl’s multi interface, pooled TLS\nconnections can outlive their originating easy handles. In OpenSSL 3 provider\nconfigurations, libcurl attaches an allocated library context to the easy\nhandle's state and passes it to OpenSSL without acquiring an ownership\nreference; destroying the easy handle prematurely frees this context while the\nactive connection retains a dangling pointer, leading to a heap-use-after-free\nupon subsequent I/O or post-handshake operations.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80229",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-80230",
+      "desc": "When `CURLOPT_PINNEDPUBLICKEY` is configured alongside options that disable\nstandard peer verification (`CURLOPT_SSL_VERIFYPEER = 0` and\n`CURLOPT_SSL_VERIFYHOST = 0`), libcurl fails to enforce public key pinning on\nconnections established without a presented server certificate. Bypassing the\npinning check under these disabled-verification conditions allows\nunauthenticated connections to succeed when they should be rejected.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80230",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-80231",
+      "desc": "A flaw in libcurl makes it wrongly reuse an existing HTTPS connection setup\nfor a given hostname even when using a different Native CA Store setting\n(`CURLSSLOPT_NATIVE_CA`) than when the connection was created.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80231",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-80255",
+      "desc": "A `Set-Cookie:` header using tab (horizontal tab, ASCII code 9) instead of\nspace (ascii code 32) immediately before the `Secure` attribute causes curl to\nstore the cookie without its Secure flag. The cookie might then wrongfully be\nsent over plaintext HTTP on subsequent requests to the same host.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-80255",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82208",
+      "desc": "With the wolfSSL backend, when CA caching is enabled and an\n`CURLOPT_SSL_CTX_FUNCTION` callback replaces the trust store, libcurl can\nsilently reinstall the cached store after the callback returns. A certificate\ntrusted by the cached store but rejected by the callback-selected store is\nthen incorrectly accepted.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82208",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82209",
+      "desc": "When libpsl support is enabled, libcurl fails to enforce the Public Suffix\nList boundary check when processing a `Set-Cookie` header where the `Domain`\nattribute explicitly matches an origin host that is itself a public suffix\n(e.g., `Domain=co.uk` set by `co.uk`).\n\nInstead of coercing it into a strict host-only cookie, libcurl saves the\ncookie with wildcard domain scope (`.co.uk`). Consequently, the cookie is\ninappropriately included in subsequent outbound requests or HTTP redirects to\narbitrary sibling subdomains under the same public suffix (e.g.,\n`attacker.co.uk`).",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82209",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86219",
+      "desc": "Authen::SASL::Perl::DIGEST_MD5 versions before 2.2100 for Perl accept replayed authentication responses via unverified nonce in server_step.\n\nserver_start generates a fresh nonce and sends it in the challenge, and nothing later compares that value against the nonce the client returns. server_step derives the expected digest from the client's own parameters, so a response verifies whenever its digest matches the nonce it carries. The count table it also checks is keyed on the client-supplied nonce and starts empty in each new server object, so a captured first response, carrying `nc=00000001`, passes that too. RFC 2831 defines the nonce in the response as the value the server sent in the preceding challenge.\n\nAn attacker who observes one successful `qop=auth` exchange can replay the captured response against a later session for the same service, host, realm and user, and authenticate as that user without knowing the password.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86219",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86220",
+      "desc": "A vulnerability was detected in SourceCodester Class and Exam Timetabling System 1.0. The affected element is the function mysqli_query of the file /admin/modal_add_course.php. The manipulation of the argument course results in sql injection. The attack can be launched remotely. The exploit is now public and may be used.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86220",
+      "cvss": "7.3",
       "cwe": ""
     },
     {

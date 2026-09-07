@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-07T20:45:17.530469+00:00",
-  "summary": "Today's digest contains 423 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-07T23:19:58.268512+00:00",
+  "summary": "Today's digest contains 444 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 423,
+    "new": 444,
     "changed": 0,
     "removed": 0,
-    "total": 558705,
+    "total": 559149,
     "zeroday": 83,
     "exploited": 33,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 324
+      "count": 345
     },
     {
       "name": "Exploit-DB",
@@ -6794,6 +6794,384 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86287",
       "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-75650",
+      "desc": "Adobe Commerce is affected by an Improper Neutralization of Special Elements Used in a Template Engine vulnerability that could result in arbitrary code execution in the context of the current user. An attacker could exploit this vulnerability to execute arbitrary code. Exploitation of this issue does not require user interaction. Scope is changed.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75650",
+      "cvss": "10.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86436",
+      "desc": "Lara Dashboard before 1.3.2 fails to authorize access to the post-builder image and video upload endpoints, allowing authenticated accounts without content permissions to upload files. Attackers can upload polyglot files with attacker-chosen extensions to the public web root and execute code if the deployment permits execution of the uploaded file type.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86436",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86437",
+      "desc": "Lara Dashboard before 1.3.2 authorizes the POST /admin/settings/core-upgrades/upload endpoint with only the settings.edit permission, allowing non-Superadmin administrators to upload and extract arbitrary zip archives over the live application source code. Attackers can upload a malicious archive containing modified application files such as routes/web.php with embedded system commands, which execute as the web server user with access to environment secrets and database credentials.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86437",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86438",
+      "desc": "Lara Dashboard before 1.3.2 fails to authorize the MarketplaceModuleBrowser installModule Livewire action, allowing non-Superadmin administrators to install modules. Attackers can download and auto-activate arbitrary PHP modules from the marketplace over unsigned HTTP requests, achieving remote code execution.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86438",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81638",
+      "desc": "Improper Handling of Alternate Encoding vulnerability in ash-project ash_double_entry allows an attacker to submit several distinct string spellings of the same identifier.\n\nAshDoubleEntry.ULID renders a 128-bit ULID as 26 Crockford base-32 characters, but the first character encodes only 3 bits, so canonical values are 0 to 7. decode/1 in lib/ulid.ex masks the first character to its low 3 bits and valid?/1 accepts all 32 characters in that position, so 0..., 8..., G... and R... decode to the identical 16-byte value and resolve to the same row. When the type is exposed as a public ID over an HTTP or API boundary, an attacker-supplied ID can be spelled differently from the record it actually reads or writes, desynchronizing or bypassing string-level checks such as idempotency and deduplication keys, deny-lists, audit correlation, or signatures computed over the submitted ID.\n\nThis issue affects ash_double_entry: from 0.1.0 before 1.0.19.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81638",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82584",
+      "desc": "Improper Neutralization of Escape, Meta, or Control Sequences vulnerability in ash-project igniter allows a malicious package publisher to forge the mix igniter.install confirmation prompt.\n\nmix igniter.install prints a confirmation panel (an anti-typosquatting safeguard) listing a package's hex metadata before adding it. The panel builder in Igniter.Project.Deps wrote publisher-controlled fields (meta.description, owner usernames, requirement names, version) to the terminal with only newlines stripped. A malicious or typosquatted package can embed ANSI terminal escape sequences (cursor movement, line erase, carriage returns) in its metadata to overwrite the panel, forging trusted author names and download counts while concealing the real ones, so a developer relying on the panel to vet the package is deceived into approving a malicious dependency.\n\nThis issue affects igniter: from 0.8.1 before 0.8.4.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82584",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82586",
+      "desc": "Improper Protection of Alternate Path vulnerability in ash-project ash_lua allows a user-supplied Lua script to read attributes that are not on the exposed-field allow-list.\n\nAshLua exposes Ash resources to Lua scripts, gated by a manifest declaring which fields are exposed. The read action's operation aggregate path in AshLua.Runtime took the field name straight from the Lua call and resolved it with only String.to_existing_atom and Ash.Query.Aggregate.new!, neither of which consults the exposed-field allow-list the normal fields path enforces. A script can therefore read the value of any attribute of any record the actor may read, including private sensitive?: true columns, via resource.read({ operation = {\"list\", \"hashed_password\"} }); min and max give a value oracle. Anyone able to submit or influence a Lua script can reach this.\n\nThis issue affects ash_lua: from 0.1.0 before 0.2.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82586",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82753",
+      "desc": "Allocation of Resources Without Limits or Throttling vulnerability in ash-project ash_authentication_oauth2_server allows an unauthenticated attacker to exhaust database storage and memory.\n\nThe /authorize endpoint is unauthenticated by design. With Client ID Metadata Documents enabled, resolve_client/3 in AshAuthentication.Oauth2Server.CIMD fetches the document for each new URL-shaped client_id and upserts a client row, with no cap on the number of rows, no expiry or garbage collection, and no length bound on the fetched fields; the document was also placed in CIMD.Cache before validation, so even rejected documents held cache memory until their TTL. An attacker serving valid documents at many distinct URLs creates one permanent client row per URL, each able to carry multi-megabyte strings, growing storage and memory without bound.\n\nThis issue affects ash_authentication_oauth2_server: from 0.3.0 before 0.3.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82753",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82754",
+      "desc": "Improper Protection of Alternate Path vulnerability in ash-project ash_authentication_oauth2_server exposes the state-changing OAuth endpoints under an unintended URL prefix, bypassing controls scoped to the canonical prefix.\n\noauth2_server_protocol_routes/1 in AshAuthentication.Phoenix.Oauth2Server.Router forwards the same ProtocolRouter at both the /oauth prefix and the /.well-known prefix. Phoenix forward strips the matched prefix before dispatch, so the full route table answers under both mounts, and POST /register, POST /token, and POST /revoke are reachable as /.well-known/register, /.well-known/token, and /.well-known/revoke. Edge controls such as WAF rules, rate limits, or authentication exemptions written against the /oauth paths, or that allow-list /.well-known as unauthenticated, do not apply to the alias.\n\nThis issue affects ash_authentication_oauth2_server: from 0.1.0 before 0.3.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82754",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82755",
+      "desc": "Use of Cache Containing Sensitive Information vulnerability in ash-project ash_authentication_oauth2_server allows a shared HTTP cache to serve one tenant's OAuth discovery metadata to another tenant's clients.\n\nThe RFC 8414 and RFC 9728 metadata endpoints in AshAuthentication.Phoenix.Oauth2Server.ProtocolRouter return tenant-specific values (issuer, authorization_endpoint, token_endpoint, jwks_uri) when a tenant is set, but sent them with Cache-Control: public, max-age=3600 and no Vary. When the tenant is derived from something other than the URL (a header or the Host) and a shared cache sits in front, the cache key is the URL alone, so a stored response for one tenant is served to another for up to an hour. Affected clients may then send authorization codes and secrets to the wrong tenant's token endpoint and validate tokens against the wrong keys.\n\nThis issue affects ash_authentication_oauth2_server: from 0.1.3 before 0.3.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82755",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82756",
+      "desc": "Improper Encoding or Escaping of Output vulnerability in ash-project ash_authentication_oauth2_server allows an unauthenticated attacker to inject arbitrary authentication parameters into the WWW-Authenticate challenge header.\n\nBearerPlug and RequireScopePlug built the Bearer resource_metadata=\"...\" challenge by interpolating a resource_metadata URL derived from the request tenant directly into the quoted value. In a multi-tenant application that sets the Ash tenant from request-controlled data (a subdomain, the Host, a path segment, or a header), a tenant containing a \" closes the quoted value and appends attacker-chosen auth-params, including a second resource_metadata URL pointing at an attacker-controlled authorization server that spec-following clients follow. Carriage returns and line feeds are rejected by Plug, so this is parameter injection within one header, not response splitting.\n\nThis issue affects ash_authentication_oauth2_server: from 0.1.3 before 0.3.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82756",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82757",
+      "desc": "Server-Side Request Forgery (SSRF) vulnerability in ash-project ash_authentication_oauth2_server allows an attacker who controls a client metadata URL and its DNS to make the server connect to internal or loopback addresses.\n\npublic_ip?/1 in AshAuthentication.Oauth2Server.CIMD.ReqFetcher enforces the outbound policy for CIMD metadata fetches. It classified several address forms as publicly routable that are not: IPv4-compatible ::/96 (for example ::127.0.0.1), SIIT IPv4-translated ::ffff:0:0:0/96, and deprecated site-local fec0::/10. A returned AAAA record in one of these ranges passed the policy, so a fetch pinned to that address reached space the policy was meant to block.\n\nThis issue affects ash_authentication_oauth2_server: from 0.3.0 before 0.3.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82757",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82758",
+      "desc": "Improper Authentication vulnerability in ash-project ash_authentication_oauth2_server allows an unauthenticated attacker to register OAuth clients even when Dynamic Client Registration is gated by an initial access token.\n\nresolve_secret/3 in AshAuthentication.Oauth2Server (reached through __resolve_secret__!) treated any return other than {:ok, _} or :error from a configured {module, function, args} or 2-arity-function secret provider as a valid secret, wrapping nil, false, or \"\" as {:ok, value}. When the initial_access_token resolves to such an empty value, POST /oauth/register compares the presented bearer token against it and the comparison passes with no token supplied, so registration is open although it was configured closed. The same fail-open affected other resolved secrets such as signing_secret.\n\nThis issue affects ash_authentication_oauth2_server: from 0.1.0 before 0.3.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82758",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86439",
+      "desc": "knowns versions before 0.30.0 fail to validate filesystem paths in MCP tool arguments, allowing attackers to read, create, overwrite and delete files outside the project directory. Attackers can supply path arguments containing directory traversal sequences to access arbitrary Markdown files accessible to the server process.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86439",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86538",
+      "desc": "knowns versions before 0.30.0 contain a path traversal vulnerability in the POST /api/templates/preview endpoint that allows unauthenticated attackers to read arbitrary files. Attackers can supply directory traversal sequences in the templateFile parameter to bypass path restrictions and read sensitive files like credentials and configuration through the JSON response.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86538",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86539",
+      "desc": "knowns through 0.33.0 contains a server-side request forgery vulnerability in the POST /api/embedding-models/test endpoint that issues outbound requests to caller-supplied destinations without validation. Attackers can enumerate internal hosts and cloud metadata endpoints by observing transport error messages that reveal network reachability information.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86539",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86540",
+      "desc": "knowns versions before 0.30.0 fail to validate the settings.lsp.languages binary field in project configuration files, allowing attackers to execute arbitrary binaries by crafting a malicious .knowns/config.json file. When a repository with a crafted configuration is opened, the unvalidated binary path is executed twice under the user's account without any verification.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86540",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86541",
+      "desc": "knowns versions before 0.30.0 contain a path traversal vulnerability in the handleCodeReplace() function that allows attackers to overwrite arbitrary files outside the project root. Attackers can supply absolute paths or relative paths containing directory traversal sequences to write malicious content to sensitive files like shell startup scripts or SSH configuration files.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86541",
+      "cvss": "8.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86542",
+      "desc": "knowns before 0.30.0 fails to validate import names in the import routes, allowing unauthenticated attackers to write files outside the imports directory. Attackers can supply traversal sequences in the name parameter to escape the imports directory and overwrite arbitrary files writable by the server process.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86542",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86543",
+      "desc": "knowns versions before 0.30.0 serve the management API without authentication on all network interfaces by default, with no password required on fresh installations. Attackers can access the unauthenticated /api/tunnel/start endpoint to provision a public tunnel and republish the API at a publicly accessible address.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86543",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86544",
+      "desc": "knowns versions before 0.30.0 contain an authorization bypass vulnerability where mutating code actions are incorrectly classified as read-only operations. Attackers with read-restricted sessions can exploit code.replace to modify permission configurations and escalate privileges on subsequent calls.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-07",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86544",
+      "cvss": "8.1",
       "cwe": ""
     },
     {

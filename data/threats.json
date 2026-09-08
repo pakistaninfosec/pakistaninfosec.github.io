@@ -1,19 +1,19 @@
 {
-  "generated": "2026-09-08T16:12:44.144120+00:00",
-  "summary": "Today's digest contains 522 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-08T19:31:00.326180+00:00",
+  "summary": "Today's digest contains 603 vulnerabilities across 5 sources. 87 zero-day exploits detected, 37 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 522,
+    "new": 603,
     "changed": 0,
     "removed": 0,
-    "total": 560869,
-    "zeroday": 83,
-    "exploited": 33,
+    "total": 561472,
+    "zeroday": 87,
+    "exploited": 37,
     "pakistan": 16
   },
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 423
+      "count": 500
     },
     {
       "name": "Exploit-DB",
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 33
+      "count": 37
     },
     {
       "name": "Pakistan CERT",
@@ -335,6 +335,82 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-75650",
+      "desc": "Adobe Commerce and Magento Open Source contain an improper neutralization of special elements used in a template engine vulnerability that could allow an attacker to execute arbitrary code.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75650",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81963",
+      "desc": "Microsoft Windows Update Stack contains a link following vulnerability that allows a local attacker to escalate privileges locally up to SYSTEM.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81963",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86218",
+      "desc": "N-able N-central contains a static code injection vulnerability that could allow for pre-authentication remote code execution.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86218",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85880",
+      "desc": "Microsoft Windows Advanced Local Procedure Call contains a heap-based buffer overflow vulnerability that allows an attacker to elevate privileges locally.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85880",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -1303,7 +1379,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-20512",
-      "cvss": "0.0",
+      "cvss": "6.7",
       "cwe": ""
     },
     {
@@ -1993,7 +2069,7 @@
     {
       "id": "CVE-2026-78254",
       "desc": "The ftp and scp tasks of Apache Ant can download files from a remote server. A malicious server can provide relative paths that allow it to write outside of the dedicated target directory for the download, making it possible to overwrite files of the attacker's choice using the permissions of the user running Ant in versions prior to Ant 1.10.18. \n\n\n\n\nIn order to exploit this vulnerability, the server would either have to be malicious or be subject to a machine-in-the-middle attack. Additionally in the case of scp or the ftp task using ftps the server must pass the server identity checks performed by the tasks.\n\n\n\n\nFor ftp tasks not using ftps a malicious server could act as a machine-in-the-middle to provide malicious files.\n\n\n\n\nStarting with Ant 1.10.18 both tasks will prevent writing outside of the destination directory by default. An option is available to disable this behavior in the unlikely case that the  old behavior is required by existing build files.\n\n\n\n\nMitigations:\n\n\n\n\nUsers of scp and ftp (when using ftps) in any version of Ant should not bypass server identity checks. Users of ftp not using ftps should switch to ftps where possible.\n\n\n\n\nAll users are recommended to upgrade to Apache Ant 1.10.18, which fixes this issue.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-07",
       "pakistan": false,
@@ -2005,7 +2081,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78254",
-      "cvss": "0.0",
+      "cvss": "7.4",
       "cwe": ""
     },
     {
@@ -5143,7 +5219,7 @@
     {
       "id": "CVE-2026-16028",
       "desc": "Protocol::HTTP2 versions before 1.14 for Perl allow memory exhaustion via closed streams that stream_state never removes from the connection stream table.\n\nWhen a stream reaches the CLOSED state, stream_state returns the concurrency slot and clears most of the stream's keys, but the entry itself stays in the connection stream table and nothing in the distribution removes it. Stream identifiers increase monotonically, so a peer can open and close streams on one connection indefinitely, each close leaving a residual entry that is retained for the life of the connection.\n\nSETTINGS_MAX_CONCURRENT_STREAMS does not bound this. That setting caps how many streams are live at once and is enforced, while the growth is made of streams the cap has already released, so it accumulates with concurrency never exceeding one. The client keeps the same table and grows the same way against a hostile server.\n\nMeasured against a server built on this module, roughly 920 bytes are retained per closed stream for about 19 bytes on the wire, so 100,000 sequential streams on one connection grow server resident memory by about 88 MiB. The streams are ordinary requests that the application accepts and completes.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-07",
       "pakistan": false,
@@ -5155,13 +5231,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16028",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-86287",
       "desc": "Net::IP::LPM versions before 1.12 for Perl accept malformed prefix lengths.\n\nNon-numeric and non-ASCII prefix lengths are accepted and treated as 0. Integers over 31 bits are silently truncated.  A single malformed mask will poison the lookup table.\n\nThe result is that the lookup will silently succeed for every address. An allow-list will allow every address, and a deny-list will block every address.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-07",
       "pakistan": false,
@@ -5173,7 +5249,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86287",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -7897,7 +7973,7 @@
     {
       "id": "CVE-2026-79376",
       "desc": "An issue in the l2cap_handle_data() function of Bestechnic Co., Ltd BES2300 Bluetooth Audio SoC firmware v3.x and earlier allows attackers to cause a Denial of Service (DoS) via sending a crafted L2CAP packet.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-08",
       "pakistan": false,
@@ -7909,7 +7985,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79376",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -8401,7 +8477,7 @@
     {
       "id": "CVE-2026-79576",
       "desc": "An issue in the Single-Sign On (SSO) component of Digital-Infrastructure v9.6.7 allows attackers to authenticate as any user, including the Admin, without a password.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-09-08",
       "pakistan": false,
@@ -8413,7 +8489,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79576",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -8576,6 +8652,1392 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9040",
       "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16025",
+      "desc": "Improper validation of specified quantity in input vulnerability in PayTR Payment and Electronic Money Institution Inc. PayTR Virtual Pos iFrame API (v9x) WHMCS Module allows Input Data Manipulation.\n\nThis issue affects PayTR Virtual Pos iFrame API (v9x) WHMCS Module: from v9.0.0 before v9.0.3.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16025",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16037",
+      "desc": "Observable timing discrepancy vulnerability in PayTR Payment and Electronic Money Institution Inc. PayTR Virtual Pos iFrame API (v9x) WHMCS Module allows Black Box Reverse Engineering.\n\nThis issue affects PayTR Virtual Pos iFrame API (v9x) WHMCS Module: from v9.0.0 before v9.0.3.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16037",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16769",
+      "desc": "An unencrypted 'pause encryption request' message causes a denial of service in the in the RS9116W/SiWx917. See vulnerability B-E10 in the related paper below.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16769",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56101",
+      "desc": "OpenBSD before commit 1ee99df contains an inverted comparison vulnerability in the ieee80211_michael_mic_failure() function within sys/net80211/ieee80211_crypto_tkip.c that allows unauthenticated attackers within RF range to trigger denial of service by sending two malformed TKIP frames separated by more than 60 seconds. Attackers can exploit the reversed TKIP MIC failure countermeasure window check to deauthenticate all associated TKIP stations and block reassociation for up to 90 seconds, while within-window MIC failures that should engage countermeasures are silently discarded, leaving key-recovery attempts undetected.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56101",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79572",
+      "desc": "An XXE (XML External Entity) vulnerability in the level-rule module of Distribution Management v1.0.0 allows attackers to read sensitive files, scan internal networks, or launch server attacks via supplying a crafted XML payload.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79572",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79573",
+      "desc": "L-ONE v1.0.0 was discovered to contain multiple SQL injection vulnerabilities in the /attachment/getBusinessUploadList component via the busid, id, and taskid parameters. This vulnerability allows attackers to access sensitive database information via a crafted SQL statement.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79573",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79574",
+      "desc": "An issue in the gateway server of mpush v0.8.1 allows attackers to execute arbitrary code via sending a crafted broadcast message.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79574",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86600",
+      "desc": "In affected Snowflake drivers, WORKLOAD_IDENTITY authentication requests a cloud workload-identity token and attaches it to the login request without verifying that the configured host is a Snowflake endpoint. An attacker who can modify the connection configuration can cause the driver to mint a fresh attestation and send it to a host they control. The captured token can be replayed to Snowflake for its remaining lifetime in accounts where that workload identity is already registered. On Azure, the token audience is also taken from connection configuration. Combined with an attacker-controlled host, the driver can request a Managed Identity access token scoped to a non-Snowflake Azure resource and deliver it to the attacker. That path is the only case in which impact extends beyond Snowflake; it is bounded by the token lifetime and the managed identity’s permissions. Successful exploitation requires WORKLOAD_IDENTITY authentication on a workload that already has an ambient cloud identity. Patched driver versions restrict this authenticator to recognized Snowflake hosts. Users must manually upgrade.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86600",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86666",
+      "desc": "A security flaw has been discovered in aircheng-org iWebShop-5 up to 5.15. Impacted is the function upload_json/uploadFile of the file controllers/pic.php. The manipulation results in unrestricted upload. The attack can be executed remotely. The exploit has been released to the public and may be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86666",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86718",
+      "desc": "WWBN AVideo through commit c3edcc274c389816d434acadac07ee78eaf330c1 contains a cross-site request forgery vulnerability in deleteHistory.json.php and finishAll.json.php that allows unauthenticated attackers to mutate live history by making GET requests without CSRF token validation. Attackers can craft malicious pages that trigger administrator browsers to delete all live transmission history or mark streams as finished when an admin visits the attacker-controlled site.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86718",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86719",
+      "desc": "WWBN AVideo through commit c3edcc274c389816d434acadac07ee78eaf330c1 (master) contains a cross-site request forgery vulnerability in the CustomizeUser plugin endpoint plugin/CustomizeUser/swapUser.json.php. The endpoint takes users_id from $_REQUEST and invokes User::swapUser() without calling forbidIfNotPost() or forbidIfInvalidToken(), and the global autoCSRFGuard() check only runs for POST requests to *.json.php, so the action is reachable via GET. An attacker who causes an authenticated administrator's browser to issue a cross-origin GET (for example via an <img> tag or link) can replace that administrator's session with a non-admin user account, causing the administrator to lose administrative access until the swap is cancelled; swapping to another administrator account is rejected, so this is not privilege escalation. The JSON response also discloses the session_id. The CustomizeUser plugin is enabled by default, and no patch was available at the time of publication.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86719",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86720",
+      "desc": "WWBN AVideo through commit c3edcc274c389816d434acadac07ee78eaf330c1 fails to validate ownership of live_restreams_id in resendRestreamer.json.php, allowing authenticated users with canStream to access other users' restream destinations. Attackers can broadcast their live stream to victim-configured restream destinations by supplying arbitrary live_restreams_id values, hijacking YouTube, Facebook, or Twitch streams using victim stream keys.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86720",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86721",
+      "desc": "AVideo through commit c3edcc274c contains an authorization bypass vulnerability where a session cookie named 'key' with value 'value' overrides the $_REQUEST['key'] parameter in saveLive.php and related endpoints. Attackers can publish to any user's RTMP stream without authentication by using the known constant stream key value to hijack live broadcasts.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86721",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86722",
+      "desc": "AVideo through commit c3edcc274c389816d434acadac07ee78eaf330c1 contains an authentication bypass vulnerability where sqlDAL caches empty result sets that writeSql never invalidates. Attackers with a valid password can bypass email two-factor authentication on new devices because the confirmation code hash fails to generate from the stale cached empty result.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86722",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86723",
+      "desc": "AVideo through c3edcc274c389816d434acadac07ee78eaf330c1 contains an authentication bypass vulnerability in LoginControl::verifyChallenge() that uses loose comparison (==) instead of strict comparison (===) against unset session values. Attackers with only a password can submit an empty request to verifyChallenge.json.php to bypass PGP two-factor authentication and gain full authenticated access.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86723",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86724",
+      "desc": "AVideo through commit c3edcc274c389816d434acadac07ee78eaf330c1 contains a cross-site request forgery vulnerability in plugin/YPTWallet/view/saveBalance.php that allows attackers to set arbitrary wallet balances by relying only on session cookies without token validation. Attackers can craft a malicious webpage that, when loaded by an administrator, submits a POST request to modify any user's wallet balance to any value.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86724",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86725",
+      "desc": "AVideo through c3edcc274c389816d434acadac07ee78eaf330c1 contains a missing authorization vulnerability in the SocialMediaPublisher plugin's add.json.php endpoint that allows authenticated users to modify other users' OAuth token records. Attackers can supply arbitrary row IDs to overwrite another user's stored access_token and refresh_token, then delete the compromised record to destroy the victim's provider linkage.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86725",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86726",
+      "desc": "AVideo through 29.0 contains an information disclosure vulnerability in restreamsActive.json.php that allows authenticated streamers to enumerate source stream keys and identities of all other streamers' active restreams. The endpoint fails to filter results by user ownership, exposing sensitive transmission credentials and streamer identity across all accounts to any user with streaming capability.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86726",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86727",
+      "desc": "AVideo through 29.0 contains an information disclosure vulnerability in plugin/Live/stats.json.php that allows unauthenticated attackers to retrieve stream keys and m3u8 URLs by accessing the endpoint without authentication. Attackers can enumerate private, unlisted, and group-restricted live streams by parsing the hidden_applications array in the JSON response to obtain sensitive streaming credentials.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86727",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86728",
+      "desc": "AVideo through 29.0 contains an authentication bypass vulnerability in plugin/PlayLists/epg.json.php that exposes live-stream keys and private EPG schedules to unauthenticated users. Attackers can request the endpoint with sequential user or playlist IDs to retrieve sensitive credentials, server identifiers, and complete programme schedules without authentication.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86728",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86729",
+      "desc": "WWBN AVideo through commit e01e41ecc (no patched version available) exposes get_api_preauthorize in plugin/API/API.php as a second, undocumented login path. Unlike get_api_signIn, which enforces a rate limit of 10 attempts per 5 minutes via checkRateLimit(), get_api_preauthorize performs the same credential check with no throttling for any client, allowing unlimited remote password guessing against arbitrary accounts, including admin. The endpoint also acts as a credential oracle: it returns the message \"Invalid credentials\" for both correct and incorrect passwords, while the users_id field in the response body discloses the authenticated identity (users_id:1 on success, users_id:0 on failure), and a correct password establishes a session cookie that remains usable for authenticated API requests. Together these issues permit unauthenticated brute-force account takeover.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86729",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86730",
+      "desc": "Craft CMS versions before 5.10.12 fail to properly cleanse string-typed field-layout elements, allowing authenticated control-panel users to inject Yii2 behavior attachments and event handlers. Attackers can post field-layout tab elements as JSON strings to bypass cleanse validation, then trigger arbitrary object instantiation and code execution through Craft::createObject().",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86730",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86731",
+      "desc": "Craft CMS versions 5.0.0-RC1 through 5.10.11 are missing an admin-target guard in UsersController::actionActivateUser (the users/activate-user action). While the action requires the administrateUsers permission, it does not call requireAdmin() when the targeted user is an administrator, unlike the mirror action actionDeactivateUser. As a result, an authenticated control panel user who is not an administrator but holds the administrateUsers permission can activate a pending or deliberately deactivated administrator account, which can lead to permission escalation when combined with resetting that account's password. The issue is fixed in Craft CMS 5.10.12.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86731",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86732",
+      "desc": "Craft CMS versions before 5.10.12 contain a remote code execution vulnerability in the element-index endpoint that allows authenticated content editors to instantiate arbitrary classes through the criteria parameter. Attackers can inject a malicious class via criteria[withTransforms][0][class] that reaches ImageTransforms::normalizeTransform(), then use a PHP gadget chain with yii\\rbac\\PhpManager to execute code by pointing itemFile to a request log containing PHP payload in the User-Agent header.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86732",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86733",
+      "desc": "Snipe-IT before 8.7.0 streams the SQL entry from an uploaded backup archive directly into the MySQL/MariaDB command-line client (`mysql`) without the --binary-mode flag, so the client interprets lines beginning with backslash commands such as `\\!` as local shell commands. An authenticated superadministrator who uploads a crafted ZIP backup (POST /admin/backups/upload) and triggers a restore (POST /admin/backups/restore/{filename}) without the optional `clean` sanitizer parameter — which is not applied by default because DB_SANITIZE_BY_DEFAULT is false — can execute arbitrary OS commands as the web application's operating-system user, exposing application secrets (including database credentials and APP_KEY) and allowing modification of application-writable files and data. Version 8.7.0 adds the --binary-mode flag to the client invocation.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86733",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86734",
+      "desc": "Snipe-IT before 8.7.1 fails to validate the length of the note field in the POST /account/accept/{acceptance} endpoint, allowing authenticated users to submit unbounded input that reaches synchronous CommonMark rendering. Attackers can submit large note values to exhaust PHP worker CPU and cause denial of service through resource exhaustion in the markdown parsing pipeline.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86734",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86735",
+      "desc": "snipe-it versions before 8.7.0 contain a server-side request forgery vulnerability in the ExternalUrl validation rule that fails to detect IPv6 transition addresses encoding private IPv4 targets. Attackers with super-admin privileges can configure webhook URLs using NAT64, 6to4, or Teredo transition addresses to bypass SSRF guards and access internal services or cloud metadata endpoints.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86735",
+      "cvss": "5.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86736",
+      "desc": "snipe-it before 8.7.0 contains an incorrect calculation vulnerability in checkout request handling that allows authenticated users to corrupt the assets.requests_counter through duplicate submissions and cancellations without active requests. Attackers can repeatedly call cancel endpoints without active requests to drive the counter negative, or submit duplicate checkout requests to inflate the counter, misrepresenting pending demand in the admin queue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86736",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86737",
+      "desc": "snipe-it versions before 8.7.0 fail to enforce asset view authorization in the GET /hardware/{asset}/barcode endpoint. Authenticated attackers can iterate asset IDs to retrieve barcodes and enumerate asset tags across tenants, including soft-deleted and cross-company assets.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86737",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86738",
+      "desc": "Snipe-IT versions before 8.7.0 contain a CSS injection vulnerability in the Custom CSS field due to incomplete sanitization that reverses HTML encoding on greater-than and double-quote characters. Superusers can plant malicious CSS payloads using @import and url() references to exfiltrate CSRF tokens from other superusers via attribute-selector rules, enabling account takeover.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86738",
+      "cvss": "8.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86840",
+      "desc": "The `vtoken-minting` and `slpx` pallets in Bifrost contain an improper authorization vulnerability in channel commission attribution. A signed account can supply an arbitrary registered `channel_id` when minting tokens without verifying that the caller is authorized to mint on behalf of that channel. This allows an attacker to inflate a channel's recorded mint volume and cause protocol commission payments to be disproportionately distributed to that channel during commission settlement.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86840",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86853",
+      "desc": "A malicious webpage could repeatedly trigger external URL schemes, causing system prompts or external application launches. This could make Firefox for iOS temporarily unusable until the page is closed. This vulnerability was fixed in Firefox for iOS 155.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86853",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16497",
+      "desc": "NVIDIA Triton Inference Server for Linux contains a vulnerability where an attacker could cause excessive iteration. A successful exploit of this vulnerability might lead to denial of service.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16497",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-20293",
+      "desc": "A vulnerability in the Unified Extensible Firmware Interface (UEFI) Shell implementation of Cisco UCS Servers and UCS-based appliances could allow an authenticated attacker with valid credentials for a user account with the role of user or admin&nbsp;or an unauthenticated attacker with physical access to an affected device to bypass UEFI Secure Boot validation checks and execute unauthorized software.\r\n\r\nThis vulnerability is due to the availability of memory write commands in the UEFI Shell while UEFI Secure Boot is enabled on a device. An attacker could exploit this vulnerability by selecting the UEFI Shell boot option at boot time and using available shell commands to modify UEFI memory variables. A successful exploit could allow the attacker to manipulate the preboot environment, overwrite UEFI Secure Boot-related memory values, and execute unauthorized software on the affected device.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-20293",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-22575",
+      "desc": "An improper access control vulnerability in Fortinet FortiManager 7.6.0 through 7.6.4, FortiManager 7.4.0 through 7.4.10, FortiManager 7.2 all versions, FortiManager Cloud 7.6.2 through 7.6.4, FortiManager Cloud 7.4.1 through 7.4.10, FortiManager Cloud 7.2 all versions may allow an administrator to bypass the approval process for workflow sessions via crafted HTTP or HTTPs requests.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-22575",
+      "cvss": "4.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-26084",
+      "desc": "A improper access control vulnerability in Fortinet FortiSandbox 5.0.0 through 5.0.5, FortiSandbox 4.4.0 through 4.4.8, FortiSandbox Cloud 5.0.4 through 5.0.5, FortiSandbox PaaS 5.0.4 through 5.0.5 may allow attacker to access sensitive information via crafted HTTP requests.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26084",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-47625",
+      "desc": "NVIDIA Triton Inference Server for Linux contains a vulnerability where an attacker could abuse missing authorization. A successful exploit of this vulnerability might lead to information disclosure, data tampering, and denial of service.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-47625",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-52307",
+      "desc": "An authenticated stored cross-site scripting (XSS) vulnerability in the Column Management component of ClassCMS 1CMS v5.6 allows attackers to execute arbitrary web scripts or HTML via injecting a crafted payload into the title field.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-52307",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-75156",
+      "desc": "Apache Airflow FAB provider versions 3.7.3 through 3.8.0 do not validate the issuer or audience of Azure AD `id_token`s during OAuth login. Deployments are affected only when the FAB auth manager is configured with Azure AD as an OAuth provider. Because the signing keys are fetched from Microsoft's **multi-tenant** JWKS endpoint, an `id_token` minted in *any* Azure tenant — including one the attacker creates — passes signature verification, and the username and role assignments are then read from that attacker-controlled token. Anyone able to register an Azure tenant can therefore authenticate to the Airflow UI with no prior access to the deployment.\n\nThe fix for **CVE-2026-59243** was incomplete, and this advisory closes the remaining gap: that fix made the provider verify the `id_token` signature, but did not add issuer or audience checks. Operators who already applied the CVE-2026-59243 fix are **still affected and must upgrade again** — 3.7.3 is the release that shipped that fix, so every version containing it falls inside this affected range. Upgrade to apache-airflow-providers-fab `3.8.1` or later.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-75156",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78216",
+      "desc": "AshLua exposes Ash read actions to Lua scripts run through an eval action. A read call accepts an operation (list, min, max, first, sum, avg) that builds an ad-hoc Ash.Query.Aggregate over a named field and returns its raw value.\n\nAsh field policies redact forbidden fields on returned records (replacing them with %Ash.ForbiddenField{}), but that redaction does not apply to aggregate values. A script could therefore read a field the calling actor's field policies forbid by requesting it as an aggregate instead of as a field. This includes fields that are public? true but restricted per-actor by a field policy, such as sensitive PII. The prior hardening only enforced the exposed-field allow-list (field visibility), which is a separate axis from per-actor field-policy authorization.\n\nThe fix authorizes the aggregated field against the resource's field policies, so aggregating over a field the actor may not see is refused or scoped to the rows where it is visible.\n\nThis issue affects ash_lua: from 0.1.0 before 0.2.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78216",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78230",
+      "desc": "AshAi exposes Ash read actions to language-model tool calls. The read tool accepts an aggregate result type (min, max, sum, avg) that builds an ad-hoc Ash.Query.Aggregate over a named field and returns its raw value.\n\nAsh field policies redact forbidden fields on returned records (replacing them with %Ash.ForbiddenField{}), but that redaction does not apply to aggregate values. A tool caller could therefore read a field the calling actor's field policies forbid by requesting it as an aggregate; min/max in particular return an actual field value. This includes fields that are public? true but restricted per-actor by a field policy, such as sensitive PII. The tool's existing check only required the field to be public, which is a separate axis from per-actor field-policy authorization.\n\nThe fix authorizes the aggregated field against the resource's field policies, so aggregating over a field the actor may not see is refused or scoped to the rows where it is visible.\n\nThis issue affects ash_ai: from 0.1.0 before 1.0.3.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78230",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-78997",
+      "desc": "UC Browser for Android (package com.UCMobile.intl, version 13.7.8.1314) contains a Universal Cross-Site Scripting vulnerability that allows an attacker to execute arbitrary JavaScript in the context of any origin. An attacker hosts a specially crafted URL on a UC-owned domain (via a reflected XSS) that leverages the browser's internal JavaScript bridge to register a deferred callback, navigate the tab to a victim site, and then execute attacker-controlled code on that site when a login dialog is dismissed.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78997",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79569",
+      "desc": "Movie_Recommend v1.0.0 was discovered to contain a SQL injection vulnerability in the sort parameter at /loadingmore. This vulnerability allows attackers to access sensitive database information via a crafted SQL statement.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79569",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-79570",
+      "desc": "mfish-nocode-pro v1.0.0 was discovered to contain a SQL injection vulnerability in the tableName parameter at /sys/dbConnect/data. This vulnerability allows attackers to access sensitive database information via a crafted SQL statement.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79570",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81531",
+      "desc": "An information\ndisclosure vulnerability has been identified in Omada Controller.  An API endpoint intended for Controller initialization\nremains accessible after completion and may disclose account-related\ninformation to unauthenticated remote users. \n\n\n\n\n\n\nSuccessful\nexploitation may allow an attacker to remote query the affected endpoint that\nmay facilitate user enumeration and subsequent attacks targeting administrative\naccounts.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81531",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82052",
+      "desc": "The $regexFindAll expression can be used by an authenticated user who can run aggregation pipeline stages to crash a MongoDB server (mongod). Under certain specific conditions the  regex match can start in the middle of a multi-code-unit character, triggering an assertion during query execution.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82052",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82053",
+      "desc": "A security issue exists in MongoDB's LDAP authorization integration where pooled LDAP connections can retain stale authentication identities after user authentication under certain configurations. Subsequent authorization queries may execute under an unintended LDAP identity rather than the expected one. This can result in incorrect role assignments based on the LDAP directory's access control configuration, potentially allowing an authenticated user to acquire elevated privileges that were not intended by the deployment's authorization policy.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82053",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82054",
+      "desc": "A security issue exists in MongoDB server's JSON Pointer parser used during $jsonSchema query filter processing. When a find command includes a specially crafted $jsonSchema filter field, the parser processes the input without enforcing adequate limits on iteration count or total allocation size, resulting in significant memory amplification. Under concurrent request load, the cumulative memory consumption can exhaust available heap memory, causing the server's out-of-memory handler to terminate the mongod process and deny service to all connected clients.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82054",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82055",
+      "desc": "A security issue exists in MongoDB's 2dsphere index key generation that can cause a server crash due to a null pointer dereference. When a specially crafted GeoJSON document is inserted into a collection with a 2dsphere index, an inconsistency in geometry parsing can leave an internal object in an invalid, partially initialized state. During subsequent index key generation, access to this improperly initialized object results in a null pointer dereference that terminates the mongod process. An authenticated user with write access can use this to cause a denial of service.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82055",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82056",
+      "desc": "A race condition in MongoDB server's text index query parsing can cause a heap use-after-free read when handling upsert retry paths. Under certain concurrent index lifecycle operations, a raw pointer to internal text index metadata may be dereferenced after the underlying structures have been freed, leading to a server crash. An authenticated user with readWrite privileges can trigger this condition through specific concurrent text-search and index management operations, resulting in denial of service for all connected clients. This",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82056",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82057",
+      "desc": "A security issue was discovered in MongoDB where an authenticated user with readWrite privileges could crash the mongod server process. By specifying a custom WiredTiger storage configuration option with an incompatible value during collection creation, a user could cause a type confusion in the storage engine layer. When documents were subsequently read from the misconfigured collection, the resulting mismatch in expected data format led to corrupted memory interpretation and a server crash. The crafted collection configuration persists across restarts, requiring manual operator intervention to remediate.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82057",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82058",
+      "desc": "A flaw in MongoDB's JSON Schema validation error generation code allows an authenticated user with readWrite privileges to crash the mongod server. When a BSON document containing an array with a malformed numeric field name fails a $jsonSchema items type constraint, the error generation path performs unsafe numeric conversion on the user-controlled field name without proper exception handling, resulting in an uncaught exception that terminates the server process. This is possible because incoming wire protocol BSON validation does not enforce that array element field names are valid, in-range numeric indices.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82058",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82059",
+      "desc": "An internal aggregation expression in MongoDB Server was incorrectly registered as accessible to any authenticated user rather than being restricted to internal cluster operations. By crafting a malformed index specification within this expression, an authenticated user with read-only privileges could trigger an assertion failure in the index key generation code path. In certain build configurations, this assertion failure results in termination of the mongod process, causing a denial of service to all connected clients.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82059",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82060",
+      "desc": "In MongoDB, insufficient validation of shard key values during document insertion allowed authenticated users to store documents with specially crafted, operator-shaped objects as shard key values in sharded collections. When change stream events for such documents were processed with the updateLookup full document mode, the crafted values were embedded into internal post-image lookup queries without proper sanitization, causing them to be interpreted as query operators rather than literal equality values. This could result in change stream consumers receiving incorrect post-image documents or encountering non-resumable fatal errors.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82060",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82061",
+      "desc": "A use-after-free security issue exists in the server's query execution memory tracking subsystem. An authenticated user with read privileges can trigger a write to freed heap memory through a sequence of standard database commands, leading to server process crash or potential memory corruption. No user interaction is required.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82061",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82062",
+      "desc": "A security issue in MongoDB Server allows an authenticated user with elevated internal privileges to bypass a disabled feature gate in the applyOps command by specifying an internal replication mode value that was not intended to be client-selectable. This bypass enables execution of container operations that are disabled by default in production configurations, allowing direct storage-engine writes to arbitrary internal storage tables. The authorization check for these operations validates only the operation's namespace, not the actual storage target, enabling writes to unrelated internal metadata or other collections' data.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82062",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82063",
+      "desc": "A use-after-free security issue in the cursor management component of MongoDB Server allows an authenticated user to cause a denial of service. Under specific timing conditions during cursor operations, a stale pointer to a freed resource may be retained and subsequently dereferenced during cursor cleanup, leading to a server process crash.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82063",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82064",
+      "desc": "A security issue in MongoDB Server allows an unauthenticated network user to cause a denial of service on a specific type of replica set member. The server contains an assertion in its read concern processing logic that can be reached without authentication, and the assertion's assumptions about internal state do not hold for all member configurations, causing the server process to terminate.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82064",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82065",
+      "desc": "A security issue in the MongoDB Server's storage engine integration layer allows an authenticated user with collection creation privileges to cause a persistent denial of service. Insufficient validation of user-supplied storage configuration options permits values that, once persisted to durable metadata, trigger a fatal assertion failure when the metadata is subsequently read by diagnostic operations. The corrupted metadata persists across server restarts and is replicated to other cluster members, requiring manual operator intervention to restore service.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82065",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82066",
+      "desc": "A heap out-of-bounds read security issue exists in the query planning component of MongoDB Server. An authenticated user with database read and write privileges can trigger the security issue through crafted query operations, causing the server to read memory beyond allocated buffer boundaries. The revealed memory contents may be partially observable through diagnostic query statistics output.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82066",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82067",
+      "desc": "Improper handling of case sensitivity in the configuration validation component of MongoDB Server may cause the authorization subsystem to remain in a default disabled state during server startup. An unauthenticated user with network access to a deployment where this condition occurs can perform arbitrary administrative operations, resulting in full impact of data confidentiality, integrity, and availability.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82067",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82068",
+      "desc": "A security issue in MongoDB Server allows an authenticated user with write privileges to trigger a persistent fatal assertion crash by sending specially crafted retryable write commands. The crash state is durably persisted, causing the server process to repeatedly crash on restart and potentially propagating to additional nodes in a sharded cluster. Manual intervention is required to restore service availability.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82068",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82069",
+      "desc": "A security issue in MongoDB Server's query statistics serialization on the router allows users with monitoring privileges to access unredacted search query text from other users' operations. An improper conditional check in the serialization logic causes the data redaction mechanism to be bypassed when processing search queries through the sharded cluster router. This results in sensitive query literals being stored and made accessible through the query statistics interface.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82069",
+      "cvss": "2.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82070",
+      "desc": "A security issue in MongoDB Server's diagnostic reporting interface allows an authenticated user with monitoring privileges to access insufficiently protected credentials from concurrent administrative operations. The same credentials are properly redacted in server log output, but the diagnostic interface omits equivalent redaction. Successful exploitation requires a valid authenticated session with monitoring-level permissions and results in exposure of cleartext credentials that could enable impersonation of other users, including privileged accounts.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82070",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82071",
+      "desc": "Insufficient validation of storage engine configuration options in MongoDB Server allows an authenticated user with write privileges to supply crafted parameters during collection creation that override internal storage metadata. This results in an out-of-bounds memory write in the server process, causing a denial of service via server crash, with potential for further impact including arbitrary code execution.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82071",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82073",
+      "desc": "A security issue in the MongoDB Server aggregation framework allows an authenticated user with limited read privileges to bypass view-level authorization checks and access data from unauthorized collections when Atlas Search features are in use. The issue stems from insufficient validation of an internal command parameter that can be set by external clients, causing a security check to be improperly skipped.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82073",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82074",
+      "desc": "MongoDB Server contains an incorrect authorization vulnerability in the aggregation framework. An authenticated user with minimal privileges can craft a specially formatted aggregation request that causes the server's authorization subsystem to evaluate a different operation than what is actually executed, resulting in unauthorized read access to collection data within the target database.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82074",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82075",
+      "desc": "An uncontrolled resource consumption weakness exists in the request-handling path of the MongoDB sharded-cluster router process. A client that has network access to a router port and has not authenticated can supply connection-monitoring parameters that cause the server to expend CPU resources without any rate limiting, degrading or denying service to legitimate clients. No authentication, elevated privileges, or user interaction is required. Only availability is affected; data confidentiality and integrity are not impacted.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82075",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82076",
+      "desc": "An integer overflow in the query planning component of MongoDB Server can allow an authenticated user with ordinary database-level read/write privileges to bypass an internal resource limit. Submitting a specially crafted query causes the server to consume memory without bound during query planning, and the resulting exhaustion terminates the server process. This may result in a denial of service affecting all databases served by the affected node.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82076",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82514",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82514",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82533",
+      "desc": "DeepSeek Harness before 0.1.2-alpha.1 contains an authentication bypass vulnerability in its local HTTP control-plane API that allows attackers to gain full agent control by supplying a spoofed Host header, as the server validates only the client-supplied Host header value rather than the actual TCP connection origin. Attackers can exploit this flaw to invoke privileged commands such as commands/execute with danger-full-access permissions, escalate session approval policies to unconfined execution, and retrieve all stored conversations without any credential or API key.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82533",
+      "cvss": "9.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84385",
+      "desc": "A improper access control vulnerability in Fortinet FortiSOAR PaaS 7.6.0 through 7.6.6, FortiSOAR PaaS 7.5.0 through 7.5.3, FortiSOAR PaaS 7.4 all versions, FortiSOAR PaaS 7.3 all versions, FortiSOAR on-premise 7.6.0 through 7.6.6, FortiSOAR on-premise 7.5.0 through 7.5.3, FortiSOAR on-premise 7.4 all versions, FortiSOAR on-premise 7.3 all versions may allow attacker to escalation of privilege via <insert attack vector here>",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84385",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84386",
+      "desc": "A unverified ownership vulnerability in Fortinet FortiClientWindows 7.4.0 through 7.4.7, FortiClientWindows 7.2 all versions may allow attacker to improper access control via <insert attack vector here>",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84386",
+      "cvss": "5.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84387",
+      "desc": "A improper neutralization of special elements used in a command ('command injection') vulnerability in Fortinet FortiSandbox 5.2.0, FortiSandbox 5.0.0 through 5.0.6, FortiSandbox 4.4.0 through 4.4.9 may allow attacker to execute unauthorized code or commands via <insert attack vector here>",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84387",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84389",
+      "desc": "A url redirection to untrusted site ('open redirect') vulnerability in Fortinet FortiSIEM 7.5.0 through 7.5.1, FortiSIEM 7.4.1 through 7.4.2 may allow attacker to execute unauthorized code or commands via <insert attack vector here>",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84389",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84391",
+      "desc": "A use of uninitialized variable vulnerability in Fortinet FortiAnalyzer 7.6.3 through 7.6.6 may allow attacker to denial of service via <insert attack vector here>",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84391",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84392",
+      "desc": "A NULL Pointer Dereference vulnerability [CWE-476] vulnerability in Fortinet FortiOS 7.4 all versions, FortiOS 7.2 all versions, FortiPAM 1.9.0, FortiPAM 1.8 all versions, FortiPAM 1.7 all versions, FortiPAM 1.6 all versions, FortiPAM 1.5 all versions, FortiPAM 1.4 all versions, FortiPAM 1.3 all versions, FortiPAM 1.2 all versions, FortiPAM 1.1 all versions, FortiPAM 1.0 all versions, FortiProxy 7.6.0 through 7.6.6, FortiProxy 7.4 all versions, FortiProxy 7.2 all versions may allow an authenticated attacker to crash the httpsd daemon via crafted HTTP requests.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84392",
+      "cvss": "2.7",
       "cwe": ""
     },
     {

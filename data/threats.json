@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-13T21:34:56.675231+00:00",
-  "summary": "Today's digest contains 319 vulnerabilities across 5 sources. 94 zero-day exploits detected, 44 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-13T23:55:41.871247+00:00",
+  "summary": "Today's digest contains 332 vulnerabilities across 5 sources. 94 zero-day exploits detected, 44 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 319,
+    "new": 332,
     "changed": 0,
     "removed": 0,
-    "total": 580530,
+    "total": 580862,
     "zeroday": 94,
     "exploited": 44,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 209
+      "count": 222
     },
     {
       "name": "Exploit-DB",
@@ -4739,7 +4739,7 @@
     },
     {
       "id": "CVE-2026-49030",
-      "desc": "pathe through 2.0.3 unconditionally normalizes backslash characters to forward slashes on all platforms, including POSIX systems where backslash is a valid filename character. This causes join(), resolve(), and normalize() to interpret backslash-separated dot notation sequences as directory traversal, diverging from Node.js path.posix behavior and enabling path traversal attacks that bypass common input validation in server-side applications. NOTE: the Supplier reports that \"the behavior is documented, intentional, and identical in spirit to path.win32.\"",
+      "desc": "Rejected reason: DO NOT USE THIS CANDIDATE NUMBER.  ConsultIDs: none.  Reason: This candidate was withdrawn by its CNA.  Further investigation showed that it was not a security issue.  Notes: none.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-09-13",
@@ -4933,6 +4933,240 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90595",
       "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-35867",
+      "desc": "A Command Injection vulnerability exists in the bs_SetLimitCli_info function within the libshare.so library of the LB-LINK router AC1900_AZ2 V1.0.2 via shell metacharacters, if the device is deployed in a scenario where an actor is able to make a \"POST /goform/set_LimitClient_cfg\" call but does not already have administrative access to the device.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-13",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-35867",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-52296",
+      "desc": "FFmpeg before 9.0 has an out-of-bounds read because of missing required padding in WMA extradata allocation paths in libavcodec/wmaenc.c.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-13",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-52296",
+      "cvss": "2.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-52297",
+      "desc": "FFmpeg before 9.0 has an out-of-bounds read because there is insufficiently padded extradata in the MOV parsing path in mov_read_iacb in libavformat/mov.c.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-13",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-52297",
+      "cvss": "2.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-90596",
+      "desc": "A weakness has been identified in embedded-graphics up to 0.8.2 on 32-bit. Impacted is the function ImageRaw::new/bytes_per_row of the file src/image/image_raw.rs. This manipulation causes integer overflow. The attack is possible to be carried out remotely. Upgrading the affected component is recommended. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-13",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90596",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-90597",
+      "desc": "A security vulnerability has been detected in itsourcecode Sales and Inventory System 1.0. The affected element is an unknown function of the file /pages/sup_edit1.php. Such manipulation of the argument ID leads to sql injection. The attack may be performed from remote. The exploit has been disclosed publicly and may be used.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-13",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90597",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-90598",
+      "desc": "A vulnerability was detected in jaygajera17 E-commerce-project-springBoot up to 5e74a46b4b70623d0e4a0c9c4aee3bd1777185d2. The impacted element is the function UserController.updateUser of the file UserController.java. Performing a manipulation of the argument userid results in authorization bypass. It is possible to initiate the attack remotely. The exploit is now public and may be used. This product is using a rolling release to provide continious delivery. Therefore, no version details for affected nor updated releases are available. The pull request to fix this issue awaits acceptance.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-13",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90598",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-90599",
+      "desc": "A flaw has been found in Rizwan17 inventory-management-system up to 5e74a46b4b70623d0e4a0c9c4aee3bd1777185d2. This affects an unknown function of the file includes/process.php. Executing a manipulation can lead to cross-site request forgery. It is possible to launch the attack remotely. The exploit has been published and may be used. This product takes the approach of rolling releases to provide continious delivery. Therefore, version details for affected and updated releases are not available. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-13",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90599",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15891",
+      "desc": "The MQTT-SN client keepalive handler process_ping() in subsys/net/lib/mqtt_sn/mqtt_sn.c removes the gateway record after PINGREQ retries are exhausted. It invoked SYS_SLIST_PEEK_HEAD_CONTAINER(&client->gateways, gw, next) but discarded the result. That macro is a pure expression that does not assign to gw, so gw retained its NULL initializer regardless of the list contents.\n\nThe code then dereferences the NULL gw (gw->gw_id) and passes it to mqtt_sn_gw_destroy(), reaching k_mem_slab_free(&gateways, NULL). With CONFIG_MEM_SLAB_POINTER_VALIDATE enabled this triggers k_panic(); in the default configuration it performs a write through the NULL pointer ((char )mem = slab->free_list;) and corrupts the slab free list. The outcome is a crash/kernel panic or, on targets where address 0 is writable, silent memory-allocator corruption.\n\nThe vulnerable branch runs whenever the connected MQTT-SN gateway fails to answer keepalive PINGREQs for the configured number of retries. This condition is controlled by the remote peer: a malicious or compromised gateway, or an on-path/adjacent attacker that advertises itself as a gateway and then stops responding (or blackholes the real gateway's PINGRESPs), forces the client into the defect. MQTT-SN runs over UDP and no authentication is required.\n\nThe impact is a remotely triggerable denial of service (availability) of the affected MQTT-SN client; there is no attacker-controlled data written. The sibling remover process_advertise() uses SYS_SLIST_FOR_EACH_CONTAINER_SAFE and is not affected. The fix assigns the macro's return value to gw.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-13",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15891",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15892",
+      "desc": "The mcumgr SMP settings-management group handlers settings_mgmt_read(), settings_mgmt_write(), and settings_mgmt_delete() in subsys/mgmt/mcumgr/grp/settings_mgmt/src/settings_mgmt.c allocate a key_name buffer (and, for read, a data buffer) via k_malloc() when CONFIG_MCUMGR_GRP_SETTINGS_BUFFER_TYPE_HEAP is enabled, relying on the end: label to k_free() them. When CONFIG_MCUMGR_GRP_SETTINGS_ACCESS_HOOK is also enabled and the application access hook rejects a request by returning status MGMT_CB_ERROR_RC, the handler executed return ret_rc; directly, bypassing end: and leaking the heap allocation on every rejected request.\n\nThe settings handlers are reachable over the unauthenticated SMP transport (Bluetooth LE, UART, or UDP, depending on product configuration). The access hook is the mechanism applications use to deny unauthorized settings access, and MGMT_CB_ERROR_RC is a common rejection style, so an attacker who can send settings read/write/delete commands that the hook rejects triggers a heap leak on each attempt.\n\nBecause the leaked memory is never reclaimed until reboot, a sustained stream of rejected requests monotonically exhausts the kernel heap until k_malloc() fails, denying mcumgr service and impacting any other heap consumer on the device — a denial of service. The impact is availability-only; there is no memory corruption or information disclosure. Only configurations that select the heap buffer type, enable the access hook, and register a hook that returns MGMT_CB_ERROR_RC are affected (the default stack buffer type cannot leak).",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-13",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15892",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-90600",
+      "desc": "A vulnerability has been found in itsourcecode Sales and Inventory System 1.0. This impacts an unknown function of the file /pages/inv_edit1.php. The manipulation of the argument ID leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-13",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90600",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-90601",
+      "desc": "A vulnerability was found in getzep graphiti up to 0.30.2. Affected is an unknown function of the file server/graph_service/main.py of the component REST API. The manipulation results in improper authentication. The attack can be launched remotely. The pull request to fix this issue awaits acceptance.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-13",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90601",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-90602",
+      "desc": "A vulnerability was determined in Anil-matcha Open-Generative-AI up to 1.0.11/2.0.0. Affected by this vulnerability is the function renderHistory of the file ImageStudio.js of the component Studio Components. This manipulation causes cross site scripting. The attack may be initiated remotely. The pull request to fix this issue awaits acceptance.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-13",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90602",
+      "cvss": "3.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-90603",
+      "desc": "A vulnerability was identified in Anil-matcha Open-Generative-AI up to 1.0.11/2.0.0. Affected by this issue is some unknown functionality of the file /api/upload-binary of the component S3 Upload. Such manipulation of the argument x-proxy-target-url leads to unrestricted upload. The attack may be launched remotely. The name of the patch is f013270957f75e439eaf97eb2a93decb32a4543e. Applying a patch is advised to resolve this issue.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-13",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90603",
+      "cvss": "7.3",
       "cwe": ""
     },
     {

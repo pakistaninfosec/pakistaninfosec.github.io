@@ -3,20 +3,28 @@
     {
       "date": "2026-09-18",
       "stats": {
-        "new": 609,
+        "new": 611,
         "changed": 0,
         "removed": 0,
-        "total": 596148,
-        "zeroday": 93,
-        "exploited": 43,
+        "total": 596759,
+        "zeroday": 95,
+        "exploited": 45,
         "pakistan": 16
       },
-      "summary": "Today's digest contains 609 vulnerabilities across 5 sources. 93 zero-day exploits detected, 43 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+      "summary": "Today's digest contains 611 vulnerabilities across 5 sources. 95 zero-day exploits detected, 45 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
       "sections": [
         {
           "label": "Zero Day Exploits",
           "color": "red",
           "items": [
+            {
+              "id": "CVE-2025-39964",
+              "desc": "Linux Kernel contains a race condition vulnerability which allows concurrent writes to the same AF_ALG socket causing data to be unpredictably interleaved and creating inconsistencies in the socket's internal state."
+            },
+            {
+              "id": "CVE-2026-53266",
+              "desc": "Linux Kernel contains an out-of-bounds write vulnerability in the ebtables SNAT target which allows an ARP sender hardware address rewrite to write directly into a nonlinear socket-buffer fragment backed by a splice-imported file page. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
+            },
             {
               "id": "CVE-2026-58704",
               "desc": "Google Pixel devices contain an improper authorization vulnerability in the cellular modem. A logic error may allow an attacker to bypass permission checks and escalate privileges."
@@ -48,14 +56,6 @@
             {
               "id": "CVE-2026-85706",
               "desc": "GitLab Community Edition and Enterprise Edition contains a path traversal vulnerability that allows an unauthenticated user to read arbitrary files due to an improper path confinement and missing authentication enforcement in the repository commits API."
-            },
-            {
-              "id": "CVE-2026-86060",
-              "desc": "MikroTik RouterOS contains an improper neutralization of argument delimiters in a command vulnerability which allows an attacker to change the trusted RouterOS policy mask, leading to privilege escalation."
-            },
-            {
-              "id": "CVE-2026-67277",
-              "desc": "MikroTik RouterOS contains a missing authentication for critical function vulnerability which allows kernel memory disclosure and denial of service in the btest service."
             }
           ]
         },
@@ -64,6 +64,14 @@
           "color": "orange",
           "items": [
             {
+              "id": "CVE-2025-39964",
+              "desc": "Linux Kernel contains a race condition vulnerability which allows concurrent writes to the same AF_ALG socket causing data to be unpredictably interleaved and creating inconsistencies in the socket's internal state."
+            },
+            {
+              "id": "CVE-2026-53266",
+              "desc": "Linux Kernel contains an out-of-bounds write vulnerability in the ebtables SNAT target which allows an ARP sender hardware address rewrite to write directly into a nonlinear socket-buffer fragment backed by a splice-imported file page. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
+            },
+            {
               "id": "CVE-2026-58704",
               "desc": "Google Pixel devices contain an improper authorization vulnerability in the cellular modem. A logic error may allow an attacker to bypass permission checks and escalate privileges."
             },
@@ -94,14 +102,6 @@
             {
               "id": "CVE-2026-85706",
               "desc": "GitLab Community Edition and Enterprise Edition contains a path traversal vulnerability that allows an unauthenticated user to read arbitrary files due to an improper path confinement and missing authentication enforcement in the repository commits API."
-            },
-            {
-              "id": "CVE-2026-86060",
-              "desc": "MikroTik RouterOS contains an improper neutralization of argument delimiters in a command vulnerability which allows an attacker to change the trusted RouterOS policy mask, leading to privilege escalation."
-            },
-            {
-              "id": "CVE-2026-67277",
-              "desc": "MikroTik RouterOS contains a missing authentication for critical function vulnerability which allows kernel memory disclosure and denial of service in the btest service."
             }
           ]
         },

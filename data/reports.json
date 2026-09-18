@@ -3,15 +3,15 @@
     {
       "date": "2026-09-18",
       "stats": {
-        "new": 611,
+        "new": 612,
         "changed": 0,
         "removed": 0,
-        "total": 596759,
-        "zeroday": 95,
-        "exploited": 45,
+        "total": 597371,
+        "zeroday": 96,
+        "exploited": 46,
         "pakistan": 16
       },
-      "summary": "Today's digest contains 611 vulnerabilities across 5 sources. 95 zero-day exploits detected, 45 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+      "summary": "Today's digest contains 612 vulnerabilities across 5 sources. 96 zero-day exploits detected, 46 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
       "sections": [
         {
           "label": "Zero Day Exploits",
@@ -24,6 +24,10 @@
             {
               "id": "CVE-2026-53266",
               "desc": "Linux Kernel contains an out-of-bounds write vulnerability in the ebtables SNAT target which allows an ARP sender hardware address rewrite to write directly into a nonlinear socket-buffer fragment backed by a splice-imported file page. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
+            },
+            {
+              "id": "CVE-2025-39682",
+              "desc": "Linux Kernel contains an improper check for unusual or exceptional conditions vulnerability in the TLS receive path which allows a zero-length record retrieved from the rx_list to bypass the intended recvmsg() record-type handling, potentially causing subsequent TLS records to be processed using incorrect zero-copy and queuing assumptions. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
             },
             {
               "id": "CVE-2026-58704",
@@ -52,10 +56,6 @@
             {
               "id": "CVE-2026-42018",
               "desc": "JFrog Artifactory contains an improper authentication vulnerability that could return an internal anonymous-user token to an unauthenticated caller when anonymous access is disabled, potentially exposing sensitive resources."
-            },
-            {
-              "id": "CVE-2026-85706",
-              "desc": "GitLab Community Edition and Enterprise Edition contains a path traversal vulnerability that allows an unauthenticated user to read arbitrary files due to an improper path confinement and missing authentication enforcement in the repository commits API."
             }
           ]
         },
@@ -72,6 +72,10 @@
               "desc": "Linux Kernel contains an out-of-bounds write vulnerability in the ebtables SNAT target which allows an ARP sender hardware address rewrite to write directly into a nonlinear socket-buffer fragment backed by a splice-imported file page. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
             },
             {
+              "id": "CVE-2025-39682",
+              "desc": "Linux Kernel contains an improper check for unusual or exceptional conditions vulnerability in the TLS receive path which allows a zero-length record retrieved from the rx_list to bypass the intended recvmsg() record-type handling, potentially causing subsequent TLS records to be processed using incorrect zero-copy and queuing assumptions. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
+            },
+            {
               "id": "CVE-2026-58704",
               "desc": "Google Pixel devices contain an improper authorization vulnerability in the cellular modem. A logic error may allow an attacker to bypass permission checks and escalate privileges."
             },
@@ -98,10 +102,6 @@
             {
               "id": "CVE-2026-42018",
               "desc": "JFrog Artifactory contains an improper authentication vulnerability that could return an internal anonymous-user token to an unauthenticated caller when anonymous access is disabled, potentially exposing sensitive resources."
-            },
-            {
-              "id": "CVE-2026-85706",
-              "desc": "GitLab Community Edition and Enterprise Edition contains a path traversal vulnerability that allows an unauthenticated user to read arbitrary files due to an improper path confinement and missing authentication enforcement in the repository commits API."
             }
           ]
         },

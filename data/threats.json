@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-20T00:16:28.381870+00:00",
-  "summary": "Today's digest contains 217 vulnerabilities across 5 sources. 93 zero-day exploits detected, 43 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-20T05:13:46.219412+00:00",
+  "summary": "Today's digest contains 226 vulnerabilities across 5 sources. 93 zero-day exploits detected, 43 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 217,
+    "new": 226,
     "changed": 0,
     "removed": 0,
-    "total": 602477,
+    "total": 602703,
     "zeroday": 93,
     "exploited": 43,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 108
+      "count": 117
     },
     {
       "name": "Exploit-DB",
@@ -2615,7 +2615,7 @@
     {
       "id": "CVE-2026-78030",
       "desc": "DBI versions before 1.653 for Perl load arbitrary modules via unvalidated dbm_type and dbm_mldbm attributes in DBD::DBM.\n\nDBD::DBM passes the dbm_type and dbm_mldbm connect attributes to require without checking that the value names a module. require treats a path-shaped string as a literal filename and does not consult @INC, so the attribute chooses the file that Perl loads and runs.\n\nThe MLDBM::Serializer:: prefix that DBD::DBM prepends to dbm_mldbm is not a boundary: only the :: separators are rewritten to /, so a value containing / traverses out of the serializer directory. The value is also assigned to $MLDBM::Serializer, which MLDBM requires the same way when it ties the table.\n\nA caller that lets an untrusted party influence either attribute, for example through a DSN fragment or a parameter that selects a storage backend, runs the file-scope code of whatever module the value names.\n\nFor example,\n\n    my $dsn = \"dbi:DBM:f_dir=/var/db;dbm_type=../../Untrusted.pm\"\n    my $dbh = DBI->connect( $dsn );\n\nNote that DBD::Gofer forwards connect attributes to the server side, and DBI::ProxyServer checks only that a DSN starts with a driver prefix.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-09-19",
       "pakistan": false,
@@ -2627,7 +2627,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78030",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -3096,6 +3096,168 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94057",
       "cvss": "4.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86551",
+      "desc": "The Z80Ultra (NX741J) product contains a vulnerability where non-privileged programs can retrieve the Wi-Fi MAC address by querying the read-only field factory_mac_address in the Settings.Secure database.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86551",
+      "cvss": "3.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93957",
+      "desc": "A vulnerability has been found in olivier-ls PHP-FTS up to 1.1.3. This affects the function SearchEngine::matchesSingleFilter of the file src/SearchEngine.php of the component Filter Matching. The manipulation leads to incorrect comparison. Remote exploitation of the attack is possible. The exploit has been disclosed to the public and may be used. Upgrading to version 1.1.4 is able to mitigate this issue. The identifier of the patch is 0b2fae333d6b022da7ed4c43e2d41aa03f91dff3. It is suggested to upgrade the affected component. The vendor was contacted early, responded in a very professional manner and quickly released a fixed version of the affected product.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93957",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93958",
+      "desc": "A vulnerability was found in D-Link R95 BE9500_1.00.16. This vulnerability affects the function system of the file /bin/ssi of the component DHMAPI. The manipulation of the argument NTPServer results in os command injection. The attack can be executed remotely. The exploit has been made public and could be used.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93958",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94083",
+      "desc": "Suricata before 8.0.7 has a DoH2 type confusion that can cause an invalid free, because cleanup code for the HTTP2 state is executed even though the actual state is HTTP1 (when there is a DoH2 request with an HTTP1 to HTTP2 upgrade). This requires app-layer.protocols.doh2 to be enabled, which is the default in 8.x versions.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94083",
+      "cvss": "9.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94084",
+      "desc": "Suricata before 8.0.7 has an Http2ThreadMultiBuf use-after-free when a transaction is inspected by rules that use http.response_header with and without a transform.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94084",
+      "cvss": "9.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93959",
+      "desc": "A vulnerability was determined in SourceCodester Online Reviewer Management System 1.0. This issue affects some unknown processing of the file /reviewer_0/admins/assessments/course/btn_functions.php. This manipulation of the argument Course causes sql injection. The attack is possible to be carried out remotely. The exploit has been publicly disclosed and may be utilized.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93959",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86552",
+      "desc": "SmartLife app dynamically generates brand‑new SmartLife application authentication parameters at runtime. With the acquired SmartLife application authentication credentials, an attacker can directly complete registration using any arbitrary email address via the backend interface /account/person/signup.serv. Email ownership is not verified prior to registration.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86552",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86553",
+      "desc": "SmartLife app dynamically generates fresh SmartLife application authentication parameters inside its runtime process. Using the acquired SmartLife application authentication parameters, an attacker can directly call the backend interface /account/verify.serv to obtain the real account ID corresponding to a registered email address. By spoofing the application authentication information together with the target account ID, the attacker can reset the password of the target account.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86553",
+      "cvss": "8.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93960",
+      "desc": "A vulnerability was identified in Pixelfed up to 0.12.11. Impacted is the function instancePeers of the file app/Http/Controllers/Api/ApiV1Controller.php of the component OAuth Scope Handler. Such manipulation of the argument ID leads to missing authentication. The attack may be performed from remote. The exploit is publicly available and might be used. Upgrading to version 0.12.10 is recommended to address this issue. The name of the patch is 68dca5097305fa0065d029587b2233524636025a. Upgrading the affected component is advised.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93960",
+      "cvss": "4.3",
       "cwe": ""
     },
     {

@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-20T17:34:52.792461+00:00",
-  "summary": "Today's digest contains 298 vulnerabilities across 5 sources. 93 zero-day exploits detected, 43 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-20T20:28:26.338026+00:00",
+  "summary": "Today's digest contains 311 vulnerabilities across 5 sources. 93 zero-day exploits detected, 43 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 298,
+    "new": 311,
     "changed": 0,
     "removed": 0,
-    "total": 603549,
+    "total": 603860,
     "zeroday": 93,
     "exploited": 43,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 189
+      "count": 202
     },
     {
       "name": "Exploit-DB",
@@ -4554,6 +4554,240 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94040",
       "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-88854",
+      "desc": "Joomla Extension - OrdaSoft.com - Unauthenticated SQL Injection in OrdaSoft Joomla Gallery extension for Joomla < 6.2.7 - The extensions showSearchResult() and showSearchResultAjax() read the textsearch/searchText request parameter with $input->getVar(), which is not a real Joomla filter method and falls through to a filter that strips HTML tags but does not touch quotes or SQL syntax. The value is concatenated directly into a LIKE clause with no escaping. The endpoint requires no login of any kind: mod_osgallery_search is a public, commonly-published search box. Any anonymous site visitor can inject a UNION SELECT and read arbitrary database content.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88854",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-88855",
+      "desc": "Joomla Extension - OrdaSoft.com - Authenticated, Privileged SQL Injection in OrdaSoft Joomla Gallery extension for Joomla < 6.2.7 - The extensions saveGallery() passes form data through a hand-rolled parser into Joomla’s Input object, then reads it back with the ARRAY/ STRING filter types, neither of which sanitises SQL content. Values from category_names[], catOrderIds, and image-ordering fields were concatenated directly into SQL with no quoting or integer cast, giving an authenticated core.manage user (a permission scoped to managing one gallery component, not administrator-wide trust) full read/write access to the database, including UNION-based extraction of #__users password hashes.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88855",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-88856",
+      "desc": "Joomla Extension - OrdaSoft.com - Authenticated, Privileged Remote Code Execution in OrdaSoft Joomla Gallery extension for Joomla < 6.2.7 - The extensions updateOSGallery(), reached via task=update_osgallery, read a JSON request body and called the value of a method field as a live PHP function, passing the value of a package field as its single argument, with no allow-list or is_callable() check of any kind. Any function name compatible with a single argument was directly reachable, including system, exec, shell_exec, and passthru.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88856",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-88857",
+      "desc": "Joomla Extension - OrdaSoft.com - Authenticated, Privileged Remote Code Execution in OrdaSoft Joomla Gallery extension for Joomla < 6.2.7 - The extensions saveWatermark() copied an uploaded file into a web-accessible directory using the client-supplied filename exactly as sent, with no extension check, no content check, and no filename sanitisation of any kind. An authenticated core.manage user could upload a .php file disguised with an image Content-Type header and execute it directly by requesting the resulting path.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88857",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94041",
+      "desc": "A vulnerability has been found in AdithyaYelloju Restaurant-Management-System up to 7f0e7e84255e8fcfd488e83f8f91451bbbff6b9c. Affected by this issue is some unknown functionality of the file admin/add_menu.php. The manipulation of the argument item/price/image/type leads to sql injection. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. This product is using a rolling release to provide continious delivery. Therefore, no version details for affected nor updated releases are available. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94041",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94042",
+      "desc": "A vulnerability was found in AdithyaYelloju Restaurant Management System up to 7f0e7e84255e8fcfd488e83f8f91451bbbff6b9c. This affects the function mysqli_query of the file admin/add_table.php. The manipulation of the argument table/members/price results in sql injection. It is possible to launch the attack remotely. The exploit has been made public and could be used. This product takes the approach of rolling releases to provide continious delivery. Therefore, version details for affected and updated releases are not available. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94042",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94043",
+      "desc": "A vulnerability was determined in Free5GC up to 4.2.3. This vulnerability affects unknown code of the file /corefuzzer_deps/free5gc/NFs/amf/internal/gmm/handler.go of the component Gmm Handler. This manipulation causes race condition. The attack can be initiated remotely. Patch name: e323b01464355781b8b8d5dd695e05cbc00a62f2. To fix this issue, it is recommended to deploy a patch.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94043",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94044",
+      "desc": "A vulnerability was identified in 03-lovepreetSingh MCP up to f95d035c5317fad81af9828286631053ccb23546. This issue affects the function create_file of the file app/api/mcp/route.ts. Such manipulation of the argument filePath/content leads to path traversal. The attack can be launched remotely. The exploit is publicly available and might be used. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94044",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94045",
+      "desc": "A security flaw has been discovered in newbee-ltd newbee-mall up to 1.0.0. Impacted is an unknown function of the file controller/common/UploadController.java of the component Goods Save Endpoint. Performing a manipulation of the argument goodsName results in cross site scripting. The attack may be initiated remotely. The exploit has been released to the public and may be used for attacks. ImageIO.read() is a format-agnostic read - it returns non-null for a polyglot PNG|<img onerror> payload, which is exactly why the \"image-only\" guard is bypassable; the attacker-controlled suffix + /upload/** static mapping is what turns the upload into persisted XSS rather than a one-shot. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94045",
+      "cvss": "3.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94046",
+      "desc": "A weakness has been identified in 0215AndrewFeng ACE-MCP up to 4.10.8. The affected element is the function get_file_snippet of the file getFileSnippet.ts of the component MCP Tool. Executing a manipulation of the argument projectRootPath/filePath can lead to path traversal. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks. isPathInsideProjectRoot only blocks filePath escaping the attacker-chosen projectRootPath; the root itself is untrusted client input - set projectRootPath=/etc, filePath=hosts and the guard passes. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94046",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94047",
+      "desc": "A security vulnerability has been detected in samanhappy MCPHub up to 1.0.32. The impacted element is the function importTemplate of the file src/services/templateService.ts of the component Template Import Endpoint. The manipulation leads to improper privilege management. Remote exploitation of the attack is possible. The exploit has been disclosed publicly and may be used. Upgrading to version 1.0.33 is sufficient to resolve this issue. The identifier of the patch is 18a4467bc4ec6390b1f841d8a468a37e9922f837. It is advisable to upgrade the affected component.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94047",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94048",
+      "desc": "A vulnerability was detected in CodeAstro QR Code Attendance Management System 1.0. This affects the function Save of the file app/Controllers/UserController.php. The manipulation of the argument role_id results in improper privilege management. The attack can be executed remotely. The exploit is now public and may be used.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94048",
+      "cvss": "6.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94049",
+      "desc": "A flaw has been found in 06ketan slideshot up to 4.4.0. This impacts the function render_slides of the file packages/cli/src/renderer.ts. This manipulation of the argument htmlPath causes path traversal. The attack is possible to be carried out remotely. The exploit has been published and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-20",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94049",
+      "cvss": "4.3",
       "cwe": ""
     },
     {

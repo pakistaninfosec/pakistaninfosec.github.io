@@ -3,20 +3,24 @@
     {
       "date": "2026-09-21",
       "stats": {
-        "new": 368,
+        "new": 500,
         "changed": 0,
         "removed": 0,
-        "total": 605254,
-        "zeroday": 92,
-        "exploited": 42,
+        "total": 605754,
+        "zeroday": 93,
+        "exploited": 43,
         "pakistan": 16
       },
-      "summary": "Today's digest contains 368 vulnerabilities across 5 sources. 92 zero-day exploits detected, 42 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+      "summary": "Today's digest contains 500 vulnerabilities across 5 sources. 93 zero-day exploits detected, 43 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
       "sections": [
         {
           "label": "Zero Day Exploits",
           "color": "red",
           "items": [
+            {
+              "id": "CVE-2026-7273",
+              "desc": "Zyxel GS1900 series switches contain a stack-based buffer overflow vulnerability in the CGI program which could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request."
+            },
             {
               "id": "CVE-2025-39964",
               "desc": "Linux Kernel contains a race condition vulnerability which allows concurrent writes to the same AF_ALG socket causing data to be unpredictably interleaved and creating inconsistencies in the socket's internal state."
@@ -52,10 +56,6 @@
             {
               "id": "CVE-2026-42016",
               "desc": "JFrog Artifactory contains an incorrect authorization vulnerability that leads to a privilege escalation attack due to a validation check of the token signature/issuer and not the token’s scope."
-            },
-            {
-              "id": "CVE-2026-42018",
-              "desc": "JFrog Artifactory contains an improper authentication vulnerability that could return an internal anonymous-user token to an unauthenticated caller when anonymous access is disabled, potentially exposing sensitive resources."
             }
           ]
         },
@@ -64,6 +64,10 @@
           "color": "orange",
           "items": [
             {
+              "id": "CVE-2026-7273",
+              "desc": "Zyxel GS1900 series switches contain a stack-based buffer overflow vulnerability in the CGI program which could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request."
+            },
+            {
               "id": "CVE-2025-39964",
               "desc": "Linux Kernel contains a race condition vulnerability which allows concurrent writes to the same AF_ALG socket causing data to be unpredictably interleaved and creating inconsistencies in the socket's internal state."
             },
@@ -98,10 +102,6 @@
             {
               "id": "CVE-2026-42016",
               "desc": "JFrog Artifactory contains an incorrect authorization vulnerability that leads to a privilege escalation attack due to a validation check of the token signature/issuer and not the token’s scope."
-            },
-            {
-              "id": "CVE-2026-42018",
-              "desc": "JFrog Artifactory contains an improper authentication vulnerability that could return an internal anonymous-user token to an unauthenticated caller when anonymous access is disabled, potentially exposing sensitive resources."
             }
           ]
         },

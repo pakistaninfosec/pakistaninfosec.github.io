@@ -1,19 +1,19 @@
 {
-  "generated": "2026-09-22T17:10:50.518788+00:00",
-  "summary": "Today's digest contains 591 vulnerabilities across 5 sources. 93 zero-day exploits detected, 43 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-22T20:24:13.719544+00:00",
+  "summary": "Today's digest contains 613 vulnerabilities across 5 sources. 97 zero-day exploits detected, 47 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 591,
+    "new": 613,
     "changed": 0,
     "removed": 0,
-    "total": 607642,
-    "zeroday": 93,
-    "exploited": 43,
+    "total": 608255,
+    "zeroday": 97,
+    "exploited": 47,
     "pakistan": 16
   },
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 482
+      "count": 500
     },
     {
       "name": "Exploit-DB",
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 43
+      "count": 47
     },
     {
       "name": "Pakistan CERT",
@@ -335,6 +335,82 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93952",
+      "desc": "Arista VeloCloud Orchestrator (VCO) on-prem contains an improper input validation vulnerability that may allow a remote attacker to access privileged internal functionality and impact the VCO host. Successful exploitation may compromise the confidentiality, integrity, and availability of the orchestrator and data managed by the orchestrator.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93952",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94127",
+      "desc": "F5 BIG-IP APM contains a heap-based buffer overflow vulnerability when access policy and an OAuth profile are configured on a virtual server. This vulnerability could allow an unauthenticated attacker to perform remote code execution.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94127",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93616",
+      "desc": "Check Point Security Management Server, Multi-Domain Security Management Server, Log Server, Multi-Domain Log Server, and SmartEvent contain a path traversal vulnerability that allows an unauthenticated attacker to upload and execute arbitrary scripts.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93616",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85102",
+      "desc": "Check Point Security Gateway and Check Point Spark Firewall using Site to Site VPN or Remote Access VPN contain an improper certificate validation vulnerability which could allow an unauthenticated remote attacker to execute arbitrary code on the Gateway.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85102",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -3047,7 +3123,7 @@
     {
       "id": "CVE-2026-94184",
       "desc": "A stack-based buffer overflow flaw was found in fetchmail when built with NTLM support. A malicious or compromised mail server advertising NTLM authentication can send a crafted Type 2 challenge that causes fetchmail to write past a fixed stack buffer while building the NTLM authenticate response. This may lead to remote code execution depending on stack-frame layout, or to authentication failure or process termination under memory hardening.\n\nAffects v5.0.8 through v6.6.6.",
-      "severity": "HIGH",
+      "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-09-21",
       "pakistan": false,
@@ -3059,7 +3135,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94184",
-      "cvss": "8.1",
+      "cvss": "0.0",
       "cwe": ""
     },
     {
@@ -3965,7 +4041,7 @@
     {
       "id": "CVE-2026-93012",
       "desc": "Email::Sender::Transport::Sendmail versions before 2.602 for Perl allow arbitrary command execution on Windows sending a message whose envelope address reaches the shell in _sendmail_pipe.\n\nOn MSWin32 the envelope sender and every recipient go into a single command string, which open() passes to a shell. Every other platform gets the list form, which runs sendmail directly. When the caller supplies no envelope, Email::Sender::Simple takes the recipients from the To and Cc headers and the sender from the From header.\n\nAn attacker who controls one of those header addresses runs commands as the sending process.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-09-21",
       "pakistan": false,
@@ -3977,7 +4053,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93012",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -6088,7 +6164,7 @@
     },
     {
       "id": "CVE-2026-88738",
-      "desc": "Jazzware RT1000 Edge webUI v. 20.0.1 contains an unrestricted file upload vulnerability in the upgrade package upload functionality. An authenticated attacker can upload a server-side executable file. The uploaded file is stored in a web-accessible executable location and can be accessed directly over HTTP without authentication, resulting in remote code execution.",
+      "desc": "Jazzware RT1000 Edge webUI v. 20.0.1 contains an unrestricted file upload vulnerability in the upgrade package upload functionality. An attacker with administrative privileges can upload a server-side executable file. The uploaded file is stored in a web-accessible executable location and can be accessed directly over HTTP without authentication, resulting in remote code execution.",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-21",
@@ -6467,7 +6543,7 @@
     {
       "id": "CVE-2026-93710",
       "desc": "Dancer2 versions from 2.0.0 before 2.2.0 for Perl dispatch a route that a dying hook refused when the exception handler halts the response in compile_hooks.\n\nA hook that dies fires core.app.hook_exception, then calls cleanup unless the failing hook is the exception handler. A handler that halts does not stop that cleanup, which discards the request, response and session the dispatcher has yet to read, so the refused route runs.\n\nThe handler has to halt the response object by calling its halt method or setting is_halted: the halt keyword unwinds through with_return before cleanup runs.\n\nA check in a before hook is not enforced: the caller gets the refusal, while the route body runs and its writes land.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-22",
       "pakistan": false,
@@ -6479,7 +6555,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93710",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -6497,13 +6573,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93711",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-93712",
       "desc": "Dancer2 versions from 2.1.0 before 2.2.0 for Perl serve files from outside public_dir via relative path segments in the File route handler.\n\nThe handler joins the request path onto public_dir without collapsing relative segments, and checks only that the result is a readable regular file. A request for `/../outside.txt` escapes public_dir, and percent-encoding the dots reaches the same file.\n\nThe handler is off by default. An application is affected once it names File in route_handlers and sets static_handler to 0, which otherwise refuses a dot segment before the route runs.\n\nAny file the worker process can read is served to an unauthenticated request, including the application's config.yml above public_dir.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-22",
       "pakistan": false,
@@ -6515,7 +6591,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93712",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -7906,7 +7982,7 @@
     },
     {
       "id": "CVE-2026-95619",
-      "desc": "A flaw was found in libstdc++. An integer overflow can occur when processing large inputs to the C++ `new` operator. This vulnerability could lead to an undersized memory allocation, potentially causing memory corruption or application instability.",
+      "desc": "A flaw was found in libstdc++. An integer overflow can occur when processing large inputs to the aligned operator new in the C++ library. This vulnerability could lead to an undersized memory allocation, potentially causing memory corruption or application instability.",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-22",
@@ -8591,7 +8667,7 @@
     {
       "id": "CVE-2026-79313",
       "desc": "webpy web.py 0.76 is vulnerable to Insufficient Session Expiration. The application's session management relies on periodic cleanup to expire sessions instead of checking the last-access time when a session is loaded. As a result, an expired session whose record has not yet been cleaned up can still be replayed and used, allowing an attacker holding a previously valid session cookie to continue accessing protected resources after the configured idle timeout.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-09-22",
       "pakistan": false,
@@ -8603,7 +8679,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-79313",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -8681,7 +8757,7 @@
     {
       "id": "CVE-2026-93088",
       "desc": "SGLang's multimodal generation runtime is vulnerable to unauthenticated arbitrary code execution because the disaggregated-diffusion orchestrator's DiffusionServer binds an unauthenticated ZeroMQ ROUTER socket to a network interface and passes the final frame of received multipart messages directly to pickle.loads() before any validation occurs.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-09-22",
       "pakistan": false,
@@ -8693,7 +8769,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93088",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -8969,7 +9045,7 @@
     {
       "id": "CVE-2026-70410",
       "desc": "Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection') vulnerability in Apache Calcite Avatica. Plugin instantiation (via AvaticaUtils#instantiatePlugin and other methods) initializes arbitrary classes via unrestricted calls to Class.forName(String) which by default triggers initialization. This may lead to the execution of static initializer blocks in arbitrary classes present in the classpath. The instantiation APIs should initialize and instantiate only classes implementing the specified plugin interface passed as input in conjunction with the desired classname. At the moment of writing, there are no well-known or widely used classes with dangerous static initializer blocks so the severity is low.\n\n\n\nThis issue affects Apache Calcite Avatica: before 1.29.0.\n\n\n\nUsers are recommended to upgrade to version 1.29.0, which fixes the issue.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-22",
       "pakistan": false,
@@ -8981,7 +9057,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-70410",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -9653,7 +9729,7 @@
     {
       "id": "CVE-2026-86805",
       "desc": "A time-of-check to time-of-use (TOCTOU) race condition in the dynamic loader (ld.so) of the GNU C Library (glibc) versions 2.14 through 2.44 allows a local attacker to escalate privileges. When expanding $ORIGIN in DT_RPATH for setuid/setgid (AT_SECURE) programs, glibc validates the lexically normalized search path against the trusted directories but then opens the raw, un-normalized path. On systems where the Linux fs.protected_hardlinks sysctl is disabled, a local attacker who hard-links such a program into an attacker-controlled directory and wins a race to replace an intermediate path component with a symbolic link can direct the loader outside the trusted directory, causing it to load an attacker-controlled shared object and execute arbitrary code with the elevated privileges of the program.\n\nExploitation requires an installed setuid or setgid binary whose DT_RPATH uses $ORIGIN followed by \"..\" traversal that normalizes into a trusted directory, and the ability to hard-link that binary and win the race by swapping a path component for a symbolic link. Major Linux-based OS distributions ship with fs.protected_hardlinks enabled by default and mitigate the vulnerability.",
-      "severity": "HIGH",
+      "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-09-22",
       "pakistan": false,
@@ -9665,7 +9741,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86805",
-      "cvss": "7.0",
+      "cvss": "6.3",
       "cwe": ""
     },
     {
@@ -9828,6 +9904,330 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95806",
       "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13087",
+      "desc": "A heap out-of-bounds write vulnerability was found in the Linux kernel's RPC-over-RDMA server reply path in net/sunrpc/xprtrdma/svc_rdma_sendto.c. When a crafted RPC-over-RDMA client sends a large NFS READ request with an empty Write list and no Reply chunk, the server linearizes the entire multi-page reply into a fixed-size 4096-byte heap buffer without bounds checking, resulting in a kernel heap overflow. This can lead to denial of service via kernel crash or potential code execution through corruption of adjacent kernel heap objects.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13087",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-56682",
+      "desc": "9Router is an AI router & token saver. Prior to 0.5.6, 9Router deployments that allow requests to reach Next.js without the sanitizing custom-server.js wrapper use the client-supplied X-9r-Real-Ip value as the bucket key in getClientIp, checkLock, and recordFail in src/lib/auth/loginLimiter.js for POST /api/auth/login. A remote unauthenticated attacker can rotate the header on every password guess so each request uses a new failed-attempt bucket and the five-attempt progressive lockout never returns HTTP 429. This permits unthrottled password guessing against the dashboard login and can lead to an administrative session if the password is recovered. This issue is fixed in version 0.5.6.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-56682",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76802",
+      "desc": "Nuclei is a vulnerability scanner built on a simple YAML-based DSL. From 3.0.0 until 3.10.0, the DAST template loading branch does not apply the unsigned code-template signature check before accepting a template that contains both a fuzzing: block and an unsigned code: block. When an operator enables -dast, an untrusted multiprotocol template can place an unsigned code request into the execution queue and run arbitrary shell commands even without -code or a valid cryptographic signature. The issue affects CLI DAST scans and SDK integrations that enable DAST while accepting attacker-supplied templates. This issue is fixed in version 3.10.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76802",
+      "cvss": "4.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76803",
+      "desc": "Nuclei is a vulnerability scanner built on a simple YAML-based DSL. From 3.0.0 until 3.10.0, the nuclei/mysql JavaScript library does not enforce the local-file sandbox when a JavaScript template supplies the allowAllFiles MySQL DSN option. An untrusted javascript: template scanning an attacker-controlled MySQL-compatible endpoint can cause the server to issue LOAD DATA LOCAL INFILE requests for arbitrary paths, after which the scanner's MySQL client reads the files and returns their contents to the server even though -allow-local-file-access is disabled. JavaScript templates can run unsigned and without the -code flag on affected versions, and the bypass affects CLI and SDK deployments that accept untrusted templates. This issue is fixed in version 3.10.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76803",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76804",
+      "desc": "Nuclei is a vulnerability scanner built on a simple YAML-based DSL. From 3.0.0 until 3.10.0, the workflow template loading path does not enforce the -file capability gate when resolving file: protocol templates referenced by a workflow. An untrusted unsigned workflow can therefore load a file-protocol template and read local files from the scanner host even when the operator has not enabled file templates. The issue affects CLI users running workflows with -w and SDK integrations that accept end-user workflows while relying on the default file-access restriction. This issue is fixed in version 3.10.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76804",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76805",
+      "desc": "Nuclei is a vulnerability scanner built on a simple YAML-based DSL. From 3.0.0 until 3.10.0, the DAST/fuzz payload path in pkg/fuzz/parts.go can evaluate substituted runtime data more than once, creating a second evaluation pass that allows response content captured by an internal: true extractor in one protocol step to be reinterpreted as template syntax in a later fuzz step. This vulnerability is an incomplete fix for CVE-2026-41645: the prior remediation made expressions.Evaluate() single-pass within one call but did not prevent DAST/fuzz callers from evaluating substituted output again. When -env-vars is enabled, a malicious scan target can return marker-shaped content that resolves against the template variable map and discloses scanner-host environment variables such as credentials, API keys, or tokens. The vulnerability requires a multi-step DAST or fuzz template, response data reused through an internal extractor, and explicit environment-variable expansion; users who do not enable -env-vars are not affected by the sensitive-information disclosure. This issue is fixed in version 3.10.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76805",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76819",
+      "desc": "Rejected reason: Further research determined the issue results from a dependency.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76819",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-83598",
+      "desc": "Netdata is an open source observability tool. From rom 2.0.0 until 2.10.4, during Netdata Windows Agent MSI repair, powershell.exe runs as SYSTEM without -NoProfile and loads %USERPROFILE%\\Documents\\WindowsPowerShell\\Microsoft.PowerShell_profile.ps1 from the low-privileged user who initiated repair. Commands placed in that profile before repair therefore execute with SYSTEM privileges. This vulnerability is fixed in 2.10.4.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-83598",
+      "cvss": "7.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-83599",
+      "desc": "Netdata is an open source observability tool. Prior to 2.11.0, Netdata's unauthenticated WebSocket server negotiates permessage-deflate before authentication, and src/web/websocket/websocket-compression.c allows websocket_client_decompress_message() to grow decompressed output toward WS_MAX_DECOMPRESSED_SIZE without enforcing a compressed-to-decompressed ratio. Small highly compressed frames can therefore cause large server-side allocations, and repeated concurrent connections can exhaust memory and terminate monitoring. This vulnerability is fixed in 2.11.0.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-83599",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-83600",
+      "desc": "Netdata is an open source observability tool. Prior to 2.10.4, an authenticated child agent can send an oversized CHART SLOT value that str2ull_encoded passes to pluginsd_rrdset_cache_put_to_slot in src/plugins.d/pluginsd_internals.h. The accepted slot drives reallocz to request an approximately 16 GiB chart-pointer array, and allocation failure invokes fatal and aborts the parent Netdata agent, repeatedly disabling centralized monitoring while stream access persists. This issue is fixed in version 2.10.4 and nightly build 2.10.0-782-nightly.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-83600",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-83601",
+      "desc": "Netdata is an open source observability tool. Prior to 2.10.4, an authenticated child agent can send an oversized DIMENSION SLOT value that str2ull_encoded passes to pluginsd_rrddim_put_to_slot in src/plugins.d/pluginsd_internals.h without an upper bound. prd_array_create in src/database/rrdset-pluginsd-array.h can then wrap the size_t allocation calculation while retaining the original large array size, causing the subsequent initialization loop to write beyond the undersized heap allocation and crash the parent agent. This issue is fixed in version 2.10.4 and nightly build 2.10.0-782-nightly.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-83601",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-83602",
+      "desc": "Netdata is an open source observability tool. From 2.0.0 until 2.11.0, Netdata registers /api/v3/settings in src/web/api/v3/web_api_v3.c with HTTP_ACL_NOCHECK and HTTP_ACCESS_ANONYMOUS_DATA, causing unauthenticated PUT requests handled by src/web/api/v3/api_v3_settings.c to bypass operator-configured allow dashboard from IP restrictions. A network-reachable caller can persist attacker-controlled JSON in {varlib}/settings/default.json, manipulate its version counter, and use repeated near-20 MiB writes to consume disk space, although the file does not control collection or security policy. This vulnerability is fixed in 2.11.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-83602",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-83603",
+      "desc": "Netdata is an open source observability tool. Prior to 2.10.4, the setuid-root ndsudo helper command fail2ban-client-status-socket in src/collectors/utils/ndsudo.c accepts a caller-controlled --socket_path from the low-privileged netdata service account. The account can direct root fail2ban-client to a malicious UNIX socket, and fail2ban/client/csocket.py CSocket.receive() passes the returned data to pickle.loads(), allowing attacker-controlled code to execute as root on systems with fail2ban-client installed. This issue is fixed in version 2.10.4 and nightly build 2.10.0-782-nightly.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-83603",
+      "cvss": "8.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-83803",
+      "desc": "Sentry is an error tracking and performance monitoring tool. From 23.11.0 until 26.7.0, Sentry instances with the relocation feature enabled unsafely deserialize a legacy database field while importing a user-supplied relocation archive. An authenticated user can craft an archive that causes arbitrary code execution in the import worker process. Self-hosted installations using the default configuration are not affected because the relocation feature is disabled by default. This issue is fixed in version 26.7.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-83803",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84301",
+      "desc": "FastGPT is an open-source LLM platform for building AI applications on a knowledge base. Prior to 4.15.2, the safe Axios request interceptor in packages/service/common/api/axios.ts validates a hostname with isInternalAddress() before a later HTTP connection performs an independent DNS lookup, creating a DNS rebinding window, allowing an attacker-controlled hostname to resolve publicly during the check and to a loopback, private, link-local, or metadata address during connection. An authenticated attacker who can supply a URL to a safe-Axios-backed HTTP tool, workflow HTTP node, external file fetch, or other server-side integration can use this time-of-check/time-of-use gap to reach services that direct private-address inputs would block. The same independent re-resolution occurs after manual redirect hops because each redirect target is checked before a separate connection lookup. This issue is fixed in version 4.15.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84301",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85709",
+      "desc": "LightRAG provides simple and fast retrieval-augmented generation. Prior to 1.5.5, the LightRAG API server returns raw Python exception text from error handlers in document_routes.py, graph_routes.py, query_routes.py, ollama_api.py, and lightrag_server.py. The detail=str(e), detail=str(exc), and equivalent formatted-message paths expose server filesystem paths, database host, port, user, and database names, language-model provider diagnostics, configuration details, and Python library internals to a network client that can trigger an error. The default unauthenticated configuration makes those responses reachable without credentials, and URI-configured backends can disclose connection strings containing credentials depending on the underlying driver error. This issue is fixed in version 1.5.5.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85709",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85725",
+      "desc": "LightRAG provides simple and fast retrieval-augmented generation. Prior to 1.5.5, verify_password in lightrag/api/passwords.py compares plaintext AUTH_ACCOUNTS password values with Python's == operator. The comparison can return after the first mismatching byte, creating response-time differences based on password length and matching prefixes. A network attacker with sufficiently low-latency access can repeatedly query the /login endpoint and use the timing oracle to recover a plaintext-configured password character by character. Deployments using bcrypt-prefixed password values are not affected by this comparison path. This issue is fixed in version 1.5.5.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85725",
+      "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85734",
+      "desc": "LightRAG provides simple and fast retrieval-augmented generation. Prior to 1.5.5, the POST /login endpoint in lightrag/api/lightrag_server.py does not impose a rate limit, account lockout, delay, or counter for failed authentication attempts. A network attacker can submit password guesses at full request speed until a valid account password is found. Successful credential recovery grants authenticated access to documents, the knowledge graph, and administrative operations. This issue is fixed in version 1.5.5.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85734",
+      "cvss": "9.1",
       "cwe": ""
     },
     {

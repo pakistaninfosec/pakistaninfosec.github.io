@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-22T01:05:02.070091+00:00",
-  "summary": "Today's digest contains 402 vulnerabilities across 5 sources. 93 zero-day exploits detected, 43 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-22T06:37:35.082555+00:00",
+  "summary": "Today's digest contains 416 vulnerabilities across 5 sources. 93 zero-day exploits detected, 43 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 402,
+    "new": 416,
     "changed": 0,
     "removed": 0,
-    "total": 606156,
+    "total": 606572,
     "zeroday": 93,
     "exploited": 43,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 293
+      "count": 307
     },
     {
       "name": "Exploit-DB",
@@ -6426,6 +6426,258 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94490",
       "cvss": "4.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76974",
+      "desc": "SAP Fiori Launchpad does not sufficiently validate certain user-controlled input. An unauthenticated attacker could craft a malicious link that, when clicked by an authenticated user, causes the browser to load attacker-controlled content from an external location. This could be used to exfiltrate sensitive information from the victim's session, resulting in a high impact on confidentiality. There is no impact on integrity and availability.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76974",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93709",
+      "desc": "Dancer2 versions before 2.2.0 for Perl serve a layout as a page when an equivalent spelling of its path misses the guard in the AutoPage handler.\n\nThe handler compares the request path against the layout directory name as text, while the lookup that follows canonicalises it. A doubled slash, a dot segment, a percent-encoded slash, or a different capitalisation on a case-insensitive filesystem therefore misses the guard.\n\nThe handler is off by default, enabled with auto_page. The layout wrapping every page is already public, so this discloses one of the application's other layouts.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93709",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93710",
+      "desc": "Dancer2 versions from 2.0.0 before 2.2.0 for Perl dispatch a route that a dying hook refused when the exception handler halts the response in compile_hooks.\n\nA hook that dies fires core.app.hook_exception, then calls cleanup unless the failing hook is the exception handler. A handler that halts does not stop that cleanup, which discards the request, response and session the dispatcher has yet to read, so the refused route runs.\n\nThe handler has to halt the response object by calling its halt method or setting is_halted: the halt keyword unwinds through with_return before cleanup runs.\n\nA check in a before hook is not enforced: the caller gets the refusal, while the route body runs and its writes land.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93710",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93711",
+      "desc": "Dancer2 versions before 2.2.0 for Perl do not strip CR and LF from response header names in headers_to_array.\n\nThe routine removes CR and LF from each header value but not from the name. A name carrying them therefore reaches the PSGI server intact. A server that does not validate keys writes it to the wire, so the bytes after the CRLF arrive as their own header line.\n\nThe application has to derive the header name from request data, not just the value.\n\nAn attacker who controls that data adds their own headers and splits the response.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93711",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93712",
+      "desc": "Dancer2 versions from 2.1.0 before 2.2.0 for Perl serve files from outside public_dir via relative path segments in the File route handler.\n\nThe handler joins the request path onto public_dir without collapsing relative segments, and checks only that the result is a readable regular file. A request for `/../outside.txt` escapes public_dir, and percent-encoding the dots reaches the same file.\n\nThe handler is off by default. An application is affected once it names File in route_handlers and sets static_handler to 0, which otherwise refuses a dot segment before the route runs.\n\nAny file the worker process can read is served to an unauthenticated request, including the application's config.yml above public_dir.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93712",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94491",
+      "desc": "A weakness has been identified in Yonyou KSOA 9.0. This affects an unknown part of the file /cardcase/search_list.jsp. Executing a manipulation of the argument address can lead to sql injection. It is possible to launch the attack remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94491",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94492",
+      "desc": "A security vulnerability has been detected in Yonyou U8cloud 5.x. This vulnerability affects unknown code of the file /u8cloud/openapi/so.saleorder.sendaudit of the component OpenAPI. The manipulation of the argument operator leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94492",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94493",
+      "desc": "A vulnerability was detected in Gigatech PDV5701 1.0.31_240305_112640. This issue affects some unknown processing of the file /index.html of the component WebSocket Service. The manipulation results in missing authentication. The attack can be launched remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94493",
+      "cvss": "10.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13355",
+      "desc": "The Meta Box AIO plugin for WordPress is vulnerable to Privilege Escalation to Administrator in versions up to, and including, 3.11.0. This is due to a chained flaw: the populate_via_query_string() function in the mb-frontend-submission component unconditionally overrides the form's target object_id from the GET parameter 'rwmb_frontend_field_object_id' without any authorization check, and Form::process() lacks the user_can_edit() check present in render(), allowing unauthenticated attackers to overwrite the post_content of any page with an arbitrary shortcode via wp_update_post(); the mb-user-profile component then directly trusts the 'role' and 'auto_login' shortcode attributes in the injected [mb_user_profile_register] shortcode with no role validation. This makes it possible for unauthenticated attackers to elevate their privileges to Administrator. The standalone plugins Meta Box Frontend Submission (in versions up to 4.5.6) and Meta Box User Profile (versions up to 3.11.0) are also affected.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13355",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19658",
+      "desc": "The Give Tributes plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 2.3.1 via deserialization of untrusted input . This makes it possible for unauthenticated attackers to inject a PHP Object. No known POP chain is present in the vulnerable software, which means this vulnerability has no impact unless another plugin or theme containing a POP chain is installed on the site. If a POP chain is present via an additional plugin or theme installed on the target system, it may allow the attacker to perform actions like delete arbitrary files, retrieve sensitive data, or execute code depending on the POP chain present. This vulnerability is only reachable when the \"Allow Multiple Recipients\" option is enabled for the donation form, as the single-recipient code path applies sanitize_textarea_field() which would neutralize the payload. Exploitation additionally requires the eCard \"Custom Message\" option to be disabled, which is the plugin default: when it is enabled the personalized message becomes a required field and GiveWP's give_clean() blanks serialized input during validation, causing the donation to be rejected before it is stored.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19658",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-12470",
+      "desc": "The CMP – Coming Soon & Maintenance Plugin by NiteoThemes plugin for WordPress is vulnerable to unauthorized modification of data that can lead to privilege escalation due to a missing capability check on the 'cmp_ajax_import_settings' AJAX action in all versions up to, and including, 4.1.17. This makes it possible for authenticated attackers, with Editor-level access and above, to update arbitrary options on the WordPress site. This can be leveraged to update the default role for registration to administrator and enable user registration for attackers to gain administrative user access to a vulnerable site.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12470",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85653",
+      "desc": "The Contextual Related Posts plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'other_attributes' Block Parameter in all versions up to, and including, 4.4.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85653",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-88788",
+      "desc": "The Text Styler WordPress plugin through 1.1.1 does not sanitise and escape user-supplied styling values before outputting them within a front-end style block, and does not verify that a user may edit the target post, allowing users with contributor-level access or above to store JavaScript that executes in the browser of anyone viewing the affected post, including administrators.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88788",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93655",
+      "desc": "The Booking Calendar plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'wpbc_auto_fill' parameter in all versions up to, and including, 11.8.3 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93655",
+      "cvss": "6.1",
       "cwe": ""
     },
     {

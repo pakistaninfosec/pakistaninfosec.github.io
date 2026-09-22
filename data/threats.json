@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-22T06:37:35.082555+00:00",
-  "summary": "Today's digest contains 416 vulnerabilities across 5 sources. 93 zero-day exploits detected, 43 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-22T12:26:16.872140+00:00",
+  "summary": "Today's digest contains 479 vulnerabilities across 5 sources. 93 zero-day exploits detected, 43 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 416,
+    "new": 479,
     "changed": 0,
     "removed": 0,
-    "total": 606572,
+    "total": 607051,
     "zeroday": 93,
     "exploited": 43,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 307
+      "count": 370
     },
     {
       "name": "Exploit-DB",
@@ -6659,7 +6659,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88788",
-      "cvss": "0.0",
+      "cvss": "6.8",
       "cwe": ""
     },
     {
@@ -6678,6 +6678,1140 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93655",
       "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-89412",
+      "desc": "The TranslatePress – Translate Multilingual sites with AI Translation plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Translation Memory Suggestion Panel (v-html on suggestion.original) in all versions up to, and including, 3.3.5 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Unauthenticated attackers can seed the translation dictionary's original column with executable HTML because the front-end rendering pipeline decodes entity-encoded payloads via html_entity_decode() before persistence, and the original column is deliberately exempt from kses filtering — meaning no save-time sanitizer neutralizes the stored payload before it is later rendered in an administrator's session.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89412",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-91827",
+      "desc": "The Ninja Forms WordPress plugin 3.15.3 does not prevent user-submitted form field values from being deserialised when an administrator later exports form submissions to CSV, allowing unauthenticated attackers to perform PHP Object Injection; if a suitable POP chain is present via another installed plugin or theme, this can lead to actions such as arbitrary file operations or remote code execution.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91827",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-92438",
+      "desc": "The Ninja Forms WordPress plugin 3.15.3 does not escape submitted form field values before outputting them on the submission edit screen in the admin area, which could allow unauthenticated users to submit values through a public form that then execute in the browser of any high-privileged user who reviews the submission.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92438",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94504",
+      "desc": "Ninja Forms 3.15.3 stores an anonymous non-RTE textarea value and renders it without safe HTML encoding in the legacy submission editor. An attacker can break out of the textarea with stored script. When an Administrator opens the attacker-known direct submission URL, the script runs in the WordPress admin origin.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94504",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2016-15059",
+      "desc": "Net::IDN::Punycode versions before 2.301 for Perl allow a heap buffer overflow via unchecked writes past the output buffer in encode_punycode.\n\nThe XS backend builds the encoded label in the string buffer of the scalar it returns, sized from the input length. The loop that emits the digits of each code point checks for room before every write, but the write of the last digit of each round and the write of the terminating NUL do not, so an input whose encoded form fills the buffer writes past its end.\n\nOnly the XS backend is affected.\n\nEncoding an attacker-supplied string corrupts the heap.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2016-15059",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-14484",
+      "desc": "The Image Buzz plugin for WordPress is vulnerable to unauthorized API key modification due to missing authorization checks in all versions up to, and including, 1.0.3. This makes it possible for unauthenticated attackers to modify arbitrary API keys (Pixabay, Unsplash, Pixels) configured by site administrators via the 'pixabay_api', 'unsplash_api', or 'pixels_api' parameters.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14484",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-14486",
+      "desc": "The PixelPlay plugin for WordPress is vulnerable to unauthorized API key deletion due to missing authorization checks in all versions up to, and including, 1.0.2. This makes it possible for unauthenticated attackers to delete arbitrary API keys (Pixabay, Unsplash, Pixels, OpenAI) configured by site administrators via the 'clear_api_type' parameter.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14486",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-14487",
+      "desc": "The Handily plugin for WordPress is vulnerable to unauthorized payment settings modification due to missing authorization checks in all versions up to, and including, 1.0.3. This makes it possible for unauthenticated attackers to modify Stripe payment configuration settings, including publishable keys, secret keys, email addresses, success URLs, and cancel URLs via the payment settings parameters. This could allow attackers to redirect payments to their own Stripe accounts.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-14487",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-1280",
+      "desc": "The BM Content Builder plugin for WordPress is vulnerable to Directory Traversal in all versions up to 3.17.1 (exclusive) via the ux_cb_page_customize_save_layout_ajax() function. This makes it possible for authenticated attackers, with Subscriber-level access and above, to read the contents of arbitrary files on the server, which can contain sensitive information.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-1280",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-1281",
+      "desc": "The BM Content Builder plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the ux_cb_remove_layout_ajax() and ux_cb_tools_export_ajax() functions in all versions up to, and excluding, 3.17.1. This makes it possible for authenticated attackers, with Subscriber-level access and above, to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php).",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-1281",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-12995",
+      "desc": "The Custom Field Template plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 2.7.8 via the edit_meta_value due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with contributor-level access and above, to delete arbitrary media attachments site-wide by supplying any numeric attachment ID in the file-field parameter alongside the corresponding delete flag, causing content loss and broken pages. Exploitation requires that the attacker's post is governed by a Custom Field Template containing at least one file-type field with the mediaRemove option not enabled, which is the default configuration for file fields.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-12995",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-16778",
+      "desc": "The Live Composer – Free WordPress Website Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'dslc_module_downloads_output' Shortcode Content in all versions up to, and including, 2.1.21 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The save-time wp_kses_post check is bypassed because the payload is stored as a serialized string containing no HTML tags for kses to tokenize, and the shortcode callback re-emits attacker-controlled values — including view_all_link (href attribute), main_heading_title (h2 body), button_text (anchor body), and button_inline_svg (anchor body) — without any escaping at render time.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-16778",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18345",
+      "desc": "The WP User Manager plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the Connect::complete() function in versions up to, and including, 2.9.18. The function is registered on the admin_init hook (which fires for every authenticated user that reaches /wp-admin/, including Subscribers) and performs no current_user_can() or nonce verification before fetching Stripe credentials from the external WPUM connect service and writing them (publishable key, secret key, gateway mode, and connected Stripe account ID) into the wpum_settings option via wpum_update_option()/update_option(). This makes it possible for authenticated attackers, with Subscriber-level access and above, to hijack the site's Stripe integration by completing their own Stripe Connect OAuth flow and then invoking the callback on the target site, causing all subsequent Stripe payments to be routed to the attacker's Stripe account.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18345",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-18439",
+      "desc": "The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to Insecure Direct Object Reference in versions up to, and including, 4.0.7 via the tutor_quiz_builder_save AJAX action due to missing validation that nested question_id, answer_id, deleted_question_ids[], and deleted_answer_ids[] values in the submitted payload belong to a quiz/topic/course the requester is authorized to manage. The handler only validates the top-level course_id, topic_id, and (when supplied) payload['ID'], but the nested identifiers are passed straight into $wpdb->update/DELETE statements in QuizBuilder::save_questions(), QuizBuilder::save_question_answers(), and QuizBuilder::handle_delete(). This makes it possible for authenticated attackers, with Instructor-level access and above, to overwrite the content and re-parent arbitrary quiz questions/answers belonging to other instructors or administrators, and to delete arbitrary quiz question and answer rows.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-18439",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-1645",
+      "desc": "The Hostel plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'custom_currency' parameter and the 'locale_url' setting in all versions up to, and including, 1.1.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Administrator-level access, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfiltered_html has been disabled.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-1645",
+      "cvss": "4.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-4123",
+      "desc": "The RW Elephant Rental Inventory plugin for WordPress is vulnerable to Missing Authorization in all versions up to and including 2.3.13. This is due to a missing capability check on the toggle_cache() function which is hooked to the wp_ajax_toggle_cache AJAX action. The function also lacks nonce verification. This makes it possible for authenticated attackers, with Subscriber-level access and above, to toggle the plugin's cache setting on or off by sending a POST request to admin-ajax.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4123",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-6922",
+      "desc": "The WP Table Builder – Drag & Drop Table Builder plugin for WordPress is vulnerable to Incorrect Authorization in all versions up to, and including, 2.2.1. This is due to an operator precedence bug in the post-type guard within the trash_table_bulk() and restore_table_bulk() functions that causes the guard to never fire, combined with a permission callback that only verifies plugin role membership without per-post-type or ownership checks. This makes it possible for authenticated attackers, with subscriber-level access and above, to trash or restore any post, page, or custom post type on the site by supplying arbitrary post IDs.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-6922",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-74765",
+      "desc": "Net::IDN::Punycode versions before 2.590 for Perl allow an out-of-bounds read via integer overflow of the delta accumulator in encode_punycode.\n\nThe XS backend keeps the punycode delta, and the digit index derived from it, in a signed int. The accumulation `delta += (m-n) * (h+1)` has no overflow check, so a large enough code point wraps the delta and the digit index leaves the range of the 36-entry digit table. The bound before the final table access tests only for an index above 36, so a negative index passes it, as does 36 itself. Perl strings hold code points beyond the Unicode range, and one such code point overflows the accumulation on its own. Valid input wraps it as well, for example 1927 ASCII letters followed by U+10FFFF. The conversion functions encode a label before they check its length, so a long label reaches the encoder through the documented API.\n\nOnly the XS backend is affected.\n\nEncoding an attacker-supplied string copies a byte from outside the digit table into the encoded result or crashes the process.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74765",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-74766",
+      "desc": "Net::IDN::Punycode versions from 2.301 before 2.590 for Perl allow a heap use-after-free via a decoded code point that reallocates the output buffer in decode_punycode.\n\nThe XS backend inserts each decoded code point into the string buffer of the scalar it returns. decode_punycode computes the insertion pointer first and only then grows the buffer when the code point does not fit. The growth reallocates the buffer and updates every pointer except the insertion pointer, so the move that follows and the write of the code point go through a freed pointer. The buffer starts at twice the label length, and a code point above U+FFFF takes four bytes in the output, so a label of such code points outgrows it and forces the reallocation.\n\nVersion 2.301, the fix for CVE-2016-15059, introduced the defect. Only the XS backend is affected.\n\nDecoding an attacker-supplied punycode label reads and writes freed heap memory.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74766",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-7622",
+      "desc": "The ThumbPress plugin for WordPress is vulnerable to unauthorized access in versions up to and including 6.2.1. This is due to missing capability checks and nonce verification in the send_deactivation_survey() function registered via the wp_ajax_pl-plugin-deactivation AJAX action. This makes it possible for authenticated attackers, with Subscriber-level access and above, to deactivate the ThumbPress plugin on the affected site by sending a crafted POST request to admin-ajax.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7622",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-87078",
+      "desc": "Net::IDN::Punycode versions from 2.302 before 2.590 for Perl leak the output buffer on every rejected label in decode_punycode.\n\nThe XS backend allocates the scalar it returns before it validates the input, sizing the buffer at twice the input length. The scalar is released only on the success path, so each of the three croaks that reject a label leaves the scalar and its buffer allocated. Nothing bounds the label length in the to-Unicode direction, since the 63-byte DNS limit is checked only when converting to ASCII.\n\nOnly the XS backend is affected.\n\nA sender who supplies invalid labels grows the process by twice the label length per rejected call, with no successful call needed.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87078",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-87079",
+      "desc": "Net::IDN::Punycode versions before 2.590 for Perl allow CPU exhaustion via quadratic insertion cost when decoding a long label in decode_punycode.\n\nThe XS backend inserts each decoded code point into a UTF-8 buffer and finds the insertion point by scanning that buffer from the start, one character at a time. The scan runs once per code point over the output built so far, so the cost is quadratic in the label length. The pure-Perl backend downgrades its input to bytes so that substr can index it directly, but takes its working copy before the downgrade, so when the input carries the UTF-8 flag every substr on the copy scans from the start, with the same quadratic cost.\n\nNothing bounds the label length in the to-Unicode direction. The 63-byte DNS limit is checked only when converting to ASCII, so domain_to_unicode and uts46_to_unicode pass an attacker-supplied label of any length to the decoder.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87079",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-87080",
+      "desc": "Net::IDN::Punycode::PP versions before 2.590 for Perl decode a truncated label to a name containing a character it never encoded in decode_punycode.\n\nThe pure-Perl decoder reads one digit at a time with four-argument substr and tests the result with defined to detect the end of the input. substr on an exhausted string returns the empty string rather than undef, so decoding continues past the end. The empty string converts to a digit value below the range, reducing the accumulator, and the decoder derives one extra code point and its position from it. The result is deterministic. The XS backend rejects the same label.\n\nNet::IDN::Punycode uses this backend wherever the XS does not build.\n\nThe two backends disagree about what such a label means, so a sender can pick a label that one installation resolves to a name and another rejects.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87080",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-87081",
+      "desc": "Net::IDN::UTS46 versions before 2.590 for Perl allow CPU exhaustion via quadratic punycode encoding of an overlong label before the length check in to_ascii.\n\nto_ascii punycode encodes each label and only then applies the 63-byte DNS limit. encode_punycode in both backends follows the sample implementation in RFC 3492, whose outer loop runs once per distinct non-ASCII code point and scans the whole input each round, so a label of distinct non-ASCII characters costs the square of its length before the limit rejects it. Every ASCII conversion in the distribution, including domain_to_ascii and email_to_ascii, goes through to_ascii.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87081",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-87082",
+      "desc": "Net::IDN::Punycode versions before 2.590 for Perl hang, crash or return a wrong label via unvalidated malformed UTF-8 in encode_punycode.\n\nNeither backend checks that its input is well-formed UTF-8, so a string with the UTF-8 flag set over malformed bytes, as the :utf8 PerlIO layer produces from any malformed input, reaches the encoder unchecked. On perl 5.32 and later the XS backend reports a malformed sequence with a length of `(STRLEN)-1`, so the scan steps back one byte instead of forward and never ends. On earlier perls the XS returns a valid label for a different name. The pure-Perl backend runs a regex over the flagged string. Depending on the bytes, it aborts with SIGBUS on perl 5.28 and later, dies with a panic, or returns a wrong label.\n\nThe documented conversion functions match the label against Unicode properties first and that match dies on such a string, so only a direct call to encode_punycode reaches the defect. The decoder is not affected.\n\nA direct caller encoding attacker-supplied bytes hangs, crashes or gets a label for a name the input never held.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87082",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-91092",
+      "desc": "The wpForo Forum plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 3.1.5. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to take over another guest author's forum post and modify its title, body, author name, and stored owner email address. This requires that guest posting and editing are enabled on the forum, and that the attacker knows the target guest author's email address.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91092",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-92235",
+      "desc": "The The WP Ultimate Review plugin for WordPress is vulnerable to arbitrary shortcode execution in all versions up to, and including, 2.4.2. This is due to the software allowing users to execute an action that does not properly validate a value before running do_shortcode. This makes it possible for authenticated attackers, with subscriber-level access and above, to execute arbitrary shortcodes.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92235",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-92969",
+      "desc": "The HUSKY – Products Filter for WooCommerce Professional plugin for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 1.4.4 via the 'shortcode' parameter parameter. This makes it possible for unauthenticated attackers to include and execute arbitrary .php files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or achieve code execution in cases where .php file types can be uploaded and included. This vulnerability is exploitable by unauthenticated users because the only access control is a nonce check against woof_front_nonce, which is publicly emitted into inline JavaScript on every front-end page and is therefore obtainable by any site visitor without authentication.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92969",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93778",
+      "desc": "The WP Yelp Review Slider plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Yelp Review Text (imported via wpyelp_download_source) in all versions up to, and including, 9.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The malicious payload originates from an anonymous Yelp reviewer on a public platform and requires no WordPress account; it is introduced into the database during the site administrator's ordinary use of the plugin's Download Reviews feature, making the effective attacker unauthenticated.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93778",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93836",
+      "desc": "The WPC Product Bundles for WooCommerce plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'qty' parameter in all versions up to, and including, 8.6.6 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The float cast used during quantity validation allows a numeric-prefixed payload such as '1<img src=x onerror=...>' to pass validation while retaining its malicious HTML, which is then stored verbatim in order item metadata under the '_woosb_ids' key.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93836",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93952",
+      "desc": "VeloCloud Orchestrator (VCO) on-prem has a security issue where this issue may allow a remote attacker to access privileged internal functionality and impact the VCO host. Successful exploitation may compromise the confidentiality, integrity, and availability of the orchestrator and data managed by the orchestrator.\n\nHosted, including Dedicated, versions of VCO were impacted and have already been patched.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93952",
+      "cvss": "10.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95503",
+      "desc": "A flaw was found in the Kerberos federation provider of Keycloak, an open-source identity and access management solution. When Kerberos password authentication is used without SPNEGO, the system fails to verify the identity of the Key Distribution Center (KDC) by requesting a server ticket. This allows an attacker on the same network to spoof the KDC and bypass the authentication process, potentially gaining unauthorized access to user accounts.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95503",
+      "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-9004",
+      "desc": "The WP-CRM System – Manage Clients and Projects plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 3.4.6 via the 'contact_id' parameter. This makes it possible for authenticated attackers, with contributor-level access and above, to extract full names, email addresses, phone numbers, mobile numbers, fax numbers, and physical address information of arbitrary CRM contact records by enumerating the contact_id parameter.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9004",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15095",
+      "desc": "The Product Feed Manager for WooCommerce – CTX Feed – Support 220+ Shopping & Social Channels plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 6.6.43 via the 'provider' parameter. This makes it possible for authenticated attackers, with shop manager-level access and above, to delete arbitrary files on the server, which can lead to remote code execution when critical files are deleted. Exploitation requires two sequential REST API calls: first to /wp-json/ctxfeed/v1/make_feed/save_feed_config to persist the traversal payload in wp_options, then to /wp-json/ctxfeed/v1/manage_feeds/delete_feed to trigger the unlink(); deletion is further constrained to files whose extensions match the plugin's validated whitelist (csv, xml, tsv, xls, xlsx, json, txt).",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15095",
+      "cvss": "4.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-65634",
+      "desc": "Inefficient algorithmic complexity in the Erlang/OTP asn1 OBJECT IDENTIFIER decoder allows a remote unauthenticated attacker to cause denial of service by sending a crafted OID during the TLS handshake.\n\nThe BER OID decoder asn1rtt_ber:dec_subidentifiers/3 in lib/asn1/src/asn1rtt_ber.erl and the equivalent PER helper asn1rtt_per_common:dec_subidentifiers/3 in lib/asn1/src/asn1rtt_per_common.erl accumulate a base-128 subidentifier into an unbounded integer using (Av bsl 7) + H per continuation byte. Each shift and addition on the growing accumulator is linear in the number of bits already accumulated, giving quadratic total work in the size of a single subidentifier. The JER helper asn1rtt_jer:json2oid/1 in lib/asn1/src/asn1rtt_jer.erl exhibits the same class of unbounded-integer parsing when decoding a dot-separated OID from JSON. A DER-encoded OBJECT IDENTIFIER with one very large arc (approximately 262 KB of continuation bytes) consumes roughly 13 seconds of CPU on typical hardware.\n\nThe vulnerable decoder is generated into every ASN.1 module that contains an OBJECT IDENTIFIER, including OTP-PUB-KEY which is reached during X.509 certificate parsing via public_key:pkix_decode_cert/2. This decoder runs before any signature or trust chain verification, so any Erlang service that parses peer TLS certificates is exposed: the default for TLS clients (which always parse the server certificate) and for mutual-TLS servers (which parse client certificates).\n\nThis vulnerability is associated with program files lib/asn1/src/asn1rtt_ber.erl, lib/asn1/src/asn1rtt_per_common.erl and lib/asn1/src/asn1rtt_jer.erl and program routines asn1rtt_ber:dec_subidentifiers/3, asn1rtt_per_common:dec_subidentifiers/3 and asn1rtt_jer:json2oid/1.\n\nThis issue affects OTP from OTP 17.0 before OTP 27.3.4.18, OTP 28.5.0.7, and OTP 29.1.1, corresponding to asn1 from 3.0 before 5.3.4.3, 5.4.3.1, and 5.5.2. Whether OTP before OTP 17.0, corresponding to asn1 before 3.0, is affected is unknown.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65634",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68956",
+      "desc": "Allocation of Resources Without Limits or Throttling vulnerability in Erlang/OTP ssh allows an authenticated remote attacker to exhaust node memory by repeatedly opening session channels that are never assigned a handler.\n\nThe \"session\" clause of ssh_connection:handle_msg/4 checks only minimal_remote_max_packet_size before calling setup_session/5, which unconditionally builds a #channel{} record and stores it in the ETS channel cache. The max_channels daemon option is consulted only by ssh_channel_sup:max_num_channels_not_exceeded/2, which counts supervisor children, so a channel that never gets a shell, exec, or subsystem handler is invisible to the limit and setting the option to a finite value does not mitigate the attack. RFC 4254 section 5.1 permits many session channels per connection, and each record costs only a few hundred bytes, so a single authenticated connection can accumulate channels until the node runs out of memory and the emulator terminates, affecting every application on it. No file contents, credentials, or write access are obtainable.\n\nThis issue affects OTP from OTP 18.1.2 before OTP 27.3.4.18, OTP 28.5.0.7, and OTP 29.1.1, corresponding to ssh from 4.1.1 before 5.2.11.13, 5.5.2.6, and 6.0.6. Whether OTP before OTP 18.1.2, corresponding to ssh before 4.1.1, is affected is unknown.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68956",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-89422",
+      "desc": "Key Exchange without Entity Authentication vulnerability in Erlang/OTP ssl allows a peer that answers a TLS 1.3 client connection to impersonate the intended server. A pre_shared_key extension in the ServerHello that the client never offered causes the client to complete the handshake without validating the server's certificate, so ssl:connect returns {ok, Socket} against a peer holding no certificate, no private key and no prior session.\n\ntls_client_connection_1_3:handle_server_hello/2 passes the received extension to tls_gen_connection_1_3:handle_resumption/2, which sets resumption = true on its mere presence without checking that the client offered a PSK. tls_handshake_1_3:get_pre_shared_key/4 meanwhile falls back to the all-zero \"no PSK\" value and keys the handshake with the ordinary non-PSK schedule, so the attacker's own ephemeral key suffices. The resumption flag then routes maybe_resumption/1 straight to wait_finished, skipping the certificate-handling states, so certificate path validation, verify_fun, hostname verification, partial_chain, CRL checking and OCSP stapling are all bypassed. The default client configuration is affected; clients restricted to TLS 1.2 are not.\n\nThis issue affects OTP from OTP 22.2 before OTP 27.3.4.18, OTP 28.5.0.7, and OTP 29.1.1, corresponding to ssl from 9.5 before 11.2.12.13, 11.6.0.6, and 11.7.7.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89422",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93556",
+      "desc": "The ‘/password/guardarClau/recover’ endpoint accepts the ‘usuariId’ parameter, which specifies the account whose password is to be changed. The JWT token for the recovery process is not validated against the user specified in that parameter. An unauthenticated attacker could manipulate the identifier and reset the password for any account, including administrative accounts, which could allow them to take control of the account.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93556",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-93928",
+      "desc": "Authentication Bypass Using an Alternate Path or Channel vulnerability in Magepeople inc. Taxi Booking Manager for WooCommerce allows Authentication Bypass.\n\nThis issue affects Taxi Booking Manager for WooCommerce: from n/a before 2.0.8.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93928",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95508",
+      "desc": "A heap-based buffer overflow was found in the DHCPv6 and TFTP response builders of libslirp. When the host is configured with a small interface MTU, a guest-supplied DHCPv6 CLIENTID option or TFTP blksize option can overflow the reply buffer with attacker-controlled content and length, resulting in denial of service and potentially arbitrary code execution in the host process. The default interface MTU is not affected.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95508",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95511",
+      "desc": "A privilege escalation vulnerability was found in CUPS when used with the cups-filters serial backend. A local user who is a member of the lpadmin group can configure a printer that uses a privileged serial backend. The CUPS scheduler does not restrict the path component of non-file device URIs, so the root-privileged backend can write attacker-controlled print data to an arbitrary file. This can be used to change security-sensitive CUPS configuration and ultimately achieve root code execution. Exploitation requires local lpadmin group membership and a serial backend binary installed with root-only permissions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95511",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-9231",
+      "desc": "The WP Travel Engine – Tour Booking Plugin – Tour Operator Software plugin for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 6.8.0 via the wte_get_template function. This makes it possible for authenticated attackers, with contributor-level access and above, to include and execute arbitrary .php files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or achieve code execution in cases where .php file types can be uploaded and included.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9231",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-25254",
+      "desc": "Improper authorization leads to Remote Code Execution via SocketIO interface.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25254",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-25255",
+      "desc": "Exposed dangerous function lead to privilege escalation via gRPC server.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25255",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-25262",
+      "desc": "Memory corruption while processing a crafted ELF file in the Primary Bootloader.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25262",
+      "cvss": "6.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-25264",
+      "desc": "Privilege escalation due to weak configuration during package extraction process.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25264",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-25265",
+      "desc": "Privilege escalation due to weak configuration while temporary file handling.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-25265",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-90882",
+      "desc": "The open-vsx.org deployment returned Access-Control-Allow-Origin reflecting the requesting origin together with Access-Control-Allow-Credentials: true on the authenticated /user/ endpoints. A page on any origin could therefore issue credentialed requests to the service in a logged-in user's browser and read the responses.\n\n\n\nThis exposed /user (login name, avatar, homepage, tokens URL), /user/tokens, /user/namespaces, /user/extensions, /user/search/{name} and /user/namespace/{name}/members, and — because /user/csrf was readable the same way — allowed the CSRF protection on write endpoints to be defeated. Chaining the two, an attacker page could call /user/token/create and exfiltrate a personal access token carrying publish and delete rights over the victim's namespaces.\n\n\n\nThe headers were emitted by the CDN/edge layer, not by the application: the Open VSX software sets allowCredentials(true) in exactly one place, against a single exact origin derived from ovsx.webui.url, and defines no CORS mapping on /user/ beyond it. No configuration of the software produces origin reflection with credentials.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90882",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94117",
+      "desc": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in DevItems HashBar – WordPress Notification Bar allows Blind SQL Injection.\n\nThis issue affects HashBar – WordPress Notification Bar: from n/a through 2.0.3.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94117",
+      "cvss": "7.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-90990",
+      "desc": "Improper neutralization of newlines in filter values in the monitoring host and service list APIs in Checkmk <2.5.0p14 allows an authenticated user to inject additional Livestatus query headers, bypassing object visibility restrictions in count queries to infer information about hosts and services outside their contact groups and occupying web server and Livestatus workers for an attacker-controlled duration.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-90990",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-92882",
+      "desc": "Insufficiently protected credentials in the host and folder configuration endpoints of the REST API in Checkmk <2.5.0p15, <2.4.0p37, <2.3.0p51 and 2.2.0 (EOL) allows an authenticated user who may view a host's configuration to read stored SNMP community strings, SNMPv3 auth and privacy pass phrases and IPMI passwords in clear text from GET responses, although the setup GUI never displays these values.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92882",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95623",
+      "desc": "The Tauri HTTP plugin validates requested URLs against the application's configured scope allowlist only once, on the initial request. When the remote server responds with an HTTP 3xx redirect, reqwest follows the redirect internally without re-checking the new target URL against the scope. This allows an attacker who controls an allowed URL (or finds an open redirect on an allowed host) to reach disallowed destinations such as cloud metadata endpoints, localhost services, or internal network hosts.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95623",
+      "cvss": "5.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63272",
+      "desc": "LibreOffice can import WMF graphics, which may be embedded in documents. A heap buffer overflow existed when importing a text record that carries its own character advance widths. The count of advance values and the length of the text were read separately from the file and were not required to agree, so drawing the text walked the advance array by character position and ran past its end when the array was the shorter of the two. In fixed versions an advance array shorter than its text is ignored.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63272",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63273",
+      "desc": "LibreOffice Draw can import PDF documents. A heap buffer overflow existed when importing an encrypted document. The length of the decryption key was taken from the document's own encryption dictionary and was used to fill a fixed size key buffer without being checked against it, so a length larger than that buffer wrote past its end. In fixed versions a declared key length larger than the buffer is rejected.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63273",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63274",
+      "desc": "LibreOffice Draw can import PDF documents. A heap buffer overflow existed when importing a stream object. The length of the stream was taken from the object's own dictionary and was not checked against the number of bytes actually present, so copying the stream read and wrote past the end of the buffer holding it. In fixed versions the declared length is clamped to the bytes actually read.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63274",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63275",
+      "desc": "LibreOffice can read CFF fonts, which may be embedded in documents. A stack buffer overflow existed when reading the hints of a glyph. The number of hints was checked against the wrong bound, so a glyph declaring more hints than the array can hold wrote past its end. In fixed versions the hint count is checked against the capacity the array really has.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63275",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63276",
+      "desc": "LibreOffice converts CFF fonts to Type 1 when it subsets a font, which happens when a document is exported to PDF, and CFF fonts may be embedded in documents. A stack buffer overflow existed in that conversion. The converted operators were written into a fixed size buffer with no check that they still fit, so a glyph emitting many operators wrote past the end of the buffer. In fixed versions the remaining capacity is tracked and the conversion stops when it is used up.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63276",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63278",
+      "desc": "URLs could be constructed which expanded environment variable or INI file values, so potentially sensitive information could be exfiltrated to a remote server on opening a document containing such links. The check added for CVE-2024-12426 did not recognise every way of naming the package content provider, so a URL that named it differently still reached the expansion. In fixed versions the package content provider is matched when the URL is checked.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63278",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-63279",
+      "desc": "LibreOffice can import PICT images, which may be embedded in documents. An out of bounds read existed when importing an image that uses a colour palette. The palette index held in the image data was used without being checked against the number of entries the palette has, so an index past the last entry read memory outside the palette. In fixed versions the palette index is limited to the entries present.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-63279",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-74849",
+      "desc": "Zohocorp ManageEngine ADSelfService Plus versions before build 7001 are vulnerable to a remote code execution vulnerability in the GINA client.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-74849",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-87119",
+      "desc": "Authentication Bypass by Capture-replay in ZenHive mpp allows an attacker holding a captured subscription activation credential to charge the payer repeatedly.\n\nThe payer signs a Tempo KeyAuthorization over the chain id, key type, key id, expiry, limits and scopes only, with nothing tying it to the challenge that prompted it. MPP.Methods.Tempo.KeyAuthorization.verify/3 in lib/mpp/methods/tempo/key_authorization.ex pins each of those signed fields against the subscription request, and the access key it pins is a static per-endpoint server key, so one signed authorization verifies against every challenge the server issues for the same subscription terms. MPP.Methods.Tempo.Subscription.activate/4 deduplicates activations by challenge id, so presenting the captured credential under a fresh challenge produces a different dedup key, claim_activation succeeds, and the subscription transaction is built and broadcast again. Each replay charges the payer's wallet a new first-period settlement and re-authorizes the server key, bounded only by the subscription expiry and the chain's own semantics for re-installing an existing key.\n\nThis issue affects mpp: from 0.14.0 before 0.16.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87119",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-89420",
+      "desc": "Improper Validation of Specified Quantity in Input in ZenHive mpp allows a client holding an open payment channel to obtain paid resources without being charged.\n\nMPP.Session.Actions.accept_voucher/3 in lib/mpp/session/actions.ex treats a voucher whose cumulativeAmount equals the channel's already-accepted cumulative amount as an idempotent success, returning the channel unchanged without calling maybe_spend/2. The credential verifies, the protected resource is served, and spent and units stay where they were. Because the server issues a fresh challenge per request and the credential replay store keys on challenge id and payload, the same signed voucher can be re-presented under every new challenge, so one paid voucher yields an unbounded number of paid units. The path is reachable from any method built on MPP.Session.Method through the Plug, MCP, JSON-RPC and WebSocket transports.\n\nThis issue affects mpp: from 0.14.0 before 0.16.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89420",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95270",
+      "desc": "A flaw has been found in dgtlmoon changedetection.io up to 0.60.7. The affected element is the function check_password of the file changedetectionio/flask_app.py of the component Hash Comparison. This manipulation of the argument Password causes observable timing discrepancy. The attack is possible to be carried out remotely. A high degree of complexity is needed for the attack. The exploitability is described as difficult. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-22",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95270",
+      "cvss": "3.7",
       "cwe": ""
     },
     {

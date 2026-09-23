@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-23T12:58:05.530972+00:00",
+  "generated": "2026-09-23T17:48:33.148386+00:00",
   "summary": "Today's digest contains 613 vulnerabilities across 5 sources. 97 zero-day exploits detected, 47 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
     "new": 613,
     "changed": 0,
     "removed": 0,
-    "total": 610673,
+    "total": 611286,
     "zeroday": 97,
     "exploited": 47,
     "pakistan": 16
@@ -6213,13 +6213,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-37603",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-37604",
       "desc": "pH7Software pH7Builder (pH7 Social Dating CMS) through 18.2.0 resolves the client IP address in _protected/framework/Ip/Ip.class.php from the HTTP_CLIENT_IP and HTTP_X_FORWARDED_FOR headers without verifying the request comes from a trusted proxy. Because the admin login attempt counter and lockout are keyed on this value, a remote unauthenticated attacker bypasses IP-based throttling by sending a different X-Forwarded-For value per request",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-09-22",
       "pakistan": false,
@@ -6231,7 +6231,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-37604",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -7245,7 +7245,7 @@
     {
       "id": "CVE-2026-88415",
       "desc": "MCMS 6.1.1 through 6.2.1 is vulnerable to stored Cross-Site Scripting (XSS). The article content field `contentDetails` is excluded from the global XSS filter.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-22",
       "pakistan": false,
@@ -7257,7 +7257,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88415",
-      "cvss": "0.0",
+      "cvss": "8.7",
       "cwe": ""
     },
     {
@@ -7424,7 +7424,7 @@
     },
     {
       "id": "CVE-2026-47116",
-      "desc": "LTSecurity LTK3500SF contains a hard-coded credentials vulnerability where root and guest account passwords are stored as reversible hashes in /etc/shadow, recoverable using dictionary-based cracking tools. Attackers can use the recovered credentials to authenticate via Telnet or SSH and obtain full root-level access to the operating system.",
+      "desc": "LTSecurity LTK3500SF contains a hard-coded credentials vulnerability where the root and guest account passwords are stored in /etc/shadow as weak hashes recoverable with dictionary-based cracking tools. The recovered credentials authenticate against the device's Telnet and SSH services and grant root-level access to the operating system. These services are not confirmed to start automatically at boot, so exploitation requires Telnet or SSH to be running, whether enabled by the device configuration or started manually.",
       "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-09-22",
@@ -7887,7 +7887,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88339",
-      "cvss": "0.0",
+      "cvss": "5.5",
       "cwe": ""
     },
     {
@@ -7923,13 +7923,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88341",
-      "cvss": "0.0",
+      "cvss": "5.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-88344",
       "desc": "An out-of-bounds read vulnerability exists in the schema lexer of flatcc 4c3b999e. When an exact-length FlatBuffers schema buffer ends with a digit, the integer digit-scan loop in lex() advances past the end of the input buffer and dereferences the out-of-bounds pointer. A specially crafted schema can trigger a one-byte heap buffer over-read, resulting in application crash and denial of service.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-22",
       "pakistan": false,
@@ -7941,13 +7941,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88344",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-88345",
       "desc": "An out-of-bounds read vulnerability exists in the schema lexer of flatcc 4c3b999e. When an exact-length FlatBuffers schema ends with an unterminated quotation mark, the C-string scanning logic in lex() dereferences the input pointer after it has reached the end of the buffer. A specially crafted schema can trigger a one-byte heap buffer over-read, resulting in application crash and denial of service.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-22",
       "pakistan": false,
@@ -7959,7 +7959,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88345",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -8037,7 +8037,7 @@
     {
       "id": "CVE-2026-88624",
       "desc": "Missing path validation in the Worktree.remove component of openCode v1.18.26 allows attackers to execute arbitrary recursive directory deletion via a crafted payload.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-09-22",
       "pakistan": false,
@@ -8049,13 +8049,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88624",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-89281",
       "desc": "The Apache Lounge Windows distribution of Apache HTTP Server build contains a hardcoded configuration path vulnerability within openssl.cnf path that can allow local code execution.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-22",
       "pakistan": false,
@@ -8067,13 +8067,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89281",
-      "cvss": "0.0",
+      "cvss": "8.4",
       "cwe": ""
     },
     {
       "id": "CVE-2026-89282",
       "desc": "The Apache Lounge Windows distribution of Apache HTTP Server build contains an insecure installation directory permissions vulnerability through its default install directory on C:\\, which inherits write access for Authenticated Users.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-09-22",
       "pakistan": false,
@@ -8085,13 +8085,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89282",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-94574",
       "desc": "A local cross-user code execution vulnerability exists in GNU wget (Windows builds from eternallybored.org) due to a hardcoded configuration file path (C:\\msys64) that is writable by unprivileged users, allowing for arbitrary code execution via the use_askpass directive, potentially allowing local privilege escalation.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-22",
       "pakistan": false,
@@ -8103,7 +8103,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94574",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {

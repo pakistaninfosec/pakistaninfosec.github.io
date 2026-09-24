@@ -3,20 +3,28 @@
     {
       "date": "2026-09-24",
       "stats": {
-        "new": 612,
+        "new": 614,
         "changed": 0,
         "removed": 0,
-        "total": 614910,
-        "zeroday": 96,
-        "exploited": 46,
+        "total": 615524,
+        "zeroday": 98,
+        "exploited": 48,
         "pakistan": 16
       },
-      "summary": "Today's digest contains 612 vulnerabilities across 5 sources. 96 zero-day exploits detected, 46 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+      "summary": "Today's digest contains 614 vulnerabilities across 5 sources. 98 zero-day exploits detected, 48 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
       "sections": [
         {
           "label": "Zero Day Exploits",
           "color": "red",
           "items": [
+            {
+              "id": "CVE-2026-5430",
+              "desc": "WSO2 API Control Plane, API Manager, Traffic Manager & Universal Gateway contain a path traversal vulnerability that could allow for unrestricted file upload and lead to remote code execution."
+            },
+            {
+              "id": "CVE-2026-71362",
+              "desc": "Adobe Commerce and Magento contains an incorrect authorization vulnerability that could allow an attacker to leverage this vulnerability to gain elevated access to sensitive resources without any user interaction."
+            },
             {
               "id": "CVE-2026-93952",
               "desc": "Arista VeloCloud Orchestrator (VCO) on-prem contains an improper input validation vulnerability that may allow a remote attacker to access privileged internal functionality and impact the VCO host. Successful exploitation may compromise the confidentiality, integrity, and availability of the orchestrator and data managed by the orchestrator."
@@ -48,14 +56,6 @@
             {
               "id": "CVE-2025-39682",
               "desc": "Linux Kernel contains an improper check for unusual or exceptional conditions vulnerability in the TLS receive path which allows a zero-length record retrieved from the rx_list to bypass the intended recvmsg() record-type handling, potentially causing subsequent TLS records to be processed using incorrect zero-copy and queuing assumptions. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
-            },
-            {
-              "id": "CVE-2026-58704",
-              "desc": "Google Pixel devices contain an improper authorization vulnerability in the cellular modem. A logic error may allow an attacker to bypass permission checks and escalate privileges."
-            },
-            {
-              "id": "CVE-2026-76460",
-              "desc": "Cisco Identity Services Engine (ISE) and Cisco ISE Passive Identity Connector (ISE-PIC) contain an incorrect use of privileged APIs vulnerability that could allow an unauthenticated, remote attacker to gain unauthorized access to the affected device by bypassing the web-based management interface."
             }
           ]
         },
@@ -64,6 +64,14 @@
           "color": "orange",
           "items": [
             {
+              "id": "CVE-2026-5430",
+              "desc": "WSO2 API Control Plane, API Manager, Traffic Manager & Universal Gateway contain a path traversal vulnerability that could allow for unrestricted file upload and lead to remote code execution."
+            },
+            {
+              "id": "CVE-2026-71362",
+              "desc": "Adobe Commerce and Magento contains an incorrect authorization vulnerability that could allow an attacker to leverage this vulnerability to gain elevated access to sensitive resources without any user interaction."
+            },
+            {
               "id": "CVE-2026-93952",
               "desc": "Arista VeloCloud Orchestrator (VCO) on-prem contains an improper input validation vulnerability that may allow a remote attacker to access privileged internal functionality and impact the VCO host. Successful exploitation may compromise the confidentiality, integrity, and availability of the orchestrator and data managed by the orchestrator."
             },
@@ -94,14 +102,6 @@
             {
               "id": "CVE-2025-39682",
               "desc": "Linux Kernel contains an improper check for unusual or exceptional conditions vulnerability in the TLS receive path which allows a zero-length record retrieved from the rx_list to bypass the intended recvmsg() record-type handling, potentially causing subsequent TLS records to be processed using incorrect zero-copy and queuing assumptions. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
-            },
-            {
-              "id": "CVE-2026-58704",
-              "desc": "Google Pixel devices contain an improper authorization vulnerability in the cellular modem. A logic error may allow an attacker to bypass permission checks and escalate privileges."
-            },
-            {
-              "id": "CVE-2026-76460",
-              "desc": "Cisco Identity Services Engine (ISE) and Cisco ISE Passive Identity Connector (ISE-PIC) contain an incorrect use of privileged APIs vulnerability that could allow an unauthenticated, remote attacker to gain unauthorized access to the affected device by bypassing the web-based management interface."
             }
           ]
         },

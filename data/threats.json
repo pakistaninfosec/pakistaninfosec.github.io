@@ -1,13 +1,13 @@
 {
-  "generated": "2026-09-25T15:54:25.601238+00:00",
-  "summary": "Today's digest contains 615 vulnerabilities across 5 sources. 99 zero-day exploits detected, 49 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-25T19:53:34.427858+00:00",
+  "summary": "Today's digest contains 616 vulnerabilities across 5 sources. 100 zero-day exploits detected, 50 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 615,
+    "new": 616,
     "changed": 0,
     "removed": 0,
-    "total": 617978,
-    "zeroday": 99,
-    "exploited": 49,
+    "total": 618594,
+    "zeroday": 100,
+    "exploited": 50,
     "pakistan": 16
   },
   "sources": [
@@ -16,12 +16,12 @@
       "count": 500
     },
     {
-      "name": "Exploit-DB",
+      "name": "CISA KEV",
       "count": 50
     },
     {
-      "name": "CISA KEV",
-      "count": 49
+      "name": "Exploit-DB",
+      "count": 50
     },
     {
       "name": "Pakistan CERT",
@@ -372,6 +372,25 @@
         "Actively Exploited"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-65660",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-87902",
+      "desc": "WordPress Core contains a remote file inclusion vulnerability which could allow an unauthenticated attacker to make page-template resolution include a chosen readable local `.php` file outside the active theme directories, leading to remote code execution.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-09-25",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87902",
       "cvss": "9.0",
       "cwe": ""
     },
@@ -3011,7 +3030,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88359",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -3323,7 +3342,7 @@
     {
       "id": "CVE-2026-51994",
       "desc": "mcp-remote versions 0.1.32 through 0.1.38 are vulnerable to Server-Side Request Forgery (SSRF) via the resource_metadata URL extracted from a remote MCP server's WWW-Authenticate header",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-09-24",
       "pakistan": false,
@@ -3335,7 +3354,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51994",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
@@ -3377,7 +3396,7 @@
     {
       "id": "CVE-2026-51997",
       "desc": "An issue in geelen mcp-remote 0.1.16 through 0.1.38 allows a remote attacker to execute arbitrary code via the open() functions",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-24",
       "pakistan": false,
@@ -3389,7 +3408,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51997",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -3791,7 +3810,7 @@
     {
       "id": "CVE-2026-88351",
       "desc": "An integer overflow vulnerability exists in the MPack Node API in MPack 1.1.1 on 32-bit platforms. When parsing a specially crafted MessagePack array32 or map32 object with an excessively large element count, the page allocation size calculation in mpack_tree_parse_children() can overflow size_t and produce an undersized allocation. Subsequent parsing writes mpack_node_data_t records beyond the allocated heap buffer, resulting in heap-buffer-overflow, memory corruption, and denial of service.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-09-24",
       "pakistan": false,
@@ -3803,7 +3822,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88351",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -4187,7 +4206,7 @@
     {
       "id": "CVE-2026-88361",
       "desc": "SumatraPDF 3.6.1 contains an integer overflow vulnerability in EngineMupdf::BuildPageLabelRec() when parsing PDF PageLabels /Nums entries.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-24",
       "pakistan": false,
@@ -4199,13 +4218,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88361",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-88362",
       "desc": "MuJS e892c9fdb contains an incorrect numeric conversion vulnerability in jsR_isindex() in jsrun.c. A specially crafted JavaScript input containing an excessively large numeric array index can cause an out-of-range floating-point value to be converted to an integer without proper range validation. This results in undefined behavior and can cause process termination, leading to denial of service.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-24",
       "pakistan": false,
@@ -4217,7 +4236,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88362",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -4277,7 +4296,7 @@
     {
       "id": "CVE-2026-88369",
       "desc": "zserge jsmn commit 25647e6 is vulnerable to Buffer Overflow in example/jsondump.c dump().",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-24",
       "pakistan": false,
@@ -4289,7 +4308,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88369",
-      "cvss": "0.0",
+      "cvss": "7.3",
       "cwe": ""
     },
     {
@@ -4307,7 +4326,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88370",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -6161,7 +6180,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88367",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -6185,7 +6204,7 @@
     {
       "id": "CVE-2026-88373",
       "desc": "libde265 commit 4d45a6b contains a NULL pointer dereference vulnerability in the NAL parsing path. When de265_push_NAL() is called with a zero-length NAL unit, the resulting NAL_unit may retain a NULL backing buffer, which is subsequently passed as the destination argument to memcpy() in NAL_unit::set_data(). Although the copy length is zero, this violates the nonnull requirement of memcpy() and results in undefined behavior, causing process termination in UBSan-instrumented builds and denial of service.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-24",
       "pakistan": false,
@@ -6197,7 +6216,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88373",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {

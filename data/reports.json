@@ -3,20 +3,28 @@
     {
       "date": "2026-09-25",
       "stats": {
-        "new": 613,
+        "new": 615,
         "changed": 0,
         "removed": 0,
-        "total": 617363,
-        "zeroday": 97,
-        "exploited": 47,
+        "total": 617978,
+        "zeroday": 99,
+        "exploited": 49,
         "pakistan": 16
       },
-      "summary": "Today's digest contains 613 vulnerabilities across 5 sources. 97 zero-day exploits detected, 47 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+      "summary": "Today's digest contains 615 vulnerabilities across 5 sources. 99 zero-day exploits detected, 49 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
       "sections": [
         {
           "label": "Zero Day Exploits",
           "color": "red",
           "items": [
+            {
+              "id": "CVE-2026-67279",
+              "desc": "Mikrotik RouterOS contains an improper enforcement of behavioral workflow vulnerability that could allow an unauthenticated client to open a session channel and send an exec request. This vulnerability can be chained to achieve unauthenticated exploitation of CVE-2026-86060."
+            },
+            {
+              "id": "CVE-2026-65660",
+              "desc": "Microsoft SharePoint contains a code injection vulnerability which could allow an authorized attacker to execute code over a network."
+            },
             {
               "id": "CVE-2026-5430",
               "desc": "WSO2 API Control Plane, API Manager, Traffic Manager & Universal Gateway contain a path traversal vulnerability that could allow for unrestricted file upload and lead to remote code execution."
@@ -48,14 +56,6 @@
             {
               "id": "CVE-2025-39964",
               "desc": "Linux Kernel contains a race condition vulnerability which allows concurrent writes to the same AF_ALG socket causing data to be unpredictably interleaved and creating inconsistencies in the socket's internal state."
-            },
-            {
-              "id": "CVE-2026-53266",
-              "desc": "Linux Kernel contains an out-of-bounds write vulnerability in the ebtables SNAT target which allows an ARP sender hardware address rewrite to write directly into a nonlinear socket-buffer fragment backed by a splice-imported file page. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
-            },
-            {
-              "id": "CVE-2025-39682",
-              "desc": "Linux Kernel contains an improper check for unusual or exceptional conditions vulnerability in the TLS receive path which allows a zero-length record retrieved from the rx_list to bypass the intended recvmsg() record-type handling, potentially causing subsequent TLS records to be processed using incorrect zero-copy and queuing assumptions. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
             }
           ]
         },
@@ -64,6 +64,14 @@
           "color": "orange",
           "items": [
             {
+              "id": "CVE-2026-67279",
+              "desc": "Mikrotik RouterOS contains an improper enforcement of behavioral workflow vulnerability that could allow an unauthenticated client to open a session channel and send an exec request. This vulnerability can be chained to achieve unauthenticated exploitation of CVE-2026-86060."
+            },
+            {
+              "id": "CVE-2026-65660",
+              "desc": "Microsoft SharePoint contains a code injection vulnerability which could allow an authorized attacker to execute code over a network."
+            },
+            {
               "id": "CVE-2026-5430",
               "desc": "WSO2 API Control Plane, API Manager, Traffic Manager & Universal Gateway contain a path traversal vulnerability that could allow for unrestricted file upload and lead to remote code execution."
             },
@@ -94,14 +102,6 @@
             {
               "id": "CVE-2025-39964",
               "desc": "Linux Kernel contains a race condition vulnerability which allows concurrent writes to the same AF_ALG socket causing data to be unpredictably interleaved and creating inconsistencies in the socket's internal state."
-            },
-            {
-              "id": "CVE-2026-53266",
-              "desc": "Linux Kernel contains an out-of-bounds write vulnerability in the ebtables SNAT target which allows an ARP sender hardware address rewrite to write directly into a nonlinear socket-buffer fragment backed by a splice-imported file page. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
-            },
-            {
-              "id": "CVE-2025-39682",
-              "desc": "Linux Kernel contains an improper check for unusual or exceptional conditions vulnerability in the TLS receive path which allows a zero-length record retrieved from the rx_list to bypass the intended recvmsg() record-type handling, potentially causing subsequent TLS records to be processed using incorrect zero-copy and queuing assumptions. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
             }
           ]
         },

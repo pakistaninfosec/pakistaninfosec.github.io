@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-27T17:10:30.609767+00:00",
-  "summary": "Today's digest contains 448 vulnerabilities across 5 sources. 91 zero-day exploits detected, 41 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-27T20:18:59.170298+00:00",
+  "summary": "Today's digest contains 477 vulnerabilities across 5 sources. 91 zero-day exploits detected, 41 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 448,
+    "new": 477,
     "changed": 0,
     "removed": 0,
-    "total": 624529,
+    "total": 625006,
     "zeroday": 91,
     "exploited": 41,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 341
+      "count": 370
     },
     {
       "name": "Exploit-DB",
@@ -6158,7 +6158,7 @@
     },
     {
       "id": "CVE-2026-100852",
-      "desc": "AzuraCast through 0.23.x contains a command injection vulnerability in the Liquidsoap config generation for live recording that fails to quote the streamer username in process.run calls. Authenticated station users with Streamers and Profile permissions can set a username containing shell metacharacters and trigger command execution as the Liquidsoap process user when recording closes.",
+      "desc": "AzuraCast before 0.23.8 contains a command injection vulnerability in the Liquidsoap config generation for live recording that fails to quote the streamer username in process.run calls. Authenticated station users with Streamers and Profile permissions can set a username containing shell metacharacters and trigger command execution as the Liquidsoap process user when recording closes.",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-27",
@@ -6392,7 +6392,7 @@
     },
     {
       "id": "CVE-2026-100865",
-      "desc": "Heym before 0.0.53 contains multiple independent vulnerabilities. (1) The workflow condition evaluator uses Python eval() without an effective sandbox, allowing any user who can edit a workflow branch/condition node — or who can import a workflow template containing a malicious condition node — to execute arbitrary Python code as the backend process user when the workflow runs. (2) Slack webhook signature verification and (3) Telegram webhook secret-token verification fail open when the trigger node has no credentialId or an empty signing secret, allowing anyone who knows the public webhook URL to trigger workflows with the owner's credentials without authentication. (4) The OAuth authorization endpoint does not validate the redirect_uri scheme, so an attacker who registers a public OAuth client with a javascript: or data: redirect_uri and lures a victim to the consent screen receives the authorization code and executes attacker-controlled JavaScript in the Heym origin, including access to the victim's HttpOnly auth cookie. (5) WorkflowExecutionToken, PortalSession, HITLRequest.public_token, and OAuthAuthorizationCode values are stored in plaintext, so any database read exposure yields valid scoped bearer tokens, including portal and HITL tokens with a 168-hour TTL that permit workflow execution on behalf of the owner.",
+      "desc": "Heym before 0.0.53 evaluates workflow condition expressions using Python's eval() with insufficient sandboxing in the workflow executor service. Authenticated users can edit workflow condition nodes or import malicious templates to execute arbitrary Python and OS commands as the backend process user.",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-09-27",
@@ -7252,6 +7252,528 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101041",
       "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101042",
+      "desc": "Parse Server is an open-source backend server. In versions >= 9.0.0 < 9.10.1-alpha.10 and >= 8.0.2 < 8.6.91, the code-based authentication adapters (GitHub, Google Play Games, Instagram, LINE, LinkedIn, Microsoft, QQ, Spotify, WeChat, Weibo) verify the client's authorization code with the external provider on signup and on provider linking, but not when authentication data is supplied together with a username and password on the login endpoint. As a result, a low-privileged authenticated user can attach an arbitrary, unverified provider identity to their own account without the provider ever being contacted, spoofing an external identity toward application logic that trusts the linked provider ID. An attacker can also pre-hijack accounts: by claiming the provider ID of a victim who has not yet linked that provider, the victim's later legitimate sign-in with that provider resolves to the attacker's account. Only deployments configuring one of the affected code-based auth adapters are impacted. Versions 9.10.1-alpha.10 and 8.6.91 fix the issue by running the adapter's credential verification on the login and challenge endpoints and rejecting a provider identity already linked to another user. As a workaround, disable the affected code-based auth adapters.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101042",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101049",
+      "desc": "Heym before 0.0.53 fails to verify Slack request signatures when trigger nodes lack credential IDs or have empty signing secrets. Remote unauthenticated attackers can send forged Slack events to known webhook URLs to trigger workflows with the owner's credentials.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101049",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101050",
+      "desc": "Heym before 0.0.53 fails to verify the X-Telegram-Bot-Api-Secret-Token header on Telegram webhook endpoints when credential_id is absent or secret_token is empty. Remote unauthenticated attackers can post forged Telegram updates to trigger workflows with the owner's configured credentials and execute actions on attacker-supplied input.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101050",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-88771",
+      "desc": "Improper input validation vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway.\n\nThis issue affects ADC: before 14.1-73.37, before 13.1-64.23, before 14.1-73.37 FIPS, and before 13.1.37.279 FIPS and NDcPP; Gateway: before 14.1-73.37 and before 13.1-64.23 leading to an unauthenticated attacker to execute arbitrary commands.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88771",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-88772",
+      "desc": "Vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway.\n\nThis issue affects ADC: before 14.1-73.37, before 13.1-64.23, before 14.1-73.37 FIPS, and before 13.1.37.279 FIPS and NDcPP; Gateway: before 14.1-73.37 and before 13.1-64.23 leading to Remote Code Execution or Denial of Service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88772",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-88773",
+      "desc": "Inconsistent interpretation of HTTP requests ('HTTP Request/Response smuggling') vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway.\n\nThis issue affects ADC: before 14.1-73.37, before 13.1-64.23, before 14.1-73.37 FIPS, and before 13.1-37.279 and NDcPP; Gateway: before 14.1-73.37 FIPS and before 13.1-64.23.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88773",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-88774",
+      "desc": "Vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway.\n\nThis issue affects ADC: before 14.1-73.37, before 13.1-64.23, before 14.1-73.37 FIPS, and before 13.1.37.279 FIPS and NDcPP; Gateway: before 14.1-73.37 and before 13.1-64.23 leading to a feature policy bypass due to improper HTTP URL based expression usage.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88774",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-88775",
+      "desc": "Memory overflow vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway.\n\nThis issue affects ADC: before 14.1-73.37, before 13.1-64.23, before 14.1-73.37 FIPS, and before 13.1.37.279 FIPS and NDcPP; Gateway: before 14.1-73.37 and before 13.1-64.23 leading Memory overflow vulnerability leading to unpredictable or erroneous behavior or Denial of Service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88775",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-88776",
+      "desc": "Memory overflow vulnerability vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway.\nThis issue affects ADC: before 14.1-73.37, before 13.1-64.23, before 14.1-73.37 FIPS, and before 13.1.37.279 FIPS and NDcPP; Gateway: before 14.1-73.37 and before 13.1-64.23  leading to unpredictable or erroneous behavior or Denial of Service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88776",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-88777",
+      "desc": "Memory overflow vulnerability vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway.\n\nThis issue affects ADC: before 14.1-73.37, before 13.1-64.23, before 14.1-73.37 FIPS, and before 13.1.37.279 FIPS and NDcPP; Gateway: before 14.1-73.37 and before 13.1-64.23  leading to unpredictable or erroneous behavior or Denial of Service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88777",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-88778",
+      "desc": "Predictable exact value from previous values vulnerability in Citrix NetScaler ADC and Citrix NetScaler Gateway.\n\nThis issue affects ADC: before 14.1-73.37, before 13.1-64.23, before 14.1-73.37 FIPS, and before 13.1.37.279 FIPS and NDcPP; Gateway: before 14.1-73.37 and before 13.1-64.23.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88778",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101043",
+      "desc": "pnpm versions 11.0.0 before 11.11.0 and 10.7.0 before 10.34.5 expand ${VAR} environment-variable placeholders in the httpProxy, httpsProxy, and noProxy settings read from a project's pnpm-workspace.yaml. Because the manifest is repository-controlled and the proxy keys were omitted from the request-destination key set that otherwise suppresses placeholder expansion for untrusted manifests (as already done for registry, pnprServer, registries and namedRegistries), an attacker who controls a repository's pnpm-workspace.yaml can cause a victim who clones the repository and runs a pnpm command (e.g. pnpm install) to expand environment secrets such as NPM_TOKEN or GITHUB_TOKEN into a proxy hostname or userinfo and route install traffic — and the corresponding DNS lookups — through an attacker-controlled host. The exfiltration occurs during configuration loading, before any lifecycle script executes. Fixed in pnpm 11.11.0 and 10.34.5.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101043",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101044",
+      "desc": "pacquet, the Rust package-manager component shipped in the pnpm npm package versions >=12.0.0-alpha.0 and <12.0.0-alpha.5, does not validate dependency alias/name paths taken from a lockfile before using them in install-time filesystem joins. When a user installs a project with an attacker-supplied lockfile using --trust-lockfile or a frozen lockfile, alias entries containing path traversal segments (for example '../../escaped-link') are used when creating dependency and package links, bin destinations, hoisted entries, and virtual-store slots, allowing symlinks and directories to be created outside the intended project and node_modules boundary. Version 12.0.0-alpha.5 validates dependency names and every virtual-store slot path with a shared safe-join containment helper before any filesystem materialization, rejecting traversal, absolute, platform-specific, and reserved names with ERR_PNPM_INVALID_DEPENDENCY_NAME.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101044",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101045",
+      "desc": "Fleet-maintained app install and uninstall scripts for macOS are generated from Homebrew cask metadata. In manifests generated before 2026-08-19, the script generator escaped this metadata at some interpolation sites but not all of them, so cask metadata containing shell metacharacters (for example $(...) command substitution) could be carried into scripts that execute as root on managed macOS hosts. An attacker who could land crafted metadata in an upstream Homebrew cask — without needing any Fleet credentials — could achieve arbitrary command execution as root on managed macOS hosts that install or uninstall the affected Fleet-maintained app; exploitation required the crafted metadata to pass both upstream Homebrew cask review and Fleet's review of the automated ingestion pull request. The fix (fleetdm/fleet#51324) landed in Fleet's ingestion pipeline on 2026-08-19 so that all manifests generated on or after that date escape cask metadata at every interpolation site; because manifests are generated centrally and distributed as pre-built content, remediation applied to all deployments with no customer action, and the code fix is included in Fleet v4.92.0.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101045",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101046",
+      "desc": "Fleet before 4.89.0 contains an SQL injection vulnerability in the activity list endpoints (GET /api/v1/fleet/activities and GET /api/v1/fleet/hosts/{id}/activities). The deprecated cursor-pagination helper appendListOptionsWithCursorToSQL interpolated the caller-supplied sort/order key into the SQL ORDER BY clause without an allowlist, so an authenticated user with read access to Activity could order results by arbitrary columns. The impact is read-only and bounded to columns on the activity_past table that are not otherwise returned in these responses (e.g. details), allowing their values to be inferred through the resulting sort order; there is no write access, privilege escalation, or reachability of node_key or other host-join columns through these endpoints. Fixed in 4.89.0, which removes the deprecated helper and passes the sort column through SanitizeColumn.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101046",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101047",
+      "desc": "Fleet before 4.87.0 does not protect the two endpoints that serve in-house iOS application packages and manifests (enterprise tier only) with the intended random, time-limited URL token. Because Apple's InstallEnterpriseApplication MDM command requires these URLs to be reachable without a Fleet session, they cannot rely on session-based authentication, and the missing token allows an unauthenticated attacker with network access to the Fleet server to download in-house IPA binaries and their metadata (bundle identifier, version, and name) by guessing sequential title identifiers. The impact is limited to read-only disclosure; there is no privilege escalation or write access, and the free tier is unaffected (it returns fleet.ErrMissingLicense).",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101047",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101048",
+      "desc": "Cloudreve before 4.17.0 registers the administrative node test endpoints (POST /api/v4/admin/node/test and POST /api/v4/admin/node/test/downloader) without requiring the Admin.Write OAuth scope, unlike the node create/update/delete routes. An OAuth client that has been authorized by an administrator with only the Admin.Read scope can therefore submit attacker-controlled node definitions and cause the Cloudreve server to issue outbound requests to arbitrary URLs, enabling blind server-side request forgery, internal service probing, and delivery of signed Cloudreve slave-style requests to attacker-chosen endpoints.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101048",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101051",
+      "desc": "Cloudreve before 4.16.1 fails to properly sanitize file paths returned by remote downloaders, allowing authenticated users to create files outside the selected destination directory. Attackers can exploit path traversal sequences in downloader metadata to write files to unexpected locations within accessible namespaces.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101051",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101056",
+      "desc": "Cloudreve before 4.16.1 fails to revalidate share access when restoring cached navigator state from a context_hint UUID. Attackers who previously had valid share access can replay the cached hint to generate signed file URLs for up to 300 seconds after the share is deleted, expires, or reaches zero remaining downloads.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101056",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101057",
+      "desc": "utcp-mcp (the MCP plugin of python-utcp) through 1.1.2 connects to the HTTP and WebSocket MCP server URLs given in a call template's mcpServers configuration without the ensure_secure_url validation that the HTTP-family plugins apply, so the HTTPS/WSS-or-loopback rule is not enforced. A call template naming a plain-HTTP, non-loopback MCP server URL is dialed as configured, exposing the MCP handshake to network interception and permitting cleartext connections to internal hosts. The mcpServers configuration is operator-authored rather than remote data, and the connection is an MCP handshake rather than an arbitrary request returning a body, which limits practical exploitation; the OAuth2 token_url credential path described in the original report was not reachable in the affected versions, because the OAuth2 handler was never invoked and the call template's auth field was not read. Fixed in utcp-mcp 1.1.3, which validates server URLs before any connection is made.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101057",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101058",
+      "desc": "python-utcp (pip package utcp-http) before 1.1.12 does not verify whether tool URLs declared in a hand-written UTCP manual point at the agent's own loopback interface when that manual is discovered from a remote, non-loopback origin. Because ensure_secure_url intentionally permits loopback HTTP for local development and native manuals bypassed the loopback check performed by the OpenAPI converter, an attacker who can serve a UTCP manual that a victim registers can cause the client to issue requests to services bound only to 127.0.0.1 on the victim host and have the response bodies returned to the caller (server-side request forgery). The http, sse and streamable_http protocols are all affected. Reach is limited to loopback, and exploitation further requires a loopback service that answers unauthenticated requests with useful data. Fixed in utcp-http 1.1.12, which rejects manuals fetched from a non-loopback origin that declare loopback tool URLs, keyed off the final post-redirect discovery URL.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101058",
+      "cvss": "6.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101059",
+      "desc": "utcp-http before 1.1.4 fails to validate the OAuth2 tokenUrl field from remote OpenAPI specifications, allowing attackers to redirect credential submission to arbitrary endpoints. When a victim registers an attacker-controlled OpenAPI spec and invokes a generated OAuth2-protected tool, the library POSTs the victim's client_id and client_secret to the attacker-supplied token endpoint without URL validation.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101059",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101060",
+      "desc": "python-utcp versions before 1.1.4 contain a server-side request forgery vulnerability in HttpCommunicationProtocol.call_tool that validates the initial tool URL but follows HTTP redirects without re-validating the target. Attackers controlling a tool endpoint can return a 302 redirect to internal services, allowing the UTCP client to reach cloud metadata endpoints or internal HTTP services and return their response bodies to the caller.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101060",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101061",
+      "desc": "utcp-gql before 1.1.1 and utcp-websocket before 1.1.1 contain server-side request forgery vulnerabilities due to incomplete application of CVE-2026-44661 fixes. The GraphQL plugin uses a vulnerable prefix check allowing bypass URLs like http://127.0.0.1.attacker.example, while the WebSocket plugin performs no URL validation despite documented security requirements. Attackers can force connections to internal services and cloud metadata endpoints by supplying malicious tool URLs in call templates, and receive configured API keys and OAuth tokens sent to attacker-controlled hosts.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101061",
+      "cvss": "4.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100873",
+      "desc": "A vulnerability was detected in mathurvishal CloudClassroom-PHP-Project up to 5dadec098bfbbf3300d60c3494db3fb95b66e7be. The impacted element is an unknown function. The manipulation results in cross-site request forgery. The attack can be launched remotely. The exploit is now public and may be used. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100873",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100874",
+      "desc": "A flaw has been found in mathurvishal CloudClassroom-PHP-Project up to 5dadec098bfbbf3300d60c3494db3fb95b66e7be. This affects an unknown function of the file addnewstudent.php. This manipulation causes sql injection. The attack may be initiated remotely. The exploit has been published and may be used. This product uses a rolling release model to deliver continuous updates. As a result, specific version information for affected or updated releases is not available. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100874",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100875",
+      "desc": "A vulnerability has been found in mathurvishal CloudClassroom-PHP-Project up to 5dadec098bfbbf3300d60c3494db3fb95b66e7be. This impacts an unknown function of the file updatedetailsfromfaculty.php. Such manipulation of the argument myfid leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. This product operates on a rolling release basis, ensuring continuous delivery. Consequently, there are no version details for either affected or updated releases. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100875",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100876",
+      "desc": "A vulnerability was found in mathurvishal CloudClassroom-PHP-Project up to 5dadec098bfbbf3300d60c3494db3fb95b66e7be. Affected is an unknown function of the file loginlinkstudent.php. Performing a manipulation of the argument umail results in missing authentication. Remote exploitation of the attack is possible. The exploit has been made public and could be used. This product follows a rolling release approach for continuous delivery, so version details for affected or updated releases are not provided. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100876",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96279",
+      "desc": "A malicious OCI registry can hardlink arbitrary host files into the extraction directory when a user installs or updates a Flatpak application from an OCI remote, allowing disclosure of arbitrary host file contents. For system-wide installs running as root, this includes sensitive files such as /etc/shadow.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-27",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96279",
+      "cvss": "6.5",
       "cwe": ""
     },
     {

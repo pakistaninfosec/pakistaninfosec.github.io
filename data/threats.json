@@ -1,14 +1,14 @@
 {
-  "generated": "2026-10-01T06:58:41.562064+00:00",
-  "summary": "Today's digest contains 609 vulnerabilities across 5 sources. 93 zero-day exploits detected, 43 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-10-01T14:23:12.925746+00:00",
+  "summary": "Today's digest contains 608 vulnerabilities across 5 sources. 93 zero-day exploits detected, 43 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 609,
+    "new": 608,
     "changed": 0,
     "removed": 0,
-    "total": 633470,
+    "total": 634078,
     "zeroday": 93,
     "exploited": 43,
-    "pakistan": 16
+    "pakistan": 15
   },
   "sources": [
     {
@@ -25,7 +25,7 @@
     },
     {
       "name": "Pakistan CERT",
-      "count": 15
+      "count": 14
     },
     {
       "name": "NCCS Pakistan",
@@ -68,25 +68,6 @@
         "Pakistan Advisory"
       ],
       "url": "https://pkcert.gov.pk/advisory/26/16.pdf",
-      "cvss": "7.5",
-      "cwe": ""
-    },
-    {
-      "id": "PKCERT-917CDA37",
-      "desc": "Pakistan CERT Security Advisory: Advisory: Critical Authentication Bypass and Account Takeover Vulnerability in N-able N-central. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
-      "severity": "HIGH",
-      "source": "Pakistan CERT",
-      "date": "2026-10-01",
-      "pakistan": true,
-      "zeroday": false,
-      "tags": [
-        "pakistan",
-        "cert",
-        "advisory",
-        "government",
-        "Pakistan Advisory"
-      ],
-      "url": "https://pkcert.gov.pk/advisory/26/15.pdf",
       "cvss": "7.5",
       "cwe": ""
     },
@@ -7727,7 +7708,7 @@
     {
       "id": "CVE-2026-102427",
       "desc": "Joomla Extension - ordasoft.com - Unauthenticated Remote Code Execution in OrdaSoft Joomla CCK < 8.3.16 - site/uploader.php is reached through the component’s normal frontend routing (task=getContent), a task with no authentication or ACL check anywhere in the dispatch chain. The handler validates the uploaded file’s content with a real magic-byte MIME check, but the extension allow-list that would otherwise restrict the saved file’s extension was present in the source and commented out. The saved file’s extension was taken directly from the attacker-supplied filename with no validation, and the file was written to a path directly under the Joomla web root that is executed by the PHP handler. An image/PHP polyglot, a file whose header bytes satisfy the MIME check with PHP source appended after, passed the content check while carrying a .php extension of the attacker’s choosing.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-09-30",
       "pakistan": false,
@@ -7739,7 +7720,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102427",
-      "cvss": "0.0",
+      "cvss": "10.0",
       "cwe": ""
     },
     {
@@ -10155,6 +10136,78 @@
       "cwe": ""
     },
     {
+      "id": "EDB-FCB5BAE8",
+      "desc": "Krayin CRM 2.2.4 - IDOR",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-10-01",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52687",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-34E61DA1",
+      "desc": "SuiteCRM  8.10.1 - Authenticated SSRF",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-10-01",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52686",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-B33E3873",
+      "desc": "InvoicePlane 1.7.1 -  RCE",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-10-01",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52685",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
+      "id": "EDB-659E0A34",
+      "desc": "POMS oretnom23v1.0  - SQLi vulnerabilities",
+      "severity": "HIGH",
+      "source": "Exploit-DB",
+      "date": "2026-10-01",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "exploit",
+        "zero-day",
+        "exploit-db",
+        "Zero Day Exploit"
+      ],
+      "url": "https://www.exploit-db.com/exploits/52684",
+      "cvss": "8.0",
+      "cwe": ""
+    },
+    {
       "id": "EDB-1AF8B7A5",
       "desc": "MikroTrick, 7.24, 7.24.2, 7.0.0, 7.23.4, 6.0.0, 6.49.21 - RCE",
       "severity": "HIGH",
@@ -10979,78 +11032,6 @@
         "Zero Day Exploit"
       ],
       "url": "https://www.exploit-db.com/exploits/52638",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-A021B13C",
-      "desc": "LuCI DHCPv6 -  Lease Hostname Stored Cross-Site Scripting",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-10-01",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52637",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-B11329F3",
-      "desc": "Planyo_Online_Reservation_System  3.0 - Arbitrary File Read via SSRF",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-10-01",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52636",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-297F4263",
-      "desc": "Ray 2.56.0 - Directory Traversal & Local File Inclusion",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-10-01",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52635",
-      "cvss": "8.0",
-      "cwe": ""
-    },
-    {
-      "id": "EDB-E5C1DEF6",
-      "desc": "OrkesConductor 3.30.2 - Unauthenticated Remote Code Execution",
-      "severity": "HIGH",
-      "source": "Exploit-DB",
-      "date": "2026-10-01",
-      "pakistan": false,
-      "zeroday": true,
-      "tags": [
-        "exploit",
-        "zero-day",
-        "exploit-db",
-        "Zero Day Exploit"
-      ],
-      "url": "https://www.exploit-db.com/exploits/52633",
       "cvss": "8.0",
       "cwe": ""
     }

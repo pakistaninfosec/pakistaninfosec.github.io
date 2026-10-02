@@ -3,20 +3,28 @@
     {
       "date": "2026-10-02",
       "stats": {
-        "new": 609,
+        "new": 611,
         "changed": 0,
         "removed": 0,
-        "total": 636426,
-        "zeroday": 94,
-        "exploited": 44,
+        "total": 637037,
+        "zeroday": 96,
+        "exploited": 46,
         "pakistan": 15
       },
-      "summary": "Today's digest contains 609 vulnerabilities across 5 sources. 94 zero-day exploits detected, 44 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+      "summary": "Today's digest contains 611 vulnerabilities across 5 sources. 96 zero-day exploits detected, 46 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
       "sections": [
         {
           "label": "Zero Day Exploits",
           "color": "red",
           "items": [
+            {
+              "id": "CVE-2026-102490",
+              "desc": "Zammad GmbH Zammad contains an improper privilege management vulnerability that can allow the local zammad user to escalate privileges to root. This vulnerability can be chained with CVE-2026-102489."
+            },
+            {
+              "id": "CVE-2026-102489",
+              "desc": "Zammad GmbH Zammad contains a session fixation vulnerability that can lead to remote code execution as the zammad user. This vulnerability can be chained with CVE-2026-102490."
+            },
             {
               "id": "CVE-2026-104286",
               "desc": "Fortinet FortiMail contains a path traversal and an improper neutralization of NULL byte or NULL character vulnerability that may allow an unauthenticated attacker to write arbitrary files on the underlying system via crafted HTTP or HTTPS requests."
@@ -48,14 +56,6 @@
             {
               "id": "CVE-2026-87902",
               "desc": "WordPress Core contains a remote file inclusion vulnerability which could allow an unauthenticated attacker to make page-template resolution include a chosen readable local `.php` file outside the active theme directories, leading to remote code execution."
-            },
-            {
-              "id": "CVE-2026-5430",
-              "desc": "WSO2 API Control Plane, API Manager, Traffic Manager & Universal Gateway contain a path traversal vulnerability that could allow for unrestricted file upload and lead to remote code execution."
-            },
-            {
-              "id": "CVE-2026-71362",
-              "desc": "Adobe Commerce and Magento contains an incorrect authorization vulnerability that could allow an attacker to leverage this vulnerability to gain elevated access to sensitive resources without any user interaction."
             }
           ]
         },
@@ -64,6 +64,14 @@
           "color": "orange",
           "items": [
             {
+              "id": "CVE-2026-102490",
+              "desc": "Zammad GmbH Zammad contains an improper privilege management vulnerability that can allow the local zammad user to escalate privileges to root. This vulnerability can be chained with CVE-2026-102489."
+            },
+            {
+              "id": "CVE-2026-102489",
+              "desc": "Zammad GmbH Zammad contains a session fixation vulnerability that can lead to remote code execution as the zammad user. This vulnerability can be chained with CVE-2026-102490."
+            },
+            {
               "id": "CVE-2026-104286",
               "desc": "Fortinet FortiMail contains a path traversal and an improper neutralization of NULL byte or NULL character vulnerability that may allow an unauthenticated attacker to write arbitrary files on the underlying system via crafted HTTP or HTTPS requests."
             },
@@ -94,14 +102,6 @@
             {
               "id": "CVE-2026-87902",
               "desc": "WordPress Core contains a remote file inclusion vulnerability which could allow an unauthenticated attacker to make page-template resolution include a chosen readable local `.php` file outside the active theme directories, leading to remote code execution."
-            },
-            {
-              "id": "CVE-2026-5430",
-              "desc": "WSO2 API Control Plane, API Manager, Traffic Manager & Universal Gateway contain a path traversal vulnerability that could allow for unrestricted file upload and lead to remote code execution."
-            },
-            {
-              "id": "CVE-2026-71362",
-              "desc": "Adobe Commerce and Magento contains an incorrect authorization vulnerability that could allow an attacker to leverage this vulnerability to gain elevated access to sensitive resources without any user interaction."
             }
           ]
         },

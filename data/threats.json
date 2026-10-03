@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-03T11:55:33.387145+00:00",
-  "summary": "Today's digest contains 600 vulnerabilities across 5 sources. 89 zero-day exploits detected, 39 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-10-03T15:53:31.773235+00:00",
+  "summary": "Today's digest contains 604 vulnerabilities across 5 sources. 89 zero-day exploits detected, 39 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 600,
+    "new": 604,
     "changed": 0,
     "removed": 0,
-    "total": 639284,
+    "total": 639888,
     "zeroday": 89,
     "exploited": 39,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 496
+      "count": 500
     },
     {
       "name": "Exploit-DB",
@@ -9985,6 +9985,78 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104983",
       "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105105",
+      "desc": "CWE-306: Missing Authentication for Critical Function in the ait.core.server telemetry and command broker (ait-server) in NASA-AMMOS AIT-Core through 3.1.1 allows an unauthenticated remote attacker with network access to the ZeroMQ message bus to inject spacecraft command data, exfiltrate command and telemetry traffic, inject forged telemetry, or disrupt the command and telemetry bus. The ait-server ZeroMQ broker binds its XSUB and XPUB sockets to all network interfaces by default without authentication or transport security. An attacker able to reach TCP port 5559 can publish messages onto internal topics, including the __commands__ command topic. With the shipped default configuration, command messages are forwarded through command_stream and emitted on the command-uplink UDP path. An attacker able to reach TCP port 5560 can subscribe to command and telemetry traffic on the ground bus. AIT-Core 3.1.2 changes the default ZeroMQ bind addresses to loopback.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105105",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105112",
+      "desc": "Nezha from 1.8.0 before 2.3.13 contains a lock-order inversion in UpdateGroup and DeleteGroup that allows authenticated non-admin users to deadlock the alerting subsystem. Attackers can concurrently call the notification-group and batch-delete endpoints with oversized id lists to widen the race and close an ABBA cycle, permanently killing alert delivery until restart.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105112",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105113",
+      "desc": "Nezha Dashboard from 1.8.0 before 2.3.13 contains an improper locking vulnerability where a non-deferred mutex unlock leaks on a nil-map panic path. Any authenticated non-admin member can issue four notification API calls to permanently deadlock the alerting subsystem, then exhaust memory with blocking requests.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105113",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105114",
+      "desc": "OpenAM before 16.1.3 contains a reflected cross-site scripting vulnerability that allows unauthenticated attackers to inject script by supplying crafted parameters rendered unencoded on the OAuth2 authorization error page. Attackers can lure victims to a crafted /oauth2/authorize link with repeated parameters to run JavaScript in the OpenAM origin, acting within existing sessions or redirecting to phishing pages.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105114",
+      "cvss": "6.1",
       "cwe": ""
     },
     {

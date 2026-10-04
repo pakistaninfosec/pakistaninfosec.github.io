@@ -1,19 +1,19 @@
 {
-  "generated": "2026-10-04T18:01:12.761490+00:00",
-  "summary": "Today's digest contains 274 vulnerabilities across 5 sources. 89 zero-day exploits detected, 39 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-10-04T21:47:36.510972+00:00",
+  "summary": "Today's digest contains 280 vulnerabilities across 5 sources. 90 zero-day exploits detected, 40 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 274,
+    "new": 280,
     "changed": 0,
     "removed": 0,
-    "total": 642095,
-    "zeroday": 89,
-    "exploited": 39,
+    "total": 642375,
+    "zeroday": 90,
+    "exploited": 40,
     "pakistan": 15
   },
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 170
+      "count": 175
     },
     {
       "name": "Exploit-DB",
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 39
+      "count": 40
     },
     {
       "name": "Pakistan CERT",
@@ -316,6 +316,25 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-88779",
+      "desc": "Citrix NetScaler ADC (formerly Citrix ADC) and Citrix NetScaler Gateway (formerly Citrix Gateway) contain an improper restriction of operations within the bounds of a memory buffer vulnerability that could allow for a denial of service.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88779",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -4117,6 +4136,96 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105224",
       "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105161",
+      "desc": "A flaw has been found in invariant-systems-ai aiir up to 1.7.0. The affected element is an unknown function of the component Policy Gate Handler. Executing a manipulation can lead to improper verification of cryptographic signature. The attack can be executed remotely. It is advisable to upgrade the affected component. The GitHub repository of this project is not available anymore. This vulnerability only affects products that are no longer supported by the maintainer.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105161",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105216",
+      "desc": "go-micro before 6.0.0 contains an improper certificate validation vulnerability that allows network attackers to impersonate services because the shared TLS helper sets InsecureSkipVerify to true by default. Man-in-the-middle attackers can present any certificate to intercept or modify gRPC transport, HTTP and RabbitMQ broker, and Consul or etcd registry traffic, including authentication tokens and credentials.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105216",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105217",
+      "desc": "Cockpit CMS 2.12.0 before 2.14.1 disables TLS certificate verification in the cron.php web worker restart request, allowing network attackers to capture the worker token. Man-in-the-middle attackers on the outbound path to site_url can present any certificate to steal the worker/web/token value and start the web worker.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105217",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105218",
+      "desc": "gopay before 1.5.119 disables TLS certificate verification in defaultClient() in pkg/xhttp/client.go, allowing man-in-the-middle attackers to impersonate payment provider APIs. Attackers can present any certificate to read merchant credentials, signatures and transaction data, and modify payment, refund and order query responses.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105218",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105219",
+      "desc": "Mammoth.js 1.3.0 before 1.12.3 contains a regular expression denial of service vulnerability in the style map tokeniser in lib/styles/parser/tokeniser.js due to overlapping regex alternatives. Attackers can supply a crafted .docx with an unterminated quoted string of repeated backslash escapes in mammoth/style-map to block the Node.js event loop.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105219",
+      "cvss": "7.5",
       "cwe": ""
     },
     {

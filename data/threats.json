@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-04T13:47:17.661048+00:00",
-  "summary": "Today's digest contains 256 vulnerabilities across 5 sources. 89 zero-day exploits detected, 39 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-10-04T18:01:12.761490+00:00",
+  "summary": "Today's digest contains 274 vulnerabilities across 5 sources. 89 zero-day exploits detected, 39 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 256,
+    "new": 274,
     "changed": 0,
     "removed": 0,
-    "total": 641821,
+    "total": 642095,
     "zeroday": 89,
     "exploited": 39,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 152
+      "count": 170
     },
     {
       "name": "Exploit-DB",
@@ -3793,6 +3793,330 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105149",
       "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105156",
+      "desc": "A weakness has been identified in YzmCMS up to 7.6. Impacted is the function Password of the file /common/function/system.func.php of the component MD5 Handler. Executing a manipulation of the argument pass can lead to password hash with insufficient computational effort. The attack may be launched remotely. This attack is characterized by high complexity. The exploitability is considered difficult. The exploit has been made available to the public and could be used for attacks. The vendor kindly explains: \"Our regular release cycle is about 6 months. The last release was in the previous month, and our next scheduled version will be released in March 2027. We will implement the backward-compatible gradual hash migration feature in this upcoming release. (...) Before the new version is available, we will publish security mitigation guidance on our official documentation for existing deployers to reduce the risk.\"",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105156",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105157",
+      "desc": "A security vulnerability has been detected in RainyGao DocSys up to 2.02.85. The affected element is the function DocController.doGetTmp of the file /Doc/doGetTmpFile.do of the component Document Controller. The manipulation of the argument path/fileName leads to path traversal. Remote exploitation of the attack is possible. The exploit has been disclosed publicly and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105157",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105158",
+      "desc": "A vulnerability was detected in RainyGao DocSys up to 2.02.85. The impacted element is the function BaseController.createDBForMysql of the file BaseController.java of the component Database Management. The manipulation of the argument url results in sql injection. The attack can be executed remotely. The exploit is now public and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105158",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105205",
+      "desc": "SiYuan before 3.8.5 contains an information disclosure vulnerability that allows publish-mode readers to learn backlink block IDs and reference counts from password-protected and publish-disabled documents by querying a published document. Attackers can send POST requests to /api/block/getDocInfo or getDocsInfo for a published document ID to obtain refIDs and refCount of hidden referencing blocks, bypassing the publish confidentiality boundary.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105205",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105206",
+      "desc": "ZITADEL 3.0.0 through 3.4.15 and 4.x before 4.17.3 contains an incorrect authorization flaw in the User Service API, which verifies user.read against the caller's organization rather than the organization owning the target user. An authenticated member holding org-scoped user.read can query GET /v2/users/{userId}/authentication_methods to learn which authentication method types users in other organizations have registered.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105206",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105207",
+      "desc": "ZITADEL 3.0.0 through 3.4.15 and 4.0.0 before 4.17.3 creates links between user accounts and external identity providers without verifying a primary factor or the caller's permission, including on identify-only Login V2 sessions and via the User Service V2 AddIDPLink endpoint. An unauthenticated attacker knowing a victim's login name can bind their own external IdP identity to the victim's account and then sign in as the victim.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105207",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105208",
+      "desc": "ZITADEL 4.x before 4.17.3 and 3.x through 3.4.15 protects IdP intent tokens with unauthenticated, malleable encryption, allowing authenticated users to tamper with their own token so it is accepted for another user's external login intent. An attacker who predicts a victim's in-flight intent identifier and wins a timing race can call /v2/idp_intents or /v2/sessions to steal the victim's IdP tokens or hijack their session.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105208",
+      "cvss": "7.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105209",
+      "desc": "ZITADEL 3.x before 3.4.15 and 4.x before 4.17.1 contains an improper authorization vulnerability: when issuing passkey or passwordless enrollment codes, it checks only the organization in the x-zitadel-orgid header, not the target user's organization. Attackers with user-write permission in one organization can obtain an enrollment code for a user in another organization on the same instance and register their own authenticator to take over that account.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105209",
+      "cvss": "9.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105210",
+      "desc": "ZITADEL 3.x before 3.4.15 and 4.x before 4.17.1 contains a missing authentication flaw in the hosted Login V1 UI, whose second-factor enrollment and initialization handlers act on an identify-only session before any primary factor is verified. Attackers knowing only a victim's login name can enroll attacker-controlled TOTP, OTP-SMS, OTP-Email, or U2F factors, overwrite the verified phone number, and enumerate users through discrepant errors.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105210",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105211",
+      "desc": "ZITADEL before 4.17.1 contains an authentication bypass vulnerability in Login V2 that allows unauthenticated attackers to take over accounts by obtaining OTP codes via the returnCode delivery type. Attackers knowing a login name of a victim with OTP-Email and OTP-SMS enrolled can read both codes from server-action responses to gain MFA-authenticated sessions, including administrator takeover.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105211",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105212",
+      "desc": "ZITADEL 3.x before 3.4.14 and 4.x before 4.16.2 contains an authentication bypass in the hosted Login V1 and Login V2 UIs that accepts passkey or other authenticator enrollment on identify-only login sessions, before any primary factor is verified. Unauthenticated attackers knowing only a victim's login name can register an attacker-controlled authenticator and log in as that user, bypassing existing passwords and MFA.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105212",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105213",
+      "desc": "ZITADEL 4.x before 4.17.1 does not check an organization's inactive state during Login V2 authentication, verifying only the individual user's status. Users of a deactivated organization who hold valid credentials, an existing session, or a refresh token can still sign in, create sessions, and obtain or refresh tokens.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105213",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105214",
+      "desc": "Zitadel before 4.16.2 contains a server-side request forgery vulnerability that allows attackers to make the server request internal resources through organization domain HTTP verification. The challenge fetch uses Go's default http.Get instead of the protected client, so attackers can register domains that redirect to loopback, internal, or cloud metadata addresses to scan ports and map internal networks.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105214",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105215",
+      "desc": "ZITADEL before 3.4.14 and 4.x before 4.16.2 contains an authentication bypass in the hosted Login V1 UI because the 'external account not found' registration endpoint trusts client-supplied external identity fields without a completed IdP callback. Unauthenticated attackers can submit forged IDPConfigID and ExternalUserID values to pre-create an account bound to a victim's external IdP identity, which the victim's later genuine external login then signs into.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105215",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-104402",
+      "desc": "Insertion of Sensitive Information Into Sent Data vulnerability in farvisun Mindio Magic MCP mindio-magic-mcp allows Retrieve Embedded Sensitive Data.This issue affects Mindio Magic MCP: from n/a through 0.5.6.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104402",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105086",
+      "desc": "WWBN AVideo 12.4 through 29.2.0 contains a stored cross-site scripting vulnerability that allows authenticated uploaders to inject HTML by submitting doubly-encoded entities in video titles. Because safeString() strips tags before decoding entities and runs twice via setTitle() and save(), attackers can store markup that executes in trending, gallery, embed, and playlist pages.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105086",
+      "cvss": "8.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105089",
+      "desc": "WWBN AVideo through 29.2.0 contains a stored cross-site scripting vulnerability that allows users with upload permission to inject script by setting a malicious video trailer1 URL. The value is rendered unescaped in YouPHPFlix2 templates and channel playlists, letting attackers break out of onclick strings or iframe src attributes to execute JavaScript in victims' browsers.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105089",
+      "cvss": "8.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105224",
+      "desc": "YesWiki before 4.6.7 contains a cross-site scripting vulnerability in the Bazar valeur action that allows page editors to inject script by rendering unescaped HTML fetched from a remote URL. Attackers can point tools/bazar/actions/valeur.php at a controlled server returning BAZ_fiche_titre markup with an img onerror handler, executing script in every viewer's browser.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-04",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105224",
+      "cvss": "5.4",
       "cwe": ""
     },
     {

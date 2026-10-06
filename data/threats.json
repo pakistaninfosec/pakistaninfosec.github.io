@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-06T16:09:21.217400+00:00",
+  "generated": "2026-10-06T21:08:01.351920+00:00",
   "summary": "Today's digest contains 604 vulnerabilities across 5 sources. 89 zero-day exploits detected, 39 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
     "new": 604,
     "changed": 0,
     "removed": 0,
-    "total": 645444,
+    "total": 646048,
     "zeroday": 89,
     "exploited": 39,
     "pakistan": 15
@@ -2340,7 +2340,7 @@
     {
       "id": "CVE-2017-20285",
       "desc": "YAML versions before 1.30 for Perl allow a loaded document to trigger the DESTROY method of arbitrary classes.\n\nA perl/hash:Class tag blesses a hash into the class it names. The document supplies the object's fields, and Perl calls DESTROY when it goes out of scope.\n\nWhat DESTROY does depends on the classes the process has loaded. With File::Temp::Dir from core Perl, it can delete a directory tree the document names.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -2352,13 +2352,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2017-20285",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
       "id": "CVE-2019-25777",
       "desc": "YAML versions before 1.27_001 for Perl allow a loaded perl/glob document to replace any package variable, which can lead to arbitrary code execution.\n\nA perl/glob document names a package and a symbol, and supplies the value assigned to it. Nothing restricts the name, so the target can be @INC or YAML's own load options.\n\nA perl/glob document that sets $YAML::LoadCode or $YAML::UseCode turns on code loading, which is off by default, for every later Load() in the process. A perl/code document is then passed to a string eval, so an attacker who supplies two documents to separate Load() calls in one process can execute arbitrary Perl code.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -2370,7 +2370,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-25777",
-      "cvss": "0.0",
+      "cvss": "7.3",
       "cwe": ""
     },
     {
@@ -2460,7 +2460,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19954",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -4356,7 +4356,7 @@
     {
       "id": "CVE-2026-37719",
       "desc": "An issue in dormakaba evolo Service (all versions) allows a remote attacker to execute arbitrary code as SYSTEM via a .NET component.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -4368,13 +4368,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-37719",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-88393",
       "desc": "WookTeam v1.6.6 and before is vulnerable to RCE in the project task export interface /api/project/task/export. The data parameter is base64-decoded and passed directly into the string2array() function in app/Module/Base.php, which executes eval(\"\\$array = $data;\") whenever the decoded string starts with array. An attacker can inject arbitrary PHP code into the eval call and achieve RCE.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -4386,7 +4386,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88393",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -6426,7 +6426,7 @@
     {
       "id": "CVE-2026-88424",
       "desc": "FineAdmin v1.0 was discovered to contain a SQL injection vulnerability via the field/order parameter at ButtonService.GetListByFilter(). This vulnerability allows attackers to access sensitive database information via crafted SQL statements.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -6438,7 +6438,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88424",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -6456,7 +6456,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95165",
-      "cvss": "0.0",
+      "cvss": "6.1",
       "cwe": ""
     },
     {
@@ -7380,7 +7380,7 @@
     {
       "id": "CVE-2026-78861",
       "desc": "An issue in Mercusys AC12 V2 allows a local attacker to execute arbitrary code via a hardcoded 512-bit RSA Private Key",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -7392,7 +7392,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78861",
-      "cvss": "0.0",
+      "cvss": "7.7",
       "cwe": ""
     },
     {
@@ -7410,7 +7410,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78862",
-      "cvss": "0.0",
+      "cvss": "6.8",
       "cwe": ""
     },
     {
@@ -8063,7 +8063,7 @@
     },
     {
       "id": "CVE-2026-21589",
-      "desc": "h3. Summary\n\nThis is a vulnerability in Bitbucket Data Center, Confluence Data Center, Jira Service Management Data Center, Jira Software Data Center, Bamboo Data Center. Crowd Data Center, Crucible and Fisheye. This Arbitrary File Access vulnerability allows an unauthenticated attacker to access specific files within the web application root directory in affected versions. Exploitation requires prior knowledge of the target file's exact name and path; this vulnerability does not allow attackers to enumerate or list directory contents. In some configurations, there may be some sensitive files that make this highly severe.  \n\nh3. Context\n\nThis vulnerability allows an unauthenticated remote attacker to access specific files within the web application root directory in affected versions.\n\nh3. Details:\n\n* The vulnerability must be addressed for affected versions of:\n Bitbucket Data Center, introduced in version >= 4.6.0, fix versions: 9.4.26, 10.2.8, 10.5.1\n Confluence Data Center, introduced in version >= 5.10.0, fix versions 9.2.26, 10.2.19\n Crowd Data Center, introduced in version >= 2.11.0, fix versions 6.3.7, 7.0.3, 7.1.1, 7.2.4\n Jira Software Data Center, introduced in version >= 7.1.0, fix versions 9.12.40, 10.3.26, 11.3.12\n Jira Service Management Data Center, introduced in version >= 3.1.0, fix versions 5.12.40, 10.3.26, 11.3.12\n Bamboo Data Center >= 7.0.1, fix versions 10.2.24, 12.1.12\n Crucible, fix versions 4.9.15\n Fisheye, fix version 4.9.15\n* Exploitation requires prior knowledge of the target file's exact name and path.\n* The vulnerability does not include the capability to enumerate or list directory contents.",
+      "desc": "This is a vulnerability in Bitbucket Data Center, Confluence Data Center, Jira Service Management Data Center, Jira Software Data Center, Bamboo Data Center. Crowd Data Center, Crucible and Fisheye. This Arbitrary File Access vulnerability allows an unauthenticated attacker to access specific files within the web application root directory in affected versions. Exploitation requires prior knowledge of the target file's exact name and path; this vulnerability does not allow attackers to enumerate or list directory contents. In some configurations, there may be some sensitive files that make this highly severe. This vulnerability allows an unauthenticated remote attacker to access specific files within the web application root directory in affected versions. The vulnerability must be addressed for affected versions of: -- Bitbucket Data Center, introduced in version >= 4.6.0, fix versions: 9.4.26, 10.2.8, 10.5.1 -- Confluence Data Center, introduced in version >= 5.10.0, fix versions 9.2.26, 10.2.19 -- Crowd Data Center, introduced in version >= 2.11.0, fix versions 6.3.7, 7.0.3, 7.1.7, 7.2.4 -- Jira Software Data Center, introduced in version >= 7.1.0, fix versions 9.12.40, 10.3.26, 11.3.12 -- Jira Service Management Data Center, introduced in version >= 3.1.0, fix versions 5.12.40, 10.3.26, 11.3.12 -- Bamboo Data Center >= 7.0.1, fix versions 10.2.24, 12.1.12 -- Crucible, fix versions 4.9.15 -- Fisheye, fix version 4.9.15 -- Exploitation requires prior knowledge of the target file's exact name and path. The vulnerability does not include the capability to enumerate or list directory contents.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-10-05",
@@ -9179,7 +9179,7 @@
     },
     {
       "id": "CVE-2026-32576",
-      "desc": "Customer Insecure Direct Object References (IDOR) in Faktur Pro for WooCommerce <= 3.2.1 versions.",
+      "desc": "Authorization Bypass Through User-Controlled Key vulnerability in ZWEISCHNEIDER Faktur Pro for WooCommerce woorechnung allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Faktur Pro for WooCommerce: from n/a through 3.2.2.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-10-06",

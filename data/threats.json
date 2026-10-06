@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-06T09:15:18.688986+00:00",
-  "summary": "Today's digest contains 595 vulnerabilities across 5 sources. 89 zero-day exploits detected, 39 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-10-06T16:09:21.217400+00:00",
+  "summary": "Today's digest contains 604 vulnerabilities across 5 sources. 89 zero-day exploits detected, 39 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 595,
+    "new": 604,
     "changed": 0,
     "removed": 0,
-    "total": 644840,
+    "total": 645444,
     "zeroday": 89,
     "exploited": 39,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 491
+      "count": 500
     },
     {
       "name": "Exploit-DB",
@@ -4086,7 +4086,7 @@
     {
       "id": "CVE-2026-88391",
       "desc": "Northstar (dromara/northstar, quantitative trading platform) <= 9.1.1 enables the H2 Console but its auth interceptor only covers /northstar/**, so /h2-console is exposed with no authentication and the embedded H2 DB uses default sa / empty password. Any network-reachable attacker can run arbitrary system commands via CREATE ALIAS (pre-auth RCE).",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -4098,13 +4098,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88391",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-88392",
       "desc": "Unimall v4 is vulnerable to Directory Traversal in FileUploadController.local(). This allows an attacker to execute arbitrary code.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -4116,7 +4116,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88392",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -4440,7 +4440,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-88397",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -5562,7 +5562,7 @@
     {
       "id": "CVE-2026-104711",
       "desc": "Improper neutralization of special elements used in an expression language statement ('Expression Language Injection') vulnerability in Apache Struts. If the application is configured to use the legacy RESTful action mapper, a crafted request can inject an OGNL expression that may lead to remote code execution. Struts 7 is affected only when the OGNL allowlist is disabled; it is enabled by default. Applications using the default action mapper, the restful2 mapper, or the Struts REST plugin are not affected.\n\nThis issue affects Apache Struts: from 2.0.0 through 2.3.37, from 2.5.0 through 2.5.33, from 6.0.0 through 6.11.0, from 7.0.0 through 7.3.0.\n\nUsers are recommended to upgrade to version 6.12.0 or 7.4.0, which fixes the issue.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -5574,13 +5574,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104711",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-104712",
       "desc": "Asymmetric resource consumption (amplification) vulnerability in Apache Struts. When a request parameter is bound to an arbitrary-precision decimal (java.math.BigDecimal) property that is then rendered through the Struts tag library, the framework can produce a response many orders of magnitude larger than the request, allowing an unauthenticated remote attacker to exhaust server CPU and outbound network capacity with sustained low-volume traffic. Applications that do not bind request parameters to BigDecimal properties, or never render such a property through the Struts tag library, are not affected.\n\nThis issue affects Apache Struts: from 2.5.14 through 2.5.33, from 6.0.0 through 6.11.0, from 7.0.0 through 7.3.0.\n\nUsers are recommended to upgrade to version 6.12.0 or 7.4.0, which fixes the issue.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -5592,7 +5592,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104712",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -5610,13 +5610,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104713",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-104714",
       "desc": "Concurrent execution using shared resource with improper synchronization ('race condition') vulnerability in Apache Struts. Where a localized message formats a date or time argument, the formatter retained for that message by the application-wide text provider is used by concurrently served requests without isolation, so a value belonging to one user can appear in another user's response, or the rendering can fail and surface as a server error. Applications whose localized messages format no date or time arguments are not affected.\n\nThis issue affects Apache Struts: from 2.0.0 through 2.3.37, from 2.5.0 through 2.5.33, from 6.0.0 through 6.11.0, from 7.0.0 through 7.3.0.\n\nUsers are recommended to upgrade to version 6.12.0 or 7.4.0, which fixes the issue.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -5628,7 +5628,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104714",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -5940,7 +5940,7 @@
     {
       "id": "CVE-2026-28625",
       "desc": "In multiple locations, there is a possible permission bypass due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -5952,13 +5952,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28625",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-28640",
       "desc": "In checkCallerIsCertInstallerOrSelfInProfile of CredentialStorageActivity.java, there is a possible permission bypass due to improper input validation. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -5970,13 +5970,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28640",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-28641",
       "desc": "In shouldDisableUninstallButton of ApplicationActionButtonsPreferenceController.java, there is a possible permission bypass due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -5988,13 +5988,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28641",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-28647",
       "desc": "In updateState of DeviceAdminAppsPreferenceController.java, there is a possible permission bypass due to a logic error in the code. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -6006,13 +6006,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28647",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-28648",
       "desc": "In Settings, there is a possible permission bypass due to a confused deputy. This could lead to local escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -6024,7 +6024,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-28648",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -7362,7 +7362,7 @@
     {
       "id": "CVE-2026-78860",
       "desc": "An issue in Mercusys AC12 V2 allows a local attacker to execute arbitrary code via the storage of information in plaintext",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -7374,7 +7374,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78860",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -7452,7 +7452,7 @@
     {
       "id": "CVE-2026-95263",
       "desc": "Feehi CMS 2.1.1 is vulnerable to Incorrect Access Control. A low-privilege backend administrator with administrator-update permission can change the password of the built-in super administrator account. The server does not enforce protection for this account, and the update scenario does not require the old password.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -7464,7 +7464,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95263",
-      "cvss": "0.0",
+      "cvss": "7.2",
       "cwe": ""
     },
     {
@@ -7488,7 +7488,7 @@
     {
       "id": "CVE-2026-95265",
       "desc": "Feehi CMS 2.1.1 contains a Server-Side Request Forgery (SSRF) vulnerability in the UEditor catchimage endpoint. The private-IP validation does not block loopback or link-local addresses, allowing an attacker to make the server probe internal HTTP services through response differences.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-05",
       "pakistan": false,
@@ -7500,7 +7500,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95265",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -8532,7 +8532,7 @@
     {
       "id": "CVE-2026-82988",
       "desc": "There exists an arbitrary file download in vCast APK delivery mechanism in ViewSonic ViewBoard unknown allows a remote, unauthenticated attacker to trigger unprivileged APK installation via serving a malicious APK URL through an unauthenticated download endpoint",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-06",
       "pakistan": false,
@@ -8544,13 +8544,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82988",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-82989",
       "desc": "There is an input injection in vCast exposed network services in ViewSonic ViewBoard that allows a remote, unauthenticated attacker to inject arbitrary input into service endpoints via network-based HTTP requests to unauthenticated endpoints",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-06",
       "pakistan": false,
@@ -8562,7 +8562,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82989",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -8868,7 +8868,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104380",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -9732,7 +9732,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86786",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -9750,7 +9750,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89289",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -9768,7 +9768,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94270",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -9786,7 +9786,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94271",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -9804,7 +9804,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94278",
-      "cvss": "0.0",
+      "cvss": "5.5",
       "cwe": ""
     },
     {
@@ -9840,7 +9840,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94299",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -9894,6 +9894,168 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85153",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-100518",
+      "desc": "Unauthenticated Broken Authentication in Advanced Google reCAPTCHA <= 5.40 versions.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-100518",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-102387",
+      "desc": "Unauthenticated Sensitive Data Exposure in Xserver Migrator <= 1.6.6 versions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102387",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-102915",
+      "desc": "Subscriber Broken Access Control in WPO365 <= 44.1 versions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102915",
+      "cvss": "8.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-103346",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Tomlister Payflex Payment Gateway payflex-payment-gateway allows Reflected XSS.This issue affects Payflex Payment Gateway: from n/a through 2.7.1.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103346",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-104385",
+      "desc": "Unauthenticated Sensitive Data Exposure in Groundhogg <= 4.8.3 versions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104385",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-104387",
+      "desc": "Unauthenticated Broken Access Control in PowerPress Podcasting <= 11.17.9 versions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104387",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-104394",
+      "desc": "Unauthenticated Cross Site Scripting (XSS) in Charitable <= 1.8.12.3 versions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104394",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-104395",
+      "desc": "Unauthenticated Cross Site Scripting (XSS) in picu <= 3.10.1 versions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104395",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-104399",
+      "desc": "Insertion of Sensitive Information Into Sent Data vulnerability in StylemixThemes Motors allows Retrieve Embedded Sensitive Data.\n\nThis issue affects Motors: from n/a through 1.4.124.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-06",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104399",
       "cvss": "0.0",
       "cwe": ""
     },

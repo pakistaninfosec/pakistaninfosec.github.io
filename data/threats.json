@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-12T15:54:58.237095+00:00",
-  "summary": "Today's digest contains 535 vulnerabilities across 5 sources. 80 zero-day exploits detected, 30 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-10-12T22:46:32.759518+00:00",
+  "summary": "Today's digest contains 595 vulnerabilities across 5 sources. 80 zero-day exploits detected, 30 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 535,
+    "new": 595,
     "changed": 0,
     "removed": 0,
-    "total": 660087,
+    "total": 660682,
     "zeroday": 80,
     "exploited": 30,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 440
+      "count": 500
     },
     {
       "name": "Exploit-DB",
@@ -8806,6 +8806,1086 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92877",
       "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-103060",
+      "desc": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in erlang rebar3 allows a malicious package publisher to delete a directory outside the project's _build directory and extract package files into it when a developer fetches dependencies.\n\nA package release's dependencies in a Hex registry carry an app field that names the dependency's OTP application. rebar3 uses this field as the dependency's name without validating it (rebar_packages:parse_deps/1) and builds the dependency's directory from that name (rebar_app_utils:dep_to_app/7). rebar_fetch:download_source_online/2 deletes that directory with rm -rf and moves the fetched package into it. hex.pm didn't restrict the field to a directory name before 2026-10-12, so a publisher could set it to a value such as ../../../../target. When a project depends on such a release directly or transitively, rebar3 get-deps deletes the directory the name resolves to and writes the dependency's files there. This happens before the dependency's own rebar.config.script is evaluated, and get-deps compiles nothing.\n\nThis issue affects rebar3: from 3.7.0-rc1 before 3.27.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103060",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-103503",
+      "desc": "Improper Certificate Validation vulnerability in hexpm hex allows an attacker who can intercept HTTPS connections, and holds a certificate for a Hex host issued by a CA in Hex's bundled CA store, to impersonate that host to users who set cacerts_path to a CA store that leaves that CA out.\n\ncacerts_path (HEX_CACERTS_PATH) is documented as the path to the CA certificate store, used instead of the CA bundle that ships with Hex. Hex.HTTP.SSL.ssl_opts/1 passes the configured store as the cacerts option, but builds the partial_chain callback from the bundled store whether cacerts_path is set or not. Hex.HTTP.SSL.partial_chain/2 accepts a server chain when any certificate in it has the same public key as a bundled CA certificate, so a chain that leads to a bundled CA passes verification although the configured store doesn't contain that CA. Hostname verification still applies.\n\nThis issue affects hex: from 0.20.2 before 2.5.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103503",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105280",
+      "desc": "Improper Validation of Integrity Check Value vulnerability in hexpm hex allows a package mirror to substitute the tarball that mix hex.package fetch PACKAGE VERSION --output - writes to standard output.\n\nHex compares a fetched tarball's inner and outer checksums with the repository's signed registry before writing it to a file or unpacking it. The standard output branch of mix hex.package fetch writes the bytes returned by Hex.SCM.fetch/3 without that comparison, and Hex.SCM.fetch/3 doesn't verify freshly downloaded tarballs itself. When a mirror configured with HEX_MIRROR_URL or mirror_url serves altered bytes, the command prints them and exits successfully, while the same fetch with --output FILE fails with a checksum mismatch.\n\nHex also prints diagnostics to standard output while the command runs: the body of a failed HTTP response from the update check or a registry fetch, and API warnings from the x-hex-message header. A mirror that answers one of those requests with an error whose body is a tar archive gets that archive written to standard output ahead of the verified tarball, so a pipeline that unpacks standard output extracts the mirror's files. This happens even when the checksum check then fails, because the archive is already on standard output.\n\nThis issue affects hex: from 0.20.2 before 2.5.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105280",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105668",
+      "desc": "Protection Mechanism Failure vulnerability in hexpm hex allows the owner of a package, or an attacker who has taken over the owner's account, to get a newly published release past the release-age cooldown.\n\nThe cooldown (cooldown config, HEX_COOLDOWN) withholds versions younger than the configured age during dependency resolution. When the release of a package locked in mix.lock is retired or has a security advisory, Hex.RemoteConverger.build_cooldown_bypass/3 and Hex.RemoteConverger.unsafe_lock_bypass/1 lift the cooldown for every version of that package and of every package the locked release depends on, so that mix deps.update can move off the unsafe release. Retiring a release needs the same package owner permission as publishing one. An attacker who publishes a malicious release can retire the currently locked release, and the next mix deps.update that unlocks the package selects the new release regardless of its age. Hex.Registry.Cooldown.versions/2 checks the bypass by package name alone, so the bypass also covers packages with the same name in other repositories. Cooldown configured through an organization dependency policy is not affected.\n\nThis issue affects hex: from 2.5.0 before 2.5.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105668",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-107248",
+      "desc": "Thelia 3.0.0's back-office Email/Messages feature contains a server‑side template injection (SSTI) flaw that allows any authenticated user with the “Messages” permission to supply unsandboxed Twig templates, which are then compiled and executed as raw code. By modifying Message content, an attacker can execute arbitrary PHP functions, read sensitive files, and potentially write to the filesystem, leading to full compromise of the application and underlying host. This vulnerability has been patched in thelia/twig-engine-module 1.0.9.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107248",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-108899",
+      "desc": "A flaw has been found in tobychui zoraxy up to 3.3.4. This impacts the function handleBasicAuth of the file mod/dynamicproxy/authProviders.go of the component Path Exception Matcher. This manipulation of the argument PathPrefix causes improper authorization. It is possible to initiate the attack remotely. The exploit has been published and may be used. Upgrading to version 3.3.5-rc1 will fix this issue. Patch name: 37cd0f27b17cd15cfa4af409bfec943146f5fdfe. Upgrading the affected component is advised.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108899",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-108900",
+      "desc": "A vulnerability has been found in Exponent CMS up to 3.0.2patch2. Affected is the function userLogin of the file xmlrpc.php of the component XML-RPC. Such manipulation leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108900",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-108901",
+      "desc": "A vulnerability was found in Shenzhen HCC Technology MPOS M6 PLUS 1.31-N. Affected by this vulnerability is an unknown functionality of the component Display QR Code Rendering. Performing a manipulation of the argument alignment results in improper restriction of rendered ui layers. The attack can only be performed from the local network. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108901",
+      "cvss": "3.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-108906",
+      "desc": "A vulnerability has been found in Netcore NR268 1.7.121109. This affects the function filter_arp_put_file_cgi of the file /router/filter_arp_put_file.cgi. The manipulation of the argument put_file leads to out-of-bounds read. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108906",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109194",
+      "desc": "A flaw was found in Red Hat Quay. The build trigger management application programming interface (API) fails to verify whether a requested trigger belongs to the specified repository. An authenticated user with administrative access to any repository can view, modify, or permanently delete build triggers and associated write tokens of another repository if they know the victim trigger's universally unique identifier (UUID).",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109194",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109195",
+      "desc": "A flaw was found in Quay. An authenticated attacker can access repository auto-prune configurations from other namespaces, leading to unauthorized information disclosure. This issue occurs because the application does not properly enforce namespace scoping when retrieving policy details by repository name and policy identifier. To exploit the vulnerability, the attacker must manage a repository sharing the target's name and know the target policy's unique identifier.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109195",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109391",
+      "desc": "Square Squash through commit e73f280 contains an insecure deserialization vulnerability that allows unauthenticated attackers to store crafted YAML via the POST /api/1.0/symbolication endpoint. When occurrences referencing the attacker-controlled symbolication UUID are symbolicated, the stored values are passed to YAML.load with SafeYAML in unsafe mode, enabling arbitrary Ruby object deserialization and potential code execution.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109391",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109392",
+      "desc": "Pimcore through 2026.3.1 contains a stored cross-site scripting vulnerability that allows authenticated backend users to inject scripts by storing unescaped URLs in ExternalImage fields. Attackers with data object edit permission can store attribute-breaking payloads that execute JavaScript in the admin origin when other users open version preview or diff views.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109392",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109393",
+      "desc": "QloApps through 1.7.0 contains an insecure direct object reference vulnerability in back-office AJAX handlers of AdminOrdersController, AdminBookingDocumentController, AdminProductsController and AdminAddHotelController that skip htl_access hotel checks. Hotel-restricted employees can supply other hotels' sequential identifiers to read, upload and delete booking documents and delete rooms, room images and hotel images.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109393",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109394",
+      "desc": "Thirty bees through 1.7.0 contains an authentication bypass vulnerability in PasswordController::resolveCustomer() that allows unauthenticated attackers to reset registered customers' passwords using guest account tokens. Attackers can place a guest order with the victim's email, then use the guest secure key to reset and take over the victim's account when guest checkout is enabled.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109394",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109396",
+      "desc": "Thelia before 3.1.2 and 3.2.x before 3.2.1 contains a CSV formula injection vulnerability that allows unauthenticated visitors to inject spreadsheet formulas by supplying crafted registration, checkout or newsletter fields. Attackers can submit names, addresses or phone values starting with =, +, - or @ that CSVSerializer exports verbatim, executing formulas in the administrator's spreadsheet application.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109396",
+      "cvss": "4.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109397",
+      "desc": "Thelia before 3.1.2 and 3.2.x before 3.2.1 contains an unrestricted file upload vulnerability that allows authenticated back-office users to upload PHP files by appending a trailing space to filenames. FileProcessorService validates the raw filename but FileManager::sanitizeFileName() strips the space, storing an executable .php file under public/cache/documents/ for code execution as the web server user.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109397",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109398",
+      "desc": "Gumlet php-image-resize before 3.0.1 contains a denial of service vulnerability because the ImageResize constructor in lib/ImageResize.php passes images to GD imagecreatefrom* functions without pixel limits. Remote attackers can upload small, highly compressed images that decode to large bitmaps, exhausting PHP memory and terminating the worker process.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109398",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109399",
+      "desc": "SWUpdate through 2026.05.1 contains an improper certificate validation vulnerability in crypto/swupdate_cms_verify_openssl.c that trusts untrusted X.509 certificates embedded in CMS SignedData for chain building. Attackers holding a signing key from a sibling intermediate under the same root can embed that intermediate in the signature to install malicious updates.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109399",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81856",
+      "desc": "Improper Neutralization of Escape, Meta, or Control Sequences vulnerability in hexpm hex allows a malicious package publisher or a hostile repository server to inject terminal control sequences into the output of Mix tasks.\n\nHex prints strings supplied by the package repository and the documentation search service straight to the terminal through Hex.Shell.info/1 and Hex.Shell.error/1, neutralizing no control characters. Affected sinks span package metadata and configuration snippets in mix hex.info, search results in mix hex.package search and mix hex.search, owner and organization listings, publish and sponsor URLs, the authenticated username in mix hex.user, policy identities in mix hex.policy, and API error bodies rendered by Hex.Utils.print_error_result/1. A malicious package can embed ANSI escape sequences (cursor movement, line erase, carriage returns, OSC 52 clipboard writes) or Unicode bidirectional overrides in any of those fields, so the bytes reach the terminal unchanged, forging displayed URLs, package descriptions and suggested commands, concealing real output, or writing to the clipboard. No authentication or privileged position is required; only publishing a package.\n\nThis issue affects hex: from 0.0.1 before 2.5.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81856",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85947",
+      "desc": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 contain an authorization flaw in certain forest-management operations. A remote attacker with forest-management privileges could exploit this flaw to create a persistent unauthorized administrator account, potentially resulting in complete unauthorized administrative control of the server.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85947",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85948",
+      "desc": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 contain an XQuery injection flaw in a deprecated Management API package path. A remote attacker with manage-user-level privileges could exploit this flaw to obtain persistent unauthorized administrative control.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85948",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85949",
+      "desc": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 may record security-sensitive information in diagnostic logs under certain configurations. An attacker with access to the affected logs could use this information to obtain unauthorized access to protected resources.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85949",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85950",
+      "desc": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 contain an authorization flaw that could allow a remote attacker with administrative privileges to access authentication material associated with higher-privileged users, potentially resulting in unauthorized administrative access.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85950",
+      "cvss": "8.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85951",
+      "desc": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 on Azure contain a server-side request forgery vulnerability that could allow an authenticated attacker to access internal cloud services, potentially resulting in unauthorized access to cloud credentials or tokens.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85951",
+      "cvss": "8.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85952",
+      "desc": "Affected Linux-based Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 contain a server-side request forgery vulnerability that could allow an authenticated attacker to access internal cloud services, potentially resulting in unauthorized access to cloud credentials.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85952",
+      "cvss": "8.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85953",
+      "desc": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 contain privileged legacy InfoStudio modules that do not sufficiently validate user-controlled file paths and user-context values. Exploitation could result in unauthorized access to server files or execution under an unintended identity.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85953",
+      "cvss": "8.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85954",
+      "desc": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 can evaluate user-controlled values supplied to certain higher-order XQuery functions in an elevated security context, which could result in privilege escalation beyond the attacker's granted permissions.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85954",
+      "cvss": "8.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85955",
+      "desc": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 allow a remote attacker with query-execution access to invoke an XQuery evaluation function without the additional required evaluation privilege, which could result in server-side code execution with elevated permissions.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85955",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-85956",
+      "desc": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 allow a remote attacker with delegated database-administrator privileges to perform backup or restore operations on forests outside the authorized database scope, which could result in unauthorized access to or modification of security-critical data.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-85956",
+      "cvss": "9.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-92681",
+      "desc": "In @neo4j/graphql versions up to and including 7.6.3, @authentication directives applied at the schema level or on the Query or Mutation types are silently ignored for top-level fields annotated with @cypher. Only @authentication directives placed directly on the individual fields are enforced. An application that exposes a top-level @cypher field and relies on schema-level or type-level @authentication to protect it allows unauthenticated callers to invoke the field and run the configured Cypher statement with the privileges of the GraphQL service account, which may permit reading and modifying data. Fixed in 7.6.4.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92681",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-92682",
+      "desc": "In @neo4j/graphql versions from 7.0.0 up to but not including 7.6.4, the none quantifier in @authorization filters on relationships and connections is not negated when translated to Cypher, so it behaves like some. A rule such as \"none of the related denied users matches the JWT subject\" therefore returns exactly the records it was meant to exclude, and excludes those it was meant to return. An authenticated user whom such a rule is meant to deny can read the protected records. This is also the case for mutations, so the impact is that sensitive data could also be created and deleted by users that shouldn't have access according to the typedefs. Fixed in 7.6.4.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92682",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96612",
+      "desc": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in hexpm hex allows a malicious package publisher to delete a directory outside the project's deps directory and extract package files into it when a developer fetches dependencies.\n\nA package release's requirements carry an app label that names the dependency's OTP application. Hex takes this label from the repository's signed registry and uses it as the dependency's application name without validating it (Hex.RemoteConverger.deps/2, Hex.Mix.to_lock/1). Mix derives the dependency's checkout directory as deps/<app>, and Hex.SCM.update/1 runs File.rm_rf!/1 on that directory and unpacks the package into it. hex.pm only checks the label's length, so a publisher can set it to a value such as ../../target. When a project depends on such a release directly or transitively, mix deps.get or mix deps.update deletes the directory the label resolves to and writes the labelled package's files there. This happens before any dependency code is compiled.\n\nThis issue affects hex: from 0.6.0 before 2.5.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96612",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96618",
+      "desc": "Improper Handling of Highly Compressed Data (Data Amplification) vulnerability in hexpm hex allows an untrusted package mirror to exhaust the memory or disk space of the machine running mix deps.get, mix deps.update, mix hex.package fetch or mix hex.docs fetch.\n\nHex treats a mirror configured with HEX_MIRROR_URL, HEX_MIRROR or mirror_url as untrusted: it doesn't send credentials to it, and it checks registry signatures and package checksums that the mirror can't forge. Several response paths consume memory or disk in proportion to what the mirror sends before any of those checks run.\n\nHex.HTTP.request/5 reads the whole response body into memory and decompresses it with :zlib.gunzip/1 whenever the response's Content-Encoding contains gzip, with no limit on the compressed or decompressed size. Hex doesn't ask for compressed responses, so the server decides whether this step runs. It applies to registry, package, docs and API responses.\n\nPackage tarballs have no download size limit. Hex 2.5.1 holds the whole tarball in memory and writes it to the cache, and the development branch streams it to a temporary file; the 16 MiB tarball limit is checked only when the file is unpacked. The tarball is then unpacked, into deps/<app> in 2.5.1 and into a staging directory on the development branch, before its checksums are compared with the registry.\n\nmix hex.docs fetch, and mix hex.docs offline when docs are missing, write the docs tarball to disk and extract it with :mix_hex_erl_tar.extract/2 without the 16 MiB compressed and 128 MiB decompressed limits that mix_hex_tarball:unpack_docs/3 applies. The signed registry doesn't cover docs tarballs, so nothing checks them.\n\nRegistry responses are also decompressed before their signature is checked, in hex_core code that Hex vendors; that part is tracked in https://github.com/hexpm/hex_core/security/advisories/GHSA-7c4r-cgf9-9jmq.\n\nThis issue affects hex: from 0.11.2 before 2.5.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96618",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-9191",
+      "desc": "Progress MarkLogic Server 12.x releases before 12.1.0 and 11.x releases before 11.3.7 do not sufficiently isolate user-supplied code executed through certain REST and XDBC evaluation paths from HTTP request, response, and session state. An attacker able to execute code through an affected path could perform unauthorized actions or compromise an authenticated session.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-9191",
+      "cvss": "9.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105274",
+      "desc": "Improper Handling of Highly Compressed Data (Data Amplification) vulnerability in hexpm hex_core allows an untrusted repository mirror, or a server answering hex_core's API requests, to exhaust the memory of the Erlang VM running hex_core. The same code is vendored in Hex (mix_hex_repo, mix_hex_api) and rebar3 (r3_hex_repo, r3_hex_api).\n\nhex_repo:get_names/1, hex_repo:get_versions/1, hex_repo:get_package/2 and hex_repo:get_policy/2 decompress the registry response with zlib:gunzip/1 and decode the signed envelope before verifying its signature. A mirror doesn't have the repository's private key, but it chooses the compressed bytes, so a small response decompresses into an envelope of any size before the signature check rejects it.\n\nhex_api decodes responses with the application/vnd.hex+erlang content type through hex_safe_binary_to_term:safe_binary_to_term/1, which calls binary_to_term(Binary, [safe]). The safe option prevents atom creation, but it accepts compressed terms and doesn't limit the size of the decoded term, and the check that rejects functions and ports runs after the term has been built. The fix for CVE-2026-21619 added the safe option and that check without bounding the decoded size.\n\nThis issue affects rebar3: from 3.9.1 before 3.27.3; hex: from 2.1.0 before 2.5.2; hex_core: from 0.1.0 before 0.20.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105274",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-108475",
+      "desc": "Missing Authorization vulnerability in VideoWhisper.com Broadcast Live Video videowhisper-live-streaming-integration allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Broadcast Live Video: from n/a through 7.3.6.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108475",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-108476",
+      "desc": "Missing Authorization vulnerability in VideoWhisper.com Paid Videochat Turnkey Site ppv-live-webcams allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Paid Videochat Turnkey Site: from n/a through 7.5.13.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108476",
+      "cvss": "5.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-108477",
+      "desc": "Missing Authorization vulnerability in Arraytics Booktics booktics allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Booktics: from n/a through 1.0.28.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108477",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-108478",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in BdThemes Element Pack Elementor Addons bdthemes-element-pack-lite allows Stored XSS.This issue affects Element Pack Elementor Addons: from n/a through 8.8.8.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108478",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-108907",
+      "desc": "A vulnerability was determined in Netcore NR268 1.7.121109. Affected is the function user_ok of the component CGI Execution. This manipulation causes improper authentication. The attack can be initiated remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108907",
+      "cvss": "10.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-108908",
+      "desc": "A vulnerability was identified in Netcore NR268 1.7.121109. Affected by this vulnerability is the function eval of the file /router/l7_call_board_user_set.cgi of the component Web UI. Such manipulation of the argument title/note/URL/content leads to cross site scripting. The attack can be launched remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108908",
+      "cvss": "2.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-108909",
+      "desc": "A security flaw has been discovered in Netcore NR268 1.7.121109. Affected by this issue is some unknown functionality of the component CGI Endpoint. Performing a manipulation results in cross-site request forgery. The attack may be initiated remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108909",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-108914",
+      "desc": "A flaw has been found in Edimax BR-6208AC 1.32. Affected by this issue is some unknown functionality of the file /goform/formWlSiteSurvey. This manipulation of the argument ifname causes buffer overflow. Remote exploitation of the attack is possible. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way. This vulnerability only affects products that are no longer supported by the maintainer.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108914",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109237",
+      "desc": "Crawl4AI from 0.9.0 before 0.9.4 contains an untrusted-config gate bypass that allows non-admin API clients to construct forbidden config objects by wrapping them in dict-type wrappers. Attackers can send a laundered LLMConfig with api_token set to an env reference via /config/dump to read SECRET_KEY and provider keys, enabling admin JWT forgery.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109237",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109238",
+      "desc": "Crawl4AI 0.7.0 before 0.9.4 contains a server-side request forgery vulnerability that allows API clients to reach internal addresses by enabling link_preview_config on /crawl requests. Attackers can supply a controlled page with include_external and include_patterns set, causing AsyncUrlSeeder to fetch internal, private, and cloud-metadata links and return their parsed head data.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109238",
+      "cvss": "8.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109239",
+      "desc": "Crawl4AI before 0.9.4 contains a blind server-side request forgery vulnerability in RobotsParser.can_fetch that lets unauthenticated attackers bypass Docker server egress controls. Attackers can enable check_robots_txt and use redirects or DNS rebinding to reach internal, loopback, or cloud-metadata addresses for service discovery.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109239",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109240",
+      "desc": "FreeRDP 3.11.0 before 3.32.1 contains a reachable assertion vulnerability in urb_isoch_transfer that allows malicious RDP servers to crash clients by sending unvalidated OutputBufferSize values. Attackers can send a TS_URB_ISOCH_TRANSFER IN-direction request with OutputBufferSize above INT32_MAX over URBDRC, triggering an assertion in libusb_udev_isoch_transfer that terminates the client.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109240",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109241",
+      "desc": "FreeRDP before 3.32.0 contains a NULL pointer dereference vulnerability in the client video redirection channel that allows malicious servers to crash clients by sending out-of-order messages. Attackers can send a Geometry CLEAR message that nulls presentation->geometry, then send VideoData that dereferences it, causing client denial of service.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109241",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109242",
+      "desc": "FreeRDP before 3.0.0 and 3.6.0 before 3.32.0 renders uninitialized heap memory from un-decoded progressive tiles because the tile->current buffer is allocated without zeroing. A malicious RDP server can send a crafted WBT_TILE_FIRST then WBT_TILE_UPGRADE sequence to paint heap bytes onscreen or abort the client process.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109242",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109243",
+      "desc": "FreeRDP from 3.0.0 before 3.32.0 contains an incorrect permission assignment vulnerability that allows local users to read private keys written by crypto_write_pem without owner-only permissions. Attackers on multi-user Unix hosts can enumerate the shared temporary directory during soft-smartcard logon to read the world-readable PKINIT private-key copy.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109243",
+      "cvss": "4.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109244",
+      "desc": "FreeRDP from 2.0.0 before 3.32.0 contains an insecure permission vulnerability in winpr-makecert that creates unencrypted private keys without owner-only file modes. Local users on multi-user Unix hosts can read world-readable key files or open PFX files protected by the hard-coded default password to steal private keys.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109244",
+      "cvss": "6.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109245",
+      "desc": "FreeRDP 3.0.0 before 3.32.0 contains an improper certificate validation vulnerability in freerdp_http_request() in libfreerdp/utils/http.c that completes TLS handshakes without verifying the server certificate chain. On-path attackers can impersonate login.microsoftonline.com in the Azure AD authentication flow to capture OAuth authorization codes and substitute the OpenID discovery document.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109245",
+      "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109246",
+      "desc": "FreeRDP before 3.32.0 contains a divide-by-zero vulnerability in the freerdp-shadow-cli shadow server: the frame id in a client's Frame Acknowledge PDU is stored without a range check, so the in-flight frame count in shadow_encoder_inflight_frames() can underflow. An authenticated client can acknowledge a frame id one greater than the last frame sent, causing shadow_encoder_create_frame_id() to divide by zero (SIGFPE) and terminate the process, disconnecting all viewers.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109246",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109247",
+      "desc": "FreeRDP before 3.32.0 contains a path traversal vulnerability in convert_filedescriptors_to_file_list() in winpr/libwinpr/clipboard/synthetic_file.c, which concatenates server-supplied cFileName values from FileGroupDescriptorW clipboard data into the published local file:// URI without rejecting '/' or '..' sequences. A malicious RDP server can supply '../' sequences so the user's next clipboard paste copies an arbitrary local file readable by the client user instead of the expected remote file.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109247",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109248",
+      "desc": "FreeRDP 3.0.0 before 3.32.0 contains a heap out-of-bounds read in the WinPR clipboard function convert_filedescriptors_to_file_list(), which scans a server-controlled FILEDESCRIPTORW cFileName with unbounded _wcschr() and count_special_chars() calls without a NUL-termination guarantee. A malicious RDP server can send an odd-length FILEDESCRIPTORW blob in a CB_FORMAT_DATA_RESPONSE, crashing X11, Wayland, and SDL clients when the user pastes server-copied files.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109248",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109249",
+      "desc": "FreeRDP 3.0.0 before 3.32.0 contains a heap out-of-bounds read in freerdp_assistance_parse_all_elements_of() because it advances its parsing cursor without reducing the remaining length, letting the scan window exceed the decrypted ConnectionString2 buffer. Attackers can supply a crafted .msrcIncident invitation file and password that crash xfreerdp when opened, before any RDP connection.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109249",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109250",
+      "desc": "FreeRDP 3.0.0 before 3.32.0 contains a heap buffer overflow vulnerability in collect_keys() that allows local attackers to write past the fixed 64-entry keys array during PKCS#11 key enumeration. Attackers controlling smartcard tokens can present more than 64 public key objects across multiple slots to corrupt heap memory with attacker-chosen CKA_ID and CKA_LABEL data during smartcard logon.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109250",
+      "cvss": "6.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109251",
+      "desc": "FreeRDP before 3.32.0 stores the server-supplied signed MS-RDPEGT geometry origin unchecked in an unsigned video surface coordinate, so the blit clamp in gdiVideoShowSurface() wraps in 32-bit arithmetic and is skipped. A malicious RDP server can send a negative topLevelLeft to clients connecting with /video, causing an out-of-bounds write of decoded H.264 picture data or a client abort.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109251",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109252",
+      "desc": "FreeRDP from 3.9.0 before 3.32.0 contains a NULL pointer dereference vulnerability in the RDPEAR NDR reader that allows malicious servers to crash clients via truncated KERB_RPC_INTERNAL_NAME data. Attackers can send a CreateApReqAuthenticatorReq with NameCount of two or more ending before the Names pointer, causing cleanup to dereference a null base and terminate the client.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-12",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109252",
+      "cvss": "5.3",
       "cwe": ""
     },
     {

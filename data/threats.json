@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-14T13:24:17.478067+00:00",
+  "generated": "2026-10-14T18:08:00.130826+00:00",
   "summary": "Today's digest contains 597 vulnerabilities across 5 sources. 82 zero-day exploits detected, 32 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
     "new": 597,
     "changed": 0,
     "removed": 0,
-    "total": 664856,
+    "total": 665453,
     "zeroday": 82,
     "exploited": 32,
     "pakistan": 15
@@ -1900,7 +1900,7 @@
     },
     {
       "id": "CVE-2026-35001",
-      "desc": "OpenS100 through commit daa35b contains an integer overflow vulnerability in the S-102 Bathymetric Surface parser that allows remote attackers to cause a heap-based buffer overflow by opening a crafted S-102 HDF5 file with malicious grid dimension metadata. Attackers can exploit the unvalidated multiplication of numPointsLatitudinal and numPointsLongitudinal values in the S102_VG_BathymetryCoverage::Read() function to trigger a 32-bit integer wraparound, resulting in undersized heap buffer allocation and subsequent out-of-bounds writes that lead to application crash or arbitrary code execution.",
+      "desc": "OpenS100 through commit 2b1dafc contains an integer overflow vulnerability in the S-102 Bathymetric Surface parser. An attacker can supply a crafted S-102 HDF5 file with malicious grid dimension metadata that causes memory corruption when a user opens it. In the S102_VG_BathymetryCoverage::Read() function, the numPointsLatitudinal and numPointsLongitudinal values are multiplied without validation, and the 32-bit result can wrap around, producing an undersized heap buffer allocation. Subsequent writes past the end of that buffer cause a heap-based buffer overflow, leading to an application crash or potential arbitrary code execution in the context of the user who opened the file.",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-13",
@@ -1913,7 +1913,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-35001",
-      "cvss": "7.8",
+      "cvss": "7.0",
       "cwe": ""
     },
     {
@@ -4385,7 +4385,7 @@
     {
       "id": "CVE-2026-109704",
       "desc": "Privilege escalation in the Application Update component. This vulnerability was fixed in Firefox 158, Firefox ESR 153.5, Thunderbird 158, and Thunderbird 153.5.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-13",
       "pakistan": false,
@@ -4397,7 +4397,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109704",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -5015,7 +5015,7 @@
     {
       "id": "CVE-2026-109739",
       "desc": "Privilege escalation in the WebExtensions component. This vulnerability was fixed in Firefox 158 and Thunderbird 158.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-13",
       "pakistan": false,
@@ -5027,7 +5027,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109739",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -5087,7 +5087,7 @@
     {
       "id": "CVE-2026-109743",
       "desc": "Privilege escalation in the Panning and Zooming component. This vulnerability was fixed in Firefox 158, Firefox ESR 153.5, Thunderbird 158, and Thunderbird 153.5.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-13",
       "pakistan": false,
@@ -5099,7 +5099,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109743",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -7349,7 +7349,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-34319",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -8039,7 +8039,7 @@
     {
       "id": "CVE-2026-95115",
       "desc": "Buffer Overflow vulnerability in libwebsockets main 106d542c allows a remote attacker to cause a denial of service via the LEJP JSON parser",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-13",
       "pakistan": false,
@@ -8051,7 +8051,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95115",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -8255,7 +8255,7 @@
     {
       "id": "CVE-2024-34324",
       "desc": "An issue in ProPhoenix Law RMS v2022.2403.3.101 allows attackers to execute a session hijacking attack via injecting a crafted 24-character string into the ASP.NET_SessionId cookie.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-13",
       "pakistan": false,
@@ -8267,7 +8267,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-34324",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {

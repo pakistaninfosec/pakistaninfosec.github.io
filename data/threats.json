@@ -1,13 +1,13 @@
 {
-  "generated": "2026-10-14T18:08:00.130826+00:00",
-  "summary": "Today's digest contains 597 vulnerabilities across 5 sources. 82 zero-day exploits detected, 32 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-10-14T21:52:33.612461+00:00",
+  "summary": "Today's digest contains 601 vulnerabilities across 5 sources. 86 zero-day exploits detected, 36 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 597,
+    "new": 601,
     "changed": 0,
     "removed": 0,
-    "total": 665453,
-    "zeroday": 82,
-    "exploited": 32,
+    "total": 666054,
+    "zeroday": 86,
+    "exploited": 36,
     "pakistan": 15
   },
   "sources": [
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 32
+      "count": 36
     },
     {
       "name": "Pakistan CERT",
@@ -316,6 +316,82 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105134",
+      "desc": "Ahsay AhsayCBS contains a command injection vulnerability that could allow a remote attacker to execute operating system commands via manipulation of the random parameter in the Replication Receiver component’s /rps/api/json/UpdateReceivers.do endpoint. This vulnerability can be chained with CVE-2026-105133.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-10-14",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105134",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76519",
+      "desc": "Cisco Secure Email Gateway contains a relative path traversal vulnerability that could allow an unauthenticated, remote attacker to write arbitrary files on the underlying operating system.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-10-14",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76519",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-105133",
+      "desc": "Ahsay AhsayCBS contains an improper authentication vulnerability that could allow a remote attacker to bypass authentication via manipulation of the random parameter in the API component’s checkSysPwd function. This vulnerability can be chained with CVE-2026-105134.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-10-14",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105133",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-0322",
+      "desc": "Palo Alto Networks PAN-OS contains a code injection vulnerability that could allow an authenticated attacker with network access to execute arbitrary code with root privileges on the firewall.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-10-14",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-0322",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -2314,7 +2390,7 @@
     },
     {
       "id": "CVE-2026-109758",
-      "desc": "Perforce Helix Authentication Service (HAS) deployments that retain the shipped default SCIM bearer token are vulnerable to unauthorized access when the SCIM endpoint is reachable by an attacker. In version 25.2, the installation templates contain a default credential which the installer copies into the active configuration; the installer and configuration script do not automatically replace that value with a random token. An attacker who knows the default token can authenticate to the SCIM API and perform user and group operations allowed by the configured provisioning backend. \n\n\n\n\n\nThis issue can be chained with CVE-2026-61834 in affected releases of the scim-patch dependency. A crafted SCIM PATCH request can cause server-side prototype pollution, corrupt application state, and disrupt service availability, including health checks and SCIM or SSO requests. In a later test, this primitive was confirmed to enable remote code execution in a Node.js 24/Express deployment through available gadget chains involving child_process, EJS/Pug, or Passport. \n\n\n\n\n\nThis vulnerability exists in version 2022.1 - 2025.2 of HAS however the underlying defect was removed in version 2026.1 which was released July 17th 2026. The vulnerability was identified in older versions of HAS after version 2026.1 was released.",
+      "desc": "Perforce Helix Authentication Service (HAS) deployments that retain the shipped default SCIM bearer token are vulnerable to unauthorized access when the SCIM endpoint is reachable by an attacker. In affected versions of HAS, the installation templates contain a default credential which the installer copies into the active configuration; the installer and configuration script do not automatically replace that value with a random token. An attacker who knows the default token can authenticate to the SCIM API and perform user and group operations allowed by the configured provisioning backend.\n\nThis issue can be chained with CVE-2026-61834 in affected releases of the scim-patch dependency.\n\nThis vulnerability exists in version 2022.1 - 2025.2 of HAS however the underlying defect was removed in version 2026.1 which was released July 17th 2026. The vulnerability was identified in older versions of HAS after version 2026.1 was released.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-10-13",
@@ -8075,7 +8151,7 @@
     {
       "id": "CVE-2026-95121",
       "desc": "An issue in mp4v2 2.0.0 allows an attacker to execute arbitrary code via the MP4RtpAtom::ReadHntiType() in src/atom_rtp.cpp. A specially crafted MP4 file can cause an undersized rtp atom to produce a near-2^64 allocation size through an unchecked offset subtraction",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-13",
       "pakistan": false,
@@ -8087,7 +8163,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95121",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -8201,7 +8277,7 @@
     {
       "id": "CVE-2024-34320",
       "desc": "ProPhoenix Law RMS v2022.2403.3.101 was discovered to contain an incorrect access control issue in sensitive API endpoints.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-13",
       "pakistan": false,
@@ -8213,7 +8289,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-34320",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -8813,7 +8889,7 @@
     {
       "id": "CVE-2026-78802",
       "desc": "An issue in SKYWORTH DIGITAL CO.,LTD SK-WR6640X Wi-Fi 6 Dual-Band Fiber Router (AX1800M) V1.0.3 allows a remote attacker to execute arbitrary code.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-13",
       "pakistan": false,
@@ -8825,7 +8901,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-78802",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {

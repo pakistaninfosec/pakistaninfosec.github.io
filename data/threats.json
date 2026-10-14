@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-14T02:04:46.623338+00:00",
+  "generated": "2026-10-14T07:55:12.647568+00:00",
   "summary": "Today's digest contains 597 vulnerabilities across 5 sources. 82 zero-day exploits detected, 32 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
     "new": 597,
     "changed": 0,
     "removed": 0,
-    "total": 663662,
+    "total": 664259,
     "zeroday": 82,
     "exploited": 32,
     "pakistan": 15
@@ -3376,8 +3376,8 @@
     },
     {
       "id": "CVE-2026-89309",
-      "desc": "Vulnerability in tbc.\n\nThis issue affects tbc: before 1.",
-      "severity": "MEDIUM",
+      "desc": "The authorization middleware of the WMS MobileServer\nfails to require authentication in two distinct cases. First, it\nonly requires an Authorization header for GET and HEAD requests; requests\nusing any other HTTP method are processed without an authentication check.\nSecond, for any HTTP method including GET and HEAD, a request carrying a\nmalformed or non-bearer Authorization header is passed through without\na valid token being required.\n\n\n\n\n\nThe middleware does validate a token whenever a\nwell-formed one is present, but in these two cases it does not\nrequire one. A remote attacker with network access to the service can\ntherefore invoke API functionality without valid credentials.",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-13",
       "pakistan": false,
@@ -3389,7 +3389,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89309",
-      "cvss": "0.0",
+      "cvss": "10.0",
       "cwe": ""
     },
     {

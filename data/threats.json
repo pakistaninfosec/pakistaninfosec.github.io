@@ -1,13 +1,13 @@
 {
-  "generated": "2026-10-16T16:15:41.489997+00:00",
-  "summary": "Today's digest contains 601 vulnerabilities across 5 sources. 86 zero-day exploits detected, 36 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-10-16T19:38:45.236546+00:00",
+  "summary": "Today's digest contains 603 vulnerabilities across 5 sources. 88 zero-day exploits detected, 38 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 601,
+    "new": 603,
     "changed": 0,
     "removed": 0,
-    "total": 672010,
-    "zeroday": 86,
-    "exploited": 36,
+    "total": 672613,
+    "zeroday": 88,
+    "exploited": 38,
     "pakistan": 15
   },
   "sources": [
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 36
+      "count": 38
     },
     {
       "name": "Pakistan CERT",
@@ -316,6 +316,44 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-102764",
+      "desc": "BeyondTrust Remote Support contains an authentication bypass by spoofing vulnerability that could allow a remote attacker to perform file operations on the appliance.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-10-16",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102764",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-61624",
+      "desc": "FortiOS, FortiPAM, FortiProxy, and FortiSwitchManager contain a path traversal vulnerability that may allow an authenticated attacker with admin profile and at least read-write permissions to write or delete arbitrary files via specific CLI commands.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-10-16",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-61624",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -1827,7 +1865,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66272",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -1845,7 +1883,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-66275",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -1905,7 +1943,7 @@
     {
       "id": "CVE-2026-101303",
       "desc": "The IPv6 UDP send path for unconnected sockets did not apply the jail policy of rewriting a loopback destination address to the jail's primary IPv6 address.\n\nA process in a classic (non-VNET) jail can send UDP datagrams to services listening on the host's IPv6 loopback address, bypassing jail network isolation.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-15",
       "pakistan": false,
@@ -1917,7 +1955,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101303",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -1941,7 +1979,7 @@
     {
       "id": "CVE-2026-101305",
       "desc": "renameat(2) did not enforce FD_RESOLVE_BENEATH on its directory arguments.  A jailed process could rename a directory relative to a restricted descriptor, then escape the jail root via fchdir(2).  This requires the directory to reside on a filesystem that is also reachable from the jail's root.\n\nA process in a jail that has received a directory file descriptor from another jail can use these techniques to escape the jail's filesystem root restriction.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-15",
       "pakistan": false,
@@ -1953,13 +1991,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101305",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-101306",
       "desc": "SCM_RIGHTS file descriptor passing did not preserve FD_RESOLVE_BENEATH when a descriptor was transferred.  A process could clear the restriction by sending the descriptor to itself over a Unix domain socket.\n\nA process in a jail that has received a directory file descriptor from another jail can use these techniques to escape the jail's filesystem root restriction.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-15",
       "pakistan": false,
@@ -1971,7 +2009,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101306",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -2241,7 +2279,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24721",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -2259,7 +2297,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24722",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -2277,7 +2315,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-24723",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -3327,7 +3365,7 @@
     {
       "id": "CVE-2026-26244",
       "desc": "A SQL injection vulnerability has been reported to affect Video Station. If a remote attacker gains a user account, they can then exploit the vulnerability to execute unauthorized code or commands.\n\nWe have already fixed the vulnerability in the following version:\nVideo Station 5.8.8 and later",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-15",
       "pakistan": false,
@@ -3339,13 +3377,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26244",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-26245",
       "desc": "A SQL injection vulnerability has been reported to affect Video Station. If a remote attacker gains a user account, they can then exploit the vulnerability to execute unauthorized code or commands.\n\nWe have already fixed the vulnerability in the following version:\nVideo Station 5.8.8 and later",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-15",
       "pakistan": false,
@@ -3357,7 +3395,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-26245",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -3465,7 +3503,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-34015",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -3561,7 +3599,7 @@
     {
       "id": "CVE-2026-44084",
       "desc": "An authorization bypass through user-controlled key vulnerability has been reported to affect Video Station. If exploited, the vulnerability could allow remote attackers to obtain sensitive data.\n\nWe have already fixed the vulnerability in the following version:\nVideo Station 5.8.8 and later",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-15",
       "pakistan": false,
@@ -3573,7 +3611,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-44084",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -4281,7 +4319,7 @@
     {
       "id": "CVE-2026-110724",
       "desc": "In `api-gateway` versions till `1.7.3`, The default rate-limit key resolver, `ClientIpKeyResolver`, derives the per-client bucket key from the leftmost element of the `X-Forwarded-For` request header. That element is supplied by the originating HTTP client and is not validated against any trusted-proxy list. A single attacker can therefore obtain an unlimited number of independent rate-limit buckets — one per unique header value — and completely bypass the gateway's request-rate limiting on every route that uses the shipped default configuration.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-15",
       "pakistan": false,
@@ -4293,7 +4331,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110724",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -4587,7 +4625,7 @@
     {
       "id": "CVE-2026-93649",
       "desc": "In the Eclipse Adoptium website (adoptium.net), in every deployment built from commit 0b24ea1 (2025-06-18) up to the fix in commit cbb53cf (2026-09-24), the post-download page /[locale]/download takes a download URL from the \"link\" query parameter and automatically navigates to it with a meta http-equiv=\"refresh\". The URL is checked against a list of trusted prefixes using String.startsWith() on the raw string, while the browser applies RFC 3986 dot-segment normalisation before navigating, so a value such as https://github.com/adoptium/temurin/../../attacker/malware/releases/download/v1/jdk.exe passes the check but resolves to an attacker-controlled repository. A victim who follows a crafted adoptium.net link is shown the genuine \"Thank you for downloading Eclipse Temurin\" page while their browser downloads a binary of the attacker's choosing",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-15",
       "pakistan": false,
@@ -4599,7 +4637,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-93649",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -8601,7 +8639,7 @@
     {
       "id": "CVE-2026-36436",
       "desc": "An issue in Trisolutions BRPerfX version 1.4.4.0 exposes LDAP credentials in plaintext within the administrative configuration interface. An authenticated administrator can inspect the client-side code to retrieve the credential.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-15",
       "pakistan": false,
@@ -8613,7 +8651,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-36436",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -9033,7 +9071,7 @@
     {
       "id": "CVE-2026-102764",
       "desc": "The vulnerability exists within internal components of BeyondTrust’s Remote Support product. The components did not adequately validate the origin of the messages it received. Under the right conditions, this could allow an attacker to perform file operations on the appliance.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-15",
       "pakistan": false,
@@ -9045,7 +9083,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-102764",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -9861,7 +9899,7 @@
     {
       "id": "CVE-2026-110916",
       "desc": "Improper input validation in Desktop in Google Chrome prior to 155.0.8059.84 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via a crafted HTML page. (Chromium security severity: Medium)",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-15",
       "pakistan": false,
@@ -9873,7 +9911,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110916",
-      "cvss": "0.0",
+      "cvss": "9.6",
       "cwe": ""
     },
     {

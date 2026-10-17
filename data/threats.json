@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-17T01:08:49.492427+00:00",
-  "summary": "Today's digest contains 568 vulnerabilities across 5 sources. 85 zero-day exploits detected, 35 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-10-17T05:56:53.306706+00:00",
+  "summary": "Today's digest contains 594 vulnerabilities across 5 sources. 85 zero-day exploits detected, 35 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 568,
+    "new": 594,
     "changed": 0,
     "removed": 0,
-    "total": 673784,
+    "total": 674378,
     "zeroday": 85,
     "exploited": 35,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 468
+      "count": 494
     },
     {
       "name": "Exploit-DB",
@@ -9405,6 +9405,474 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-89096",
       "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-111823",
+      "desc": "Mage OSS through 0.9.80 before 76c4f46 can proceed with session creation upon encountering an unknown OAuth provider.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111823",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-111853",
+      "desc": "An issue was discovered on Tektronix 3 Series MDO devices before 1.21.1. An OS command injection vulnerability exists in the FILESystem:MOUNT:DRIve SCPI command handler. Insufficient neutralization of user-supplied input allows remote attackers to execute arbitrary operating system commands with elevated privileges.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111853",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-111854",
+      "desc": "An issue was discovered on Tektronix 3 Series MDO devices before 1.21.1. A path traversal vulnerability in the SCPI FILESystem command interface allows remote attackers to read or modify arbitrary files on the device through insufficient validation of file paths supplied to filesystem access commands.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111854",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-111855",
+      "desc": "An issue was discovered on Tektronix 3 Series MDO devices before 1.21.1. A path traversal vulnerability exists in the web management interface of the device. Insufficient validation of user-supplied file paths allows remote attackers to read arbitrary files accessible to the application. Depending on configuration, exploitation may be possible without authentication.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111855",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-104734",
+      "desc": "The Kirki – Freeform Page Builder, Website Builder & Customizer plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 6.3.2 via deserialization of untrusted input . This makes it possible for authenticated attackers, with administrator-level access and above, to inject a PHP Object. No known POP chain is present in the vulnerable software, which means this vulnerability has no impact unless another plugin or theme containing a POP chain is installed on the site. If a POP chain is present via an additional plugin or theme installed on the target system, it may allow the attacker to perform actions like delete arbitrary files, retrieve sensitive data, or execute code depending on the POP chain present. By default, Editor-level users are granted FULL_ACCESS to the plugin's import endpoint via the KIRKI_USERS_DEFAULT_FULL_ACCESS configuration, meaning exploitation is possible at Editor privilege level rather than being restricted to administrators alone.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104734",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-107762",
+      "desc": "The Kirki – Freeform Page Builder, Website Builder & Customizer plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 6.3.2 via the 'context' parameter due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to expose arbitrary users' sensitive profile data — including email address, display name, nicename, registration date, profile image URL, and any string-valued user meta fields such as first name, last name, nickname, description, and custom meta keys — via the REST response. Exploitation requires a published page that uses a Kirki template containing at least one user-type dynamic content block; target user IDs are enumerable via standard WordPress REST endpoints, making the only prerequisite the presence of such a template on the site.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107762",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-107763",
+      "desc": "The Fastcache by Host.it plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 1.7.5. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to add or remove the plugin's page-cache rewrite rules in the site's root .htaccess file.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107763",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109208",
+      "desc": "The LearnPress – WordPress LMS Plugin for Create and Sell Online Courses plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'quantity (REST) / order_comments (checkout)' parameter in all versions up to, and including, 4.4.10 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. With guest checkout enabled the attack is fully unauthenticated; with guest checkout disabled, any Subscriber-level user can exploit both vectors through their own checkout.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109208",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-110653",
+      "desc": "The Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress plugin for WordPress is vulnerable to Authentication Bypass via Race Condition in all versions up to, and including, 5.7.4. This is due to a non-atomic read-modify-write on the OTP verification attempts counter in the `verifyOTP` function: the counter is incremented using a stale in-memory value with no conditional `WHERE attempts < 10` guard on the `UPDATE` and no `SELECT ... FOR UPDATE` row lock, creating a TOCTOU window that allows concurrent requests to bypass the 10-attempt lockout. This makes it possible for unauthenticated attackers — who know a target customer's registered email address or phone number — to fire concurrent requests to the `auth__verify_otp` endpoint, defeat the lockout cap, brute-force the 6-digit OTP code, and authenticate as the targeted LatePoint customer, gaining full access to their account, bookings, and personal data. The nonce check present on the endpoint (`otp_verify_otp_nonce`) does not mitigate this issue, as the nonce is publicly emitted by the unauthenticated `request_otp` and `resend_otp` endpoints and is trivially obtainable by any unauthenticated attacker prior to launching the race.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110653",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-111601",
+      "desc": "The Hippoo Mobile App for WooCommerce plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'token_id' parameter in all versions up to, and including, 1.12.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link. The URL path regex constrains the path segment to word characters, but WP_REST_Request's query-string parameter precedence allows a ?token_id= value to override it and reach the handler verbatim, bypassing the regex constraint entirely.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111601",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-111602",
+      "desc": "The Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 5.7.4 via the 'params (customer[uuid])' parameter. This makes it possible for unauthenticated attackers to extract the first name, last name, email address, phone number, and notes of every customer record in the database by enumerating uuid prefixes via the unauthenticated steps__load_step AJAX endpoint. This vulnerability is only exploitable when the LatePoint plugin is configured with the 'Field used for authentication' setting set to 'Disable ability to login' (guest checkout mode).",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111602",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-103899",
+      "desc": "The EU VAT Assistant for WooCommerce plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'vat_number' parameter in all versions up to, and including, 2.1.30.260413 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The stored payload executes in the administrator's browser context when reviewing an order via WooCommerce → Orders → Edit Order, enabling privilege escalation up to and including full site takeover via rogue administrator account creation.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103899",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-104736",
+      "desc": "The LearnPress plugin for WordPress is vulnerable to PHP Object Injection in versions up to, and including, 4.4.10 via deserialization of untrusted input from the 'checkout-email' request parameter during the checkout AJAX action. The value is passed through sanitize_text_field(), which does not strip serialized object syntax, then stored in the LearnPress session table and later fed to LP_Helper::maybe_unserialize() → unserialize() (without an allowed_classes restriction) by LP_Session_Handler::get() on subsequent requests. This makes it possible for unauthenticated attackers to inject a PHP Object.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104736",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-107744",
+      "desc": "The LearnPress – WordPress LMS Plugin for Create and Sell Online Courses plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 4.4.10 This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to enumerate the complete site user roster and extract the full email address of any WordPress account, including administrator accounts, character-by-character by using the search response as an oracle against both user_login and user_email columns.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107744",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-107752",
+      "desc": "The Welcart e-Commerce plugin for WordPress is vulnerable to generic SQL Injection via the 'wp_usces_order_old (JSON fields searchSql / searchSkuSql)' parameter in all versions up to, and including, 2.12.4 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with editor-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107752",
+      "cvss": "4.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-108123",
+      "desc": "The WP Booking System – Booking Calendar plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.1.0.3 This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to read the stored notification email body of any booking by iterating booking_id and email_log_id, exposing customer PII including names, email addresses, phone numbers, messages, and booking dates intended to be visible only to administrators. This is exploitable by any Subscriber-level user because admin_init fires on profile.php, a wp-admin page accessible to all authenticated users.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108123",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109368",
+      "desc": "The WP Booking System – Booking Calendar plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 2.1.0.3 via the 'id' parameter. This makes it possible for authenticated attackers, with subscriber-level access and above, to extract private per-event booking descriptions and booking IDs from any calendar managed by the site.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109368",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109369",
+      "desc": "The WP Booking System – Booking Calendar plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.1.0.3 This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to grant themselves and arbitrary other users edit access to every booking form on the site by overwriting the user_permission meta that governs the plugin's own access-control list. Exploitation requires the attacker to have already been delegated edit rights on at least one booking form, as this delegation both downgrades the submenu capability to 'read' (making the edit page accessible) and allows them to harvest a valid wpbs_edit_form nonce that will pass validation against any other form_id.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109369",
+      "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109985",
+      "desc": "The xSpeed Cache: AI-Powered Performance Hub with MCP, Caching & CDN plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'content' parameter in all versions up to, and including, 1.4.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109985",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109989",
+      "desc": "The Themify Popup plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'popup_width_unit' parameter in all versions up to, and including, 1.4.7 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109989",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-110268",
+      "desc": "The Post Export Import with Media plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 1.17.2 via the 'theme_slug' parameter. This makes it possible for authenticated attackers, with administrator-level access and above, to perform actions on files outside of the originally intended directory. Exploitation requires the peiwm_enable_admin_download_buttons feature to be enabled in the plugin settings.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-110268",
+      "cvss": "4.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-111726",
+      "desc": "The Themify Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'visible' Shortcode Attribute in all versions up to, and including, 7.8.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This vulnerability is only exploitable when the 'slider' custom post type is active, which is satisfied automatically when the plugin is paired with a Themify theme or any other plugin that registers the 'slider' CPT.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111726",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-92715",
+      "desc": "The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 4.1.0 via the 'ID' parameter due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with author-level access and above, to modify arbitrary courses created by other instructors — overwriting their title, content, and status — and reassign ownership of those courses to themselves. This is possible because Input::sanitize_array() preserves attacker-supplied POST keys (including 'ID') without stripping them, and WordPress interprets a non-empty ID in the wp_insert_post() argument array as an update to the existing post rather than a new insert.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92715",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-92798",
+      "desc": "The User Registration & Membership plugin for WordPress is vulnerable to Arbitrary Shortcode Execution in versions up to, and including, 5.2.8 This is due to insufficient input sanitization in the 'referrer_url' branch of UR_Smart_Tags::process(), where the attacker-controlled HTTP_REFERER header is only passed through sanitize_text_field() — which does not strip WordPress shortcode delimiters — before being substituted into a Content Restriction message that is subsequently executed via apply_shortcodes()/do_shortcode(). This makes it possible for unauthenticated attackers to execute arbitrary registered shortcodes on any restricted page whose message uses the supported {{referrer_url}} smart tag.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92798",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-92978",
+      "desc": "The User Registration & Membership – Free & Paid Memberships, Subscriptions, Content Restriction, User Profile, Custom User Registration & Login Builder plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 5.2.8 This is due to missing or incorrect nonce validation on the trigger_bulk_action function. This makes it possible for unauthenticated attackers to force administrators to approve pending user registrations or deny arbitrary user accounts, locking targeted users out of the site via a forged request granted they can trick a site administrator into performing an action such as clicking on a link. An attacker can bypass the earlier nonce check in trigger_query_actions() by supplying an empty new_role parameter, which causes that handler to return early and cede control to the unprotected trigger_bulk_action() handler; the exit() call at the end of that handler additionally prevents WordPress core's own bulk-users nonce validation from executing.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92978",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96660",
+      "desc": "The User Registration & Membership – Free & Paid Memberships, Subscriptions, Content Restriction, User Profile, Custom User Registration & Login Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Checkbox Field Value in all versions up to, and including, 5.2.8 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The nopriv AJAX action user_registration_user_form_submit reaches ur_process_registration() without nonce validation, meaning any unauthenticated request can reach the vulnerable code path.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96660",
+      "cvss": "7.2",
       "cwe": ""
     },
     {

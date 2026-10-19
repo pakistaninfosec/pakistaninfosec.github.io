@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-19T10:09:22.729812+00:00",
+  "generated": "2026-10-19T17:05:27.837618+00:00",
   "summary": "Today's digest contains 597 vulnerabilities across 5 sources. 82 zero-day exploits detected, 32 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
     "new": 597,
     "changed": 0,
     "removed": 0,
-    "total": 682285,
+    "total": 682882,
     "zeroday": 82,
     "exploited": 32,
     "pakistan": 15
@@ -6562,7 +6562,7 @@
     },
     {
       "id": "CVE-2026-98654",
-      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/amd/display: Atomize IRQ register read/modify/write ops\n\n[Why]\n\nThe OTG_GLOBAL_SYNC_STATUS register controls various HW IRQ sources for\nthe output timing generator (OTG). VUPDATE_NO_LOCK is one of them.\n\nTo enable the IRQ, driver sets the VUPDATE_NO_LOCK_EN bit in the\nGLOBAL_SYNC_STATUS register.\n\nTo ack the IRQ after it fires, the driver sets the VUPDATE_NO_LOCK_CLEAR\nbit in the same GLOBAL_SYNC_STATUS register.\n\nThe bit sets are done through read/modify/write operations, which are\nnot atomic. Thus, the following race is possible:\n\n    Thread A:                       IRQ handler:\n                                    *HW IRQ fires*\n    # IRQ disable\n    val = read(GLOBAL_SYNC_STATUS)\n    unset(val, VUPDATE_NO_LOCK_EN)\n    write(val, GLOBAL_SYNC_STATUS)\n                                    # ACK reads VUPDATE_NO_LOCK_EN unset\n                                    val1 = read(GLOBAL_SYNC_STATUS)\n                                    set(val1, VUPDATE_NO_LOCK_CLEAR)\n    # IRQ enable\n    val = read(GLOBAL_SYNC_STATUS)\n    set(val, VUPDATE_NO_LOCK_EN)\n    write(val, GLOBAL_SYNC_STATUS)\n                                    # BAD! clears VUPDATE_NO_LOCK_EN\n                                    write(val1, GLOBAL_SYNC_STATUS)\n\nRegarding the tagged Fixes: change, it appears the change made this race\nmore likely to occur. Since VUPDATE_NO_LOCK is now the sole IRQ source\nfor vblank handling, a single race on high refresh panels can lead to a\ntime out.\n\n[How]\n\nThe GLOBAL_SYNC_STATUS register is only one example, other IRQ control\nregisters also share the same scheme. On top of GLOBAL_SYNC_STATUS,\nlet's clean up those as well.\n\nTo keep things simple, Let's atomize the IRQ rmw ops via a single\ndriver-wide spinlock. Due to the small scope of this lock, it is\nunlikely to cause noticeable overhead on top of all the existing locking\nwithin the IRQ set/handle paths.\n\nSince DM is responsible for locking, wrap dc_interrupt_set/ack with the\nspinlock in the new amdgpu_dm_irq_set/ack functions. Migrate/drop all\nreferences in DM to dc_interrupt_set/ack to use amdgpu_dm_irq_set/ack\ninstead.\n\n(cherry picked from commit 70de0a0216583a53c946155f8c8adedfdca6b4e7)",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-10-18",

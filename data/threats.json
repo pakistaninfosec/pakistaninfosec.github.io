@@ -1,19 +1,19 @@
 {
-  "generated": "2026-10-24T03:43:27.992692+00:00",
-  "summary": "Today's digest contains 598 vulnerabilities across 5 sources. 85 zero-day exploits detected, 35 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-10-24T08:43:07.656955+00:00",
+  "summary": "Today's digest contains 601 vulnerabilities across 5 sources. 85 zero-day exploits detected, 35 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 598,
+    "new": 601,
     "changed": 0,
     "removed": 0,
-    "total": 694390,
+    "total": 694991,
     "zeroday": 85,
     "exploited": 35,
-    "pakistan": 15
+    "pakistan": 16
   },
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 498
+      "count": 500
     },
     {
       "name": "Exploit-DB",
@@ -25,7 +25,7 @@
     },
     {
       "name": "Pakistan CERT",
-      "count": 14
+      "count": 15
     },
     {
       "name": "NCCS Pakistan",
@@ -33,6 +33,25 @@
     }
   ],
   "threats": [
+    {
+      "id": "PKCERT-20AD9006",
+      "desc": "Pakistan CERT Security Advisory: Advisory: Targeted Malware and Phishing Through WhatsApp Web, WhatsApp Desktop and Email on Windows Systems. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
+      "severity": "HIGH",
+      "source": "Pakistan CERT",
+      "date": "2026-10-24",
+      "pakistan": true,
+      "zeroday": false,
+      "tags": [
+        "pakistan",
+        "cert",
+        "advisory",
+        "government",
+        "Pakistan Advisory"
+      ],
+      "url": "https://pkcert.gov.pk/advisory/26/22.pdf",
+      "cvss": "7.5",
+      "cwe": ""
+    },
     {
       "id": "PKCERT-0A19C648",
       "desc": "Pakistan CERT Security Advisory: Advisory: Critical eMudhra (emSign) Certificate Authority Key Compromise: Emergency Trust-Store Updates Required. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
@@ -9945,6 +9964,42 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115929",
       "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-115806",
+      "desc": "The Prime Mover – Backup and Migration plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 2.2.1 via deserialization of untrusted input in the migration search-and-replace routine (recursiveUnserializeReplace()). An unauthenticated attacker can store a crafted, base64-encoded serialized object in wp_comments.comment_content through the standard comment-submission endpoint (wp-comments-post.php). When an administrator subsequently performs a routine Prime Mover export or restore, the plugin base64-decodes that stored value and passes it to unserialize() with no allowed_classes restriction. A Property-Oriented Programming (POP) chain is present in the plugin's own bundled Freemius library (FS_Clone_Manager::__set → FS_Option_Manager::set_option → store() → update_option()), so no additional plugin or theme is required — the plugin ships the gadget itself.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115806",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-115807",
+      "desc": "The User Profile Builder – Beautiful User Registration Forms, User Profiles & User Role Editor plugin for WordPress is vulnerable to Limited Privilege Escalation in all versions up to, and including, 4.0.3. This is due to the Gutenberg Register block passing the attacker-controlled Assigned Role attribute directly into the `[wppb-register]` shortcode without server-side authorization. The role guard in the form builder only downgrades roles that carry the manage_options or remove_users capability, leaving the Editor role and other privileged non-Administrator roles completely unrestricted. This makes it possible for authenticated attackers with Author-level access and above to create new WordPress accounts bearing the Editor role (or any other role that lacks the two guarded capabilities).",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-24",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115807",
+      "cvss": "7.1",
       "cwe": ""
     },
     {

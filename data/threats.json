@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-24T13:09:23.748646+00:00",
+  "generated": "2026-10-24T16:49:11.693212+00:00",
   "summary": "Today's digest contains 601 vulnerabilities across 5 sources. 85 zero-day exploits detected, 35 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
     "new": 601,
     "changed": 0,
     "removed": 0,
-    "total": 695592,
+    "total": 696193,
     "zeroday": 85,
     "exploited": 35,
     "pakistan": 16
@@ -1539,7 +1539,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109935",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -2949,7 +2949,7 @@
     {
       "id": "CVE-2026-98870",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: remove stale channels from all sessions on teardown\n\nksmbd_sessions_deregister() removes a connection's channels from other\nsessions' channel lists only while conn->binding is still set:\n\n\tif (conn->binding) {\n\t\thash_for_each_safe(sessions_table, ...)\n\t\t\tksmbd_chann_del(conn, sess);\n\t}\n\nconn->binding is a transient flag: it is cleared once a binding\nSESSION_SETUP completes, and also by a subsequent non-binding\nSESSION_SETUP on the same connection (a reauthentication on a bound\nchannel, or a new SessionId==0 setup). A connection that has bound a\nchannel into another session's ksmbd_chann_list and then clears\nconn->binding leaves that channel behind when it disconnects: the\nchannel, whose chann->conn points at the now freed struct ksmbd_conn,\nstays on the owner session's list.\n\nWhen the owning connection later tears down, the second loop\ndereferences the stale channel:\n\n\txa_for_each(&sess->ksmbd_chann_list, chann_id, chann)\n\t\tif (chann->conn != conn)\n\t\t\tksmbd_conn_set_exiting(chann->conn);   /* freed */\n\nwhich is a use-after-free write into the freed ksmbd_conn (the same\nstale channel is also walked by show_proc_session() through /proc). The\nsession is leaked as well, because its channel list never empties.\n\nRemove the conn->binding gate so a connection always removes its\nchannels from every session on teardown.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -2961,7 +2961,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98870",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -3291,7 +3291,7 @@
     {
       "id": "CVE-2026-98889",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mvm: fix sched scan IE sizing\n\nScheduled scan built the probe request before iwl_mvm_scan_fits(),\nso oversized IEs could be copied into the fixed preq buffer before\nlength validation. Move iwl_mvm_build_scan_probe() after the fits\ncheck.\n\nAlso advertise max_sched_scan_ie_len using iwl_mvm_max_scan_ie_len()\nso userspace limits account for driver-inserted DS/TPC bytes.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -3303,7 +3303,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98889",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -3399,7 +3399,7 @@
     {
       "id": "CVE-2026-98895",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5: HWS, Handle destroying table that has a miss table\n\nIf a table has a miss table that was created by\n'mlx5hws_table_set_default_miss' API function, its miss_tbl\nkeeps the table that points to it in a list.\nIf such table is deleted, we need to also remove it from the\nmiss_tbl list, otherwise the node in miss_tbl list will contain\ngarbage.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -3411,7 +3411,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98895",
-      "cvss": "0.0",
+      "cvss": "7.0",
       "cwe": ""
     },
     {
@@ -3471,7 +3471,7 @@
     {
       "id": "CVE-2026-98899",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ipset: mark the rcu locked areas properly\n\nWhen we bump the uref counter, there's no need to keep\nthe rcu lock because the referred hash table can't\ndisappear. Also, from the same reason in mtype_gc we\nneed the rcu lock and not a spinlock.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -3483,7 +3483,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98899",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -3687,7 +3687,7 @@
     {
       "id": "CVE-2026-98911",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndpaa2-switch: fix the error path in dpaa2_switch_rx()\n\nIn case of an error in dpaa2_switch_rx(), the dpaa2_switch_free_fd()\nfunction is called in order to free the FD. This is incorrect since the\ndpaa2_switch_free_fd() is intended to be used on Tx frame descriptors,\nmeaning that it expects in the software annotation area of the FD data\nto find a valid skb pointer on which to call dev_kfree_skb().\n\nFix this by extracting the dma_unmap_page() from\ndpaa2_switch_build_linear_skb() directly into the dpaa2_switch_rx()\nfunction. This allows us to directly use free_pages() in case of an\nerror before an SKB was created and kfree_skb() afterwards.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -3699,7 +3699,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98911",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -4659,7 +4659,7 @@
     {
       "id": "CVE-2026-98927",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: nv: Fix life cycle of the nested_mmus array\n\nThe nested_mmus array holds the shadow page tables that are used when\na guest is running a nested context. These structures are allocated on\nVCPU_INIT for whole guest, which implies that they may have to be\nrelocated as the array grows.\n\nShould a VCPU_INIT occur whilst a vcpu is actively running an L2 and\nthat the allocation requires relocation, that vcpu will still be\nrunning with a pointer to the previous structure, which will have been\nfreed.\n\nFix this by turning the array of structures to an array of pointers,\nwhich is now allocated at VM creation, sized to the absolute maximum\nthat KVM can handle.\n\nIn turn, each VCPU_INIT contributes S2_MMU_PER_VCPU to the pool. No\nreallocation is ever performed, and the life cycle of each object is\nmuch clearer:\n\n- the nested_mmus array is allocated in kvm_init_nested(), and freed\n  in kvm_arch_destroy_vm()\n\n- s2_mmu structures are allocated in kvm_vcpu_init_nested(), and freed\n  on kvm_arch_flush_shadow_all()\n\nFinally, the freeing of vcpu->arch.vncr_array is made consistent\nrather than being done on some failure paths, but not others.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -4671,7 +4671,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98927",
-      "cvss": "0.0",
+      "cvss": "7.0",
       "cwe": ""
     },
     {
@@ -4749,7 +4749,7 @@
     {
       "id": "CVE-2026-98932",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nEDAC/altera: Fix use-after-free in error paths\n\nIn both altr_edac_a10_device_add() and altr_portb_setup(), the error path\nfreed the dci structure before releasing the devres group. Since the managed\nsingle and double bit IRQ handlers use altdev(dci->pvt_info) as their data, an\nIRQ firing between freeing dci and unregistering the IRQs could dereference\nthe freed memory.\n\nRelease the devres group first so the managed IRQs are unregistered\nbefore the dci structure is freed.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -4761,7 +4761,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98932",
-      "cvss": "0.0",
+      "cvss": "7.4",
       "cwe": ""
     },
     {
@@ -4911,7 +4911,7 @@
     {
       "id": "CVE-2026-98941",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: don't enable large folios on encrypted inodes\n\nCommit 709f0f1f1bf5 (\"ext4: add checks for large folio\nincompatibilities when BS > PS\") disables large folios at mount time\nif the \"encrypt\" feature is set. However, enabling that feature on a\nmounted filesystem circumvents that check, and writing encrypted data\nresults in a crash:\n\n  BUG: kernel NULL pointer dereference, address: 0000000000000028\n  Workqueue: ext4-rsv-conversion ext4_end_io_rsv_work\n  RIP: 0010:ext4_finish_bio+0xf7/0x3e0\n  Call Trace:\n   ext4_release_io_end+0x51/0x110\n   ext4_end_io_end+0x4c/0xe0\n   ext4_end_io_rsv_work+0xb3/0x100\n\nFix this by disabling large folios on encrypted inodes, as is\nalready done for inodes that use data journaling.\n\nThis affects all kernels between v6.19 and v7.2, but it is not needed\nin v7.3, where the code was significantly refactored.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -4923,7 +4923,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98941",
-      "cvss": "0.0",
+      "cvss": "7.0",
       "cwe": ""
     },
     {
@@ -4965,7 +4965,7 @@
     {
       "id": "CVE-2026-98944",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: steam: Refactor registration\n\nThis refactors and simplifies the registration/unregistration flow. Since\nwe now only perform registration when the client isn't opened anymore, the\nlogic for handling that can be removed, and the rest of the function\nstreamlined.\n\nWe also remove the previous assumption that we have a serial number to show\nwe're registered, replacing it with a single purpose boolean.\n\nIn a previous refactor the code for unregistering a battery if later\nregistration steps failed was accidentally left out. As a result, a\nlingering power_supply object could get left over after the steam object\nwas torn down. This is also fixed here.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -4977,13 +4977,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98944",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-98945",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: steam: Rearrange teardown sequence\n\nThis fixes a narrow window during the teardown sequence where callbacks\ncould still be scheduled during cleanup that would then have a dangling\npointer to the now-freed steam struct.\n\nThis also puts work canceling for rumble and mode switch in\nsteam_unregister, as that shouldn't persist while the client hdev is open.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -4995,7 +4995,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98945",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -5109,7 +5109,7 @@
     {
       "id": "CVE-2026-98952",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\npfcp: make sure the SEID is linear before reading it\n\npfcp_encap_recv() only makes sure that the UDP header and the 4 byte\nPFCP header are in the linear area. When the S flag is set,\npfcp_session_recv() then reads the 8 byte SEID that follows, which is\nnot covered by the pskb_may_pull() check.\n\nA short PFCP packet with the S flag set, or one whose session header\nlies in a fragment, therefore makes pfcp_session_recv() read beyond the\nend of the packet data, and whatever it finds there is stored in the\ntunnel metadata that flower later classifies on.\n\nPull up to the end of the SEID before reading it, and drop packets\nthat are too short to contain it. Reload the header pointer afterwards\nsince pskb_may_pull() may reallocate the skb head.\n\nUse offsetofend() rather than sizeof(struct pfcphdr_session): the\nstructure is not packed, so its size is 16 bytes because of the\nalignment of the __be64 member, while the header on the wire is only 12\nbytes, and valid session messages would be dropped.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5121,7 +5121,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98952",
-      "cvss": "0.0",
+      "cvss": "7.3",
       "cwe": ""
     },
     {
@@ -5235,7 +5235,7 @@
     {
       "id": "CVE-2026-98959",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: fix xattr replace when multiple xattrs are packed in the same item\n\nIf we have a btrfs_dir_item item that packs multiple xattrs and then we\nreplace the value of one of them (with the setxattr(2) family of syscalls)\nwith another value of a different size, we end up not having a fully\ninitialized btrfs_dir_item, resulting in a corruption that the tree\nchecker will detect at extent buffer writeback time.\n\nThis is because in btrfs_setxattr() when we find a btrfs_dir_item with\nmultiple xattrs (due to the crc32c hash of their name being the same)\nwe delete one of the xattr items (btrfs_dir_item) and then insert a new\none, but the deletion and insertion results in shifting existing data in\nthe leaf and therefore when the new value of a xattr has a different size,\nthe new btrfs_dir_item is placed in a leaf section that was not\ninitialized and we only copy the value's data and set the value's length\nin the new btrfs_dir_item, without setting the name, the name's length,\nthe key (which must be all zeroes for xattrs), flags (BTRFS_FT_XATTR) and\ntransaction ID.\n\nThe following script reproduces the issue:\n\n  $ cat test.sh\n  #!/bin/bash\n\n  DEV=/dev/sdi\n  MNT=/mnt/sdi\n\n  mkfs.btrfs -f $DEV\n  mount $DEV $MNT\n\n  touch $MNT/testfile\n\n  # Add two xattrs that, on btrfs, have the same hash (crc32c) for their\n  # name and therefore are packed into the same btrfs_dir_item.\n  setfattr -n user.foobar -v 123 $MNT/testfile\n  setfattr -n user.WvG1c1Td -v qwerty $MNT/testfile\n\n  # Verify the xattrs are present.\n  echo \"xattrs before:\"\n  getfattr --absolute-names --dump $MNT/testfile\n\n  # Now replace the value of the foobar xattr with a significantly larger\n  # value.\n  setfattr -n user.foobar -v abcdefghijklmnopqrstuvwxyz $MNT/testfile\n\n  # Check the xattrs have the expected values.\n  echo \"xattrs after:\"\n  getfattr --absolute-names --dump $MNT/testfile\n\n  umount $MNT\n\nRunning it:\n\n  $ ./test.sh\n  (...)\n  xattrs before:\n  # file: /mnt/sdi/testfile\n  user.WvG1c1Td=\"qwerty\"\n  user.foobar=\"123\"\n\n  xattrs after:\n  # file: /mnt/sdi/testfile\n  user.WvG1c1Td=\"qwerty\"\n\nSo the \"user.foobar\" xattr is missing and there was a transaction abort\nwhen unmounting the fs with the following traces in dmesg:\n\n  $ dmesg\n  [869800.159271] BTRFS warning (device sdi): access to eb bytenr 30474240 len 16384 out of range start 16015 len 25964\n  [869800.159293] ------------[ cut here ]------------\n  [869800.159296] WARNING: fs/btrfs/extent_io.c:4408 at report_eb_range+0x44/0x60 [btrfs], CPU#8: getfattr/2605179\n  [869800.168961] Modules linked in: btrfs dm_thin_pool (...)\n  [869800.190527] CPU: 8 UID: 0 PID: 2605179 Comm: getfattr Tainted: G        W           7.3.0-rc3-btrfs-next-244+ #1 PREEMPT(full)\n  [869800.193726] Tainted: [W]=WARN\n  [869800.194502] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS rel-1.16.2-0-gea1b7a073390-prebuilt.qemu.org 04/01/2014\n  [869800.197576] RIP: 0010:report_eb_range+0x44/0x60 [btrfs]\n  [869800.198985] Code: 48 8b 7b 18 (...)\n  [869800.203531] RSP: 0018:ffffce4541937d58 EFLAGS: 00010246\n  [869800.204609] RAX: 0000000000000000 RBX: ffff8dde054b8738 RCX: 0000000000000000\n  [869800.206137] RDX: 0000000000000000 RSI: 0000000000000001 RDI: ffffffffc04c92a0\n  [869800.207645] RBP: 0000000000003e8f R08: 0000000000000000 R09: 3fffffffffefffff\n  [869800.226175] R10: ffffce4541937a88 R11: 0000000000000003 R12: 000000000000656c\n  [869800.227594] R13: ffff8dde14be800f R14: 000000000000656c R15: 0000000000000069\n  [869800.229097] FS:  00007f59023bb780(0000) GS:ffff8de5788ed000(0000) knlGS:0000000000000000\n  [869800.231137] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033\n  [869800.232321] CR2: 0000558dc45e6a78 CR3: 0000000765b16004 CR4: 0000000000370ef0\n  [869800.233783] Call Trace:\n  [869800.234330]  <TASK>\n  [869800.234791]  read_extent_buffer+0x4d/0x100 [btrfs]\n  [869800.235898]  btrfs_listxattr+0x199/0x240 [btrfs]\n  [869800.236912]  vfs_listxattr+0x51/0\n---truncated---",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5247,7 +5247,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98959",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -5325,7 +5325,7 @@
     {
       "id": "CVE-2026-98964",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvmet: use the local P2P device on metadata allocation failure\n\nnvmet_req_alloc_p2pmem_sgls() assigns req->p2p_dev only after the data\nand metadata SGL allocations succeed. If the data allocation succeeds\nbut the metadata allocation fails, out_free_sg passes req->p2p_dev to\npci_p2pmem_free_sgl() before that assignment has taken place.\n\nPass the local p2p_dev argument instead, so cleanup uses the same PCI\ndevice as the successful data allocation.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5337,13 +5337,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98964",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-98965",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nice: Restore Ordered MMIO Writes for Tx Doorbells\n\nThe DQL accounting state which tracks the number of bytes queued for the\nNIC to transmit, namely dql->num_queued, is updated by the ICE driver\nwhen it invokes __netdev_tx_sent_queue(). Subsequently the driver\nupdates the hardware queue tail allowing the NIC to begin processing the\nwork queue. The queue accounting update should be ordered before the NIC\nbegins transmitting descriptors.\n\nThe transmit path currently updates the hardware doorbell using\nwritel_relaxed(), which (on arm64) does not provide the same ordering\nguarantees between writes to normal memory and writes to MMIO registers\nthat writel() does. This introduces a potential race where the NIC\nbegins transmitting descriptors before the dql->num_queued update is\nglobally visible. If the NIC finishes before the update is observed by\ndql_completed(), it detects an invalid state where more bytes have been\ncompleted than have been queued. When this happens the following BUG_ON\nis triggered.\n\n  BUG_ON(count > num_queued - dql->num_completed);\n\nThis has been observed and manifests as the following crash (note that\nthe trace has been trimmed) in an environment with sustained network\nload that uses an Intel Corporation Ethernet Controller E810-XXV for SFP\n(rev 02) on an arm64 machine. Replacing writel_relaxed() with writel()\nin a test kernel eliminated the crash in the user's workload, which\npreviously reproduced the issue reliably.\n\n  kernel BUG at lib/dynamic_queue_limits.c:99\n\nInternal error: Oops - BUG: 00000000f2000800 [#1] SMP\npc : dql_completed+0x268/0x2a0\nlr : ice_clean_tx_irq+0x1d4/0x620 [ice]\nCall trace:\ndql_completed+0x268/0x2a0 (P)\nice_napi_poll+0x94/0x520 [ice]\n__napi_poll+0x48/0x3f0\nnet_rx_action+0x194/0x420\n\nThis restores the behaviour prior to commit ccde82e90946 (\"ice: add E830\nEarliest TxTime First Offload support\"), which changed the notification\nmechanism from writel() to writel_relaxed().",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5355,7 +5355,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98965",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -5397,7 +5397,7 @@
     {
       "id": "CVE-2026-98968",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\namt: send the relay's General Query directly from the receive path\n\nAn skb queued in a qdisc can outlive the tunnel it references\nthrough a raw pointer in skb->cb. For example, with igmp_qrv set\nto 1 on the relay a tunnel lives for 135s, so a netem delay of\n180s on the amt device outlives it; when the tunnel expires and is\nfreed, the subsequent dequeue triggers a use-after-free in\namt_dev_xmit().\n\n  BUG: KASAN: slab-use-after-free in amt_dev_xmit+0x2763/0x2e20\n  Call Trace:\n   amt_dev_xmit+0x2763/0x2e20 [drivers/net/amt.c:1262]\n   dev_hard_start_xmit+0x22f/0x620\n   sch_direct_xmit+0x12e/0xac0\n   netem_dequeue+0x333/0xc50\n   net_tx_action+0x35c/0xa60\n\namt_send_igmp_gq() and amt_send_mld_gq() are only called from\namt_request_handler(), inside the rcu_read_lock_bh() section of\namt_rcv(). amt_request_handler() already has the tunnel the query is\nfor: it found or created it inside that section. Queuing the query with\ndev_queue_xmit() only leads back into amt_dev_xmit(), which strips the\nEthernet header and calls amt_send_membership_query() for that tunnel.\n\nMake that call directly from the two senders instead, the same way\namt_send_advertisement() transmits from the receive path. The query\nnever waits in a qdisc, the tunnel is only dereferenced inside the\nRCU section that found or created it, and nothing is stored in\nskb->cb, so no lookup or refcount is needed. Remove the query branch\nof amt_dev_xmit(), amt_skb_cb() and struct amt_skb_cb, which have no\nusers left.\n\nBehaviour changes:\n - The relay's own General Queries no longer pass through the amt\n   device's egress path: its qdisc, tc egress (clsact/tcx), the\n   netfilter egress hook and packet taps. They are still visible as\n   UDP on the underlay.\n - A query that is sent successfully is no longer counted as\n   tx_dropped. The old query branch left through the unlock label,\n   which counted every sent query as dropped.\n - A query that reaches amt_dev_xmit() on a relay from elsewhere,\n   such as a userspace querier, is now dropped at the IGMP/MLD type\n   switch. Before, it trusted whatever skb->cb held, and a NULL\n   tunnel hit the WARN_ON(1).",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5409,7 +5409,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98968",
-      "cvss": "0.0",
+      "cvss": "8.1",
       "cwe": ""
     },
     {
@@ -5505,7 +5505,7 @@
     {
       "id": "CVE-2026-98974",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: fix exchange-range-to-eof file size exchange\n\nNorbert Szetei posted a patch containing an incomplete description of a\nbug in XFS_IOC_EXCHANGE_RANGE's TO_EOF flag.  The bug tricks\nexchange-range into modifying a file so that it has shared blocks\nstarting beyond EOF, which is never allowed because files never have\nwritten data beyond EOF, and you can only share written data blocks.\nThis is key to all the incorrect behavior that follows.\n\nEventually I got from Norbert a description of what's going wrong:\n\n> Fair. Here it is with physical block numbers, 4k blocks. peer is the file\n> that gets rewritten and file1 is the one that ends up with the flag\n> cleared.\n>\n> Start, nothing shared:\n>\n>\tpeer size 4096   -> [100]\n>\tfile1 size 12288 -> [200] [201] [202]\n>\tdonor1 size 4096 -> [300]\n>\tdonor2 size 4096 -> [400]\n>\n> 1. FICLONERANGE peer's block into file1's middle slot:\n>\n>\tpeer size 4096   -> [100]\n>\tfile1 size 12288 -> [200] [100] [202] reflink flag set\n>                             ^^^^^ both files own block 100\n>\n> 2. XFS_IOC_EXCHANGE_RANGE file1 against donor1, file1_offset 0,\n> file2_offset 8192, length 0, TO_EOF. One block is exchanged, and the sizes\n> are exchanged with it:\n>\n>\tfile1 size 4096   -> [200] [100] [300] reflink flag set\n>                              ^^^^^^^^^^^ still owned, now past the size\n>\tdonor1 size 12288 -> [202]\n>\n> file1 says it is one block long while it still owns three. Nothing was\n> unmapped. file2_offset is block 2, so this exchange cannot clear a flag.\n>\n> 3. XFS_IOC_EXCHANGE_RANGE file1 against donor2, both offsets 0, length 4096.\n> By i_disk_size this is two one-block files exchanging everything, so\n> xmi_can_exchange_reflink_flags() agrees and the flag is cleared:\n>\n>\tfile1 size 4096   -> [400] [100] [300] reflink flag CLEARED\n>\tdonor2 size 4096  -> [200]\n>\n> Block 100 is still shared with peer.\n>\n> 4. pwrite(file1, 4096, 4096), which is file1's second slot, block 100.\n> xfs_is_cow_inode(file1) is false, so no CoW:\n>\n>\tpeer size 4096 -> [100] same block, new contents\n>\n> Block 100 is the only one that matters here. PoC below, it reads a file\n> called peer in the current directory. The filesystem needs reflink and\n> exchange-range, which mkfs.xfs 7.x turns on by default.\n\nSo yes, TO_EOF is screwing up the file size even if it's actually\nexchanging the data block correctly.  The following is the intended\nbehavior of XFS_EXCHANGE_RANGE_TO_EOF, as described by its manpage:\n\n\"Ignore the length parameter.  All bytes in file1_fd from file1_offset\n to EOF are moved to file2_fd, and file2's size is set to\n (file2_offset+(file1_length-file1_offset)).  Meanwhile, all bytes in\n file2 from file2_offset to EOF are moved to file1 and file1's size is\n set to (file1_offset+(file2_length-file2_offset)).\"\n\nIn other words, if we only exchange a portion of the file data, then we\nshould only exchange the portion of the file size that relates to the\nexchanged data.  Unfortunately, the code swaps the ondisk file size and\nthe incore file sizes, which is incorrect if the caller passes in a\nnonzero offset.\n\nHaving confused the file sizes, the PoC uses a second exchange-range\ncall on what looks like a non-reflinked single-block file.  Because the\nfile size is set incorrectly, exchange-range thinks it's exchanging the\nfull contents of two files and clears the reflink flag on the broken\nfile.  That enables an extending write of the broken file to rewrite the\nshared block that's just past EOF.  This has become known colloquially\nas refluxfs.\n\nOnce the file sizes are set correctly, the second exchange-range no\nlonger thinks that it's doing a full-contents swap, so it won't clear\nthe reflink flag on either of its file arguments.\n\nNorbert followed up to an earlier version of this patch with a second\ncomplaint about us not handling the i_disk_size state correctly:\n\n> The offsets are bounded against the incore i_size but subtracted from\n>\n---truncated---",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5517,13 +5517,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98974",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-98975",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfs: stop exchanging reflink flags when exchanging mappings\n\nWhen an exchange covers both files from offset 0 to i_disk_size,\nxmi_can_exchange_reflink_flags() assumes every mapping moved and hands\nthe reflink flag over to the other file.\n\nThat assumption is wrong.  A file can still own shared blocks past\ni_disk_size, e.g. after EXCHANGE_RANGE_TO_EOF sets a smaller size\nwithout unmapping anything.  The flag is cleared anyway, and the next\nwrite to such a block happens in place instead of CoW, corrupting the\nother file that shares it.\n\nCommit a23eca88448e (\"xfs: fix exchange-range reflink flag clearing\nissue with INO1_WRITTEN\") fixed one instance of this.  Rather than add\nanother special case, stop moving the flags.\nxfs_exchmaps_ensure_reflink() already sets the flag on both inodes\nbefore the exchange, so both just keep it.\n\nNothing sets CLEAR_INO{1,2}_REFLINK anymore.  Intents logged by older\nkernels may still carry them; recovery already masks them off, so they\nstay in the log format mask and are ignored.\n\nXFS_IOC_SWAPEXT has the same problem: it moves the reflink flag from\none inode to the other along with the extents.  Just removing that is\nnot enough here: the exchange path flags both inodes up front in\nxfs_exchmaps_ensure_reflink(), but swapext has no such step, so the\ninode receiving the shared extents would be left without the flag.\nSet it on both inodes instead, and make sure both have a CoW fork,\nsince an inode with the reflink flag is expected to have one.\n\nThe flag now stays until FALLOC_FL_UNSHARE_RANGE, xfs_scrub, or a\ntruncate to zero removes it.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5535,13 +5535,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98975",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-98976",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnamespace: keep the lock on a mount that a propagated copy is moved beneath\n\nattach_recursive_mnt() transfers MNT_LOCKED from the top mount to the\nmount that is moved beneath it with MOVE_MOUNT_BENEATH. This allows the\nowner of a user namespace to replace its locked /proc or its root. The\nmount beneath takes on the job of covering the underlying mountpoint\nallowing the top mount to be unmounted.\n\nConsider two mount namespaces:\n\n(H) The host H has a shared mount P with a secret in P/d\n(Z) Z is a user namespace made from M. Its copy of P receives\n    propagation from the host's P and its copy of M's cover on P/d is\n    locked Z's owner must not get to see P/d.\n\nNow (H) mounts X on P/d. This propagates into (Z). The copy of X lands\nbeneath (Z)'s locked cover. The locked property is transfered from (Z)'s\ncover to the copy of X propagated beneath it. The cover is now unlocked.\n\nNow (H) unmounts X again. The copy of X in (Z) gets unmounted and the\ncovering mount is left unlocked on top of P/d. (Z) can now unmount it:\n\n    Z: umount2(P/d)             = EINVAL            /* the cover is locked */\n    H: mount X on P/d, umount X                     /* both propagate into Z /*\n    Z: umount2(P/d)             = 0                 /* the cover is now unlocked */\n    Z: read P/d/secret          = \"covered-by-root\" /* secret revealed */\n\nSo only transfer the locked property to the mount beneath for mounts the\ncaller has placed. A propagated copy that lands beneath a locked mount\nis locked as well so that the mount at the bottom of the stack carries a\nlock the way every check expects. The mount on top of it remains locked\nto ensure that it keeps covering even if the propagated mount is\nunmounted again.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5553,7 +5553,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98976",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -5577,7 +5577,7 @@
     {
       "id": "CVE-2026-98978",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnamespace: never expire a locked mount\n\nLocked mounts are special. They protect the underlying files and\ndirectories from being revealed. do_umount() refuses to unmount locked\nmounts but shrink_submounts() doesn't.\n\nA shrinkable mount can become locked once the owner of a user namespace\nputs it beneath a locked mount with MOVE_MOUNT_BENEATH. The locked\nproperty now moves to the mount at the bottom making it possible to\nunmount the top mount.\n\nSo umount() of an unlocked ancestor now expires the bottom mount first\nand the covered directory is revealed:\n\n  move_mount(c -> x/hidden, MOVE_MOUNT_BENEATH) = 0\n  the cover after the lock moved:  umount2(x/hidden) = 0\n  the holder of the lock:          umount2(x/hidden) = EINVAL\n  the root of the copy, busy:      umount2(x) = EBUSY\n  reads x/hidden/secret: \"covered-by-root\"\n\nSo leave a locked mount alone as it dies together with its parent. A\nplain umount() of an unlocked mount with a locked one below it is EBUSY\nfrom now on. It's the same for any other locked child. A lazy umount\nstill takes the whole tree.\n\nmark_mounts_for_expiry() never sees a locked mount. lock_mnt_tree()\nleaves a mount on an expiry list alone and nothing else puts a locked\none on such a list. Add an assert for this.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5589,7 +5589,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98978",
-      "cvss": "0.0",
+      "cvss": "8.4",
       "cwe": ""
     },
     {
@@ -5613,7 +5613,7 @@
     {
       "id": "CVE-2026-98980",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnamei: don't reveal overmounted entries in refwalk\n\nIn rcuwalk the dentry is validated before it is accepted. step_into()\nstep_into() rechecks d_seq and __follow_mount_rcu() rechecks mount_lock.\nAn entry that gets unlinked in between causes the lookup to retry and\nmiss.\n\nA refwalk doesn't do this. lookup_fast() takes a reference on the hashed\ndentry and simply accepts it. So an unlink that happens after the\nreference was taken isn't seen by refwalk. That's fine for a simple\nfile. We just happened to open it before it was unlinked, no problem.\n\nFor a mountpoint and specifically a locked mountpoint it very much\nisn't. The unlink detaches all mounts and then removes the name. Any\nrefwalk that hasn't traversed the mounts yet simply reveals the\nunderlying entry. It's a very narrow window but it can be hit:\n\n  reads of a covered file in 60 s, 3 walkers, ~15000 unlinks\n    no widening            27\n    that step + 200 us   3741\n\nSee the appended patch for a more reliable reproducer.\n\nSo check the entry after step_into(). unlink(), rmdir() and rename()\nmark the dentry with dont_mount() before they detach the mounts and\nremove the dentry.\n\nSo a dentry that is marked with DCACHE_CANT_MOUNT and is unhashed by the\ntime its mounts were looked at is a name that was unlinked under the\nrefwalk. DCACHE_CANT_MOUNT is read after the mounts were looked up and\nit is set before they are detached by detach_mounts(). A refwalk that\nmissed the mounts will see DCACHE_CANT_MOUNT.\n\nPlain d_unlinked() is fine. A rename takes the dentry off its hash chain\nbut ___d_drop() leaves d_hash.pprev set. So only __d_drop() and a rename\nover the dentry unhash it. The only move that flips IS_ROOT splices in a\ndisconnected alias. That doesn't have DCACHE_CANT_MOUNT set.\n\nAdd the to step_into_slowpath(). \"..\" and LOOKUP_DOWN may legitimately\nland on an unhashed directory. A refwalk that crossed onto a mount has\npath.mnt different from nd->path.mnt. A dentry that a filesystem dropped\non its own (d_invalidate(), d_drop()) doesn't have the flag set and is\ntreated as before.\n\n  // SPDX-License-Identifier: GPL-2.0\n  /*\n   * unlink_covered: unlink a file that is a mountpoint in a detached copy of\n   * its mount, against walkers that open it through that copy.\n   *\n   * A is a tmpfs with the file f1 (content SECRET_F) and the plain file\n   * MARK_A. A' is an open_tree(OPEN_TREE_CLONE) copy of A with MARK_A bound\n   * on A'/f1, held through an O_PATH fd on its root once the tree fd is\n   * closed. Walkers open f1 through that fd while the driver unlinks A/f1,\n   * where nothing is mounted on it. A walker may read MARK_A or get ENOENT.\n   * A read of SECRET_F is a hit: the name was found after its mount was\n   * gone. The lockless walks use openat2(RESOLVE_CACHED).\n   *\n   * usage: unlink_covered [-t seconds] [-w walkers]\n   */\n  #ifndef _GNU_SOURCE\n  #define _GNU_SOURCE\n  #endif\n  #include <errno.h>\n  #include <fcntl.h>\n  #include <pthread.h>\n  #include <stdatomic.h>\n  #include <stdio.h>\n  #include <stdlib.h>\n  #include <string.h>\n  #include <unistd.h>\n  #include <sys/mount.h>\n  #include <sys/stat.h>\n  #include <sys/syscall.h>\n  #include <linux/openat2.h>\n\n  #ifndef __NR_open_tree\n  #define __NR_open_tree 428\n  #endif\n  #ifndef __NR_move_mount\n  #define __NR_move_mount 429\n  #endif\n  #ifndef __NR_openat2\n  #define __NR_openat2 437\n  #endif\n  #ifndef OPEN_TREE_CLONE\n  #define OPEN_TREE_CLONE 1\n  #endif\n  #ifndef OPEN_TREE_CLOEXEC\n  #define OPEN_TREE_CLOEXEC O_CLOEXEC\n  #endif\n  #ifndef MOVE_MOUNT_F_EMPTY_PATH\n  #define MOVE_MOUNT_F_EMPTY_PATH 0x00000004\n  #endif\n\n  #define WORK \"/tmp/uc\"\n  #define ADIR WORK \"/A\"\n\n  static int duration = 60, nwalkers = 3;\n  static atomic_int stop, writer_waiting;\n  static pthread_rwlock_t cur_lock = PTHREAD_RWLOCK_INITIALIZER;\n  static int cur_fd = -1;\t\t/* the root of A', -1 while there is none */\n  static atomic_long n_unlink, n_walk, n_mark, n_enoent, n_othe\n---truncated---",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5625,13 +5625,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98980",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-98981",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnamespace: unhash a dentry before detaching the mounts on it\n\nunlink(), rmdir() and rename() remove the entry from the filesystem,\ncall detach_mounts() on the entry with the inode locked and then call\nd_delete() once the inode is unlocked.\n\nThe thing is that between detach_mounts() and d_delete() the dentry is\nstill hashed and positive. But after detach_mounts() nothing covers the\ndentry anymore. A lookup that finds this dentry in the dcache can\nuncover what the mounts hid.\n\nThat's a problem when unlinking files or directories that are\nmountpoints in other mount namespaces. Everybody who had the underlying\nentry covered can race the detach_mount() call until d_delete() has run.\n\nThe race window isn't all that small. It encompasses namespace_unlock()\nwith a full synchronize_rcu_expedited() grace period and the\ninode_unlock() of the entry.\n\nIn my experiments three walkers that kept trying read an overmounted\nfile in 11938 of the 16140 unlinks that removed its mountpoint from a\nbind mount of the filesystem within a minute.\n\nFun fact, d_invalidate() has the same ordering problem but gets it\nright. It unhashes the dentry first and detaches the mounts afterwards.\nLet's do the same in __detach_mounts():\n\n- A lookup that hasn't found the dentry yet misses it in the dcache and\n  waits for the directory lock that the caller holds until the name is\n  gone for good.\n\n- A lockless lookup that found it already fails the mount_lock check\n  while the dentry still counts as a mountpoint and the d_seq check once\n  it doesn't, and retries.\n\nThis fixes the lockless path. We still need to fix the reference count\nlookup in a follow-up patch.\n\nSo d_drop() the dentry. The dentry stays positive and held but can't be\nfound anymore. Then proceed with the detach and unlink.\n\nReproducer:\n\nThe reads were counted with the program below, three walkers for 60 s\nin a VM with 4 CPUs. The race window is stretched with the debug patch\npasted here. fs.detach_race_walk_us sleeps in lookup_fast() once it\nfound a mountpoint dentry and before its mounts are crossed.\nfs.detach_race_unlink_us sleeps in vfs_unlink() between detach_mounts()\nand d_delete().\n\n  // SPDX-License-Identifier: GPL-2.0\n  /*\n   * unlink_covered: unlink a file that is a mountpoint in a detached copy of\n   * its mount, against lookups that open it through that copy.\n   *\n   * A is a tmpfs with the file f1 (content SECRET_F) and the plain file\n   * MARK_A. A' is an open_tree(OPEN_TREE_CLONE) copy of A with MARK_A bound\n   * on A'/f1, held through an O_PATH fd on its root once the tree fd is\n   * closed. Walkers open f1 through that fd while the driver unlinks A/f1,\n   * where nothing is mounted on it. A walker may read MARK_A or get ENOENT.\n   * A read of SECRET_F is a hit: the name was found after its mount was\n   * gone. The lockless walks use openat2(RESOLVE_CACHED).\n   *\n   * usage: unlink_covered [-t seconds] [-w walkers]\n   */\n  #ifndef _GNU_SOURCE\n  #define _GNU_SOURCE\n  #endif\n  #include <errno.h>\n  #include <fcntl.h>\n  #include <pthread.h>\n  #include <stdatomic.h>\n  #include <stdio.h>\n  #include <stdlib.h>\n  #include <string.h>\n  #include <unistd.h>\n  #include <sys/mount.h>\n  #include <sys/stat.h>\n  #include <sys/syscall.h>\n  #include <linux/openat2.h>\n\n  #ifndef __NR_open_tree\n  #define __NR_open_tree 428\n  #endif\n  #ifndef __NR_move_mount\n  #define __NR_move_mount 429\n  #endif\n  #ifndef __NR_openat2\n  #define __NR_openat2 437\n  #endif\n  #ifndef OPEN_TREE_CLONE\n  #define OPEN_TREE_CLONE 1\n  #endif\n  #ifndef OPEN_TREE_CLOEXEC\n  #define OPEN_TREE_CLOEXEC O_CLOEXEC\n  #endif\n  #ifndef MOVE_MOUNT_F_EMPTY_PATH\n  #define MOVE_MOUNT_F_EMPTY_PATH 0x00000004\n  #endif\n\n  #define WORK \"/tmp/uc\"\n  #define ADIR WORK \"/A\"\n\n  static int duration = 60, nwalkers = 3;\n  static atomic_int stop, writer_waiting;\n  static pthread_rwlock_t cur_lock = PTHREAD_RWLOCK_INITIALIZER;\n  static int cur_fd = -1;\t\t/* the root of A', -1 wh\n---truncated---",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5643,13 +5643,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98981",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-98982",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnamespace: don't let a pseudo dentry become the root of a mount\n\nd_alloc_pseudo() hands out dentries for pipes, sockets and other files\nthat are never anyone's child or parent. They carry DCACHE_NORCU and\ndentry_free() frees them right away because no lockless path walk can\never reach them. That holds as long as such a dentry isn't the root of\na mount. But bind mounting /proc/self/fd/<fd> of such a file does\nexactly that.\n\nMost callers of alloc_file_pseudo() put their files on kernel-internal\nmounts and may_copy_tree() refuses those. bpf_token_create() doesn't. It\nplaces the token file on the bpffs mount the caller handed it and that\nmount is in the caller's mount namespace so the clone goes through:\n\n  mount --bind /proc/self/fd/<token> <file>\n  open_tree(tokfd, \"\", AT_EMPTY_PATH | OPEN_TREE_CLONE) + move_mount()\n\n__follow_mount_rcu() then loads ->mnt_root of that mount, reads d_seq\nand d_flags of the dentry and only then checks mount_lock. The dentry\ncan be gone by then. The final mntput() of an unmounted parent unhooks\na child that stayed attached to it under mount_lock alone. When the\nchild's holder does the final put right after that the root is dput()\nand freed immediately while a walker that found the mount hashed still\nlooks at it.\n\nRefuse to clone a mount with a DCACHE_NORCU dentry as its root. Nothing\nsensible can be done with a bind mount of a bpf token anyway.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5661,7 +5661,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98982",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -5757,7 +5757,7 @@
     {
       "id": "CVE-2026-98988",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnamespace: keep covered mounts covered in OPEN_TREE_NAMESPACE\n\nopen_tree(OPEN_TREE_NAMESPACE) creates a new mount namespace from a\ncopy of the tree at the given path. The caller needs to be privileged\nover its current user namespace because the new mount namespace will be\nowned by it. It doesn't need to be privileged over the mount namespace\nthe tree is copied from. An unprivileged user just needs to create a\nuser namespace first.\n\nThe copy follows the rules of a detached bind mount. Without\nAT_RECURSIVE only the mount itself is cloned and its children are left\nout. With AT_RECURSIVE unbindable mounts are skipped. Both is fine when\nthe caller has privileges over the source mount namespace because it\ncould unmount those mounts anyway. Not so for an unprivileged user in\nthat mount namespace. For them a mount namespace copy is what unshare()\ndoes. copy_mnt_ns() copies everything including unbindable mounts and\nlock_mnt_tree() makes sure nothing can be unmounted in the copy. Nothing\nthat was covered gets revealed.\n\ncreate_new_namespace() only does the locking and so the covered content\nis right there in the new mount namespace:\n\n  # mount -t tmpfs none /tmp/otn; mkdir /tmp/otn/covered\n  # echo hidden > /tmp/otn/covered/under.txt\n  # mount -t tmpfs none /tmp/otn/covered\n\n  uid 1000, after unshare(CLONE_NEWUSER):\n  fd = open_tree(AT_FDCWD, \"/tmp/otn\", OPEN_TREE_NAMESPACE);\n  setns(fd, CLONE_NEWNS);\n  open(\"/covered/under.txt\", O_RDONLY)  -> \"hidden\"\n\nCovering paths with mounts is how container runtimes mask parts of\n/proc and /sys and how admins hide things.\n\nWhen the caller's user namespace doesn't own the source mount namespace\ncopy the way unshare() does and refuse a non-recursive copy of a mount\nthat has anything mounted below the requested directory and copy\nunbindable mounts in a recursive copy. A caller that is privileged over\nthe source mount namespace sees no change.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5769,7 +5769,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98988",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -5811,7 +5811,7 @@
     {
       "id": "CVE-2026-98991",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnamespace: queue a mount only once for mount notifications\n\nmnt_notify_add() puts a mount on notify_list. It doesn't check whether\nthe mount is on the list already. That's fine as long as every mount is\nqueued at most once per namespace_sem hold. It isn't.\n\npropagate_umount() moves a surviving overmount off a stack of mounts\nthat are going away and queues it as moved. shrink_submounts() and\nmark_mounts_for_expiry() call umount_tree() for several mounts under a\nsingle namespace_sem hold. So the second umount_tree() can take down\nexactly the mount the first one reparented, reparent it once more and so\nend up queueing it a second time.\n\nThe second list_add_tail() cuts the mounts queued in between out of the\nlist while the head still points at the last of them. notify_mnt_list()\nthen only visits that one mount and the others are freed after the grace\nperiod with notify_list still pointing at them. Every later mount\noperation on the host walks freed memory:\n\n  BUG: KASAN: slab-use-after-free in __list_add_valid_or_report\n  Read of size 8 at addr ffff8881003d57e0 by task notify_dq/162\n   __list_add_valid_or_report+0x15c/0x1a0\n   mnt_add_to_ns+0x322/0x890\n   attach_recursive_mnt.isra.0+0xf2a/0x1a00\n   path_mount+0x139c/0x1d40\n\nThis needs a mount with MNT_SHRINKABLE to bind from. That's what\nfinish_automount() creates (submounts of NFS, AFS and CIFS and the\ntracefs mount below debugfs). Bind mounts inherit the flag. A mount\nnamespace with a FAN_MARK_MNTNS mark does the rest and root in a user\nnamespace can have both.\n\nInitialize to_notify in alloc_vfsmnt() and leave a mount alone that is\nqueued already. mnt_notify() looks at the state the mount has when the\nlist is drained so a single entry per mount is enough. The move event\nfor a mount that is unmounted under the same hold is lost. That's fine.\nThe detach is what matters.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5823,7 +5823,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98991",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -5847,7 +5847,7 @@
     {
       "id": "CVE-2026-98993",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnamespace: don't inherit MNT_UMOUNT in clone_mnt()\n\nMNT_UMOUNT gets raised on a mount that umount_tree() or umount_one() has\ntaken out of its namespace. It's never cleared. __detach_mounts()\nunhooks a mount that carries it instead of unmounting it.\n\ndisconnect_mount() lets an unmounted child stay attached only if its\nparent carries it. propagate_umount() takes it as the sign that a mount\nis going to be unmounted when it decides what else can be unmounted,\nwhere a chain of locked mounts ends and where a for reparenting an\novermount.\n\nclone_mnt() copies the flags of the source and only masks\nMNT_INTERNAL_FLAGS which doesn't include MNT_UMOUNT. A mount that was\nlazily unmounted but is kept alive by a file descriptor can still be\ncopied when its root is an nsfs or pidfs file because may_copy_tree()\naccepts those before checking whether the source is mounted at all:\n\n  mount --bind /proc/self/ns/net /tmp/x\n  exec 3< /tmp/x\n  umount -l /tmp/x\n  mount --bind /proc/self/fd/3 /tmp/y\n\nThe mount on /tmp/y is attached to the caller's namespace with\nMNT_UMOUNT already set and every copy of it inherits the flag again.\n\nThat causes a number of bugs:\n\n- Unlink its mountpoint from a mount namespace where it isn't one.\n  __detach_mounts() takes it for a mount that was unmounted earlier,\n  unhooks it from its parent and drops the reference the namespace\n  holds on it. It stays in the namespace with one reference too few\n  and as its own parent, so it can't be unmounted through the file\n  descriptor anymore and the namespace never finds it again. When the\n  namespace goes away it's leaked and points to a freed struct\n  mnt_namespace that may_change_propagation() and anon_ns_root() read\n  on the next propagation change or mount_setattr() through the file\n  descriptor.\n\n- Make it shared and unmount a peer. trace_transfers() follows the\n  flag from the peer into it and strips it from its peer group.\n\n- Let a propagated umount reach it. gather_candidates() marks it with\n  T_UMOUNT_CANDIDATE but never puts it on the candidate list, so the\n  mark is never cleared and every later propagated umount skips it. If\n  it's the parent of a locked mount handle_locked() takes it as the\n  cutoff and commits the locked child that should have stayed and\n  disconnect_mount() leaves that child attached to it, unmounted under\n  a mounted parent, which is what disconnect_mount() exists to\n  prevent. When the namespace goes away umount_tree() visits the child\n  a second time. And once __detach_mounts() has made it its own parent\n  reparent() never finds the end of the chain of unmounted parents.\n\nA clone is a new mount that has never been unmounted. Add MNT_UMOUNT\nto MNT_INTERNAL_FLAGS so clone_mnt() never copies it. And warn when\numount_tree() reaches a mount that already has it set.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5859,7 +5859,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98993",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -5883,7 +5883,7 @@
     {
       "id": "CVE-2026-98995",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnamespace: reset the old parent's ->overmount in mnt_change_mountpoint()\n\n__umount_mnt() resets ->overmount of the parent when it unmounts the\nmount that overmounts it. mnt_change_mountpoint() doesn't. It moves the\nmount to its new parent and leaves the old one pointing at it.\n\nFor a mount that is moved beneath in attach_recursive_mnt() that doesn't\nmatter. The new mount has already reset ->overmount of the old parent by\nthe time the old top mount is moved onto it.\n\nIt matters for reparent() though. propagate_umount() moves a surviving\novermount onto the first ancestor that isn't going to be unmounted. The\nmount it was taken from is unmounted immediately afterwards. If a file\ndescriptor keeps that unmounted mount alive ->overmount points at the\nmoved mount. That's a dangling pointer and UAF as the moved mount is\nunmounted and freed.\n\ndo_lock_mount() follows ->overmount from the target path under\nmount_lock. With a file descriptor on such a mount as the target of a\nmount beneath topmost_overmount() walks into the freed mount and\ndo_lock_mount() takes references on whatever it finds there.\n\nSo reset ->overmount of the old parent in mnt_change_mountpoint() the\nsame way __umount_mnt() does. A mount's ->overmount is then always a\nmount that is attached to it.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5895,7 +5895,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98995",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -5955,7 +5955,7 @@
     {
       "id": "CVE-2026-98999",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/xe: Fix stale pinned_link entry when fb-pin performs the final unpin\n\nxe_bo_pin_external() and xe_bo_unpin_external() maintain the bo's\npinned_link list membership in xe->pinned.late.external, based on\nwhether the current call is the outermost pin or the final unpin.\nHowever, the same external bo's pin_count can also be raised and\nlowered directly by __xe_pin_fb_vma()/__xe_unpin_fb_vma(), which pin\nthe bo as a display scanout buffer without going through\nxe_bo_pin_external()/xe_bo_unpin_external() at all, and have no\nnotion of, or ownership over, pinned_link.\n\nIf a bo is pinned both externally (e.g. dma-buf export) and as an fb,\nand the external unpin happens first, xe_bo_unpin_external() correctly\nobserves pin_count > 1 and leaves the bo on pinned_link. When the fb\nunpin later performs the true last unpin (pin_count 1 -> 0), it never\ntouches pinned_link, leaving the bo linked on xe->pinned.late.external\nindefinitely. Once the bo is subsequently freed, this stale list entry\npoints into freed memory, corrupting the list and risking a\nuse-after-free the next time the list is walked or spliced.\n\nThe backup object pin/unpin sites in xe_bo_notifier_prepare_pinned()/\nxe_bo_notifier_unprepare_pinned() have the same bypass characteristic,\nthough they never add their bo to a pinned list, so are not affected\nby this particular list-corruption issue.\n\nMove the pinned_link removal into xe_bo_account_unpin(), which already\nruns on every unpin path (kernel, external, framebuffer, backup\nobject) right before the true 1 -> 0 pin_count transition. Since\nlist_del_init() only operates on the node itself, this removal is\nlist-agnostic and safe to perform regardless of which list (external\nor kernel_bo_present) the bo happens to be linked on, or which code\npath is performing the final unpin. Drop the now-redundant explicit\nlist_del_init() calls in xe_bo_unpin_external() and xe_bo_unpin().\n\nv2:\n- New patch\n\nv3:\n- Rebased on changes to previous patch.\n\n(cherry picked from commit ca58d36a1f93af586ee93b340c9f9fd81312cc01)",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -5967,7 +5967,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-98999",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -6009,7 +6009,7 @@
     {
       "id": "CVE-2026-99002",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/vmwgfx: validate pitch coming from userspace\n\nValidate the pitch, alongside the box dimensions before trying\nto copy data from the underlying surface. Fixes possible\nout of bounds reads with cursor snooping.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6021,7 +6021,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99002",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -6081,7 +6081,7 @@
     {
       "id": "CVE-2026-99006",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrm/i915/gem: Prevent overstepping exec array boundary\n\nIt is possible for eb_relocate_parse_slow() to call kvfree() on\nentries outside the original exec array during following\nscenario inside eb_relocate_parse_slow():\n\n1) eb_copy_relocations() allocates as many as eb->buffer_count\n   copies for exec entries;\n2) eb_parse() appends up to two VMAs, right after incrementing\n   eb->buffer_count;\n3) cleanup under \"out\" label uses this incremented buffer_count\n   to release relocation pointers from exec array via kvfree(),\n   not from VMA array.\n\nTo amend this problem, ensure that relocation cleanup uses the\noriginal exec object count, excluding the VMAs appended by the\ncommand parser.\n\n(cherry picked from commit 2a0158925fb943c7ba8f3216e2734952128defc9)",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6093,7 +6093,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99006",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -6171,7 +6171,7 @@
     {
       "id": "CVE-2026-99011",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: SCO: serialise sco_conn lifetime against sco_recv_scodata()\n\nsco_recv_scodata() upgrades the weak hcon->sco_data back-pointer to a\nstrong reference under hdev->lock:\n\n    hci_dev_lock(hdev);\n    hcon = hci_conn_hash_lookup_handle(hdev, handle);\n    ...\n    conn = sco_conn_hold_unless_zero(hcon->sco_data);\n    hci_dev_unlock(hdev);\n\nbut the pointer is cleared from the other side without that lock. When\nthe last sco_conn reference is dropped, sco_conn_free() ran\n\n    conn->hcon->sco_data = NULL;\n\nwith no hdev->lock held, so the RX path could read hcon->sco_data and\ncall kref_get_unless_zero() on an sco_conn that was concurrently freed:\n\n    BUG: KASAN: slab-use-after-free in sco_conn_hold_unless_zero+0xbe/0x160\n    Write of size 4 by task kworker/u17:0\n    Workqueue: hci0 hci_rx_work\n    Call Trace:\n     sco_conn_hold_unless_zero+0xbe/0x160\n     sco_recv_scodata+0x13f/0x490\n     hci_rx_work+0x3af/0x730\n\nkref_get_unless_zero() only guards against a zero refcount, not against\nthe backing memory already being freed.\n\nGive hcon->sco_data an actual reference on the sco_conn it points to, so\nthe object cannot be freed while the pointer is still installed, and only\nclear and drop it from sco_conn_del(), which runs under hdev->lock (its\ncallers, sco_connect_cfm() and sco_disconn_cfm(), hold it). The reader in\nsco_recv_scodata() also takes hdev->lock, so the store and the read are\nnow serialised: the RX path either observes NULL or a reference that is\nguaranteed to stay valid until it drops its own.\n\nsco_conn_add() no longer hands its kref_init() reference to the caller as\nthe connection's only reference; that initial reference is the one owned\nby hcon->sco_data, and callers get their own via sco_conn_hold().\n\nBecause the sco_conn can now outlive the socket (the association keeps it\nalive until the link goes down), the hci_conn can no longer be dropped\nfrom sco_conn_free() without regressing socket close: closing a connected\nSCO socket must still tear the link down. Move hci_conn ownership to the\nsocket instead: __sco_chan_add() takes an hci_conn reference and it is\nreleased from sco_chan_del() and sco_sock_destruct(), exactly once. The\nsco_conn no longer owns an hci_conn reference, so sco_conn_add() stops\nconsuming one and sco_connect() drops the hci_connect_sco() reference on\nevery path; sco_connect_cfm() no longer needs its hci_conn_hold() dance.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6183,13 +6183,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99011",
-      "cvss": "0.0",
+      "cvss": "7.1",
       "cwe": ""
     },
     {
       "id": "CVE-2026-99012",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: ISO: Serialize concurrent connect calls\n\niso_sock_connect() checks the socket state before taking the socket lock\nand drops the lock again before setting up a connection. Two callers can\nboth pass the admission check while the socket is open or bound.\n\nCaller A can copy its destination for route selection, then caller B can\nreplace the socket destination before A binds or connects the CIS. A\nthen uses B's destination with the route selected for its own request.\nB can also proceed after A attaches a connection and sets BT_CONNECT.\nFor deferred BIS setup, B can bind a second BIS and overwrite\niso_pi(sk)->conn, leaving the first connection's reference and conn->sk\nback-pointer stranded. Concurrent CIS connects can likewise replace the\nsocket's connection. Later teardown only detaches the current connection,\nso a callback on the old connection can race with socket release and\naccess a freed socket.\n\nKASAN reported:\n\n  BUG: KASAN: slab-use-after-free in iso_sock_hold+0xf7/0x1b0\n  Call Trace:\n   iso_sock_hold+0xf7/0x1b0\n   iso_conn_del+0x7b/0x1d0\n   iso_connect_cfm+0x186/0x16a0\n   hci_conn_failed+0x154/0x280\n   hci_abort_conn_sync+0x3dc/0x7d0\n   hci_cmd_sync_work+0x173/0x300\n\n  Allocated by task 121:\n   sk_alloc+0x2b/0x6d0\n   bt_sock_alloc+0x29/0x370\n   iso_sock_alloc.constprop.0+0x19/0x300\n   iso_sock_create+0x94/0x100\n\n  Freed by task 121:\n   kfree+0x121/0x3c0\n   __sk_destruct+0x42b/0x540\n   iso_sock_release+0x29d/0x340\n   __sock_release+0xa1/0x260\n\nCheck admission under the socket lock and mark the connect operation in\nprogress before publishing its destination. Keep that flag set across\nroute lookup and connection setup, rejecting another connect with\n-EBADFD before it can change the destination or attach a connection.\nClear the flag after either helper returns, including on failure, so a\nfailed setup can be retried.\n\nA separate flag is needed because the socket lock must be released before\nacquiring the HCI device lock, while BT_CONNECT requires an attached\nconnection. Keep the existing state transitions and the deferred CIS\ncompletion through iso_sock_recvmsg().\n\nReject an existing socket attachment in __iso_chan_add() before taking\na new reference or publishing either pointer, so every caller preserves\nthe connection association. Keep the same-socket, same-connection success\ncase for deferred CIS setup. Reject an attached socket before BIS setup\nso a reusable BIS is not claimed before the attachment is rejected.\n\nIn CIS setup, reject a different HCI connection before iso_conn_add()\nand drop the per-attempt HCI hold directly. An unowned iso_conn may still\ncarry another reference after detachment, so its destruction cannot be\nrelied on to release that hold.\n\niso_listen_bis() creates a fresh PA HCI/ISO pair under the device lock,\nso the temporary iso_conn_put() frees the ISO candidate and drops its\nHCI hold on rejection. iso_conn_ready() uses a freshly allocated,\nunpublished child with no connection, making the socket-side rejection\nunreachable.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6201,13 +6201,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99012",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-99013",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: ISO: Reject concurrent BIS listener setup\n\niso_sock_listen() drops the socket lock before calling iso_listen_bis()\nto preserve the hdev->lock ordering. Two concurrent listen() calls on\nthe same broadcast socket can therefore both observe BT_BOUND. Caller\nA can attach connA and release the locks, then caller B can acquire\nthem and attach connB before A publishes BT_LISTEN.\n\n__iso_chan_add() checks whether connB already has a socket, but not\nwhether the socket already has a connection. The second attachment\noverwrites iso_pi(sk)->conn, leaking the connA reference and leaving\nconnA->sk intact. Socket teardown follows connB, so later events on\nconnA can cause a stale socket access.\n\nRecheck BT_BOUND and require iso_pi(sk)->conn to be NULL after taking\nboth the HCI device and socket locks in iso_listen_bis(). The connection\ncheck also covers the interval between attachment and publication of\nBT_LISTEN. Reject a competing setup with -EBADFD through the existing\nunlock path before allocating another connection.\n\nA recorded KASAN report from an instrumented kernel shows:\n\n  BUG: KASAN: slab-use-after-free in iso_sock_hold+0x119/0x1f0\n  Call Trace:\n   iso_sock_hold+0x119/0x1f0\n   iso_conn_del+0xe4/0x270\n   hci_disconn_complete_evt+0x351/0x8c0\n   hci_event_packet+0x71b/0xb20\n   hci_rx_work+0x293/0x730\n\n  Allocated by task 93:\n   sk_prot_alloc+0x113/0x220\n   sk_alloc+0x2b/0x6d0\n   bt_sock_alloc+0x29/0x370\n   iso_sock_alloc.constprop.0+0x19/0x300\n   iso_sock_create+0x94/0x100\n\n  Freed by task 93:\n   kfree+0x121/0x3c0\n   __sk_destruct+0x42b/0x540\n   iso_sock_release+0x29d/0x340\n   __sock_release+0xa1/0x260\n   sock_close+0x10/0x20",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6219,13 +6219,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99013",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-99014",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_sync: Fix command skb lifetime during scan setup\n\nDuring PA sync scan setup, hci_le_set_ext_scan_param_sync() gets the\naddress used for the PA_LINK lookup from hci_sent_cmd_data(). The\nreturned pointer borrows storage from sent_cmd or req_skb, without\nholding a reference to either skb.\n\nThe scan worker runs on req_workqueue while hci_cmd_work() runs on the\nseparate device workqueue. After the scan worker loads sent_cmd, the\ncommand worker can free and replace it before hci_sent_cmd_data()\ndereferences the skb. The command payload can also be freed between\nreturning from the helper and comparing the address. The connection\nlookup's RCU critical section does not protect the command skb.\n\nKASAN reported:\n\n  BUG: KASAN: slab-use-after-free in hci_sent_cmd_data+0x27c/0x2f0\n  Workqueue: hci0 hci_cmd_sync_work\n  Call Trace:\n   hci_sent_cmd_data+0x27c/0x2f0\n   hci_le_set_scan_param_sync+0x43a/0x850\n   hci_passive_scan_sync+0xb09/0x1460\n   hci_update_passive_scan_sync+0x47c/0x6e0\n   hci_le_pa_create_sync+0x200/0xa70\n   hci_cmd_sync_work+0x13c/0x290\n\n  Allocated by task 95:\n   skb_clone+0x13f/0x340\n   hci_cmd_work+0x2a9/0x7e0\n\n  Freed by task 95:\n   kmem_cache_free+0xba/0x3a0\n   hci_cmd_work+0x29c/0x7e0\n\nUse hdev->lock to serialize the address snapshot with sent_cmd\nreplacement. Protect req_skb replacement and completion cleanup with\nthe same lock because the helper falls back to that skb. Copy the\naddress before releasing the lock and use the copy for the existing\nRCU-protected connection lookup. Release the mutex before sending or\nwaiting for commands, preserving the lookup and completion ordering.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6237,7 +6237,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99014",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -6261,7 +6261,7 @@
     {
       "id": "CVE-2026-99016",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nriscv: futex: untag the user pointer before the atomic access\n\naccess_ok() checks untagged_addr(uaddr), but arch_futex_atomic_op_inuser()\nand futex_atomic_cmpxchg_inatomic() hand the raw uaddr to the inline asm\namoswap/amoadd/.../lr.w+sc.w through the \"+m\" (*uaddr) operand.  When the\ntagged address ABI is enabled (CONFIG_RISCV_ISA_SUPM, prctl\nPR_SET_TAGGED_ADDR_CTRL with PMLEN != 0), those two addresses differ: a\nuser pointer whose top PMLEN bits hold a tag passes access_ok() after\nuntagging, but the atomic is then performed on the still-tagged raw\naddress.\n\nSupervisor-mode data accesses are not subject to the U-mode pointer\nmasking (that is governed by menvcfg.PMM, which the kernel does not set),\nso hardware does not strip the tag for the kernel's own access.  With\nSv57 and PMLEN=16 the tag bits overlap the canonical-address bits, so a\ntagged pointer can name a canonical kernel virtual address (e.g. in the\nlinear map) whose untagged form is a valid user address.  An unprivileged\nprocess can thus make FUTEX_WAKE_OP perform an atomic read-modify-write on\nan arbitrary kernel address, with the matching FUTEX_OP_CMP_* result\nserving as a read oracle.\n\nget_user()/put_user()/raw_copy_{to,from}_user() already untag the pointer\nafter the access_ok() check; do the same in the futex helpers so the\natomic operates on the address that was actually validated.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6273,13 +6273,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99016",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-99017",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nriscv: errata: select RISCV_ALTERNATIVE_EARLY for THEAD GHOSTWRITE\n\nerrata_probe_ghostwrite() only marks the CPU as vulnerable when it is\ncalled at the RISCV_ALTERNATIVES_EARLY_BOOT stage, and the mitigation\nin ghostwrite_enable_mitigation() only takes effect if the vulnerable\nstate was recorded before the boot alternatives are patched.\n\nThe early boot stage is only executed when CONFIG_RISCV_ALTERNATIVE_EARLY\nis enabled, which currently is only selected by ERRATA_THEAD_MAE. In a\nkernel built with ERRATA_THEAD_GHOSTWRITE=y but ERRATA_THEAD_MAE=n, the\nearly alternatives never run, so ghostwrite_state is never set to\nVULNERABLE: ghostwrite_enable_mitigation() returns false, xtheadvector\nremains enabled, and sysfs reports \"Not affected\" on a vulnerable\nT-Head C9xx CPU.\n\nSelect RISCV_ALTERNATIVE_EARLY from ERRATA_THEAD_GHOSTWRITE so that the\nvulnerability is detected in the early boot stage and the default\nmitigation is applied.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6291,13 +6291,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99017",
-      "cvss": "0.0",
+      "cvss": "7.0",
       "cwe": ""
     },
     {
       "id": "CVE-2026-99018",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nriscv: entry: gate shadow call stack reload on sstatus.SPP, not tp\n\nUnder CONFIG_SHADOW_CALL_STACK, handle_exception() reloads the kernel\nshadow call stack pointer (gp) only when the trap came from userspace.\nIt made that decision with scs_load_current_if_task_changed, which\ncompares the trap-time tp (read back from sscratch into s5) against the\ncurrent tp:\n\n\tbeq\t\\prev, tp, _skip_scs\n\tscs_load_current\n_skip_scs:\n\ntp is a user-writable register.  A user task that sets tp to the\nlinear-map address of its own task_struct (&current) before trapping\nmakes the comparison succeed (can achieve by brute force with KASLR\nenable under our test), so the kernel skips scs_load_current and\nkeeps running with the gp that userspace left in place.  Under\nCONFIG_SHADOW_CALL_STACK gp is the shadow call stack pointer and\nload_global_pointer is a no-op, so the compiler-emitted\n\"sd ra, -8(gp)\" / \"ld ra, -8(gp)\" in every non-leaf function then write\nto, and return through, an attacker-controlled address -- an\nunprivileged kernel arbitrary-write and control-flow-hijack primitive.\nThe poisoned gp is saved to task_struct.scs_sp on return, so the reload\nis skipped on every subsequent entry as well.\n\nDecide \"came from userspace\" from the hardware sstatus.SPP bit (already\nin s1 at this point) instead of from tp, mirroring the check that\nret_from_exception already uses a few instructions later.  SPP is\nwritten by hardware on trap entry and cannot be forged from U-mode.\nLegitimate behaviour is unchanged: user entries (SPP=0) reload the task\nshadow call stack, nested kernel entries (SPP=1) skip it.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6309,7 +6309,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99018",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -6513,7 +6513,7 @@
     {
       "id": "CVE-2026-99030",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: skbuff: don't leave stale bytes in skb_copy_and_csum_bits()\n\nWhen skb_copy_and_csum_bits() reaches unreadable frags it returns 0\nafter copying only the linear part, and the rest of the caller's buffer\nis left as it was.  The callers copy into a buffer that is about to go\nout on the wire: an ICMP error quoting the offending packet, or a\ndriver's TX bounce buffer in skb_copy_and_csum_dev().  Neither buffer\nis zeroed beforehand, so whatever was in memory there gets sent.\n\nZero the part of the buffer we didn't fill.  The checksum usually\nwon't match the data any more, so the receiver will usually drop the\npacket, but either way it no longer carries anything it shouldn't.\nOnly zero for a positive @len, a negative one from a broken caller must\nnot turn into a huge memset().",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6525,7 +6525,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99030",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -6549,7 +6549,7 @@
     {
       "id": "CVE-2026-99032",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: protect clcsock lifetime in smc_getname\n\nsmc_getname() dereferences smc->clcsock without holding\nclcsock_release_lock. Link-group termination can release the CLC socket\nthrough smc_close_active_abort() while the SMC socket is still open,\nfor example after shutdown(SHUT_WR).\n\nA getsockname() caller can load smc->clcsock, then the termination worker\ncan clear the pointer and call sock_release() before the caller accesses\nclcsock->ops or invokes getname(). This causes a use-after-free; if the\nworker clears the pointer before the load, it causes a NULL dereference.\nThe syscall's file reference keeps the SMC socket alive but does not\nprevent asynchronous release of its CLC socket.\n\nKASAN reported the following with test-only timing instrumentation:\n\n  BUG: KASAN: slab-use-after-free in smc_getname+0x19e/0x1b0\n  Read of size 8 at addr ffff888109abb4e0 by task poc/103\n  Call Trace:\n   smc_getname+0x19e/0x1b0\n   do_getsockname+0xe5/0x170\n   __sys_getsockname+0x8c/0x100\n\n  Allocated by task 95:\n   sock_alloc_inode+0x1e/0x280\n   sock_alloc+0x3d/0x240\n   __sock_create+0x7e/0x430\n   smc_create+0x121/0x240\n\n  Freed by task 0:\n   kmem_cache_free+0xcc/0x340\n   rcu_core+0x50a/0x1850\n\n  Last potentially related work creation:\n   evict+0x446/0x6c0\n   smc_clcsock_release+0xa8/0xd0\n   smc_close_active_abort+0x26a/0x3a0\n   __smc_lgr_terminate.part.0+0x137/0x2e0\n\nHold clcsock_release_lock across the pointer check and the getname()\ncallback to serialize with smc_clcsock_release(). Return -EBADF if the\nCLC socket has already been released, preserving the existing peer\nstate check and the callback's return value otherwise.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6561,7 +6561,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99032",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -6729,7 +6729,7 @@
     {
       "id": "CVE-2026-99042",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/net: populate CONNECT filter fields for 24-byte sockaddr_in6\n\nio_connect_bpf_populate() fills connect.port and connect.v6_addr for\nAF_INET6 only when addr_len >= sizeof(struct sockaddr_in6), i.e. 28\nbytes.\n\nThe IPv6 connect paths accept SIN6_LEN_RFC2133 (24 bytes), which\nalready holds sin6_port and sin6_addr. io_connect() passes addr_len to\nthe socket layer unchanged.\n\nAt addr_len 24 the filter sees family AF_INET6 with port and address\nzero, while the kernel connects to the real destination. A filter that\ndenies an IPv6 port or address is bypassed. Denying connect.port == P\nrejects [::1]:P with -EACCES at addr_len 28 but connects at addr_len 24.\n\nUse SIN6_LEN_RFC2133 as the threshold. sin6_scope_id stays zero when\nabsent.\n\nThe threshold mismatch was found by an AI coding assistant (Claude Code)\ncomparing this hook against the net/ipv6 length checks on my\ninstructions; it also drafted the reproducer and this patch. I verified\nthe bypass and the fix in a VM on 7.3-rc6 and that 7.2 has the same\ncode.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6741,7 +6741,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99042",
-      "cvss": "0.0",
+      "cvss": "8.4",
       "cwe": ""
     },
     {
@@ -6801,7 +6801,7 @@
     {
       "id": "CVE-2026-99046",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ngve: fix XSK buffer leak on error descriptor\n\nWhen the error bit is set in the RX completion descriptor, the buf_state\nand its attached buffer should be freed. In the case of AF_XDP ZC, the\nXSK buffer was not freed, leading to a leak.\n\nThis issue was caught by LLM.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6813,7 +6813,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99046",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -6873,7 +6873,7 @@
     {
       "id": "CVE-2026-99050",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ngpio: mpsse: fix race when arming the IRQ poll worker\n\ngpio_mpsse_irq_enable() arms the poll worker before publishing it:\nschedule_work() runs before the worker is added to priv->workers. If\ngpio_mpsse_disconnect() walks the list in that window it misses the\nworker, and once disconnect returns, the USB core frees mpsse_priv\nwhile the orphaned gpio_mpsse_poll() work keeps accessing it, causing\na use-after-free.\n\nFix this by publishing and arming the worker in one irq_spin\ncritical section. Teardown walks the same list under irq_spin, so a\nworker found on the list is guaranteed to be armed, and\ncancel_work_sync() handles it whether it is queued or running.\n\nA worker armed after the disconnect walk would still be missed, so\nalso set a new priv->dying flag under irq_spin before the teardown\nwalk, and check it in the same critical section, freeing it via\nkfree_rcu() instead when the device is going away, since kfree()\nwould be called with the IRQ core's raw spinlock held and may sleep\non PREEMPT_RT. schedule_work() is safe to call with irq_spin held,\nand the next probe gets a fresh mpsse_priv, so the flag never needs\nto be cleared.\n\nThis issue was found by an in-house static analysis tool.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6885,13 +6885,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99050",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-99051",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nfsverity: RCU-delay the freeing of struct fsverity_info\n\n__fsverity_get_info() calls rhashtable_lookup_fast(), which just uses\nrcu_read_lock() and doesn't directly synchronize with\nfsverity_remove_info().\n\nFor the same inode this isn't a problem: its fsverity_info is removed\nonly at inode eviction time or upon failure to enable verity, when the\ninode no longer needs its fsverity_info and it will no longer be\naccessed via that inode.\n\nHowever, this is broken and can cause a use-after-free for concurrent\n__fsverity_get_info() for *different* inodes.  Those rely on following\nfsverity_info::rhash_head in the rhashtable under rcu_read_lock() only.\nThey also use fsverity_info::inode to do the key comparison.\n\nFix this by RCU-delaying the freeing of 'struct fsverity_info' after\nit's been removed from the rhashtable.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6903,7 +6903,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99051",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -6927,7 +6927,7 @@
     {
       "id": "CVE-2026-99053",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: hold a reference to nodes found by link name\n\ntipc_node_find_by_name() returns a node after dropping its RCU read lock\nwithout taking a reference.  The LINK_SET, LINK_GET and LINK_RESET_STATS\nhandlers then lock and access the node, racing with timer-driven cleanup of\na down peer.  Generic netlink serialization does not exclude the node\ntimer.\n\nThe following interleaving can leave a handler using a freed node:\n\n  CPU 0: find the node under RCU and release the node read lock\n  CPU 1: tipc_node_timeout() clears the links and unlinks the down node\n  CPU 1: drop the list and timer references, queuing tipc_node_free()\n  CPU 0: leave the RCU read-side critical section\n  CPU 1: complete the grace period and free the node\n  CPU 0: acquire the node lock through the stale pointer\n\nLINK_SET also uses the node's media address after releasing the node lock,\nwhen passing queued packets to tipc_bearer_xmit().\n\nKASAN on v7.3-rc5 reported:\n\n  BUG: KASAN: slab-use-after-free in _raw_read_lock_bh\n  Write of size 4 at addr ffff88807e06f008 by task poc/92\n  Call Trace:\n   _raw_read_lock_bh                 kernel/locking/spinlock.c:287\n   tipc_nl_node_set_link             net/tipc/node.c:2475\n   genl_family_rcv_msg_doit          net/netlink/genetlink.c:1114\n   genl_rcv_msg                      net/netlink/genetlink.c:1209\n   netlink_rcv_skb                   net/netlink/af_netlink.c:2575\n\n  Allocated by task 0:\n   tipc_node_create                  net/tipc/node.c:539\n   tipc_node_check_dest              net/tipc/node.c:1196\n   tipc_disc_rcv                     net/tipc/discover.c:252\n\n  Freed by task 92:\n   kfree                             mm/slub.c:6801\n   rcu_core                          kernel/rcu/tree.c:2919\n\n  Last potentially related work creation:\n   __call_rcu_common.constprop.0     kernel/rcu/tree.c:3181\n   tipc_node_timeout                 net/tipc/node.c:814\n\nAcquire a reference to the selected node with kref_get_unless_zero() before\nleaving RCU, returning NULL if the node has already been released.  Release\nthat reference on every caller exit after the last node access, including\ntransmission in LINK_SET.  Keep the existing link lookup order and locking\nso concurrent link removal still takes the existing error paths.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6939,13 +6939,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99053",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-99054",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ntipc: destroy topsrv workqueues before closing connections\n\ntipc_topsrv_stop() closed subscriber connections while the topology\nserver's send and receive workqueues were still running. Socket\ncallbacks and subscription events could then queue more work, and\nin-flight send/recv work could drop the last connection reference\nduring the conn_idr walk.\n\nThat race produced several teardown failures: refcount_t addition on\n0 from conn_get() on a connection whose release was blocked on\nidr_lock, a subsequent use-after-free in tipc_conn_close(),\nqueue_work() on an already destroyed workqueue from the listener\ndata-ready callback, and an RCU stall in tipc_topsrv_exit_net()\nwhile the walk spun under idr_lock.\n\nClear srv->listener under idr_lock so it acts as a shutdown flag,\nskip queue_work() once it is NULL, destroy the workqueues to flush\nin-flight work, and only then close the remaining connections.\nRefuse tipc_conn_lookup() after that flag is cleared, and drop\nidr_lock when the teardown walk finds no connection, so an\nin-flight subscription event cannot pin idr_in_use while the\nwalk holds the lock.\n\nv3 supersedes the narrower in-thread diff Tung Quang Nguyen\nposted on 2026-09-23. It keeps his teardown order and adds the\nlookup refusal and the empty-idr unlock.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6957,7 +6957,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99054",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -6981,7 +6981,7 @@
     {
       "id": "CVE-2026-99056",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nstrparser: make sure __strp_recv isn't running before tearing down the parser\n\nThe comment above strp_done() claims that if strp is stopped,\nstrp_recv will no longer be called. That's only true if the caller has\na mechanism (eg locking) to guarantee that strp_recv() calls that\nstarted before strp_stop() have completed by the time we call\nstrp_done().\n\nThis adds a dummy lock_sock/release_sock pair to guarantee that any\nin-flight strp_recv() (which runs under either bh_lock_sock or\nlock_sock, depending if it's called from ->sk_data_ready or strp_work)\nhas completed.\n\nOnly espintcp can be affected by this race condition, but this patch\nmakes sure no future user of strp can have the bug.\n\nThis could crash on strp->sk (\"general mode\" of strp), but this mode\nhas been here for 9 years and has never been used. It'll be gone soon,\nno point worrying about it.\n\nSwitch the stopped/paused/etc bits to u8's to avoid races between\nstrp_stop() and strp_pause/unpause().\n\nA reproducer has been published and turns the possible UAF into an\nexploit [1].",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -6993,7 +6993,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99056",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -7035,7 +7035,7 @@
     {
       "id": "CVE-2026-99059",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nwireguard: noise: reject response consumption after intermediate initiation\n\nTwo threads begin processing the identical response message, received\ntwice. The first thread, A, runs. While it's running, the second one,\nB, gets partway through, and during that slow calculation, or even while\nblocking on down_write(), A completes and then also a handshake\ninitiation that's already been queued up runs in thread C, which itself\ntakes that same down_write(). The handshake initiation creation\nsucceeds, and sets the state back to waiting-for-response, and calls\nup_write(), at which point thread B resumes, because either its finished\nits calculations or was finally allowed to acquire down_write(). Thread\nB then copies the state back to the peer, and begins a new session,\nusing that state, which is the same session as the one made in thread A.\n\nThread A\t\t\tThread B\t\t\tThread C\n\ndown_read()\n sA = handshake->state\n memcpy(cA, handshake->crypto)\nup_read()\nif (sA != 1)\n goto fail\nslow_crypto(cA)\n\t\t\t\tdown_read()\n\t\t\t\t sB = handshake->state\n\t\t\t\t memcpy(cB, handshake->crypto)\n\t\t\t\tup_read()\n\t\t\t\tif (sB != 1)\n\t\t\t\t goto fail\n\t\t\t\tslow_crypto(cB)\ndown_write()\n if (sA != handshake->state)\n  goto fail\n memcpy(handshake->crypto, cA)\n handshake->state = 2\nup_write()\ndown_write()\n if (handshake->state != 2)\n  goto fail\n derive_session(handshake->crypto)\nup_write()\n\t\t\t\t\t\t\t\tdown_write()\n\t\t\t\t\t\t\t\t slow_crypto(handshake->crypto)\n\t\t\t\t\t\t\t\t handshake->state = 1\n\t\t\t\t\t\t\t\tup_write()\n\t\t\t\tdown_write()\n\t\t\t\t if (sB != handshake->state)\n\t\t\t\t   goto fail\n\t\t\t\t memcpy(handshake->crypto, cB)\n\t\t\t\t handshake->state = 2\n\t\t\t\tup_write()\n\t\t\t\tdown_write()\n\t\t\t\t if (handshake->state != 2)\n\t\t\t\t  goto fail\n\t\t\t\t derive_session(handshake->crypto)\n\t\t\t\tup_write()\n\nThis seems basically impossible to hit in a meaningful way in practice,\nbut ensure that it absolutely cannot happen by comparing the ephemeral\nprivate key that's on the stack with the latest one that the peer's\nhandshake state has.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -7047,7 +7047,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99059",
-      "cvss": "0.0",
+      "cvss": "7.7",
       "cwe": ""
     },
     {
@@ -7125,7 +7125,7 @@
     {
       "id": "CVE-2026-99064",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\ncipso: adjust cached option offsets when removing CIPSO\n\ncipso_v4_skbuff_delattr() removes the CIPSO bytes but does not adjust\ncached offsets for options that follow them.\n\nFor example, with a valid 10-byte CIPSO option followed by a seven-byte\nRR option, parsing records rr at offset 30.  Removing CIPSO moves RR to\noffset 20, while the cached offset remains 30.  Consumers such as\nip_forward_options() and __ip_options_echo() then access the wrong bytes;\nthe latter may interpret packet data as the option length and copy it into\nfixed-size option storage.\n\nMirror cipso_v4_delopt() and subtract cipso_len from the srr, rr, ts and\nrouter_alert offsets when they follow CIPSO.  cipso_len is the distance\nthe first memmove() shifts those options.  The later header move and\nnetwork-header reset relocate the bytes and their offset base together.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -7137,7 +7137,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99064",
-      "cvss": "0.0",
+      "cvss": "8.1",
       "cwe": ""
     },
     {
@@ -7359,7 +7359,7 @@
     {
       "id": "CVE-2026-99077",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv4: udp: Create exceptions before socket matching\n\nCurrently, when ICMP Fragmentation Needed and Redirect Message packets\nare locally delivered and quote a UDP packet, a FIB nexthop exception\n(FNHE) is only created if the kernel can match the UDP packet to an\nexisting socket.\n\nThis behavior allows off-path attackers to conduct a side-channel attack\non the FNHE cache in order to discover the ephemeral port used by a\nconnected UDP socket.\n\nCommit 6457378fe796 (\"ipv4: use siphash instead of Jenkins in\nfnhe_hashfun()\") and commit 67d6d681e15b (\"ipv4: make exception cache\nless predictible\") tried to mitigate such attacks by making it harder\nfor attackers to discover hash collisions in the FNHE cache and by\nrandomizing the number of exceptions a hash bucket can hold,\nrespectively. Unfortunately, both of the mitigations can be bypassed.\n\nInstead, mitigate such attacks by always creating a FNHE, even before\ntrying to find a matching socket. Do that by calling ipv4_update_pmtu()\nand ipv4_redirect(), the helpers used when the quoted packet did not\noriginate from a socket.\n\nThis means that guesses (right or wrong) from an off-path attacker will\nalways result in a FNHE being created or updated in the cache that the\nattacker can observe.\n\nPass an oif of 0, in a similar fashion to icmp_err(). This is also the\noif used by the socket path for sockets that are not bound to a device.\n\nNote that this does not allow attackers to create FNHEs that they could\nnot create before, as both helpers can already be reached with little to\nno validation. For example, by sending an ICMP error that quotes an ICMP\nEcho Reply or one that quotes a UDP source port that matches a wildcard\nsocket.\n\nAlso note that in the good case (matched socket) the above scheme comes\nat the cost of an extra route lookup, as the no socket helpers perform\ntheir own lookup before the one performed by ipv4_sk_update_pmtu() /\nipv4_sk_redirect(). When the two resolve to different nexthops, it also\nresults in two exceptions being created for the same destination IP. One\nin the FNHE cache of the nexthop resolved by the no socket helpers and\nanother in the FNHE cache of the nexthop used by the socket.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -7371,13 +7371,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99077",
-      "cvss": "0.0",
+      "cvss": "7.4",
       "cwe": ""
     },
     {
       "id": "CVE-2026-99078",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5e: Prevent stale XSK buffer release on MPWQE refill retry\n\nWith AF_XDP on a striding RQ, mlx5e defers releasing XSK buffers until\nan MPWQE is refilled. If XSK allocation then returns -ENOMEM,\nactual_wq_head is not advanced and a later NAPI poll retries the same\nWQE.\n\nmlx5e_free_rx_mpwqe() leaves each released slot marked as releasable. On\nretry it can therefore call xsk_buff_free() again through stale pointers\nafter the frames have returned to the XSK pool and been reallocated.\n\nSet all skip_release_bitmap bits in the common error path of\nmlx5e_xsk_alloc_rx_mpwqe(). This matches mlx5e_alloc_rx_mpwqe(). A\nsuccessful allocation already clears the bitmap after replacing every\nbuffer, so retries become idempotent without changing the success path.\n\nFault injection forced three consecutive failures for one selected MPWQE.\nBoth an early allocation failure and a partial 8-of-16-buffer unwind\nreleased the original 16 XSK buffers only once. Each error left a full\nbitmap, the following NAPI retry skipped the release, and a later\nsuccessful allocation cleared it. A 20-second AF_XDP zero-copy pressure\nrun exercised 1,575,262 buffer allocation failures without invalid\ndescriptors, WQE errors, or kernel warnings.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -7389,13 +7389,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99078",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-99079",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/mlx5e: Prevent stale XSK buffer release on refill retry\n\nWhen an XDP redirect to an AF_XDP socket fails because its RX ring is\nfull, the XSK core frees the buffer. During the subsequent batched refill\nof a legacy cyclic RQ, mlx5e also releases the WQE's XSK buffer before\nallocating a replacement. If that refill succeeds only partially, a WQE\nleft without a replacement retains its old buffer pointer.\n\nThe buffer can meanwhile be allocated to another WQE. A later refill\nretry can then free the live buffer through the stale pointer and publish\nthe same UMEM frame twice.\n\nMark the WQE as released immediately after the driver-side free. The flag\nis already cleared when a replacement buffer is assigned, so refill\nretries no longer release stale pointers.\n\nThe failure is silent and produces no kernel warning or splat. A\nstandalone legacy cyclic-RQ zero-copy libxsk reproducer, using 64-byte UDP\ntraffic offered at 12 Mpps, detected it: stock stopped after 2,854,914\npackets in 4.094 seconds, with 4,542 xdp_rx_ring_full events and 64\nownership/double-publication errors. With this change it processed\n356,904,225 packets in 30 seconds despite 571,405 xdp_rx_ring_full events,\nwith no ownership or data errors.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -7407,7 +7407,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99079",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -7431,7 +7431,7 @@
     {
       "id": "CVE-2026-99081",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nbnxt_en: fix DMA mapping length for padded small packets\n\nStefan Fleischmann reported Intel IOMMU DMA Read faults on BCM57412\nNetXtreme-E NICs when transmitting packets on VLAN/macvlan interfaces:\n\n  DMAR: [DMA Read NO_PASID] Request device [18:00.0] fault addr 0xfc499000\n        [fault reason 0x06] PTE Read access is not set\n  bnxt_en 0000:18:00.0 eno1np0: Abandoning msg {0xb4 0x41a} len: 0 due to firmware status: 0x2000001\n  ...\n  NETDEV WATCHDOG: eno1np0 (bnxt_en): transmit queue 0 timed out\n\nThe fault address (0xfc499000) is on an exact 4KB page boundary,\npointing to a DMA read buffer overrun.\n\nIn bnxt_start_xmit(), packets smaller than BNXT_MIN_PKT_SIZE (52 bytes),\nsuch as 42-byte untagged ARP frames, are padded:\n\n    if (length < BNXT_MIN_PKT_SIZE) {\n        pad = BNXT_MIN_PKT_SIZE - length;\n        if (skb_pad(skb, pad))\n            goto tx_kick_pending;\n        length = BNXT_MIN_PKT_SIZE;\n    }\n\n    mapping = dma_map_single(&pdev->dev, skb->data, len, DMA_TO_DEVICE);\n    ...\n    dma_unmap_len_set(tx_buf, len, len);\n\nHowever, 'len' was initialized earlier to skb_headlen(skb) (e.g. 42 bytes)\nand is left unadjusted after padding. Consequently, dma_map_single() and\ndma_unmap_len_set() map and track only 42 bytes.\n\nLater, the hardware TX buffer descriptor is programmed with the padded length:\n\n    txbd->tx_bd_len_flags_type =\n        cpu_to_le32(((len + pad) << TX_BD_LEN_SHIFT) | flags |\n                    TX_BD_FLAGS_PACKET_END);\n\nThe NIC DMA engine is thus instructed to read 52 bytes from a region where\nonly 42 bytes were DMA-mapped. If skb->data ends near the boundary of a 4KB\npage (within 'pad' bytes of the next page), the hardware DMA read overruns\ninto the unmapped adjacent page, triggering an IOMMU fault.\n\nThis issue was exposed after commit 447cbe95ebb9 (\"vlan: fix skb_under_panic\nand races when toggling HW VLAN offload\") because reserving extra VLAN\nheadroom rounded LL_RESERVED_SPACE from 48 up to 64 bytes, shifting skb->data\noffsets and potentially causing small frames to land right against page\nboundaries.\n\nFix this by using skb_put_padto(skb, BNXT_MIN_PKT_SIZE) in\nbnxt_start_xmit(), before skb_shinfo(skb)->nr_frags is sampled,\nbecause padding might linearize the skb.\nThis ensures skb->len and skb_headlen(skb) reflect the padded size so\nthat dma_map_single() maps the full buffer and the descriptor length is\nconsistent. This also removes the temporary 'pad' variable and masking logic.\n\nThe padding is done after the SW USO branch, otherwise\nbnxt_sw_udp_gso_xmit() would account the padding as UDP payload\nand send it in extra segments.\n\nNote that SW USO segments are still not padded: with IPv4, a segment\ncarrying less than 10 bytes of UDP payload (small gso_size, or a short\nlast segment) is sent as a frame shorter than BNXT_MIN_PKT_SIZE.\nThis is a separate issue, left for a followup patch.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -7443,13 +7443,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99081",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-99082",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: x86: Use active memslots for the per-vCPU MMIO cache\n\nKVM tags the per-vCPU MMIO cache with a memslot generation so that a\nmemslot update invalidates cached MMIO information.  Both the fill and\nvalidation paths use kvm_memslots(), which unconditionally selects address\nspace 0, even when the vCPU is running in SMM and using address space 1.\n\nCommit 56f17dd3fbc4 (\"kvm: x86: fix stale mmio cache bug\") added the\nmemslot generation to the cache key so that a memslot update could not\nleave a stale entry valid.  When commit 699023e23965 (\"KVM: x86: add SMM\nto the MMU role, support SMRAM address space\") added the SMM address space,\nthese helpers were not converted to use the active memslots.\n\nConsequently, an update to the SMM memslots can leave an entry from the old\nSMM address space apparently valid after the vCPU returns to the normal\naddress space.  A guest can then cause an access to valid RAM at the same\nGFN to be returned to userspace as KVM_EXIT_MMIO.\n\nCompleting that exit through the VMM's RAM address space writes the backing\npage without going through KVM's write-tracking path.  If the page backs a\nnested EPT table, KVM can continue using shadow translations derived from\nthe old contents.  The WARN_ON_ONCE() in kvm_mmu_write_protect_fault()\ncatches this invalid cache and memslot combination.\n\nUse the vCPU's active memslots when caching and validating the entry.\nMemslot generations are unique across address spaces, so the generation\nalso distinguishes the normal and SMM views.  This matches the MMIO SPTE\ncache, which already uses kvm_vcpu_memslots().\n\nOn an unpatched current-mainline kernel, a regression test that fills the\ncache in SMM and updates only the SMM memslots fails the intended RAM write\nand triggers the kvm_mmu_write_protect_fault() warning.  With this change,\nthe same test completes the RAM write without a warning.  The x86/smm_test,\nset_memory_region_test, and memslot_modification_stress_test selftests also\npass.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -7461,13 +7461,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99082",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-99083",
       "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix heap out-of-bounds write in krb5_authenticate()\n\nIn krb5_authenticate(), out_len is calculated to determine available\nheadroom in response_buf for the incoming Kerberos AP-REP token. However,\nwhen SMB2_SESSION_SETUP is processed as a non-first element of a compounded\nSMB2 request, the calculation omits work->next_smb2_rsp_hdr_off.\n\nThis causes out_len to overstate remaining buffer headroom by\nthe cumulative size of prior responses in the compound chain. Consequently,\nthe length check in ksmbd_krb5_authenticate()\n(*out_len <= resp->spnego_blob_len) passes erroneously, allowing memcpy()\nto write the AP-REP blob past the end of response_buf into adjacent kernel\nheap memory.\n\nFix this by subtracting work->next_smb2_rsp_hdr_off when computing out_len,\nensuring it accurately reflects physical remaining buffer space.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-23",
       "pakistan": false,
@@ -7479,7 +7479,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99083",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {

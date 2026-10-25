@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-25T10:01:23.739067+00:00",
-  "summary": "Today's digest contains 203 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-10-25T14:29:24.669184+00:00",
+  "summary": "Today's digest contains 286 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 203,
+    "new": 286,
     "changed": 0,
     "removed": 0,
-    "total": 697954,
+    "total": 698240,
     "zeroday": 83,
     "exploited": 33,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 104
+      "count": 187
     },
     {
       "name": "Exploit-DB",
@@ -2834,6 +2834,1500 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116050",
       "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116066",
+      "desc": "Firecrawl before 2.11.586 contains a server-side request forgery vulnerability in the Playwright service SSRF proxy that allows attackers to bypass isInternalHost checks via DNS rebinding. Attackers controlling DNS for a scrape target can return a public address during validation and a private address at connect time, retrieving cloud metadata and internal resources through the scrape API.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116066",
+      "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116067",
+      "desc": "Paisa before 0.7.8 contains a path traversal vulnerability in the GetFile, GetSheet, DeleteBackups, and DeleteSheetBackups handlers that lets unauthenticated attackers read files and delete backups through ../ sequences in file names. Attackers can send crafted names to the editor file and delete_backups endpoints to read any server-readable file and remove backup files outside the journal or sheets directory.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116067",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116068",
+      "desc": "Dokploy through 0.30.10 contains an authorization bypass vulnerability that allows owners or admins of any organization to control other tenants' applications by supplying foreign applicationId values. Attackers can call procedures like saveEnvironment, updateTraefikConfig, deploy, or stop to overwrite environment variables and build secrets, repoint sources, and disrupt other tenants' applications.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116068",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116069",
+      "desc": "NiubiGEO before 0.3.2 contains an unauthenticated server-side request forgery vulnerability that allows remote attackers to make the server fetch internal addresses by supplying a crafted domain value to POST /audit-plan. Attackers can submit IP literals, localhost, or private and link-local hosts to read loopback, internal-network, or cloud metadata responses returned in the plan's siteEvidence JSON.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116069",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116070",
+      "desc": "Docker-Proxy through 5.1.9 contains a missing authentication vulnerability in the hubcmdui routes/config.js that allows unauthenticated attackers to read and overwrite configuration via /api/config. Attackers can retrieve the WeChat webhook URL and Telegram bot token, and overwrite menuItems links, proxyDomain, and the monitoring webhook destination receiving alerts.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116070",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116071",
+      "desc": "rotki before 1.44.2 contains a weak key derivation vulnerability that allows attackers to brute-force backups because the premium sync key is a single unsalted SHA-256 of the user password. Attackers who obtain an uploaded backup blob can run GPU-parallel offline password guessing and decrypt the database containing exchange API keys, secrets, wallet addresses and transaction history.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116071",
+      "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116072",
+      "desc": "Infinity for Reddit through 8.3.4 contains a login cross-site request forgery vulnerability that allows attackers to log victims into an attacker-controlled account because the exported LoginChromeCustomTabActivity redirect handler checks a hardcoded OAuth state value. Attackers can authorize the app's client ID with their own Reddit account, then deliver an infinity://localhost redirect containing their code and the constant state, causing the victim's posts, messages, and browsing to occur on the attacker's account.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116072",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116073",
+      "desc": "Leon before commit 50df142 contains a path traversal vulnerability in getModelFileNameFromURL() that allows attackers to write files outside the models directory via percent-encoded separators. Attackers can trick a user into running '/download model' with a crafted URL containing encoded '../' sequences to write attacker-controlled content to arbitrary paths writable by Leon.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116073",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116136",
+      "desc": "ProjectSend 2.0.0 through 2.7.1 contains an incomplete authorization vulnerability in FileVersions::link() that allows staff users to share files without authorization by linking file versions. Attackers can link their file onto an intermediate revision or assign out-of-scope clients, causing moveAssignmentsToRoot() to expose protected original files to unauthorized clients.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116136",
+      "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116137",
+      "desc": "adm-zip through 0.6.1 contains a duplicate-entry validation bypass that allows attackers to evade the readEntries() check by using canonically equivalent entry names like './hello.txt' and 'hello.txt'. Attackers can craft ZIP archives where getEntry() or readAsText() validates benign content while extractAllTo() writes malicious content to the same path, bypassing integrity checks.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116137",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116052",
+      "desc": "A security flaw has been discovered in LinkStackOrg LinkStack up to 4.8.8. The affected element is an unknown function. Performing a manipulation results in cross-site request forgery. Remote exploitation of the attack is possible. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116052",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116053",
+      "desc": "A weakness has been identified in dbcli mycli up to 2.29.4/2.30.1. The impacted element is the function source_special_command_is_safe of the file mycli/packages/special/source.py of the component Whitelist. Executing a manipulation can lead to os command injection. It is possible to launch the attack on the local host. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116053",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116139",
+      "desc": "WWBN AVideo 26.0 through 29.3.0 contains a stored cross-site scripting vulnerability that allows authenticated commenters to inject JavaScript because markDownToHTML() preserves event-handler attributes in leading HTML blocks. Attackers can post a comment starting with an img tag carrying an onerror handler, which bypasses the inline sanitizer and executes in viewers' browsers under the application origin.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116139",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116140",
+      "desc": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 incorrectly parses delegate invocations, which can allow an executable blocked in policy.xml to still run. An attacker who gets ImageMagick to process input that triggers a delegate invocation can bypass the administrator-defined policy and execute the blocked program.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116140",
+      "cvss": "3.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116141",
+      "desc": "ImageMagick before 7.1.2-33 contains a policy bypass vulnerability in the UHDR decoder that allows attackers to evade image width and height limits because extent checks occur after decoding. Attackers can supply crafted UHDR images with oversized dimensions that are fully decoded before policy limits are enforced, causing excessive resource consumption.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116141",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116142",
+      "desc": "ImageMagick before 7.1.2-33 contains a heap buffer over-read vulnerability that allows attackers to read beyond allocated memory when printing a minimum-bounding-box. Attackers can supply a crafted image that triggers the over-read during minimum-bounding-box output, causing crashes or exposing adjacent heap memory.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116142",
+      "cvss": "3.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116143",
+      "desc": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a policy bypass in the PS, PDF and XPS decoders that allows the security policy's list length limit on scene selection to be circumvented. Attackers supplying a specific argument can cause ImageMagick to process more scenes than permitted, potentially exhausting resources.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116143",
+      "cvss": "3.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116144",
+      "desc": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains uncontrolled recursion in the MVG decoder that can lead to a stack overflow. Attackers can supply a crafted MVG file that, when read with specific arguments, exhausts the stack and crashes the process, causing a denial of service.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116144",
+      "cvss": "3.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116145",
+      "desc": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-32 contains a security policy bypass caused by an incomplete fix for the policy bypass reported in GHSA-jjp4-3fwf-393j. An attacker able to supply input to ImageMagick can evade configured security policy restrictions, allowing operations the policy was intended to block.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116145",
+      "cvss": "3.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116146",
+      "desc": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the MSL decoder that fails to release allocated memory when processing a crafted MSL image. Attackers can supply crafted MSL files for processing to repeatedly leak memory, causing resource exhaustion and denial of service.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116146",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116147",
+      "desc": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a null pointer dereference in the DJVU decoder because the result of a memory allocation is not checked before use. Attackers can supply a DJVU image that, when processed under conditions where the allocation fails, crashes the process and causes a denial of service.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116147",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116148",
+      "desc": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains an injection vulnerability in the MVG encoder, which does not properly neutralize user-specified drawing options before writing them into generated MVG output. Attackers who can supply drawing options can inject arbitrary MVG drawing commands into the resulting MVG file.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116148",
+      "cvss": "3.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116149",
+      "desc": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a stack-based buffer overflow in the handling of bzip2 compressed images. Attackers can supply a crafted image using bzip2 compression to overwrite stack memory during decoding, causing crashes or memory corruption.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116149",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116150",
+      "desc": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in the FPX encoder that allows attackers to exhaust memory by supplying a crafted image. Attackers can submit crafted images for FPX encoding to leak memory repeatedly, causing resource exhaustion and denial of service.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116150",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116151",
+      "desc": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the JNG encoder that fails to release allocated memory when processing a crafted image. Attackers can supply crafted images that are encoded to JNG to leak memory, potentially causing resource exhaustion and a limited denial of service.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116151",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116152",
+      "desc": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in the MAT decoder that fails to release allocated memory in a specific error path. Attackers can supply crafted MAT files that trigger this error path repeatedly, causing small memory leaks that gradually consume process memory.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116152",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116153",
+      "desc": "ImageMagick before 7.1.2-33 contains a heap buffer overflow vulnerability on 32-bit systems that allows attackers to overwrite heap memory when convex-hull information is requested. Attackers can supply crafted images processed with convex-hull calculations to corrupt heap memory, causing crashes or potential code execution.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116153",
+      "cvss": "2.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116154",
+      "desc": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in its XML parsing code, where allocated memory is not released when parsing reaches the nesting depth limit. Attackers can supply crafted, deeply nested XML data to trigger the leak, causing memory exhaustion and denial of service.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116154",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116155",
+      "desc": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the handling of XMP profiles by various decoders. Attackers can supply images with a crafted XMP profile that leak memory each time they are processed, leading to resource exhaustion and denial of service.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116155",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116156",
+      "desc": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak caused by a missing cleanup when the -set profile option is used. An attacker who induces a user to process images with the -set profile option can leak memory, potentially exhausting resources and causing a denial of service.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116156",
+      "cvss": "3.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116157",
+      "desc": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in PerlMagick that fails to free values returned when reading image properties. Attackers can repeatedly trigger property reads through five affected PerlMagick code locations to exhaust memory and cause denial of service.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116157",
+      "cvss": "3.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116158",
+      "desc": "ImageMagick before 7.1.2-33 contains a memory leak vulnerability in the magick compare command caused by missing cleanup when an operation fails. Attackers can supply inputs that trigger repeated failed compare operations to exhaust memory and cause denial of service.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116158",
+      "cvss": "2.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116159",
+      "desc": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a memory leak in the handling of the -cdl (color decision list) option, where allocated memory is not cleaned up after use. Attackers can supply input that causes the -cdl option to be processed, repeatedly leaking memory and degrading availability through resource exhaustion.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116159",
+      "cvss": "3.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116160",
+      "desc": "ImageMagick before 6.9.13-58 and 7.x before 7.1.2-33 contains a heap-based buffer overflow in the X11 animate operation when processing crafted images. Attackers can supply a malicious image that, when a user runs an X11 animate operation on it, overwrites heap memory and can crash the application.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116160",
+      "cvss": "3.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116161",
+      "desc": "Parse Server before 8.6.103 and 9.0.0 before 9.10.5-alpha.4 contains an information disclosure vulnerability in LiveQuery. Its subscription hash omits constraints next to a $or operator, including the _Session owner filter and beforeSubscribe constraints, so distinct subscriptions are grouped together. Authenticated clients subscribing with $or queries can receive other users' events, including session tokens usable for impersonation.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116161",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116162",
+      "desc": "Parse Server before 8.6.104 and 9.0.0 before 9.10.5-alpha.5 saves the entire login request with master privileges when issuing an SMS multi-factor authentication verification code. An SMS MFA-enrolled user can include extra fields in that request to modify master-key-restricted fields on their own account, such as the email-verification flag or beforeSave-protected values.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116162",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116163",
+      "desc": "Parse Server before 8.6.102 and 9.0.0 before 9.10.5-alpha.2 contains an authentication bypass because the validateSetUp, validateLogin, and validateUpdate methods of custom adapters subclassing AuthAdapter are never called, and an inherited default that accepts any authData is used instead. Attackers can supply arbitrary authData to sign up, link identities, log in as existing users, or skip custom additional authentication factors.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116163",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116164",
+      "desc": "Parse Server before 8.6.100 and 9.0.0 before 9.10.4-alpha.3 does not reject reserved internal field names in client object writes, allowing clients to store or clear internal fields. Attackers can write a reserved field that makes reads of an object fail on MongoDB, disrupting queries on that class for all users, or clear their own account lockout state and password history to bypass lockout and password policies.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116164",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116165",
+      "desc": "Parse Server before 8.6.101 and 9.0.0 before 9.10.4-alpha.4 contains a missing authorization vulnerability on MongoDB deployments that lets clients without the master key delete the stored schema of any class. Unauthenticated attackers can send REST API delete requests targeting the internal _SCHEMA collection to remove field definitions, class-level permissions, and protected fields, exposing data to unauthorized reads and modifications.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116165",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116166",
+      "desc": "SiYuan 3.6.0 before 3.8.7 accepts and persists the networkServeTLS setting but never enforces it, so the kernel port keeps serving full API access over plain HTTP alongside HTTPS. Network-adjacent attackers can sniff the cleartext login flow and session cookie, which lacks the Secure attribute while responses omit HSTS, to hijack kernel API sessions.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116166",
+      "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116167",
+      "desc": "SiYuan from 2.9.0 before 3.8.7 contains a cross-site scripting vulnerability in the unauthenticated /check-auth page that assigns the to parameter to window.location.href without scheme validation. Attackers can send a crafted link with a javascript: URI that executes after victim login, invoking kernel APIs to read or modify workspace content and settings.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116167",
+      "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116168",
+      "desc": "SiYuan before 3.8.7 contains a path traversal vulnerability in the MCP asset tool because validateAssetUploadPaths relies on an incomplete sensitive-path blacklist that omits .env and other secret files. Authenticated attackers driving the MCP asset upload action can copy such local files into the workspace and read them back via /assets/ over HTTP.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116168",
+      "cvss": "6.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116169",
+      "desc": "SiYuan from 2.10.0 before 3.8.7 contains a stored cross-site scripting vulnerability that allows users with edit permission to inject script by placing javascript: URLs in math block content rendered with KaTeX trust enabled. Attackers can store \\href, \\url, or \\includegraphics payloads that mathRender assigns via innerHTML, executing script in the application origin when a reader clicks the rendered link.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116169",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116170",
+      "desc": "SiYuan before v3.8.7 contains an sql injection vulnerability that allows admin-token holders to read history.db by injecting unescaped op and type=3 query values. Attackers can send crafted UNION SELECT payloads to searchHistory or getHistoryItems endpoints to exfiltrate deleted document content, titles, and paths.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116170",
+      "cvss": "4.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116171",
+      "desc": "SiYuan 3.5.4 before 3.8.7 on Windows contains a sensitive-path denylist bypass in IsSensitivePath because the Windows extended-length prefix (\\\\?\\) survives filepath.Clean and matches no forbidden prefix. Authenticated API callers can prepend the prefix to localPath in /api/import/importStdMd to copy workspace conf files, including the API token and TLS private keys, into assets served to unauthenticated clients.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116171",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116172",
+      "desc": "vLLM from 0.22.0 before 0.24.0 contains an improper input validation vulnerability in the Rust gRPC converter that allows remote attackers to bypass max_logprobs limits via CandidateTokens.top_n. Attackers can send Generate or GenerateStream requests with oversized or integer-wrapping top_n values to trigger torch.topk failures that terminate EngineCore.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116172",
+      "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116173",
+      "desc": "vLLM from 0.22.0 before 0.24.0 contains a denial of service vulnerability that allows remote attackers to terminate EngineCore by bypassing logprob_token_ids limits in the Rust gRPC frontend. Attackers can send Generate or GenerateStream requests with output_logprobs enabled and more than 128 output_candidates.token_ids, triggering a fatal sampler exception that crashes the engine.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116173",
+      "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116174",
+      "desc": "vLLM from 0.22.0 before 0.24.0 contains an improper input validation vulnerability in the Rust gRPC Generate and GenerateStream service that forwards unchecked prompt token IDs to EngineCore. Attackers can submit requests with out-of-vocabulary prompt.token_ids values to trigger a fatal embedding lookup failure that terminates EngineCore and leaves the server unhealthy.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116174",
+      "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116175",
+      "desc": "vLLM from 0.19.0 before 0.24.0 contains a decompression bomb vulnerability because the AudioMediaIO multimodal path calls load_audio without the max_duration_s decoded-duration limit. Authenticated attackers can send small compressed audio via input_audio or audio_url in /v1/chat/completions requests that expands to huge decoded PCM, exhausting server memory.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116175",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116176",
+      "desc": "vLLM from 0.9.2 before 0.24.0 contains a server-side request forgery vulnerability that allows API callers to force outbound connections by embedding a decode address in the X-Request-Id header. Attackers can make a P2pNcclConnector prefill worker ZMQ-connect to an attacker host, leaking the NCCL unique_id and KV-cache tensors or blocking the worker.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116176",
+      "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116177",
+      "desc": "vLLM from 0.10.2 before 0.25.0 contains an uncontrolled resource consumption vulnerability that allows unauthenticated attackers to exhaust memory because the Nemotron-VL processors globally set Image.MAX_IMAGE_PIXELS to None. Attackers can submit a pathological decompression-bomb image to /v1/chat/completions to OOM-kill the worker and deny service to co-tenants.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116177",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116178",
+      "desc": "vLLM from 0.20.0 before 0.30.0 contains a denial of service vulnerability that allows remote attackers to crash the engine by sending inconsistent multimodal metadata to the disaggregated /inference/v1/generate endpoint. Attackers can replay a valid multimodal item with repeated or overlapping mm_placeholders ranges or mismatched kwargs_data and mm_hashes lists, producing a negative text span in Qwen2.5-VL position construction that terminates the engine.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116178",
+      "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116179",
+      "desc": "vLLM from 0.18.0 before 0.31.0 contains a resource exhaustion vulnerability that allows API clients to bypass the video/jpeg frame-count cap by overriding num_frames through media_io_kwargs. Attackers can set num_frames to -1 with a large inline video so VideoMediaIO.load_base64 decodes every frame, exhausting memory and crashing the API frontend.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116179",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116180",
+      "desc": "vLLM from 0.8.5 before 0.31.0 has a denial of service flaw. LogprobsTensors.empty_cpu() in vllm/v1/outputs.py allocates an uninitialized int32 tensor, and the V1 model runner leaves prompt positions reported as computed by a KV connector unwritten. A client sharing the engine can send prompt_logprobs (or echo with logprobs) against a connector-cached prefix, making tokenizer decode raise OverflowError, which crashes EngineCore and drops all co-tenant requests.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116180",
+      "cvss": "7.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116181",
+      "desc": "vLLM from 0.20.1 before 0.29.0 contains an improper input validation vulnerability that allows remote attackers to crash the engine by supplying out-of-vocabulary stop_token_ids. Attackers can send OpenAI chat, completion, generate, or batch requests with invalid IDs to terminate the engine or write outside the V2 runner's logits buffer.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116181",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116182",
+      "desc": "phpMyFAQ before 4.1.10 contains a server-side request forgery vulnerability in the PDF export feature that fetches external images referenced in FAQ answers. Attackers who can influence FAQ content can embed image URLs pointing to loopback or internal services, causing the server to request them and embed responses in generated PDFs.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116182",
+      "cvss": "5.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116183",
+      "desc": "phpMyFAQ before 4.1.10 contains an object-level authorization bypass vulnerability that allows unauthenticated attackers to modify or delete any visitor question by supplying an arbitrary openQuestionID to POST /api/faq/create. Attackers solving the CAPTCHA can rewrite question categories, forge answered entries in faqquestion_history, or permanently delete questions when records.enableDeleteQuestion is enabled.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116183",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116184",
+      "desc": "OpenRemote before 1.31.0 contains an authorization bypass vulnerability that allows realm admins to impersonate gateways in other realms because GatewayService only checks the gateway ID, not the realm. Attackers with WRITE:ADMIN in one realm can create a service user named after another realm's gateway ID to overwrite its descendant assets and open SSH tunnels into its local network.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116184",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116185",
+      "desc": "OpenRemote core before 1.31.0 contains an authorization bypass vulnerability that allows authenticated users to read other realms' gateway tunnel information via getGatewayActiveTunnelInfos. Attackers can request the gateway tunnel endpoint with their own realm and a victim gateway ID to disclose internal target hosts, ports, and routing data.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116185",
+      "cvss": "5.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116186",
+      "desc": "OpenRemote core (openremote-manager) before 1.31.0 does not perform realm or gateway-descendant authorization on inbound edge gateway events and maps event asset IDs only through the reversible GatewayConnector.mapAssetId transform. An attacker controlling a registered gateway can craft pre-image IDs in AttributeEvent or DELETE AssetEvent messages to overwrite attributes on, or delete, assets in any realm, breaking tenant isolation.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116186",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116187",
+      "desc": "Rclone from v1.68.0 before v1.75.2 contains an authorization bypass vulnerability in serve s3 --auth-proxy that allows authenticated tenants to manipulate other tenants' multipart uploads by referencing their upload IDs. Attackers who learn a victim's bucket, object, and upload ID can inject parts, complete, or abort in-flight uploads and view upload and object metadata across tenants.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116187",
+      "cvss": "5.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116188",
+      "desc": "rclone serve s3 versions 1.75.0 before 1.75.2 contain an integer overflow vulnerability in multipart reorder-memory accounting that bypasses the configured buffer limit. Attackers can open two concurrent current-part PUT requests declaring huge lengths to wrap the signed int64 counter and retain out-of-order parts in memory, exhausting the host.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116188",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116189",
+      "desc": "rclone from 1.55.0 before 1.75.2 contains a signature verification bypass in stable selfupdate that trusts checksums from unsigned bytes preceding the PGP-clearsigned SHA256SUMS block. Attackers controlling the release distribution path can prepend an unsigned checksum line matching a malicious archive, causing selfupdate to install an attacker-controlled rclone executable.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116189",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116190",
+      "desc": "rclone from v1.56.0 before v1.75.2 contains an information disclosure vulnerability in the WebDAV backend that forwards operator-configured custom credential headers to different hosts on HTTP 3xx redirects. Attackers who control or influence a cross-host redirect can capture headers such as X-Auth-Token set via --webdav-headers and replay them against the original WebDAV service.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116190",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116191",
+      "desc": "Rclone before 1.75.2 contains a path traversal vulnerability in serve webdav that allows unauthenticated attackers to write above the served root by sending an unvalidated '..' path component. Attackers can send MKCOL /.. to plant a VFS node, then PUT, MOVE, COPY, or MKCOL to create, overwrite, or delete files belonging to other tenants.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116191",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116192",
+      "desc": "rclone from 1.37 before 1.74.2 contains a server-side request forgery vulnerability that allows unauthenticated attackers to redirect http and netstorage backend requests by supplying a double-slash root on an existing named remote via --rc-serve. Attackers can make HEAD/GET requests to attacker-chosen hosts to read responses, capture configured custom headers, or obtain valid NetStorage request signatures.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116192",
+      "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116193",
+      "desc": "Rclone from 1.64.0 before 1.75.2 contains an authentication bypass vulnerability in serve webdav that lets unauthenticated attackers skip authentication by sending OPTIONS requests. Attackers can probe arbitrary paths and compare Allow header values to determine whether files or collections exist, enabling namespace enumeration.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116193",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116194",
+      "desc": "Rclone from 1.52.0 before 1.75.2 contains a cross-site request forgery vulnerability in the pCloud backend's localhost OAuth callback, which disables the state check and trusts the hostname parameter. Malicious web pages can send a stateless request to port 53682 during authorization, planting attacker tokens and API hosts so later transfers reach the attacker.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116194",
+      "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116195",
+      "desc": "Rclone before 1.75.2 contains a path traversal vulnerability in the local backend's translateLink function, which trims the .rclonelink suffix from a path after the containment check, so a name can resolve outside the destination root. Attackers can plant a directory named ...rclonelink in a source tree synced with --links and --metadata to change ownership, timestamps, and xattrs of the destination's parent directory.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116195",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116196",
+      "desc": "Rclone before v1.75.2 contains a credential exposure vulnerability in the b2 backend that leaks the live account Authorization token and SSE-C keys on HTTP redirects from --b2-download-url hosts. Attackers can observe a same-host HTTPS-to-HTTP downgrade redirect to capture the cleartext B2 token, or receive cross-host redirects disclosing SSE-C customer encryption keys.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116196",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116197",
+      "desc": "Edgeless Systems Contrast from 1.21.0 before 1.25.0 contains a non-deterministic registry selection flaw in imagepuller that can prefer wildcard configuration entries over concrete domain matches. When a pull configuration lists both a concrete domain and its parent wildcard, registry credentials, CA bundles, or mirror settings intended for the wildcard may be applied to the concrete registry, leaking credentials or pull metadata.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116197",
+      "cvss": "2.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116198",
+      "desc": "Snipe-IT before 8.7.0 contains a missing encryption vulnerability in Api\\AssetsController::store that writes plaintext into encrypted-flagged custom-field columns when callers lack assets.view.encrypted_custom_fields. Authenticated API users without that permission can create assets whose sensitive custom-field values persist unencrypted in the database, exposing them through backups, replicas, or direct database access.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116198",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116199",
+      "desc": "Snipe-IT before 8.6.3 contains an authentication bypass in GoogleAuthController::handleGoogleCallback, which logs in the user whose username matches the Google account email without enforcing the activated flag. Deactivated users with email-shaped usernames and still-live Google identities can sign in via Google SSO and regain sessions at their original permission level, including admin.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116199",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116200",
+      "desc": "Snipe-IT before 8.6.3 ignores the ldap_start_tls() return value in Ldap::connectToLdap(), allowing on-path attackers to force cleartext LDAP binds. Attackers can answer the StartTLS request with a protocol error to capture service-account credentials and end-user login passwords.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116200",
+      "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116201",
+      "desc": "Snipe-IT before 8.5.0 contains a SAML assertion replay vulnerability that allows attackers to reuse captured assertions by exploiting a non-atomic nonce check in the SAML acs handler. Attackers can send concurrent POST requests to /saml/acs with one captured assertion to obtain multiple authenticated victim sessions that evade IdP-driven revocation.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116201",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116202",
+      "desc": "YesWiki before 4.7.0 contains a stored cross-site scripting vulnerability that allows low-privilege authenticated users to upload unsanitized SVG files through the bazar ImageField class. Attackers can submit a malicious SVG via the image field of the entries API, which is served as image/svg+xml and executes script for users viewing the entry or file.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116202",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116203",
+      "desc": "YesWiki before 4.7.0 contains a stored cross-site scripting vulnerability in the filtertags action, which echoes attacker-controlled token values without output encoding. Anonymous attackers can inject markup via action-attribute parameters that bypasses the allow_raw_html gate, executing JavaScript for every page viewer.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116203",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116204",
+      "desc": "YesWiki before 4.7.0 contains a cross-site request forgery vulnerability in the despam action (tools/security/actions/despam.php) that lets unauthenticated attackers delete or restore pages through an administrator's session. Attackers can plant an auto-submitting raw HTML form on a wiki page, so an administrator who views it posts clean, suppr[], or rev[] parameters that delete PagePrincipale, configuration pages, or overwrite current content.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116204",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116205",
+      "desc": "YesWiki before 4.7.0 contains an unauthenticated server-side request forgery vulnerability that allows remote attackers to fetch arbitrary URLs by supplying [[|URL]] wiki syntax to the render handler. Attackers can pass the syntax in the content parameter of the page render handler to reach internal hosts and ports and read their responses.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116205",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116206",
+      "desc": "YesWiki from 4.2.0 before 4.7.0 contains a stored cross-site scripting vulnerability that allows authenticated users to inject script into comment bodies using the wakka raw-HTML syntax. Attackers can post comments via the /api/comments endpoint that render unescaped through the Twig raw filter, executing JavaScript in administrators' and visitors' sessions.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116206",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116207",
+      "desc": "YesWiki 4.6.0 before 4.7.0 and 5.0.0-alpha1 before 5.0.0-alpha4 contains an unauthenticated SQL injection vulnerability in SearchManager::prepareSearchRequest(). Field names from the query and searchfields parameters of the public Bazar entries search API are placed in a backtick-quoted alias escaped only with mysqli_real_escape_string. Attackers can supply a backtick to inject subqueries, reading data such as user password hashes or exhausting database threads with SLEEP().",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116207",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116208",
+      "desc": "YesWiki from 4.6.2 before 4.7.0 contains a missing authorization vulnerability in ActivityPubService::syncActorPosts that lets malicious ActivityPub servers manipulate other actors' mirrored entries. Attackers can serve a poisoned outbox with cross-actor Delete, Update, or Create activities during admin-initiated sync to delete, overwrite, forge, or mass-delete entries.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116208",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116211",
+      "desc": "YesWiki 4.5.0 before 4.7.0 contains an SQL injection vulnerability in PageManager::save(), where the date_maj_fiche field of a Bazar entry-creation request is concatenated unescaped into an INSERT statement. Unauthenticated attackers on default installs can inject a sub-SELECT against wiki_users to exfiltrate password hashes.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116211",
+      "cvss": "8.2",
       "cwe": ""
     },
     {

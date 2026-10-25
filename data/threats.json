@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-25T14:29:24.669184+00:00",
-  "summary": "Today's digest contains 286 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-10-25T17:47:41.113783+00:00",
+  "summary": "Today's digest contains 297 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 286,
+    "new": 297,
     "changed": 0,
     "removed": 0,
-    "total": 698240,
+    "total": 698537,
     "zeroday": 83,
     "exploited": 33,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 187
+      "count": 198
     },
     {
       "name": "Exploit-DB",
@@ -4328,6 +4328,204 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116211",
       "cvss": "8.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116054",
+      "desc": "A security vulnerability has been detected in SH3. This affects an unknown function of the component Módulo de Gestão/Módulo de Arrecadação. The manipulation leads to password hash with insufficient computational effort. The attack is possible to be carried out remotely. A high degree of complexity is needed for the attack. The exploitability is reported as difficult. The exploit has been disclosed publicly and may be used. Upgrading to version 2026.0.2.0 mitigates this issue. Upgrading the affected component is recommended.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116054",
+      "cvss": "2.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116055",
+      "desc": "A vulnerability was detected in SourceCodester Performance Indicator System 1.0. This impacts an unknown function of the file /opils/admin/deleteproduct.php. The manipulation of the argument ID results in sql injection. The attack may be performed from remote. The exploit is now public and may be used.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116055",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116056",
+      "desc": "A flaw has been found in KodCloud KodExplorer up to 4.56. Affected is the function request_url_safe of the file app/function/web.function.php of the component Remote Download. This manipulation causes server-side request forgery. It is possible to initiate the attack remotely. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116056",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116057",
+      "desc": "A vulnerability has been found in KodCloud KodExplorer up to 4.55. Affected by this vulnerability is an unknown functionality of the file app/controller/editor.class.php of the component Online Editor Save Endpoint. Such manipulation of the argument path/filestr leads to unrestricted upload. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116057",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116058",
+      "desc": "A vulnerability was found in Alfresco Activiti up to 7.21.0-rc.692. Affected by this issue is the function JuelScriptEngine.eval of the file JuelScriptEngine.java. Performing a manipulation results in code injection. The attack can be initiated remotely. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116058",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-115817",
+      "desc": "Starman versions before 0.4019 for Perl allow a stalled request body to hold a worker indefinitely, as read_timeout covers only the headers.\n\nContent-Length and chunked request bodies are read with blocking reads and no deadline. A client that sends complete headers and then stalls or trickles the body keeps the worker waiting until it disconnects.\n\nA remote attacker can take every worker with a few such connections, five with the default worker count, so the server stops answering requests.\n\nVersion 0.4019 applies read_timeout to each wait for body data and adds a body_timeout limit, 300 seconds by default, on the total time to read a body.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115817",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-115822",
+      "desc": "Starman versions before 0.4019 for Perl allow CPU exhaustion via quadratic regex backtracking when parsing chunked request bodies.\n\nStarman decodes chunked request bodies before calling the application, matching each chunk-size line with `s/^(([0-9a-fA-F]+).*\\015\\012)//`. A line of hex digits followed by a bare LF and then CRLF never matches, because `.` does not match LF, and each failed attempt backtracks in time quadratic in the length of the hex run. Nothing limits the length of the line.\n\nA remote attacker can exhaust worker CPU by sending such requests to any route.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115822",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-115823",
+      "desc": "Starman versions before 0.4019 for Perl send response bodies for HEAD requests, desynchronizing responses on keep-alive connections.\n\nFor a HEAD request Starman omits chunked framing but still writes the body returned by the application, on both the array and streaming response paths. Responses with a 1xx, 204 or 304 status also carry the body.\n\nOn a keep-alive or pipelined connection the client reads those bytes as the start of the next response. A front-end proxy that reuses upstream connections may then pair responses with the wrong requests.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115823",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-115824",
+      "desc": "Starman versions before 0.4019 for Perl allow memory exhaustion via unbounded buffering of chunked request bodies.\n\nThe chunked body decoder keeps each chunk in memory until the whole chunk and its CRLF have arrived, and sets no limit on the length of a chunk-size line. A client that declares a huge chunk size and streams data, or sends a chunk-size line that never ends, grows the buffer for as long as it keeps sending.\n\nA remote attacker can exhaust worker memory with a single connection.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115824",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-115825",
+      "desc": "HTTP::Server::PSGI versions before 1.0056 for Perl allow a single request to crash the server by declaring a large Content-Length.\n\nThe request body is read with sysread() calls sized by the remaining Content-Length. Perl grows the read buffer to the requested length before any data arrives, so the server tries to allocate as much memory as the client declares.\n\nA remote attacker can send one request with a large Content-Length and a few body bytes, and perl exits with an out-of-memory error before the application is called. HTTP::Server::PSGI runs as a single process, so the server stays down until restarted.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115825",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116060",
+      "desc": "A vulnerability was determined in SourceCodester Performance Indicator System 1.0. This affects an unknown part of the file /opils/staff/adddealer.php. Executing a manipulation of the argument Contact can lead to sql injection. The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116060",
+      "cvss": "7.3",
       "cwe": ""
     },
     {

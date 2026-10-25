@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-25T17:47:41.113783+00:00",
-  "summary": "Today's digest contains 297 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-10-25T20:30:49.845332+00:00",
+  "summary": "Today's digest contains 303 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 297,
+    "new": 303,
     "changed": 0,
     "removed": 0,
-    "total": 698537,
+    "total": 698840,
     "zeroday": 83,
     "exploited": 33,
     "pakistan": 16
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 198
+      "count": 204
     },
     {
       "name": "Exploit-DB",
@@ -4526,6 +4526,114 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116060",
       "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116061",
+      "desc": "A vulnerability was identified in SourceCodester Performance Indicator System 1.0. This vulnerability affects unknown code of the file /opils/staff/edit_dealer.php. The manipulation of the argument Contact leads to sql injection. The attack may be initiated remotely. The exploit is publicly available and might be used.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116061",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116062",
+      "desc": "A security flaw has been discovered in SourceCodester Performance Indicator System 1.0. This issue affects some unknown processing of the file /opils/staff/save_profile.php. The manipulation of the argument Contact results in sql injection. The attack may be launched remotely. The exploit has been released to the public and may be used for attacks.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116062",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116063",
+      "desc": "A weakness has been identified in DedeCMS up to 5.7.118. Impacted is the function require_once of the file dede/update_guide.php. This manipulation of the argument vtime causes code injection. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116063",
+      "cvss": "4.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-114214",
+      "desc": "Incorrect Authorization vulnerability in ash-project ash allows a client to read destination records unrelated to the source record through a through relationship.\n\nWhen a has_many relationship declared with through: was loaded for a single record with a limit of 1, or an unsorted has_one through relationship was loaded with a limit of 1, lateral_join?/4 in lib/ash/actions/read/relationships.ex chose the path that reads the destination without any filter linking it to the source. The load returned the first destination record by sort, or any other record with an offset. The read still runs the destination's policies but carries the relationship as accessing_from, so a client paging such a field (for example teachers(limit: 1, offset: n) through AshGraphql) can enumerate destination records that policies allow only when reached through that relationship.\n\nThis issue affects ash: from 3.24.0 before 3.37.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114214",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-115627",
+      "desc": "Incorrect Authorization vulnerability in ash-project ash_postgres allows a user to load destination records linked to a source record only through another tenant's join rows.\n\nWhen a many_to_many relationship, or a through relationship, is loaded with a lateral join (for example with a per-record limit or sort), AshPostgres.DataLayer builds the query for the join resource, and for each resource along a through path, in lateral_join_query/3 and through_step_queries/4 without running that resource's read action, which is where attribute multitenancy is applied. When those resources use strategy :attribute multitenancy, rows belonging to other tenants were joined, so the load returned destination records that the caller's tenant is not related to.\n\nThis issue affects ash_postgres: from 0.38.0 before 2.15.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115627",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-115635",
+      "desc": "Incorrect Authorization vulnerability in ash-project ash_postgres allows a user to read another tenant's record through a skipped upsert.\n\nWhen Ash.bulk_create/4 or a single create runs as an upsert with return_skipped_upsert?: true and the upsert is skipped (for example because its upsert_condition does not hold), AshPostgres.DataLayer reads the existing row back by the upsert identity in do_bulk_create/3 and upsert/4. That lookup did not apply the resource's attribute multitenancy, so on a resource using strategy :attribute it could match and return the row of another tenant with the same identity values, exposing its fields to the caller.\n\nThis issue affects ash_postgres: from 2.6.22 before 2.15.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-10-25",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115635",
+      "cvss": "0.0",
       "cwe": ""
     },
     {

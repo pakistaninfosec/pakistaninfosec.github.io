@@ -1,13 +1,13 @@
 {
-  "generated": "2026-10-30T13:21:59.231478+00:00",
-  "summary": "Today's digest contains 602 vulnerabilities across 5 sources. 85 zero-day exploits detected, 35 actively exploited from CISA KEV, and 17 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-10-30T18:45:42.595253+00:00",
+  "summary": "Today's digest contains 604 vulnerabilities across 5 sources. 87 zero-day exploits detected, 37 actively exploited from CISA KEV, and 17 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 602,
+    "new": 604,
     "changed": 0,
     "removed": 0,
-    "total": 710703,
-    "zeroday": 85,
-    "exploited": 35,
+    "total": 711307,
+    "zeroday": 87,
+    "exploited": 37,
     "pakistan": 17
   },
   "sources": [
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 35
+      "count": 37
     },
     {
       "name": "Pakistan CERT",
@@ -354,6 +354,44 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-118527",
+      "desc": "Ivanti Connect Secure contains a generation of predictable numbers or identifiers vulnerability that allows a remote authenticated attacker to upload files with attacker-controlled content to a known location on disk. This vulnerability can be chained with CVE-2026-104935 and CVE-2026-111357.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-10-30",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118527",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-111357",
+      "desc": "Ivanti Connect Secure contains a missing authentication for critical function vulnerability that could allow a local authenticated attacker to escalate their privileges. This vulnerability can be chained with CVE-2026-104935 and CVE-2026-118527.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-10-30",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111357",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -9069,7 +9107,7 @@
     },
     {
       "id": "CVE-2026-102260",
-      "desc": "HashiCorp Nomad and Nomad Enterprise are vulnerable to cross-namespace authorization bypasses in several read-only API endpoints that may allow an authenticated user with read permissions in one namespace to view information about objects in other namespaces. This vulnerability (CVE-2026-102260) is fixed in Nomad Community Edition 2.1.0 and Nomad Enterprise 2.1.0, 1.11.12, and 1.10.18.",
+      "desc": "HashiCorp Nomad and Nomad Enterprise are vulnerable to cross-namespace authorization bypasses in several read-only API endpoints that may allow an authenticated user with read permissions in one namespace to view information about objects in other namespaces. This vulnerability (CVE-2026-102260) is fixed in Nomad Community Edition 2.1.1 and Nomad Enterprise 2.1.0, 1.11.12, and 1.10.18.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-10-29",
@@ -9087,7 +9125,7 @@
     },
     {
       "id": "CVE-2026-107347",
-      "desc": "HashiCorp Nomad and Nomad Enterprise are vulnerable to symlink following during dispatch payload and executor log writes that may allow a malicious workload to modify files outside its allocation directory. When the client agent runs as root, this could lead to code execution as root on the client host. This vulnerability (CVE-2026-107347) is fixed in Nomad 2.1.0 and Nomad Enterprise 2.1.0, 1.11.12, and 1.10.18.",
+      "desc": "HashiCorp Nomad and Nomad Enterprise are vulnerable to symlink following during dispatch payload and executor log writes that may allow a malicious workload to modify files outside its allocation directory. When the client agent runs as root, this could lead to code execution as root on the client host. This vulnerability (CVE-2026-107347) is fixed in Nomad 2.1.1 and Nomad Enterprise 2.1.0, 1.11.12, and 1.10.18.",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-29",
@@ -9268,7 +9306,7 @@
     {
       "id": "CVE-2026-51905",
       "desc": "TransformerOptimus SuperAGI v0.0.14 is vulnerable to Incorrect Access Control in get_agent_execution_configuration in superagi/controllers/agent_execution_config.py. A remote authenticated attacker from one organization can read another organization's agent execution configuration by supplying the victim agent_id and agent_execution_id to /agent_executions_configs/details/agent_id/{agent_id}/agent_execution_id/{agent_execution_id}. The endpoint lacks an organization ownership check on the selected agent and execution.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-29",
       "pakistan": false,
@@ -9280,7 +9318,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-51905",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -9555,7 +9593,7 @@
     },
     {
       "id": "CVE-2026-119168",
-      "desc": "HashiCorp Nomad and Nomad Enterprise are vulnerable to symlink following during same-client allocation data migration that may allow a malicious workload to change permissions and ownership of host directories. This could allow unauthorized access to host data or modification of host files, potentially leading to privilege escalation. This vulnerability (CVE-2026-119168) is fixed in Nomad 2.1.0 and Nomad Enterprise 2.1.0, 1.11.12, and 1.10.18.",
+      "desc": "HashiCorp Nomad and Nomad Enterprise are vulnerable to symlink following during same-client allocation data migration that may allow a malicious workload to change permissions and ownership of host directories. This could allow unauthorized access to host data or modification of host files, potentially leading to privilege escalation. This vulnerability (CVE-2026-119168) is fixed in Nomad 2.1.1 and Nomad Enterprise 2.1.0, 1.11.12, and 1.10.18.",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-10-29",

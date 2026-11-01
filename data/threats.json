@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-01T08:57:51.743163+00:00",
-  "summary": "Today's digest contains 240 vulnerabilities across 5 sources. 85 zero-day exploits detected, 35 actively exploited from CISA KEV, and 17 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-11-01T15:56:24.147863+00:00",
+  "summary": "Today's digest contains 275 vulnerabilities across 5 sources. 85 zero-day exploits detected, 35 actively exploited from CISA KEV, and 17 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 240,
+    "new": 275,
     "changed": 0,
     "removed": 0,
-    "total": 715344,
+    "total": 715619,
     "zeroday": 85,
     "exploited": 35,
     "pakistan": 17
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 138
+      "count": 173
     },
     {
       "name": "Exploit-DB",
@@ -3503,6 +3503,636 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120218",
       "cvss": "3.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-112887",
+      "desc": "Gitea Actions task tokens authenticate to the REST API as a shared system user with a negative ID, which repository, organization, project and key filters treated as having no owner restriction, and the token carried no API scope to restrict user-scoped routes. A user who can run a workflow could use the job's token with `GET /api/v1/user/repos` to list every repository on the instance, including private repositories of other users and organizations, with their metadata. Repository contents remained protected by per-repository permission checks. System users now own nothing, and `/api/v1/user` routes other than `GET /api/v1/user` accept only individual and bot accounts.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112887",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-113429",
+      "desc": "Legacy (v1 to v3) Actions artifact uploads stored the request's `Content-Encoding` header unchecked in the column that is served as the artifact's `Content-Type` on download, and a value starting with `video/` or `audio/` also removed the sandboxing Content-Security-Policy. A user who can run an Actions job could upload an artifact that a browser renders as HTML on the Gitea origin when the direct artifact download URL is opened, and the URL is reachable anonymously on public repositories. A victim who opens the link runs the attacker's script with their own session, which for an administrator means control of the instance. Legacy uploads now store only the `gzip` marker, and the special serve headers are chosen only for valid media types.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113429",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-114199",
+      "desc": "`GET /api/v1/users/{username}/heatmap` computed the contribution heatmap with the repository access of the token owner and ignored the public-only restriction of the access token, unlike the activity feed endpoints. A holder of a user's public-only token could read contribution counts and their 15-minute time buckets that stem from that user's activity in private repositories. Repository names and contents were not disclosed. For public-only tokens the heatmap now only counts activity visible to anonymous users.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-114199",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116289",
+      "desc": "Gitea did not reject personal access tokens restricted to public resources (`public-only`) on the organization Actions runner registration-token endpoint, and the runner registered with the resulting token was not limited to public repositories. Holding only such a token with `write:organization` that belongs to an owner of a public organization, an attacker could register an organization-level runner and receive jobs of the organization's private repositories that have Actions enabled, including the workflow content, Actions secrets and variables, and a task token with access to the private repository. The issue widens what the restricted token can reach; it gives nothing beyond what the owner's full account can already do.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116289",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116296",
+      "desc": "The API routes for releases, release assets, milestones and repository labels did not reject changes to archived repositories. A user with write access to an archived repository, or a holder of such a user's write-scoped token, could replace or delete release assets while keeping their download URLs, delete releases and tags, and create, edit or delete milestones and labels of a repository that is meant to be read-only. Changing requests on these routes now return 423 Locked for archived repositories.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116296",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116474",
+      "desc": "The `GITEA_TOKEN` of a Gitea Actions job authenticates as the `gitea-actions` system user, and the `/api/v1/user` email and GPG key endpoints accepted that user, so a job could register an email address and a GPG key on it; without required email confirmation (the default) the address is stored as activated. Commit verification treats a key without a real owner as the instance signing key, so any user who can run a workflow job could make commits signed with their own key show as trusted and signed by the instance in every repository where they appear, including pull requests to repositories the user cannot write to. The impact is limited to the displayed signature status: enforcement such as required signed commits only checks that a signature is verified and is unaffected, and no access is gained. The `/api/v1/user` routes now reject system users.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116474",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-117635",
+      "desc": "The `/api/v1/admin` route group did not enforce the `public-only` restriction of personal access tokens. A public-only token with admin scope issued by a site administrator could therefore list private organizations and the email addresses of all users, create organizations, obtain runner registration tokens and create new site administrator accounts, the last of which persists after the token is revoked. Tokens of users who are not site administrators cannot reach these routes; public-only tokens are now rejected on the admin API.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-117635",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-117646",
+      "desc": "The repositories, stars and watching tabs of user profiles and the repository list of organization home pages included private repositories for every signed-in request without checking whether the request used a personal access token restricted to public resources (`public-only`). A holder of such a token could list the private repositories visible to the token's owner, and that user's stars and watches of private repositories. The API and the profile activity tab already applied the restriction. The impact is disclosure of repository names and metadata, not of repository content.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-117646",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-117649",
+      "desc": "The issue timeline API and the web issue page hid cross-reference events that point at issues the reader cannot access, but not \"dependency added\" and \"dependency removed\" events. When a readable issue had been linked as a dependency to an issue in a repository the reader cannot access, for example a private repository, any reader of the first issue, including anonymous users of a public repository, received the linked issue's current title, body, state, labels, poster and attachment names through the API, and its repository, number and title on the web page. Creating the link requires access to both issues; comments and attachment downloads of the linked issue stayed protected. Dependency events are now filtered with the same read permission check; a related exposure of unlinked attachment metadata through hidden dependency placeholders was already fixed in 28.2.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-117649",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-117677",
+      "desc": "When parsing an uploaded Helm chart, Gitea decompressed the archive and read every tar entry while looking for `Chart.yaml` without limiting the decompressed size, and did so before the package size quota was checked; the quota only considers the compressed upload size. A user with package write access to an owner, for example their own account on an instance with open registration, could repeatedly upload small, highly compressed archives that make the server spend CPU time proportional to the decompressed size, degrading the availability of the Gitea instance. The issue does not allow code execution or data access.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-117677",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-117685",
+      "desc": "The OCI registry's cross-repository blob mount checked the target package against the token's `public-only` restriction, but checked the source blob only against the full account permissions of the token owner. A `public-only` token with `write:package` scope, whose owner can read a private package and write to a public package namespace, could mount a blob of the private package into the public package. The private blob, such as a container layer, could then be downloaded by anyone through the public package.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-117685",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-118386",
+      "desc": "Workflows triggered by a pull request review were read from the commit named in the review's `commit_id`, while the fork restrictions were decided by the reviewed pull request, and the commit was not checked to belong to that pull request. A user with read access to a repository could place a commit of their own in it, through a fork pull request or an AGit push, and submit a review naming that commit on a pull request whose head branch is in the same repository. On instances with a runner serving the repository, the attacker's workflow then ran without approval, received the Actions secrets of the repository and its owner, and got a `GITEA_TOKEN` with write access to the repository. Review-triggered workflows now run on the pull request head.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118386",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-118394",
+      "desc": "The OAuth2 userinfo endpoint (`/login/oauth/userinfo`) decided whether to limit the `groups` claim to public organizations by re-parsing the `Authorization` header as an OAuth2 access token instead of using the scope of the credential that authenticated the request. When a public-only OAuth2 token was sent as a query parameter or form field, or a public-only personal access token was used, that scope came back empty and the claim listed the token owner's private organizations, teams and concealed memberships. The disclosure is limited to the owner's organization and team names and memberships; no repository content is exposed. The endpoint now uses the scope of the authenticating token.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118394",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-118395",
+      "desc": "Gitea 1.27.3 stopped personal access tokens restricted to public resources (`public-only`) from creating repositories through `POST /api/v1/user/repos` and `POST /api/v1/repos/migrate`, but `POST /api/v1/org/{org}/repos`, `POST /api/v1/orgs/{org}/repos`, `POST /api/v1/orgs` and `POST /api/v1/repos/{owner}/{repo}/generate` still accepted such tokens. A holder of a public-only token with the needed write scopes could create private repositories in organizations where the token's owner may create repositories, create private organizations, and generate private repositories from templates. The token still could not read the private repositories it created.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118395",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-118504",
+      "desc": "The web interface blocks issue and pull request changes on archived repositories, but several issue routes of the REST API did not check whether the repository is archived. A user allowed to change issues of an archived repository could use the API to edit, close or delete issues, change labels and deadlines, add or delete tracked time and stopwatches, add reactions, change issue blocks, and pin issues, altering data that archiving is meant to freeze. Gitea 28.2.0 added the check to the issue edit, delete and label routes; Gitea 28.3.0 applies it to all modifying repository API requests.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118504",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-119441",
+      "desc": "`DELETE /api/v1/orgs/{org}/repos` deletes all repositories of an organization, but it did not enforce the public-only restriction of access tokens: the route only checked that the organization itself was public. A public-only token of an owner of a public organization could therefore permanently delete the organization's private repositories, which such a token must not reach. Routes that require organization ownership now reject public-only tokens.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119441",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-119533",
+      "desc": "Repository and organization project boards listed the pull requests that reference each issue on the board without checking whether the viewer can read them. When a private pull request mentions an issue on a board the viewer can open, the board revealed the private repository's path and the pull request's number, title and state, to anonymous visitors in the case of a public board. The pull request body, diff and files were not exposed. Boards now skip linked pull requests in repositories where the viewer cannot read pull requests.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119533",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-119625",
+      "desc": "The `/{username}` web route accepted personal access tokens over HTTP Basic authentication without checking their scope. A token confined to an unrelated scope, such as `read:issue`, could read its owner's private activity through the user RSS/Atom feed and the profile activity tab, and other members' activity in a private organization through the organization feed; a public-only token could list the owner's private repositories and organizations and render private profile READMEs. For a site administrator's token this applied to every account. Tokens are now accepted on this route only for feeds, which require `read:user` or `read:organization`.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119625",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-119627",
+      "desc": "The web profile and RSS/Atom feed routes of users and organizations checked only whether a signed-in viewer could see a limited-visibility owner, without considering the `public-only` restriction of the personal access token used to authenticate. Any user holding a public-only token could send it over HTTP Basic authentication to read the profile and activity feed of limited-visibility users and organizations, which are hidden from anonymous visitors and refused on the equivalent API routes. The disclosure covers existence, profile metadata and public activity; it does not grant write access.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119627",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120223",
+      "desc": "A vulnerability was identified in Oray Pugongying X5 Pro up to 7.6.1. This impacts the function session_get of the file session.lua of the component Session ID Handler. The manipulation of the argument _user leads to insufficiently random values. The attack can be initiated remotely. The attack's complexity is rated as high. The exploitability is said to be difficult. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120223",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120263",
+      "desc": "When `[oauth2_client].ACCOUNT_LINKING` is set to `auto` (not the default) and registration is enabled, the link-account sign-up form looked up the existing account to link by the user name or email submitted in the form instead of the identity asserted by the OAuth2 provider. An attacker with an account on a configured OAuth2 provider could submit another user's name, link their external identity to that Gitea account and be signed in as it without its password, including as an administrator. The link persisted for later sign-ins. Automatic linking now only happens when the existing account matches the provider's email or provider-derived user name; otherwise the account password is required.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120263",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120224",
+      "desc": "A security flaw has been discovered in Oray Pugongying X5 Pro up to 7.6.1. Affected is the function run_apis_by_json/run_async_task of the component API Authorization. The manipulation results in improper authorization. The attack can be launched remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120224",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120225",
+      "desc": "A weakness has been identified in Oray Pugongying X5 Pro up to 7.6.1. Affected by this vulnerability is the function config_restore_ex of the file /etc/openwrt_release. This manipulation of the argument filename causes relative path traversal. The attack may be initiated remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120225",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-13575",
+      "desc": "HTTP::Session versions before 0.54 for Perl allow memcached command injection via unfiltered session ids in HTTP::Session::Store::CHI.\n\nThe session id from the client's cookie reaches the CHI cache unchanged. The sibling HTTP::Session::Store::Memcached rejects ids that contain control characters, but the CHI store has no such check, and CHI does not escape keys for its memcached drivers.\n\nWith a memcached driver, a CR and LF in the session id end the cache command early, and the server reads the bytes after them as further commands.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-13575",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120226",
+      "desc": "A security vulnerability has been detected in Hangzhou Xiongmai Technology P2PAPI.dll 1.3.3.32 on Windows. Affected by this issue is the function P2PAPI_Connect of the component P2P SDK. Such manipulation of the argument input as part of String leads to buffer overflow. An attack has to be approached locally. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120226",
+      "cvss": "3.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120227",
+      "desc": "A vulnerability was detected in WAVLINK WN701AE M01AE_V260105. This affects the function del_staticrule of the file static_route_setting.sh of the component ioos Web Backend. Performing a manipulation of the argument rule_name results in os command injection. Remote exploitation of the attack is possible. The exploit is now public and may be used. The vendor was contacted early about this disclosure.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120227",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120306",
+      "desc": "Beta9 turns each shell command in a tenant image definition into a Dockerfile RUN line and executes it with Buildah on the build worker. The worker image sets BUILDAH_ISOLATION=chroot, and no buildah invocation passes --isolation, so the step only changes its filesystem root. It keeps the worker pod's PID, network, IPC, and user namespaces, runs as uid 0, and holds CAP_DAC_OVERRIDE. PID 1 in that procfs is the worker entrypoint, so /proc/1/root is the worker container's filesystem and is writable. That filesystem contains the runc, buildah, and runsc binaries the worker uses to start tenant containers, the worker's Kubernetes service account token, and the host directories mounted into the pod. Worker pods are privileged. Clip v2 layered builds are the default, so a tenant with a workspace token reaches this by submitting one image build. The read-only proof confirmed the shared namespaces, CAP_DAC_OVERRIDE, and that the worker's runc binary is visible at /proc/1/root. Fixed in worker 0.1.756: Buildah RUN steps, including the WORKDIR mkdir, use OCI isolation with private PID, IPC, and network namespaces, and tenant ARG values are passed only into the build container.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120306",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120307",
+      "desc": "The Beta9 worker serves the sandbox file API from outside the container. getHostPathFromContainerPath turns the tenant's container path into a worker path. If the unresolved path starts with a mount destination, including the default upload mount at /tmp/.beta9, the remainder is joined onto that mount's source with filepath.Join, which cleans parent-directory segments after the prefix check. A long enough run of those segments names any absolute path on the worker. A path that matches no mount is joined onto the container root and opened in the worker's own filesystem, so an absolute symbolic link such as /var/run pointing at /run is followed against the worker root. Upload, download, stat, list, find-in-files, replace-in-files, and delete-file all call this helper. A tenant with a workspace token and one running sandbox can read, write, list, and delete files on the hosting worker as root, including files of other tenants on that machine. A read-only proof downloaded the worker pod's Kubernetes service account token through the file API for a path that did not exist inside the sandbox. In the shipped remote-node manifests that service account is bound to cluster-admin. Fixed in worker 0.1.756: sandbox file operations and workspace sync open paths with os.OpenRoot, so parent-directory and symlink lookups stay inside the container root or the mount source.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120307",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120308",
+      "desc": "A Beta9 tenant can attach a volume when deploying a function, endpoint, or task queue. The gateway builds the host path by joining the shared volumes root, the workspace name, and the volume identifier from the stub configuration. Nothing checks that the identifier names a volume that workspace owns. Parent-directory segments in the identifier collapse the joined path to the worker's filesystem root, and the worker bind-mounts that path into the sandbox read-write unless the volume was explicitly marked read-only. A tenant with a workspace token can therefore read and write the worker's files, including other tenants' volumes stored on that machine. Confirmed against gateway 0.1.769 and worker 0.1.745. Fixed in gateway 0.1.776 and worker 0.1.756: volume identifiers and mount paths are validated before a mount is built, including for stubs saved before the check existed, and the gateway rejects a volume that does not exist or is not owned by the workspace.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120308",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-117680",
+      "desc": "Improper Check for Unusual or Exceptional Conditions vulnerability in the pattern and patternProperties keywords in lud jsv allows an unauthenticated remote attacker to bypass schema validation via a string that matches a schema regex only after heavy backtracking. JSV.Helpers.RegexExt.bounded_match?/2 runs schema regexes with a backtracking budget but calls :re.run/3 without :report_errors, so a match that exhausts the budget returns the same :nomatch as a real non-match. A key that matches a patternProperties regex is then checked against additionalProperties or not at all, and a string that matches a not subschema with a pattern is accepted. Before the budget existed, Regex.match?/2 failed the same way at Erlang's default match limit.\n\nOnly schemas whose regex explores a catastrophic branch before the branch that matches are affected. The attacker controls the data, not the schema, and linear patterns never exhaust the budget.\n\nThis issue affects jsv: from 0.1.0 before 0.26.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-117680",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120228",
+      "desc": "A flaw has been found in WAVLINK WN553X1-B V260403_2.0.0. This vulnerability affects the function sub_416D88 of the file /bin/ioos of the component ioos Service. Executing a manipulation of the argument group_id/group_name can lead to os command injection. The attack can be executed remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120228",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120229",
+      "desc": "A vulnerability has been found in WAVLINK WN553X1-B 260403_2.0.0. This issue affects the function sub_416B50 of the file /bin/ioos. The manipulation of the argument file_id leads to os command injection. The attack is possible to be carried out remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120229",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120230",
+      "desc": "A vulnerability was found in WAVLINK WN701AE 260105. Impacted is the function del_vlan_group of the component ioos Web Backend. The manipulation of the argument vlan_name results in os command injection. The attack may be performed from remote. The exploit has been made public and could be used. The vendor was contacted early about this disclosure.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120230",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120231",
+      "desc": "A vulnerability was determined in WAVLINK WN553X1-B V260403_2.0.0. The affected element is the function sub_416568 of the file /bin/ioos of the component OpenVPN CLI Handler. This manipulation of the argument file_id causes os command injection. It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120231",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120232",
+      "desc": "A vulnerability was identified in Horizon DataSys Reboot Restore Standard up to 13.2. The impacted element is the function sub_23908 in the library shield.sys of the component Kernel Driver. Such manipulation leads to memory corruption. The attack can only be performed from a local environment. The exploit is publicly available and might be used. A fix is planned for the upcoming release.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-01",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120232",
+      "cvss": "8.8",
       "cwe": ""
     },
     {

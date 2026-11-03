@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-03T03:38:34.393720+00:00",
-  "summary": "Today's digest contains 586 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 17 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-11-03T11:41:59.909385+00:00",
+  "summary": "Today's digest contains 600 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 17 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 586,
+    "new": 600,
     "changed": 0,
     "removed": 0,
-    "total": 718020,
+    "total": 718620,
     "zeroday": 83,
     "exploited": 33,
     "pakistan": 17
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 486
+      "count": 500
     },
     {
       "name": "Exploit-DB",
@@ -9729,6 +9729,258 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111464",
       "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120518",
+      "desc": "The BuddyPress XProfile Image Field plugin for WordPress is vulnerable to arbitrary file deletion in all versions up to, and including, 3.1.0. This is due to bpxp_image_field_update_on_user_activation() calling unlink() on a path built from visitor-supplied signup metadata with no realpath() resolution, no containment check against the profile-image directory and no extension allow-list. Submitting a zero-byte file with the 'field_N_hidden' parameter during registration makes the plugin store the raw value, which is then resolved against the document root when the pending signup is activated. This makes it possible for unauthenticated attackers to delete arbitrary files on the server, which can easily lead to remote code execution when the right file (such as wp-config.php) is deleted. Requires open registration and an image-type profile field on the signup form.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120518",
+      "cvss": "9.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120524",
+      "desc": "The News Kit Addons For Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'formData' parameter in all versions up to, and including, 1.4.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is possible because an operator-precedence bug in handle_scripts() causes the admin bundle — and its inlined nekit-admin-nonce — to be enqueued on every admin screen accessible to Subscribers (such as /wp-admin/profile.php), and because sanitize_text_field() is applied to the raw JSON string before json_decode(), allowing angle brackets encoded as \\u003c/\\u003e to survive sanitization and be restored to literal angle brackets, enabling overwrite of _elementor_data on any post.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120524",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120534",
+      "desc": "The Advanced Custom Fields: Extended PRO plugin for WordPress is vulnerable to Limited Code Injection in all versions up to, and including, 0.9.2.6 via the render_field function. This is due to insufficient validation of form configuration parameters before merging into field settings and passing to call_user_func_array in the render_field method. This makes it possible for unauthenticated attackers to call arbitrary WordPress functions with controlled arguments. Method 1 requires the administrator to enable the non-default 'shortcode_preview' setting for the target form, while Method 2 requires the server environment to lack OpenSSL functions, causing ACF Pro's acf_decrypt to fall back to unverified base64 decoding.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120534",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120538",
+      "desc": "The Easy Digital Downloads plugin for WordPress is vulnerable to authentication bypass leading to administrator account takeover in all versions up to, and including, 3.7.2. During a PayPal guest checkout, the email address entered in the guest-checkout field is trusted as proof of identity: edd_get_purchase_form_user() binds the new guest order to an existing WordPress user purely on an email-address match, rewriting the order's user_id to that user's ID. The PayPal capture sink PurchaseUser::maybe_log_in_after_capture() then looked the user up by the order email (get_user_by( 'email', $order->email )) and, when $order->user_id equalled that user's ID (which the email-binding step guarantees), issued an authenticated session with wp_set_auth_cookie(). An unauthenticated attacker who starts a guest checkout using an administrator's email address (where that administrator has no existing EDD customer record) and completes the PayPal purchase flow therefore receives an authenticated session as that administrator — a full account takeover. The same sink is reachable through the standard PayPal checkout and the REST UnbrandedCard and Fastlane flows.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120538",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120544",
+      "desc": "The Academy LMS – AI Course Builder, Quizzes, Certificates & eLearning plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 4.0.1 via the 'id' parameter. This makes it possible for authenticated attackers, with contributor-level access and above, to read the contents of arbitrary .html files on the server. The plugin appends a '.html' extension to the attacker-supplied path before reading it, so files with any other extension — including wp-config.php — are out of reach. The file's contents are returned in full in the REST JSON response's content field.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120544",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120551",
+      "desc": "The WP Compress – Instant Performance & Speed Optimization plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 7.22.01. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to link the victim site to an attacker-controlled WP Compress account, overwrite plugin settings to an aggressive live-CDN preset, and gain the shared api_key that authenticates all nopriv HMAC-gated endpoints — enabling full control over cache purging, file deletion, opcode cache invalidation, and other privileged plugin operations. This vulnerability only affects fresh installations or lite/free-mode installs where no api_key is already stored, as the sole guard fails open when the stored key is absent.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120551",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120552",
+      "desc": "The SEO Engine – Smart SEO with AI, Schema & Redirection for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'title' parameter in all versions up to, and including, 0.9.9 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. WordPress core's wp_filter_kses (applied via title_save_pre for Contributors and Authors) strips literal tag markup on save but leaves HTML-entity-encoded payloads intact in the database, meaning entity-encoded XSS payloads stored via the standard WordPress REST API (POST /wp-json/wp/v2/posts) are not neutralized before reaching the vulnerable sink.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120552",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120558",
+      "desc": "The Advanced Shipment Tracking for WooCommerce plugin for WordPress is vulnerable to SQL Injection via the `tracking_provider` parameter of the `POST /wp-json/wc-ast/v3/orders/<order_id>/shipment-trackings` REST endpoint in all versions up to, and including, 3.9. This is due to insufficient escaping on the user-supplied parameter and lack of sufficient preparation on the existing SQL query in `WC_Advanced_Shipment_Tracking_Admin::get_provider_slug_from_name()` — the value is concatenated directly into the format string of `$wpdb->prepare()` rather than bound as a parameter, bypassing parameterised-query protections. This makes it possible for authenticated attackers, with Shop Manager-level access and above, to append additional SQL queries into the already-existing query that can be used to extract sensitive information from the database.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120558",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120559",
+      "desc": "The Contact Form Extender for Divi Builder plugin for WordPress is vulnerable to Arbitrary File Deletion due to insufficient file path validation in the cfefd_remove_uploaded_file() function in all versions up to, and including, 1.0.6. This makes it possible for unauthenticated attackers to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php). The nonce protecting this AJAX action is rendered into the public page source via wp_localize_script and is therefore retrievable by any unauthenticated visitor.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120559",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120561",
+      "desc": "The JetFormBuilder — Dynamic Blocks Form Builder plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the 'do_action' function in the 'Update_Options' action class in all versions up to, and including, 3.6.2. This makes it possible for unauthenticated attackers to modify JetEngine Options Page values when an administrator has configured a form with the \"Update Options\" post-submission action. The vulnerability requires that both JetFormBuilder and JetEngine are installed and active, and that an administrator has specifically configured a form with the Update Options action.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120561",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120563",
+      "desc": "The WooCommerce Multilingual & Multicurrency with WPML plugin for WordPress is vulnerable to SQL Injection in all versions up to, and including, 5.5.7. This is due to insufficient input validation on the currency exchange rate parameter in the save_currency() AJAX handler, which lacks capability checks and allows subscriber-level users to store malicious SQL payloads that are later concatenated directly into ORDER BY clauses without proper sanitization. This makes it possible for authenticated attackers, with Shop Manager-level access and above, to append additional SQL queries to extract sensitive information from the database.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120563",
+      "cvss": "4.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120574",
+      "desc": "The SureCart plugin for WordPress is vulnerable to unauthenticated account takeover in all versions up to, and including, 4.9.5. The passwordless one-time-code login REST route (VerificationCodeController::verify(), whose permission callback returns true) resolves an attacker-supplied login to any WordPress user, verifies a 6-digit code, and on success calls $user->login() → wp_set_auth_cookie() for a user of any role. In the affected versions this path has no per-account attempt counter, no persistent email/IP lockout or rate limit (the upstream CDN throttle is bypassable via IP rotation), and no restriction preventing high-privilege accounts from being logged in through it. An unauthenticated attacker can trigger a code for any user (including an administrator) via the companion unauthenticated endpoint and brute-force the 6-digit code to obtain an authenticated session as that user, resulting in a full administrator account takeover.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120574",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120575",
+      "desc": "The Photo Engine (Media Organizer & Lightroom) plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'hierarchy[].name' parameter in all versions up to, and including, 6.5.7 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with subscriber-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is exploitable by Subscribers because the /?wplr-sync-api endpoint authenticates solely via wplr_auth_token usermeta with no capability check, and the current user's token is exposed on every admin page via localized script data due to a commented-out screen-condition guard.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120575",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120577",
+      "desc": "The FluentCart A New Era of eCommerce – Faster, Lighter, and Simpler plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the deleteFile function in all versions up to, and including, 1.6.2. This makes it possible for authenticated attackers, with custom-level access and above, to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php).",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-03",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120577",
+      "cvss": "8.1",
       "cwe": ""
     },
     {

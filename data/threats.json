@@ -1,13 +1,13 @@
 {
-  "generated": "2026-11-04T15:12:34.193358+00:00",
-  "summary": "Today's digest contains 600 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 17 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-11-04T21:26:33.230457+00:00",
+  "summary": "Today's digest contains 601 vulnerabilities across 5 sources. 84 zero-day exploits detected, 34 actively exploited from CISA KEV, and 17 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 600,
+    "new": 601,
     "changed": 0,
     "removed": 0,
-    "total": 720970,
-    "zeroday": 83,
-    "exploited": 33,
+    "total": 721571,
+    "zeroday": 84,
+    "exploited": 34,
     "pakistan": 17
   },
   "sources": [
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 33
+      "count": 34
     },
     {
       "name": "Pakistan CERT",
@@ -354,6 +354,25 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2024-27834",
+      "desc": "Apple iOS, iPadOS, macOS, Safari, tvOS and watchOS 10.5 contain an improper authentication vulnerability which could allow an attacker with arbitrary read and write capability to bypass pointer authentication.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-11-04",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-27834",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -1448,13 +1467,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-103379",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
       "id": "CVE-2026-104647",
       "desc": "The weMail  WordPress plugin through 2.1.6 does not correctly verify user capabilities in its REST API permission checks, treating any user whose role is in the weMail  WordPress plugin through 2.1.6's allowed-roles list (Editor and above by default) as authorised for every action, which allows such users to perform administrator-level actions including enumerating all registered users with their email addresses and modifying the weMail  WordPress plugin through 2.1.6's own access-control configuration.",
-      "severity": "MEDIUM",
+      "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-11-03",
       "pakistan": false,
@@ -1466,7 +1485,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104647",
-      "cvss": "0.0",
+      "cvss": "3.8",
       "cwe": ""
     },
     {
@@ -1484,7 +1503,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-104648",
-      "cvss": "0.0",
+      "cvss": "4.9",
       "cwe": ""
     },
     {
@@ -1502,7 +1521,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105967",
-      "cvss": "0.0",
+      "cvss": "5.8",
       "cwe": ""
     },
     {
@@ -1520,7 +1539,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-105993",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -1538,7 +1557,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-106004",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -1556,7 +1575,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115205",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -2407,7 +2426,7 @@
     },
     {
       "id": "CVE-2026-99243",
-      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nio-wq: order the exit bit against worker creation task work\n\nio_wq_exit_workers() cancels task work for queued worker creation with\ntask_work_cancel_match(). That has a plain load of task->task_works.\n\nio_queue_worker_create() adds the new entry and tests IO_WQ_BIT_EXIT to\ncancel it if the workqueue is already on its way out.\n\nThat must be ordered. task_work_add() has a full barrier via cmpxchg().\nBut io_wq_exit_start() sets the bit with set_bit() which doesn't have\nany memory ordering.\n\nSo afaict, on weakly ordered architectures the exiting task may load\ntask_works before the store of the bit is visible. The other side tests\nthe bit before the store is visible as well. So the entry remains queued\nwith worker_refs and the exiting task waits on worker_done indefinitely.\n\nIf the task still has rings then io_uring_del_tctx_node() provides the\nbarrier via test_and_set_bit() in io_wq_set_exit_on_idle(). When it\nhas closed all rings though that barrier is gone.\n\nAdd the barrier after the set_bit().",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-11-03",
@@ -2569,7 +2588,7 @@
     },
     {
       "id": "CVE-2026-99252",
-      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/mpscq: disable preemption while pushing\n\nA push makes the node the new tail, and then links it to its predecessor.\nIn between the queue isn't empty, but mpscq_pop() can't get at the node.\nThe consumers deal with that by trying again, with a cond_resched() in\nthe loop to give a preempted producer the chance to finish.\n\ncond_resched() doesn't do that if the consumer has a higher priority than\nthe producer and both have to use the same CPU:\n\n  producer (SCHED_OTHER)              consumer (SCHED_FIFO), same CPU\n  io_req_local_work_add()\n    mpscq_push()\n      prev = xchg(&q->tail, node)\n  <preempted>                         io_cqring_wait()\n                                        __io_run_local_work()\n                                      again:\n                                          cond_resched()  // nothing to do\n                                          mpscq_pop()     // NULL\n                                          // work pending, no events yet\n                                          goto again\n\nThe producer can be any task that is able to queue task_work for the\nring: an io-wq worker, or somebody who sends a message with\nIORING_OP_MSG_RING. The consumer spins, holding ->uring_lock, until the\nscheduler takes pity on the fair class, which takes about a second with\nthe default settings of the fair server, and forever without it. The\nloops in tctx_task_work_run() and io_cancel_local_task_work() have the\nsame problem.\n\nDon't allow preemption between the two steps. That bounds the time the\nwindow is open on the CPU of the producer by what interrupts take, and a\nconsumer that waits for that is on another CPU. The cost is a\npreempt_disable()/preempt_enable() pair per push.",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-11-03",
@@ -2749,7 +2768,7 @@
     },
     {
       "id": "CVE-2026-99262",
-      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/timeout: don't lose a cancel as io-wq arms a timeout\n\nAn IORING_OP_TIMEOUT run by io-wq, because of IOSQE_ASYNC, has the same\nproblem as poll, futex and waitid. io_wq_submit_work() looks at\nIO_WQ_WORK_CANCEL once, before it issues the request. A cancel in between\nflags the work, gets -EALREADY, and searches ->timeout_list in vain,\nwhile the worker then adds the request and starts the timer:\n\n  io-wq worker                          io_try_cancel()\n  io_wq_submit_work()\n    IO_WQ_WORK_CANCEL isn't set\n                                        io_async_cancel_one()\n                                          sets IO_WQ_WORK_CANCEL\n                                          = -EALREADY\n                                        io_timeout_cancel() = -ENOENT\n    io_timeout()\n      adds the request to ->timeout_list\n      hrtimer_start()\n    = IOU_ISSUE_SKIP_COMPLETE\n\nNobody looks at the flag again, and the timeout runs its course. At ring\nexit, io_uring_try_cancel_requests() cancels io-wq work and then kills\nthe timeouts the same way, so an exiting task can get stuck for the full\nduration of such a timeout.\n\nLook at the flag under ->timeout_lock, which the search takes as well,\nand fail the request if it is set. If the search came first, the flag is\nvisible. If it comes later, it finds the request on the list.",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-11-03",
@@ -2767,7 +2786,7 @@
     },
     {
       "id": "CVE-2026-99263",
-      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/poll: avoid retry wakeup loss when dropping ownership\n\nIf a wakeup sets IO_POLL_RETRY_FLAG between the owning task consuming\nthe existing instance of IO_POLL_RETRY_FLAG and the loop check\nof io_poll_check_events(), then we stall on processing the request\nuntil an unrelated wakeup comes along.\n\nUsing atomic_cmpxchg instead of atomic_sub_return to guarantee both the\ncount v and poll_refs are 0 and no wake-ups are missed.",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-11-03",
@@ -2785,8 +2804,8 @@
     },
     {
       "id": "CVE-2026-99264",
-      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/net: don't retry recv on uncommitted buffers\n\nCommit 41b70df5b38b (\"io_uring/net: commit partial buffers on retry\")\ncommits ring provided buffers when a receive is going to be retried after\na partial transfer, so that another request using the same buffer group\ncan't be handed the memory the first one keeps receiving into. It commits\nthe number of bytes received so far. That does the job for a single\nbuffer which is consumed as a whole, but the request hangs on to all it\nhas mapped:\n\n- For a buffer ring with IOU_PBUF_RING_INC only these bytes are consumed.\n  The rest of the buffer stays at the head of the ring.\n- For a bundle only the buffers which hold these bytes are consumed, the\n  others that were peeked stay in the ring.\n\nIn both cases the next receive with that buffer group gets memory that\nthe retried request is still going to write to, and whoever comes last\noverwrites the data of the other. What the retry fills isn't committed at\nall, as the buffer list isn't known any more at that point. So the kernel\nhands it out again later on, while the CQE tells the application that it\nwas used, and for an incremental buffer that it is done with.\n\nThe remainder can't be committed in advance: if the request ends up\nreceiving less, there is no way to tell the application that more was\nconsumed than the CQE accounts for. Complete the request with what it has\ngot instead of retrying it. MSG_WAITALL is no longer honoured for\nreceives into incremental buffers or multi buffer bundles, they can\nreturn a short count, with the request marked as failed like for other\nshort MSG_WAITALL transfers.",
-      "severity": "HIGH",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+      "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-11-03",
       "pakistan": false,
@@ -2798,12 +2817,12 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-99264",
-      "cvss": "7.8",
+      "cvss": "0.0",
       "cwe": ""
     },
     {
       "id": "CVE-2026-99265",
-      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/openclose: keep the lock in io_pipe_fixed()\n\nio_pipe_fixed() installs both ends of the pipe in the fixed file table,\ndrops ->uring_lock, and copies the slot numbers to the application. If\nthat faults, it takes the lock again and removes whatever is in these\nslots.\n\nIf the request is run by io-wq the lock really is dropped in between, and\nthe slots are visible to everybody else. By the time the error path gets\nto them, they may have been closed and reused, by IORING_OP_CLOSE and a\ndirect open or accept, or by IORING_REGISTER_FILES_UPDATE. Then a file is\nremoved from the table that has nothing to do with the failed request.\n\nDo the copy with the lock held. Faulting in user memory under\n->uring_lock is fine, the registration paths do it all the time.",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-11-03",
@@ -2821,7 +2840,7 @@
     },
     {
       "id": "CVE-2026-99266",
-      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/zcrx: fix buffer offsets in areas above 4GB\n\nio_zcrx_queue_cqe() computes the offset of the buffer in its area from\nnet_iov_idx(), which is an unsigned int, so the shift is done in 32 bits\nand only the result is widened to the u64 that goes into the CQE. An area\ncan be up to 1TB in size. For every niov beyond the first 4GB the CQE\npoints the application at a buffer 4GB, or a multiple of that, below the\none which has the data. It reads the wrong data, and then returns a\nbuffer it doesn't own via the refill queue while the real one is never\ngiven back.",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-11-03",
@@ -2839,7 +2858,7 @@
     },
     {
       "id": "CVE-2026-99267",
-      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/napi: make stale entries time out after 60s\n\nWith dynamic tracking a NAPI id that hasn't been seen for a minute is\nmeant to be dropped from the list the ring busy polls. The timeout is\nadded to jiffies, but it is defined as 60 * SEC_CONVERSION, and\nSEC_CONVERSION isn't the number of jiffies in a second. It is the\ninternal factor of __timespec64_to_jiffies(), HZ scaled up by\nSEC_JIFFIE_SC bits. For HZ=1000 that is 1000 << 22, which puts the\ntimeout at about eight years. On 32-bit the multiplication overflows.\n\nSo entries are never removed, and every id that a socket of the ring\never had keeps being polled on each wait.",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-11-03",
@@ -2857,7 +2876,7 @@
     },
     {
       "id": "CVE-2026-99268",
-      "desc": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring: wake ring pollers for local task_work\n\nWith IORING_SETUP_DEFER_TASKRUN completions are queued as local work, and\nonly become CQEs when the submitter enters the kernel to wait for events.\nFor an application that finds out via poll() or epoll on the ring fd when\nit is time to do that, io_uring_poll() reports EPOLLIN if local work is\npending.\n\nThat only helps if the work is there at the time of the call. When\nDEFER_TASKRUN was added, io_req_local_work_add() did io_cqring_wake(),\nwhich took care of tasks sleeping in poll() as well. Then polling got a\nwait queue of its own, ->poll_wq, and the wake up in\nio_req_local_work_add() was replaced by waking the submitter directly.\nSince then ->poll_wq is only woken when CQEs are committed, which for\nsuch a ring is done by the very task that is waiting to be told to:\n\n  submitter                           completion\n  poll(ring_fd)\n    io_uring_poll()  // nothing yet\n    schedule()\n                                      io_req_local_work_add()\n                                        // ->cq_wait_nr: nobody waits\n  // sleeps on\n\nWake ->poll_wq when the first entry is put on the work list. Like for the\neventfd, that must not be done right away if the work is queued from a\nwake up handler, as the chain of wake ups could get back to the wait\nqueue whose lock is held. Use an RCU callback in that case, with a\nreference to the ring.",
+      "desc": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-11-03",
@@ -5035,7 +5054,7 @@
     },
     {
       "id": "CVE-2026-119741",
-      "desc": "rsync through 3.5.1 contains a denial of service vulnerability in the delta-transfer sender's hash_search() in match.c that allows malicious receivers to trigger unbounded strong-checksum work at consecutive offsets. Unauthenticated attackers pulling from a public daemon module can supply weak checksums colliding with consecutive rolling windows plus non-matching strong checksums, exhausting sender CPU across concurrent connections.",
+      "desc": "rsync before 3.5.2 contains a denial of service vulnerability in the delta-transfer sender's hash_search() in match.c that allows malicious receivers to trigger unbounded strong-checksum work at consecutive offsets. Unauthenticated attackers pulling from a public daemon module can supply weak checksums colliding with consecutive rolling windows plus non-matching strong checksums, exhausting sender CPU across concurrent connections.",
       "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-03",
@@ -7447,7 +7466,7 @@
     },
     {
       "id": "CVE-2026-120567",
-      "desc": "The MongoDB Entity Framework Core provider does not neutralize special elements when it places a caller-supplied value into a bulk update that is expressed as a databasea result, a value supplied as plain data may be interpreted by the database as expression syntax. A part value through normal application input may causeunintended modification of fields in the records the application is updating, and may cause data already held in those records to be relocated into other fields of the same record.",
+      "desc": "The MongoDB Entity Framework Core provider does not neutralize special elements in values passed to SetProperty when an ExecuteUpdate call also contains a setter that reads the entity being updated. In that case the update is sent as an aggregation pipeline, and a caller-supplied string beginning with $ is evaluated as an expression rather than stored as data. A party who can influence such a value may modify or remove fields in the records being updated, or copy other fields of the same record into them.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-11-03",
@@ -9242,7 +9261,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121038",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -9260,7 +9279,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121039",
-      "cvss": "0.0",
+      "cvss": "5.3",
       "cwe": ""
     },
     {
@@ -9296,7 +9315,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121041",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -9332,7 +9351,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121043",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -9368,7 +9387,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121045",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -9428,7 +9447,7 @@
     {
       "id": "CVE-2026-121049",
       "desc": "Out of bounds read in V8 in Google Chrome prior to 157.0.8103.38 allowed a local attacker to read memory via a crafted file. (Chromium security severity: Medium)",
-      "severity": "MEDIUM",
+      "severity": "LOW",
       "source": "NVD/NIST",
       "date": "2026-11-03",
       "pakistan": false,
@@ -9440,13 +9459,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121049",
-      "cvss": "0.0",
+      "cvss": "3.3",
       "cwe": ""
     },
     {
       "id": "CVE-2026-121050",
       "desc": "Race condition in Mobile in Google Chrome on on iOS prior to 157.0.8103.38 allowed a remote attacker to bypass web origin policy via a crafted HTML page. (Chromium security severity: Low)",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-03",
       "pakistan": false,
@@ -9458,7 +9477,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121050",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -9512,13 +9531,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121053",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
       "id": "CVE-2026-121054",
       "desc": "Improper state validation in XML in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to bypass web origin policy via a crafted HTML page. (Chromium security severity: Low)",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-03",
       "pakistan": false,
@@ -9530,7 +9549,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121054",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -9584,7 +9603,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121059",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -9662,7 +9681,7 @@
     {
       "id": "CVE-2026-121064",
       "desc": "Improper input validation in Performance in Google Chrome prior to 157.0.8103.38 allowed a local attacker to potentially execute arbitrary code inside the sandbox via a local program. (Chromium security severity: Low)",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-03",
       "pakistan": false,
@@ -9674,13 +9693,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121064",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-121065",
       "desc": "Incorrect authorization in DevTools in Google Chrome prior to 157.0.8103.38 allowed a remote attacker leveraging social engineering to bypass web origin policy via a crafted HTML page. (Chromium security severity: Medium)",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-03",
       "pakistan": false,
@@ -9692,7 +9711,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121065",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -9728,7 +9747,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121067",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -9818,13 +9837,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121072",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-121073",
       "desc": "Use after free in Network in Google Chrome prior to 157.0.8103.38 allowed a remote attacker to potentially execute arbitrary code outside the sandbox via crafted network traffic. (Chromium security severity: Low)",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-11-03",
       "pakistan": false,
@@ -9836,7 +9855,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121073",
-      "cvss": "0.0",
+      "cvss": "9.6",
       "cwe": ""
     },
     {
@@ -9980,7 +9999,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121081",
-      "cvss": "0.0",
+      "cvss": "5.9",
       "cwe": ""
     },
     {

@@ -1,13 +1,13 @@
 {
-  "generated": "2026-11-06T19:00:30.800847+00:00",
-  "summary": "Today's digest contains 599 vulnerabilities across 5 sources. 84 zero-day exploits detected, 34 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-11-06T23:46:23.789145+00:00",
+  "summary": "Today's digest contains 600 vulnerabilities across 5 sources. 85 zero-day exploits detected, 35 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 599,
+    "new": 600,
     "changed": 0,
     "removed": 0,
-    "total": 725049,
-    "zeroday": 84,
-    "exploited": 34,
+    "total": 725649,
+    "zeroday": 85,
+    "exploited": 35,
     "pakistan": 15
   },
   "sources": [
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 34
+      "count": 35
     },
     {
       "name": "Pakistan CERT",
@@ -316,6 +316,25 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-19868",
+      "desc": "SonicWall SonicOS SSLVPN contains a use of single-factor authentication vulnerability that may allow a user with valid credentials for an alternate authentication method to bypass SAML authentication controls. Successful exploitation may also bypass SAML-enforced multi-factor authentication (MFA).",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-11-06",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-19868",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -2460,7 +2479,7 @@
     },
     {
       "id": "CVE-2026-123012",
-      "desc": "In Gogs 0.14.3, the Git Smart HTTP authorization layer in internal/route/repo/http.go allows a push when only read access was intended, a different vulnerability than CVE-2026-52810. This occurs because of inconsistency about whether a verb is checked in a case-sensitive manner.",
+      "desc": "In Gogs 0.14.3, the Git Smart HTTP authorization layer in internal/route/repo/http.go allows a push when only read access was intended, a different vulnerability than CVE-2026-52810. This occurs because of a case-sensitivity desync between the authorization classifier and the request dispatcher: the gitHTTPIsPull function compares the Git action verb case-sensitively and defaults to pull (read access) for any unrecognized string, whereas the request dispatcher lowercases the same verb before routing it to the receive-pack handler. Capitalizing a single letter in the URL (e.g. info/Refs instead of info/refs, or git-receive-Pack instead of git-receive-pack) causes the classifier to misidentify a push as a pull, granting only read-level authorization, whereas the dispatcher routes it to the write handler. An authenticated read-only collaborator can exploit this to push to a private repository, creating, updating, or deleting refs.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-11-05",
@@ -4656,8 +4675,8 @@
     },
     {
       "id": "CVE-2019-16447",
-      "desc": "Rejected reason: Reserved ID never published and not linked to any VULN ticket - quota reclaim 2026-11-05",
-      "severity": "MEDIUM",
+      "desc": "Adobe Illustrator CC versions 23.1 and earlier have a binary planting vulnerability. Successful exploitation could lead to local code execution.",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-05",
       "pakistan": false,
@@ -4669,7 +4688,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2019-16447",
-      "cvss": "0.0",
+      "cvss": "7.8",
       "cwe": ""
     },
     {
@@ -5430,7 +5449,7 @@
     },
     {
       "id": "CVE-2019-7907",
-      "desc": "Rejected reason: Reserved ID never published and not linked to any VULN ticket - quota reclaim 2026-11-05",
+      "desc": "Rejected reason: Reserved 2019 Magento 1 ID with no published record. Linked to VULN-9633 but never published; left REJECTED after the 2026-11-06 review of wrongly rejected IDs.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-11-05",
@@ -6636,7 +6655,7 @@
     },
     {
       "id": "CVE-2020-9709",
-      "desc": "Rejected reason: Reserved ID never published and not linked to any VULN ticket - quota reclaim 2026-11-05",
+      "desc": "Adobe Photoshop versions Photoshop CC 2019, and Photoshop 2020 have a security bypass vulnerability. Successful exploitation could lead to privilege escalation.",
       "severity": "MEDIUM",
       "source": "NVD/NIST",
       "date": "2026-11-05",

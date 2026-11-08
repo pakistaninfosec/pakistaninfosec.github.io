@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-08T01:09:51.927546+00:00",
-  "summary": "Today's digest contains 569 vulnerabilities across 5 sources. 80 zero-day exploits detected, 30 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-11-08T07:46:46.259692+00:00",
+  "summary": "Today's digest contains 595 vulnerabilities across 5 sources. 80 zero-day exploits detected, 30 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 569,
+    "new": 595,
     "changed": 0,
     "removed": 0,
-    "total": 728617,
+    "total": 729212,
     "zeroday": 80,
     "exploited": 30,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 474
+      "count": 500
     },
     {
       "name": "Exploit-DB",
@@ -9418,6 +9418,474 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120531",
       "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123493",
+      "desc": "Vikunja from 2.4.0 before 2.7.1 contains an authentication bypass vulnerability that allows disabled or locked users to retain access through API tokens owned by their bot users. Because token validation only checks the bot's own status, attackers holding pre-minted bot tokens can keep reading and modifying shared projects via the HTTP API, CalDAV, MCP and feeds.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123493",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123494",
+      "desc": "Vikunja before 2.7.1 contains a cross-site request forgery vulnerability that allows attackers to import their data into a victim's account because the Todoist, Microsoft To Do, and Trello migration OAuth callbacks lack a bound state parameter. Attackers can authorize their own account, keep the unused callback code or token, and lure a logged-in victim to the migration callback route to auto-import attacker-chosen projects and tasks containing phishing links.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123494",
+      "cvss": "3.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123495",
+      "desc": "Vikunja 2.0.0 before 2.7.1 accepts form-encoded bodies on the /api/v2 login and OIDC callback endpoints without CSRF or Origin checks, enabling login cross-site request forgery. An attacker with an account can lure a victim to a page posting the attacker's credentials or OIDC code, switching the victim into the attacker's account and exposing data the victim then adds.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123495",
+      "cvss": "4.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123496",
+      "desc": "Vikunja veans before 2.7.1 contains a symlink following vulnerability that allows attackers to make veans init write files outside the repository via crafted repo symlinks. Attackers can ship symlinked .veans.yml, .claude, or .opencode entries to overwrite user files like ~/.bashrc or install veans hooks and plugins globally.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123496",
+      "cvss": "3.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123497",
+      "desc": "Vikunja veans before 2.7.1 contains a protocol downgrade vulnerability in serverCandidates that allows on-path attackers to force plain HTTP during veans init and login. Attackers can block HTTPS ports so discovery accepts an unverified HTTP response, capturing passwords, TOTP codes or bot tokens and persisting cleartext API traffic.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123497",
+      "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123498",
+      "desc": "Vikunja veans before 2.7.1 contains a prompt injection vulnerability that allows project members with write access to inject instructions by setting project titles or task content rendered verbatim inside the coding agent's authoritative instruction block. Attackers can craft ProjectTitle or task descriptions that the prime hook loads on SessionStart and PreCompact, causing the agent to modify the developer's checkout or run commands.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123498",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123499",
+      "desc": "Vikunja veans before 2.7.1 contains a credential exposure vulnerability that allows malicious repository authors to capture API tokens by specifying an attacker-controlled server in .veans.yml. When veans runs in an untrusted checkout, it sends VEANS_TOKEN as a Bearer token, or login passwords, TOTP codes and tokens, to that server, granting attackers the victim's Vikunja access.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123499",
+      "cvss": "5.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123500",
+      "desc": "Vikunja before 2.7.1 contains an insecure file permissions vulnerability that allows local users to read dump archives created with umask permissions by the vikunja dump command. Local attackers on a shared host can read the world-readable zip in the rootpath to obtain config, password hashes, TOTP secrets, tokens, and stored files.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123500",
+      "cvss": "6.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123501",
+      "desc": "Vikunja before 2.7.1 contains an uncontrolled resource consumption vulnerability that allows authenticated users to exhaust server memory through concurrent image decodes in avatar and background uploads. Attackers can send several parallel tiny, highly compressible PNGs decoded at up to 50 megapixels each, pushing the API process into memory pressure or an OOM kill.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123501",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123502",
+      "desc": "Vikunja before 2.7.1 contains an information exposure vulnerability that allows log readers to obtain link-share hashes because the request logger records the raw URI of the /shares/:share/auth route. Attackers with access to Vikunja or reverse proxy access logs can reuse non-expiring, non-password-protected share hashes to obtain a project JWT with read, write or admin permission.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123502",
+      "cvss": "5.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123503",
+      "desc": "Vikunja before 2.7.1 contains an improper authorization vulnerability in canDoBucket that allows users with project write access to delete buckets via a mismatched view ID. Attackers can request deletion through another view's bucket endpoint to bypass the last-bucket rule, leaving dangling default/done bucket references and inconsistent task buckets.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123503",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123504",
+      "desc": "Vikunja from 0.22.0 before 2.7.1 contains an information disclosure vulnerability that allows read-only project members to view full webhook target URLs by listing project webhooks. Attackers can extract incoming-webhook tokens or API keys embedded in target_url values to post to receiving channels or reuse keys until rotated.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123504",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123505",
+      "desc": "Vikunja before 2.7.1 contains an insecure file permissions vulnerability that allows local users to read stored data because localStorage.Write creates blobs world-readable. Local attackers on a shared host can read attachments, project backgrounds and exports, and copy the SQLite database to crack password hashes offline.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123505",
+      "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123506",
+      "desc": "Vikunja from 2.2.0 before 2.7.1 contains an authorization bypass vulnerability that allows holders of tokens scoped only to projects_webhooks to manage the owner's user-level webhooks by supplying user_id in request bodies. Attackers can register user webhooks to their own receiver to obtain reminders and task payloads from all owner projects, and read, change or delete existing user webhooks.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123506",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123507",
+      "desc": "Vikunja from 0.24.0 before 2.7.1 contains a nil pointer dereference vulnerability that allows project admins to break project views by saving a filter-mode bucket configuration with a null filter. Because validateProjectViewFilters skips nil entries, every subsequent read of the view panics in kanban and task collection code, returning HTTP 500 to all project members.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123507",
+      "cvss": "2.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123508",
+      "desc": "Vikunja before 2.7.1 contains a supply chain vulnerability in its mage release targets that fetch the xgo module and Docker image by mutable latest references. Attackers who compromise the upstream xgo module, image, or registry can inject malicious code into subsequently built release binaries shipped under a valid signature.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123508",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123509",
+      "desc": "Vikunja before 2.7.1 contains an uncontrolled resource consumption vulnerability that allows project writers or view admins to create unlimited kanban buckets due to missing count caps. Attackers can create thousands of buckets so every kanban read runs a task SELECT and COUNT per bucket, generating heavy database load.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123509",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123510",
+      "desc": "Vikunja before 2.7.1 fails to re-anchor PluginsDir and LogPath to service.rootpath, allowing plugins to load from and logs to be written in the startup working directory. Local attackers able to write to that directory can plant plugins loaded into the server when plugins are enabled, or read misplaced logs including audit.log.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123510",
+      "cvss": "3.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123511",
+      "desc": "Vikunja before 2.7.1 contains an uncontrolled resource consumption vulnerability that allows authenticated CalDAV clients to create unbounded dummy tasks by sending VTODOs with thousands of RELATED-TO properties. Attackers can repeat unknown related UIDs in a single PUT request to generate thousands of task, relation, and event rows, bloating the database and overloading the event pipeline.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123511",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123512",
+      "desc": "Vikunja before 2.7.1 embeds live password-reset, email-confirmation and account-deletion tokens in the URL query string of emailed links, so the full request URI, including the token, is written to Vikunja's HTTP access log and any reverse-proxy logs when a user clicks the link. Attackers with read access to those logs can replay an unredeemed password-reset token to take over the account or an account-deletion token to confirm the deletion.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123512",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123513",
+      "desc": "Vikunja before 2.7.1 contains a credential exposure vulnerability that allows attackers to steal stored auth tokens by inducing users to switch the frontend API URL. Because checkAndSetApiUrl leaves origin-independent localStorage tokens in place, the bearer token and desktop OAuth refresh token are sent to the attacker's server, enabling account takeover.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123513",
+      "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123514",
+      "desc": "Vikunja before 2.7.1 contains an improper resource cleanup vulnerability that leaves full-data export archives orphaned on disk after re-exports, failed exports, or account deletion. Authenticated users can repeatedly re-trigger exports containing all their attachments to exhaust disk storage, while deleted users' personal data remains retained indefinitely.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123514",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123515",
+      "desc": "Vikunja before 2.7.1 contains a client-side request forgery vulnerability that allows users with write access to make viewers' clients request loopback or LAN addresses by storing img elements in rich text. Attackers can plant images in tasks, comments, project descriptions, or imported Markdown to trigger blind GET requests against local services and track when viewers open content.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123515",
+      "cvss": "4.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123516",
+      "desc": "Vikunja before 2.7.1 contains a resource exhaustion vulnerability in the vikunja-file ZIP importer that allows authenticated users to consume CPU and memory by uploading archives with excessive entries. Attackers can upload export ZIPs containing many empty or non-files/ entries that bypass the per-entry caps, forcing scanArchive to process every entry twice.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123516",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123517",
+      "desc": "Vikunja before 2.7.1 contains an information disclosure vulnerability that allows authenticated users to determine whether private teams exist by calling the team member self-removal endpoint. Attackers can send DELETE requests to /teams/{id}/members/{own username} for arbitrary team ids and use the distinguishable responses to learn if a team exists, is SSO-managed, or has a single member.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123517",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123518",
+      "desc": "Vikunja before 2.7.1 contains an incorrect authorization vulnerability in TaskBucket.CanUpdate, which checks write access to the bucket's project and to the task separately but never verifies that both belong to the same project. Authenticated users with write access to two projects can move a task into another project's kanban bucket. This persists cross-project task_buckets rows that count toward bucket limits and, for done buckets, toggle the task's done state.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-08",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123518",
+      "cvss": "4.3",
       "cwe": ""
     },
     {

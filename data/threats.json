@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-09T02:53:56.762357+00:00",
-  "summary": "Today's digest contains 428 vulnerabilities across 5 sources. 80 zero-day exploits detected, 30 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-11-09T11:01:04.017793+00:00",
+  "summary": "Today's digest contains 530 vulnerabilities across 5 sources. 80 zero-day exploits detected, 30 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 428,
+    "new": 530,
     "changed": 0,
     "removed": 0,
-    "total": 731375,
+    "total": 731905,
     "zeroday": 80,
     "exploited": 30,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 333
+      "count": 435
     },
     {
       "name": "Exploit-DB",
@@ -6880,6 +6880,1842 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124555",
       "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-121825",
+      "desc": "OpenAM (OpenAM Consortium Edition) 14.0.5 and earlier contains an open redirect vulnerability (CWE-601) in the Liberty ID-FF service provider single sign-on flow. The goto parameter of the /preLogin endpoint is stored as the RelayState of the Liberty ID-FF authentication request without validation, and after the user completes single sign-on at the identity provider, the assertion consumer service redirects the browser to that value. A remote unauthenticated attacker can induce a user to access a crafted URL and, after the user authenticates, redirect the user to an arbitrary website, which may be used for phishing. Only deployments in which a Liberty ID-FF hosted service provider is configured are affected; Liberty ID-FF is not configured by default. This issue is fixed in 14.0.6, which disables the legacy Liberty ID-FF endpoints.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121825",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124556",
+      "desc": "A security vulnerability has been detected in kekingcn kkFileView up to 5.0.3. This issue affects the function BaseUrlFilter.getBaseUrl of the file server/src/main/java/cn/keking/web/filter/BaseUrlFilter.java. The manipulation of the argument X-Base-Url leads to open redirect. The attack is possible to be carried out remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124556",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124557",
+      "desc": "A vulnerability was detected in OtterMind Chat2DB up to 5.3.8. Impacted is the function DbMybatisGenerateServiceImpl.generateClass of the file DbMybatisGenerateServiceImpl.java of the component Class Generator. The manipulation of the argument tableName results in path traversal. The attack may be performed from remote. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124557",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124558",
+      "desc": "A vulnerability has been found in DataLinkDC Dinky up to 1.2.5. The impacted element is the function SqlGateway.onOpen of the file SqlGateway.java of the component sql-gateway Endpoint. Such manipulation of the argument connectAddress leads to server-side request forgery. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The researcher claims to have submitted a GHSA on the repository of the project.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124558",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124560",
+      "desc": "A vulnerability was found in D-Link DIR-878 1.20B05. This affects the function GetCAPTCHAsetting of the file bin/prog.cgi of the component HNAP Handler. Performing a manipulation of the argument uid results in heap-based buffer overflow. The attack can be initiated remotely. The exploit has been made public and could be used. This vulnerability only affects products that are no longer supported by the maintainer.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124560",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-113362",
+      "desc": "Improper Access Control in the program installation folder in NEC Corporation WebSAM Winshare Ver 7.5.0 and earlier (excluding Ver 7.3.3), Ver 7.6.0 and Ver 7.7.0 through 7.7.1 on Windows allows a locally authenticated low-privileged attacker to execute arbitrary code with SYSTEM privileges via a crafted DLL file that is loaded by a SYSTEM-level process.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113362",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124561",
+      "desc": "A vulnerability was determined in D-Link DIR-878 1.20B05. This impacts the function SetVLANSettings of the file prog.cgi of the component HNAP Handler. Executing a manipulation of the argument VID can lead to stack-based buffer overflow. The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized. This vulnerability only affects products that are no longer supported by the maintainer.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124561",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124562",
+      "desc": "A vulnerability was identified in D-Link DIR-878 1.20B05. Affected is the function SetWanSettings of the component HNAP Handler. The manipulation of the argument ConfigDNS/Primary/ConfigDNS/Secondary leads to buffer overflow. The attack may be initiated remotely. The exploit is publicly available and might be used. This vulnerability only affects products that are no longer supported by the maintainer.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124562",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124563",
+      "desc": "A security flaw has been discovered in D-Link DIR-878 1.20B05. Affected by this vulnerability is the function SetWanSettings of the component HNAP Handler. The manipulation of the argument Primary/Secondary results in buffer overflow. The attack may be launched remotely. The exploit has been released to the public and may be used for attacks. This vulnerability only affects products that are no longer supported by the maintainer.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124563",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124564",
+      "desc": "A weakness has been identified in D-Link DIR-878 1.20B05. Affected by this issue is the function GetListDirectory of the file bin/prog.cgi of the component HNAP Handler. This manipulation of the argument ListDirectoryPath causes path traversal. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks. This vulnerability only affects products that are no longer supported by the maintainer.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124564",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124610",
+      "desc": "Rejected reason: 依 VUL-2026-008441 判定為主",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124610",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-113363",
+      "desc": "Improper Input Validation in the network communication processing in NEC Corporation WebSAM WinShare Ver 7.2.0 through 7.5.0, Ver 7.6.0 and Ver 7.7.0 through 7.7.2 on Windows allows a remote unauthenticated attacker to execute arbitrary commands with SYSTEM privileges via a crafted network packet sent to the computer on which WinShare is running.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113363",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-113364",
+      "desc": "Buffer Overflow in the data receiving process in NEC Corporation WebSAM WinShare Ver 7.5.0 and earlier, Ver 7.6.0 and Ver 7.7.0 through 7.7.2 on Windows allows a remote unauthenticated attacker to execute arbitrary code with SYSTEM privileges via a crafted packet with a malformed data size value in the protocol header.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113364",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124565",
+      "desc": "A security vulnerability has been detected in fushengqian fuint up to 36cc31b08d77facc94e8959afa02224891b4fe5f. This affects the function confirm of the file MerchantOrderController.java of the component Order Verification. Such manipulation leads to improper access controls. The attack can be executed remotely. This product implements a rolling release for ongoing delivery, which means version information for affected or updated releases is unavailable. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124565",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124566",
+      "desc": "A vulnerability was detected in fushengqian fuint up to 36cc31b08d77facc94e8959afa02224891b4fe5f. This vulnerability affects the function aliPayCallback of the file ClientPayController.java of the component Alipay Callback Handler. Performing a manipulation results in enforcement of behavioral workflow. The attack is possible to be carried out remotely. This product adopts a rolling release strategy to maintain continuous delivery. Therefore, version details for affected or updated releases cannot be specified. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124566",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124567",
+      "desc": "A flaw has been found in fushengqian fuint up to 36cc31b08d77facc94e8959afa02224891b4fe5f. This issue affects the function receipt of the file ClientOrderController.java. Executing a manipulation can lead to state issue. The attack may be performed from remote. This product utilizes a rolling release system for continuous delivery, and as such, version information for affected or updated releases is not disclosed. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124567",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124568",
+      "desc": "A vulnerability has been found in fushengqian fuintCatering up to 6d054f5788ac8645eb491f79242bb8a625efc133. Impacted is the function RefundServiceImpl.agreeRefund of the component Refund Agreement. The manipulation leads to improper access controls. It is possible to initiate the attack remotely. This product is using a rolling release to provide continious delivery. Therefore, no version details for affected nor updated releases are available. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124568",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124569",
+      "desc": "A vulnerability was found in fushengqian fuintCatering up to 6d054f5788ac8645eb491f79242bb8a625efc133. The affected element is the function updateCommissionCash of the file CommissionCashServiceImpl.java. The manipulation of the argument Status results in improper access controls. It is possible to launch the attack remotely. This product takes the approach of rolling releases to provide continious delivery. Therefore, version details for affected and updated releases are not available. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124569",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124570",
+      "desc": "A vulnerability was detected in SourceCodester Online Leave Management System 1.0. Affected is an unknown function of the file app/classes/Master.php of the component Employee Avatar Upload Extension. Performing a manipulation of the argument employee avatar filename results in cross site scripting. Remote exploitation of the attack is possible. The exploit is now public and may be used.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124570",
+      "cvss": "2.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124571",
+      "desc": "A flaw has been found in SourceCodester Simple CRUD using PHP and FPDF 1.0. Affected by this vulnerability is an unknown functionality of the file app/register.php. Executing a manipulation of the argument firstname can lead to sql injection. The attack can be executed remotely. The exploit has been published and may be used.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124571",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-115204",
+      "desc": "The AZEXO Store Locator WordPress plugin through 1.4 does not perform capability or nonce checks on its AJAX actions and does not sanitise a request header used to build a file path, allowing any authenticated user such as a subscriber to write a file with an arbitrary name, location, and content, leading to remote code execution.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115204",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-115212",
+      "desc": "The mView 豆瓣电影 WordPress plugin through 1.0.3 does not validate the type, name, or source of a remotely fetched file, nor perform any capability or authorization check, before saving it to a web-accessible directory, allowing any authenticated user such as a subscriber to upload arbitrary PHP files and achieve remote code execution.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115212",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-115213",
+      "desc": "The EASY-JS-WPAPI Client HANDLE for the WordPress REST-API WordPress plugin through 2.0 does not prevent the administrator credentials it stores from being disclosed to unauthenticated users and does not correctly verify authentication, allowing unauthenticated attackers to obtain administrator credentials and gain full administrator access to the site.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115213",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-115237",
+      "desc": "The Grand Job WordPress plugin through 1.2.1 does not correctly verify the password reset code before updating a user's password, allowing unauthenticated attackers to set the password of arbitrary accounts, including administrators, and fully take over the site.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115237",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-115256",
+      "desc": "The Mail Debug for WooCommerce WordPress plugin through 1.3.0 does not perform any capability, authentication, or nonce check on one of its email-logging actions, which is exposed to unauthenticated users and is not restricted to its own data, allowing anyone to read the full body of every email the site has sent, including password-reset emails whose reset key lets an attacker take over an administrator account.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115256",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-118201",
+      "desc": "The Limit Login Attempts Security  WordPress plugin before 3.4.1 does not enforce its two-factor authentication on every password-authentication route, so an attacker who already knows a protected user's password can authenticate through an alternative login interface and obtain that user's access without completing the second factor.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118201",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-118202",
+      "desc": "The Limit Login Attempts Security  WordPress plugin before 3.4.1 does not confirm that its two-factor authentication step succeeded before completing a login and treats a failure to build that step as success, so an attacker who holds a protected user's password can bypass the second factor by sending a request header that breaks the step.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118202",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120409",
+      "desc": "The All-in-One Video Gallery  WordPress plugin before 5.1.1 does not check whether a video is password protected before serving it through its standalone player page and its download link, allowing unauthenticated visitors to obtain the media source of password-protected videos, such as unlisted YouTube or Vimeo links and external file URLs.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120409",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-121759",
+      "desc": "The Fusion Page Builder WordPress plugin before 1.7.1 does not check that the user owns the content it moves to the trash, which could allow users with a role as low as Contributor to trash arbitrary posts and pages, or delete them permanently where the trash is disabled.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121759",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-121874",
+      "desc": "The Post Duplicator WordPress plugin before 3.0.18 does not restrict settings saves to its own options, allowing a site administrator on a multisite network who is not a Super Admin to overwrite arbitrary options of their site, including the role definitions, and so grant themselves network-management capabilities.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121874",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-121875",
+      "desc": "The Post Duplicator WordPress plugin before 3.0.18 does not validate the capabilities assigned to roles through its permissions settings, allowing a site administrator on a multisite network who is not a Super Admin to grant any role arbitrary capabilities, including the network-management capabilities reserved to the Super Admin.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121875",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123064",
+      "desc": "The WP BASE Booking of Appointments, Services and Events WordPress plugin before 6.5.1 does not properly restrict access to one of its user-creation actions, allowing authenticated users with Subscriber-level access and above to create a new administrator account and thereby escalate their privileges.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123064",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123088",
+      "desc": "The UniPAY Payment Gateway For WooCommerce WordPress plugin before 2.4 does not perform any authorization check before returning an order's order-received URL for an attacker-supplied order id, exposing the order's secret key in the redirect and allowing unauthenticated attackers to enumerate orders and disclose customers' personal data (name, email address, phone number and address).",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123088",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123091",
+      "desc": "The Vigilant  WordPress plugin before 2.11.0 does not enforce its two-factor authentication on login forms other than the default WordPress one, allowing an attacker who knows a user's password to skip the second factor and log in as that user.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123091",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123128",
+      "desc": "The GemBooking  WordPress plugin before 1.7.1 does not serialise concurrent booking requests per team member, allowing unauthenticated users to create overlapping confirmed bookings for the same team member across different bookable items by sending simultaneous requests.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123128",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123129",
+      "desc": "The Event Tickets Manager for WooCommerce WordPress plugin before 1.6.0 does not validate the ticket-type price sent to one of its unauthenticated AJAX actions when the referenced product has no ticket types configured, and stores the submitted price site-wide, where it is applied to the next event ticket added to any cart, allowing unauthenticated visitors to buy event tickets at an arbitrary price, including for free.\n\nThis is due to an incomplete fix of CVE-2026-34898.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123129",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123131",
+      "desc": "The GemBooking  WordPress plugin before 1.7.1 does not properly verify that a REST request is addressed to its own routes before temporarily granting staff users administrative capabilities, allowing users with the GemBooking  WordPress plugin before 1.7.1's Staff role to delete arbitrary posts and update the site's settings.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123131",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123145",
+      "desc": "The WooCommerce Stripe Payment Gateway WordPress plugin before 11.1.0 does not exclude the account password from the checkout fields it saves to order metadata during express checkout, causing the password a customer chooses when creating an account at checkout to be stored in plaintext in the database, readable by anyone with access to order data or the database. Version 10.9.0 stored the passwords. Version 10.9.1 stopped new ones from being stored but left existing ones in place, and version 11.1.0 removes them on update. Passwords stored this way should be considered exposed.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123145",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123751",
+      "desc": "The WP Duplicate  WordPress plugin through 1.1.11 does not properly verify a request authentication value and does not validate the path or type of uploaded files, making it possible for unauthenticated attackers to write arbitrary files to the server and achieve remote code execution. This vulnerability is being actively exploited in the wild.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123751",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124572",
+      "desc": "A vulnerability has been found in DataLinkDC dinky up to 1.2.5. Affected by this issue is the function CatalogueController.upload of the file dinky-admin/src/main/java/org/dinky/controller/CatalogueController.java of the component Catalogue Upload API. The manipulation leads to path traversal. The attack is possible to be carried out remotely. The researcher claims to have submitted a GHSA on the repository of the project.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124572",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124573",
+      "desc": "A vulnerability was found in logseq 2.0.1/2.0.2. This affects the function validate-auth-token of the file src/electron/electron/server.cljs of the component Local HTTP API. The manipulation results in missing authentication. The attack may be performed from remote. The exploit has been made public and could be used. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124573",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124574",
+      "desc": "A vulnerability was determined in chenyme grok2api up to 3.1.6. This vulnerability affects the function beginSelectionSession of the file backend/internal/application/gateway/video.go of the component Video Job Retry Handler. This manipulation causes improper authorization. It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized. Upgrading to version 3.1.7 is able to resolve this issue. Patch name: 199b3abecc14907176dae1f1cacf125419caa94d. It is suggested to upgrade the affected component.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124574",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124575",
+      "desc": "A vulnerability was identified in SiteServer SSCMS up to 7.1.3/7.2.1/7.4.0. This issue affects the function LoginController.Submit of the file src/SSCMS.Web/Controllers/Admin/LoginController.Submit.cs of the component Admin-Login CAPTCHA. Such manipulation of the argument isForceLogoutAndLogin leads to improper restriction of excessive authentication attempts. It is possible to launch the attack remotely. A high complexity level is associated with this attack. The exploitability is assessed as difficult. The name of the patch is df3becb7ebb00a48435418a44fd08a459eb38ace. Applying a patch is advised to resolve this issue.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124575",
+      "cvss": "3.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124576",
+      "desc": "A security flaw has been discovered in BeikeShop up to 2.0.0.31. Impacted is the function OrderRepo::getOrderByNumber of the file beike/Repositories/OrderRepo.php of the component Guest Order Lookup. Performing a manipulation of the argument order_number results in enforcement of behavioral workflow. The attack can be initiated remotely. Upgrading to version 2.0.0.32 is recommended to address this issue. The patch is named 6cf25f8c15d27d1ff14a848faf645c94d20ba5f1. It is recommended to upgrade the affected component.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124576",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-81422",
+      "desc": "The Advanced Appointment Booking & Scheduling WordPress plugin before 2.7 does not verify the site's user-registration setting before creating accounts through a publicly accessible shortcode, allowing unauthenticated attackers to register arbitrary user accounts, and be automatically logged in, even when user registration is disabled on the site.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-81422",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109582",
+      "desc": "Insecure storage of sensitive information issue exists in SS1 provided by DOS Co., Ltd. Sensitive information used by the product may be obtained.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109582",
+      "cvss": "4.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-113437",
+      "desc": "Path Traversal vulnerability exists in SS1/ SS1 Cloud provided by DOS Co., Ltd. and the ODM product rocoeyes provided by Rococo Co. Ltd. Arbitrary files may be deleted.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113437",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-120386",
+      "desc": "Effekseer improperly validates \"effect\" files. When a crafted effect file is loaded to the affected runtime, the host process may be forced to crash.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-120386",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124577",
+      "desc": "A weakness has been identified in Intelbras SG 2404 PoE L2+ 1.00.70/1.00.72. The affected element is an unknown function of the file /EXCU_SHELL of the component Web Management Interface. Executing a manipulation can lead to improper authentication. The attack can be launched remotely. The exploit has been made available to the public and could be used for attacks. Upgrading to version 1.00.74 is sufficient to fix this issue. Upgrading the affected component is advised.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124577",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124578",
+      "desc": "A security vulnerability has been detected in Pantum BP5100DW 3.A.4.7. The impacted element is an unknown function of the file /shtml/omDB.shtml of the component Web Interface. The manipulation leads to missing authentication. The attack may be initiated remotely. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124578",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124579",
+      "desc": "A vulnerability was determined in aaPanel BillionMail up to 4.9. Affected by this issue is some unknown functionality of the file core/api/relay/v1/relay.go of the component Relay Configuration API. Executing a manipulation of the argument helo_name can lead to injection. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124579",
+      "cvss": "7.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124580",
+      "desc": "A vulnerability was found in Chengdu Feiyuxing Technology VW2100 and VEC10GP 1.0 B-MB3W202-210825-r11775. This impacts the function handle_wechat_cn_wifi of the file var/html/webserver of the component Weixin Auth Endpoint. The manipulation of the argument extend results in os command injection. The attack can be executed remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124580",
+      "cvss": "10.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-116337",
+      "desc": "Uncontrolled resource consumption vulnerability in the Qt Framework HTTP response handling functionality of the Qt Network module.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116337",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123870",
+      "desc": "The otterdog webapp evaluates a format-string built from the incoming GitHub webhook JSON body using Python's eval(). When the GITHUB_WEBHOOK_SECRET configuration value is unset or empty (the code default is None), the HMAC signature check is skipped entirely, allowing an unauthenticated network client to reach the eval() sink with attacker-controlled input and execute arbitrary Python on the webapp host.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123870",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124581",
+      "desc": "A vulnerability was determined in itsourcecode Airline Reservation System 1.0. Affected is an unknown function of the file /admin/manage_flight.php. This manipulation of the argument ID causes sql injection. The attack is possible to be carried out remotely. The exploit has been publicly disclosed and may be utilized.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124581",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124582",
+      "desc": "A vulnerability was identified in WebTorrent up to 2.8.5/3.0.21. Affected by this vulnerability is the function getFileModtimes of the file torrent.js of the component File Path Handler. Such manipulation of the argument file.path leads to path traversal. The attack may be performed from remote. The exploit is publicly available and might be used. The reported GitHub issue was closed with the label \"not planned\".",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124582",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124584",
+      "desc": "A vulnerability has been found in wummel patool 4.1.0. This vulnerability affects the function extract_gzip of the file patoolib/fileutil.py of the component Gzip Extraction Handler. The manipulation leads to symlink following. Local access is required to approach this attack. The researcher claims to have submitted a GHSA on the repository of the project.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124584",
+      "cvss": "4.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124585",
+      "desc": "A vulnerability was found in Chengdu Feiyuxing Technology VW2100 and VEC10GP 1.0 B-MB3W202-210825-r11775. This issue affects the function add_expmac of the file var/html/webserver of the component Web Administration Interface. The manipulation of the argument mac results in os command injection. The attack may be performed from remote. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124585",
+      "cvss": "9.9",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-92606",
+      "desc": "Time-of-check time-of-use (TOCTOU) race condition vulnerability in TÜBİTAK BİLGEM Software Technologies Research Institute Pardus MyComputer allows Leveraging Time-of-Check and Time-of-Use (TOCTOU) Race Conditions.\n\nThis issue affects Pardus MyComputer: from 0.8.0 before 0.8.1.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92606",
+      "cvss": "6.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-94249",
+      "desc": "Missing Authorization vulnerability in TÜBİTAK BİLGEM Software Technologies Research Institute Liderahenk allows Privilege Abuse.\n\nThis issue affects Liderahenk: before 2.0.3.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-94249",
+      "cvss": "8.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-101031",
+      "desc": "The `example_dag_decorator` example Dag shipped with Apache Airflow validated an IP address fetched over HTTP with Python's `ipaddress` module and then placed it into a shell command. `ipaddress` accepts IPv6 zone identifiers containing arbitrary characters, so when example Dags are loaded (`load_examples` enabled), a user who can trigger that Dag with a custom `url` parameter could point it at a server whose response injects shell commands run on the worker. This is an incomplete fix for CVE-2025-54941; users who upgraded for CVE-2025-54941 should upgrade again. Users are advised to upgrade to apache-airflow 3.4.0 or later, or to disable example Dags (`load_examples = False`), which is recommended for production.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-101031",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-107474",
+      "desc": "The Apache Airflow connections API did not mask the apprise provider's `config` connection extra, which can embed notification-service credentials. A user with permission to read connections could retrieve it in cleartext, although Airflow 3 treats connection credentials as write-only.\n\nUsers are advised to upgrade to apache-airflow 3.4.0 or later.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107474",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-111395",
+      "desc": "Apache Airflow did not reject reserved serialization keys inside a Dag run's `conf`. A user allowed to trigger a Dag that uses a deadline alert with an asynchronous callback could pass a `conf` that, once the deadline was missed, either crashed the scheduler repeatedly or was rebuilt into objects inside the Triggerer. Users are advised to upgrade to apache-airflow 3.4.0 or later.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111395",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-111403",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in WP Inventory WP Inventory Manager wp-inventory-manager allows Reflected XSS.This issue affects WP Inventory Manager: from n/a through 2.5.9.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111403",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-111421",
+      "desc": "Apache Airflow's Task Execution API stored XCom values written by a task without the reserved-key check applied elsewhere, so a Dag author's task could write an XCom that, when a user later viewed it through the API with deserialization enabled, made the API server instantiate classes from the `airflow.*` namespace with arguments the Dag author chose. This is an incomplete fix for CVE-2026-59242: users who applied that fix in apache-airflow 3.3.1 remain affected through this route and should upgrade to apache-airflow 3.4.0 or later.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111421",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-111452",
+      "desc": "Apache Airflow's secrets masker matched sensitive key names only in their snake_case form, so values stored under camelCase keys such as `privateKey`, `connectionString`, `webhookUrl` or `accessKey` — for example in a Connection's extra or a Variable — were not redacted in task logs, rendered template fields or API responses. A user who can read task logs or rendered templates, but is not meant to see those credentials, could read them in cleartext. Users are advised to upgrade to apache-airflow 3.4.0 or later.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111452",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-111453",
+      "desc": "Apache Airflow's API endpoint for deleting an asset's queued events checked Dag edit permission against the `dag_id` query parameter, but deleted the queued events of every Dag the caller could read. An authenticated user with edit permission on one Dag and read access to others could suppress asset-triggered runs of Dags they cannot edit. This is an incomplete fix for CVE-2026-75157: users who upgraded to apache-airflow 3.3.2 for that fix are still affected and should upgrade to apache-airflow 3.4.0 or later.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111453",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-111454",
+      "desc": "Apache Airflow's asset API endpoints returned the IDs of Dags that are scheduled on, produce, or consume an asset without checking whether the caller may read those Dags. An authenticated user with asset read access could learn the IDs of Dags they are not authorized to see. Users are advised to upgrade to apache-airflow 3.4.0 or later.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111454",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-111455",
+      "desc": "Apache Airflow's asynchronous connection test checked permissions when the test was queued — only create permission when the connection ID did not exist yet — but, when the test completed with `commit_on_success`, wrote the tested connection under that ID. A user allowed to create but not edit connections could overwrite a connection someone else had created in the meantime. Only deployments that enable the non-default `[core] test_connection` setting are affected. Users are advised to upgrade to apache-airflow 3.4.0 or later.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111455",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-113504",
+      "desc": "Apache Airflow's secrets masker stopped descending into nested structures after five levels, so a secret registered with the masker — for example a Connection password or a Variable value — that appeared more than five containers deep under non-sensitive keys was shown in cleartext in task logs and rendered template fields. A user who can read task logs or rendered templates, but is not meant to see those secrets, could read them. Users are advised to upgrade to apache-airflow 3.4.0 or later.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113504",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-113508",
+      "desc": "Apache Airflow's logout endpoint attempted to revoke the presented token on the server, but any failure during revocation was silently ignored and logout still reported success. When the auth manager redirects logout to an external logout URL (for example the FAB or Keycloak auth managers), server-side revocation is the only thing that invalidates the Airflow token; it failed on database errors and, reliably, for tokens from an external issuer accepted via `[api_auth] trusted_jwks_url` whose token identifier is longer than 32 characters. Anyone holding a copy of a user's token from before logout could keep using it against the Airflow API until it expired. Users are advised to upgrade to apache-airflow 3.4.0 or later.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-113508",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-119483",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in 10Web Form Maker by 10Web form-maker allows Stored XSS.This issue affects Form Maker by 10Web: from n/a through 1.15.50.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119483",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-119497",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in wpWax Directorist directorist allows Stored XSS.This issue affects Directorist: from n/a through 8.10.6.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119497",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-119503",
+      "desc": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) vulnerability in Welcart Welcart e-Commerce usc-e-shop allows Code Injection.This issue affects Welcart e-Commerce: from n/a through 2.12.6.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119503",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-119504",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in DynamiApps Frontend Admin by DynamiApps acf-frontend-form-element allows Stored XSS.This issue affects Frontend Admin by DynamiApps: from n/a through 3.30.1.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119504",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-119505",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Welcart Welcart e-Commerce usc-e-shop allows Stored XSS.This issue affects Welcart e-Commerce: from n/a through 2.12.6.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119505",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-119514",
+      "desc": "Incorrect Privilege Assignment vulnerability in Webful Creations RepairBuddy computer-repair-shop allows Privilege Escalation.This issue affects RepairBuddy: from n/a through 4.1234.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119514",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-121760",
+      "desc": "Missing Authorization vulnerability in weDevs weDocs wedocs allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects weDocs: from n/a through 2.6.1.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121760",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-121763",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in WPMU DEV Hummingbird hummingbird-performance allows Stored XSS.This issue affects Hummingbird: from n/a through 3.21.2.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121763",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-121764",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in FolioVision FV Flowplayer Video Player fv-wordpress-flowplayer allows Stored XSS.This issue affects FV Flowplayer Video Player: from n/a through 7.5.56.7212.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121764",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-121780",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Gijo Varghese Flying Images nazy-load allows Stored XSS.This issue affects Flying Images: from n/a through 2.4.15.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121780",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123463",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in WP Wham Checkout Files Upload for WooCommerce checkout-files-upload-woocommerce allows Stored XSS.This issue affects Checkout Files Upload for WooCommerce: from n/a through 2.4.0.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123463",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123465",
+      "desc": "Exposure of Sensitive System Information to an Unauthorized Control Sphere vulnerability in myCred myCred mycred allows Retrieve Embedded Sensitive Data.This issue affects myCred: from n/a through 4.0.2.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123465",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123484",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Crocoblock JetFormBuilder jetformbuilder allows DOM-Based XSS.This issue affects JetFormBuilder: from n/a through 3.6.8.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123484",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124586",
+      "desc": "A vulnerability was determined in Tencent RapidJSON 1.1.0. Impacted is the function GetCachedPowerByIndex in the library include/rapidjson/internal/diyfp.h. This manipulation of the argument decimalPosition causes out-of-bounds read. It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124586",
+      "cvss": "7.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124587",
+      "desc": "A vulnerability was identified in elizaOS eliza 2.0.3-beta.7. The affected element is an unknown function of the file packages/app/platforms/electrobun/src/lifecycle/api-base-owner.ts of the component HTTP Server. Such manipulation leads to information disclosure. It is possible to launch the attack remotely. The exploit is publicly available and might be used. The name of the patch is cf6fa193017e70884e01c5bb7890f74b6b2b79d2. A patch should be applied to remediate this issue.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124587",
+      "cvss": "4.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124588",
+      "desc": "A security flaw has been discovered in huggingface finetrainers 0.1.0/0.2.0. The impacted element is the function resolve_component_cls of the file finetrainers/utils/model.py of the component Model Index Handler. Performing a manipulation of the argument Library results in code injection. The attack can be initiated remotely. The exploit has been released to the public and may be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124588",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124589",
+      "desc": "A weakness has been identified in lxtGH OMG-Seg up to f3b26b609bae919760cd3ccf09c36179bb8624a0. This affects the function load_state_dict_into_model of the file omg_llava/xtuner/utils/handle_moe_load_and_save.py of the component MoE Shard Checkpoint Loader. Executing a manipulation of the argument weight_map can lead to path traversal. The attack can be launched remotely. The exploit has been made available to the public and could be used for attacks. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The project was informed of the problem early through an issue report but has not responded yet.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124589",
+      "cvss": "6.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124637",
+      "desc": "A stored Cross-Site Scripting (XSS) vulnerability was identified in the profile editing form, in the parameters: cliNom and cliCognoms, in a request to https://www.luxorgymtarrega.com/dadespersonals/modificarClient/ID. User-provided data is neither validated nor escaped before being displayed in the HTML response and stored in the database, allowing arbitrary JavaScript code to be executed in the victim’s browser.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124637",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-40913",
+      "desc": "Apache Airflow's public Import Errors API returns the raw parse-failure stack trace to any user with the `ImportError.can_read` permission when the failing file has no registered DAG. This happens when a file fails to parse before any DAG is defined, or when all of its previously registered DAGs are removed but the parse error remains. Users who should not see that file's details can read stack traces that may expose file paths and code.\n\nUsers are advised to upgrade to Apache Airflow 3.4.0 or later, which restricts these stack traces to users with the new `IMPORT_ERRORS_ALL` permission.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-40913",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-50204",
+      "desc": "Apache Airflow's audit log stored Connection and Variable secret values in cleartext in the `Log.extra` column because the secrets masker matched only on configured sensitive key names. An authenticated low-privilege user with read access to the event-log / audit API — with no prior access to the affected connection or variable — could read those rows and recover the credentials verbatim. Users should upgrade to apache-airflow 3.4.0 or later, which masks these values and restricts the affected audit rows to authorized users.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-50204",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-54863",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Mamunur Rashid Review Schema review-schema allows Reflected XSS.This issue affects Review Schema: from n/a through 3.1.4.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-54863",
+      "cvss": "7.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-66675",
+      "desc": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in StylemixThemes Motors motors-car-dealership-classified-listings allows Stored XSS.This issue affects Motors: from n/a through 1.4.128.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-66675",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-68982",
+      "desc": "Apache Airflow's CeleryExecutor ran callback workloads (`ExecuteCallback`, used for deadline-alert callbacks) without validating the workload's authentication token. Anyone able to write to the Celery broker could enqueue a forged callback and execute arbitrary code on every CeleryExecutor worker, without Airflow credentials. Deployments using the CeleryExecutor are affected.\n\nUsers are advised to upgrade to apache-airflow 3.4.0 or later, in which the worker claims the callback through the Execution API, validating the token, before running it.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-68982",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76185",
+      "desc": "Apache Airflow's Task SDK secret cache built its keys from the team name and secret id with unescaped `_` delimiters, so different (team, secret id) pairs could collide. In multi-team deployments a Dag author could read another team's Variable or Connection value by crafting a colliding secret id. Only deployments with both `core.multi_team = True` and `secrets.use_cache = True` are affected.\n\nUsers are advised to upgrade to apache-airflow 3.4.0 or later. Deployments that cannot upgrade can set `secrets.use_cache = False`.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76185",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82337",
+      "desc": "Apache Airflow rebuilt deadline alert fields through generic deserialization, which imports and instantiates the class named in the serialized Dag, in the scheduler and API server. A Dag author could cause classes within Airflow's deserialization allow list to be constructed in those processes with arguments they control. Deployments whose Dags use deadline alerts are affected.\n\nThis is an incomplete fix of CVE-2026-45360, which only hardened the `reference` field; deployments that applied that fix remain affected through the `callback` and `interval` fields.\n\nUsers of apache-airflow are recommended to upgrade to 3.4.0 or later.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82337",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82436",
+      "desc": "Description\n\n`DefaultStateSerializer`, used to persist and restore stateful bolt checkpoints, configured Kryo with class\nregistration disabled and an instantiation strategy that constructs objects without invoking their\nconstructors, then deserialized whatever bytes the state store returned. A party able to write to the\ntopology's keyspace in the state store, for example a co-tenant of a shared Redis instance or anyone with\nnetwork access to it, could therefore place a serialized object graph that executes code inside the worker\nJVM when the state is restored.\n\nThis requires the Redis-backed state provider, which is not the default. Write access to a state-store key\nis a data-plane privilege; code execution in the worker JVM is not, so the two are not equivalent.\n\nMitigation\n\nUpgrade to 3.1.0, where the state serializer requires registered classes.\n\nNote that this is a behaviour change for existing state: checkpoints written by an affected version may fail\nto restore, and a migration step may be required. Users who cannot upgrade immediately should restrict\nnetwork and credential access to the state store to the cluster itself.\n\nCredit\n\nThe ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82436",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82440",
+      "desc": "Description\n\nNimbus instantiates the class named by a topology's `topology.scheduler.strategy` when scheduling it. The\nallowlist intended to constrain that choice, `nimbus.scheduler.strategy.class.whitelist`, was treated as\n\"allow any class\" when unset, and it had no entry in the shipped `defaults.yaml`, so unset was the shipped\nstate. An authenticated submitter could therefore cause Nimbus to instantiate any class on the Nimbus\nclasspath that has a no-argument constructor.\n\nStorm's own production artifacts contain classes with side effects suitable for this: instantiating\n`org.apache.storm.testing.InProcessZookeeper` starts a ZooKeeper server with its own threads and sockets\nand nothing closes it, and `org.apache.storm.LocalCluster` behaves similarly. Repeated submissions\ntherefore consume threads, sockets and memory in the most privileged daemon in the cluster.\n\nMitigation\n\nUpgrade to 3.1.0, where an unset allowlist means the strategies shipped with Storm rather than any class.\n\nNote that this is a behaviour change: a cluster running an out-of-tree scheduler strategy without an\nexplicit allowlist will have those topologies refused until the class is added to\n`nimbus.scheduler.strategy.class.whitelist`. The rejection message names the refused class and the\nconfiguration key.\n\nUsers who cannot upgrade immediately should set `nimbus.scheduler.strategy.class.whitelist` explicitly to\nthe strategies they intend to permit.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82440",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86468",
+      "desc": "Apache Airflow's CLI records its arguments in the audit log but masks secrets by argument position, so some supported command shapes leave secrets in cleartext, for example a trailing `--description` on Variable commands, `--conn-extra`, and the inline `--password` of `airflow keycloak-auth-manager` commands. A user who can read audit events but is denied Variable and Connection access can retrieve those values through the event-log API.\n\nUsers of apache-airflow are recommended to upgrade to 3.4.0 or later. Audit-log entries written before the upgrade keep the cleartext values: purge the affected entries and rotate the secrets they contain.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86468",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-86829",
+      "desc": "Apache Airflow's scheduler fully deserializes XCom values written by task code while evaluating task dependencies. A Dag author, who controls what a task writes to XCom, therefore controls data that is deserialized inside the scheduler process - a context the Airflow security model reserves for code installed by the Deployment Manager, above the worker-scoped execution capability a Dag author is documented to have. Deployments that treat Dag authors as less trusted than Deployment Managers are affected, and the scheduler must be evaluating a task dependency that reads a task-written XCom value. Users of apache-airflow are recommended to upgrade to version 3.4.0 or later, which restricts dependency evaluation to primitive XCom values.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-86829",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-92683",
+      "desc": "Incorrect authorization in the @authentication directive JWT where filter evaluation in Neo4j @neo4j/graphql versions 7.0.0 before 7.6.7 allows an attacker holding an otherwise-valid JWT to bypass all but the first filter condition via a multi-condition jwt where filter written in generic operator syntax.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-92683",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-96285",
+      "desc": "Apache Airflow 3.3.1 shipped a fix for CVE-2026-67260 that checks the scheduler's decoded `next_kwargs` value is a dictionary, but performs that check only after deserializing the whole stored payload. Deserialization reconstructs nested objects of classes permitted by the deserialization allow-list — which by default includes Airflow's own classes — and runs their constructors inside the scheduler process before the check can reject the value. A Dag author, who controls a task's `next_kwargs` through the task execution API, can therefore still trigger constructor execution in the scheduler when the `awaiting_input` timeout sweep processes the task, and in the API server when the task instance is served to a worker using an older Execution API version; no non-default configuration is required. Versions before 3.3.0 are not affected. This is an incomplete fix for CVE-2026-67260: deployments that upgraded to 3.3.1 for that issue must also upgrade to apache-airflow 3.4.0 or later.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-09",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-96285",
+      "cvss": "0.0",
       "cwe": ""
     },
     {

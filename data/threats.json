@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-16T00:18:43.606376+00:00",
-  "summary": "Today's digest contains 210 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-11-16T07:06:46.807449+00:00",
+  "summary": "Today's digest contains 224 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 210,
+    "new": 224,
     "changed": 0,
     "removed": 0,
-    "total": 743210,
+    "total": 743434,
     "zeroday": 83,
     "exploited": 33,
     "pakistan": 15
@@ -13,7 +13,7 @@
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 112
+      "count": 126
     },
     {
       "name": "Exploit-DB",
@@ -2959,6 +2959,258 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129525",
       "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129491",
+      "desc": "Qbian61 forum-java commit 20f7e68 through commit 63152c4 contains a stored cross-site scripting vulnerability that allows authenticated users to inject script by posting unsanitized comment content rendered via jQuery .html() in the reply dialog. Attackers can post comments with img onerror payloads that execute when victims click Reply, stealing the non-HttpOnly sid session cookie to hijack accounts including administrators.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129491",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129492",
+      "desc": "Bolo (bolo-solo) 1.7 through 2.6.4 contains a stored cross-site scripting vulnerability that allows unauthenticated attackers to inject scripts via the unsanitized commentOriginalCommentName parameter. Attackers can post a comment to /article/comments with a short payload that steals non-HttpOnly session cookies from visitors, enabling takeover of administrator accounts.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129492",
+      "cvss": "6.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129493",
+      "desc": "Bolo (bolo-solo) 1.7 through 2.6.4 contains an information disclosure vulnerability that allows unauthenticated attackers to read article view passwords via the public GET /articles endpoint. Attackers can retrieve the plaintext articleViewPwd field returned by ArticleProcessor.getArticlesByPage and submit it to read password-protected article content.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129493",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129494",
+      "desc": "CloudPaste 1.1.0 through 1.9.1 contains an information disclosure vulnerability that allows unauthenticated attackers to obtain WebDAV storage credentials through the unauthenticated /api/proxy/link endpoint. Attackers who know a public share slug can retrieve the Basic Authorization header containing the WebDAV username and password, then read, modify, or delete files on the WebDAV server.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129494",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129539",
+      "desc": "SSCMS 7.2.0 through 7.4.0 contains an arbitrary file read vulnerability that allows any registered user-center account to copy server files by supplying source paths to the layerImageUpload endpoint. Attackers can send siteId 0 with crafted filePaths entries to copy configuration files into their public sitefiles/home upload directory and download them anonymously.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129539",
+      "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129540",
+      "desc": "VoAPI 1.0.0 through 1.2.0 contains a sql injection vulnerability that allows authenticated users to inject SQL by supplying crafted column names as search[...] filter keys on list endpoints such as GET /api/log. Attackers can read the HS256 JWT signing secret from the option table and forge a manager role token to take over the /api/m/* management API.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129540",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129541",
+      "desc": "EdgeChat 2.5.0 through 2.21.0 contains a cross-site scripting vulnerability that allows invited users to inject HTML through unescaped usernames in the Vditor @-mention autocomplete. Attackers can register with a username containing an img onerror payload that executes when mentioned, stealing the localStorage session token to take over victim accounts.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129541",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129542",
+      "desc": "Files or directories accessible to external parties vulnerability in Samsung Open Source Starfish allows Probe System Files.",
+      "severity": "LOW",
+      "source": "NVD/NIST",
+      "date": "2026-11-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129542",
+      "cvss": "3.1",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129543",
+      "desc": "Access of resource using incompatible type ('type confusion') vulnerability in Samsung Open Source Starfish allows Input Data Manipulation.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129543",
+      "cvss": "6.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-107520",
+      "desc": "Dell PowerStore contains a stored cross-site scripting (XSS) vulnerability. A low-privileged authenticated attacker could exploit this vulnerability, potentially leading to execution of malicious script in a higher-privileged user's session.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107520",
+      "cvss": "5.4",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-82156",
+      "desc": "Dell PowerStore contains an authorization-bypass vulnerability. A low-privileged attacker could exploit it, potentially leading to elevation of privilege to administrator.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-82156",
+      "cvss": "8.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-121786",
+      "desc": "The Social Viral Downloader WordPress plugin through 2.0.3 does not have authorisation or nonce checks on a log export action available to unauthenticated users, which could allow them to export the download log, including registered users' email addresses and IP addresses, to a publicly accessible file.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121786",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-121787",
+      "desc": "The Social Viral Downloader WordPress plugin through 2.0.3 does not have authorisation or nonce checks on a log deletion action available to unauthenticated users, which could allow them to delete the Social Viral Downloader WordPress plugin through 2.0.3's entire download log.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121787",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129606",
+      "desc": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow') vulnerability in Samsung Open Source mTower allows Overflow Buffers.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-16",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129606",
+      "cvss": "7.1",
       "cwe": ""
     },
     {

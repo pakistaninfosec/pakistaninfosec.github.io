@@ -1,19 +1,19 @@
 {
-  "generated": "2026-11-17T09:00:33.253711+00:00",
-  "summary": "Today's digest contains 552 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 13 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-11-17T18:42:33.481874+00:00",
+  "summary": "Today's digest contains 598 vulnerabilities across 5 sources. 83 zero-day exploits detected, 33 actively exploited from CISA KEV, and 15 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 552,
+    "new": 598,
     "changed": 0,
     "removed": 0,
-    "total": 744893,
+    "total": 745491,
     "zeroday": 83,
     "exploited": 33,
-    "pakistan": 13
+    "pakistan": 15
   },
   "sources": [
     {
       "name": "NVD/NIST",
-      "count": 456
+      "count": 500
     },
     {
       "name": "Exploit-DB",
@@ -25,7 +25,7 @@
     },
     {
       "name": "Pakistan CERT",
-      "count": 12
+      "count": 14
     },
     {
       "name": "NCCS Pakistan",
@@ -33,6 +33,44 @@
     }
   ],
   "threats": [
+    {
+      "id": "PKCERT-A1913EB5",
+      "desc": "Pakistan CERT Security Advisory: Advisory: Emerging AI-Enabled Cyber Threats Targeting Financial Institutions and OT/ Critical Infrastructure Overview. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
+      "severity": "HIGH",
+      "source": "Pakistan CERT",
+      "date": "2026-11-17",
+      "pakistan": true,
+      "zeroday": false,
+      "tags": [
+        "pakistan",
+        "cert",
+        "advisory",
+        "government",
+        "Pakistan Advisory"
+      ],
+      "url": "https://pkcert.gov.pk/advisory/26/26.pdf",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "PKCERT-9A84B65C",
+      "desc": "Pakistan CERT Security Advisory: Advisory: Multiple Security Vulnerabilities in Node.js Allow Remote Code Execution, TLS Authentication Bypass and Unauthorized Access. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
+      "severity": "HIGH",
+      "source": "Pakistan CERT",
+      "date": "2026-11-17",
+      "pakistan": true,
+      "zeroday": false,
+      "tags": [
+        "pakistan",
+        "cert",
+        "advisory",
+        "government",
+        "Pakistan Advisory"
+      ],
+      "url": "https://pkcert.gov.pk/advisory/26/24.pdf",
+      "cvss": "7.5",
+      "cwe": ""
+    },
     {
       "id": "PKCERT-71DA9F40",
       "desc": "Pakistan CERT Security Advisory: Advisory No 13: Critical Vulnerabilities in Fortinet FortiSandbox Under Active Exploitation. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF.",
@@ -1270,7 +1308,7 @@
     {
       "id": "CVE-2026-115690",
       "desc": "Apache WSS4J remembers the UsernameToken Nonce, the Timestamp and signature of a signed message, and the ID of a SAML 2.0 \"OneTimeUse\" assertion, so that a captured message cannot be accepted twice. It checked whether a value had already been seen, validated the message, and only then remembered the value, as two separate steps. If several copies of the same message were processed at the same time, they could all pass the check before any of them was remembered, and all be accepted. An attacker who obtained a valid message before the recipient first processed it could send several copies at once, so that the same authenticated request was executed more than once. Where a UsernameToken is not bound to the message by a signature, the copies could carry different message bodies. The attacker needs to obtain the message while it is still in transit; a message captured after it has been accepted cannot be replayed. Affects deployments with a replay cache configured, as Apache CXF has by default. The value is now checked and remembered in a single atomic step. Custom ReplayCache implementations should override the new ReplayCache.addIfAbsent method with an operation that is atomic in their underlying store. Users are recommended to upgrade to versions 4.0.3 or 3.0.7 or 2.4.5, which fix this issue.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-16",
       "pakistan": false,
@@ -1282,13 +1320,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-115690",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-128841",
       "desc": "** UNSUPPORTED WHEN ASSIGNED ** Missing authentication for critical function vulnerability in Apache Griffin Web Service. The REST API does not have any authentication. This includes sensitive endpoints, such as job submission when a Livy/Spark backend is configured. The API must be properly secured on the network level, and this fact was arguably not documented as clearly as it could have.\n\n\n\nThis issue affects Apache Griffin Web Service: all versions.\n\n\n\nAs this project is retired, we do not plan to release a version that fixes this issue. Users are recommended to find an alternative or restrict access to the instance to trusted users.\n\n\n\nNOTE: This vulnerability only affects products that are no longer supported by the maintainer.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-16",
       "pakistan": false,
@@ -1300,7 +1338,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-128841",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -9022,13 +9060,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-111973",
-      "cvss": "0.0",
+      "cvss": "5.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-107904",
       "desc": "Joomla Extension - valorapps.com - Unauthenticated Remote Code Execution in Easy File Uploader < 2.9.7 - An unauthenticated remote attacker can upload a PHP-executable file to the Joomla web root with a single multipart POST request, requiring no credentials and no CSRF token.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-11-17",
       "pakistan": false,
@@ -9040,7 +9078,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107904",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -9113,6 +9151,798 @@
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129031",
       "cvss": "6.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-107493",
+      "desc": "Issue summary: When an application passes a stack to\nPEM_X509_INFO_read_bio_ex() to add entries to, and reading fails,\nOpenSSL frees every entry in the stack, both the old ones and any new\nones, but leaves them in the stack.\n\nImpact summary: An application that passes an existing stack to\nPEM_X509_INFO_read_bio_ex() and keeps using it after a failed read may\nuse memory that was already freed. This can cause a crash or, in\nprinciple, memory corruption. Malformed PEM data can make the read fail,\nbut only applications that pass an existing stack are affected, and\nOpenSSL itself does not do this.\n\nCWE: CWE-416: Use After Free\n\nDescription: PEM_X509_INFO_read_bio_ex() reads certificates, CRLs and\nprivate keys from PEM data and adds them to a stack of X509_INFO\nstructures. If the application passes a stack that is not NULL, the\nfunction adds the new entries to it and must leave the entries that are\nalready there unchanged.\n\nIf reading fails, the function frees every entry in the stack. This\nincludes the entries that were there before the call, and the entries\nadded by the call. It does not remove these entries from the stack, so\nthe stack keeps pointers to freed memory. The failure can happen at any\npoint, even before any entry was added. A PEM item with invalid content\nis enough.  This also happens if the stack was empty: entries added\nbefore the failure are freed but stay in the stack.\n\nAn application that then reads or frees the stack will use memory that\nwas already freed. This can crash the application or, in principle,\ncorrupt memory.\n\nOnly applications that pass a stack that is not NULL are affected.\nOpenSSL itself never does this. Its own callers, including the code that\nTLS uses to load CA certificates, always pass NULL. When the stack is\nNULL, the function frees only the entries that it created itself, which\nis safe. We expect that very few applications pass an existing stack. An\nattacker can make the read fail with malformed PEM data, but cannot make\nan application pass an existing stack.\n\nThe same problem affects PEM_X509_INFO_read_bio(), PEM_X509_INFO_read()\nand PEM_X509_INFO_read_ex(), which use the same code. OpenSSL 1.1.1 and\n1.0.2 have only the first two of these functions.\n\nFIPS impact: no\nThe affected code is outside the FIPS module boundary.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-107493",
+      "cvss": "7.7",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109138",
+      "desc": "In the Aliro access control reference\n  applications of the Nordic Semiconductor nRF Door Lock and Access Control\n  Add-on v1.0.0 through v1.1.1, built with Credential Issuer CA\n  certificate-based issuer trust (CONFIG_DOOR_LOCK_CREDENTIAL_ISSUER_CA) and\n  the Aliro Step-up phase (CONFIG_DOOR_LOCK_STEP_UP_PHASE) enabled,\n  AccessManagerImpl::ProcessValidityIteration() treats a failed lookup of the\n  Credential Issuer in the provisioned issuer array as success. For an issuer\n  trusted through a certificate chain but not provisioned, the\n  ValidityIteration (credential-rollback) check is therefore skipped. A former\n  authorized holder with an old but correctly issuer-signed Access Document can\n  be granted physical access after the issuer has advanced its iteration to\n  revoke that credential. The default Matter provisioning configuration is not\n  affected. Fixed in v1.2.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109138",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109148",
+      "desc": "In the Aliro access control reference\n  applications of the Nordic Semiconductor nRF Door Lock and Access Control\n  Add-on v1.0.0 through v1.1.1, the stored Access Document record does not\n  retain validFrom and validUntil. The cached public key path (VerifyPublicKey())\n  and the Kpersistent fast path (_VerifyKPersistentKey()) therefore never\n  re-evaluate the Access Document validity period. An attacker who held a\n  time-limited Aliro credential that was valid when first presented can\n  continue to obtain physical access after the Access Document has expired, for\n  as long as the cached record remains available. Fixed in v1.2.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109148",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109151",
+      "desc": "In\nthe Matter and Aliro Door Lock Application of the Nordic Semiconductor nRF Door\nLock and Access Control Add-on v1.0.0 through v1.1.1 with\nCONFIG_DOOR_LOCK_STEP_UP_PHASE enabled, deleting a Credential Issuer passes the\n1-based Matter credential index to ClearValidityIterations(), which expects a\n0-based storage index. The intended issuer's ValidityIteration state is left in\nplace, and the state of the adjacent, still-provisioned issuer is cleared. This\nresets that issuer's rollback protection. An attacker holding an older but correctly\nsigned Access Document from the adjacent issuer, whose validity iteration had\nbeen superseded, can then potentially obtain physical access. Fixed in v1.2.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109151",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-109154",
+      "desc": "In the Matter door lock applications of\n  the Nordic Semiconductor nRF Door Lock and Access Control Add-on v1.0.0\n  through v1.1.1, AccessManager::ValidateCredential() checks only credential\n  occupancy and the secret bytes, and never reads the owning user's UserStatus.\n  It also returns success when no owning user can be resolved. A user suspended\n  by setting their status to OccupiedDisabled can continue to unlock the door\n  with their previously assigned credential, and an orphaned but occupied\n  credential is also accepted. Fixed in v1.2.0.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-109154",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-119643",
+      "desc": "The MembershipWorks - Membership, Events & Directory plugin for WordPress is vulnerable to Stored Cross-Site Scripting in all versions up to, and including, 6.17. This is due to insufficient output escaping on member-supplied data retrieved from the MembershipWorks SaaS API in the sf_shortcode(), sf_widget_event_do(), and sf_widget_folder_do() functions, where the 'nam' (member name), 'ttl' (event title), 'url', 'adn' (venue name), 'szp', and 'ezp' fields are output into page HTML without escaping, or, in sf_widget_folder_do(), placed in an image alt attribute that an onerror handler copies into innerHTML. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119643",
+      "cvss": "7.2",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-121864",
+      "desc": "In nanobot, when sandboxed exec is enabled, the shell executable used to run commands can be selected by the caller and is launched before the sandbox is applied. An attacker who can induce the agent to create an executable in the workspace and select it as the shell can cause that executable to run outside the sandbox (e.g. Linux bubblewrap), with the operating-system permissions of the nanobot process.\n\nThis issue affects nanobot (nanobot-ai) from 0.2.1 before 0.4.1.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121864",
+      "cvss": "8.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-121865",
+      "desc": "In nanobot, the WebSocket gateway allows a standard client holding a valid client token to select an existing directory outside the operator-configured workspace as the root of a new conversation. The agent can then read and expose files in that directory that are readable by the nanobot service account.\n\nThis issue affects nanobot (nanobot-ai) from 0.3.5 before 0.4.1.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121865",
+      "cvss": "7.6",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124709",
+      "desc": "Issue summary: A QUIC server that rejects a stream opened by the peer may\nretain that stream's state for the lifetime of the connection if the peer\nresets the stream before the rejection is signalled, even though the peer's\nstream credit is returned.\n\nImpact summary: A remote client that completes a QUIC handshake can repeatedly\nopen and reset streams, causing server memory to grow without bound until the\nprocess runs out of memory and every connection on it is lost. This is a\nDenial of Service.\n\nCWE: CWE-401: Missing Release of Memory after Effective Lifetime\n\nDescription: QUIC servers track each stream the peer opens. When the incoming\nstream policy rejects a stream, OpenSSL schedules a STOP_SENDING frame, marks\nthe stream deleted and returns the peer's stream credit. A deleted stream is\ncollected only once its receive part is fully drained, which for a rejected\nstream means the STOP_SENDING has been acknowledged. If the peer sends\nRESET_STREAM first, the reset cancels the pending STOP_SENDING, so it is never\nsent or acknowledged and the stream is never collected.\n\nThe default configuration reaches this path. Once a connection has a default\nstream, meaning the application has read from or written to the connection as\nthe tutorial server does, the effective incoming stream policy rejects streams\nthe application does not accept. Applications that set the REJECT policy\nexplicitly are affected too.\n\nEach retained stream costs about 300 bytes, and the peer's stream credit\nwindow paces how quickly they accumulate. A client that keeps the connection\nopen and keeps opening and resetting streams grows server memory without\nbound. The severity is Low because growth is slow, needs a long-lived\nconnection, and causes no memory corruption or disclosure.\n\nFIPS impact: no\nThe affected code is outside the FIPS module boundary.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124709",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-35190",
+      "desc": "Issue summary: A server configured with the Suite B certificate flag through\nSSL_CTX_set_cert_flags() and with TLS 1.3 enabled may read past the end of a\nfixed group list when it processes a ClientHello whose supported_groups and\nkey_share contain no Suite B group.\n\nImpact summary: A remote client can send a ClientHello that makes the server\nread past the end of a static array. The values read are never returned to the\nclient, so no memory is disclosed; on builds with sanitizers or hardened\nallocators the read may crash the process, causing Denial of Service.\n\nCWE: CWE-125: Out-of-bounds Read\n\nDescription: When the Suite B certificate flag is set, OpenSSL restricts the\naccepted groups to P-256 and P-384 by substituting a fixed two-element list\nfor the configured group list. The tuple machinery used for key-share\nselection was not updated for this substitution: tls1_get_group_tuples() still\nreturns the configured tuples, which by default describe eight groups. The\nserver-side walk in tls_parse_ctos_key_share() then advances through the\ntwo-element list using those tuple counts without checking the cumulative\noffset against the number of groups present.\n\nOnly applications that call SSL_CTX_set_cert_flags() with\nSSL_CERT_FLAG_SUITEB_128_LOS and leave TLS 1.3 enabled are affected. The\nopenssl s_server -suiteB_128 option sets an X.509 verification parameter\ninstead, so the stock command line server is not vulnerable. Default\nconfigurations do not reach this code.\n\nA client that offers only groups outside the Suite B set, such as X25519,\nforces every tuple to be walked and the read to run past the array. The bytes\nread are compared against client group IDs and never sent back, so no memory\nis disclosed. On builds with address sanitizers or hardened allocators the\nread can abort the process; in ordinary release builds it reads a few bytes of\nadjacent constant data.\n\nFIPS impact: no\nThe affected code is outside the FIPS module boundary.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-35190",
+      "cvss": "5.3",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-112209",
+      "desc": "A Cross-Site Scripting (XSS) vulnerability reflected in the GET parameters `cod_primaria` and `cod_secundaria` of the Novanet Web endpoints `NNws_ShwNewDup` and `NPcd/NFG_VerNoticia`. User-provided data is reflected within a JavaScript block without proper sanitization or context-appropriate output encoding. An unauthenticated remote attacker could craft a manipulated URL that, when visited by a victim, would execute arbitrary JavaScript code in the victim’s browser, within the context of the affected site. The flaw resides in the platform’s shared code, so it could affect organizations using that vulnerable code.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-112209",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-118496",
+      "desc": "The affected products process a server-supplied URL without sufficient validation. An unauthenticated remote attacker controlling a malicious Automation Server and tricking a user to trust it or performing a man-in-the-middle attack, can exploit this vulnerability by causing the affected product to process unintended content. Successful exploitation may result in arbitrary code execution with the privileges of the user running the affected product.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118496",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-118497",
+      "desc": "The affected products do not sufficiently validate CODESYS Automation Server TLS certificates when a user starts the certificate enrollment. An unauthenticated remote attacker performing a man-in-the-middle attack can exploit this vulnerability by supplying an untrusted certificate that is accepted as trusted. Successful exploitation may allow an attacker to intercept and manipulate communications between the CODESYS Automation Server and the PLC network.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118497",
+      "cvss": "6.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-118498",
+      "desc": "The CODESYS Automation Server Connector uses server-supplied file names without sufficient path traversal checks. An unauthenticated remote attacker controlling a malicious Automation Server and tricking a user to trust it, or performing a man-in-the-middle attack on a trusted communication channel, can exploit this vulnerability to write attacker-controlled files to arbitrary locations on the engineering workstation and subsequently achieve arbitrary code execution with user privileges.",
+      "severity": "HIGH",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-118498",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-21609",
+      "desc": "This High severity Improper Authorization vulnerability was introduced in versions 5.12.0, 10.3.0, and 11.3.0 of Jira Service Management Data Center.  \t \tThis Improper Authorization vulnerability, with a CVSS Score of 7.1, allows an authenticated attacker to gain unintended access and can lead to the exposure of resources or functionality, possibly providing attackers with sensitive information or even execute arbitrary code.  \t \tAtlassian recommends that Jira Service Management Data Center customers upgrade to latest version, if you are unable to do so, upgrade your instance to one of the specified supported fixed versions: \t\t \t\t Jira Service Management Data Center 10.3: Upgrade to a release greater than or equal to 10.3.27 \t\t \t\t Jira Service Management Data Center 11.3: Upgrade to a release greater than or equal to 11.3.13 \t\t \t\t \t \tSee the release notes (https://confluence.atlassian.com/servicemanagement/jira-service-management-release-notes-780083086.html). You can download the latest version of Jira Service Management Data Center from the download center (https://www.atlassian.com/software/jira/service-management/download-archives).  \t \tThis vulnerability was reported via our Bug Bounty program.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-21609",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-119621",
+      "desc": "When importing a T3D or XML file in the Import/Export module, the file hash values of imported files were taken from the import data without validation and used to build the path of a temporary file. A crafted import file could therefore write files with arbitrary content to any location writable by the web server, for example a PHP file in the public web root, which leads to remote code execution. Exploiting this vulnerability requires an administrator backend user account, or a non-admin backend user for whom importing has been enabled via the user TSconfig option options.impexp.enableImportForNonAdminUser.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119621",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-119622",
+      "desc": "The backend endpoint for adding online media (e.g. YouTube or Vimeo videos) accepted a target folder in the fallback storage (storage uid 0), which points to the public web root of the installation. File mount and permission checks are not applied to the fallback storage. As a result, any authenticated, low-privileged backend user, even without file mounts or module access, could create online media files with a partially controllable file name in the public web root.\n\nIn combination with TYPO3-CORE-SA-2026-027, this could be used to re-enable the installer on an already configured instance. The installer could then be used to create a new administrator and system maintainer account, which leads to remote code execution.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119622",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-119623",
+      "desc": "The installer (first installation wizard) could be re-enabled on an already configured instance by placing a file whose name starts with FIRST_INSTALL in the public web root or the project root. The installer then became accessible without authentication, allowing for example to change the database connection and to create a new administrator and system maintainer account, which leads to remote code execution. As demonstrated in TYPO3-CORE-SA-2026-026, such a file could be created by an authenticated, low-privileged backend user without any further permissions. Other ways of creating files in the web root, as well as leftover or restored marker files, could be abused in the same way.\n\nWith the fixed versions, the installer can no longer be re-enabled on an already configured instance by a marker file. A new internal setting $GLOBALS['TYPO3_CONF_VARS']['SYS']['isInstalling'] is stored in the system configuration and is only enabled while a new installation is running. Additionally, only the exact file names FIRST_INSTALL and FIRST_INSTALL.txt are accepted as marker files.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-119623",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-125159",
+      "desc": "ImageMagick and GraphicsMagick use small modules, called \"coders\", to read each image format. When processing images, TYPO3 determined the coder from the file type detected by the file contents, as long as the detected mime-type started with image/. A file containing MVG (Magick Vector Graphics) instructions, uploaded with an image file extension like .png, was therefore processed with the MVG coder. MVG instructions can read local files into the processed image, which allows disclosing the contents of arbitrary files readable by the web server, for example configuration files containing credentials, through a publicly accessible processed image.\n\nExploiting this vulnerability requires a way to upload files without a mime-type check, for example a public form of the Form Framework using a FileUpload or ImageUpload element without configured allowedMimeTypes (see TYPO3-CORE-SA-2026-032), which allows exploitation by unauthenticated visitors. Additionally, ImageMagick must be used for image processing, and its default system configuration must allow the MVG coder.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125159",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-125160",
+      "desc": "Files uploaded through FileUpload or ImageUpload elements are stored in an unguessable sub-folder that remains the same for the whole form session. If storing an uploaded file failed, for example because of a file name exceeding the file system's length limit, the raw error message was shown to the frontend user disclosing the storage path including the unguessable folder name and the server's temporary upload directory. With this information, attackers could determine the public URL of files they upload through the form.\n\nIf a form allows uploading files that browsers can execute, such as HTML documents, this could lead to Cross-Site Scripting on web servers that do not apply the Content-Security-Policy recommended by TYPO3 to the form upload target folder. This vulnerability is known to be actively exploited.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125160",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-125161",
+      "desc": "The fix for TYPO3-CORE-SA-2026-009 was incomplete. GeneralUtility::sanitizeLocalUrl performed its checks on the URL-decoded value, but returned the original, URL-encoded value. URLs containing certain percent-encoded characters therefore passed the sanitization checks as local URLs, although they point to an external host. Applications that use the sanitized URL for redirects are vulnerable to open redirect attacks. This enables attackers to redirect users to external content and carry out phishing attacks. In the TYPO3 core, this affects redirects in the backend, which require the victim to be logged in to the backend.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125161",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-125162",
+      "desc": "The cHash argument, which ensures that only URL arguments originally generated by TYPO3 create separate page cache entries, was treated inconsistently when it was passed as an array. The cHash validation treated such a value as missing, while the page cache identifier treated it as present and included all URL arguments. As a result, unauthenticated visitors could create an unlimited number of page cache entries and trigger uncached page renderings by adding an array cHash with arbitrary values to any URL. This could exhaust server resources and fill the page cache storage. Only installations where the cHash validation is not enforced via $GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']['enforceValidation'] are affected. This setting is enabled by default for new installations since TYPO3 v12, but is often still disabled in installations upgraded from older versions.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125162",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-125163",
+      "desc": "The FileUpload and ImageUpload elements of the Form Framework use the property allowedMimeTypes as an allow list of MIME types accepted for upload. An empty allowedMimeTypes list was treated as \"no restriction\". Forms containing upload elements without any configured MIME type, for example in manually created form definitions or when all MIME types were deselected in the form editor, accepted any file except those blocked by the file deny pattern, which only covers PHP-related file extensions. This allowed unauthenticated users to upload files with browser-executable content, such as HTML or SVG documents, to the configured upload folder, which by default is located in a public storage. If attackers know the URL of an uploaded file (see TYPO3-CORE-SA-2026-029), this could lead to Cross-Site Scripting on web servers that do not apply the Content-Security-Policy recommended by TYPO3 to the form upload target folder.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125163",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-125164",
+      "desc": "The file dump controller (eID=dumpFile) delivers files, file references and processed files identified by their uid, protected by a token. The token only covered the uid value, but not the type of the requested resource. A valid token issued for a file could therefore be reused to request a file reference or a processed file with the same uid. As a result, unauthenticated visitors could download files, for example from non-public storages, for which no token had been issued.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125164",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-125165",
+      "desc": "The RSS widget of the dashboard allows backend users to configure the URL of the RSS feed in the widget settings. The URL was fetched by the server without restricting the target host. Backend users with access to the dashboard could therefore make the server send HTTP requests to arbitrary hosts, including internal network services and cloud metadata endpoints, which are not reachable from the outside.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125165",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129271",
+      "desc": "The Patch Management Engine in N-central is vulnerable to LPE via attacker controlled metadata",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129271",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129272",
+      "desc": "N-able N-central before 2026.4.1 HF3 uses a predictable credential to authenticate appliances to an agent-facing API. A remote, unauthenticated attacker who knows or guesses an appliance identifier can obtain a valid appliance token and session and impersonate that appliance.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129272",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129273",
+      "desc": "N-able N-central before 2026.4.1 HF3 does not neutralise control characters in an Audit Export setting before writing it to the system logging configuration. An authenticated attacker with product administrator privileges can inject configuration and execute commands as root on the N-central server.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129273",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129274",
+      "desc": "N-able N-central before 2026.4.1 HF3 does not authenticate callers of the ServerMMS2 RemoteExecutionTaskSubmit operation or verify task ownership. A remote, unauthenticated attacker can submit forged results for remote execution tasks belonging to any customer.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129274",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129275",
+      "desc": "N-able N-central before 2026.4.1 HF3 allows the repositoryItemGet operation to be called without authentication. A remote, unauthenticated attacker who knows a policy identifier can download the Automation Manager policy of any customer, including embedded scripts and parameter values.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129275",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129276",
+      "desc": "N-able N-central before 2026.4.1 HF3 does not authenticate callers of the ServerMMS2 AssetDiscoSimplifiedInfoSubmit operation. A remote, unauthenticated attacker can overwrite the asset data recorded for any appliance.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129276",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129277",
+      "desc": "N-able N-central before 2026.4.1 HF3 does not authenticate callers of the MaintActionGet operation. A remote, unauthenticated attacker can read and cancel the pending maintenance actions of any appliance.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129277",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129278",
+      "desc": "N-able N-central before 2026.4.1 HF3 does not authenticate callers of the ServerII2 remoteControlMSPAStartEndTimeSubmit operation. A remote, unauthenticated attacker can alter the recorded state and times of Take Control remote control tasks and the associated audit log entries.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129278",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129279",
+      "desc": "The password reset function in N-able N-central before 2026.4.1 HF3 returns distinguishable responses for valid and invalid accounts. A remote, unauthenticated attacker can enumerate the email addresses of valid user accounts.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129279",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129280",
+      "desc": "Multiple ServerUI and ServerUI2 SOAP operations in N-able N-central before 2026.4.1 HF3 do not verify the caller's session, permissions or customer scope. A remote attacker, in some cases without authentication, can read device and patch data, test passwords of user accounts, send messages to managed agents, and modify device and service settings belonging to other customers.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129280",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129281",
+      "desc": "N-able N-central before 2026.4.1 HF3 checks only a view permission for ServerII2 operations that write device execution configuration. An authenticated user with view-only access to a device can set configuration that the Windows agent on that device acts on.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129281",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129282",
+      "desc": "The test email delivery function in N-able N-central before 2026.4.1 HF3 does not check permissions, lacks CSRF protection, and passes sender and recipient values to the mail program without neutralising option characters. An authenticated attacker can inject arguments into the mail command executed on the server.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129282",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129283",
+      "desc": "The custom service import in N-able N-central before 2026.4.1 HF3 processes XML external entities. An authenticated attacker can upload a crafted service definition to read files accessible to the N-central service account or cause the server to make outbound requests.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129283",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129284",
+      "desc": "N-able N-central before 2026.4.1 HF3 does not validate connection targets in the Report Manager and Data Export settings. An authenticated attacker can cause the server to connect to arbitrary hosts, including loopback and internal addresses, and can use the responses to probe internal network services.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129284",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129285",
+      "desc": "N-able N-central before 2026.4.1 HF3 does not verify that an action response received over XMPP originates from the appliance the request was sent to. An attacker with the credentials of one appliance can forge responses on behalf of another appliance.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129285",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129286",
+      "desc": "N-able N-central before 2026.4.1 HF3 does not validate version values and download locations in software update metadata. An attacker able to supply or modify the update metadata received by the server can write files outside the download directory and execute code as the N-central service account.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129286",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129287",
+      "desc": "N-able N-central before 2026.4.1 HF3 processes XML external entities in software repository files. An attacker able to supply or modify the repository files received by the server can read files accessible to the N-central service account or cause the server to make outbound requests.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129287",
+      "cvss": "0.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129448",
+      "desc": "Deserialization of Untrusted Data in Apache Roller versions 4.0.0 through 6.1.4 allows an unauthenticated remote attacker to execute arbitrary code. The XML-RPC endpoint accepts vendor extension types and deserializes them before authenticating the requester.\n\nThis is the same vulnerability as CVE-2026-82384, which listed only Apache Roller 6.1.5 as affected. This issue is being actively exploited.\n\nUsers are recommended to upgrade to Apache Roller 6.1.6 or later, which disables the extension types and rejects XML-RPC requests when the XML-RPC feature is disabled.\n\nUsers who cannot upgrade right away should set \"enabledForExtensions\" to \"false\" in WEB-INF/web.xml, or remove the \"/roller-services/xmlrpc\" servlet mapping, and restart Roller. Disabling XML-RPC in the administration UI is not enough, because older versions deserialize the request before checking that setting.",
+      "severity": "CRITICAL",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129448",
+      "cvss": "9.8",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-124643",
+      "desc": "This vulnerability exists in e-Sushrut HMIS due to insufficient authentication and session validation in the dashboard functionality. An unauthenticated remote attacker could exploit this vulnerability by sending specially crafted HTTP requests to the affected endpoint.\n\nSuccessful exploitation of this vulnerability could allow the attacker to gain unauthorized access to the dashboard information associated with the targeted healthcare organization.",
+      "severity": "MEDIUM",
+      "source": "NVD/NIST",
+      "date": "2026-11-17",
+      "pakistan": false,
+      "zeroday": false,
+      "tags": [
+        "nvd",
+        "cve",
+        "vulnerability",
+        "CVE Vulnerability"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-124643",
+      "cvss": "0.0",
       "cwe": ""
     },
     {

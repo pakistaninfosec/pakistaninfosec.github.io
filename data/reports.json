@@ -3,20 +3,36 @@
     {
       "date": "2026-11-20",
       "stats": {
-        "new": 598,
+        "new": 602,
         "changed": 0,
         "removed": 0,
-        "total": 750843,
-        "zeroday": 82,
-        "exploited": 32,
+        "total": 751445,
+        "zeroday": 86,
+        "exploited": 36,
         "pakistan": 16
       },
-      "summary": "Today's digest contains 598 vulnerabilities across 5 sources. 82 zero-day exploits detected, 32 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+      "summary": "Today's digest contains 602 vulnerabilities across 5 sources. 86 zero-day exploits detected, 36 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
       "sections": [
         {
           "label": "Zero Day Exploits",
           "color": "red",
           "items": [
+            {
+              "id": "CVE-2026-129448",
+              "desc": "Apache Roller contains a deserialization of untrusted data vulnerability that allows an unauthenticated remote attacker to execute arbitrary code via the XML-RPC endpoint, which accepts and deserializes vendor extension types before authentication. This CVE covers the same underlying vulnerability as CVE-2026-82384 but applies to a broader range of affected versions."
+            },
+            {
+              "id": "CVE-2026-123890",
+              "desc": "Broadcom VMware vCenter contains an authentication bypass using an alternate path or channel vulnerability in the VMware Directory Service that allows an unauthenticated attacker with network access to vCenter to bypass authentication and gain unauthorized access to the system."
+            },
+            {
+              "id": "CVE-2025-42884",
+              "desc": "SAP NetWeaver Enterprise Portal contains an improper neutralization of special elements in data query logic vulnerability that allows an unauthenticated attacker to disclose or modify server information via injected JNDI environment properties or a URL used during JNDI lookup operations."
+            },
+            {
+              "id": "CVE-2026-76466",
+              "desc": "Cisco Expressway Series contains a use of hard-coded credentials vulnerability that allows an unauthenticated, remote attacker with persistent cookies and network access to execute commands as root on a clustered device via the database service."
+            },
             {
               "id": "CVE-2024-10441",
               "desc": "Synology DSM contains an improper encoding or escaping of output vulnerability in the system plugin daemon in Synology BeeStation OS (BSM) that could allow a remote attacker to execute arbitrary code via unspecified vectors."
@@ -40,22 +56,6 @@
             {
               "id": "CVE-2026-114713",
               "desc": "UnrealIRCd UnrealIRCd contains an improper neutralization of delimiters vulnerability that allows any user on a network with two or more linked servers to inject server-to-server commands that are executed with server authority."
-            },
-            {
-              "id": "CVE-2026-123039",
-              "desc": "Check Point Firewall, Multi-Domain Security Management Server, Scalable Platforms, Security Gateway, and Security Management Server contain an incorrect permissions assignment for critical resources vulnerability when the Gaia OS DynamicCLI daemon runs as root and listens on a world-writable local socket without authenticating connecting processes. An authenticated local user can send a command to the socket and have it executed as root."
-            },
-            {
-              "id": "CVE-2026-124194",
-              "desc": "Microsoft Office Outlook contains a missing user interaction for potentially unsafe action vulnerability that allows an unauthorized attacker to perform spoofing over a network."
-            },
-            {
-              "id": "CVE-2026-111793",
-              "desc": "Openwave Messaging Limited Webtop Media Transcoder contains an incorrect resource transfer between spheres vulnerability that may allow an authenticated user to process and convert unintended document types if bypassing the Webmail experience."
-            },
-            {
-              "id": "CVE-2026-20320",
-              "desc": "Cisco BroadWorks contains an improper restriction of XML external entity reference vulnerability that could allow an unauthenticated, remote attacker to read sensitive configuration information on an affected system."
             }
           ]
         },
@@ -64,6 +64,22 @@
           "color": "orange",
           "items": [
             {
+              "id": "CVE-2026-129448",
+              "desc": "Apache Roller contains a deserialization of untrusted data vulnerability that allows an unauthenticated remote attacker to execute arbitrary code via the XML-RPC endpoint, which accepts and deserializes vendor extension types before authentication. This CVE covers the same underlying vulnerability as CVE-2026-82384 but applies to a broader range of affected versions."
+            },
+            {
+              "id": "CVE-2026-123890",
+              "desc": "Broadcom VMware vCenter contains an authentication bypass using an alternate path or channel vulnerability in the VMware Directory Service that allows an unauthenticated attacker with network access to vCenter to bypass authentication and gain unauthorized access to the system."
+            },
+            {
+              "id": "CVE-2025-42884",
+              "desc": "SAP NetWeaver Enterprise Portal contains an improper neutralization of special elements in data query logic vulnerability that allows an unauthenticated attacker to disclose or modify server information via injected JNDI environment properties or a URL used during JNDI lookup operations."
+            },
+            {
+              "id": "CVE-2026-76466",
+              "desc": "Cisco Expressway Series contains a use of hard-coded credentials vulnerability that allows an unauthenticated, remote attacker with persistent cookies and network access to execute commands as root on a clustered device via the database service."
+            },
+            {
               "id": "CVE-2024-10441",
               "desc": "Synology DSM contains an improper encoding or escaping of output vulnerability in the system plugin daemon in Synology BeeStation OS (BSM) that could allow a remote attacker to execute arbitrary code via unspecified vectors."
             },
@@ -86,22 +102,6 @@
             {
               "id": "CVE-2026-114713",
               "desc": "UnrealIRCd UnrealIRCd contains an improper neutralization of delimiters vulnerability that allows any user on a network with two or more linked servers to inject server-to-server commands that are executed with server authority."
-            },
-            {
-              "id": "CVE-2026-123039",
-              "desc": "Check Point Firewall, Multi-Domain Security Management Server, Scalable Platforms, Security Gateway, and Security Management Server contain an incorrect permissions assignment for critical resources vulnerability when the Gaia OS DynamicCLI daemon runs as root and listens on a world-writable local socket without authenticating connecting processes. An authenticated local user can send a command to the socket and have it executed as root."
-            },
-            {
-              "id": "CVE-2026-124194",
-              "desc": "Microsoft Office Outlook contains a missing user interaction for potentially unsafe action vulnerability that allows an unauthorized attacker to perform spoofing over a network."
-            },
-            {
-              "id": "CVE-2026-111793",
-              "desc": "Openwave Messaging Limited Webtop Media Transcoder contains an incorrect resource transfer between spheres vulnerability that may allow an authenticated user to process and convert unintended document types if bypassing the Webmail experience."
-            },
-            {
-              "id": "CVE-2026-20320",
-              "desc": "Cisco BroadWorks contains an improper restriction of XML external entity reference vulnerability that could allow an unauthenticated, remote attacker to read sensitive configuration information on an affected system."
             }
           ]
         },

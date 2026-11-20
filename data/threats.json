@@ -1,13 +1,13 @@
 {
-  "generated": "2026-11-20T17:07:46.448165+00:00",
-  "summary": "Today's digest contains 598 vulnerabilities across 5 sources. 82 zero-day exploits detected, 32 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-11-20T23:16:27.323528+00:00",
+  "summary": "Today's digest contains 602 vulnerabilities across 5 sources. 86 zero-day exploits detected, 36 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 598,
+    "new": 602,
     "changed": 0,
     "removed": 0,
-    "total": 750843,
-    "zeroday": 82,
-    "exploited": 32,
+    "total": 751445,
+    "zeroday": 86,
+    "exploited": 36,
     "pakistan": 16
   },
   "sources": [
@@ -21,7 +21,7 @@
     },
     {
       "name": "CISA KEV",
-      "count": 32
+      "count": 36
     },
     {
       "name": "Pakistan CERT",
@@ -335,6 +335,82 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-129448",
+      "desc": "Apache Roller contains a deserialization of untrusted data vulnerability that allows an unauthenticated remote attacker to execute arbitrary code via the XML-RPC endpoint, which accepts and deserializes vendor extension types before authentication. This CVE covers the same underlying vulnerability as CVE-2026-82384 but applies to a broader range of affected versions.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-11-20",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129448",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-123890",
+      "desc": "Broadcom VMware vCenter contains an authentication bypass using an alternate path or channel vulnerability in the VMware Directory Service that allows an unauthenticated attacker with network access to vCenter to bypass authentication and gain unauthorized access to the system.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-11-20",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-123890",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2025-42884",
+      "desc": "SAP NetWeaver Enterprise Portal contains an improper neutralization of special elements in data query logic vulnerability that allows an unauthenticated attacker to disclose or modify server information via injected JNDI environment properties or a URL used during JNDI lookup operations.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-11-20",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-42884",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-76466",
+      "desc": "Cisco Expressway Series contains a use of hard-coded credentials vulnerability that allows an unauthenticated, remote attacker with persistent cookies and network access to execute commands as root on a clustered device via the database service.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-11-20",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-76466",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -2190,7 +2266,7 @@
     {
       "id": "CVE-2026-108687",
       "desc": "The SAML SSO Login  WordPress plugin through 1.5.2 does not verify that the SAML assertion whose signature it validates is the same assertion it reads the user identity from, allowing unauthenticated attackers who hold a validly signed assertion for any identity to authenticate as any existing user, including an administrator, through XML signature wrapping.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-19",
       "pakistan": false,
@@ -2202,7 +2278,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-108687",
-      "cvss": "0.0",
+      "cvss": "8.1",
       "cwe": ""
     },
     {
@@ -2244,7 +2320,7 @@
     {
       "id": "CVE-2026-121852",
       "desc": "The AppPresser  WordPress plugin before 5.0.0 does not properly escape the contents of its debug log when displaying it in the admin dashboard, and decodes escape sequences after sanitising input, allowing unauthenticated users to perform Stored XSS attacks against administrators when debug logging is enabled.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-19",
       "pakistan": false,
@@ -2256,13 +2332,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-121852",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-129446",
       "desc": "The WPO365 | SEAMLESS WORDPRESS + MICROSOFT INTEGRATION (WPO365 | LOGIN) WordPress plugin before 45.4 does not ensure the signature validated on a SAML response covers the element the user identity is read from, allowing unauthenticated attackers to forge a response via signature wrapping and log in as any user, including administrators, when they can supply a single artifact signed by the configured identity provider.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-19",
       "pakistan": false,
@@ -2274,7 +2350,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-129446",
-      "cvss": "0.0",
+      "cvss": "8.1",
       "cwe": ""
     },
     {

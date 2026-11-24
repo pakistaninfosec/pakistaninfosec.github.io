@@ -3,20 +3,32 @@
     {
       "date": "2026-11-24",
       "stats": {
-        "new": 599,
+        "new": 606,
         "changed": 0,
         "removed": 0,
-        "total": 757060,
-        "zeroday": 86,
-        "exploited": 36,
-        "pakistan": 13
+        "total": 757666,
+        "zeroday": 89,
+        "exploited": 39,
+        "pakistan": 17
       },
-      "summary": "Today's digest contains 599 vulnerabilities across 5 sources. 86 zero-day exploits detected, 36 actively exploited from CISA KEV, and 13 Pakistan CERT/NCCS advisories.",
+      "summary": "Today's digest contains 606 vulnerabilities across 5 sources. 89 zero-day exploits detected, 39 actively exploited from CISA KEV, and 17 Pakistan CERT/NCCS advisories.",
       "sections": [
         {
           "label": "Zero Day Exploits",
           "color": "red",
           "items": [
+            {
+              "id": "CVE-2026-132224",
+              "desc": "Optimizely Web Experimentation contains an external control of critical state data vulnerability in its account signup flow that could allow an attacker to impersonate existing customer users and modify Project JavaScript. Successful exploitation can result in attacker-controlled JavaScript being distributed through Optimizely-hosted assets and executed in browsers visiting affected customer websites."
+            },
+            {
+              "id": "CVE-2026-131914",
+              "desc": "Idunno AntiCsrf contains a deserialization of untrusted data vulnerability that allows an unauthenticated remote attacker to execute arbitrary code via object injection. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
+            },
+            {
+              "id": "CVE-2026-132165",
+              "desc": "Drupal Core contains a not failing securely vulnerability that could allow an unauthenticated attacker to take over an existing site or execute arbitrary code via the Drupal installer. Under specific conditions, the attacker can use install.php to attempt to reinstall Drupal on the site."
+            },
             {
               "id": "CVE-2026-133968",
               "desc": "Project MONAI MONAI Label contains a path traversal vulnerability that allows an unauthenticated remote attacker to write arbitrary files outside the intended datastore directory, potentially resulting in remote code execution."
@@ -44,18 +56,6 @@
             {
               "id": "CVE-2024-10441",
               "desc": "Synology DSM contains an improper encoding or escaping of output vulnerability in the system plugin daemon in Synology BeeStation OS (BSM) that could allow a remote attacker to execute arbitrary code via unspecified vectors."
-            },
-            {
-              "id": "CVE-2026-40217",
-              "desc": "BerriAI LiteLLM contains an unprotected alternate channel vulnerability that could allow remote attackers to execute arbitrary code via bytecode rewriting at the /guardrails/test_custom_code URI."
-            },
-            {
-              "id": "CVE-2026-90817",
-              "desc": "Vanderbilt University Research Electronic Data Capture (REDCap) contains a code injection vulnerability which could allow an unauthenticated attacker to execute arbitrary code on the server. An attacker could exploit this via crafted HTTP requests that access an unintended controller route from a public survey context and supply a crafted file-path or stream parameter during data import processing. Exploitation requires knowledge of a valid public survey hash."
-            },
-            {
-              "id": "CVE-2026-90436",
-              "desc": "Apache Axis contains an unsafe reflection vulnerability that could allow an unauthenticated remote attacker to execute arbitrary code via a crafted SOAP fault message that causes Axis to load and instantiate an attacker-specified class when a suitable class is available on the application classpath. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
             }
           ]
         },
@@ -64,6 +64,18 @@
           "color": "orange",
           "items": [
             {
+              "id": "CVE-2026-132224",
+              "desc": "Optimizely Web Experimentation contains an external control of critical state data vulnerability in its account signup flow that could allow an attacker to impersonate existing customer users and modify Project JavaScript. Successful exploitation can result in attacker-controlled JavaScript being distributed through Optimizely-hosted assets and executed in browsers visiting affected customer websites."
+            },
+            {
+              "id": "CVE-2026-131914",
+              "desc": "Idunno AntiCsrf contains a deserialization of untrusted data vulnerability that allows an unauthenticated remote attacker to execute arbitrary code via object injection. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
+            },
+            {
+              "id": "CVE-2026-132165",
+              "desc": "Drupal Core contains a not failing securely vulnerability that could allow an unauthenticated attacker to take over an existing site or execute arbitrary code via the Drupal installer. Under specific conditions, the attacker can use install.php to attempt to reinstall Drupal on the site."
+            },
+            {
               "id": "CVE-2026-133968",
               "desc": "Project MONAI MONAI Label contains a path traversal vulnerability that allows an unauthenticated remote attacker to write arbitrary files outside the intended datastore directory, potentially resulting in remote code execution."
             },
@@ -90,18 +102,6 @@
             {
               "id": "CVE-2024-10441",
               "desc": "Synology DSM contains an improper encoding or escaping of output vulnerability in the system plugin daemon in Synology BeeStation OS (BSM) that could allow a remote attacker to execute arbitrary code via unspecified vectors."
-            },
-            {
-              "id": "CVE-2026-40217",
-              "desc": "BerriAI LiteLLM contains an unprotected alternate channel vulnerability that could allow remote attackers to execute arbitrary code via bytecode rewriting at the /guardrails/test_custom_code URI."
-            },
-            {
-              "id": "CVE-2026-90817",
-              "desc": "Vanderbilt University Research Electronic Data Capture (REDCap) contains a code injection vulnerability which could allow an unauthenticated attacker to execute arbitrary code on the server. An attacker could exploit this via crafted HTTP requests that access an unintended controller route from a public survey context and supply a crafted file-path or stream parameter during data import processing. Exploitation requires knowledge of a valid public survey hash."
-            },
-            {
-              "id": "CVE-2026-90436",
-              "desc": "Apache Axis contains an unsafe reflection vulnerability that could allow an unauthenticated remote attacker to execute arbitrary code via a crafted SOAP fault message that causes Axis to load and instantiate an attacker-specified class when a suitable class is available on the application classpath. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
             }
           ]
         },
@@ -109,6 +109,22 @@
           "label": "Pakistan Alerts",
           "color": "green",
           "items": [
+            {
+              "id": "PKCERT-020B78E5",
+              "desc": "Pakistan CERT Security Advisory: Advisory: Multiple Vulnerabilities in WhatsApp for Android, iOS, Windows and Mac Desktop. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately."
+            },
+            {
+              "id": "PKCERT-37292A00",
+              "desc": "Pakistan CERT Security Advisory: Advisory: Critical Pre-Authentication Remote Code Execution Vulnerability in OpenJDK “Java4Shell” (CVE-2026-114938). Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately."
+            },
+            {
+              "id": "PKCERT-A1913EB5",
+              "desc": "Pakistan CERT Security Advisory: Advisory: Emerging AI-Enabled Cyber Threats Targeting Financial Institutions and OT/ Critical Infrastructure Overview. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately."
+            },
+            {
+              "id": "PKCERT-9A84B65C",
+              "desc": "Pakistan CERT Security Advisory: Advisory: Multiple Security Vulnerabilities in Node.js Allow Remote Code Execution, TLS Authentication Bypass and Unauthorized Access. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately."
+            },
             {
               "id": "PKCERT-71DA9F40",
               "desc": "Pakistan CERT Security Advisory: Advisory No 13: Critical Vulnerabilities in Fortinet FortiSandbox Under Active Exploitation. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
@@ -132,22 +148,6 @@
             {
               "id": "PKCERT-F2DCA7B5",
               "desc": "Pakistan CERT Security Advisory: Advisory No 08: Persistent Application Security Weaknesses Requiring Immediate Remediation. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
-            },
-            {
-              "id": "PKCERT-E4B9FF51",
-              "desc": "Pakistan CERT Security Advisory: Advisory No 07: Critical Pre-Authentication RCE Vulnerability in BeyondTrust Remote Support. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
-            },
-            {
-              "id": "PKCERT-1F50D32C",
-              "desc": "Pakistan CERT Security Advisory: Advisory No 06: Active Exploitation of Zero-Day Vulnerabilities in Ivanti EPMM. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
-            },
-            {
-              "id": "PKCERT-963C515B",
-              "desc": "Pakistan CERT Security Advisory: Advisory No 05: Actively Exploited Microsoft Office Zero-Day Vulnerability (CVE-2026-21509). Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
-            },
-            {
-              "id": "PKCERT-BB9FC415",
-              "desc": "Pakistan CERT Security Advisory: Advisory No 04: Critical Fortinet FortiSIEM and FortiOS Remote Code Execution Vulnerabilities. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
             }
           ]
         }

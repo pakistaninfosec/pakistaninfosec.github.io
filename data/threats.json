@@ -1,14 +1,14 @@
 {
-  "generated": "2026-11-24T06:48:40.249088+00:00",
-  "summary": "Today's digest contains 599 vulnerabilities across 5 sources. 86 zero-day exploits detected, 36 actively exploited from CISA KEV, and 13 Pakistan CERT/NCCS advisories.",
+  "generated": "2026-11-24T18:41:44.763684+00:00",
+  "summary": "Today's digest contains 606 vulnerabilities across 5 sources. 89 zero-day exploits detected, 39 actively exploited from CISA KEV, and 17 Pakistan CERT/NCCS advisories.",
   "stats": {
-    "new": 599,
+    "new": 606,
     "changed": 0,
     "removed": 0,
-    "total": 757060,
-    "zeroday": 86,
-    "exploited": 36,
-    "pakistan": 13
+    "total": 757666,
+    "zeroday": 89,
+    "exploited": 39,
+    "pakistan": 17
   },
   "sources": [
     {
@@ -21,11 +21,11 @@
     },
     {
       "name": "CISA KEV",
-      "count": 36
+      "count": 39
     },
     {
       "name": "Pakistan CERT",
-      "count": 12
+      "count": 16
     },
     {
       "name": "NCCS Pakistan",
@@ -33,6 +33,82 @@
     }
   ],
   "threats": [
+    {
+      "id": "PKCERT-020B78E5",
+      "desc": "Pakistan CERT Security Advisory: Advisory: Multiple Vulnerabilities in WhatsApp for Android, iOS, Windows and Mac Desktop. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
+      "severity": "HIGH",
+      "source": "Pakistan CERT",
+      "date": "2026-11-24",
+      "pakistan": true,
+      "zeroday": false,
+      "tags": [
+        "pakistan",
+        "cert",
+        "advisory",
+        "government",
+        "Pakistan Advisory"
+      ],
+      "url": "https://pkcert.gov.pk/advisory/26/28.pdf",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "PKCERT-37292A00",
+      "desc": "Pakistan CERT Security Advisory: Advisory: Critical Pre-Authentication Remote Code Execution Vulnerability in OpenJDK “Java4Shell” (CVE-2026-114938). Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
+      "severity": "HIGH",
+      "source": "Pakistan CERT",
+      "date": "2026-11-24",
+      "pakistan": true,
+      "zeroday": false,
+      "tags": [
+        "pakistan",
+        "cert",
+        "advisory",
+        "government",
+        "Pakistan Advisory"
+      ],
+      "url": "https://pkcert.gov.pk/advisory/26/27.pdf",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "PKCERT-A1913EB5",
+      "desc": "Pakistan CERT Security Advisory: Advisory: Emerging AI-Enabled Cyber Threats Targeting Financial Institutions and OT/ Critical Infrastructure Overview. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
+      "severity": "HIGH",
+      "source": "Pakistan CERT",
+      "date": "2026-11-24",
+      "pakistan": true,
+      "zeroday": false,
+      "tags": [
+        "pakistan",
+        "cert",
+        "advisory",
+        "government",
+        "Pakistan Advisory"
+      ],
+      "url": "https://pkcert.gov.pk/advisory/26/26.pdf",
+      "cvss": "7.5",
+      "cwe": ""
+    },
+    {
+      "id": "PKCERT-9A84B65C",
+      "desc": "Pakistan CERT Security Advisory: Advisory: Multiple Security Vulnerabilities in Node.js Allow Remote Code Execution, TLS Authentication Bypass and Unauthorized Access. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately.",
+      "severity": "HIGH",
+      "source": "Pakistan CERT",
+      "date": "2026-11-24",
+      "pakistan": true,
+      "zeroday": false,
+      "tags": [
+        "pakistan",
+        "cert",
+        "advisory",
+        "government",
+        "Pakistan Advisory"
+      ],
+      "url": "https://pkcert.gov.pk/advisory/26/24.pdf",
+      "cvss": "7.5",
+      "cwe": ""
+    },
     {
       "id": "PKCERT-71DA9F40",
       "desc": "Pakistan CERT Security Advisory: Advisory No 13: Critical Vulnerabilities in Fortinet FortiSandbox Under Active Exploitation. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF.",
@@ -278,6 +354,63 @@
       ],
       "url": "https://nccs.pk/NCCSBlog/TWICS.html",
       "cvss": "5.5",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-132224",
+      "desc": "Optimizely Web Experimentation contains an external control of critical state data vulnerability in its account signup flow that could allow an attacker to impersonate existing customer users and modify Project JavaScript. Successful exploitation can result in attacker-controlled JavaScript being distributed through Optimizely-hosted assets and executed in browsers visiting affected customer websites.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-11-24",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-132224",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-131914",
+      "desc": "Idunno AntiCsrf contains a deserialization of untrusted data vulnerability that allows an unauthenticated remote attacker to execute arbitrary code via object injection. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-11-24",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-131914",
+      "cvss": "9.0",
+      "cwe": ""
+    },
+    {
+      "id": "CVE-2026-132165",
+      "desc": "Drupal Core contains a not failing securely vulnerability that could allow an unauthenticated attacker to take over an existing site or execute arbitrary code via the Drupal installer. Under specific conditions, the attacker can use install.php to attempt to reinstall Drupal on the site.",
+      "severity": "CRITICAL",
+      "source": "CISA KEV",
+      "date": "2026-11-24",
+      "pakistan": false,
+      "zeroday": true,
+      "tags": [
+        "cisa",
+        "kev",
+        "actively-exploited",
+        "zero-day",
+        "Actively Exploited"
+      ],
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-132165",
+      "cvss": "9.0",
       "cwe": ""
     },
     {
@@ -2191,7 +2324,7 @@
     {
       "id": "CVE-2026-116001",
       "desc": "NULL pointer dereference vulnerability in Apache Perl.\n\n\n\nThis issue affects Apache Perl: from 1.99_04 through 2.0.13.\n\n\n\nUsers are recommended to upgrade to version 2.0.14, which fixes the issue.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -2203,13 +2336,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116001",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-116005",
       "desc": "Fixed-size stack buffer overflow vulnerability in Apache Perl.\n\n\n\nThis issue affects Apache Perl: from 1.99_01 through 2.0.13.\n\n\n\nUsers are recommended to upgrade to version 2.0.14, which fixes the issue.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -2221,13 +2354,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116005",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-116032",
       "desc": "Stack buffer overflow vulnerability in Apache Perl.\n\n\n\nThis issue affects Apache Perl: from 1.99_01 through 2.0.13.\n\n\n\nUsers are recommended to upgrade to version 2.0.14, which fixes the issue.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -2239,13 +2372,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116032",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-116043",
       "desc": "NULL pointer dereference, Out-of-bounds read vulnerability in Apache Perl.\n\n\n\nThis issue affects Apache Perl: from 1.99_01 through 2.0.13.\n\n\n\nAlso fixes an out-of-bounds read in per-request $/ save/restore for which CVE-2026-116021 (now rejected) had previously been assigned.\n\n\n\nUsers are recommended to upgrade to version 2.0.14, which fixes the issue.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -2257,13 +2390,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116043",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-116772",
       "desc": "OOB read vulnerability in Apache Perl.\n\n\n\nThis issue affects Apache Perl: from 1.99_07 through 2.0.13.\n\n\n\nUsers are recommended to upgrade to version 2.0.14, which fixes the issue.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -2275,13 +2408,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116772",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-116799",
       "desc": "OOB read vulnerability in Apache Perl.\n\n\n\nThis issue affects Apache Perl: from 1.99_01 through 2.0.13.\n\n\n\nNote: The over-read data can be returned to the client in the response.\n\n\n\nUsers are recommended to upgrade to version 2.0.14, which fixes the issue.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -2293,13 +2426,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-116799",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-125651",
       "desc": "Cleartext storage in encrypted parquet file vulnerability in Apache Arrow Rust (`parquet` crate), from version 55.0.0 through to 57.3.2, 58.4.1, 59.3.2 and 60.1.0.\n\n\n\nWhen writing an encrypted parquet file with a column with bloom filters, the header and bitsets of the bloom filter are written in plaintext in the final parquet.\n\n\n\nUsers are recommended to upgrade to versions 57.3.3, 58.4.2, 59.3.3 or 60.2.0 which fix the issue by raising an error when trying to write encrypted parquet files with bloom filters enabled, preventing such files from being written out.\n\n\n\nExisting encrypted parquet files written with bloom filters are still vulnerable, and it is recommended to rewrite those files with bloom filters disabled if possible.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -2311,7 +2444,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-125651",
-      "cvss": "0.0",
+      "cvss": "9.1",
       "cwe": ""
     },
     {
@@ -2461,7 +2594,7 @@
     {
       "id": "CVE-2026-126761",
       "desc": "Authorization bypass through user-controlled key in the RDM folder duplication endpoint in Devolutions Server 2026.3.14.0 and earlier allows an authenticated low-privileged attacker to overwrite and move arbitrary vault entries and read their history via a client-supplied entry identifier.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -2473,7 +2606,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-126761",
-      "cvss": "0.0",
+      "cvss": "8.1",
       "cwe": ""
     },
     {
@@ -2545,7 +2678,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-133229",
-      "cvss": "0.0",
+      "cvss": "6.8",
       "cwe": ""
     },
     {
@@ -2563,13 +2696,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-133230",
-      "cvss": "0.0",
+      "cvss": "4.3",
       "cwe": ""
     },
     {
       "id": "CVE-2026-133231",
       "desc": "Stored cross-site scripting in the documentation editor in Devolutions Server 2026.3.14.0 and earlier allows an authenticated user with documentation write access to execute script in another user's session via an unencoded image caption parameter.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -2581,7 +2714,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-133231",
-      "cvss": "0.0",
+      "cvss": "8.7",
       "cwe": ""
     },
     {
@@ -2599,7 +2732,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-133232",
-      "cvss": "0.0",
+      "cvss": "5.4",
       "cwe": ""
     },
     {
@@ -2617,7 +2750,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-133249",
-      "cvss": "0.0",
+      "cvss": "6.8",
       "cwe": ""
     },
     {
@@ -3055,7 +3188,7 @@
     {
       "id": "CVE-2026-60076",
       "desc": "Allocation of resources without limits or throttling vulnerability in Apache IoTDB. Unbounded in-memory materialization in REST fastLastQuery cache-hit path enables heap-exhaustion DoS.\n\n\n\nThis issue affects Apache IoTDB: from 2.0.5 before 2.0.12.\n\n\n\nUsers are recommended to upgrade to version 2.0.12, which fixes the issue.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -3067,7 +3200,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60076",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -3085,7 +3218,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60077",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -3103,7 +3236,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60078",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -3121,7 +3254,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-60079",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -4669,7 +4802,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95410",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -4687,13 +4820,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95411",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-95412",
       "desc": "In OpalCommunicationManagerService of opal_communication_manager_service.cc, there is a possible use after free due to a race condition. This could lead to local escalation of privilege with User execution privileges needed. User interaction is not needed for exploitation.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -4705,13 +4838,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95412",
-      "cvss": "0.0",
+      "cvss": "7.0",
       "cwe": ""
     },
     {
       "id": "CVE-2026-95413",
       "desc": "In CameraManagerBroker::~CameraManagerBroker of camera_manager_broker.cc, there is a possible use after free due to a race condition. This could lead to local escalation of privilege with User execution privileges needed. User interaction is needed for exploitation.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -4723,13 +4856,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95413",
-      "cvss": "0.0",
+      "cvss": "7.0",
       "cwe": ""
     },
     {
       "id": "CVE-2026-95414",
       "desc": "In HttpFileRequestHandler::GetFilePath of http_file_request_handler.cc, there is a possible path traversal due to improper input validation. This could lead to remote information disclosure with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -4741,7 +4874,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95414",
-      "cvss": "0.0",
+      "cvss": "7.5",
       "cwe": ""
     },
     {
@@ -4759,7 +4892,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95415",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -4777,13 +4910,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95416",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-95417",
       "desc": "In ResolvePendingNotifyRequests of remote_characteristic.cc, there is a possible use after free due to a status callback that can destroy the object while its pending request queue is still being iterated. This could lead to remote (proximal/adjacent) code execution with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -4795,13 +4928,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95417",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-95418",
       "desc": "In LogicalLink::SignalError of logical_link.cc, there is a possible use after free due to the object being destroyed by a callback while it is still iterating over its channels. This could lead to remote (proximal/adjacent) code execution with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -4813,7 +4946,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95418",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -4831,13 +4964,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95419",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-95420",
       "desc": "In OnEncryptionChange of security_manager.cc, there is a possible way to establish a bond marked as authenticated without completing authenticated pairing due to a logic error in the code. This could lead to remote (proximal/adjacent) escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -4849,13 +4982,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95420",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
       "id": "CVE-2026-95421",
       "desc": "In BrEdrSignalingChannel::DecodeRxUnit of bredr_signaling_channel.cc, there is a possible use after free due to a missing object lifetime check in a command processing loop. This could lead to remote (proximal/adjacent) code execution with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "severity": "MEDIUM",
+      "severity": "CRITICAL",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -4867,7 +5000,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95421",
-      "cvss": "0.0",
+      "cvss": "9.8",
       "cwe": ""
     },
     {
@@ -4885,7 +5018,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95422",
-      "cvss": "0.0",
+      "cvss": "4.4",
       "cwe": ""
     },
     {
@@ -4903,7 +5036,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95423",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -4921,7 +5054,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95424",
-      "cvss": "0.0",
+      "cvss": "4.4",
       "cwe": ""
     },
     {
@@ -4993,7 +5126,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95429",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -5083,7 +5216,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95434",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -5101,7 +5234,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95435",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -5191,7 +5324,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95441",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -5281,7 +5414,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95446",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -5299,7 +5432,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95447",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -5485,7 +5618,7 @@
     {
       "id": "CVE-2026-95458",
       "desc": "In BluetoothSetupImpl::OnAudioSourceConnectChanged of bluetooth_setup_impl.cc, there is a possible way for an unauthenticated nearby Bluetooth device to be saved as the audio output device due to a logic error in the code. This could lead to remote (proximal/adjacent) escalation of privilege with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -5497,7 +5630,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95458",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -5551,7 +5684,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95461",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -5569,7 +5702,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95462",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
@@ -5587,13 +5720,13 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95463",
-      "cvss": "0.0",
+      "cvss": "6.5",
       "cwe": ""
     },
     {
       "id": "CVE-2026-95464",
       "desc": "In SignalError of logical_link.cc, there is a possible use after free due to an error callback that can destroy the object while its channel list is still being iterated. This could lead to remote (proximal/adjacent) code execution with no additional execution privileges needed. User interaction is not needed for exploitation.",
-      "severity": "MEDIUM",
+      "severity": "HIGH",
       "source": "NVD/NIST",
       "date": "2026-11-23",
       "pakistan": false,
@@ -5605,7 +5738,7 @@
         "CVE Vulnerability"
       ],
       "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-95464",
-      "cvss": "0.0",
+      "cvss": "8.8",
       "cwe": ""
     },
     {
@@ -10145,8 +10278,8 @@
       "cwe": ""
     },
     {
-      "id": "EDB-3CBE1627",
-      "desc": "Parasoft Continuous Testing Platform 10.7.5 - JSP Command Execution",
+      "id": "EDB-E7BDE1BE",
+      "desc": "Parasoft Continuous Testing Platform 10.7.5 - Unauthenticated Remote Code Execution (RCE)",
       "severity": "HIGH",
       "source": "Exploit-DB",
       "date": "2026-11-24",
@@ -10379,8 +10512,8 @@
       "cwe": ""
     },
     {
-      "id": "EDB-C1DB259D",
-      "desc": "FreePBX 17.0.2 - Remote Code Execution (RCE)",
+      "id": "EDB-D22CC4E8",
+      "desc": "FreePBX 17.0.2 - Unauthenticated Remote Code Execution (RCE)",
       "severity": "HIGH",
       "source": "Exploit-DB",
       "date": "2026-11-24",
@@ -10451,8 +10584,8 @@
       "cwe": ""
     },
     {
-      "id": "EDB-DE86D7F1",
-      "desc": "PodcastGenerator 3.2.9 - Stored Cross-Site Scripting (XSS)",
+      "id": "EDB-E51E3EAA",
+      "desc": "Podcast Generator 3.2.9 - Stored Cross-Site Scripting (XSS)",
       "severity": "HIGH",
       "source": "Exploit-DB",
       "date": "2026-11-24",
@@ -10541,8 +10674,8 @@
       "cwe": ""
     },
     {
-      "id": "EDB-CED4302F",
-      "desc": "Wolf CMS 0.8.3.1 - Remote Code Execution (RCE) v",
+      "id": "EDB-066A7678",
+      "desc": "Wolf CMS 0.8.3.1 - 'file_manager' Authenticated Remote Code Execution (RCE)",
       "severity": "HIGH",
       "source": "Exploit-DB",
       "date": "2026-11-24",
@@ -10595,8 +10728,8 @@
       "cwe": ""
     },
     {
-      "id": "EDB-6207FE95",
-      "desc": "Grav CMS 2.0.7 - Remote Code Execution (RCE)",
+      "id": "EDB-06EE431D",
+      "desc": "Grav CMS 2.0.7 - 'Blueprint::dynamicData()' Authenticated Remote Code Execution (RCE)",
       "severity": "HIGH",
       "source": "Exploit-DB",
       "date": "2026-11-24",
@@ -10631,8 +10764,8 @@
       "cwe": ""
     },
     {
-      "id": "EDB-134EA9DA",
-      "desc": "EasyAppointments 1.5.1 - Blind SQL Injection (SQLi)",
+      "id": "EDB-33D6D966",
+      "desc": "EasyAppointments 1.5.1 - 'order_by' Authenticated Blind SQL Injection (SQLi)",
       "severity": "HIGH",
       "source": "Exploit-DB",
       "date": "2026-11-24",
@@ -10685,8 +10818,8 @@
       "cwe": ""
     },
     {
-      "id": "EDB-BA9BBF4D",
-      "desc": "CubeCart 6.7.4 - SQL Injection (SQLi)",
+      "id": "EDB-4FFD5B2B",
+      "desc": "Devellion CubeCart 6.7.4 - 'download_expire' Authenticated SQL Injection (SQLi)",
       "severity": "HIGH",
       "source": "Exploit-DB",
       "date": "2026-11-24",
@@ -10703,8 +10836,8 @@
       "cwe": ""
     },
     {
-      "id": "EDB-F99487F0",
-      "desc": "CubeCart 6.7.4 - SQL",
+      "id": "EDB-A998C5D5",
+      "desc": "Devellion CubeCart 6.7.4 - SQL",
       "severity": "HIGH",
       "source": "Exploit-DB",
       "date": "2026-11-24",
@@ -10721,8 +10854,8 @@
       "cwe": ""
     },
     {
-      "id": "EDB-A3281853",
-      "desc": "CubeCart 6.7.4 - Stored Cross-Site Scripting (XSS)",
+      "id": "EDB-D7CE41EB",
+      "desc": "Devellion CubeCart 6.7.4 - 'products.index.inc.php' Authenticated Stored Cross-Site Scripting (XSS)",
       "severity": "HIGH",
       "source": "Exploit-DB",
       "date": "2026-11-24",
@@ -10739,8 +10872,8 @@
       "cwe": ""
     },
     {
-      "id": "EDB-CAD5D015",
-      "desc": "CubeCart 6.7.4 - Cross-Site Scripting (XSS)",
+      "id": "EDB-615355CC",
+      "desc": "Devellion CubeCart 6.7.4 - Cross-Site Scripting (XSS)",
       "severity": "HIGH",
       "source": "Exploit-DB",
       "date": "2026-11-24",
@@ -10829,8 +10962,8 @@
       "cwe": ""
     },
     {
-      "id": "EDB-DB4CE654",
-      "desc": "NanaZip 6.5 - Denial of Service (DoS) (2)",
+      "id": "EDB-006768A2",
+      "desc": "M2Team NanaZip 6.5 - Denial of Service (DoS) (2)",
       "severity": "HIGH",
       "source": "Exploit-DB",
       "date": "2026-11-24",

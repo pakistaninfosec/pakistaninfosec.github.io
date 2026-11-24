@@ -1,6 +1,159 @@
 {
   "reports": [
     {
+      "date": "2026-11-24",
+      "stats": {
+        "new": 599,
+        "changed": 0,
+        "removed": 0,
+        "total": 757060,
+        "zeroday": 86,
+        "exploited": 36,
+        "pakistan": 13
+      },
+      "summary": "Today's digest contains 599 vulnerabilities across 5 sources. 86 zero-day exploits detected, 36 actively exploited from CISA KEV, and 13 Pakistan CERT/NCCS advisories.",
+      "sections": [
+        {
+          "label": "Zero Day Exploits",
+          "color": "red",
+          "items": [
+            {
+              "id": "CVE-2026-133968",
+              "desc": "Project MONAI MONAI Label contains a path traversal vulnerability that allows an unauthenticated remote attacker to write arbitrary files outside the intended datastore directory, potentially resulting in remote code execution."
+            },
+            {
+              "id": "CVE-2026-134624",
+              "desc": "N-able MailAssure (SpamExperts) contains a server-side request forgery vulnerability in the LDAP synchronization connection check that allows an authenticated API user to connect to arbitrary internal hosts and ports, determine which are reachable, and send crafted data to internal services."
+            },
+            {
+              "id": "CVE-2026-129448",
+              "desc": "Apache Roller contains a deserialization of untrusted data vulnerability that allows an unauthenticated remote attacker to execute arbitrary code via the XML-RPC endpoint, which accepts and deserializes vendor extension types before authentication. This CVE covers the same underlying vulnerability as CVE-2026-82384 but applies to a broader range of affected versions."
+            },
+            {
+              "id": "CVE-2026-123890",
+              "desc": "Broadcom VMware vCenter contains an authentication bypass using an alternate path or channel vulnerability in the VMware Directory Service that allows an unauthenticated attacker with network access to vCenter to bypass authentication and gain unauthorized access to the system."
+            },
+            {
+              "id": "CVE-2025-42884",
+              "desc": "SAP NetWeaver Enterprise Portal contains an improper neutralization of special elements in data query logic vulnerability that allows an unauthenticated attacker to disclose or modify server information via injected JNDI environment properties or a URL used during JNDI lookup operations."
+            },
+            {
+              "id": "CVE-2026-76466",
+              "desc": "Cisco Expressway Series contains a use of hard-coded credentials vulnerability that allows an unauthenticated, remote attacker with persistent cookies and network access to execute commands as root on a clustered device via the database service."
+            },
+            {
+              "id": "CVE-2024-10441",
+              "desc": "Synology DSM contains an improper encoding or escaping of output vulnerability in the system plugin daemon in Synology BeeStation OS (BSM) that could allow a remote attacker to execute arbitrary code via unspecified vectors."
+            },
+            {
+              "id": "CVE-2026-40217",
+              "desc": "BerriAI LiteLLM contains an unprotected alternate channel vulnerability that could allow remote attackers to execute arbitrary code via bytecode rewriting at the /guardrails/test_custom_code URI."
+            },
+            {
+              "id": "CVE-2026-90817",
+              "desc": "Vanderbilt University Research Electronic Data Capture (REDCap) contains a code injection vulnerability which could allow an unauthenticated attacker to execute arbitrary code on the server. An attacker could exploit this via crafted HTTP requests that access an unintended controller route from a public survey context and supply a crafted file-path or stream parameter during data import processing. Exploitation requires knowledge of a valid public survey hash."
+            },
+            {
+              "id": "CVE-2026-90436",
+              "desc": "Apache Axis contains an unsafe reflection vulnerability that could allow an unauthenticated remote attacker to execute arbitrary code via a crafted SOAP fault message that causes Axis to load and instantiate an attacker-specified class when a suitable class is available on the application classpath. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
+            }
+          ]
+        },
+        {
+          "label": "Actively Exploited",
+          "color": "orange",
+          "items": [
+            {
+              "id": "CVE-2026-133968",
+              "desc": "Project MONAI MONAI Label contains a path traversal vulnerability that allows an unauthenticated remote attacker to write arbitrary files outside the intended datastore directory, potentially resulting in remote code execution."
+            },
+            {
+              "id": "CVE-2026-134624",
+              "desc": "N-able MailAssure (SpamExperts) contains a server-side request forgery vulnerability in the LDAP synchronization connection check that allows an authenticated API user to connect to arbitrary internal hosts and ports, determine which are reachable, and send crafted data to internal services."
+            },
+            {
+              "id": "CVE-2026-129448",
+              "desc": "Apache Roller contains a deserialization of untrusted data vulnerability that allows an unauthenticated remote attacker to execute arbitrary code via the XML-RPC endpoint, which accepts and deserializes vendor extension types before authentication. This CVE covers the same underlying vulnerability as CVE-2026-82384 but applies to a broader range of affected versions."
+            },
+            {
+              "id": "CVE-2026-123890",
+              "desc": "Broadcom VMware vCenter contains an authentication bypass using an alternate path or channel vulnerability in the VMware Directory Service that allows an unauthenticated attacker with network access to vCenter to bypass authentication and gain unauthorized access to the system."
+            },
+            {
+              "id": "CVE-2025-42884",
+              "desc": "SAP NetWeaver Enterprise Portal contains an improper neutralization of special elements in data query logic vulnerability that allows an unauthenticated attacker to disclose or modify server information via injected JNDI environment properties or a URL used during JNDI lookup operations."
+            },
+            {
+              "id": "CVE-2026-76466",
+              "desc": "Cisco Expressway Series contains a use of hard-coded credentials vulnerability that allows an unauthenticated, remote attacker with persistent cookies and network access to execute commands as root on a clustered device via the database service."
+            },
+            {
+              "id": "CVE-2024-10441",
+              "desc": "Synology DSM contains an improper encoding or escaping of output vulnerability in the system plugin daemon in Synology BeeStation OS (BSM) that could allow a remote attacker to execute arbitrary code via unspecified vectors."
+            },
+            {
+              "id": "CVE-2026-40217",
+              "desc": "BerriAI LiteLLM contains an unprotected alternate channel vulnerability that could allow remote attackers to execute arbitrary code via bytecode rewriting at the /guardrails/test_custom_code URI."
+            },
+            {
+              "id": "CVE-2026-90817",
+              "desc": "Vanderbilt University Research Electronic Data Capture (REDCap) contains a code injection vulnerability which could allow an unauthenticated attacker to execute arbitrary code on the server. An attacker could exploit this via crafted HTTP requests that access an unintended controller route from a public survey context and supply a crafted file-path or stream parameter during data import processing. Exploitation requires knowledge of a valid public survey hash."
+            },
+            {
+              "id": "CVE-2026-90436",
+              "desc": "Apache Axis contains an unsafe reflection vulnerability that could allow an unauthenticated remote attacker to execute arbitrary code via a crafted SOAP fault message that causes Axis to load and instantiate an attacker-specified class when a suitable class is available on the application classpath. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
+            }
+          ]
+        },
+        {
+          "label": "Pakistan Alerts",
+          "color": "green",
+          "items": [
+            {
+              "id": "PKCERT-71DA9F40",
+              "desc": "Pakistan CERT Security Advisory: Advisory No 13: Critical Vulnerabilities in Fortinet FortiSandbox Under Active Exploitation. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
+            },
+            {
+              "id": "PKCERT-E48A22A6",
+              "desc": "Pakistan CERT Security Advisory: Advisory No 12: Large-Scale Compromise of Fortinet FortiGate Firewalls and VPN Infrastructure. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
+            },
+            {
+              "id": "PKCERT-0E16B8D5",
+              "desc": "Pakistan CERT Security Advisory: Advisory No 11: Critical Vulnerability in Palo Alto Networks GlobalProtect (CVE-2026-0257) Actively Exploited. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
+            },
+            {
+              "id": "PKCERT-E6090A61",
+              "desc": "Pakistan CERT Security Advisory: Advisory No 10: Critical Remote Code Execution Vulnerabilities in n8n Workflow Automation Platform. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
+            },
+            {
+              "id": "PKCERT-DA73C1CB",
+              "desc": "Pakistan CERT Security Advisory: Advisory No 09: Critical Authentication Bypass in Cisco SD-WAN Manager (CVE-2026-20127). Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
+            },
+            {
+              "id": "PKCERT-F2DCA7B5",
+              "desc": "Pakistan CERT Security Advisory: Advisory No 08: Persistent Application Security Weaknesses Requiring Immediate Remediation. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
+            },
+            {
+              "id": "PKCERT-E4B9FF51",
+              "desc": "Pakistan CERT Security Advisory: Advisory No 07: Critical Pre-Authentication RCE Vulnerability in BeyondTrust Remote Support. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
+            },
+            {
+              "id": "PKCERT-1F50D32C",
+              "desc": "Pakistan CERT Security Advisory: Advisory No 06: Active Exploitation of Zero-Day Vulnerabilities in Ivanti EPMM. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
+            },
+            {
+              "id": "PKCERT-963C515B",
+              "desc": "Pakistan CERT Security Advisory: Advisory No 05: Actively Exploited Microsoft Office Zero-Day Vulnerability (CVE-2026-21509). Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
+            },
+            {
+              "id": "PKCERT-BB9FC415",
+              "desc": "Pakistan CERT Security Advisory: Advisory No 04: Critical Fortinet FortiSIEM and FortiOS Remote Code Execution Vulnerabilities. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "date": "2026-11-23",
       "stats": {
         "new": 553,
@@ -13566,159 +13719,6 @@
             {
               "id": "CVE-2026-60004",
               "desc": "Gitea contains a code injection vulnerability that allows an attacker with repository write access to send a malicious patch to the diffpatch API endpoint to plant an executable Git hook and run shell commands as the Gitea service account."
-            }
-          ]
-        },
-        {
-          "label": "Pakistan Alerts",
-          "color": "green",
-          "items": [
-            {
-              "id": "PKCERT-BFB4F019",
-              "desc": "Pakistan CERT Security Advisory: Advisory: Adobe Acrobat Chrome Extension Vulnerability Exposing WhatsApp Web Sessions. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately."
-            },
-            {
-              "id": "PKCERT-0C8150B6",
-              "desc": "Pakistan CERT Security Advisory: Advisory: Malware Targeting Synchronized Passkeys on Compromised Windows Systems. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately."
-            },
-            {
-              "id": "PKCERT-917CDA37",
-              "desc": "Pakistan CERT Security Advisory: Advisory: Critical Authentication Bypass and Account Takeover Vulnerability in N-able N-central. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately."
-            },
-            {
-              "id": "PKCERT-71DA9F40",
-              "desc": "Pakistan CERT Security Advisory: Advisory No 13: Critical Vulnerabilities in Fortinet FortiSandbox Under Active Exploitation. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
-            },
-            {
-              "id": "PKCERT-E48A22A6",
-              "desc": "Pakistan CERT Security Advisory: Advisory No 12: Large-Scale Compromise of Fortinet FortiGate Firewalls and VPN Infrastructure. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
-            },
-            {
-              "id": "PKCERT-0E16B8D5",
-              "desc": "Pakistan CERT Security Advisory: Advisory No 11: Critical Vulnerability in Palo Alto Networks GlobalProtect (CVE-2026-0257) Actively Exploited. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
-            },
-            {
-              "id": "PKCERT-E6090A61",
-              "desc": "Pakistan CERT Security Advisory: Advisory No 10: Critical Remote Code Execution Vulnerabilities in n8n Workflow Automation Platform. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
-            },
-            {
-              "id": "PKCERT-DA73C1CB",
-              "desc": "Pakistan CERT Security Advisory: Advisory No 09: Critical Authentication Bypass in Cisco SD-WAN Manager (CVE-2026-20127). Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
-            },
-            {
-              "id": "PKCERT-F2DCA7B5",
-              "desc": "Pakistan CERT Security Advisory: Advisory No 08: Persistent Application Security Weaknesses Requiring Immediate Remediation. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
-            },
-            {
-              "id": "PKCERT-E4B9FF51",
-              "desc": "Pakistan CERT Security Advisory: Advisory No 07: Critical Pre-Authentication RCE Vulnerability in BeyondTrust Remote Support. Pakistani organizations are advised to review this advisory and apply recommended mitigations immediately. Full technical details available in the linked PDF."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "date": "2026-08-26",
-      "stats": {
-        "new": 545,
-        "changed": 0,
-        "removed": 0,
-        "total": 525847,
-        "zeroday": 29,
-        "exploited": 29,
-        "pakistan": 16
-      },
-      "summary": "Today's digest contains 545 vulnerabilities across 4 sources. 29 zero-day exploits detected, 29 actively exploited from CISA KEV, and 16 Pakistan CERT/NCCS advisories.",
-      "sections": [
-        {
-          "label": "Zero Day Exploits",
-          "color": "red",
-          "items": [
-            {
-              "id": "CVE-2021-23758",
-              "desc": "Ajax.NET Professional (AjaxPro) contains a deserialization of untrusted data vulnerability that could allow for remote code execution via arbitrary .NET classes. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
-            },
-            {
-              "id": "CVE-2015-3246",
-              "desc": "Red Hat libuser contains a race condition vulnerability that allows authenticated local users to corrupt the /etc/passwd file to cause a denial of service or privilege escalation."
-            },
-            {
-              "id": "CVE-2015-5287",
-              "desc": "Red Hat Automatic Bug Reporting Tool (ABRT) contains a privilege escalation vulnerability that could allow local users with certain permissions to gain privileges via a symlink attack on a file with a predictable name. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
-            },
-            {
-              "id": "CVE-2022-0995",
-              "desc": "Linux Kernel contains an out-of-bounds memory write vulnerability which could allow a local user to gain privileged access or cause a denial of service on the system."
-            },
-            {
-              "id": "CVE-2026-8452",
-              "desc": "Citrix NetScaler ADC and NetScaler Gateway contain an improper restriction of operations within the bounds of a memory buffer vulnerability which could lead to denial of service."
-            },
-            {
-              "id": "CVE-2019-1068",
-              "desc": "Microsoft SQL Server contains a remote code execution vulnerability that could allow an attacker to execute code in the context of the SQL Server Database Engine service account."
-            },
-            {
-              "id": "CVE-2026-60004",
-              "desc": "Gitea contains a code injection vulnerability that allows an attacker with repository write access to send a malicious patch to the diffpatch API endpoint to plant an executable Git hook and run shell commands as the Gitea service account."
-            },
-            {
-              "id": "CVE-2026-21962",
-              "desc": "Oracle HTTP Server and Oracle Weblogic Server Proxy Plug-in contain an improper access control vulnerability that can result in unauthorized creation, deletion or modification access to critical data as well as unauthorized access to critical data or complete access to all Oracle HTTP Server and Oracle Weblogic Server Proxy Plug-in accessible data."
-            },
-            {
-              "id": "CVE-2026-73570",
-              "desc": "Zimbra Collaboration Suite (ZCS) contains an OS command injection vulnerability which could allow an unauthenticated attacker to send specially crafted SMTP requests that may result in execution of arbitrary operating system commands as the Zimbra user."
-            },
-            {
-              "id": "CVE-2026-72530",
-              "desc": "TrueConf Server contains a code injection vulnerability that could allow an unauthorized remote attacker with network access via port 4307/TCP to use a specially crafted script to break out of the isolated environment and execute arbitrary code on the host system."
-            }
-          ]
-        },
-        {
-          "label": "Actively Exploited",
-          "color": "orange",
-          "items": [
-            {
-              "id": "CVE-2021-23758",
-              "desc": "Ajax.NET Professional (AjaxPro) contains a deserialization of untrusted data vulnerability that could allow for remote code execution via arbitrary .NET classes. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
-            },
-            {
-              "id": "CVE-2015-3246",
-              "desc": "Red Hat libuser contains a race condition vulnerability that allows authenticated local users to corrupt the /etc/passwd file to cause a denial of service or privilege escalation."
-            },
-            {
-              "id": "CVE-2015-5287",
-              "desc": "Red Hat Automatic Bug Reporting Tool (ABRT) contains a privilege escalation vulnerability that could allow local users with certain permissions to gain privileges via a symlink attack on a file with a predictable name. The impacted product(s) could be end-of-life (EoL) and/or end-of-service (EoS). Users are advised to discontinue use and/or transition to a supported version."
-            },
-            {
-              "id": "CVE-2022-0995",
-              "desc": "Linux Kernel contains an out-of-bounds memory write vulnerability which could allow a local user to gain privileged access or cause a denial of service on the system."
-            },
-            {
-              "id": "CVE-2026-8452",
-              "desc": "Citrix NetScaler ADC and NetScaler Gateway contain an improper restriction of operations within the bounds of a memory buffer vulnerability which could lead to denial of service."
-            },
-            {
-              "id": "CVE-2019-1068",
-              "desc": "Microsoft SQL Server contains a remote code execution vulnerability that could allow an attacker to execute code in the context of the SQL Server Database Engine service account."
-            },
-            {
-              "id": "CVE-2026-60004",
-              "desc": "Gitea contains a code injection vulnerability that allows an attacker with repository write access to send a malicious patch to the diffpatch API endpoint to plant an executable Git hook and run shell commands as the Gitea service account."
-            },
-            {
-              "id": "CVE-2026-21962",
-              "desc": "Oracle HTTP Server and Oracle Weblogic Server Proxy Plug-in contain an improper access control vulnerability that can result in unauthorized creation, deletion or modification access to critical data as well as unauthorized access to critical data or complete access to all Oracle HTTP Server and Oracle Weblogic Server Proxy Plug-in accessible data."
-            },
-            {
-              "id": "CVE-2026-73570",
-              "desc": "Zimbra Collaboration Suite (ZCS) contains an OS command injection vulnerability which could allow an unauthenticated attacker to send specially crafted SMTP requests that may result in execution of arbitrary operating system commands as the Zimbra user."
-            },
-            {
-              "id": "CVE-2026-72530",
-              "desc": "TrueConf Server contains a code injection vulnerability that could allow an unauthorized remote attacker with network access via port 4307/TCP to use a specially crafted script to break out of the isolated environment and execute arbitrary code on the host system."
             }
           ]
         },

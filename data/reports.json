@@ -3,20 +3,32 @@
     {
       "date": "2026-11-27",
       "stats": {
-        "new": 612,
+        "new": 615,
         "changed": 0,
         "removed": 0,
-        "total": 762560,
-        "zeroday": 95,
-        "exploited": 45,
+        "total": 763175,
+        "zeroday": 98,
+        "exploited": 48,
         "pakistan": 17
       },
-      "summary": "Today's digest contains 612 vulnerabilities across 5 sources. 95 zero-day exploits detected, 45 actively exploited from CISA KEV, and 17 Pakistan CERT/NCCS advisories.",
+      "summary": "Today's digest contains 615 vulnerabilities across 5 sources. 98 zero-day exploits detected, 48 actively exploited from CISA KEV, and 17 Pakistan CERT/NCCS advisories.",
       "sections": [
         {
           "label": "Zero Day Exploits",
           "color": "red",
           "items": [
+            {
+              "id": "CVE-2026-120705",
+              "desc": "OsGeo GeoServer contains an XML injection vulnerability that allows an unauthenticated remote attacker to cause the server to read local text files accessible to the GeoServer process or fetch attacker-specified HTTP or HTTPS URLs via a crafted ID parameter in the WFS 2.0 GetFeatureById stored query. This vulnerability can be chained with CVE-2026-129244, CVE-2026-129243, CVE-2026-129245, and CVE-2026-129242 to achieve unauthenticated remote code execution on an affected GeoServer instance."
+            },
+            {
+              "id": "CVE-2026-129243",
+              "desc": "GeoServer contains an incorrect authorization vulnerability that allows an unauthenticated remote attacker to bypass service-level role checks and invoke operations protected solely by those checks via a request with a prefixed service parameter. This vulnerability can be chained with CVE-2026-129244, CVE-2026-120705, CVE-2026-129245, and CVE-2026-129242 to achieve unauthenticated remote code execution on an affected GeoServer instance."
+            },
+            {
+              "id": "CVE-2026-136716",
+              "desc": "Drupal Core contains an improper check for unusual or exceptional conditions vulnerability that allows an unauthenticated remote attacker to take over a site via the exposed Drupal installer when the site is in one of the affected unusual or incomplete installation states."
+            },
             {
               "id": "CVE-2026-103406",
               "desc": "Hewlett Packard Enterprise (HPE) Juniper Session Smart Conductor and Session Smart Router contain an OS command injection vulnerability that could allow a remote attacker to execute arbitrary commands as root via a specially crafted salt minion ID."
@@ -44,18 +56,6 @@
             {
               "id": "CVE-2026-133275",
               "desc": "Mitel MiCollab contains an unrestricted upload of file with dangerous type vulnerability in the Audio, Web and Video Conferencing (AWV) component due to insufficient file type validation that could allow an unauthenticated attacker to upload arbitrary files."
-            },
-            {
-              "id": "CVE-2026-133311",
-              "desc": "Mitel MiCollab contains a weak authentication vulnerability in the Audio, Web and Video Conferencing (AWV) component that could allow an unauthenticated attacker to access sensitive information using a specific system-generated random identifier or pre-staged content."
-            },
-            {
-              "id": "CVE-2026-133303",
-              "desc": "Mitel MiCollab contains an XML injection vulnerability in its Audio, Web, and Video Conferencing (AWV) component that could allow an unauthenticated attacker to execute arbitrary commands using pre-staged malicious content."
-            },
-            {
-              "id": "CVE-2026-133323",
-              "desc": "Mitel MiCollab contains an improper neutralization of special elements used in an OS command (OS command injection) vulnerability in its Audio, Web, and Video Conferencing (AWV) component that could allow an unauthenticated attacker to execute arbitrary system commands."
             }
           ]
         },
@@ -64,6 +64,18 @@
           "color": "orange",
           "items": [
             {
+              "id": "CVE-2026-120705",
+              "desc": "OsGeo GeoServer contains an XML injection vulnerability that allows an unauthenticated remote attacker to cause the server to read local text files accessible to the GeoServer process or fetch attacker-specified HTTP or HTTPS URLs via a crafted ID parameter in the WFS 2.0 GetFeatureById stored query. This vulnerability can be chained with CVE-2026-129244, CVE-2026-129243, CVE-2026-129245, and CVE-2026-129242 to achieve unauthenticated remote code execution on an affected GeoServer instance."
+            },
+            {
+              "id": "CVE-2026-129243",
+              "desc": "GeoServer contains an incorrect authorization vulnerability that allows an unauthenticated remote attacker to bypass service-level role checks and invoke operations protected solely by those checks via a request with a prefixed service parameter. This vulnerability can be chained with CVE-2026-129244, CVE-2026-120705, CVE-2026-129245, and CVE-2026-129242 to achieve unauthenticated remote code execution on an affected GeoServer instance."
+            },
+            {
+              "id": "CVE-2026-136716",
+              "desc": "Drupal Core contains an improper check for unusual or exceptional conditions vulnerability that allows an unauthenticated remote attacker to take over a site via the exposed Drupal installer when the site is in one of the affected unusual or incomplete installation states."
+            },
+            {
               "id": "CVE-2026-103406",
               "desc": "Hewlett Packard Enterprise (HPE) Juniper Session Smart Conductor and Session Smart Router contain an OS command injection vulnerability that could allow a remote attacker to execute arbitrary commands as root via a specially crafted salt minion ID."
             },
@@ -90,18 +102,6 @@
             {
               "id": "CVE-2026-133275",
               "desc": "Mitel MiCollab contains an unrestricted upload of file with dangerous type vulnerability in the Audio, Web and Video Conferencing (AWV) component due to insufficient file type validation that could allow an unauthenticated attacker to upload arbitrary files."
-            },
-            {
-              "id": "CVE-2026-133311",
-              "desc": "Mitel MiCollab contains a weak authentication vulnerability in the Audio, Web and Video Conferencing (AWV) component that could allow an unauthenticated attacker to access sensitive information using a specific system-generated random identifier or pre-staged content."
-            },
-            {
-              "id": "CVE-2026-133303",
-              "desc": "Mitel MiCollab contains an XML injection vulnerability in its Audio, Web, and Video Conferencing (AWV) component that could allow an unauthenticated attacker to execute arbitrary commands using pre-staged malicious content."
-            },
-            {
-              "id": "CVE-2026-133323",
-              "desc": "Mitel MiCollab contains an improper neutralization of special elements used in an OS command (OS command injection) vulnerability in its Audio, Web, and Video Conferencing (AWV) component that could allow an unauthenticated attacker to execute arbitrary system commands."
             }
           ]
         },
